@@ -1,0 +1,166 @@
+# About MATH2750 {.unnumbered #S00-about}
+
+
+This module is **MATH2750 Introduction to Markov Processes**. The module manager and lecturer is Dr Matthew Aldridge, and my email address is <m.aldridge@leeds.ac.uk>.
+
+
+## Organisation of MATH2750 {.unnumbered #S00-module}
+
+This module lasts for 11 weeks. The first nine weeks run from 25 January to 26 March, then we break for Easter, and then the final two weeks run from 26 April to 7 May.
+
+It is my intention, if possible, to try to make the Week 10 and 11 material available at the beginning of the Easter break, so that students who want to study the material in a single 11-week block are able to do so.
+
+
+### Notes and videos {.unnumbered #S00-notes}
+
+The main way I expect you to learn the material for this course is by reading these notes and by watching the accompanying videos. I will set two sections of notes each week, for a total of 22 sections.
+
+Each section roughly corresponds to one lecture last year, so I recommend spending about an hour on each section. Reading mathematics is a slow process. If you find yourself getting through sections much quicker than an hour, you're probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as just checking the accuracy. (Or you might just be a genius.)
+
+It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos.
+
+Since we will all be relying heavily on these notes, I'm even more keen than usual to hear about errors mathematical, typographical or otherwise. Please, please [email me](mailto:m.aldridge@leeds.ac.uk) if think you may have found any.
+
+
+### Problem sheets {.unnumbered #S00-problem-sheets}
+
+There will be 10 problem sheets; Problem Sheet $n$ covers the material from the two sections from week $n$ (Sections $2n -1$ and $2n$), and will be discussed in your workshop in week $n+1$.
+
+
+### Lectures {.unnumbered #S00-lectures}
+
+There will be one online synchronous "lecture" session each week, on Tuesdays at 1400, with me, run through ?????.
+
+This will not be a "lecture" in the traditional sense of the term, but will be an opportunity to re-emphasise material you have already learned from notes and videos, to give extra examples, and to answer common student questions, with some degree of interactivity.
+
+I will assume you have completed all the work for the previous week by the time of the lecture, but I will not assume you've started the work for that week itself.
+
+
+### Workshops {.unnumbered #S00-workshops}
+
+There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by Jason Klebes, Dr Jochen Voss, or me. Your workshop will probably be run through ?????; your workshop leader will contact you before the end of this week if there are different arrangements.
+
+My recommended approach to problem sheets and workshops is the following:
+
+* Work through the problem sheet before the workshop, spending plenty of time on it, and making multiple efforts at questions you get stuck on. I recommend that three hours per problem sheet is a good amount of time to spend, preferably in more than one block. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.
+* Take advantage of the smaller group setting of the workshop to ask for help or clarification on questions you weren't able to complete.
+* After the workshop, attempt again the questions you were previously stuck on.
+* If you're still unable to complete a question after this second round of attempts, *then* consult the solutions.
+
+
+### Assessments {.unnumbered #S00-assessments}
+
+There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 2 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 3 will be a report on some computational work ([see below](#S00-computing)) and is worth 3%. While you may want to discuss an assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.
+
+The assessments deadlines are:
+
+* Assessment 1: Thursday ??? 1400 (week 3)
+* Assessment 2: Thursday ??? 1400 (week 7)
+* Assessment 3 (Computing Worksheet 2): Thursday ??? 1400 (week 8)
+* Assessment 4: Thursday ??? 1400 (week 11)
+
+Work will be submitted via Gradescope.
+
+
+### Computing worksheets {.unnumbered #S00-computing}
+
+There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but there will be optional online drop-in sessions in the weeks 4 and 7 if you need help. (Your session will be listed as "Practical" on your timetable.)
+
+In response to student feedback, some computational work will be assessed. The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the third assessed piece of work.
+
+
+### Drop-in sessions {.unnumbered #office}
+
+If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session on Tuesdays or Wednesdays with Nikita Merkulov or me. This would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
+
+
+### Discussion board
+
+?????
+
+
+### Time management {.unnumbered #S00-time}
+
+It is, of course, up to you how you choose to spend your time on this module. But, if you're interested, my recommendations would be something like this:
+
+* **Every week:** 7 hours per week
+   * **Notes and videos:** 2 sections, 1 hour each
+   * **Problem sheet:** 3 hours per week
+   * **Lecture:** 1 hour per week
+   * **Workshop:** 1 hour per week
+* **When required:**
+   * **Assessments 1, 2 and 4:** 3 hours each
+   * **Computer worksheets:** 2 hours each
+   * **Revision**: 14 hours
+* **Total:** 100 hours
+
+
+### Exam {.unnumbered #S00-exam}
+
+There will be an exam -- or, rather, a final "online time-limited assessment" -- after the end of the module, making up the remaining 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. You will have 48 hours to complete the exam, although the exam itself should represent half a day to a day's work. Further details to follow nearer the time.
+
+
+
+## Content of MATH2750 {.unnumbered #S00-content}
+
+
+### Prerequisites {.unnumbered #S00-prereqs}
+
+Some students have asked what background you'll be expected to know for this course.
+
+It's essential that you're very comfortable with the basics of probability theory: events, probability, discrete and continuous random variables, expectation, variance, approximations with the normal distribution, etc. Conditional probability and independence are particularly important concepts in this course. This course will use the binomial, geometric, Poisson, normal and exponential distributions, although the notes will usually remind you about them first, in case you've forgotten.
+
+Many students on the module will have studied these topics in MATH1710 Probability and Statistics 1; others will have covered these in different modules.
+
+
+### Syllabus {.unnumbered #S00-syllabus}
+
+The course has two major parts: the first part will cover processes in discrete time and the second part processes in continuous time.
+
+An outline plan of the topics covered is the following. (Remember that one week's work is two sections of notes.)
+
+* **Discrete time Markov chains** [12 sections]
+   * Introduction to stochastic processes [1 section]
+   * Important examples: Random walk, gambler's ruin, linear difference equations, examples from actuarial science [4 sections]
+   * General theory: transition probabilities, $n$-step transition probabilities, class structure, periodicity, hitting times, recurrence and transience, stationary distributions, long-term behaviour [6 sections]
+   * Revision [1 section]
+* **Continuous time Markov jump processes** [10 sections]
+   * Important examples: Poisson process, counting processes, queues [5 sections]
+   * General theory: holding times and jump chains, forward and backward equations, class structure, hitting times, stationary distributions, long-term behaviour [4 sections]
+   * Revision [1 section]
+
+
+### Books {.unnumbered #S00-books}
+
+You can do well on this module by reading the notes and watching the videos, attending the lectures and workshops, and working on the problem sheets, assignments and practicals, without any further reading. However, students can benefit from optional extra background reading or an alternative view on the material.
+
+My favourite book on Markov chains, which I used a lot while planning this course and writing these notes, is:
+
+* J.R. Norris, *Markov Chains*, Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press, 1997. Chapters 1-3.
+
+This a whole book just on Markov processes, including some more detailed material that goes beyond this module. Its coverage of of both discrete and continuous time Markov processes is very thorough. [Chapter 1 on discrete time Markov chains is available online.](http://www.statslab.cam.ac.uk/~james/Markov/)
+
+Other good books with sections on Markov processes that I have used include:
+
+* G.R. Grimmett and D.R. Stirzaker, *Probability and Random Processes*, 4th edition, Oxford University Press, 2020. Chapter 6.
+* G. Grimmet and D. Walsh, *Probability: an introduction*, 2nd edition, Oxford University Press, 2014. Chapter 12.
+* D.R. Stirzaker, [*Elementary Probability*](https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181), 2nd edition, Cambridge University Press, 2003. Chapter 9.
+
+ Grimmett and Stirzaker is an excellent handbook that covers most of undergraduate probability -- I bought a copy when I was a second-year undergraduate and still keep it next to my desk. 
+ <!-- Chapter 6 of Grimmett and Stirzaker covers Markov chains is available online. -->
+[The whole of Stirzaker is available online.](https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181)
+
+A gentler introduction with plenty of examples is provided by:
+
+* P.W. Jones and P. Smith, [*Stochastic Processes: an introduction*](
+https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181), 3nd edition, Texts in Statistical Science, CRC Press, 2018. Chapters 2-7.
+
+although it doesn't cover everything in this module. [The whole book is available online.](
+https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181)
+
+(I've listed the newest editions of these books, but older editions will usually be fine too.)
+
+
+### And finally... {.unnumbered #S00-finally}
+
+These notes were mostly written by Matthew Aldridge in 2018--19, and have received updates (mostly in Sections 9--11) and reformatting this year. Some of the material (especially Section 1, Section 6, and numerous diagrams) follows closely previous notes by Dr Graham Murphy, and I also benefited from reading earlier notes by Dr Robert Aykroyd and Prof Alexander Veretennikov. Dr Murphy's general help and advice was also very valuable. Many thanks to students in previous runnings of the module for spotting errors and suggesting improvements.

@@ -1,0 +1,20 @@
+--- 
+title:  "MATH2750 Introduction to Markov Processes"
+author: "[Matthew Aldridge](mailto:m.aldridge@leeds.ac.uk)"
+date:   "University of Leeds, 2020--2021"
+site:   bookdown::bookdown_site
+description: "Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020--2021"
+---
+
+# Schedule {.unnumbered #home}
+
+::: {.mysched}
+**Week 1** (25--29 January)
+
+* [About the module](#S00-about)
+* [Section 1: Stochastic processes and the Markov property](#S01-stochastic-processes)
+* [Section 2: Random walks](#S02-random-walks)
+* [Problem Sheet 1](#P01)
+* Lecture: Tuesday at 2pm
+* Drop-in sessions: Tuesday or Wednesday
+:::

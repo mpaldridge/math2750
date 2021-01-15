@@ -1,0 +1,42 @@
+# Problem Sheet 1  {.unnumbered #P01}
+
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+
+
+<style>
+.myanswers { 
+/* display: none; */
+}
+</style>
+-->
+
+
+::: {.mysummary}
+You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (???????  ??? or Tuesday ????? ???) where the answers will be discussed.
+:::
+
+```{r child="problems/P01.Rmd"}
+```
+
+
+
+

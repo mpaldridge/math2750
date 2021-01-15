@@ -1,0 +1,263 @@
+# Linear difference equations  {#S04-ldes}
+
+
+::: {.mysummary}
+* How to solve homogeneous and inhomogeneous linear difference equations
+* Solving for probability of ruin and expected duration of the gambler's ruin
+:::
+
+
+
+**Linear difference equations** are equations that look like
+\begin{equation}
+a_k x_{n+k} + a_{k-1} x_{n+k-1} + \cdots + a_1 x_{n+1} + a_0 x_n = f(n) (\#eq:lde) 
+\end{equation}
+for $n = 0,1,\dots$, where the $a_i$ are given constants, $f(n)$ is a given function, and we want to solve for the sequence $(x_n)$. The equation normally comes with some extra conditions, such as the value of the first few $x_n$s.
+
+When the right-hand side of \@ref(eq:lde) is zero, so $f(n) = 0$, we say the equation is **homogeneous**; if the right-hand side is nonzero, it is **inhomogeneous**. The number $k$, where there are $k+1$ terms on the left-hand side, is called the **degree** of the equation; we are mostly interested in second-degree linear difference equations, which have three terms on the left-hand side.
+
+
+
+## Homogeneous linear difference equations  {#hom-ldes}
+
+
+We start with the homogeneous case, which is simpler.
+
+Consider a homogeneous linear difference equation. We shall use the second-degree example
+  \[ x_{n+2} - 5x_{n+1} + 6x_{n} = 0 \qquad \text{subject to } x_0 = 4, x_1 = 9 .  \]
+Here, the conditions on $x_0$ and $x_1$ are **initial conditions**, because they tell us how the sequence $(x_n)$ starts.
+
+For the moment, we shall put the initial conditions to the side and just worry about the equation
+  \[ x_{n+2} - 5x_{n+1} + 6x_{n} = 0 . \]
+We start by guessing there might be a solution of the form $x_n = \lambda^n$ for some constant $\lambda$. We can find out if there is such a solution by substituting in $x_n = \lambda^n$, and seeing if there's a $\lambda$ that solves the equation. For our example, we get
+  \[ \lambda^{n+2} - 5 \lambda^{n+1} + 6\lambda^n = 0 . \]
+After cancelling off a common factor of $\lambda^n$, we get
+  \[ \lambda^2 - 5 \lambda + 6 = 0 . \]
+This is called the **characteristic equation**. For a general homogeneous linear difference equation \@ref(eq:lde), the characteristic equation is 
+\begin{equation}
+  a_k \lambda^{k} + a_{k-1} \lambda^{k-1} + \cdots + a_1 \lambda + a_0 = 0 .  (\#eq:cheq) 
+\end{equation}
+When writing out answers to questions, you can jump straight to the characteristic equation.
+  
+We can now solve the characteristic equation for $\lambda$. In our example, we can factor the left-hand side to get $(\lambda - 3)(\lambda - 2) = 0$, which has solutions $\lambda = 2$ and $\lambda = 3$. Thus $x_n = 2^n$ and $x_n = 3^n$ both solve our equation. In fact, since the right-hand side of the equation is $0$, any linear combination of these two solutions is a solution also, thus we get the **general solution**
+  \[ x_n = A 2^n + B 3^n , \]
+which is a solution for any values of the constants $A$ and $B$.
+  
+For a general characteristic equation with distinct roots $\lambda_1, \lambda_2, \dots, \lambda_k$, the general solution is
+  \[ x_n = C_1 \lambda_1^n + C_2 \lambda_2^n + \cdots + C_k \lambda_k^n . \]
+If we have a repeated root -- say, $\lambda_1 = \lambda_2 = \cdots = \lambda_r$ is repeated $r$ times -- than you can check that a solution is given by
+  \[ x_n = (D_0 + D_1 n + \cdots + D_{r-1} n^{r-1}) \lambda_1^n , \]
+which should take its place in the general solution.
+
+Once we have the general solution, we can use the extra conditions to find the values of the constants. In our example, we can use the initial conditions to find out the values of $A$ and $B$. We see that
+\begin{gather*}
+x_0 = A2^0 + B3^0 = A + B = 4 , \\
+x_1 = A2^1 + B3^1 = 2A + 3B = 9 .
+\end{gather*}
+We can now solve this pair of simultaneous equations to solve for $A$ and $B$. By subtracting twice the first equation from the second we get $B = 1$, and substituting this into the first equation we get $A = 3$. Thus the solution is
+  \[ x_n = 3\cdot 2^n + 3^n . \]
+
+In conclusion, the process here was:
+
+1. Find the general solution by writing down and solving the characteristic equation.
+2. Use the extra conditions to find the values of the constants in the general solution.
+
+If you think you've got the hang of this, you should press on to [the next subsection](#S04-ruin-probability). But if you're still a bit unsure, here are two extra optional examples. (These also give an idea of how I would expect you to set out your answers to similar problems.)
+
+::: {.example #lde1}
+*Solve the homogeneous linear difference equation*
+\[ x_{n+2} - x_{n+1} - 6x_n = 0 \qquad \text{subject to} \quad x_0 = 3,\quad x_1 = 4 . \]
+
+*Step 1.* The characteristic equation is
+  \[ \lambda^2 - \lambda - 6 = 0 . \]
+We can solve this by factorising it as $(\lambda - 3) (\lambda + 2) = 0$,
+to find the solutions $\lambda_1 = -2$ and $\lambda_2 = 3$. Thus the general solution is
+  \[ x_n = A(-2)^n + B3^n . \]
+
+*Step 2.* Substituting the initial conditions into the general solution, we have
+\begin{align*}
+x_0 &= A(-2)^0 + B3^0 = A + B = 3 \\
+x_1 &= A(-2)^1 + B3^1 = -2A + 3B = 4 .
+\end{align*}
+We can add twice the first equation from the second to get $5B = 10$, so $B=2$. We can substitute this into the first equation to get $A = 1$.
+
+The solution is therefore
+\[ x_n = 1\cdot(-2)^n + 2 \cdot 3^n = (-2)^n + 2 \cdot 3^n . \]
+:::
+
+::: {.example #lde2}
+*Solve the homogeneous linear difference equation*
+\[ x_{n+2} + 4x_{n+1} +4x_n = 0 \qquad \text{subject to} \quad x_0 = 2,\quad x_1 = -6 . \]
+
+*Step 1.* The characteristic equation is
+\[ \lambda^2 + 4\lambda + 4 = 0 . \]
+We can solve this by factorising it as $(\lambda + 2)^2 = 0$, to find a repeated root $\lambda_1 = \lambda_2 = -2$. Thus the general solution is
+\[ x_n = (A + Bn) (-2)^n . \]
+
+*Step 2.* Substituting the initial conditions into the general solution, we have
+\begin{align*}
+x_0 &= (A + B0)(-2)^0 = A = 2 \\
+x_1 &= (A + B1)(-2)^1 = -2A - 2B = -6 .
+\end{align*}
+The first immediately gives $A = 2$, and substituting this into the second equation gives $B = 1$.
+
+The solution is therefore
+\[ x_n = (2 + n)(-2)^n . \]
+:::
+
+
+
+## Probability of ruin for the gambler's ruin  {#ruin-probability-solve}
+
+
+In the last lecture we saw that probability of ruin for the gambler's ruin process is the solution to
+  \[ pr_{i+1} - r_i + qr_{i-1} = 0 \qquad \text{subject to} \qquad r_0 = 1,\ r_m = 0 , \]
+where the extra conditions here are **boundary conditions**, because they tell us what happens at the boundaries of the state space.
+
+The characteristic equation is
+  \[ p\lambda^2 - \lambda + q = 0 .\]
+We can solve the characteristic equation by factorising it as $(p \lambda - q)(\lambda - 1) = 0$. (It might take a moment to check this really is a factorisation of the characteristic equation. Hint: we've used that $p+q=1$.) So the characteristic equation has roots $\lambda = q/p$, which we called $\rho$ last time, and $\lambda = 1$. Now, if $\rho = 1$ (so $p = q = \frac12$) we have a repeated root, while if $\rho \neq 1$ we have distinct roots, so we'll need to deal with the two cases separately.
+
+First,  the case $\rho \neq 1$. Since the two roots are distinct, we have the general solution
+  \[ r_i = A\rho^i + B1^i = A\rho^i + B . \]
+
+We can now use the boundary conditions to find $A$ and $B$. We have
+  \begin{gather*} r_0 = A \rho^0 + B = A+B = 1, \\
+                r_m = A \rho^m + B = 0 . \end{gather*}
+From the first we get $B = 1-A$, which we substitute into the second to get
+  \[ A\rho^m + 1 - A = 0 \quad \Rightarrow \quad A = \frac{1}{1-\rho^m} , \]
+and hence
+  \[ B = 1 - A = 1 - \frac{1}{1-\rho^m} = - \frac{\rho^m}{1 - \rho^m} . \]
+Thus the solution is
+  \[ r_i = \frac{1}{1-\rho^m} \rho^i -  \frac{\rho^m}{1 - \rho^m} = \frac{\rho^i - \rho^m}{1 - \rho^m}  , \]
+as we claimed last time.
+
+Second, the case $\rho = 1$. Now we have a repeated root $\lambda = 1$, so the general solution is
+  \[ r_i = (A + Bi) 1^i = A+Bi . \]
+  
+Again, we use the boundary conditions, to get
+  \begin{gather*} r_0 = A + B\cdot 0 = A = 1, \\
+r_m = A + Bm = 0 , \end{gather*}
+and we immediately see that $A = 1$ and $B = -1/m$. Thus the solution is
+  \[ r_i = 1 - \frac{1}{m}i = 1 - \frac{i}{m} , \]
+as claimed last time.
+
+
+
+## Inhomogeneous linear difference equations  {#inhom-ldes}
+
+Solving inhomogeneous linear difference equations requires three steps:
+
+1. Find the general solution to the *homogeneous* equation by writing down and solving the characteristic equation.
+2.  Find any solution (a "particular solution") to the inhomogeneous equation. The general solution to the inhomogeneous equation is a particular solution plus the general solution to the homogeneous equation.
+3. Use the extra conditions to find the values of the constants in the general solution.
+
+This idea works because adding a solution to the *homogeneous* equation to the left-hand side adds zero to the right-hand side, so maintains a solution to the inhomogeneous equation.
+
+Let's work through the example
+  \[ x_{n+2} - 5x_{n+1} + 6x_{n} = 2 \qquad \text{subject to } x_0 = 4, x_1 = 9 . \]
+
+We already know from earlier that the general solution to the homogeneous equation $x_{n+2} - 5x_{n+1} + 6x_{n} = 0$ (with a zero on the right-hand side) is
+  \[ x_n = A2^n + B3^n . \]
+ 
+We now need to find a **particular solution** -- that is, any solution -- to our new inhomogeneous equation. A general hint here is to guess a solution with the same "shape" as the right-hand side. For example, if the right-hand side is a constant, try a constant for the particular solution. Here our right-hand side is the constant $2$, so we should try a constant $x_n = C$. Substituting this into the inhomogeneous equation gives us $C - 5C + 6C = 2$, thus $2C = 2$ and $C = 1$, giving a particular solution $x_n = 1$. The general solution to the inhomogeneous equation is therefore
+  \[ x_n = 1 + A2^n + B3^n , \]
+the sum of the particular solution $x_n = 1$ and the general solution to the homogeneous equation.
+
+The right-hand side being a constant, so we guess a constant, is the main case we will deal with. Other cases you could come across include:
+
+* If the right-hand side is a polynomial of degree $d$, try a polynomial of degree $d$.
+* If the right-hand side is $\alpha^n$ for some $\alpha$, try $C\alpha^n$.
+* If the right-hand side is a constant, but a constant $C$ doesn't work, try $Cn$. If that still doesn't work, try $Cn^2$, and so on. We discuss this case further in the next subsection.
+  
+Again, we use the initial conditions to get the constants $A$ and $B$. We have
+\begin{gather*}
+x_0 = 1 + A2^0 + B3^0 = 1+ A + B = 4 , \\
+x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
+\end{gather*}
+and we can easily check this gives $A = 1, B = 2$. Thus the solution is
+  \[ x_n = 1 + 1\cdot 2^n + 2 \cdot 3^n = 1 + 2^n + 2 \cdot 3^n . \]
+
+Again, if you have the hang of this, [press on](#duration-solve), but we present an extra optional example if things are still unclear.
+  
+::: {.example #lde3}
+*Solve the inhomogeneous linear difference equation*
+\[ 10 x_{n+2} - 7x_{n+1} + x_n = 8 \qquad \text{subject to} \quad x_0 = 0,\quad x_1 = \tfrac{13}{10} . \]
+
+*Step 1.* The characteristic equation is
+\[ 10\lambda^2 - 7\lambda + 1 = 0 . \]
+We can solve this by factorising it as
+\[ (2\lambda - 1) (5\lambda - 1) = 0 , \]
+to find the solutions $\lambda_1 = \frac12$ and $\lambda_2 = \frac15$. Thus the general solution of the homogeneous equation is
+\[ x_n = A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]
+
+*Step 2.* Since the right hand side of the inhomogeneous equation is a constant, we guess a constant particular solution with shape $x_n = C$. Substituting in this guess, we get
+\[ 10C - 7C + C = 4C = 8 \]
+with solution $C=2$. Thus a particular solution is $x_n = 2$, and the general solution to the inhomogeneous equation is
+\[ x_n = 2 + A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]
+
+*Step 3.* Substituting the initial conditions into the general solution, we have
+\begin{align*}
+x_0 = 2 + A\left(\frac12\right)^0 + B\left(\frac15\right)^0 = 2 + A + B = 0 \quad &\Rightarrow \quad A + B = -2 \\
+x_1 = 2 + A\left(\frac12\right)^1 + B\left(\frac15\right)^1 = 2 + A\frac12 + B\frac15 = \frac{13}{10} \quad &\Rightarrow \quad 5A + 2B = -7.
+\end{align*}
+We can subtract twice the first equation from the second to get $3A = -3$, so $A = -1$. We can substitute this into the second equation to get $B = -1$.
+
+The solution is therefore
+\[ x_n = 2 - \left(\frac12\right)^n - \left(\frac15\right)^n . \]
+:::
+
+
+
+## Expected duration for the gambler's ruin  {#duration-solve}
+
+
+From last time, the expected duration of the gambler's ruin game solves
+  \[ pd_{i+1} - d_i + qd_{i-1} = -1 \qquad \text{subject to} \qquad d_0 = 0,\ d_m = 0. \]
+As before, we divide cases based on whether or not $\rho = 1$.
+
+First, the case $\rho \neq 1$. We already know that the general solution to the homogeneous equation is
+  \[ d_i =  A \rho^i + B . \]
+
+Now we need a particular solution. It's tempting to guess a constant $C$ for a particular solution, but we know that constants solve the homogeneous equation, since $d_i = B$ is a solution -- so a constant will give right-hand side $0$, not $-1$. (You could try out $x_i = C$; you should find that the equation for $C$ doesn't have a solution.) The next best try is to go one degree up: let's guess $x_i = Ci$ instead. This gives
+  \begin{align*}
+  -1 &= pC(i+1) - Ci + qC(i-1)\\
+     &= C(pi + p - i + qi - q) \\
+     &= C\big((p+q-1)i + (p-q)\big) \\
+     &= C(p-q) ,
+  \end{align*}
+since $p + q - 1 = 1 - 1 = 0$. This $C = -1/(p-q) = 1/(q-p)$. Finding a solution for $C$ shows that our guess worked. The general solution to the inhomogeneous equation is
+  \[ d_i = \frac{i}{q-p} + A \rho^i + B .  \]
+  
+Then to find the constants, we have
+  \begin{gather*} d_0 = \frac{0}{q-p} + A \rho^0 + B = A+B = 0, \\
+                  d_m = \frac{m}{q-p} + A \rho^m + B = 0 , \end{gather*}
+which you can check gives
+  \[ A = -B = \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} . \]
+Hence, the solution is
+  \[ d_i = \frac{i}{q-p} + \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} \rho^i - \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} =  \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1- \rho^m} \right) . \]
+  
+Second, the case $\rho = 1$, so $p = q = \frac12$. We already know that the general solution to the homogeneous equation is
+\[ d_i =  A + Bi . \]
+
+We need a particular solution. Since both constants $x_i = A$ and linear $x_i = Bi$ terms solve the homogeneous equation (or by checking that guessing $x_i = C$ or $x_i = Ci$ doesn't work), we'll have to go up another degree and try $x_i = Ci^2$. This gives
+\begin{align*}
+	-1 &= \tfrac12 C(i+1)^2 - Ci^2 + \tfrac 12 C(i-1)^2 \\
+	   &= \tfrac12 C(i^2 + 2i + 1 - 2i^2 + i^2 - 2i + 1) \\
+ 	   &= \tfrac12 C\big((1-2+1)i^2 + (2-2)i + (1+1)\big) \\
+	   &=C ,
+\end{align*}
+so the general solution to the inhomogeneous equation is
+\[ d_i = -i^2 + A + Bi .  \]
+
+Then to find the constants, we have
+  \begin{gather*} d_0 = -0^2 + A + B\cdot0 = A = 0, \\
+                  d_m = -m^2 + A + Bm = 0 , \end{gather*}
+giving $A = 0, B = m$. The solution is
+  \[ d_i = -i^2 + 0 + mi = i(m-i) .\]
+
+
+
+::: {.mysummary}
+**In the next section**, we move on to the general theory of discrete time Markov chains.
+:::

@@ -1,0 +1,51 @@
+# Revision of Part 1: Discrete time Markov chains  {#S11-revision-i}
+
+
+::: {.mysummary}
+* No new material in this section, but a half-week break to catch up and revise what we've learned
+:::
+
+
+## Things to do  {#S12-revision}
+
+We've now finished the material of the Part 1 of the module, on discrete time Markov chains. So this is a good time to take stock, revise what we've learned, and make sure we're completely up to date before starting Part 2 of the module on continuous time processes.
+
+Some things you may want to do in lieu of reading a section of notes:
+
+* Make sure you've completed **Problem Sheets 1 to 6**, and go back to any questions that stumped you before.
+* Start working on **[Assessment 2](#A2)** which is due on ?????? ??? (Week 8).
+* Start working on **[Computer Practical 2](#computer)** (which doubles as Assessment 3). There are optional computer drop-in sessions in Week 7, and the work is due on ????? ???? (Week 9).
+* Re-read any sections of notes you struggled with earlier.
+* Take the opportunity to look at the optional non-examinable subsections if you opted out the first time around. ([Section 9](#S09-strong-markov), [Section 10](#S10-proof), [Section 11](#S11-proofs))
+* [Let me know](mailto:m.aldridge@leeds.ac.uk) if there's anything from this part of the course you'd like me to go through in next week's lecture.
+
+
+
+## Summary of Part 1  {#S12-summary-i}
+
+
+The following list is not exhaustive, but if you can do most of the things on the list, you're well placed for the exam.
+
+* Define the simple random walk and other random walks.
+* Perform elementary calculations for the simple random walk, including by referring to the exact binomial distribution.
+* Calculate the expectation and variance of general random walks.
+* Define the gambler's ruin Markov chain.
+* Find the ruin probability and expected duration for the gambler's ruin by (i) setting up equations by conditioning on the first step and (ii) solving the resulting linear difference equation.
+
+* Draw a transition diagram of a Markov chain given the transition matrix
+* Calculate $n$-step transitions probabilities by (a) summing the probabilities over all relevant paths or (b) calculating the matrix power
+* Find the communicating classes in a Markov chain.
+* Calculate the period of communicating class,
+* Calculate hitting probabilities and expected hitting times by (i) setting up equations by conditioning on the first step and (ii) solving the resulting simultaneous equations
+* Define positive recurrence, null recurrence and transience, and explain their properties
+* Find the positive recurrence, null recurrence or transience of communicating classes
+* Find the stationary distribution of Markov chain
+* Give conditions for a stationary distribution to exist and be unique
+* Give conditions for convergence to an equilibrium distribution
+* Calculate long-term proportions of time using the ergodic theorem
+
+
+::: {.mysummary}
+**In the next section**, we begin our study of continuous time Markov processes by looking at the most important example: the Poisson process.
+:::
+
