@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 3 Gambler’s ruin | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 3 Gambler’s ruin | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 3 Gambler’s ruin | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="P01.html"/>
+<link rel="next" href="S04-ldes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S03-gamblers-ruin" class="section level1">
+<h1><span class="header-section-number">Section 3</span> Gambler’s ruin</h1>
+<div class="mysummary">
+<ul>
+<li>The gambler’s ruin Markov chain</li>
+<li>Equations for probability of ruin and expected duration of the game by conditioning on the first step</li>
+</ul>
+</div>
+<div id="ruin-chain" class="section level2">
+<h2><span class="header-section-number">3.1</span> Gambler’s ruin Markov chain</h2>
+<p>Consider the following gambling problem. Alice is gambling against Bob. Alice starts with £<span class="math inline">\(a\)</span> and Bob starts with £<span class="math inline">\(b\)</span>. It will be convenient to write <span class="math inline">\(m = a + b\)</span> for the total amount of money, so Bob starts with £<span class="math inline">\((m-a)\)</span>. At each step of the game, both players bet £<span class="math inline">\(1\)</span>; Alice wins £<span class="math inline">\(1\)</span> off Bob with probability <span class="math inline">\(p\)</span>, or Bob wins £<span class="math inline">\(1\)</span> off Alice with probability <span class="math inline">\(q\)</span>. The game continues until one player is out of money (or is “ruined”).</p>
+<p>Let <span class="math inline">\(X_n\)</span> denote how much money Alice has after <span class="math inline">\(n\)</span> steps of the game. We can write this as a stochastic process with discrete time <span class="math inline">\(n \in \{0,1,2,\dots\} = \mathbb Z_+\)</span> and discrete state space <span class="math inline">\(\mathcal S = \{0,1,\dots,m\}\)</span>. Then <span class="math inline">\(X_0 = a\)</span>, and, for <span class="math inline">\(n \geq 0\)</span>, we have
+<span class="math display">\[ X_{n+1} = \begin{cases} X_n + 1 &amp; \text{with probability $p$ if $1\leq X_n \leq m-1$,} \\
+                           X_n - 1 &amp; \text{with probability $q$ if $1\leq X_n \leq m-1$,} \\
+                           0       &amp; \text{if $X_n = 0$,} \\
+                           m       &amp; \text{if $X_n = m$.} \end{cases} \]</span>
+So Alice’s money goes up one with probability <span class="math inline">\(p\)</span> or down one with probability <span class="math inline">\(q\)</span>, unless the game is already over with <span class="math inline">\(X_n = 0\)</span> (Alice is ruined) or <span class="math inline">\(X_n = m\)</span> (Alice has won all Bob’s money, so Bob in ruined).</p>
+<p>We see that the gambler’s ruin process <span class="math inline">\((X_n)\)</span> clearly satisfies the Markov property: the next step <span class="math inline">\(X_{n+1}\)</span> depends on where we are now <span class="math inline">\(X_n\)</span>, but, given that, does not depend on how we got here.</p>
+<p>The gambler’s ruin process is exactly like a simple random walk started from <span class="math inline">\(X_0 = a\)</span> except that we have <strong>absorbing barriers</strong> and <span class="math inline">\(0\)</span> and <span class="math inline">\(m\)</span>, where the random walk stops because one of the players has ruined. (One could also consider random walks with <strong>reflecting barriers</strong>, that bounce the random walk back into the state space, or <strong>mixed barriers</strong> that are absorbing or reflecting at random.)</p>
+</div>
+<div id="ruin-probability" class="section level2">
+<h2><span class="header-section-number">3.2</span> Probability of ruin</h2>
+<p>The gambling game continues until either Alice is ruined (<span class="math inline">\(X_n = 0\)</span>) or Bob is ruined (<span class="math inline">\(X_n = m\)</span>). A natural question to ask is: What is the probability that the game ends in Alice’s ruin?</p>
+<p>Let us write <span class="math inline">\(r_i\)</span> for the probability Alice ends up ruined if she currently has £<span class="math inline">\(i\)</span>. Then the probability of ruin for the whole game is <span class="math inline">\(r_a\)</span>, since Alice initially starts with £<span class="math inline">\(a\)</span>. The probability Bob will end up ruined is <span class="math inline">\(1 - r_a\)</span>, since one of the players must lose.</p>
+<p>What can we say about <span class="math inline">\(r_i\)</span>? Clearly we have <span class="math inline">\(r_0 = 1\)</span> and <span class="math inline">\(r_m = 0\)</span>, since this means Alice (<span class="math inline">\(i=0\)</span>) or Bob (<span class="math inline">\(i=m\)</span>) is already out of money and is ruined. What about for <span class="math inline">\(1 \leq i \leq m-1\)</span>?</p>
+<p>The key is to <em>condition on the first step</em>. That is, we can write
+<span class="math display">\[\begin{align*}
+\mathbb P(\text{ruin}) &amp;= \mathbb P(\text{win first round}) \, \mathbb P(\text{ruin} \mid \text{win first round}) \\
+&amp;\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
+&amp;= p\,\mathbb P(\text{ruin} \mid \text{win first round}) + q \,\mathbb P(\text{ruin} \mid \text{lose first round}) .
+\end{align*}\]</span>
+Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the <em>law of total probability</em>, which says that if the disjoint events <span class="math inline">\(B_1, \dots, B_k\)</span> cover the whole sample space, then
+<span class="math display">\[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(A \cap B_i) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]</span>
+Here, <span class="math inline">\(\{\text{Alice wins the first round}\}\)</span> and <span class="math inline">\(\{\text{Alice loses the first round}\}\)</span> are indeed disjoint events that cover the whole sample space. This idea of “conditioning on the first step” will be the most crucial tool throughout this whole module.</p>
+<p>If Alice wins the first round from having £<span class="math inline">\(i\)</span>, she now has £<span class="math inline">\((i+1)\)</span>. Her probability of ruin is now <span class="math inline">\(r_{i+1}\)</span>, because, by the Markov property, it’s as if the game were starting again with Alice having £<span class="math inline">\((i+1)\)</span> to start with. The Markov property tells us that it doesn’t matter <em>how</em> Alice got to having £<span class="math inline">\((i+1)\)</span>, it only matters how much she has now. Similarly, if Alice loses the first round, she now has £<span class="math inline">\((i-1)\)</span>, and the ruin probability is <span class="math inline">\(r_{i-1}\)</span>. Hence we have
+<span class="math display">\[ r_i = pr_{i+1} + qr_{i-1}. \]</span></p>
+<p>Rearranging, and including the “boundary conditions”, we see that the equation we want to solve is
+<span class="math display">\[ pr_{i+1} - r_i + qr_{i-1} = 0 \qquad \text{subject to} \qquad r_0 = 1,\ r_m = 0. \]</span>
+This is a <strong>linear difference equation</strong> – and, because the left-hand side is <span class="math inline">\(0\)</span>, we call it a <strong>homogeneous</strong> linear difference equation.</p>
+<p>We will see how to solve this equation in the next lecture. We will see that, if we set <span class="math inline">\(\rho = q/p\)</span>, then the ruin probability is given by
+<span class="math display">\[ r_a = \begin{cases} \displaystyle\frac{\rho^a - \rho^m}{1 - \rho^m} &amp; \text{if $\rho \neq 1$,} \\[0.35cm]
+           1 - \displaystyle\frac{a}{m} &amp; \text{if $\rho = 1$.} \end{cases} \]</span>
+Note that <span class="math inline">\(\rho = 1\)</span> is the same as the symmetric condition <span class="math inline">\(p = q = \frac12\)</span>.</p>
+<p>Imagine Alice is not playing against her opponent Bob, but rather is up against a large casino. In this case, the casino’s capital £<span class="math inline">\((m-a)\)</span> is typically much bigger than Alice’s £<span class="math inline">\(a\)</span>. We can model this by keeping <span class="math inline">\(a\)</span> fixed taking a limit <span class="math inline">\(m \to \infty\)</span>. Typically, the casino has “an edge”, meaning they have a better than <span class="math inline">\(50:50\)</span> chance of winning; this means that <span class="math inline">\(q &gt; p\)</span>, so <span class="math inline">\(\rho &gt; 1\)</span>. In this case, we see that the ruin probability is
+<span class="math display">\[ \lim_{m \to \infty} r_a = \lim_{m \to \infty} \frac{\rho^a - \rho^m}{1 - \rho^m} = \lim_{m \to \infty} \frac{\rho^a/\rho^m - 1}{1/\rho^m - 1} = \frac{0-1}{0-1} = 1, \]</span>
+so Alice will be ruined with certainty.</p>
+<p>Even with a generous casino that offered an exactly fair game with <span class="math inline">\(p = q = \frac12\)</span>, so <span class="math inline">\(\rho = 1\)</span>, we would have
+<span class="math display">\[ \lim_{m \to \infty} r_a = \lim_{m \to \infty}\left( 1 - \frac{a}{m} \right) = 1-0 = 1 , \]</span>
+so, even with this fair game, Alice would still be ruined with certainty.</p>
+<p>The official advice of the University of Leeds module MATH2750 is that you shouldn’t gamble against a casino and expect to win.</p>
+</div>
+<div id="expected-duration" class="section level2">
+<h2><span class="header-section-number">3.3</span> Expected duration of the game</h2>
+<p>We could also ask for how long we expect the game to last.</p>
+<p>We approach this like before. Let <span class="math inline">\(d_i\)</span> be the expected duration of the game when Alice has £<span class="math inline">\(i\)</span>. Our boundary conditions are <span class="math inline">\(d_0 = d_m = 0\)</span>, because <span class="math inline">\(X_n = 0\)</span> or <span class="math inline">\(X_n = m\)</span> means that the game is over with Alice or Bob ruined. Again, we proceed by conditioning on the first step, so
+<span class="math display">\[\begin{align*}
+\mathbb E(\text{duration}) &amp;= \mathbb P(\text{win first round}) \, \mathbb E(\text{duration} \mid \text{win first round}) \\
+&amp;\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb E(\text{duration} \mid \text{lose first round}) \\
+&amp;= p\,\mathbb E(\text{duration} \mid \text{win first round}) + q \,\mathbb E(\text{duration} \mid \text{lose first round}) .
+\end{align*}\]</span>
+More formally, we’ve used another version of the law of total probability,
+<span class="math display">\[ \mathbb E(X) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb E(X \mid B_i) , \]</span>
+or, alternatively, the <em>tower law</em> for expectations
+<span class="math display">\[ \mathbb E(X) = \mathbb E_Y \mathbb E (X \mid Y) = \sum_{y} \mathbb P(Y= y)\, E(X \mid Y = y), \]</span>
+where, in our case, <span class="math inline">\(Y\)</span> was the outcome of the first round.</p>
+<p>Now, the expected duration given we win the first round is <span class="math inline">\(1 + d_{i+1}\)</span>. This is because the round itself takes <span class="math inline">\(1\)</span> time step, and then, by the Markov property, it’s as if we are starting again from <span class="math inline">\(i+1\)</span>. Similarly, the expected duration given we lose the first round is <span class="math inline">\(1 + d_{i-1}\)</span>. Thus we have
+<span class="math display">\[ d_i = p(1 + d_{i+1}) + q (1 + d_{i-1}) = 1 + pd_{i+1} + qd_{i-1} . \]</span>
+Don’t forget the 1 that counts the current round!</p>
+<p>Rearranging, and including the boundary conditions, we have another linear difference equation:
+<span class="math display">\[ pd_{i+1} - d_i + qd_{i-1} = -1 \qquad \text{subject to} \qquad d_0 = 0,\ d_m = 0. \]</span>
+Because the right-hand side, <span class="math inline">\(-1\)</span>, is nonzero, we call this an <strong>inhomogeneous</strong> linear difference equation.</p>
+<p>Again, we’ll see how to solve this in the next lecture, and will find that the solution is given by
+<span class="math display">\[ d_a = \begin{cases} {\displaystyle \frac{1}{q-p} \left(a - m\frac{1-\rho^a}{1- \rho^m} \right)} &amp; \text{if $\rho \neq 1$,} \\
+\displaystyle a(m-a) &amp; \text{if $\rho = 1$.} \end{cases} \]</span></p>
+<p>Thinking again of playing against the casino, with <span class="math inline">\(q &gt; p\)</span>, <span class="math inline">\(\rho &gt; 1\)</span>, and <span class="math inline">\(m \to \infty\)</span>, we see that the expected duration is
+<span class="math display">\[ \lim_{m\to\infty} d_a = \lim_{m\to\infty} \frac{1}{q-p} \left(a - m\frac{1-\rho^a}{1 - \rho^m} \right)  = \frac{1}{q-p} \left(a - 0 \right) = \frac{a}{q-p} , \]</span>
+since <span class="math inline">\(\rho^m\)</span> grows much quicker than <span class="math inline">\(m\)</span>. So Alice ruins with certainty, and it will take time <span class="math inline">\(a/(q-p)\)</span>, on average.</p>
+<p>In the case of the generous casino, though, with <span class="math inline">\(q = p\)</span>, so <span class="math inline">\(\rho = 1\)</span>, we have
+<span class="math display">\[ \lim_{m\to\infty} d_a =  \lim_{m\to\infty} a(m-a) = \infty .  \]</span>
+So here, Alice will ruin with certainty, but it may take a very long time until the ruin occurs, since the expected duration is infinite.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we see how to solve linear difference equations, in order to find the ruin probability and expected duration of the gambler’s ruin.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="P01.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S04-ldes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

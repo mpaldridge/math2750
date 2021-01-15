@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 7 Class structure | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 7 Class structure | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 7 Class structure | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="P03.html"/>
+<link rel="next" href="S08-hitting-times.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S07-classes" class="section level1">
+<h1><span class="header-section-number">Section 7</span> Class structure</h1>
+<div class="mysummary">
+<ul>
+<li>Communicating classes and irreducibility</li>
+<li>Period of a state (and class)</li>
+</ul>
+</div>
+<div id="comm-classes" class="section level2">
+<h2><span class="header-section-number">7.1</span> Communicating classes</h2>
+<p>If we have a large complicated Markov chain, it can be useful to split the state space up into smaller pieces that can be studied separately. The idea is to split to states <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> into different pieces if we can’t move from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> and then back again after some number of steps.</p>
+<div class="definition">
+<p><span id="def:comm" class="definition"><strong>Definition 7.1  </strong></span>Consider a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span> with transition matrix <span class="math inline">\(\mathsf P\)</span>. We say that state <span class="math inline">\(j\in\mathcal{S}\)</span> is <strong>accessible</strong> from state <span class="math inline">\(i\in\mathcal{S}\)</span> and write <span class="math inline">\(i \to j\)</span> if, for some <span class="math inline">\(n\)</span>, <span class="math inline">\(p_{ij}(n)&gt;0\)</span>.</p>
+<p>If <span class="math inline">\(i \to j\)</span> and <span class="math inline">\(j \to i\)</span>, we say that <span class="math inline">\(i\)</span> <strong>communicates with</strong> <span class="math inline">\(j\)</span> and write <span class="math inline">\(i \leftrightarrow j\)</span>.</p>
+</div>
+<p>Here, the condition <span class="math inline">\(p_{ij}(n)&gt;0\)</span> means that, starting from <span class="math inline">\(i\)</span>, there’s a positive chance that we’ll get to <span class="math inline">\(j\)</span> at some point in the future – hence the term “accessible”.</p>
+<div class="theorem">
+<p><span id="thm:equiv-rel" class="theorem"><strong>Theorem 7.1  </strong></span>Consider a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span> with transition matrix <span class="math inline">\(\mathsf P\)</span>. Then the “communicates with” relation <span class="math inline">\(\leftrightarrow\)</span> is an <a href="https://en.wikipedia.org/wiki/Equivalence_relation"><strong>equivalence relation</strong></a>; that is, it has the following properties:</p>
+<ul>
+<li><strong>reflexive</strong>: <span class="math inline">\(i \leftrightarrow i\)</span> for all <span class="math inline">\(i\)</span>;</li>
+<li><strong>symmetric</strong>: if <span class="math inline">\(i \leftrightarrow j\)</span> then <span class="math inline">\(j \leftrightarrow i\)</span>;</li>
+<li><strong>transitive</strong>: if <span class="math inline">\(i \leftrightarrow j\)</span> and <span class="math inline">\(j \leftrightarrow k\)</span> then <span class="math inline">\(i \leftrightarrow k\)</span>.</li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span><em>Reflexivity</em>: Clearly <span class="math inline">\(p_{ii}(0) = 1 &gt; 0\)</span>, because in “zero steps” we stay where we are. So <span class="math inline">\(i \leftrightarrow i\)</span> for all <span class="math inline">\(i\)</span>.</p>
+<p><em>Symmetry</em>: The definition of <span class="math inline">\(i \leftrightarrow j\)</span> is symmetric under swapping <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
+<p><em>Transitivity</em>. If we can get from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> and we can get from <span class="math inline">\(j\)</span> to <span class="math inline">\(k\)</span>, then we can get from <span class="math inline">\(i\)</span> to <span class="math inline">\(k\)</span> by going via <span class="math inline">\(j\)</span>. We just need to write that out formally.</p>
+<p>Since <span class="math inline">\(i \to j\)</span>, we have <span class="math inline">\(p_{ij}(n) &gt; 0\)</span> for some <span class="math inline">\(n\)</span>, and since <span class="math inline">\(j \to k\)</span>, we also have <span class="math inline">\(p_{jk}(m) &gt; 0\)</span> for some <span class="math inline">\(m\)</span>. Then, by the Chapman–Kolmogorov equations, we have
+<span class="math display">\[ p_{ik}(n+m) = \sum_{l \in \mathcal S} p_{il}(n) p_{lk}(m) \geq p_{ij}(n) p_{jk}(m) &gt; 0 , \]</span>
+from just picking out the <span class="math inline">\(l=j\)</span> term in the sum. So <span class="math inline">\(i \to k\)</span> too.</p>
+<p>The same argument with <span class="math inline">\(k\)</span> and <span class="math inline">\(i\)</span> swapped gives <span class="math inline">\(k \to i\)</span> also, so <span class="math inline">\(i \leftrightarrow k\)</span>.</p>
+</div>
+<p>A fact you may remember about equivalence relations is that an equivalence relation, like <span class="math inline">\(\leftrightarrow\)</span>, partitions the space <span class="math inline">\(\mathcal S\)</span> into <a href="https://en.wikipedia.org/wiki/Equivalence_class"><strong>equivalence classes</strong></a>. This means that each state <span class="math inline">\(i\)</span> is in exactly one equivalence class, and that class is the set of states <span class="math inline">\(j\)</span> such that <span class="math inline">\(i \leftrightarrow j\)</span>. In this context, we call these <strong>communicating classes</strong>.</p>
+<div class="example">
+<p><span id="exm:rw-class" class="example"><strong>Example 7.1  </strong></span>In the simple random walk, provided <span class="math inline">\(p\)</span> is not <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, every state communicates with every other state, because from <span class="math inline">\(i\)</span> when can get to <span class="math inline">\(j &gt; i\)</span> by going up <span class="math inline">\(j - i\)</span> times, and we can get to <span class="math inline">\(j &lt; i\)</span> by going down <span class="math inline">\(i - j\)</span> times.. Therefore the whole state space <span class="math inline">\(\mathcal S = \mathbb Z\)</span> is one communicating class.</p>
+</div>
+<div class="example">
+<p><span id="exm:gamblers-class" class="example"><strong>Example 7.2  </strong></span>Consider the gambler’s ruin Markov chain on <span class="math inline">\(\{0,1,\dots,m\}\)</span>. There are three communicating classes: <span class="math inline">\(\{0\}\)</span> and <span class="math inline">\(\{m\}\)</span>, which don’t communicate with any other states, and <span class="math inline">\(\{1,2,\dots,m-1\}\)</span>, which is like the simple random walk.</p>
+</div>
+<div class="example">
+<p><span id="exm:hsd-class" class="example"><strong>Example 7.3  </strong></span>Consider the following simple model for an epidemic. We have three states: healthy (H), sick (S), and dead (D). This transition matrix is
+<span class="math display">\[ \mathsf P = \begin{pmatrix} p_{\mathrm{HH}} &amp; p_{\mathrm{HS}} &amp; 0 \\
+p_{\mathrm{SH}} &amp; p_{\mathrm{SS}} &amp; p_{\mathrm{SD}} \\ 0 &amp; 0 &amp; 1 \end{pmatrix} ,    \]</span>
+and the transition diagram is:</p>
+<p><img src="math2750_files/figure-html/HSD-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Clearly H and S communicate with each other (you can become infected or recover), while D only communicates with itself (the dead do not recover). Hence, the state space <span class="math inline">\(\mathcal S = \{\mathrm{H},\mathrm{S},\mathrm{D}\}\)</span> partitions into two communicating classes: <span class="math inline">\(\{\mathrm{H},\mathrm{S}\}\)</span> and <span class="math inline">\(\{\mathrm{D}\}\)</span>.</p>
+</div>
+<p>A few more definitions that will be important later.</p>
+<div class="definition">
+<p><span id="def:irreducible" class="definition"><strong>Definition 7.2  </strong></span>If the entire state space <span class="math inline">\(\mathcal S\)</span> is one communicating class, we say that the Markov chain is <strong>irreducible</strong>.</p>
+<p>We say that a communicating class is <strong>closed</strong> if no state outside the class is accessible from any state within the class. That is, class <span class="math inline">\(C \subset \mathcal S\)</span> is closed if whenever there exist <span class="math inline">\(i \in C\)</span> and <span class="math inline">\(j \in \mathcal S\)</span> with <span class="math inline">\(i \to j\)</span>, then <span class="math inline">\(j \in C\)</span> also. If a class is not closed, we say it is <strong>open</strong>.</p>
+<p>If a state <span class="math inline">\(i\)</span> is in a communicating class <span class="math inline">\(\{i\}\)</span> by itself and that class is closed, then we say state <span class="math inline">\(i\)</span> is <strong>absorbing</strong>.</p>
+</div>
+<div class="example">
+<p><span id="exm:ex-irred" class="example"><strong>Example 7.4  </strong></span>Going back to the previous examples:</p>
+<ul>
+<li>In the simple random walk, the whole state space is one communicating class which must therefore be closed. The Markov chain has only one class, so is irreducible.</li>
+<li>In the gambler’s ruin, classes <span class="math inline">\(\{0\}\)</span> and <span class="math inline">\(\{m\}\)</span> are closed, because the Markov chain stays there forever, and because these closed classes consist of only one state each, <span class="math inline">\(0\)</span> and <span class="math inline">\(m\)</span> are absorbing states. The class <span class="math inline">\(\{1, 2, \dots, m-1\}\)</span> is open, as we can escape the class by going to <span class="math inline">\(0\)</span> or <span class="math inline">\(m\)</span>. The gambler’s ruin chain has multiple classes, so is not irreducible.</li>
+<li>In the “healthy–sick–dead” chain, the class <span class="math inline">\(\{D\}\)</span> is closed, so D is an absorbing state, while the class <span class="math inline">\(\{H, S\}\)</span> is open, as one can leave it by dying. The Markov chain is not irreducible.</li>
+</ul>
+</div>
+</div>
+<div id="periodicity" class="section level2">
+<h2><span class="header-section-number">7.2</span> Periodicity</h2>
+<p>When <a href="#S02-exact-distribution">we discussed the simple random walk, we noted</a> that it alternates between even-numbered and odd-numbered states. This “periodic” behaviour is important to understand if we want to know what will happen to the Markov chain in the future.</p>
+<p>The idea is this: List the number of steps for all possible paths starting and ending in the state. Then the period is the <a href="https://en.wikipedia.org/wiki/Greatest_common_divisor">greatest common divisor</a> (or “highest common factor”) of the integers in this list.</p>
+<div class="definition">
+<p><span id="def:period" class="definition"><strong>Definition 7.3  </strong></span>Consider a Markov chain with transition matrix <span class="math inline">\(\mathsf P\)</span>. We say that a state <span class="math inline">\(i\in\mathcal{S}\)</span> has <strong>period</strong> <span class="math inline">\(d_i\)</span>, where
+<span class="math display">\[ d_i=\text{gcd}\big\{n\in\{1,2,\dots,\} : p_{ii}(n) &gt; 0\big\} , \]</span>
+where gcd denotes the greatest common divisor.</p>
+<p>If <span class="math inline">\(d_i&gt;1\)</span>, then the state <span class="math inline">\(i\)</span> is called <strong>periodic</strong>; if <span class="math inline">\(d_i = 1\)</span>, then <span class="math inline">\(i\)</span> is called <strong>aperiodic</strong>.</p>
+</div>
+<div class="example">
+<p><span id="exm:rw-period" class="example"><strong>Example 7.5  </strong></span>Consider the simple random walk with <span class="math inline">\(p \neq 0,1\)</span>. We have <span class="math inline">\(p_{ii}(n) = 0\)</span> for odd <span class="math inline">\(n\)</span>, since we swap from odd to even each step. But <span class="math inline">\(p_{ii}(2) = 2pq &gt; 0\)</span>. Therefore, all states are periodic with period <span class="math inline">\(\text{gcd}\{2,4,6,\dots\} = 2\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:gamblers-period" class="example"><strong>Example 7.6  </strong></span>For the gambler’s ruin, states <span class="math inline">\(0\)</span> and <span class="math inline">\(m\)</span> are aperiodic (have period <span class="math inline">\(1\)</span>), since they are absorbing states. The remaining states states <span class="math inline">\(1,2,\dots,m-1\)</span> are periodic with period <span class="math inline">\(2\)</span>, because we swap between odd and even states, as in the simple random walk.</p>
+</div>
+<div class="example">
+<p><span id="exm:weird-period" class="example"><strong>Example 7.7  </strong></span>Consider the Markov chain with transition diagram as shown:</p>
+<p><img src="math2750_files/figure-html/periods-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Importantly, we can’t return from the triangle side back to the circle side. We thus see there are two communicating classes: <span class="math inline">\(\{1,2,3,4\}\)</span>, which is open, and <span class="math inline">\(\{5,6,7\}\)</span>, which is closed. The Markov chain is not irreducible, and there are no absorbing states.</p>
+<p>The circle side swaps between odd and even states (until exiting from <span class="math inline">\(4\)</span> to <span class="math inline">\(5\)</span>), so states <span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> and <span class="math inline">\(4\)</span> all have period <span class="math inline">\(2\)</span>. The triangle side cycles around with certainty, meaning that states <span class="math inline">\(5\)</span>, <span class="math inline">\(6\)</span>, and <span class="math inline">\(7\)</span> all have period <span class="math inline">\(3\)</span>.</p>
+</div>
+<p>You may have noticed in these examples that, within a communicating class, every state has the same period. In fact, it’s always the case that states in the same class have the same period.</p>
+<div class="theorem">
+<p><span id="thm:class-period" class="theorem"><strong>Theorem 7.2  </strong></span>All states in a communicating class have the same period.</p>
+<p>Formally: Consider a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span> with transition matrix <span class="math inline">\(\mathsf P\)</span>. If <span class="math inline">\(i,j\in\mathcal S\)</span> are such that <span class="math inline">\(i \leftrightarrow j\)</span>, then <span class="math inline">\(d_i = d_j\)</span>.</p>
+</div>
+<p>In particular, in an irreducible Markov chain, all states have the same period <span class="math inline">\(d\)</span>. We say that an irreducible Markov chain is <strong>periodic</strong> if <span class="math inline">\(d&gt;1\)</span> and <strong>aperiodic</strong> if <span class="math inline">\(d=1\)</span>.</p>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(i,j\)</span> be such that <span class="math inline">\(i \leftrightarrow j\)</span>. We want to show that <span class="math inline">\(d_i = d_j\)</span>. First we’ll show that <span class="math inline">\(d_i \leq d_j\)</span>, and then we’ll show that <span class="math inline">\(d_j \leq d_i\)</span>, and thus conclude that they’re equal.</p>
+<p>Since <span class="math inline">\(i\leftrightarrow j\)</span>, there exist <span class="math inline">\(n,m\)</span> such that <span class="math inline">\(p_{ij}(n)&gt;0\)</span> and <span class="math inline">\(p_{ji}(m)&gt;0\)</span>. Then, by the Chapman–Kolmogorov equations,
+<span class="math display">\[ p_{ii}(n+m) =  \sum_{k \in \mathcal S} p_{ik}(n) p_{ki}(m) \geq p_{ij}(n) p_{ji}(m) &gt; 0 .  \]</span>
+So <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(n+m\)</span>.</p>
+<p>Let <span class="math inline">\(r\)</span> be such that <span class="math inline">\(p_{jj}(r)&gt;0\)</span>. Then, by the Chapman-Kolmogorov equations again,
+<span class="math display">\[
+    p_{ii}(n+m+r)\geq  p_{ij}(n) p_{jj}(r) p_{ji}(m) &gt; 0.
+    \]</span>
+Hence <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(n+m+r\)</span>. But since <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(n+m\)</span>, it must be that <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(r\)</span> also. So whenever <span class="math inline">\(p_{jj}(r)&gt;0\)</span>, we have that <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(r\)</span>. Since <span class="math inline">\(d_i\)</span> is a common divisor of all the <span class="math inline">\(r\)</span>s with <span class="math inline">\(p_{jj}(r)&gt;0\)</span>, it can’t be any bigger that the <em>greatest</em> common divisor of all those <span class="math inline">\(r\)</span>s. But that greatest common divisor is by definition <span class="math inline">\(d_j\)</span>, the period of <span class="math inline">\(j\)</span>. So <span class="math inline">\(d_i \leq d_j\)</span>.</p>
+<p>Repeating the same argument but with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> swapped over, we get <span class="math inline">\(d_j\leq d_i\)</span> too, and we’re done.</p>
+</div>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at two problems to do with “hitting times”: What is the probability we reach a certain state, and how long on average does it take us to get there?</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="P03.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S08-hitting-times.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

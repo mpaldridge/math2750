@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 1 Stochastic processes and the Markov property | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 1 Stochastic processes and the Markov property | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 1 Stochastic processes and the Markov property | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="S00-about.html"/>
+<link rel="next" href="S02-random-walk.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S01-stochastic-processes" class="section level1">
+<h1><span class="header-section-number">Section 1</span> Stochastic processes and the Markov property</h1>
+<div class="mysummary">
+<ul>
+<li>Stochastic processes with discrete or continuous state space and discrete or continuous time</li>
+<li>The Markov “memoryless” property</li>
+</ul>
+</div>
+<div id="models" class="section level2">
+<h2><span class="header-section-number">1.1</span> Deterministic and random models</h2>
+<p>A <strong>model</strong> is an imitation of a real-world system. For example, you might want to have a model to imitate the world’s population, the level of water in a reservoir, cashflows of a pension scheme, or stock prices. Models allow us to try to understand and predict what might happen in the real world in a low risk, cost effective and fast way.</p>
+<p>To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.</p>
+<p>An important distinction is between <strong>deterministic</strong> models and <strong>random</strong> (or <strong>stochastic</strong>) models. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.</p>
+<p>Consider models for:</p>
+<ul>
+<li>the future position of the Moon as it orbits the Earth,</li>
+<li>the future price of shares in Apple.</li>
+</ul>
+<p>For the moon, the random components – for example, the effect of small meteorites striking the Moon’s surface – are not very significant and a deterministic model based on physical laws is good enough for most purposes. For Apple shares, the price changes from day to day are highly uncertain, so a random model can account for the variability and unpredictability in a useful way.</p>
+<p>In this module we will see many examples of stochastic models. Lots of the applications we will consider come from financial mathematics and actuarial science where the use of models that take into account uncertainty is very important, but the principles apply in many areas.</p>
+</div>
+<div id="stochastic-processes" class="section level2">
+<h2><span class="header-section-number">1.2</span> Stochastic processes</h2>
+<p>If we want to model, for example, the total number of claims to an insurance company in the whole of 2020, we can use a random variable <span class="math inline">\(X\)</span> to model this – perhaps a Poisson distribution with an appropriate mean. However, if we want to track how the number of claims changes over the course of the year 2021, we will need to use a <strong>stochastic process</strong>. (The word “stochastic” means the same thing as “random”.)</p>
+<p>A stochastic process, which we will usually write as <span class="math inline">\((X_n)\)</span>, is an indexed sequence of random variables that are (usually) dependent on each other.</p>
+<p>Each random variable <span class="math inline">\(X_n\)</span> takes a value in a <strong>state space</strong> <span class="math inline">\(\mathcal S\)</span> which is the set of possible values for the process. As with usual random variables, the state space <span class="math inline">\(\mathcal S\)</span> can be <strong>discrete</strong> or <strong>continuous</strong>. A discrete state space denotes a set of distinct possible outcomes, which can be finite or countably infinite. For example, <span class="math inline">\(\mathcal S = \{\text{Heads},\text{Tails}\}\)</span> is the state space for a single coin flip, while in the case of counting insurance claims, the state space would be the nonnegative integers <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span>. A continuous state space denotes an uncountably infinite continuum of gradually varying outcomes. For example, the nonnegative real line <span class="math inline">\(\mathcal S = \mathbb R_+ = \{x \in \mathbb R : x \geq 0\}\)</span> is the state space for the amount of rainfall on a given day, while some bounded subset of <span class="math inline">\(\mathbb R^3\)</span> would be the state space for the position of a gas particle in a box.</p>
+<p>Further, the process has an <strong>index set</strong> that puts the random variables that make up the process in order. The index set is usually interpreted as a <strong>time</strong> variable, telling us when the process will be measured. The index set for time can also be discrete or continuous. Discrete time denotes a process sampled at distinct points, often denoted by <span class="math inline">\(n = 0,1,2,\dots\)</span>, while continuous time denotes a process monitored constantly over time, often denoted by <span class="math inline">\(t \in \mathbb R_+ = \{x \in \mathbb R : x \geq 0\}\)</span>. In the insurance example, we might count up the number of claims each day – then the discrete index set will be the days of the year, which we could denote <span class="math inline">\(\{1,2,\dots,365\}\)</span>. Alternatively, we might want to keep a constant tally that we update after every claim, requiring a continuous time index <span class="math inline">\(t\)</span> representing time across the whole year. In discrete time, we can write down the first few steps of the process as <span class="math inline">\((X_0, X_1, X_2, \dots)\)</span>.</p>
+<p>This gives us four possibilities in total:</p>
+<ul>
+<li><strong>Discrete time, discrete space</strong>
+<ul>
+<li>Example: Number of students attending each lecture of maths module.</li>
+<li><strong>Markov chains</strong> – discrete time, discrete space stochastic processes with a certain “Markov property” – are the main topic of the first half of this module.</li>
+</ul></li>
+<li><strong>Discrete time, continuous space</strong>
+<ul>
+<li>Example: Daily maximum temperature in Leeds.</li>
+<li>We will briefly mention continuous space Markov chains in the first half of the course, but these are not as important.</li>
+</ul></li>
+<li><strong>Continuous time, discrete space</strong>
+<ul>
+<li>Example: Number of visitors to a webpage over time.</li>
+<li><strong>Markov jump processes</strong> – continuous time, discrete space stochastic processes with the “Markov property” – are the main topic of the second half of this module.</li>
+</ul></li>
+<li><strong>Continuous time, continuous space</strong>
+<ul>
+<li>Example: Level of the FTSE 100 share index over time.</li>
+<li>Such processes, especially the famous Brownian motion – another process with the Markov property – are very important, but outside the scope of this course. See MATH3734 Stochastic Calculus for Finance next year, for example.</li>
+</ul></li>
+</ul>
+</div>
+<div id="markov-property" class="section level2">
+<h2><span class="header-section-number">1.3</span> Markov property</h2>
+<p>Because stochastic processes consist of a large number – even infinitely many; even uncountably infinitely many – random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician Andrey Andreyevich Markov, published in 1906.)</p>
+<p>Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square <span class="math inline">\(X_n\)</span>. Then which square <span class="math inline">\(X_{n+1}\)</span> we move to on our next turn:</p>
+<ul>
+<li>is random, since it depends on the roll of the dice;</li>
+<li>depends on where we are now <span class="math inline">\(X_n\)</span>, since the score of dice will be added onto the number our current square;</li>
+<li>given the square we are now <span class="math inline">\(X_n\)</span>, it doesn’t depend any further on which sequence of squares <span class="math inline">\(X_0, X_1, \dots, X_{n-1}\)</span> we used to get here.</li>
+</ul>
+<p>It is this third point that is the crucial property of the stochastic processes we will study in this course, and it is called the <strong>Markov property</strong> or <strong>memoryless property</strong>. We say “memoryless”, because it’s as if the process forgot how it got here – we only need to remember what square we’ve reached, not which squares we used to get here. The stochastic process before this moment has no bearing on the future, given where we are now. A mathematical way to say this is that “the past and the future are conditionally independent given the present.”</p>
+<p>To write this down formally, we need to recall <strong>conditional probability</strong>: the conditional probability of an event <span class="math inline">\(A\)</span> given another event <span class="math inline">\(B\)</span> is written <span class="math inline">\(\mathbb P(A \mid B)\)</span>, and is the probability that <span class="math inline">\(A\)</span> occurs <em>given</em> that <span class="math inline">\(B\)</span> definitely occurs. You may remember the definition
+<span class="math display">\[ \mathbb P(A \mid B) = \frac{\mathbb P(A \cap B)}{\mathbb P(B)} , \]</span>
+although is often more useful to reason directly about conditional probabilities than use this formula.</p>
+<p>(You may also remember that the definition of conditional probability requires that <span class="math inline">\(\mathbb P(B) &gt; 0\)</span>. Whenever we write down a conditional probability, we implicitly assume the conditioning event has strictly positive probability without explicitly saying so.)</p>
+<div class="definition">
+<p><span id="def:def-markov-property" class="definition"><strong>Definition 1.1  </strong></span>Let <span class="math inline">\((X_n) = (X_0, X_1, X_2, \dots)\)</span> be a stochastic process in discrete time <span class="math inline">\(n = 0,1,2,\dots\)</span> and discrete space <span class="math inline">\(\mathcal S\)</span>. Then we say that <span class="math inline">\((X_n)\)</span> has the <strong>Markov property</strong> if, for all times <span class="math inline">\(n\)</span> and all states <span class="math inline">\(x_0, x_1, \dots,x_n, x_{n+1} \in \mathcal S\)</span> we have
+<span class="math display">\[  \mathbb P(X_{n+1}=x_{n+1} \mid X_{n}=x_{n}, X_{n-1} = x_{n-1}, \dots,X_0=x_0) = \mathbb P(X_{n+1}=x_{n+1} \mid X_{n}=x_{n}) . \]</span></p>
+</div>
+<p>Here, the left hand side is the probability we go to state <span class="math inline">\(x_{n+1}\)</span> next conditioned on the entire history of the process, while the right hand side is the probability we go to state <span class="math inline">\(x_{n+1}\)</span> next conditioned only on where we are now <span class="math inline">\(x_n\)</span>. So the Markov property tells us that it only matters where we are now and not how we got here.</p>
+<p>(There’s also a similar definition for continuous time processes, which we’ll come to later in the course.)</p>
+<p>Stochastic processes that have the Markov property are much easier to study than general processes, as we only have to keep track of where we are now and we can forget about the entire history that came before.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we’ll see our first example of a discrete time Markov chain, called the “random walk”.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="S00-about.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S02-random-walk.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>About MATH2750 | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="About MATH2750 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="About MATH2750 | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="S01-stochastic-processes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S00-about" class="section level1 unnumbered">
+<h1>About MATH2750</h1>
+<p>This module is <strong>MATH2750 Introduction to Markov Processes</strong>. The module manager and lecturer is Dr Matthew Aldridge, and my email address is <a href="mailto:m.aldridge@leeds.ac.uk" class="email">m.aldridge@leeds.ac.uk</a>.</p>
+<div id="S00-module" class="section level2 unnumbered">
+<h2>Organisation of MATH2750</h2>
+<p>This module lasts for 11 weeks. The first nine weeks run from 25 January to 26 March, then we break for Easter, and then the final two weeks run from 26 April to 7 May.</p>
+<p>It is my intention, if possible, to try to make the Week 10 and 11 material available at the beginning of the Easter break, so that students who want to study the material in a single 11-week block are able to do so.</p>
+<div id="S00-notes" class="section level3 unnumbered">
+<h3>Notes and videos</h3>
+<p>The main way I expect you to learn the material for this course is by reading these notes and by watching the accompanying videos. I will set two sections of notes each week, for a total of 22 sections.</p>
+<p>Each section roughly corresponds to one lecture last year, so I recommend spending about an hour on each section. Reading mathematics is a slow process. If you find yourself getting through sections much quicker than an hour, you’re probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as just checking the accuracy. (Or you might just be a genius.)</p>
+<p>It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos.</p>
+<p>Since we will all be relying heavily on these notes, I’m even more keen than usual to hear about errors mathematical, typographical or otherwise. Please, please <a href="mailto:m.aldridge@leeds.ac.uk">email me</a> if think you may have found any.</p>
+</div>
+<div id="S00-problem-sheets" class="section level3 unnumbered">
+<h3>Problem sheets</h3>
+<p>There will be 10 problem sheets; Problem Sheet <span class="math inline">\(n\)</span> covers the material from the two sections from week <span class="math inline">\(n\)</span> (Sections <span class="math inline">\(2n -1\)</span> and <span class="math inline">\(2n\)</span>), and will be discussed in your workshop in week <span class="math inline">\(n+1\)</span>.</p>
+</div>
+<div id="S00-lectures" class="section level3 unnumbered">
+<h3>Lectures</h3>
+<p>There will be one online synchronous “lecture” session each week, on Tuesdays at 1400, with me, run through ?????.</p>
+<p>This will not be a “lecture” in the traditional sense of the term, but will be an opportunity to re-emphasise material you have already learned from notes and videos, to give extra examples, and to answer common student questions, with some degree of interactivity.</p>
+<p>I will assume you have completed all the work for the previous week by the time of the lecture, but I will not assume you’ve started the work for that week itself.</p>
+</div>
+<div id="S00-workshops" class="section level3 unnumbered">
+<h3>Workshops</h3>
+<p>There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by Jason Klebes, Dr Jochen Voss, or me. Your workshop will probably be run through ?????; your workshop leader will contact you before the end of this week if there are different arrangements.</p>
+<p>My recommended approach to problem sheets and workshops is the following:</p>
+<ul>
+<li>Work through the problem sheet before the workshop, spending plenty of time on it, and making multiple efforts at questions you get stuck on. I recommend that three hours per problem sheet is a good amount of time to spend, preferably in more than one block. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.</li>
+<li>Take advantage of the smaller group setting of the workshop to ask for help or clarification on questions you weren’t able to complete.</li>
+<li>After the workshop, attempt again the questions you were previously stuck on.</li>
+<li>If you’re still unable to complete a question after this second round of attempts, <em>then</em> consult the solutions.</li>
+</ul>
+</div>
+<div id="S00-assessments" class="section level3 unnumbered">
+<h3>Assessments</h3>
+<p>There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 2 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 3 will be a report on some computational work (<a href="S00-about.html#S00-computing">see below</a>) and is worth 3%. While you may want to discuss an assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.</p>
+<p>The assessments deadlines are:</p>
+<ul>
+<li>Assessment 1: Thursday ??? 1400 (week 3)</li>
+<li>Assessment 2: Thursday ??? 1400 (week 7)</li>
+<li>Assessment 3 (Computing Worksheet 2): Thursday ??? 1400 (week 8)</li>
+<li>Assessment 4: Thursday ??? 1400 (week 11)</li>
+</ul>
+<p>Work will be submitted via Gradescope.</p>
+</div>
+<div id="S00-computing" class="section level3 unnumbered">
+<h3>Computing worksheets</h3>
+<p>There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but there will be optional online drop-in sessions in the weeks 4 and 7 if you need help. (Your session will be listed as “Practical” on your timetable.)</p>
+<p>In response to student feedback, some computational work will be assessed. The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the third assessed piece of work.</p>
+</div>
+<div id="office" class="section level3 unnumbered">
+<h3>Drop-in sessions</h3>
+<p>If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session on Tuesdays or Wednesdays with Nikita Merkulov or me. This would be an excellent place to go if you are having trouble understanding something in the written notes, or if you’re struggling on a problem sheet question.</p>
+</div>
+<div id="discussion-board" class="section level3">
+<h3><span class="header-section-number">0.0.1</span> Discussion board</h3>
+<p>?????</p>
+</div>
+<div id="S00-time" class="section level3 unnumbered">
+<h3>Time management</h3>
+<p>It is, of course, up to you how you choose to spend your time on this module. But, if you’re interested, my recommendations would be something like this:</p>
+<ul>
+<li><strong>Every week:</strong> 7 hours per week
+<ul>
+<li><strong>Notes and videos:</strong> 2 sections, 1 hour each</li>
+<li><strong>Problem sheet:</strong> 3 hours per week</li>
+<li><strong>Lecture:</strong> 1 hour per week</li>
+<li><strong>Workshop:</strong> 1 hour per week</li>
+</ul></li>
+<li><strong>When required:</strong>
+<ul>
+<li><strong>Assessments 1, 2 and 4:</strong> 3 hours each</li>
+<li><strong>Computer worksheets:</strong> 2 hours each</li>
+<li><strong>Revision</strong>: 14 hours</li>
+</ul></li>
+<li><strong>Total:</strong> 100 hours</li>
+</ul>
+</div>
+<div id="S00-exam" class="section level3 unnumbered">
+<h3>Exam</h3>
+<p>There will be an exam – or, rather, a final “online time-limited assessment” – after the end of the module, making up the remaining 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. You will have 48 hours to complete the exam, although the exam itself should represent half a day to a day’s work. Further details to follow nearer the time.</p>
+</div>
+</div>
+<div id="S00-content" class="section level2 unnumbered">
+<h2>Content of MATH2750</h2>
+<div id="S00-prereqs" class="section level3 unnumbered">
+<h3>Prerequisites</h3>
+<p>Some students have asked what background you’ll be expected to know for this course.</p>
+<p>It’s essential that you’re very comfortable with the basics of probability theory: events, probability, discrete and continuous random variables, expectation, variance, approximations with the normal distribution, etc. Conditional probability and independence are particularly important concepts in this course. This course will use the binomial, geometric, Poisson, normal and exponential distributions, although the notes will usually remind you about them first, in case you’ve forgotten.</p>
+<p>Many students on the module will have studied these topics in MATH1710 Probability and Statistics 1; others will have covered these in different modules.</p>
+</div>
+<div id="S00-syllabus" class="section level3 unnumbered">
+<h3>Syllabus</h3>
+<p>The course has two major parts: the first part will cover processes in discrete time and the second part processes in continuous time.</p>
+<p>An outline plan of the topics covered is the following. (Remember that one week’s work is two sections of notes.)</p>
+<ul>
+<li><strong>Discrete time Markov chains</strong> [12 sections]
+<ul>
+<li>Introduction to stochastic processes [1 section]</li>
+<li>Important examples: Random walk, gambler’s ruin, linear difference equations, examples from actuarial science [4 sections]</li>
+<li>General theory: transition probabilities, <span class="math inline">\(n\)</span>-step transition probabilities, class structure, periodicity, hitting times, recurrence and transience, stationary distributions, long-term behaviour [6 sections]</li>
+<li>Revision [1 section]</li>
+</ul></li>
+<li><strong>Continuous time Markov jump processes</strong> [10 sections]
+<ul>
+<li>Important examples: Poisson process, counting processes, queues [5 sections]</li>
+<li>General theory: holding times and jump chains, forward and backward equations, class structure, hitting times, stationary distributions, long-term behaviour [4 sections]</li>
+<li>Revision [1 section]</li>
+</ul></li>
+</ul>
+</div>
+<div id="S00-books" class="section level3 unnumbered">
+<h3>Books</h3>
+<p>You can do well on this module by reading the notes and watching the videos, attending the lectures and workshops, and working on the problem sheets, assignments and practicals, without any further reading. However, students can benefit from optional extra background reading or an alternative view on the material.</p>
+<p>My favourite book on Markov chains, which I used a lot while planning this course and writing these notes, is:</p>
+<ul>
+<li>J.R. Norris, <em>Markov Chains</em>, Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press, 1997. Chapters 1-3.</li>
+</ul>
+<p>This a whole book just on Markov processes, including some more detailed material that goes beyond this module. Its coverage of of both discrete and continuous time Markov processes is very thorough. <a href="http://www.statslab.cam.ac.uk/~james/Markov/">Chapter 1 on discrete time Markov chains is available online.</a></p>
+<p>Other good books with sections on Markov processes that I have used include:</p>
+<ul>
+<li>G.R. Grimmett and D.R. Stirzaker, <em>Probability and Random Processes</em>, 4th edition, Oxford University Press, 2020. Chapter 6.</li>
+<li>G. Grimmet and D. Walsh, <em>Probability: an introduction</em>, 2nd edition, Oxford University Press, 2014. Chapter 12.</li>
+<li>D.R. Stirzaker, <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181"><em>Elementary Probability</em></a>, 2nd edition, Cambridge University Press, 2003. Chapter 9.</li>
+</ul>
+<p>Grimmett and Stirzaker is an excellent handbook that covers most of undergraduate probability – I bought a copy when I was a second-year undergraduate and still keep it next to my desk.
+<!-- Chapter 6 of Grimmett and Stirzaker covers Markov chains is available online. -->
+<a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181">The whole of Stirzaker is available online.</a></p>
+<p>A gentler introduction with plenty of examples is provided by:</p>
+<ul>
+<li>P.W. Jones and P. Smith, <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181"><em>Stochastic Processes: an introduction</em></a>, 3nd edition, Texts in Statistical Science, CRC Press, 2018. Chapters 2-7.</li>
+</ul>
+<p>although it doesn’t cover everything in this module. <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181">The whole book is available online.</a></p>
+<p>(I’ve listed the newest editions of these books, but older editions will usually be fine too.)</p>
+</div>
+<div id="S00-finally" class="section level3 unnumbered">
+<h3>And finally…</h3>
+<p>These notes were mostly written by Matthew Aldridge in 2018–19, and have received updates (mostly in Sections 9–11) and reformatting this year. Some of the material (especially Section 1, Section 6, and numerous diagrams) follows closely previous notes by Dr Graham Murphy, and I also benefited from reading earlier notes by Dr Robert Aykroyd and Prof Alexander Veretennikov. Dr Murphy’s general help and advice was also very valuable. Many thanks to students in previous runnings of the module for spotting errors and suggesting improvements.</p>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S01-stochastic-processes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

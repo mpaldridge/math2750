@@ -1,3 +1,5 @@
+# Problem Sheet 1  {.unnumbered #P01}
+
 <!--
 <style>
 .fold-btn { 
@@ -18,7 +20,21 @@ $(document).ready(function() {
   })
 });
 </script>
+
+
+<style>
+.myanswers { 
+/* display: none; */
+}
+</style>
 -->
+
+
+::: {.mysummary}
+You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (???????  ??? or Tuesday ????? ???) where the answers will be discussed.
+:::
+
+
 
 
 ::::: {.myq}
@@ -233,6 +249,11 @@ If we let $k$ be the number of upward steps, then the likelihood is
 :::
 ::::
 :::::
+
+
+
+
+
 
 
 

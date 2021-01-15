@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 9 Recurrence and transience | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 9 Recurrence and transience | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 9 Recurrence and transience | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="P04.html"/>
+<link rel="next" href="S10-stationary-distributions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S09-recurrence-transience" class="section level1">
+<h1><span class="header-section-number">Section 9</span> Recurrence and transience</h1>
+<div class="mysummary">
+<ul>
+<li>Definitions of recurrence and transience</li>
+<li>Recurrence and transience as class properties</li>
+<li>Positive and null recurrence</li>
+</ul>
+</div>
+<div id="rec-trans-def" class="section level2">
+<h2><span class="header-section-number">9.1</span> Recurrence and transience of states</h2>
+<p>When thinking about the long-run behaviour of Markov chains, we are interested two different types of states:</p>
+<ul>
+<li><strong>Recurrent states</strong>, which we always keep returning to again and again;</li>
+<li><strong>Transient states</strong>, which we may return to a few times, but eventually we will leave and never come back.</li>
+</ul>
+<p>The official definition is as follows; we will show that other properties follow from this.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 9.1  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span>. For <span class="math inline">\(i \in \mathcal S\)</span>, let <span class="math inline">\(m_i\)</span> be the return probability
+<span class="math display">\[ m_i = \mathbb P(X_n = i \text{ for some $n \geq 1$} \mid X_0 = i) . \]</span>
+If <span class="math inline">\(m_i = 1\)</span>, we say that state <span class="math inline">\(i\)</span> is <strong>recurrent</strong>; if <span class="math inline">\(m_i &lt; 1\)</span>, we say that state <span class="math inline">\(i\)</span> is <strong>transient</strong>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:rectran" class="theorem"><strong>Theorem 9.1  </strong></span>Consider a Markov chain with transition matrix <span class="math inline">\(\mathsf P\)</span> and state space <span class="math inline">\(\mathcal S\)</span>.</p>
+<ul>
+<li>If the state <span class="math inline">\(i\)</span> is recurrent, then <span class="math inline">\(\sum_{n=1}^\infty p_{ii}(n) = \infty\)</span>, and we return to state <span class="math inline">\(i\)</span> infinitely many times with probability <span class="math inline">\(1\)</span>.</li>
+<li>If the state <span class="math inline">\(i\)</span> is transient, then <span class="math inline">\(\sum_{n=1}^\infty p_{ii}(n) &lt; \infty\)</span>, and we return to state <span class="math inline">\(i\)</span> infinitely many times with probability <span class="math inline">\(0\)</span>.</li>
+</ul>
+</div>
+<p>Here <span class="math inline">\(\sum_{n=1}^\infty p_{ii}^{(n)}\)</span> is the expected number of returns to <span class="math inline">\(i\)</span> starting from <span class="math inline">\(i\)</span>.</p>
+<p>We’ll come to the proof in a moment, but first some examples.</p>
+<div class="example">
+<p><span id="exm:rw-rec-trans" class="example"><strong>Example 9.1  </strong></span>Consider the simple random walk. <a href="#S08-return-rw">In the last section</a> we saw that <span class="math inline">\(m_i = 1\)</span> for the simple symmetric random walk with <span class="math inline">\(p = \frac12\)</span>, so the simple symmetric random walk is recurrent. But for <span class="math inline">\(p \neq \frac12\)</span>, we have <span class="math inline">\(m_i &lt; 1\)</span>, so all the other simple random walks are transient.</p>
+</div>
+<div class="example">
+<p><span id="exm:rec" class="example"><strong>Example 9.2  </strong></span>We saw <a href="S07-classes.html#periodicity">this example in Lecture 7</a>:</p>
+<p><img src="math2750_files/figure-html/periods-recap-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>For states 5, 6 and 7, it’s clear that the return probability is 1, since the Markov chain cycles around the triangle, so these states are recurrent.</p>
+<p>States 1, 2, 3 and 4 are recurrent. In a moment we’ll see a very quick way to show this, but in the meantime we can prove it directly by getting our hands dirty.</p>
+<p>From state 4, we might go straight to state 5, in which case we can’t come back, so <span class="math inline">\(m_4 \leq 1 - p_{45} = \frac23\)</span>, and state 4 is transient. Similarly, <span class="math inline">\(m_1 \leq 1 - p_{14}p_{45} = \frac56\)</span>, because if we move from 1 to 4 to 5, we definitely won’t come back to 1, so state 1 is transient. By the similar arguments, <span class="math inline">\(m_3 \leq 1 - p_{34}p_{45} = \frac56\)</span>, and <span class="math inline">\(m_2 \leq 1 - p_{21}p_{14}p_{45} = \frac{11}{12}\)</span>, so these states are both transient too.</p>
+</div>
+<p>Notice that the communicating class <span class="math inline">\(\{1,2,3,4\}\)</span> is all transient, while the communicating class <span class="math inline">\(\{5,6,7\}\)</span> is all recurrent. We shall return to this point shortly. But first, we’ve put off the proof for too long.</p>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em> (Proof of Theorem <a href="S09-recurrence-transience.html#thm:rectran">9.1</a>). </span>Suppose state <span class="math inline">\(i\)</span> is recurrent, so the probability we return to <span class="math inline">\(i\)</span> is <span class="math inline">\(m_i = 1\)</span>. By the Markov property, we it’s as if we restart the chain from <span class="math inline">\(i\)</span>, so the probability we return to <span class="math inline">\(i\)</span> is again still <span class="math inline">\(m_i = 1\)</span>. Repeating this, we visit infinitely often with probability <span class="math inline">\(1\)</span>. In particular, the if number of visits to <span class="math inline">\(i\)</span> starting from <span class="math inline">\(i\)</span> is infinite, then its expectation is infinite too, and this expectation is <span class="math inline">\(\sum_{n=1}^\infty p_{ii}(n) = \infty\)</span>.</p>
+<p>Suppose state <span class="math inline">\(i\)</span> is transient, so the probability we return to <span class="math inline">\(i\)</span> is <span class="math inline">\(m_i &lt; 1\)</span>. Then the probability we return to <span class="math inline">\(i\)</span> exactly <span class="math inline">\(r\)</span> times before never coming back is
+<span class="math display">\[  \mathbb P \big((\text{number of returns to $i$}) = r\big) = m_i^r(1-m_i) , \]</span>
+since we must return on the first <span class="math inline">\(r\)</span> occasions, but then fail to return any more. This is a geometric distribution <span class="math inline">\(\text{Geom}(1-m_i)\)</span> (the version with support <span class="math inline">\(\{0,1,2,\dots\}\)</span>). Since the expectation of a <span class="math inline">\(\text{Geom}(p)\)</span> random variable is <span class="math inline">\((1 - p)/p\)</span>, the expected number of returns is
+<span class="math display">\[ \mathbb E(\text{number of returns to $i$}) = \sum_{n=1}^\infty p_{ii}(n)  = \frac{1 - (1 - m_i)}{1 - m_i} = \frac{m_i}{1 - m_i} . \]</span>
+This is finite, since <span class="math inline">\(m_i &lt;1\)</span>. Since the expected number of returns is finite, the probability we return infinitely many times must be <span class="math inline">\(0\)</span>.</p>
+</div>
+</div>
+<div id="rec-tran-classes" class="section level2">
+<h2><span class="header-section-number">9.2</span> Recurrence and transience of classes</h2>
+<p>We could find whether each state is transient or recurrent by calculating (or bounding) all the return probabilities <span class="math inline">\(m_i\)</span>, using the methods in <a href="S08-hitting-times.html#S08-hitting-times">the previous section</a>. But the following two theorems will give some highly convenient short-cuts.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-5" class="theorem"><strong>Theorem 9.2  </strong></span>Within a communicating class, either every state is transient or every state is recurrent.</p>
+<p>Formally: Let <span class="math inline">\(i, j \in \mathcal S\)</span> be such that <span class="math inline">\(i \leftrightarrow j\)</span>. If <span class="math inline">\(i\)</span> is recurrent, then <span class="math inline">\(j\)</span> is recurrent also; while if <span class="math inline">\(i\)</span> is transient, then <span class="math inline">\(j\)</span> transient also.</p>
+</div>
+<p>For this reason, we can refer to a communicating class as a “recurrent class” or a “transient class”. If a Markov chain is irreducible, we can refer to it as a “recurrent Markov chain” or a “transient Markov chain”.</p>
+<div class="proof">
+<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span><em>First part.</em> Suppose <span class="math inline">\(i \leftrightarrow j\)</span> and <span class="math inline">\(i\)</span> is recurrent. Then, for some <span class="math inline">\(m\)</span>, <span class="math inline">\(n\)</span> we have <span class="math inline">\(p_{ij}^{(n)}\)</span>, <span class="math inline">\(p_{ji}^{(m)} &gt; 0\)</span>. Then, by the Chapman–Kolmogorov equations,
+<span class="math display">\[ \sum_{r=1}^\infty p_{jj}^{(n+m+r)} \geq \sum_{r=1}^\infty p_{ji}^{(m)}p_{ii}^{(r)} p_{ij}^{(n)} = p_{ji}^{(m)} \left(\sum_{r=1}^\infty p_{ii}^{(r)} \right) p_{ij}^{(n)} .   \]</span>
+If <span class="math inline">\(i\)</span> is recurrent, then <span class="math inline">\(\sum_r p_{ii}^{(r)} = \infty\)</span>. Then from the above equation, we also have <span class="math inline">\(\sum_r p_{jj}^{(n+m+r)} = \infty\)</span>, meaning <span class="math inline">\(\sum_s p_{jj}^{(s)} = \infty\)</span>, and <span class="math inline">\(j\)</span> is recurrent.</p>
+<p><em>Second part.</em> Suppose <span class="math inline">\(i\)</span> is transient. Then <span class="math inline">\(j\)</span> cannot be recurrent, because the previous argument with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> swapped over would force <span class="math inline">\(i\)</span> to in fact be recurrent also. So <span class="math inline">\(j\)</span> must be transient.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 9.3  </strong></span> </p>
+<ul>
+<li>Every non-closed communicating class is transient.</li>
+<li>Every finite closed communicating class is recurrent.</li>
+</ul>
+</div>
+<p>This theorem completely classifies the transience and recurrence of classes, with rare exception of infinite closed classes, which can require further examination.</p>
+<div class="proof">
+<p><span id="unlabeled-div-8" class="proof"><em>Proof</em>. </span><em>First part.</em> Suppose <span class="math inline">\(i\)</span> is in a non-closed communicating class, so for some <span class="math inline">\(j\)</span> we have <span class="math inline">\(i \to j\)</span>, meaning <span class="math inline">\(p_{ij}^{(n)} &gt; 0\)</span> for some <span class="math inline">\(n\)</span>, but <span class="math inline">\(j \not\to i\)</span>, meaning that once we reach <span class="math inline">\(j\)</span> we cannot return to <span class="math inline">\(i\)</span>. We need to show that <span class="math inline">\(i\)</span> is transient.</p>
+<p>The probability we return to <span class="math inline">\(i\)</span> after time <span class="math inline">\(n\)</span> is
+<span class="math display">\[\begin{align*}
+\mathbb P(\text{return} &amp; \text{ to } i \text{ after time $n$} \mid X_0 = i) \\
+&amp;= p_{ij}^{(n)}\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) \\
+&amp;\qquad {}+ \big(1 - p_{ij}^{(n)}\big)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n \neq j, X_0 = i) \\
+&amp;\leq \mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) +  \big(1 - p_{ij}^{(n)}\big) \\
+&amp;\leq 0 + \big(1 - p_{ij}^{(n)}\big) \\
+&amp;&lt; 1,
+\end{align*}\]</span>
+since we can’t get from <span class="math inline">\(j\)</span> to <span class="math inline">\(i\)</span>, and since <span class="math inline">\(p_{ij}^{(n)} &gt; 0\)</span>. If <span class="math inline">\(i\)</span> were recurrent we would certainly return infinitely often, and in particular certainly return after time <span class="math inline">\(n\)</span>. So <span class="math inline">\(i\)</span> must be transient instead.</p>
+<p><em>Second part.</em> Suppose the class <span class="math inline">\(C\)</span> is finite and closed. Then for some <span class="math inline">\(i \in C\)</span>, the probability that we return to <span class="math inline">\(i\)</span> infinitely many times must be strictly positive, as we are going to stay in finitely many states of <span class="math inline">\(C\)</span> for infinitely many time steps. Then that state <span class="math inline">\(i\)</span> is not transient, so it must be recurrent, meaning the whole class is recurrent.</p>
+</div>
+<p>Going back to the <a href="S09-recurrence-transience.html#exm:rec">earlier example</a>, we see that the class <span class="math inline">\(\{5,6,7\}\)</span> is closed and finite, and therefore recurrent, while class <span class="math inline">\(\{1,2,3,4\}\)</span> is not closed and therefore transient. This is much less effort than the previous method!</p>
+</div>
+<div id="S09-positive-null" class="section level2">
+<h2><span class="header-section-number">9.3</span> Positive and null recurrence</h2>
+<p>It can be useful to further divide recurrent classes, where the return probability <span class="math inline">\(m_i = 1\)</span>, by whether the expected return time <span class="math inline">\(\mu_i\)</span> is finite or not.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-9" class="definition"><strong>Definition 9.2  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span>. Let <span class="math inline">\(i \in \mathcal S\)</span> be a recurrent state, and let <span class="math inline">\(\mu_i\)</span> be the expected return time.
+If <span class="math inline">\(\mu_i &lt; \infty\)</span>, we say that state <span class="math inline">\(i\)</span> is <strong>positive recurrent</strong>; if <span class="math inline">\(\mu_i = \infty\)</span>, we say that state <span class="math inline">\(i\)</span> is <strong>null recurrent</strong>.</p>
+</div>
+<p>The following facts are not difficult to prove, in a similar way to the previous results:</p>
+<ol style="list-style-type: decimal">
+<li>In a recurrent class, either all states are positive recurrent or all states are null recurrent.</li>
+<li>All finite closed classes are positive recurrent.</li>
+</ol>
+<p>The first result means we can refer to a “positive recurrent class” or a “null recurrent class”, and an irreducible Markov chain can be a “positive recurrent Markov chain” or a “null recurrent Markov chain”.</p>
+<p>Putting everything so far together:</p>
+<ul>
+<li>non-closed classes are transient;</li>
+<li>finite closed classes are positive recurrent;</li>
+<li>infinite closed classes can be positive recurrent, null recurrent, or transient.</li>
+</ul>
+<p>We know that the simple symmetric random walk is recurrent. We also saw in [the last section]((#S08-return-rw) that <span class="math inline">\(\mu_i = \infty\)</span>, so it is null recurrent.</p>
+<p>We can also consider the simple symmetric random walk in <span class="math inline">\(d\)</span>-dimensions, on <span class="math inline">\(\mathbb Z^d\)</span>. At each step we pick one of the coordinates and increase or decrease it by one; each of the <span class="math inline">\(2d\)</span> possibilities having probability <span class="math inline">\(1/(2d)\)</span>. We have seen that for <span class="math inline">\(d=1\)</span> this is null recurrent. A famous result by the Hungarian mathematician George Pólya from 1921 states the simple symmetric random walk is null recurrent for <span class="math inline">\(d = 1\)</span> and <span class="math inline">\(d = 2\)</span>, but is transient for <span class="math inline">\(d \geq 3\)</span>. (Perhaps this is why cars often crash into each other, but aeroplanes very rarely do?)</p>
+</div>
+<div id="S09-strong-markov" class="section level2">
+<h2><span class="header-section-number">9.4</span> Strong Markov property</h2>
+<div class="mysummary">
+<p><em>This subsection is optional and nonexaminable.</em></p>
+</div>
+<p>There was a cheat somewhere in this section – did you notice it? The last two times I lectured this course, I just hoped no one would notice – and no one did. Still, it’s a bit naughty, so in this optional and nonexaminable section, I’ll come clean.</p>
+<p>The Markov property says that, if at some fixed time <span class="math inline">\(n\)</span> we have <span class="math inline">\(X_n = i\)</span>, then the Markov chain from that point on is just like starting all over again from the state <span class="math inline">\(i\)</span>. When we applied this in the proof of Theorem <a href="S09-recurrence-transience.html#thm:rectran">9.1</a>, we were using as <span class="math inline">\(n\)</span> the first return to state <span class="math inline">\(i\)</span>. But that’s not a fixed time – it’s a random time. Have we messed up?</p>
+<p>Actually we’re fine. The reason is that the first return to <span class="math inline">\(i\)</span> isn’t just any old random time, it’s a “stopping time”, and the Markov property applies to stopping times too.</p>
+<p>A stopping time is a random time where “you know when you get there”.</p>
+<div class="definition">
+<p><span id="def:stopping" class="definition"><strong>Definition 9.3  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a stochastic process in discrete time, and let <span class="math inline">\(T\)</span> be a random time. Then <span class="math inline">\(T\)</span> is a <strong>stopping time</strong> if for all <span class="math inline">\(n\)</span> the event <span class="math inline">\(\{T = n\}\)</span> is determined by the random variables <span class="math inline">\(X_0, X_1, \dots, X_n\)</span>.</p>
+</div>
+<p>So, for example:</p>
+<ul>
+<li>“The first visit to state <span class="math inline">\(i\)</span>” is stopping time, because as soon as we return, we know the value of <span class="math inline">\(T\)</span>.</li>
+<li>“Three time-steps after the second visit to <span class="math inline">\(j\)</span>” is a stopping time, because after our second visit we count on three more steps and have <span class="math inline">\(T\)</span>.</li>
+<li>“The time-step before the first visit to <span class="math inline">\(i\)</span>” is not a stopping time, because we need to go one step further on to know whether or not we had just been at time <span class="math inline">\(T\)</span>.</li>
+<li>“The final visit to <span class="math inline">\(j\)</span>” is not a stopping time, because at the time of the visit we don’t yet know whether we’ll come back again or not.</li>
+</ul>
+<p>There are lots of places in probability theory and finance when something that is true about a fixed time is also true about a random stopping time. When we use the Markov property with a stopping time, we call it the “strong Markov property”.</p>
+<div class="theorem">
+<p><span id="thm:strong-markov" class="theorem"><strong>Theorem 9.4  (Strong Markov property) </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain on a state space <span class="math inline">\(\mathcal S\)</span>, and let <span class="math inline">\(T\)</span> be a stopping time that is finite with probability 1. Then all states <span class="math inline">\(x_0, \dots,x_{T-1}, i, j \in \mathcal S\)</span> we have
+<span class="math display">\[  \mathbb P(X_{T+1}=j \mid X_T=i, X_{T-1} = x_{T-1} \dots, X_0 = x_0) = \mathbb p_{ij} . \]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-10" class="proof"><em>Proof</em>. </span>We have
+<span class="math display">\[\begin{align*}
+&amp;\mathbb P(X_{T+1}={}x_j \mid X_T=i, X_{T-1} = x_{T-1} \dots, X_0 = x_0) \\
+&amp;\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i, X_{n-1} = x_{n-1} \dots, X_0 = x_0, T = n) \\
+&amp;\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i, X_{n-1} = x_{n-1} \dots, X_0 = x_0) \\
+&amp;\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i) \\
+&amp;\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) p_{ij}\\
+&amp;\qquad{}= p_{ij} \sum_{n=0}^\infty \mathbb P(T = n) \\
+&amp;\qquad{}= p_{ij} ,
+\end{align*}\]</span>
+as desired. The second line was by conditioning on the value of <span class="math inline">\(T\)</span>; in the third line we deleted the superfluous conditioning <span class="math inline">\(T = n\)</span>, because <span class="math inline">\(T\)</span> is a stopping time, so the event <span class="math inline">\(T = n\)</span> is entirely decided by <span class="math inline">\(X_n, X_{n-1}, \dots, X_0\)</span>; the fourth line used the (usual non-strong) Markov property; the fifth line is just the definition of <span class="math inline">\(p_{ij}\)</span>; the sixth line took <span class="math inline">\(p_{ij}\)</span> out of the sum; and the seventh line is because <span class="math inline">\(T\)</span> is finite with probability 1, so <span class="math inline">\(\mathbb P(T = n)\)</span> sums to 1.</p>
+</div>
+</div>
+<div id="S09-lemma" class="section level2">
+<h2><span class="header-section-number">9.5</span> A useful lemma</h2>
+<div class="mysummary">
+<p><em>This subsection is optional and nonexaminable.</em></p>
+</div>
+<p>The following lemma will be used in some later optional and nonexaminable proofs.</p>
+<div class="lemma">
+<p><span id="lem:lemma" class="lemma"><strong>Lemma 9.1  </strong></span>Let <span class="math inline">\((X_n)\)</span> be an irreducible and recurrent Markov chain. Then for any initial distribution and any state <span class="math inline">\(j\)</span>, we will certainly hit <span class="math inline">\(j\)</span>, so the hitting time <span class="math inline">\(H_j\)</span> is finite with probability 1.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-11" class="proof"><em>Proof</em>. </span>It suffices to prove the lemma when the initial distribution is “start at <span class="math inline">\(i\)</span>”. (We can repeat for all <span class="math inline">\(i\)</span>, then build any initial distribution from a weighted sum of “start at <span class="math inline">\(i\)</span>”s.)</p>
+<p>Since the chain is irreducible, we know we can get from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>, so pick <span class="math inline">\(m\)</span> with <span class="math inline">\(p_{ji}(m) &gt; 0\)</span>. Since the chain is recurrent, we know the return probability from <span class="math inline">\(j\)</span> to <span class="math inline">\(j\)</span> is 1, and we return infinitely many times with probability 1. We just need to glue these two facts together.</p>
+<p>We have
+<span class="math display">\[\begin{align*}
+1 &amp;= \mathbb P(X_n = j \text{ for infinitely many $n$} \mid X_0 = j) \\
+&amp;= \mathbb P(X_n = j \text{ for some $n &gt; m$} \mid X_0 = j) \\
+&amp;= \sum_k \mathbb P(X_m = k \mid X_0 = j) \,\mathbb P(X_n = j \text{ for some $n &gt; m$} \mid X_m = k, X_0 = j) \\
+&amp;= \sum_k p_{jk}(m) \,\mathbb P(H_j &lt; \infty \mid X_0 = k) ,
+\end{align*}\]</span>
+where the last line used the Markov property to treat the chain as starting over again when it reaches some state <span class="math inline">\(k\)</span> at time <span class="math inline">\(m\)</span>. Note that <span class="math inline">\(\sum_k p_{jk}(m) = 1\)</span>, since that’s the sum of the probabilities of going anywhere in <span class="math inline">\(m\)</span> steps. This means we must have <span class="math inline">\(\mathbb P(H_j &lt; \infty \mid X_0 = k)\)</span> whenever <span class="math inline">\(p_{jk}(m) &gt; 0\)</span>, to ensure the final line does indeed sum to 1. But we stated earlier that <span class="math inline">\(p_{ji}(m) &gt; 0\)</span>, so we indeed have <span class="math inline">\(\mathbb P(H_j &lt; \infty \mid X_0 = i)\)</span>, as required.</p>
+</div>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at how positive recurrent Markov chains can settle into a stationary distribution and experience long-term stability.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="P04.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S10-stationary-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

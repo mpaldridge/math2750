@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 2 Random walk | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 2 Random walk | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 2 Random walk | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="S01-stochastic-processes.html"/>
+<link rel="next" href="P01.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S02-random-walk" class="section level1">
+<h1><span class="header-section-number">Section 2</span> Random walk</h1>
+
+<div class="mysummary">
+<ul>
+<li>Definition of the simple random walk and the exact binomial distribution</li>
+<li>Expectation and variance of general random walks</li>
+</ul>
+</div>
+<div id="simple-random-walk" class="section level2">
+<h2><span class="header-section-number">2.1</span> Simple random walk</h2>
+<p>Consider the following <strong>simple random walk</strong> on the integers <span class="math inline">\(\mathbb Z\)</span>: We start at <span class="math inline">\(0\)</span>, then at each time step, we go up by one with probability <span class="math inline">\(p\)</span> and down by one with probability <span class="math inline">\(q = 1-p\)</span>. When <span class="math inline">\(p = q = \frac12\)</span>, we’re equally as likely to go up as down, and we call this the <strong>simple symmetric random walk</strong>.</p>
+<p>The simple random walk is a simple but very useful model for lots of processes, like stock prices, sizes of populations, or positions of gas particles. (In many modern models, however, these have been replaced by more complicated continuous time and space models.) The simple random walk is sometimes called the “drunkard’s walk”, suggesting it could model a drunk person trying to stagger home.</p>
+<div class="figure"><span id="fig:rw-pics"></span>
+<img src="math2750_files/figure-html/rw-pics-1.png" alt="Two simulations of random walks." width="50%" /><img src="math2750_files/figure-html/rw-pics-2.png" alt="Two simulations of random walks." width="50%" />
+<p class="caption">
+Figure 2.1: Two simulations of random walks.
+</p>
+</div>
+<p>We can write this as a stochastic process <span class="math inline">\((X_n)\)</span> with discrete time <span class="math inline">\(n = \{0,1,2,\dots\} = \mathbb Z_+\)</span> and discrete state space <span class="math inline">\(\mathcal S = \mathbb Z\)</span>, where <span class="math inline">\(X_0 = 0\)</span> and, for <span class="math inline">\(n \geq 0\)</span>, we have
+<span class="math display">\[ X_{n+1} = \begin{cases} X_n + 1 &amp; \text{with probability $p$,} \\
+                             X_n - 1 &amp; \text{with probability $q$.} \end{cases} \]</span></p>
+<p>It’s clear from this definition that <span class="math inline">\(X_{n+1}\)</span> (the future) depends on <span class="math inline">\(X_n\)</span> (the present), but, given <span class="math inline">\(X_n\)</span>, does not depend on <span class="math inline">\(X_{n-1}, \dots, X_1, X_0\)</span> (the past). Thus the Markov property holds, and the simple random walk is a <strong>discrete time Markov process</strong> or <strong>Markov chain</strong>.</p>
+<div class="example">
+<p><span id="exm:rw1" class="example"><strong>Example 2.1  </strong></span><em>What is the probability that after two steps a simple random walk has reached <span class="math inline">\(X_2 = 2\)</span>?</em></p>
+<p>To achieve this, the walk must go upwards in both time steps, so <span class="math inline">\(\mathbb P(X_2 = 2) = pp = p^2\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:rw2" class="example"><strong>Example 2.2  </strong></span><em>What is the probability that after three steps a simple random walk has reached <span class="math inline">\(X_3 = -1\)</span>?</em></p>
+<p>There are three ways to reach <span class="math inline">\(-1\)</span> after three steps: up–down–down, down–up–down, or down–down–up. So
+<span class="math display">\[ \mathbb P(X_3 = -1) = pqq+qpq+qqp = 3pq^2 . \]</span></p>
+</div>
+</div>
+<div id="general-random-walks" class="section level2">
+<h2><span class="header-section-number">2.2</span> General random walks</h2>
+<p>An alternative way to write the simple random walk is to put
+<span class="math display" id="eq:rw">\[\begin{equation}
+    X_n = X_0 + \sum_{i=1}^n Z_i ,  \tag{2.1}
+  \end{equation}\]</span>
+where the starting point is <span class="math inline">\(X_0 = 0\)</span> and the <strong>increments</strong> <span class="math inline">\(Z_1, Z_2, \dots\)</span> are independent and identically distributed (IID) random variables with distribution given by <span class="math inline">\(\mathbb P(Z_i = 1) = p\)</span> and <span class="math inline">\(\mathbb P(Z_i = -1) = q\)</span>. You can check that <a href="S02-random-walk.html#eq:rw">(2.1)</a> means that <span class="math inline">\(X_{n+1} = X_n + Z_{n+1}\)</span>, and that this property defines the simple random walk.</p>
+<p>Any stochastic process with the form <a href="S02-random-walk.html#eq:rw">(2.1)</a> for some <span class="math inline">\(X_0\)</span> and some distribution for the IID <span class="math inline">\(Z_i\)</span>s is called a <strong>random walk</strong> (without the word “simple”).</p>
+<p>Random walks often have state space <span class="math inline">\(\mathcal S = \mathbb Z\)</span>, like the simple random walk, but they could be defined on other state spaces. We could look at higher dimensional simple random walks: in <span class="math inline">\(\mathbb Z^2\)</span>, for example, we could step up, down, left or right each with probability <span class="math inline">\(\frac14\)</span>. We could even have a continuous state space like <span class="math inline">\(\mathbb R\)</span>, if, for example, the <span class="math inline">\(Z_i\)</span>s had a normal distribution.</p>
+<p>We can use this structure to calculate the expectation or variance of any random walk (including the simple random walk).</p>
+<p>Let’s start with the expectation. For a random walk <span class="math inline">\((X_n)\)</span> we have
+<span class="math display">\[ \mathbb E X_n = \mathbb E \left(X_0 + \sum_{i=1}^n Z_i\right) = \mathbb E X_0 + \sum_{i=1}^n \mathbb E Z_i = \mathbb EX_0 + n \mathbb E Z_1 , \]</span>
+where we’ve used the linearity of expectation, and that the <span class="math inline">\(Z_i\)</span>s are identically distributed.</p>
+<p>In the case of the simple random walk, we have <span class="math inline">\(\mathbb E X_0 = 0\)</span>, since we start from <span class="math inline">\(0\)</span> with certainty, and
+<span class="math display">\[ \mathbb E Z_1 = \sum_{z \in \mathbb Z} z \mathbb P(Z_1 = z) = 1\times p + (-1)\times q = p-q .\]</span>
+Hence, for the simple random walk, <span class="math inline">\(\mathbb EX_n = n(p-q)\)</span>.</p>
+<p>If <span class="math inline">\(p &gt; \frac12\)</span>, then <span class="math inline">\(p &gt; q\)</span>, so <span class="math inline">\(\mathbb E X_n\)</span> grows ever bigger over time, while if <span class="math inline">\(p &lt; \frac12\)</span>, then <span class="math inline">\(\mathbb E X_n\)</span> grows ever smaller (that is, negative with larger absolute value) over time. If <span class="math inline">\(p = \frac12 = q\)</span>, which is the case of the simple symmetric random walk, then then the expectation <span class="math inline">\(\mathbb E X_n = 0\)</span> is zero for all time.</p>
+<p>Now the variance of a random walk. We have
+<span class="math display">\[ \operatorname{Var}(X_n) = \operatorname{Var}\left(X_0 + \sum_{i=1}^n Z_i\right) = \operatorname{Var}X_0 + \sum_{i=1}^n \operatorname{Var}Z_i = \operatorname{Var}X_0 + n \operatorname{Var}Z_1 , \]</span>
+where it was crucial that <span class="math inline">\(X_0\)</span> and all the <span class="math inline">\(Z_i\)</span>s were independent (so we had no covariance terms).</p>
+<p>For the simple random walk we have <span class="math inline">\(\operatorname{Var}X_0 = 0\)</span>, since we always start from <span class="math inline">\(0\)</span> with certainty. To calculate the variance of the increments, we write
+<span class="math display">\[\begin{align*}
+  \operatorname{Var}(Z_1) &amp;= \mathbb E (Z_1 - \mathbb EZ_1)^2 \\
+            &amp;= p\big(1 - (p-q)\big)^2 + q \big( {-1} - (p-q)\big)^2\\
+            &amp;= p(2q)^2 + q(-2p)^2\\
+            &amp;= 4pq^2 + 4p^2q \\
+            &amp;= 4pq(p+q) \\
+            &amp;= 4pq .
+  \end{align*}\]</span>
+Here we’ve used that <span class="math inline">\(1-p = q\)</span>, <span class="math inline">\(1-q=p\)</span>, and <span class="math inline">\(p+q = 1\)</span>; you should take a few moments to check you’ve followed the algebra here. Hence the variance of the simple random walk is <span class="math inline">\(4pqn\)</span>. We see that (unless <span class="math inline">\(p\)</span> is <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>) the variance grows over time, so it becomes harder and harder to predict where the random walk will be.</p>
+<p>The variance of the simple symmetric random walk is <span class="math inline">\(4 \frac12 \frac12 n = n\)</span>.</p>
+<p>For large <span class="math inline">\(n\)</span>, we can use a normal approximation for a random walk. Suppose the increments process <span class="math inline">\((Z_n)\)</span> has mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, and that the walk starts from <span class="math inline">\(X_0 = 0\)</span>. Then we have <span class="math inline">\(\mathbb E X_n = \mu n\)</span> and <span class="math inline">\(\operatorname{Var}(X_n) = \sigma^2 n\)</span>, so for large <span class="math inline">\(n\)</span> we can use the normal approximation <span class="math inline">\(X_n \approx \mathrm{N}(\mu n, \sigma^2 n)\)</span>. (Remember, of course, that the <span class="math inline">\(X_n\)</span> are not independent.) To be more formal, the central limit theorem tells us that, as <span class="math inline">\(n \to \infty\)</span>, we have
+<span class="math display">\[ \frac{X_n - n\mu}{\sigma \sqrt{n}} \to \mathrm{N}(0,1) . \]</span></p>
+</div>
+<div id="exact-distribution" class="section level2">
+<h2><span class="header-section-number">2.3</span> Exact distribution of the simple random walk</h2>
+<p>In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for <span class="math inline">\(\mathbb P(X_n = i)\)</span> for any time <span class="math inline">\(n\)</span> and any state <span class="math inline">\(i\)</span>.</p>
+<p>Recall that, at each of the first <span class="math inline">\(n\)</span> times, we independently take an upward step with probability <span class="math inline">\(p\)</span>, and otherwise take a downward step. So if we let <span class="math inline">\(Y_n\)</span> be the number of upward steps over the first <span class="math inline">\(n\)</span> time periods, we see that <span class="math inline">\(Y_n\)</span> has a binomial distribution <span class="math inline">\(Y_n \sim \text{Bin}(n,p)\)</span>.</p>
+<p>Recall that the binomial distribution has probability
+<span class="math display">\[  \mathbb P(Y_n = k)  = \binom nk p^k (1-p)^{n-k} = \binom nk p^k q^{n-k} , \]</span>
+for <span class="math inline">\(k = 0,1,\dots, n\)</span>, where <span class="math inline">\(\binom{n}{k}\)</span> is the binomial coefficient “<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>”.</p>
+<p>If <span class="math inline">\(Y_n = k\)</span>, that means we’ve taken <span class="math inline">\(k\)</span> upward steps and <span class="math inline">\(n-k\)</span> downward steps, leaving us at position <span class="math inline">\(k - (n-k) = 2k - n\)</span>. Thus we have that
+<span class="math display" id="eq:bin">\[\begin{equation}
+  \mathbb P(X_n = 2k - n) = \mathbb P(Y_n = k) = \binom nk p^k q^{n-k} .  \tag{2.2}
+  \end{equation}\]</span></p>
+<p>Note that after an odd number of time steps <span class="math inline">\(n\)</span> we’re always at an odd-numbered state, since <span class="math inline">\(2k - \text{odd} = \text{odd}\)</span>, while after an even number of time steps <span class="math inline">\(n\)</span> we’re always at an even-numbered state, since <span class="math inline">\(2k - \text{even} = \text{even}\)</span>.</p>
+<p>Writing <span class="math inline">\(i = 2k - n\)</span> gives <span class="math inline">\(k = (n+i)/2\)</span> and <span class="math inline">\(n-k = (n-i)/2\)</span>. So we can rearrange <a href="S02-random-walk.html#eq:bin">(2.2)</a> to see that the distribution for the simple random walk is
+<span class="math display">\[ \mathbb P(X_n = i) =  \binom{n}{(n+i)/2} p^{(n+i)/2} q^{(n-i)/2} , \]</span>
+when <span class="math inline">\(n\)</span> and <span class="math inline">\(i\)</span> have the same parity with <span class="math inline">\(-n \leq i \leq n\)</span>, and is <span class="math inline">\(0\)</span> otherwise.</p>
+<p>In the special case of the simple symmetric random walk, we have
+<span class="math display">\[ \mathbb P(X_n = i) = \binom{n}{(n+i)/2} \left(\frac12\right)^{(n+i)/2} \left(\frac12\right)^{(n-i)/2} = \binom{n}{(n+i)/2} 2^{-n} . \]</span></p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at a gambling problem based on the simple random walk.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="S01-stochastic-processes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="P01.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

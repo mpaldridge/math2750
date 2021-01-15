@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 8 Hitting times | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 8 Hitting times | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 8 Hitting times | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="S07-classes.html"/>
+<link rel="next" href="P04.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S08-hitting-times" class="section level1">
+<h1><span class="header-section-number">Section 8</span> Hitting times</h1>
+<div class="mysummary">
+<ul>
+<li>Definitions: Hitting probability, expected hitting time, return probability, expected return time</li>
+<li>Finding these by conditioning on the first step</li>
+<li>Return probability and expected return time for the simple random walk</li>
+</ul>
+</div>
+<div id="hitting-definitions" class="section level2">
+<h2><span class="header-section-number">8.1</span> Hitting probability and expected hitting time</h2>
+<p>In <a href="S03-gamblers-ruin.html#S03-gamblers-ruin">Section 3</a> and <a href="S04-ldes.html#S04-ldes">Section 4</a>, we used conditioning on the first step to find the ruin probability and expected duration for the gambler’s ruin problem. Here, we develop those ideas for general Markov chains.</p>
+<div class="definition">
+<p><span id="def:hitting-defs" class="definition"><strong>Definition 8.1  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain on state space <span class="math inline">\(\mathcal S\)</span>. Let <span class="math inline">\(H_{A}\)</span> be a random variable representing the hitting time to hit a state in <span class="math inline">\(A \subset \mathcal S\)</span>, given by
+<span class="math display">\[ H_{A} = \min \{n \in \mathbb Z_+ : X_n \in A  \} . \]</span>
+The most common case we’ll be interested in will be when <span class="math inline">\(A = \{j\}\)</span> is just a single state, so
+<span class="math display">\[ H_{j} = \min \{n \in \mathbb Z_+ : X_n = j  \} . \]</span>
+(We use the convention that <span class="math inline">\(H_A = \infty\)</span> if <span class="math inline">\(X_n \not\in A\)</span> for all <span class="math inline">\(n\)</span>.)</p>
+<p>The <strong>hitting probability</strong> <span class="math inline">\(h_{iA}\)</span> of states <span class="math inline">\(A \subset \mathcal S\)</span> starting from state <span class="math inline">\(i \in \mathcal S\)</span> is
+<span class="math display">\[ h_{iA} = \mathbb P(X_n \in A \text{ for some $n \geq 0$} \mid X_0 = i) = \mathbb P(H_A &lt; \infty \mid X_0 = i) .  \]</span>
+Again, the most common case of interest is <span class="math inline">\(h_{ij}\)</span> the hitting probability of state <span class="math inline">\(j\)</span> starting from state <span class="math inline">\(i\)</span>.</p>
+<p>The <strong>expected hitting time</strong> <span class="math inline">\(\eta_{iA}\)</span> of states <span class="math inline">\(A \subset \mathcal S\)</span> starting from state <span class="math inline">\(i \in \mathcal S\)</span> is
+<span class="math display">\[ \eta_{iA} = \mathbb E(H_A \mid X_0 = i) .  \]</span>
+Clearly <span class="math inline">\(\eta_{iA}\)</span> can only be finite if <span class="math inline">\(h_{iA} = 1\)</span>.</p>
+</div>
+<p>For the gambler’s ruin problem, we found equations for hitting probabilities and expected hitting times by conditioning on the first step and solving the resulting equations. We do the same here for other Markov chains.</p>
+<div class="example">
+<p><span id="exm:hitting1" class="example"><strong>Example 8.1  </strong></span><em>Consider a Markov chain with transition matrix</em>
+<span class="math display">\[ \begin{pmatrix}
+\frac15 &amp; \frac15 &amp; \frac15 &amp; \frac25 \\[0.3ex]
+0 &amp; 1 &amp; 0 &amp; 0 \\[0.3ex]
+0 &amp; \frac12 &amp; 0 &amp; \frac12 \\[0.3ex]
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix} . \]</span>
+<em>Calculate the probability that the chain is absorbed at state <span class="math inline">\(2\)</span> when started from state <span class="math inline">\(1\)</span>.</em></p>
+<p>This is asking for the hitting probability <span class="math inline">\(h_{12}\)</span>. The key is to find simultaneous equations for all hitting probabilities <span class="math inline">\(h_{i2}\)</span> to state 2. Clearly we have <span class="math inline">\(h_{22} = 1\)</span>, as we are already there. Also, <span class="math inline">\(h_{42} = 0\)</span>, since 4$is an absorbing state.</p>
+<p>For the other states, we find equations by conditioning on the first step, as we did in the gambler’s ruin problem. We have
+<span class="math display">\[ h_{12} = \tfrac15 h_{12} + \tfrac15 h_{22} + \tfrac15 h_{32} + \tfrac25h_{42} \qquad \Rightarrow \qquad . \]</span>
+This is because, starting from 1, there’s a <span class="math inline">\(\frac15\)</span> probability of staying at 1; then by the Markov property it’s like we’re starting again from 1, so the hitting probability is still <span class="math inline">\(h_{12}\)</span>. Similarly, there’s a <span class="math inline">\(\frac15\)</span> probability of moving 2; then by the Markov property it’s like we’re starting again from 2, so the hitting probability is still <span class="math inline">\(h_{22}\)</span>. And so on.</p>
+<p>We can make a similar equation for <span class="math inline">\(h_{32}\)</span>:
+<span class="math display">\[ h_{32} = \tfrac12 h_{22} + \tfrac12 h_{42} 
+\]</span>
+We can simplify these two equations, using <span class="math inline">\(h_{22} = 1\)</span> and <span class="math inline">\(h_{42} = 0\)</span>, and rearrange them, to give
+<span class="math display">\[\begin{align*}
+\tfrac45 \tfrac45 h_{12} &amp;= \tfrac15  + \tfrac15 h_{32}\\
+h_{32} &amp;= \tfrac12
+\end{align*}\]</span>
+Substituting the second equation into the first, we get <span class="math inline">\(\frac45 h_{12} = \frac1{5} + \frac15\cdot\frac12 =\frac{3}{10}\)</span>, so <span class="math inline">\(h_{12} = \frac{5}{4}\,\frac{3}{10} = \frac{3}{8}\)</span>.</p>
+</div>
+<p>So the technique to find hitting probability <span class="math inline">\(h_{ij}\)</span> from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is:</p>
+<ol style="list-style-type: decimal">
+<li>Set up equations for all the hitting probabilities <span class="math inline">\(h_{kj}\)</span> to <span class="math inline">\(j\)</span> by conditioning on the first step.</li>
+<li>Solve the resulting simultaneous equations.</li>
+</ol>
+<p>It is recommended to derive equations for hitting probabilities from first principles by conditioning on the first step. However, we can state what the general formula is: by the same conditioning method, we get
+<span class="math display">\[ h_{iA} = \begin{cases} \displaystyle\sum_{j \in \mathcal S} p_{ij} h_{jA} &amp; \text{if $i \not\in A$} \\
+1 &amp; \text{if $i \in A$.} \end{cases} \]</span>
+It can be shown that, if these equations have multiple solutions, that the hitting probabilities are in fact the smallest non-negative solutions.</p>
+<div class="example">
+<p><span id="exm:hitting2" class="example"><strong>Example 8.2  </strong></span><em>Consider <a href="S06-examples.html#S06-example1">the simple no-claims discount chain from Lecture 6</a>, which had transition matrix</em>
+<span class="math display">\[ \mathsf P =\begin{pmatrix}
+    \tfrac14 &amp;\tfrac34 &amp; 0\\
+    \tfrac14 &amp;0 &amp; \tfrac34\\
+    0 &amp;\tfrac14 &amp; \tfrac34\\
+    \end{pmatrix} .\]</span>
+<em>Given we start in state 1 (no discount), find the expected amount of time until we reach state 3 (50% discount).</em></p>
+<p>This question asks us to find <span class="math inline">\(\eta_{13}\)</span>. Again, we start by writing down equations for all the <span class="math inline">\(\eta_{i3}\)</span>s. Clearly we have <span class="math inline">\(\eta_{33} = 0\)</span>.</p>
+<p>By conditioning on the first step, we have
+<span class="math display">\[\begin{align*}
+\eta_{13} = 1 + \tfrac14 \eta_{13} + \tfrac34 \eta_{23} \qquad &amp;\Rightarrow \qquad \phantom{-}\tfrac34 \eta_{13} - \tfrac34\eta_{23} = 1 ,\\
+\eta_{23} = 1 + \tfrac14 \eta_{13} + \tfrac34 \eta_{33} \qquad &amp;\Rightarrow \qquad  - \tfrac14\eta_{13} + \phantom{\tfrac34}\eta_{23} = 1 .
+\end{align*}\]</span>
+This is because the first step takes time <span class="math inline">\(1\)</span>, then we condition on what happens next.</p>
+<p>The first equation plus three-quarters times the second gives
+<span class="math display">\[ \big(\tfrac34 - \tfrac34\tfrac14\big) \eta_{13} = \tfrac{9}{16}\eta_{13} = 1 + \tfrac34 = \tfrac 74 = \tfrac{28}{16} ,\]</span>
+which has solution <span class="math inline">\(\eta_{13} = \tfrac{28}{9} = 3.11\)</span>.</p>
+</div>
+<p>Similarly, if we need to, we can give a general formula
+<span class="math display">\[ \eta_{iA} = \begin{cases} 1 + \displaystyle\sum_{j \in \mathcal S} p_{ij} \eta_{jA} &amp; \text{if $i \not\in A$} \\
+0 &amp; \text{if $i \in A$.} \end{cases} \]</span>
+Again, if we have multiple solutions, the expected hitting times are the smallest non-negative solutions.</p>
+</div>
+<div id="return-times" class="section level2">
+<h2><span class="header-section-number">8.2</span> Return times</h2>
+<p>Under the definitions above, the hitting probability and expected hitting time to a state from itself are always <span class="math inline">\(h_{ii} = 1\)</span> and <span class="math inline">\(\eta_{ii} = 0\)</span>, as we’re “already there”.</p>
+<p>In this case, it can be interesting to look instead at the random variable representing the <strong>return time</strong>,
+<span class="math display">\[ M_i = \min \big\{n \in \{1,2,\dots\} : X_n = i  \big\} . \]</span>
+Note that this only considers times <span class="math inline">\(n = 1, 2, \dots\)</span> not including <span class="math inline">\(n = 0\)</span>, so is the <em>next</em> time we come back, after <span class="math inline">\(n = 0\)</span>.</p>
+<p>We then have the <strong>return probability</strong> and <strong>expected return time</strong>
+<span class="math display">\[\begin{gather*} m_{i} = \mathbb P(X_n = i  \text{ for some $n \geq 1$} \mid X_0 = i) = \mathbb P(M_i &lt; \infty \mid X_0 = i) ,  \\
+ \mu_{i} = \mathbb E(M_i \mid X_0 = i) .  \end{gather*}\]</span></p>
+<p>Just as before, we can find these by conditioning on the first step. The general equations are
+<span class="math display">\[
+      m_i = \sum_{j \in \mathcal S} p_{ij}h_{ji} , \qquad
+      \mu_i = 1 + \sum_{j \in \mathcal S} p_{ij}\eta_{ji},
+  \]</span>
+where, if necessary, we take the minimal non-negative solution again.</p>
+</div>
+<div id="return-rw" class="section level2">
+<h2><span class="header-section-number">8.3</span> Hitting and return times for the simple random walk</h2>
+<p>We now turn to hitting probabilities for the simple random walk, which goes up with probability <span class="math inline">\(p\)</span> and down with probability <span class="math inline">\(q = 1-p\)</span>. This material is mandatory and is examinable, but is a bit technical; students who are struggling or have fallen behind might make a tactical decision to skip to the <a href="S08-hitting-times.html#thm:rw-summary">summary theorem at the end of the subsection</a> and come back to the details at a later date.</p>
+<p>Without loss of generality, we look at <span class="math inline">\(h_{i0}\)</span>, the probability the random walk hits <span class="math inline">\(0\)</span>.
+We will assume that <span class="math inline">\(i \geq 0\)</span>. For <span class="math inline">\(i &lt; 0\)</span>, we can get the desired result by looking at the random walk in the mirror – that is, by swapping the role of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, and treating the positive value <span class="math inline">\(-i\)</span>.</p>
+<p>For an initial condition, it’s clear we have <span class="math inline">\(h_{00} = 1\)</span>.</p>
+<p>For general <span class="math inline">\(i &gt; 0\)</span>, we condition on the first step, to get
+<span class="math display">\[ h_{i0} = ph_{i+1\, 0} + qh_{i-1\, 0} .  \]</span>
+We recognise this equation from the gambler’s ruin problem, and recall that we have to treat the cases <span class="math inline">\(p \neq \frac12\)</span> and <span class="math inline">\(p = \frac12\)</span> separately.</p>
+<p>When <span class="math inline">\(p \neq \frac12\)</span>, the general solution is <span class="math inline">\(h_{i0} = A + B\rho^i\)</span>, where <span class="math inline">\(\rho = q/p \neq 0\)</span>, as before. The initial condition <span class="math inline">\(h_{00} = 1\)</span> gives <span class="math inline">\(A = 1-B\)</span>, so we have a family of solutions
+<span class="math display">\[ h_{i0} = 1 + B(\rho^i - 1) . \]</span></p>
+<p>In the gambler’s ruin problem we had another boundary condition to find <span class="math inline">\(B\)</span>. Here we have no other conditions, but we can use the minimality condition that the hitting probabilities are the smallest non-negative solution to the equation.</p>
+<p>When <span class="math inline">\(\rho &gt; 1\)</span>, so <span class="math inline">\(p &lt; \frac12\)</span>, the term <span class="math inline">\(\rho^i\)</span> tends to infinity. Thus the minimal non-negative solution will have to take <span class="math inline">\(B = 0\)</span>, since taking <span class="math inline">\(B &lt; 0\)</span> would eventually give a negative solution, so <span class="math inline">\(B = 0\)</span> gives the smallest non-negative solution. Hence the solution is <span class="math inline">\(h_{i0} = 1 + 0\rho^i = 0\)</span>, meaning we hit <span class="math inline">\(0\)</span> with certainty. This makes sense, because for <span class="math inline">\(p &lt; 1/2\)</span> the random walk “drifts” to the left, and eventually gets back to <span class="math inline">\(0\)</span>.</p>
+<p>When <span class="math inline">\(\rho &lt; 1\)</span>, so <span class="math inline">\(p &gt; \frac12\)</span>, we have that <span class="math inline">\(\rho^i - 1\)</span> is negative and tends to <span class="math inline">\(-1\)</span>. So to get a small solution we want <span class="math inline">\(B\)</span> as large as possible, but keeping the solution non-negative limits us to <span class="math inline">\(B \leq 1\)</span>; thus the minimality condition is achieved at <span class="math inline">\(B = 1\)</span>. The solution is <span class="math inline">\(h_{i0} = 1 + (\rho^i - 1) = \rho^i\)</span>. This is strictly less than <span class="math inline">\(1\)</span>, because for <span class="math inline">\(p &gt; 1/2\)</span>, the random walk drifts to the right, so might drift further and further away from <span class="math inline">\(0\)</span> and not come back.</p>
+<p>For <span class="math inline">\(p = \frac12\)</span>, so <span class="math inline">\(\rho = 1\)</span>, we recall the general solution <span class="math inline">\(h_{i0} = A + Bi\)</span>, and the condition <span class="math inline">\(h_{00} = 1\)</span> gives <span class="math inline">\(A = 1\)</span>. Because <span class="math inline">\(i\)</span> is negative, to get the answer to be small we want <span class="math inline">\(B\)</span> to be big, but non-negativity limits us to <span class="math inline">\(B \leq 0\)</span>. So the minimal non-negative solution takes <span class="math inline">\(B = 0\)</span>, so we have <span class="math inline">\(h_{i0} = 1\)</span>.</p>
+<p>In conclusion, for <span class="math inline">\(i &gt; 0\)</span>, the hitting probabilities are given by
+<span class="math display">\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{q}{p}\right)^i &amp; \text{if $p &gt; \frac12$} \\ \ 1 &amp; \text{if $p \leq \frac12$.} \end{cases} \]</span>
+(Remember that for <span class="math inline">\(i &lt; 0\)</span>, we get the desired result by swapping the role of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, and treating the positive value <span class="math inline">\(-i\)</span>.)</p>
+<p>What about the return time to <span class="math inline">\(0\)</span> (or, by symmetry, to any state <span class="math inline">\(i \in \mathbb Z\)</span>)? By conditioning on the first step, <span class="math inline">\(m_0 = ph_{1\,0} + qh_{-1\,0}\)</span>. We then have
+<span class="math display">\[ m_0 = \begin{cases} p\times 1 \hspace{0.4em}+ q\times 1 \hspace{0.4em}= 1 &amp; \text{if $p = \frac12$} \\
+p \times \displaystyle\frac qp + q\times 1 \hspace{0.4em}= 2q &lt; 1 &amp; \text{if $p &gt; \frac12$} \\
+p\times 1 \hspace{0.4em} + q \times \displaystyle\frac pq = 2p &lt; 1 &amp; \text{if $p &lt; \frac12$.}\end{cases} \]</span>
+So for the simple symmetric random walk (<span class="math inline">\(p = \frac12\)</span>) we have <span class="math inline">\(m_i = 1\)</span> and are certain to return to <span class="math inline">\(0\)</span> again and again, while for <span class="math inline">\(p \neq \frac12\)</span>, we have <span class="math inline">\(m_i &lt; 1\)</span> and we might never return.</p>
+<p>One could also calculate expected hitting times <span class="math inline">\(\eta_{i0}\)</span>. For <span class="math inline">\(p \neq \frac12\)</span>, we have <span class="math inline">\(\eta_{i0} = \infty\)</span>, since <span class="math inline">\(m_0 &lt; 1\)</span> and we might never come back.</p>
+<p>For <span class="math inline">\(p = \frac12\)</span>, conditioning on the first step gives the equation
+<span class="math display">\[ \eta_{i0} = 1 + \tfrac12\eta_{i+1\,0} + \tfrac12\eta_{i-1\,0} , \]</span>
+with initial condition <span class="math inline">\(\eta_{00} = 0\)</span>. This has the solution <span class="math inline">\(\eta_{i0} = -i^2 + Bi = i(B-i)\)</span>. Then non-negativity demands <span class="math inline">\(B = \infty\)</span>, as any other value would make the <span class="math inline">\(-i^2\)</span> negative for big enough <span class="math inline">\(i\)</span>. This gives <span class="math inline">\(\eta_{i0} = \infty\)</span>, and <span class="math inline">\(\mu_0 = \infty\)</span> also.
+So for <span class="math inline">\(p = \frac12\)</span>, while the random walk always return to <span class="math inline">\(0\)</span>, it may take a very long time to do so.</p>
+<p>In conclusion, this is what we found out:</p>
+<div class="theorem">
+<p><span id="thm:rw-summary" class="theorem"><strong>Theorem 8.1  </strong></span>Consider the simple random walk with <span class="math inline">\(p \neq 0,1\)</span>. Then for all states <span class="math inline">\(i\)</span> we have the following:</p>
+<ul>
+<li>For <span class="math inline">\(p \neq \frac12\)</span>, the return probability <span class="math inline">\(m_i\)</span> is strictly less than 1.</li>
+<li>For the simple symmetric random walk with <span class="math inline">\(p = \frac12\)</span>, the return probability <span class="math inline">\(m_i\)</span> is equal to 1.</li>
+<li>For all <span class="math inline">\(p\)</span>, the expected return time <span class="math inline">\(\mu_i\)</span> is infinite.</li>
+</ul>
+</div>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at how the return probabilities and expected return times characterise which states continue to be visited by a Markov chain in the long run.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="S07-classes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="P04.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 4 Linear difference equations | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 4 Linear difference equations | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 4 Linear difference equations | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="S03-gamblers-ruin.html"/>
+<link rel="next" href="P02.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S04-ldes" class="section level1">
+<h1><span class="header-section-number">Section 4</span> Linear difference equations</h1>
+<div class="mysummary">
+<ul>
+<li>How to solve homogeneous and inhomogeneous linear difference equations</li>
+<li>Solving for probability of ruin and expected duration of the gambler’s ruin</li>
+</ul>
+</div>
+<p><strong>Linear difference equations</strong> are equations that look like
+<span class="math display" id="eq:lde">\[\begin{equation}
+a_k x_{n+k} + a_{k-1} x_{n+k-1} + \cdots + a_1 x_{n+1} + a_0 x_n = f(n) \tag{4.1} 
+\end{equation}\]</span>
+for <span class="math inline">\(n = 0,1,\dots\)</span>, where the <span class="math inline">\(a_i\)</span> are given constants, <span class="math inline">\(f(n)\)</span> is a given function, and we want to solve for the sequence <span class="math inline">\((x_n)\)</span>. The equation normally comes with some extra conditions, such as the value of the first few <span class="math inline">\(x_n\)</span>s.</p>
+<p>When the right-hand side of <a href="S04-ldes.html#eq:lde">(4.1)</a> is zero, so <span class="math inline">\(f(n) = 0\)</span>, we say the equation is <strong>homogeneous</strong>; if the right-hand side is nonzero, it is <strong>inhomogeneous</strong>. The number <span class="math inline">\(k\)</span>, where there are <span class="math inline">\(k+1\)</span> terms on the left-hand side, is called the <strong>degree</strong> of the equation; we are mostly interested in second-degree linear difference equations, which have three terms on the left-hand side.</p>
+<div id="hom-ldes" class="section level2">
+<h2><span class="header-section-number">4.1</span> Homogeneous linear difference equations</h2>
+<p>We start with the homogeneous case, which is simpler.</p>
+<p>Consider a homogeneous linear difference equation. We shall use the second-degree example
+<span class="math display">\[ x_{n+2} - 5x_{n+1} + 6x_{n} = 0 \qquad \text{subject to } x_0 = 4, x_1 = 9 .  \]</span>
+Here, the conditions on <span class="math inline">\(x_0\)</span> and <span class="math inline">\(x_1\)</span> are <strong>initial conditions</strong>, because they tell us how the sequence <span class="math inline">\((x_n)\)</span> starts.</p>
+<p>For the moment, we shall put the initial conditions to the side and just worry about the equation
+<span class="math display">\[ x_{n+2} - 5x_{n+1} + 6x_{n} = 0 . \]</span>
+We start by guessing there might be a solution of the form <span class="math inline">\(x_n = \lambda^n\)</span> for some constant <span class="math inline">\(\lambda\)</span>. We can find out if there is such a solution by substituting in <span class="math inline">\(x_n = \lambda^n\)</span>, and seeing if there’s a <span class="math inline">\(\lambda\)</span> that solves the equation. For our example, we get
+<span class="math display">\[ \lambda^{n+2} - 5 \lambda^{n+1} + 6\lambda^n = 0 . \]</span>
+After cancelling off a common factor of <span class="math inline">\(\lambda^n\)</span>, we get
+<span class="math display">\[ \lambda^2 - 5 \lambda + 6 = 0 . \]</span>
+This is called the <strong>characteristic equation</strong>. For a general homogeneous linear difference equation <a href="S04-ldes.html#eq:lde">(4.1)</a>, the characteristic equation is
+<span class="math display" id="eq:cheq">\[\begin{equation}
+  a_k \lambda^{k} + a_{k-1} \lambda^{k-1} + \cdots + a_1 \lambda + a_0 = 0 .  \tag{4.2} 
+\end{equation}\]</span>
+When writing out answers to questions, you can jump straight to the characteristic equation.</p>
+<p>We can now solve the characteristic equation for <span class="math inline">\(\lambda\)</span>. In our example, we can factor the left-hand side to get <span class="math inline">\((\lambda - 3)(\lambda - 2) = 0\)</span>, which has solutions <span class="math inline">\(\lambda = 2\)</span> and <span class="math inline">\(\lambda = 3\)</span>. Thus <span class="math inline">\(x_n = 2^n\)</span> and <span class="math inline">\(x_n = 3^n\)</span> both solve our equation. In fact, since the right-hand side of the equation is <span class="math inline">\(0\)</span>, any linear combination of these two solutions is a solution also, thus we get the <strong>general solution</strong>
+<span class="math display">\[ x_n = A 2^n + B 3^n , \]</span>
+which is a solution for any values of the constants <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+<p>For a general characteristic equation with distinct roots <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span>, the general solution is
+<span class="math display">\[ x_n = C_1 \lambda_1^n + C_2 \lambda_2^n + \cdots + C_k \lambda_k^n . \]</span>
+If we have a repeated root – say, <span class="math inline">\(\lambda_1 = \lambda_2 = \cdots = \lambda_r\)</span> is repeated <span class="math inline">\(r\)</span> times – than you can check that a solution is given by
+<span class="math display">\[ x_n = (D_0 + D_1 n + \cdots + D_{r-1} n^{r-1}) \lambda_1^n , \]</span>
+which should take its place in the general solution.</p>
+<p>Once we have the general solution, we can use the extra conditions to find the values of the constants. In our example, we can use the initial conditions to find out the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. We see that
+<span class="math display">\[\begin{gather*}
+x_0 = A2^0 + B3^0 = A + B = 4 , \\
+x_1 = A2^1 + B3^1 = 2A + 3B = 9 .
+\end{gather*}\]</span>
+We can now solve this pair of simultaneous equations to solve for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. By subtracting twice the first equation from the second we get <span class="math inline">\(B = 1\)</span>, and substituting this into the first equation we get <span class="math inline">\(A = 3\)</span>. Thus the solution is
+<span class="math display">\[ x_n = 3\cdot 2^n + 3^n . \]</span></p>
+<p>In conclusion, the process here was:</p>
+<ol style="list-style-type: decimal">
+<li>Find the general solution by writing down and solving the characteristic equation.</li>
+<li>Use the extra conditions to find the values of the constants in the general solution.</li>
+</ol>
+<p>If you think you’ve got the hang of this, you should press on to <a href="#S04-ruin-probability">the next subsection</a>. But if you’re still a bit unsure, here are two extra optional examples. (These also give an idea of how I would expect you to set out your answers to similar problems.)</p>
+<div class="example">
+<p><span id="exm:lde1" class="example"><strong>Example 4.1  </strong></span><em>Solve the homogeneous linear difference equation</em>
+<span class="math display">\[ x_{n+2} - x_{n+1} - 6x_n = 0 \qquad \text{subject to} \quad x_0 = 3,\quad x_1 = 4 . \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is
+<span class="math display">\[ \lambda^2 - \lambda - 6 = 0 . \]</span>
+We can solve this by factorising it as <span class="math inline">\((\lambda - 3) (\lambda + 2) = 0\)</span>,
+to find the solutions <span class="math inline">\(\lambda_1 = -2\)</span> and <span class="math inline">\(\lambda_2 = 3\)</span>. Thus the general solution is
+<span class="math display">\[ x_n = A(-2)^n + B3^n . \]</span></p>
+<p><em>Step 2.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 &amp;= A(-2)^0 + B3^0 = A + B = 3 \\
+x_1 &amp;= A(-2)^1 + B3^1 = -2A + 3B = 4 .
+\end{align*}\]</span>
+We can add twice the first equation from the second to get <span class="math inline">\(5B = 10\)</span>, so <span class="math inline">\(B=2\)</span>. We can substitute this into the first equation to get <span class="math inline">\(A = 1\)</span>.</p>
+<p>The solution is therefore
+<span class="math display">\[ x_n = 1\cdot(-2)^n + 2 \cdot 3^n = (-2)^n + 2 \cdot 3^n . \]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:lde2" class="example"><strong>Example 4.2  </strong></span><em>Solve the homogeneous linear difference equation</em>
+<span class="math display">\[ x_{n+2} + 4x_{n+1} +4x_n = 0 \qquad \text{subject to} \quad x_0 = 2,\quad x_1 = -6 . \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is
+<span class="math display">\[ \lambda^2 + 4\lambda + 4 = 0 . \]</span>
+We can solve this by factorising it as <span class="math inline">\((\lambda + 2)^2 = 0\)</span>, to find a repeated root <span class="math inline">\(\lambda_1 = \lambda_2 = -2\)</span>. Thus the general solution is
+<span class="math display">\[ x_n = (A + Bn) (-2)^n . \]</span></p>
+<p><em>Step 2.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 &amp;= (A + B0)(-2)^0 = A = 2 \\
+x_1 &amp;= (A + B1)(-2)^1 = -2A - 2B = -6 .
+\end{align*}\]</span>
+The first immediately gives <span class="math inline">\(A = 2\)</span>, and substituting this into the second equation gives <span class="math inline">\(B = 1\)</span>.</p>
+<p>The solution is therefore
+<span class="math display">\[ x_n = (2 + n)(-2)^n . \]</span></p>
+</div>
+</div>
+<div id="ruin-probability-solve" class="section level2">
+<h2><span class="header-section-number">4.2</span> Probability of ruin for the gambler’s ruin</h2>
+<p>In the last lecture we saw that probability of ruin for the gambler’s ruin process is the solution to
+<span class="math display">\[ pr_{i+1} - r_i + qr_{i-1} = 0 \qquad \text{subject to} \qquad r_0 = 1,\ r_m = 0 , \]</span>
+where the extra conditions here are <strong>boundary conditions</strong>, because they tell us what happens at the boundaries of the state space.</p>
+<p>The characteristic equation is
+<span class="math display">\[ p\lambda^2 - \lambda + q = 0 .\]</span>
+We can solve the characteristic equation by factorising it as <span class="math inline">\((p \lambda - q)(\lambda - 1) = 0\)</span>. (It might take a moment to check this really is a factorisation of the characteristic equation. Hint: we’ve used that <span class="math inline">\(p+q=1\)</span>.) So the characteristic equation has roots <span class="math inline">\(\lambda = q/p\)</span>, which we called <span class="math inline">\(\rho\)</span> last time, and <span class="math inline">\(\lambda = 1\)</span>. Now, if <span class="math inline">\(\rho = 1\)</span> (so <span class="math inline">\(p = q = \frac12\)</span>) we have a repeated root, while if <span class="math inline">\(\rho \neq 1\)</span> we have distinct roots, so we’ll need to deal with the two cases separately.</p>
+<p>First, the case <span class="math inline">\(\rho \neq 1\)</span>. Since the two roots are distinct, we have the general solution
+<span class="math display">\[ r_i = A\rho^i + B1^i = A\rho^i + B . \]</span></p>
+<p>We can now use the boundary conditions to find <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. We have
+<span class="math display">\[\begin{gather*} r_0 = A \rho^0 + B = A+B = 1, \\
+                r_m = A \rho^m + B = 0 . \end{gather*}\]</span>
+From the first we get <span class="math inline">\(B = 1-A\)</span>, which we substitute into the second to get
+<span class="math display">\[ A\rho^m + 1 - A = 0 \quad \Rightarrow \quad A = \frac{1}{1-\rho^m} , \]</span>
+and hence
+<span class="math display">\[ B = 1 - A = 1 - \frac{1}{1-\rho^m} = - \frac{\rho^m}{1 - \rho^m} . \]</span>
+Thus the solution is
+<span class="math display">\[ r_i = \frac{1}{1-\rho^m} \rho^i -  \frac{\rho^m}{1 - \rho^m} = \frac{\rho^i - \rho^m}{1 - \rho^m}  , \]</span>
+as we claimed last time.</p>
+<p>Second, the case <span class="math inline">\(\rho = 1\)</span>. Now we have a repeated root <span class="math inline">\(\lambda = 1\)</span>, so the general solution is
+<span class="math display">\[ r_i = (A + Bi) 1^i = A+Bi . \]</span></p>
+<p>Again, we use the boundary conditions, to get
+<span class="math display">\[\begin{gather*} r_0 = A + B\cdot 0 = A = 1, \\
+r_m = A + Bm = 0 , \end{gather*}\]</span>
+and we immediately see that <span class="math inline">\(A = 1\)</span> and <span class="math inline">\(B = -1/m\)</span>. Thus the solution is
+<span class="math display">\[ r_i = 1 - \frac{1}{m}i = 1 - \frac{i}{m} , \]</span>
+as claimed last time.</p>
+</div>
+<div id="inhom-ldes" class="section level2">
+<h2><span class="header-section-number">4.3</span> Inhomogeneous linear difference equations</h2>
+<p>Solving inhomogeneous linear difference equations requires three steps:</p>
+<ol style="list-style-type: decimal">
+<li>Find the general solution to the <em>homogeneous</em> equation by writing down and solving the characteristic equation.</li>
+<li>Find any solution (a “particular solution”) to the inhomogeneous equation. The general solution to the inhomogeneous equation is a particular solution plus the general solution to the homogeneous equation.</li>
+<li>Use the extra conditions to find the values of the constants in the general solution.</li>
+</ol>
+<p>This idea works because adding a solution to the <em>homogeneous</em> equation to the left-hand side adds zero to the right-hand side, so maintains a solution to the inhomogeneous equation.</p>
+<p>Let’s work through the example
+<span class="math display">\[ x_{n+2} - 5x_{n+1} + 6x_{n} = 2 \qquad \text{subject to } x_0 = 4, x_1 = 9 . \]</span></p>
+<p>We already know from earlier that the general solution to the homogeneous equation <span class="math inline">\(x_{n+2} - 5x_{n+1} + 6x_{n} = 0\)</span> (with a zero on the right-hand side) is
+<span class="math display">\[ x_n = A2^n + B3^n . \]</span></p>
+<p>We now need to find a <strong>particular solution</strong> – that is, any solution – to our new inhomogeneous equation. A general hint here is to guess a solution with the same “shape” as the right-hand side. For example, if the right-hand side is a constant, try a constant for the particular solution. Here our right-hand side is the constant <span class="math inline">\(2\)</span>, so we should try a constant <span class="math inline">\(x_n = C\)</span>. Substituting this into the inhomogeneous equation gives us <span class="math inline">\(C - 5C + 6C = 2\)</span>, thus <span class="math inline">\(2C = 2\)</span> and <span class="math inline">\(C = 1\)</span>, giving a particular solution <span class="math inline">\(x_n = 1\)</span>. The general solution to the inhomogeneous equation is therefore
+<span class="math display">\[ x_n = 1 + A2^n + B3^n , \]</span>
+the sum of the particular solution <span class="math inline">\(x_n = 1\)</span> and the general solution to the homogeneous equation.</p>
+<p>The right-hand side being a constant, so we guess a constant, is the main case we will deal with. Other cases you could come across include:</p>
+<ul>
+<li>If the right-hand side is a polynomial of degree <span class="math inline">\(d\)</span>, try a polynomial of degree <span class="math inline">\(d\)</span>.</li>
+<li>If the right-hand side is <span class="math inline">\(\alpha^n\)</span> for some <span class="math inline">\(\alpha\)</span>, try <span class="math inline">\(C\alpha^n\)</span>.</li>
+<li>If the right-hand side is a constant, but a constant <span class="math inline">\(C\)</span> doesn’t work, try <span class="math inline">\(Cn\)</span>. If that still doesn’t work, try <span class="math inline">\(Cn^2\)</span>, and so on. We discuss this case further in the next subsection.</li>
+</ul>
+<p>Again, we use the initial conditions to get the constants <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. We have
+<span class="math display">\[\begin{gather*}
+x_0 = 1 + A2^0 + B3^0 = 1+ A + B = 4 , \\
+x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
+\end{gather*}\]</span>
+and we can easily check this gives <span class="math inline">\(A = 1, B = 2\)</span>. Thus the solution is
+<span class="math display">\[ x_n = 1 + 1\cdot 2^n + 2 \cdot 3^n = 1 + 2^n + 2 \cdot 3^n . \]</span></p>
+<p>Again, if you have the hang of this, <a href="S04-ldes.html#duration-solve">press on</a>, but we present an extra optional example if things are still unclear.</p>
+<div class="example">
+<p><span id="exm:lde3" class="example"><strong>Example 4.3  </strong></span><em>Solve the inhomogeneous linear difference equation</em>
+<span class="math display">\[ 10 x_{n+2} - 7x_{n+1} + x_n = 8 \qquad \text{subject to} \quad x_0 = 0,\quad x_1 = \tfrac{13}{10} . \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is
+<span class="math display">\[ 10\lambda^2 - 7\lambda + 1 = 0 . \]</span>
+We can solve this by factorising it as
+<span class="math display">\[ (2\lambda - 1) (5\lambda - 1) = 0 , \]</span>
+to find the solutions <span class="math inline">\(\lambda_1 = \frac12\)</span> and <span class="math inline">\(\lambda_2 = \frac15\)</span>. Thus the general solution of the homogeneous equation is
+<span class="math display">\[ x_n = A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]</span></p>
+<p><em>Step 2.</em> Since the right hand side of the inhomogeneous equation is a constant, we guess a constant particular solution with shape <span class="math inline">\(x_n = C\)</span>. Substituting in this guess, we get
+<span class="math display">\[ 10C - 7C + C = 4C = 8 \]</span>
+with solution <span class="math inline">\(C=2\)</span>. Thus a particular solution is <span class="math inline">\(x_n = 2\)</span>, and the general solution to the inhomogeneous equation is
+<span class="math display">\[ x_n = 2 + A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]</span></p>
+<p><em>Step 3.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 = 2 + A\left(\frac12\right)^0 + B\left(\frac15\right)^0 = 2 + A + B = 0 \quad &amp;\Rightarrow \quad A + B = -2 \\
+x_1 = 2 + A\left(\frac12\right)^1 + B\left(\frac15\right)^1 = 2 + A\frac12 + B\frac15 = \frac{13}{10} \quad &amp;\Rightarrow \quad 5A + 2B = -7.
+\end{align*}\]</span>
+We can subtract twice the first equation from the second to get <span class="math inline">\(3A = -3\)</span>, so <span class="math inline">\(A = -1\)</span>. We can substitute this into the second equation to get <span class="math inline">\(B = -1\)</span>.</p>
+<p>The solution is therefore
+<span class="math display">\[ x_n = 2 - \left(\frac12\right)^n - \left(\frac15\right)^n . \]</span></p>
+</div>
+</div>
+<div id="duration-solve" class="section level2">
+<h2><span class="header-section-number">4.4</span> Expected duration for the gambler’s ruin</h2>
+<p>From last time, the expected duration of the gambler’s ruin game solves
+<span class="math display">\[ pd_{i+1} - d_i + qd_{i-1} = -1 \qquad \text{subject to} \qquad d_0 = 0,\ d_m = 0. \]</span>
+As before, we divide cases based on whether or not <span class="math inline">\(\rho = 1\)</span>.</p>
+<p>First, the case <span class="math inline">\(\rho \neq 1\)</span>. We already know that the general solution to the homogeneous equation is
+<span class="math display">\[ d_i =  A \rho^i + B . \]</span></p>
+<p>Now we need a particular solution. It’s tempting to guess a constant <span class="math inline">\(C\)</span> for a particular solution, but we know that constants solve the homogeneous equation, since <span class="math inline">\(d_i = B\)</span> is a solution – so a constant will give right-hand side <span class="math inline">\(0\)</span>, not <span class="math inline">\(-1\)</span>. (You could try out <span class="math inline">\(x_i = C\)</span>; you should find that the equation for <span class="math inline">\(C\)</span> doesn’t have a solution.) The next best try is to go one degree up: let’s guess <span class="math inline">\(x_i = Ci\)</span> instead. This gives
+<span class="math display">\[\begin{align*}
+  -1 &amp;= pC(i+1) - Ci + qC(i-1)\\
+     &amp;= C(pi + p - i + qi - q) \\
+     &amp;= C\big((p+q-1)i + (p-q)\big) \\
+     &amp;= C(p-q) ,
+  \end{align*}\]</span>
+since <span class="math inline">\(p + q - 1 = 1 - 1 = 0\)</span>. This <span class="math inline">\(C = -1/(p-q) = 1/(q-p)\)</span>. Finding a solution for <span class="math inline">\(C\)</span> shows that our guess worked. The general solution to the inhomogeneous equation is
+<span class="math display">\[ d_i = \frac{i}{q-p} + A \rho^i + B .  \]</span></p>
+<p>Then to find the constants, we have
+<span class="math display">\[\begin{gather*} d_0 = \frac{0}{q-p} + A \rho^0 + B = A+B = 0, \\
+                  d_m = \frac{m}{q-p} + A \rho^m + B = 0 , \end{gather*}\]</span>
+which you can check gives
+<span class="math display">\[ A = -B = \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} . \]</span>
+Hence, the solution is
+<span class="math display">\[ d_i = \frac{i}{q-p} + \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} \rho^i - \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} =  \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1- \rho^m} \right) . \]</span></p>
+<p>Second, the case <span class="math inline">\(\rho = 1\)</span>, so <span class="math inline">\(p = q = \frac12\)</span>. We already know that the general solution to the homogeneous equation is
+<span class="math display">\[ d_i =  A + Bi . \]</span></p>
+<p>We need a particular solution. Since both constants <span class="math inline">\(x_i = A\)</span> and linear <span class="math inline">\(x_i = Bi\)</span> terms solve the homogeneous equation (or by checking that guessing <span class="math inline">\(x_i = C\)</span> or <span class="math inline">\(x_i = Ci\)</span> doesn’t work), we’ll have to go up another degree and try <span class="math inline">\(x_i = Ci^2\)</span>. This gives
+<span class="math display">\[\begin{align*}
+    -1 &amp;= \tfrac12 C(i+1)^2 - Ci^2 + \tfrac 12 C(i-1)^2 \\
+       &amp;= \tfrac12 C(i^2 + 2i + 1 - 2i^2 + i^2 - 2i + 1) \\
+       &amp;= \tfrac12 C\big((1-2+1)i^2 + (2-2)i + (1+1)\big) \\
+       &amp;=C ,
+\end{align*}\]</span>
+so the general solution to the inhomogeneous equation is
+<span class="math display">\[ d_i = -i^2 + A + Bi .  \]</span></p>
+<p>Then to find the constants, we have
+<span class="math display">\[\begin{gather*} d_0 = -0^2 + A + B\cdot0 = A = 0, \\
+                  d_m = -m^2 + A + Bm = 0 , \end{gather*}\]</span>
+giving <span class="math inline">\(A = 0, B = m\)</span>. The solution is
+<span class="math display">\[ d_i = -i^2 + 0 + mi = i(m-i) .\]</span></p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we move on to the general theory of discrete time Markov chains.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="S03-gamblers-ruin.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="P02.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -3,22 +3,22 @@
     "path": "~/Documents/GitHub/math2750/_output.yml",
     "project_path": "_output.yml",
     "type": "yaml",
-    "hash": "1283041290",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1610717397761.0,
     "source_on_save": false,
     "relative_order": 2,
     "properties": {
-        "cursorPosition": "13,23",
+        "cursorPosition": "16,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1610734655,
+    "lastKnownWriteTime": 1610735216,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1610734655404,
+    "last_content_update": 1610735216690,
     "read_only": false,
     "read_only_alternatives": []
 }

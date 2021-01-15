@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 5 Discrete time Markov chains | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 5 Discrete time Markov chains | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 5 Discrete time Markov chains | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="A1.html"/>
+<link rel="next" href="S06-examples.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#office"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="0.0.1" data-path="S00-about.html"><a href="S00-about.html#discussion-board"><i class="fa fa-check"></i><b>0.0.1</b> Discussion board</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-exam"><i class="fa fa-check"></i>Exam</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#S00-finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probability and expected hitting time</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrence and transience of states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrence and transience of classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#definition-def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition {def-stationary-definition}</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S05-markov-chains" class="section level1">
+<h1><span class="header-section-number">Section 5</span> Discrete time Markov chains</h1>
+<div class="mysummary">
+<ul>
+<li>Definition of time homogeneous discrete time Markov chains</li>
+<li>Calculating <span class="math inline">\(n\)</span>-step transition properties</li>
+<li>The Chapman–Kolomogorov equations</li>
+</ul>
+</div>
+<div id="thmc" class="section level2">
+<h2><span class="header-section-number">5.1</span> Time homogeneous discrete time Markov chains</h2>
+<p>So far we’ve seen a a few examples of stochastic processes in discrete time and discrete space with the Markov memoryless property. Now we will develop the theory more generally.</p>
+<p>To define a so-called “Markov chain”, we first need to say where we start from, and second what the probabilities of transitions from one state to another are.</p>
+<p>In our examples of the simple random walk and gambler’s ruin, we specified the start point <span class="math inline">\(X_0\)</span> exactly, but we could pick the start point at random according to some distribution <span class="math inline">\(\lambda_i = \mathbb P(X_0 = i)\)</span>.</p>
+<p>After that, we want to know the <strong>transition probabilities</strong> <span class="math inline">\(\mathbb P(X_{n+1} = j \mid X_n = i)\)</span> for <span class="math inline">\(i,j \in \mathcal S\)</span>. Here, because of the Markov property, the transition probability only needs to condition on the state we’re in now <span class="math inline">\(X_n = i\)</span>, and not on the whole history of the process.</p>
+<p>In the case of the simple random walk, for example, we had initial distribution
+<span class="math display">\[ \lambda_i = \mathbb P(X_0 = i) = \begin{cases} 1 &amp; \text{if $i = 0$} \\ 0 &amp; \text{otherwise} \end{cases} \]</span>
+and transition probabilities
+<span class="math display">\[ \mathbb P(X_{n+1} = j \mid X_n = i) = \begin{cases} p &amp; \text{if $j = i+1$} \\ q &amp; \text{if $j = i-1$} \\ 0 &amp; \text{otherwise.} \end{cases} \]</span></p>
+<p>For the random walk (and also the gambler’s ruin), the transition probabilities <span class="math inline">\(\mathbb P(X_{n+1} = j \mid X_n = i)\)</span> don’t depend on <span class="math inline">\(n\)</span>; in other words, the transition probabilities stay the same over time. A Markov process with this property is called <strong>time homogeneous</strong>. We will always consider time homogeneous processes from now on (unless we say otherwise).</p>
+<p>Let’s write <span class="math inline">\(p_{ij} = \mathbb P(X_{n+1} = j \mid X_n = i)\)</span> for the transition probabilities, which are independent of <span class="math inline">\(n\)</span>.
+We must have <span class="math inline">\(p_{ij} \geq 0\)</span>, since it is a probability, and we must also have <span class="math inline">\(\sum_j p_{ij} = 1\)</span>, as this is the sum of the probabilities of all the places you can move to from state <span class="math inline">\(i\)</span>.</p>
+<div class="definition">
+<p><span id="def:def-thmc" class="definition"><strong>Definition 5.1  </strong></span>Let <span class="math inline">\((\lambda_i)\)</span> be a probability distribution on a sample space <span class="math inline">\(\mathcal S\)</span>. Let <span class="math inline">\(p_{ij}\)</span>, where <span class="math inline">\(i,j \in \mathcal S\)</span>, be such that <span class="math inline">\(p_{ij} &gt; 0\)</span> for all <span class="math inline">\(i,j\)</span>, and <span class="math inline">\(\sum_j p_{ij} = 1\)</span> for all <span class="math inline">\(i\)</span>. Let the time index be <span class="math inline">\(n = 0,1,2,\dots\)</span>. Then the <strong>time homogeneous discrete time Markov process</strong> or <strong>Markov chain</strong> <span class="math inline">\((X_n)\)</span> with initial distribution <span class="math inline">\((\lambda_i)\)</span> and transition probabilities <span class="math inline">\((p_{ij})\)</span> is defined by
+<span class="math display">\[\begin{gather*}
+    \mathbb P(X_0 = i) = \lambda_i ,\\
+    \mathbb P(X_{n+1} = j \mid X_n = i, X_{n-1} = x_{n-1}, \dots, X_0 = x_0) = \mathbb P(X_{n+1} = j \mid X_n = i) =  p_{ij}  . \end{gather*}\]</span></p>
+</div>
+<p>When the state space is finite (and even sometimes when it’s not), it’s convenient to write the transition probabilities <span class="math inline">\((p_{ij})\)</span> as a matrix <span class="math inline">\(\mathsf P\)</span>, called the <strong>transition matrix</strong>, whose <span class="math inline">\((i,j)\)</span>th entry is <span class="math inline">\(p_{ij}\)</span>. Then the condition that <span class="math inline">\(\sum_j p_{ij} = 1\)</span> is the condition that each of the rows of <span class="math inline">\(\mathsf P\)</span> add up to <span class="math inline">\(1\)</span>.</p>
+<p>From this, we can calculate, for example,
+<span class="math display">\[ \mathbb P(X_0 = i \text{ and } X_1 = j) = \lambda_i p_{ij} , \]</span>
+as we must start from <span class="math inline">\(i\)</span> and then move to <span class="math inline">\(j\)</span>. Another example would be
+<span class="math display">\[ \mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i) = p_{ik}p_{kj} , \]</span>
+as we must first move from <span class="math inline">\(i\)</span> to <span class="math inline">\(k\)</span>, then from <span class="math inline">\(k\)</span> to <span class="math inline">\(j\)</span>.</p>
+</div>
+<div id="S05-example" class="section level2">
+<h2><span class="header-section-number">5.2</span> A two-state example</h2>
+<p>Consider a simple two-state Markov chain with state space <span class="math inline">\(\mathcal S = \{0,1\}\)</span> and transition matrix
+<span class="math display">\[ \mathsf P = \begin{pmatrix} p_{00} &amp; p_{01} \\ p_{10} &amp; p_{11} \end{pmatrix} = \begin{pmatrix} 1-\alpha &amp; \alpha \\ \beta &amp; 1-\beta \end{pmatrix}  \]</span>
+for some <span class="math inline">\(0 &lt; \alpha, \beta &lt; 1\)</span>. Note that the rows of <span class="math inline">\(\mathsf P\)</span> add up to <span class="math inline">\(1\)</span>, as they must.</p>
+<p>We can illustrate <span class="math inline">\(\mathsf P\)</span> by a <strong>transition diagram</strong>, where the blobs are the states and the arrows give the transition probabilities. (We don’t draw the arrow if <span class="math inline">\(p_{ij} = 0\)</span>.) In this case, our transition diagram looks like this:</p>
+<div class="figure" style="text-align: center"><span id="fig:twostate"></span>
+<img src="math2750_files/figure-html/twostate-1.png" alt="Transition diagram for the two-state Markov chain" width="384" />
+<p class="caption">
+Figure 5.1: Transition diagram for the two-state Markov chain
+</p>
+</div>
+<p>We can use this as a simple model of a broken printer, for example. If the printer is broken (state <span class="math inline">\(0\)</span>) on one day, then with probability <span class="math inline">\(\alpha\)</span> it will be fixed (state <span class="math inline">\(1\)</span>) by the next day; while if it is working (state <span class="math inline">\(1\)</span>), then with probability <span class="math inline">\(\beta\)</span> it will have broken down (state <span class="math inline">\(0\)</span>) by the next day.</p>
+<div class="example">
+<p><span id="exm:printer" class="example"><strong>Example 5.1  </strong></span><em>If the printer is working on Monday, what’s the probability that it also is working on Wednesday?</em></p>
+<p>If we call Monday day <span class="math inline">\(n\)</span>, then Wednesday is day <span class="math inline">\(n+2\)</span>, and we want to find the two-step transition probability.
+<span class="math display">\[ p_{11}(2) = \mathbb P (X_{n+2} = 1 \mid X_n = 1) . \]</span>
+The key to calculating this is to condition on the first step again – that is, on whether the printer is working on Tuesday. We have
+<span class="math display">\[\begin{align*}
+  p_{11}(2) &amp;= \mathbb P (X_{n+1} = 0 \mid X_n = 1)\,\mathbb P (X_{n+2} = 1 \mid X_{n+1} = 0) \\
+  &amp;\qquad{} + \mathbb P (X_{n+1} = 1 \mid X_n = 1)\,\mathbb P (X_{n+2} = 1 \mid X_{n+1} = 1) \\
+  &amp;= p_{10}p_{01} + p_{11}p_{11} \\
+  &amp;= \beta\alpha + (1-\beta)^2 .
+\end{align*}\]</span></p>
+<p>Another way to think of this as we summing the probabilities of all length-<span class="math inline">\(2\)</span> paths from <span class="math inline">\(1\)</span> to <span class="math inline">\(1\)</span>, which are <span class="math inline">\(1\to 0\to 1\)</span> with probability <span class="math inline">\(\beta\alpha\)</span> and <span class="math inline">\(1 \to 1 \to 1\)</span> with probability <span class="math inline">\((1-\beta)^2\)</span></p>
+<p>In the above, we used the Markov property to mean the conditional probabilities <span class="math inline">\(\mathbb P(X_{n+2} = 1 \mid X_{n+1} = k)\)</span> did not have to depend on <span class="math inline">\(X_n\)</span>.</p>
+</div>
+</div>
+<div id="n-step" class="section level2">
+<h2><span class="header-section-number">5.3</span> <em>n</em>-step transition probabilities</h2>
+<p>In the above example, we calculated a two-step transition probability <span class="math inline">\(p_{ij}(2) = \mathbb P (X_{n+2} = j \mid X_n = i)\)</span> by conditioning on the first step. That is, by considering all the possible intermediate steps <span class="math inline">\(k\)</span>, we have
+<span class="math display">\[ p_{ij}(2) = \sum_{k\in\mathcal S} \mathbb P (X_{n+1} = k \mid X_n = i)\mathbb P (X_{n+2} = j \mid X_{n+1} = k) = \sum_{k\in\mathcal S} p_{ik}p_{kj} . \]</span></p>
+<p>But this is exactly the formula for multiplying the matrix <span class="math inline">\(\mathsf P\)</span> with itself! In other words, <span class="math inline">\(p_{ij}(2) = \sum_{k} p_{ik}p_{kj}\)</span> is the <span class="math inline">\((i,j)\)</span>th entry of the matrix <span class="math inline">\(\mathsf P^2 = \mathsf{PP}\)</span>. If we write <span class="math inline">\(\mathsf P(2) = (p_{ij}(2))\)</span> for the matrix of two-step transition probabilities, we have <span class="math inline">\(\mathsf P(2) = \mathsf P^2\)</span>.</p>
+<p>More generally, we see that this rule holds over multiple steps, provided we sum over all the possible paths <span class="math inline">\(i\to k_1 \to k_2 \to \cdots \to k_{n-1} \to j\)</span> of length <span class="math inline">\(n\)</span> from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:thm-n-step" class="theorem"><strong>Theorem 5.1  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain with state space <span class="math inline">\(\mathcal S\)</span> and transition matrix <span class="math inline">\(\mathsf P = (p_{ij})\)</span>. For <span class="math inline">\(i,j \in \mathcal S\)</span>, write
+<span class="math display">\[ p_{ij}(n) = \mathbb P(X_n = j \mid X_0 = i) \]</span>
+for the <span class="math inline">\(n\)</span>-step transition probability. Then
+<span class="math display">\[ p_{ij}(n) = \sum_{k_1, k_2, \dots, k_{n-1} \in \mathcal S} p_{ik_1} p_{k_1k_2} \cdots p_{k_{n-2}k_{n-1}} p_{k_{n-1}j} . \]</span>
+In particular, <span class="math inline">\(p_{ij}(n)\)</span> is the <span class="math inline">\((i,j)\)</span>th element of the matrix power <span class="math inline">\(\mathsf P^n\)</span>, and the matrix of <span class="math inline">\(n\)</span>-step transition probabilities is given by <span class="math inline">\(\mathsf P(n) = \mathsf P^n\)</span>.</p>
+</div>
+<p>The so-called <strong>Chapman–Kolmogorov equations</strong> follow immediately from this.</p>
+<div class="theorem">
+<p><span id="thm:c-k" class="theorem"><strong>Theorem 5.2  (Chapman–Kolmogorov equations) </strong></span>Let <span class="math inline">\((X_n)\)</span> be a Markov chain with state space <span class="math inline">\(\mathcal S\)</span> and transition matrix <span class="math inline">\(\mathsf P = (p_{ij})\)</span>. Then, for non-negative integers <span class="math inline">\(n,m\)</span>, we have
+<span class="math display">\[ p_{ij}(n+m) = \sum_{k \in \mathcal S} p_{ik}(n)p_{kj}(m) , \]</span>
+or, in matrix notation, <span class="math inline">\(\mathsf P(n+m) = \mathsf P(n)\mathsf P(m)\)</span>.</p>
+</div>
+<p>In other words, a trip of length <span class="math inline">\(n + m\)</span> from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is a trip of length <span class="math inline">\(n\)</span> from <span class="math inline">\(i\)</span> to some other state <span class="math inline">\(k\)</span>, then a trip of length <span class="math inline">\(m\)</span> from <span class="math inline">\(k\)</span> back to <span class="math inline">\(j\)</span>, and this intermediate stop <span class="math inline">\(k\)</span> can be any state, so we have to sum the probabilities.</p>
+<p>Of course, once we know that <span class="math inline">\(\mathsf P(n) = \mathsf P^n\)</span> is given by the matrix power, it’s totally obvious that <span class="math inline">\(\mathsf P(n+m) = \mathsf P^{n+m} = \mathsf P^n \mathsf P^m = \mathsf P(n)\mathsf P(m)\)</span>.</p>
+<div class="example">
+<p><span id="exm:printer2" class="example"><strong>Example 5.2  </strong></span>In our two-state broken printer example above, the matrix of two-state transition probabilities is given by
+<span class="math display">\[\begin{align*}
+\mathsf P(2) = \mathsf P^2 &amp;=  \begin{pmatrix} 1-\alpha &amp; \alpha \\ \beta &amp; 1-\beta \end{pmatrix}  \begin{pmatrix} 1-\alpha &amp; \alpha \\ \beta &amp; 1-\beta \end{pmatrix} \\
+&amp;=  \begin{pmatrix} (1-\alpha)^2 + \alpha\beta &amp; (1-\alpha)\alpha + \alpha(1-\beta) \\ \beta(1-\alpha) + (1-\beta)\beta &amp; \beta\alpha + (1-\beta)^2 \end{pmatrix} ,
+\end{align*}\]</span>
+where the bottom right entry <span class="math inline">\(p_{11}(2)\)</span> is what we calculated earlier.</p>
+</div>
+<p>One final comment. It’s also convenient to consider the initial distribution <span class="math inline">\(\boldsymbol\lambda = (\lambda_i)\)</span> as a <em>row</em> vector. The first-step distribution is given by
+<span class="math display">\[ \mathbb P(X_1 = j) = \sum_{i \in \mathcal S} \lambda_i p_{ij} , \]</span>
+by conditioning on the start point.
+This is exactly the <span class="math inline">\(j\)</span>th element of the vector–matrix multiplication <span class="math inline">\(\boldsymbol\lambda \mathsf P\)</span>. More generally, the row vector of of probabilities after <span class="math inline">\(n\)</span> steps is given by <span class="math inline">\(\boldsymbol\lambda \mathsf P^n\)</span>.</p>
+<div class="mysummary">
+<p>In the next section, we look at how to model some actuarial problems using Markov chains.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="A1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S06-examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

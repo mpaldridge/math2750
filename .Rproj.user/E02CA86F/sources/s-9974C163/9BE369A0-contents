@@ -20,6 +20,7 @@ rmd_files:
   - sections/S11-long-term-chains.Rmd
   - sections/S12-revision-i.Rmd
 book_filename: "math2750"
+output_dir: "docs"
 delete_merged_file: true
 language:
   ui:
