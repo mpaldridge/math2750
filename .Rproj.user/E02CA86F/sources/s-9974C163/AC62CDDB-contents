@@ -8,7 +8,7 @@
   float: right; 
   margin: -12px 0 0 0;
 }
-</style>
+</style
 
 <script type="text/javascript">
 $(document).ready(function() {
