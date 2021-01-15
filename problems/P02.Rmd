@@ -1,14 +1,12 @@
 # Problem sheet 2  {.unnumbered #P02}
 
-# Problem Sheet 1  {.unnumbered #P01}
-
 <!--
 <style>
 .fold-btn { 
   float: right; 
   margin: -12px 0 0 0;
 }
-</style>
+</style
 
 <script type="text/javascript">
 $(document).ready(function() {
