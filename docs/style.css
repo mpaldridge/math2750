@@ -50,12 +50,12 @@ pre code {
   margin-bottom: 0.6em !important;
 }
 
-.book.color-theme-1 .mysummary, .book.color-theme-1 .mysched {
+.book.color-theme-1 .mysummary, .book.color-theme-1 .mysched,  .book.color-theme-1 .myanswers {
   background: #fdf6e3; 5px center/3em no-repeat;
   border: 1px solid #F5D98B;
 }
 
-.book.color-theme-2 .mysummary, .book.color-theme-2 .mysched {
+.book.color-theme-2 .mysummary, .book.color-theme-2 .mysched, .book.color-theme-2 .myanswers  {
   background: #2d3143; 5px center/3em no-repeat;
   border: 1px solid #2d3143;
 }
