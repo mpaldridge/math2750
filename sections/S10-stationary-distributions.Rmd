@@ -8,7 +8,7 @@
 
 
 
-## Definition  {def-stationary-definition}
+## Definition  {#def-stationary-definition}
 
 
 Consider [the two-state "broken printer" Markov chain from Lecture 5](#S05-example).
