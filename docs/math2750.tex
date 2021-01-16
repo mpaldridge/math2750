@@ -118,7 +118,7 @@
 \item
   \protect\hyperlink{P01}{Problem Sheet 1}
 \item
-  Lecture: Tuesday at 2pm
+  Lecture: Tuesday at 1400
 \item
   Drop-in sessions: Tuesday or Wednesday
 \end{itemize}
@@ -2782,5 +2782,167 @@ The following list is not exhaustive, but if you can do most of the things on th
 \end{itemize}
 
 \textbf{In the next section}, we begin our study of continuous time Markov processes by looking at the most important example: the Poisson process.
+
+\hypertarget{S13-poisson-poisson}{%
+\section{Poisson process with Poisson increments}\label{S13-poisson-poisson}}
+
+\begin{itemize}
+\tightlist
+\item
+  Reminder: the Poisson distribution
+\item
+  The Poisson process has independent Poisson increments
+\item
+  Summed and marked Poisson processes
+\end{itemize}
+
+\newcommand{\Po}{\operatorname{Po}}
+\newcommand{\ee}{\mathrm{e}}
+
+\hypertarget{poisson-dist}{%
+\subsection{Poisson distribution}\label{poisson-dist}}
+
+In the next three sections we'll be considering the Poisson process, a continuous time discrete space process with the Markov property. Given its name, it's not surprising to hear the Poisson \emph{process} is related to the Poisson \emph{distribution}. Let's start with a reminder of that.
+
+Recall that a discrete random variable \(X\) has a \textbf{Poisson distribution} with rate \(\lambda\), written \(X \sim \operatorname{Po}(\lambda)\), if its probability mass function is
+\[ \mathbb P(X = n) = \mathrm{e}^{-\lambda} \frac{\lambda^n}{n!} \qquad n = 0,1,2,\dots. \]
+
+The Poisson distribution is often used to model the number of ``arrivals'' in a fixed amount of time -- for example, the number of calls to a call centre in one hour, the number of claims to an insurance company in one year, or the number of particles decaying from a large amount of radioactive material in one second.
+
+The Poisson distribution is named after the French mathematician and physicist Siméon Denis Poisson, who studied it in 1837, although it was used by another French mathematician, Abraham de Moivre, more than 100 years earlier.
+
+Recall the following facts about of the Poisson distribution:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Its expectation is \(\mathbb EX = \lambda\) and the variance is \(\operatorname{Var}(X) = \lambda\).
+\item
+  If \(X \sim \operatorname{Po}(\lambda)\) and \(Y \sim \operatorname{Po}(\mu)\) are independent, then \(X + Y \sim \operatorname{Po}(\lambda+\mu)\).
+\item
+  Let \(X \sim \operatorname{Po}(\lambda)\) represent some arrivals, and independently ``mark'' each arrival with probability \(p\). Then the number of marked arrivals \(Y\) has distribution \(Y = \operatorname{Po}(p\lambda)\), the number of unmarked arrivals \(Z\) has distribution \(Z \sim \operatorname{Po}((1-p)\lambda)\), and \(Y\) and \(Z\) are independent.
+\end{enumerate}
+
+(When mathematicians say ``recall'' usually they mean ``remember this well-known fact you've been taught before'', but sometimes they secretly mean ``I'm going to tell you something you probably haven't seen before, but I can't be bothered to prove it''. Fact number 3 might be more of the latter kind\ldots)
+
+\hypertarget{poisson-def-poisson}{%
+\subsection{Definition 1: Poisson increments}\label{poisson-def-poisson}}
+
+Suppose that, instead of just modelling the number of arrivals in a \emph{fixed} amount of time, we want to continually model the total number of arrivals as it changes over time. This will be a stochastic process with discrete state space \(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\) and continuous time \(\mathbb R_+ = [0,\infty)\). In continuous time, we will normally write stochastic processes as \((X(t))\), with the time variable being a \(t\) in brackets, rather than a subscript \(n\) as we had in discrete time.
+
+Suppose calls arrive at a call centre at a rate of \(\lambda = 100\) an hour. The following assumptions seem reasonable:
+
+\begin{itemize}
+\tightlist
+\item
+  We begin counting with \(X(0) = 0\) calls.
+\item
+  The number of calls in the first hour is \(X(1) \sim \operatorname{Po}(100)\). The number of calls in the second hour \(X(2) - X(1)\) will also be \(\operatorname{Po}(100)\), and will be independent of the number of calls in the first hour.
+\item
+  The number of calls in a two hour period will be \(X(t+2) - X(t) \sim \operatorname{Po}(200)\), while the number of calls in a half-hour period will be \(X(t+\frac12) - X(t) \sim \operatorname{Po}(50)\).
+\end{itemize}
+
+These properties will define the Poisson process.
+
+\begin{definition}
+\protect\hypertarget{def:poisson-def-1}{}\label{def:poisson-def-1}
+
+The \textbf{Poisson process} with rate \(\lambda\) is defined as followed. It is a stochastic process \((X(t))\) with continuous time \(t \in [0,\infty)\) and discrete state space \(\mathcal S = \mathbb Z_+\) with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(X(0) = 0\);
+\item
+  Poisson increments: \(X(t+s) - X(t) \sim \operatorname{Po}(\lambda s)\) for all \(s,t>0\);
+\item
+  independent increments: \(X(t_2) - X(t_1)\) and \(X(t_4) - X(t_3)\) are independent for all \(t_1 \leq t_2 \leq t_3 \leq t_4\).
+\end{enumerate}
+
+\end{definition}
+
+Note that the condition \(t_1 \leq t_2 \leq t_3 \leq t_4\) means that the time interval from \(t_1\) to \(t_2\) and the time interval from \(t_3\) to \(t_4\) don't overlap. (Overlapping time intervals will not have independent increments, as arrivals in the overlap will count for both.)
+
+The Poisson process was discovered in the first decade 20th century, and the process was named after the distribution. Many people were working on similar things, so it's difficult to say who discovered it first, but important work was done by the Swedish actuary and mathematician Filip Lundberg and the Danish engineer and mathematician AK Erlang,
+
+\begin{example}
+\protect\hypertarget{exm:poisson-ex-1}{}\label{exm:poisson-ex-1}
+
+\emph{Claims arrive at insurance company at a rate of \(\lambda = 8\) per hour, modelled as a Poisson process. What is the probability there are no claims in a given \(15\) minute period?}
+
+By property 2, the number of claims in \(15\) minutes is a Poisson distribution with mean \(\frac{15}{60}\lambda = 2\). The probability there are no claims is
+\[ \mathrm{e}^{-2} \frac{2^0}{0!} = \mathrm{e}^{-2} = 0.135 . \]
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:poisson-ex-2}{}\label{exm:poisson-ex-2}
+
+\emph{A professor receives visitors to her office at a rate of \(\lambda = 2.5\) per day, modelled as a Poisson process. What is the probability she gets at least one visitor every day this (5-day) week?}
+
+The probability she gets at least one visitor on any given day is
+\[ 1 - \mathrm{e}^{-2.5} \frac{2.5^0}{0!} = 1 - \mathrm{e}^{-2.5} = 0.918.   \]
+By property 3, the numbers of visitors on different days are independent, so the probability of getting at least one visitor each day this week is
+\(0.918^5 = 0.652\).
+
+\end{example}
+
+\hypertarget{summed-marked}{%
+\subsection{Summed and marked Poisson processes}\label{summed-marked}}
+
+The following theorem shows that the sum of two Poisson processes is itself a Poisson process.
+
+\begin{theorem}
+\protect\hypertarget{thm:summed}{}\label{thm:summed}
+
+Let \((X(t))\) and \((Y(t))\) be independent Poisson processes with rates \(\lambda\) and \(\mu\) respectively. Then the process \((Z(t))\) given by \(Z(t) = X(t) + Y(t)\) is a Poisson process with rate \(\lambda+\mu\).
+
+\end{theorem}
+
+\begin{proof}
+
+Given fact number 2, that the sum of a \(\operatorname{Po}(\lambda)\) and a \(\operatorname{Po}(\mu)\) is a \(\operatorname{Po}(\lambda+\mu)\), its easy to check the necessary properties.
+
+\end{proof}
+
+\begin{example}
+\protect\hypertarget{exm:poisson-ex-3}{}\label{exm:poisson-ex-3}
+
+\emph{A student receives email to her university mail address at a rate of \(\lambda = 4\) emails per hour, and to her personal email address at a rate of \(\mu = 2\) per hour. Using a Poisson process model, what is the probability the student receives 3 or fewer emails in a 30 minute period?}
+
+The total number of emails is a sum of Poisson processes with rate \(\lambda + \mu = 6\). The total number of emails received in half an hour is Poisson with rate \((\lambda + \mu)/2 = 3\). Thus the probability that 3 or fewer emails are received is
+\[ \mathrm{e}^{-3} \frac{3^0}{0!} + \mathrm{e}^{-3} \frac{3^1}{1!} + \mathrm{e}^{-3} \frac{3^2}{2!} + \mathrm{e}^{-3} \frac{3^3}{3!} = 13\mathrm{e}^{-3} = 0.647 . \]
+
+\end{example}
+
+We also have the \textbf{marked Poisson process}, which can be thought of as the opposite to the summed process: the summed process combines two processes together, while the marked process splits one process into two.
+
+\begin{theorem}
+\protect\hypertarget{thm:marked}{}\label{thm:marked}
+
+Let \((X(t))\) be a Poisson process with rate \(\lambda\). Each arrival is independently marked with probability \(p\). Then the marked process \((Y(t))\) is a Poisson process with rate \(p\lambda\), the unmarked process \((Z(t))\) is a Poisson process with rate \((1-p)\lambda\), and \((Y(t))\) and \((Z(t))\) are independent.
+
+\end{theorem}
+
+\begin{proof}
+
+Given the third fact that you were ``reminded'' of, it's easy to check the necessary properties.
+
+\end{proof}
+
+\begin{example}
+\protect\hypertarget{exm:pois-ex-4}{}\label{exm:pois-ex-4}
+
+\emph{In the 2017/18 English Premier League football season, an average of \(\lambda = 2.81\) goals were scored per game, with \(p = 0.56\) of them scored by the home team. If we model this as a Poisson process, what is the probability a game ends 1--1?}
+
+The number of home goals scored is Poisson with rate \(p\lambda = 0.56\times 2.81 = 1.57\), and the number of away goals scored is Poisson with rate \((1-p)\lambda = 1.24\). Since these are independent, the probability the home and the away team both score \(1\) goal is
+\[ \mathrm{e}^{-1.57} \frac{1.57^1}{1!} \times  \mathrm{e}^{-1.24} \frac{1.24^1}{1!} = 1.57\mathrm{e}^{-1.57} \times 1.24 \mathrm{e}^{-1.24} =  0.12, \]
+or 12\%.
+
+\end{example}
+
+\textbf{In the next section}, we look at the Poisson process in a different way: the times in between arrivals have an exponential distribution.
 
 \end{document}

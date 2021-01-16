@@ -19,6 +19,7 @@ rmd_files:
   - problems/P05.Rmd
   - sections/S11-long-term-chains.Rmd
   - sections/S12-revision-i.Rmd
+  - sections/S13-poisson-poisson.Rmd
 book_filename: "math2750"
 output_dir: "docs"
 delete_merged_file: true

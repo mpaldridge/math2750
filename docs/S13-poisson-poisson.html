@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Problem sheet 4 | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 13 Poisson process with Poisson increments | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Problem sheet 4 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 13 Poisson process with Poisson increments | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Problem sheet 4 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 13 Poisson process with Poisson increments | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="S08-hitting-times.html"/>
-<link rel="next" href="S09-recurrence-transience.html"/>
+<link rel="prev" href="S11-revision-i.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -184,18 +184,104 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="P04" class="section level1 unnumbered">
-<h1>Problem sheet 4</h1>
-<p>Problem Sheet 4</p>
+<div id="S13-poisson-poisson" class="section level1">
+<h1><span class="header-section-number">Section 13</span> Poisson process with Poisson increments</h1>
+<div class="mysummary">
+<ul>
+<li>Reminder: the Poisson distribution</li>
+<li>The Poisson process has independent Poisson increments</li>
+<li>Summed and marked Poisson processes</li>
+</ul>
+</div>
 
+<div id="poisson-dist" class="section level2">
+<h2><span class="header-section-number">13.1</span> Poisson distribution</h2>
+<p>In the next three sections we’ll be considering the Poisson process, a continuous time discrete space process with the Markov property. Given its name, it’s not surprising to hear the Poisson <em>process</em> is related to the Poisson <em>distribution</em>. Let’s start with a reminder of that.</p>
+<p>Recall that a discrete random variable <span class="math inline">\(X\)</span> has a <strong>Poisson distribution</strong> with rate <span class="math inline">\(\lambda\)</span>, written <span class="math inline">\(X \sim \operatorname{Po}(\lambda)\)</span>, if its probability mass function is
+<span class="math display">\[ \mathbb P(X = n) = \mathrm{e}^{-\lambda} \frac{\lambda^n}{n!} \qquad n = 0,1,2,\dots. \]</span></p>
+<p>The Poisson distribution is often used to model the number of “arrivals” in a fixed amount of time – for example, the number of calls to a call centre in one hour, the number of claims to an insurance company in one year, or the number of particles decaying from a large amount of radioactive material in one second.</p>
+<p>The Poisson distribution is named after the French mathematician and physicist Siméon Denis Poisson, who studied it in 1837, although it was used by another French mathematician, Abraham de Moivre, more than 100 years earlier.</p>
+<p>Recall the following facts about of the Poisson distribution:</p>
+<ol style="list-style-type: decimal">
+<li>Its expectation is <span class="math inline">\(\mathbb EX = \lambda\)</span> and the variance is <span class="math inline">\(\operatorname{Var}(X) = \lambda\)</span>.</li>
+<li>If <span class="math inline">\(X \sim \operatorname{Po}(\lambda)\)</span> and <span class="math inline">\(Y \sim \operatorname{Po}(\mu)\)</span> are independent, then <span class="math inline">\(X + Y \sim \operatorname{Po}(\lambda+\mu)\)</span>.</li>
+<li>Let <span class="math inline">\(X \sim \operatorname{Po}(\lambda)\)</span> represent some arrivals, and independently “mark” each arrival with probability <span class="math inline">\(p\)</span>. Then the number of marked arrivals <span class="math inline">\(Y\)</span> has distribution <span class="math inline">\(Y = \operatorname{Po}(p\lambda)\)</span>, the number of unmarked arrivals <span class="math inline">\(Z\)</span> has distribution <span class="math inline">\(Z \sim \operatorname{Po}((1-p)\lambda)\)</span>, and <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> are independent.</li>
+</ol>
+<p>(When mathematicians say “recall” usually they mean “remember this well-known fact you’ve been taught before”, but sometimes they secretly mean “I’m going to tell you something you probably haven’t seen before, but I can’t be bothered to prove it”. Fact number 3 might be more of the latter kind…)</p>
+</div>
+<div id="poisson-def-poisson" class="section level2">
+<h2><span class="header-section-number">13.2</span> Definition 1: Poisson increments</h2>
+<p>Suppose that, instead of just modelling the number of arrivals in a <em>fixed</em> amount of time, we want to continually model the total number of arrivals as it changes over time. This will be a stochastic process with discrete state space <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span> and continuous time <span class="math inline">\(\mathbb R_+ = [0,\infty)\)</span>. In continuous time, we will normally write stochastic processes as <span class="math inline">\((X(t))\)</span>, with the time variable being a <span class="math inline">\(t\)</span> in brackets, rather than a subscript <span class="math inline">\(n\)</span> as we had in discrete time.</p>
+<p>Suppose calls arrive at a call centre at a rate of <span class="math inline">\(\lambda = 100\)</span> an hour. The following assumptions seem reasonable:</p>
+<ul>
+<li>We begin counting with <span class="math inline">\(X(0) = 0\)</span> calls.</li>
+<li>The number of calls in the first hour is <span class="math inline">\(X(1) \sim \operatorname{Po}(100)\)</span>. The number of calls in the second hour <span class="math inline">\(X(2) - X(1)\)</span> will also be <span class="math inline">\(\operatorname{Po}(100)\)</span>, and will be independent of the number of calls in the first hour.</li>
+<li>The number of calls in a two hour period will be <span class="math inline">\(X(t+2) - X(t) \sim \operatorname{Po}(200)\)</span>, while the number of calls in a half-hour period will be <span class="math inline">\(X(t+\frac12) - X(t) \sim \operatorname{Po}(50)\)</span>.</li>
+</ul>
+<p>These properties will define the Poisson process.</p>
+<div class="definition">
+<p><span id="def:poisson-def-1" class="definition"><strong>Definition 13.1  </strong></span>The <strong>Poisson process</strong> with rate <span class="math inline">\(\lambda\)</span> is defined as followed. It is a stochastic process <span class="math inline">\((X(t))\)</span> with continuous time <span class="math inline">\(t \in [0,\infty)\)</span> and discrete state space <span class="math inline">\(\mathcal S = \mathbb Z_+\)</span> with the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X(0) = 0\)</span>;</li>
+<li>Poisson increments: <span class="math inline">\(X(t+s) - X(t) \sim \operatorname{Po}(\lambda s)\)</span> for all <span class="math inline">\(s,t&gt;0\)</span>;</li>
+<li>independent increments: <span class="math inline">\(X(t_2) - X(t_1)\)</span> and <span class="math inline">\(X(t_4) - X(t_3)\)</span> are independent for all <span class="math inline">\(t_1 \leq t_2 \leq t_3 \leq t_4\)</span>.</li>
+</ol>
+</div>
+<p>Note that the condition <span class="math inline">\(t_1 \leq t_2 \leq t_3 \leq t_4\)</span> means that the time interval from <span class="math inline">\(t_1\)</span> to <span class="math inline">\(t_2\)</span> and the time interval from <span class="math inline">\(t_3\)</span> to <span class="math inline">\(t_4\)</span> don’t overlap. (Overlapping time intervals will not have independent increments, as arrivals in the overlap will count for both.)</p>
+<p>The Poisson process was discovered in the first decade 20th century, and the process was named after the distribution. Many people were working on similar things, so it’s difficult to say who discovered it first, but important work was done by the Swedish actuary and mathematician Filip Lundberg and the Danish engineer and mathematician AK Erlang,</p>
+<div class="example">
+<p><span id="exm:poisson-ex-1" class="example"><strong>Example 13.1  </strong></span><em>Claims arrive at insurance company at a rate of <span class="math inline">\(\lambda = 8\)</span> per hour, modelled as a Poisson process. What is the probability there are no claims in a given <span class="math inline">\(15\)</span> minute period?</em></p>
+<p>By property 2, the number of claims in <span class="math inline">\(15\)</span> minutes is a Poisson distribution with mean <span class="math inline">\(\frac{15}{60}\lambda = 2\)</span>. The probability there are no claims is
+<span class="math display">\[ \mathrm{e}^{-2} \frac{2^0}{0!} = \mathrm{e}^{-2} = 0.135 . \]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:poisson-ex-2" class="example"><strong>Example 13.2  </strong></span><em>A professor receives visitors to her office at a rate of <span class="math inline">\(\lambda = 2.5\)</span> per day, modelled as a Poisson process. What is the probability she gets at least one visitor every day this (5-day) week?</em></p>
+<p>The probability she gets at least one visitor on any given day is
+<span class="math display">\[ 1 - \mathrm{e}^{-2.5} \frac{2.5^0}{0!} = 1 - \mathrm{e}^{-2.5} = 0.918.   \]</span>
+By property 3, the numbers of visitors on different days are independent, so the probability of getting at least one visitor each day this week is
+<span class="math inline">\(0.918^5 = 0.652\)</span>.</p>
+</div>
+</div>
+<div id="summed-marked" class="section level2">
+<h2><span class="header-section-number">13.3</span> Summed and marked Poisson processes</h2>
+<p>The following theorem shows that the sum of two Poisson processes is itself a Poisson process.</p>
+<div class="theorem">
+<p><span id="thm:summed" class="theorem"><strong>Theorem 13.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> and <span class="math inline">\((Y(t))\)</span> be independent Poisson processes with rates <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> respectively. Then the process <span class="math inline">\((Z(t))\)</span> given by <span class="math inline">\(Z(t) = X(t) + Y(t)\)</span> is a Poisson process with rate <span class="math inline">\(\lambda+\mu\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>Given fact number 2, that the sum of a <span class="math inline">\(\operatorname{Po}(\lambda)\)</span> and a <span class="math inline">\(\operatorname{Po}(\mu)\)</span> is a <span class="math inline">\(\operatorname{Po}(\lambda+\mu)\)</span>, its easy to check the necessary properties.</p>
+</div>
+<div class="example">
+<p><span id="exm:poisson-ex-3" class="example"><strong>Example 13.3  </strong></span><em>A student receives email to her university mail address at a rate of <span class="math inline">\(\lambda = 4\)</span> emails per hour, and to her personal email address at a rate of <span class="math inline">\(\mu = 2\)</span> per hour. Using a Poisson process model, what is the probability the student receives 3 or fewer emails in a 30 minute period?</em></p>
+<p>The total number of emails is a sum of Poisson processes with rate <span class="math inline">\(\lambda + \mu = 6\)</span>. The total number of emails received in half an hour is Poisson with rate <span class="math inline">\((\lambda + \mu)/2 = 3\)</span>. Thus the probability that 3 or fewer emails are received is
+<span class="math display">\[ \mathrm{e}^{-3} \frac{3^0}{0!} + \mathrm{e}^{-3} \frac{3^1}{1!} + \mathrm{e}^{-3} \frac{3^2}{2!} + \mathrm{e}^{-3} \frac{3^3}{3!} = 13\mathrm{e}^{-3} = 0.647 . \]</span></p>
+</div>
+<p>We also have the <strong>marked Poisson process</strong>, which can be thought of as the opposite to the summed process: the summed process combines two processes together, while the marked process splits one process into two.</p>
+<div class="theorem">
+<p><span id="thm:marked" class="theorem"><strong>Theorem 13.2  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a Poisson process with rate <span class="math inline">\(\lambda\)</span>. Each arrival is independently marked with probability <span class="math inline">\(p\)</span>. Then the marked process <span class="math inline">\((Y(t))\)</span> is a Poisson process with rate <span class="math inline">\(p\lambda\)</span>, the unmarked process <span class="math inline">\((Z(t))\)</span> is a Poisson process with rate <span class="math inline">\((1-p)\lambda\)</span>, and <span class="math inline">\((Y(t))\)</span> and <span class="math inline">\((Z(t))\)</span> are independent.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>Given the third fact that you were “reminded” of, it’s easy to check the necessary properties.</p>
+</div>
+<div class="example">
+<p><span id="exm:pois-ex-4" class="example"><strong>Example 13.4  </strong></span><em>In the 2017/18 English Premier League football season, an average of <span class="math inline">\(\lambda = 2.81\)</span> goals were scored per game, with <span class="math inline">\(p = 0.56\)</span> of them scored by the home team. If we model this as a Poisson process, what is the probability a game ends 1–1?</em></p>
+<p>The number of home goals scored is Poisson with rate <span class="math inline">\(p\lambda = 0.56\times 2.81 = 1.57\)</span>, and the number of away goals scored is Poisson with rate <span class="math inline">\((1-p)\lambda = 1.24\)</span>. Since these are independent, the probability the home and the away team both score <span class="math inline">\(1\)</span> goal is
+<span class="math display">\[ \mathrm{e}^{-1.57} \frac{1.57^1}{1!} \times  \mathrm{e}^{-1.24} \frac{1.24^1}{1!} = 1.57\mathrm{e}^{-1.57} \times 1.24 \mathrm{e}^{-1.24} =  0.12, \]</span>
+or 12%.</p>
+</div>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at the Poisson process in a different way: the times in between arrivals have an exponential distribution.</p>
+</div>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="S08-hitting-times.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S09-recurrence-transience.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S11-revision-i.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
