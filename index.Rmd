@@ -12,9 +12,9 @@ description: "Lecture notes for the course MATH2750 Introduction to Markov Proce
 **Week 1** (25--29 January)
 
 * [About the module](#S00-about)
-* [Section 1: Stochastic processes and the Markov property](#S01-stochastic-processes)
-* [Section 2: Random walks](#S02-random-walks)
-* [Problem Sheet 1](#P01)
-* Lecture: Tuesday at 1400
-* Drop-in sessions: Tuesday or Wednesday
+* [**Section 1**: Stochastic processes and the Markov property](#S01-stochastic-processes)
+* [**Section 2**: Random walks](#S02-random-walk)
+* [**Problem Sheet 1**](#P01)
+* **Lecture**: Tuesday at 1400
+* **Drop-in sessions**: Tuesday or Wednesday
 :::

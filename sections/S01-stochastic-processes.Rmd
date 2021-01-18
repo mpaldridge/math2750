@@ -15,11 +15,11 @@
 ## Deterministic and random models {#models}
 
 
-A **model** is an imitation of a real-world system. For example, you might want to have a model to imitate the world's population, the level of water in a reservoir, cashflows of a pension scheme, or stock prices. Models allow us to try to understand and predict what might happen in the real world in a low risk, cost effective and fast way.
+A **model** is an imitation of a real-world system. For example, you might want to have a model to imitate the world's population, the level of water in a reservoir, cashflows of a pension scheme, or the price of a stock. Models allow us to try to understand and predict what might happen in the real world in a low risk, cost effective and fast way.
 
 To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.
 
-An important distinction is between **deterministic** models and **random** (or **stochastic**) models. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
+An important distinction is between **deterministic** models and **random** models. Another word for a random model is a **stochastic** ("*sto-KASS-tik*") model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
 
 Consider models for:
 
@@ -35,7 +35,7 @@ In this module we will see many examples of stochastic models.  Lots of the appl
 ## Stochastic processes  {#stochastic-processes}
 
 
-If we want to model, for example, the total number of claims to an insurance company in the whole of 2020, we can use a random variable $X$ to model this -- perhaps a Poisson distribution with an appropriate mean. However, if we want to track how the number of claims changes over the course of the year 2021, we will need to use a **stochastic process**. (The word "stochastic" means the same thing as "random".)
+If we want to model, for example, the total number of claims to an insurance company in the whole of 2020, we can use a random variable $X$ to model this -- perhaps a Poisson distribution with an appropriate mean. However, if we want to track how the number of claims changes over the course of the year 2021, we will need to use a **stochastic process** (or "random process").
 
 A stochastic process, which we will usually write as $(X_n)$, is an indexed sequence of random variables that are (usually) dependent on each other.
 
@@ -91,7 +91,7 @@ Here, the left hand side is the probability we go to state $x_{n+1}$ next condit
 Stochastic processes that have the Markov property are much easier to study than general processes, as we only have to keep track of where we are now and we can forget about the entire history that came before.
 
 ::: {.mysummary}
-**In the next section**, we'll see our first example of a discrete time Markov chain, called the "random walk".
+**In the next section**, we'll see the first, and most important, example of a discrete time discrete space Markov chain: the "random walk".
 :::
 
 
