@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 12 Revision of Part 1: Discrete time Markov chains | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 14 Poisson process with exponential holding times | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 12 Revision of Part 1: Discrete time Markov chains | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 14 Poisson process with exponential holding times | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 12 Revision of Part 1: Discrete time Markov chains | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 14 Poisson process with exponential holding times | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="S11-long-term-chains.html"/>
-<link rel="next" href="S13-poisson-poisson.html"/>
+<link rel="prev" href="S13-poisson-poisson.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -191,63 +191,122 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="S11-revision-i" class="section level1">
-<h1><span class="header-section-number">Section 12</span> Revision of Part 1: Discrete time Markov chains</h1>
+<div id="S14-poisson-exponential" class="section level1">
+<h1><span class="header-section-number">Section 14</span> Poisson process with exponential holding times</h1>
 <div class="mysummary">
 <ul>
-<li>No new material in this section, but a half-week break to catch up and revise what we’ve learned</li>
+<li>Reminder: the exponential distribution</li>
+<li>The Poisson process has exponential holding times</li>
+<li>The Markov property in continuous time</li>
 </ul>
 </div>
-<div id="S12-revision" class="section level2">
-<h2><span class="header-section-number">12.1</span> Things to do</h2>
-<p>We’ve now finished the material of the Part 1 of the module, on discrete time Markov chains. So this is a good time to take stock, revise what we’ve learned, and make sure we’re completely up to date before starting Part 2 of the module on continuous time processes.</p>
-<p>Some things you may want to do in lieu of reading a section of notes:</p>
+
+<div id="exponential" class="section level2">
+<h2><span class="header-section-number">14.1</span> Exponential distribution</h2>
+<p>Last time, we introduced the Poisson process by looking at the random number of arrivals in fixed time period, which follows a Poisson distribution. Another way of looking at the Poisson process is to look at the random amount of of time required for a fixed number of arrivals. For this, we’ll need the exponential distribution.</p>
+<p>We start by recalling the exponential distribution.
+Recall that we say a continuous random variable <span class="math inline">\(T\)</span> has the <strong>exponential distribution</strong> with rate <span class="math inline">\(\lambda\)</span>, and write <span class="math inline">\(T \sim \operatorname{Exp}(\lambda)\)</span>, if it has the probability distribution function <span class="math inline">\(f(t) = \lambda \mathrm{e}^{-\lambda t}\)</span> for <span class="math inline">\(t \geq 0\)</span>.</p>
+<p>You are reminded of the following facts about the exponential distribution:</p>
 <ul>
-<li>Make sure you’ve completed <strong>Problem Sheets 1 to 6</strong>, and go back to any questions that stumped you before.</li>
-<li>Start working on <strong><a href="#A2">Assessment 2</a></strong> which is due on ?????? ??? (Week 8).</li>
-<li>Start working on <strong><a href="#computer">Computer Practical 2</a></strong> (which doubles as Assessment 3). There are optional computer drop-in sessions in Week 7, and the work is due on ????? ???? (Week 9).</li>
-<li>Re-read any sections of notes you struggled with earlier.</li>
-<li>Take the opportunity to look at the optional non-examinable subsections if you opted out the first time around. (<a href="S09-recurrence-transience.html#S09-strong-markov">Section 9</a>, <a href="#S10-proof">Section 10</a>, <a href="S11-long-term-chains.html#S11-proofs">Section 11</a>)</li>
-<li><a href="mailto:m.aldridge@leeds.ac.uk">Let me know</a> if there’s anything from this part of the course you’d like me to go through in next week’s lecture.</li>
+<li>The cumulative distribution function is <span class="math inline">\(F(t) = \mathbb P(T \leq t) = 1 - \mathrm{e}^{-\lambda t}\)</span>; although it is usually more convenient to deal with the tail probability <span class="math inline">\(\mathbb P(T &gt; t) = 1 - F(t) = \mathrm{e}^{-\lambda t}\)</span>.</li>
+<li>The expectation is <span class="math inline">\(\mathbb E T = 1/\lambda\)</span> and the variance is <span class="math inline">\(\operatorname{Var}(T) = 1/\lambda^2\)</span>.</li>
 </ul>
+<p>The following memoryless property will of course be important in a course about memoryless Markov processes.</p>
+<div class="theorem">
+<p><span id="thm:memoryless-thm" class="theorem"><strong>Theorem 14.1  </strong></span>Let <span class="math inline">\(T \sim \operatorname{Exp}(\lambda)\)</span>. Then, for any <span class="math inline">\(s,t\geq0\)</span>,
+<span class="math display">\[ \mathbb P(T &gt; t + s \mid T &gt; t) = \mathbb P(T &gt; s) . \]</span></p>
 </div>
-<div id="S12-summary-i" class="section level2">
-<h2><span class="header-section-number">12.2</span> Summary of Part 1</h2>
-<p>The following list is not exhaustive, but if you can do most of the things on the list, you’re well placed for the exam.</p>
+<p>Suppose we are waiting an exponentially distributed time for an alarm to go off. No matter how long we’ve been waiting for, the remaining time to wait is still exponentially distributed, with the same parameter – hence “memoryless”.</p>
+<div class="proof">
+<p><span id="unlabeled-div-21" class="proof"><em>Proof</em>. </span>By standard use of conditional probability, we have
+<span class="math display">\[ \mathbb P(T &gt; t + s \mid T &gt; t) = \frac{\mathbb P(T &gt; t + s \text{ and } T &gt; t)}{\mathbb P(T &gt; t)} =  \frac{\mathbb P(T &gt; t + s)}{\mathbb P(T &gt; t)} = \frac{\mathrm{e}^{-\lambda(t+s)}}{\mathrm{e}^{-\lambda t}} = \mathrm{e}^{-\lambda s} , \]</span>
+which is still the tail probability of the exponential distribution.</p>
+</div>
+<p>The following property will be important later on in the course.</p>
+<div class="theorem">
+<p><span id="thm:exponential-thm" class="theorem"><strong>Theorem 14.2  </strong></span>Let <span class="math inline">\(T_1 \sim \operatorname{Exp}(\lambda_1)\)</span>, <span class="math inline">\(T_2 \sim \operatorname{Exp}(\lambda_2)\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(T_n \sim \operatorname{Exp}(\lambda_n)\)</span> be independent exponential distributions, and let <span class="math inline">\(T\)</span> be the minimum of the <span class="math inline">\(T_i\)</span>s, so <span class="math inline">\(T = \min\{T_1, T_2, \dots, T_n \}\)</span>. Then
+<span class="math display">\[ T \sim \operatorname{Exp}(\lambda_1 + \lambda_2 + \cdots + \lambda_n) . \]</span>
+Further, the probability that <span class="math inline">\(T_j\)</span> is the smallest of all the <span class="math inline">\(T_i\)</span>s is
+<span class="math display">\[ \mathbb P(T = T_j) = \frac{\lambda_j}{\lambda_1 + \lambda_2 + \cdots + \lambda_n} . \]</span></p>
+</div>
+<p>The proof of this is an exercise on <a href="#P07">Problem Sheet 7</a>.</p>
+</div>
+<div id="definition-2-exponential-holding-times" class="section level2">
+<h2><span class="header-section-number">14.2</span> Definition 2: exponential holding times</h2>
+<p>Exponential distributions are often used to model “waiting times” – for example, the amount of time until a light bulb breaks, or the times between buses arriving. We often use the term `holding time’ to refer to the time between consecutive arrivals.</p>
+<p>When modelling a process <span class="math inline">\((X(t))\)</span> counting many arrivals at rate <span class="math inline">\(\lambda\)</span>, we might model the process like this: after waiting an <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> amount of time, an arrival appears. After another <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> amount of time, another arrival appears. And so on.</p>
 <ul>
-<li><p>Define the simple random walk and other random walks.</p></li>
-<li><p>Perform elementary calculations for the simple random walk, including by referring to the exact binomial distribution.</p></li>
-<li><p>Calculate the expectation and variance of general random walks.</p></li>
-<li><p>Define the gambler’s ruin Markov chain.</p></li>
-<li><p>Find the ruin probability and expected duration for the gambler’s ruin by (i) setting up equations by conditioning on the first step and (ii) solving the resulting linear difference equation.</p></li>
-<li><p>Draw a transition diagram of a Markov chain given the transition matrix</p></li>
-<li><p>Calculate <span class="math inline">\(n\)</span>-step transitions probabilities by (a) summing the probabilities over all relevant paths or (b) calculating the matrix power</p></li>
-<li><p>Find the communicating classes in a Markov chain.</p></li>
-<li><p>Calculate the period of communicating class,</p></li>
-<li><p>Calculate hitting probabilities and expected hitting times by (i) setting up equations by conditioning on the first step and (ii) solving the resulting simultaneous equations</p></li>
-<li><p>Define positive recurrence, null recurrence and transience, and explain their properties</p></li>
-<li><p>Find the positive recurrence, null recurrence or transience of communicating classes</p></li>
-<li><p>Find the stationary distribution of Markov chain</p></li>
-<li><p>Give conditions for a stationary distribution to exist and be unique</p></li>
-<li><p>Give conditions for convergence to an equilibrium distribution</p></li>
-<li><p>Calculate long-term proportions of time using the ergodic theorem</p></li>
+<li>We start with <span class="math inline">\(X(0) = 0\)</span>.</li>
+<li>Let <span class="math inline">\(T_1, T_2, \dots \sim \operatorname{Exp}(\lambda)\)</span> be the holding times, all independent. Then
+<span class="math display">\[ X(t) = \begin{cases} 0 &amp; \text{for $0 \leq t &lt; T_1$} \\
+  1 &amp; \text{for $T_1 \leq t &lt; T_1 + T_2$} \\
+  2 &amp; \text{for $T_1+T_2 \leq t &lt; T_1 + T_2 + T_3$} \\
+  \text{and so on.} &amp; \end{cases} \]</span></li>
 </ul>
+<p>It turns out (as you’ve probably already guessed) that the process as described above is also the Poisson process!</p>
 <div class="mysummary">
-<p><strong>In the next section</strong>, we begin our study of continuous time Markov processes by looking at the most important example: the Poisson process.</p>
+<p><strong>PICTURE PICTURE PICTURE</strong></p>
+</div>
+<div class="theorem">
+<p><span id="thm:pois-exp-equiv" class="theorem"><strong>Theorem 14.3  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a Poisson process with rate <span class="math inline">\(\lambda\)</span>, as defined by its independent Poisson increments (Definition <strong>REF REF REF</strong>). Then <span class="math inline">\((X(t))\)</span> has the exponential holding times structure described above.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-22" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\((X(t))\)</span> be a Poisson process with rate <span class="math inline">\(\lambda\)</span>. We seek the distribution of the first arrival time <span class="math inline">\(T_1\)</span>. We have
+<span class="math display">\[ \mathbb P(T_1 &gt; t_1) = \mathbb P\big(X(t_1) - X(0) = 0\big) = \mathrm{e}^{-\lambda t_1} \frac{(\lambda t_1)^0}{0!} = \mathrm{e}^{-\lambda t_1} , \]</span>
+since the arrival comes after <span class="math inline">\(t_1\)</span> if there are no arrivals in the interval <span class="math inline">\([0,t_1]\)</span>.
+But this is precisely the tail probability of an exponential distribution with rate <span class="math inline">\(\lambda\)</span>.</p>
+<p>Now consider the second holding time. We have
+<span class="math display">\[ \mathbb P(T_2 &gt; t_2 \mid T_1 = t_1) = \mathbb P\big(X(t_1 + t_2) - X(t_1) = 0\big) = \mathrm{e}^{-\lambda ((t_1 + t_2) - t_1)}  =  \mathrm{e}^{-\lambda t_2} \]</span>
+by the same argument as before. This is the tail distribution for another <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> distribution, independent of <span class="math inline">\(T_1\)</span>.</p>
+<p>Repeating this argument for all <span class="math inline">\(n\)</span> gives the desired exponential holding time structure.</p>
+</div>
+<div class="example">
+<p><span id="exm:bookshop" class="example"><strong>Example 14.1  </strong></span><em>Customers visit a second-hand bookshop at a rate of <span class="math inline">\(\lambda = 5\)</span> per hour. Each customer a book with probability <span class="math inline">\(p = 0.4\)</span>. What is the expected time to make ten sales, and what is the standard deviation?</em></p>
+<p>The count of books sold marked Poisson process, which we saw last time is itself a Poisson process with rate <span class="math inline">\(p\lambda = 2\)</span>.</p>
+<p>The expected time of the tenth sale is
+<span class="math display">\[ \mathbb E(T_1 + \dots + T_{10}) = 10\,\mathbb ET_1 = 10 \times \tfrac{1}{2} = 5 \text{ hours} .\]</span>
+The variance is
+<span class="math display">\[ \operatorname{Var}(T_1 + \dots + T_{10}) = 10\,\operatorname{Var}(T_1) = 10 \times \frac{1}{2^2} = 2.5 , \]</span>
+where we used that the holding times are independent, so the standard deviation is <span class="math inline">\(\sqrt{2.5} = 1.58\)</span> hours.</p>
+<p><em>What is the probability it takes more than an hour to sell the first book?</em></p>
+<p>This is the probability the first holding time is longer than an hour, which is
+<span class="math display">\[ \mathbb P(T_1 &gt; 1) = \mathrm{e}^{-2\times 1} = \mathrm{e}^{-2} = 0.135. \]</span></p>
+<p>An alternative way to solve this would be to say that the first book is is sold later than <span class="math inline">\(1\)</span> hour in if <span class="math inline">\(X(1) = 0\)</span>. So using the Poisson increments definition from last time, we have
+<span class="math display">\[ \mathbb P\big(X(1) = 0\big) = \mathrm{e}^{-2\times 1} \frac{(2\times 1)^0}{0!}  = \mathrm{e}^{-2} = 0.135. \]</span>
+We get the same answer either way.</p>
+</div>
+</div>
+<div id="cont-markov" class="section level2">
+<h2><span class="header-section-number">14.3</span> Markov property in continuous time</h2>
+<p>We previously saw the Markov “memoryless” property in discrete time. The equivalent definition in continuous time is the following.</p>
+<div class="definition">
+<p><span id="def:pp" class="definition"><strong>Definition 14.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a stochastic process on a discrete state space <span class="math inline">\(\mathcal S\)</span> and continuous time <span class="math inline">\(t \in [0,\infty)\)</span>. We say that <span class="math inline">\((X(t))\)</span> has the <strong>Markov property</strong>
+if
+<span class="math display">\[\begin{multline*}
+\mathbb P\big( X(t_{n+1}) = x_{n+1} \mid X(t_n) = x_n, \dots, X(t_1) = x_1, X(t_0) = x_0 \big) \\
+= \mathbb P\big( X(t_{n+1}) = x_{n+1} \mid X(t_n) = x_{n}\big)
+\end{multline*}\]</span>
+for all times <span class="math inline">\(t_0 &lt; t_1 &lt; \cdots &lt; t_n &lt; t_{n+1}\)</span> and all states <span class="math inline">\(x_0, x_1, \dots, x_n, x_{n+1} \in \mathcal S\)</span>.</p>
+</div>
+<p>In other words, the state of the process at some point <span class="math inline">\(t_{n+1}\)</span> in the future depends on where we are now <span class="math inline">\(t_n\)</span>, but, given that, does not depend on any collection of previous times <span class="math inline">\(t_0, t_1, \dots, t_{n-1}\)</span>.</p>
+<p>The Poisson process does indeed have the Markov property, since, by the property of independent increments, we have that
+<span class="math display">\[ \mathbb P\big( X(t_{n+1}) = x_{n+1} \mid X(t_n) = x_n, \dots, X(t_0) = x_0 \big) = \mathbb P\big( X(t_{n+1}) -X(t_n) = x\big) , \]</span>
+where <span class="math inline">\(x = x_{n+1}-x_n\)</span>. By Poisson increments, this has probability
+<span class="math display">\[ \mathrm{e}^{-\lambda(t_{n+1}-t_n)} \frac{\big(\lambda(t_{n+1}-t_n)\big)^x}{x!} . \]</span></p>
+<p>Alternatively, by the memoryless property of the exponential distribution, we see that we can restart the holding time from <span class="math inline">\(t_n\)</span> and still have this and all future holding times exponentially distributed.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at the Poisson process in a third way, by looking at what happens in a very small time period.</p>
 </div>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="S11-long-term-chains.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S13-poisson-poisson.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S13-poisson-poisson.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

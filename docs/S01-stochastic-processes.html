@@ -84,6 +84,7 @@
 <li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#team"><i class="fa fa-check"></i>Microsoft Team</a></li>
 <li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#time"><i class="fa fa-check"></i>Time management</a></li>
 <li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#exam"><i class="fa fa-check"></i>Exam</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#ask"><i class="fa fa-check"></i>Who should I ask about…?</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#about-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
 <li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
@@ -168,10 +169,10 @@
 <li class="chapter" data-level="13.2" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#poisson-def-poisson"><i class="fa fa-check"></i><b>13.2</b> Definition 1: Poisson increments</a></li>
 <li class="chapter" data-level="13.3" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#summed-marked"><i class="fa fa-check"></i><b>13.3</b> Summed and marked Poisson processes</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="S13-poisson-exponential.html"><a href="S13-poisson-exponential.html"><i class="fa fa-check"></i><b>14</b> Poisson process with exponential holding times</a><ul>
-<li class="chapter" data-level="14.1" data-path="S13-poisson-exponential.html"><a href="S13-poisson-exponential.html#exponential"><i class="fa fa-check"></i><b>14.1</b> Exponential distribution</a></li>
-<li class="chapter" data-level="14.2" data-path="S13-poisson-exponential.html"><a href="S13-poisson-exponential.html#definition-2-exponential-holding-times"><i class="fa fa-check"></i><b>14.2</b> Definition 2: exponential holding times</a></li>
-<li class="chapter" data-level="14.3" data-path="S13-poisson-exponential.html"><a href="S13-poisson-exponential.html#cont-markov"><i class="fa fa-check"></i><b>14.3</b> Markov property in continuous time</a></li>
+<li class="chapter" data-level="14" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html"><i class="fa fa-check"></i><b>14</b> Poisson process with exponential holding times</a><ul>
+<li class="chapter" data-level="14.1" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#exponential"><i class="fa fa-check"></i><b>14.1</b> Exponential distribution</a></li>
+<li class="chapter" data-level="14.2" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#definition-2-exponential-holding-times"><i class="fa fa-check"></i><b>14.2</b> Definition 2: exponential holding times</a></li>
+<li class="chapter" data-level="14.3" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#cont-markov"><i class="fa fa-check"></i><b>14.3</b> Markov property in continuous time</a></li>
 </ul></li>
 </ul>
 
@@ -200,9 +201,9 @@
 </div>
 <div id="models" class="section level2">
 <h2><span class="header-section-number">1.1</span> Deterministic and random models</h2>
-<p>A <strong>model</strong> is an imitation of a real-world system. For example, you might want to have a model to imitate the world’s population, the level of water in a reservoir, cashflows of a pension scheme, or stock prices. Models allow us to try to understand and predict what might happen in the real world in a low risk, cost effective and fast way.</p>
+<p>A <strong>model</strong> is an imitation of a real-world system. For example, you might want to have a model to imitate the world’s population, the level of water in a reservoir, cashflows of a pension scheme, or the price of a stock. Models allow us to try to understand and predict what might happen in the real world in a low risk, cost effective and fast way.</p>
 <p>To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.</p>
-<p>An important distinction is between <strong>deterministic</strong> models and <strong>random</strong> (or <strong>stochastic</strong>) models. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.</p>
+<p>An important distinction is between <strong>deterministic</strong> models and <strong>random</strong> models. Another word for a random model is a <strong>stochastic</strong> (“<em>sto-KASS-tik</em>”) model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.</p>
 <p>Consider models for:</p>
 <ul>
 <li>the future position of the Moon as it orbits the Earth,</li>
@@ -213,7 +214,7 @@
 </div>
 <div id="stochastic-processes" class="section level2">
 <h2><span class="header-section-number">1.2</span> Stochastic processes</h2>
-<p>If we want to model, for example, the total number of claims to an insurance company in the whole of 2020, we can use a random variable <span class="math inline">\(X\)</span> to model this – perhaps a Poisson distribution with an appropriate mean. However, if we want to track how the number of claims changes over the course of the year 2021, we will need to use a <strong>stochastic process</strong>. (The word “stochastic” means the same thing as “random”.)</p>
+<p>If we want to model, for example, the total number of claims to an insurance company in the whole of 2020, we can use a random variable <span class="math inline">\(X\)</span> to model this – perhaps a Poisson distribution with an appropriate mean. However, if we want to track how the number of claims changes over the course of the year 2021, we will need to use a <strong>stochastic process</strong> (or “random process”).</p>
 <p>A stochastic process, which we will usually write as <span class="math inline">\((X_n)\)</span>, is an indexed sequence of random variables that are (usually) dependent on each other.</p>
 <p>Each random variable <span class="math inline">\(X_n\)</span> takes a value in a <strong>state space</strong> <span class="math inline">\(\mathcal S\)</span> which is the set of possible values for the process. As with usual random variables, the state space <span class="math inline">\(\mathcal S\)</span> can be <strong>discrete</strong> or <strong>continuous</strong>. A discrete state space denotes a set of distinct possible outcomes, which can be finite or countably infinite. For example, <span class="math inline">\(\mathcal S = \{\text{Heads},\text{Tails}\}\)</span> is the state space for a single coin flip, while in the case of counting insurance claims, the state space would be the nonnegative integers <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span>. A continuous state space denotes an uncountably infinite continuum of gradually varying outcomes. For example, the nonnegative real line <span class="math inline">\(\mathcal S = \mathbb R_+ = \{x \in \mathbb R : x \geq 0\}\)</span> is the state space for the amount of rainfall on a given day, while some bounded subset of <span class="math inline">\(\mathbb R^3\)</span> would be the state space for the position of a gas particle in a box.</p>
 <p>Further, the process has an <strong>index set</strong> that puts the random variables that make up the process in order. The index set is usually interpreted as a <strong>time</strong> variable, telling us when the process will be measured. The index set for time can also be discrete or continuous. Discrete time denotes a process sampled at distinct points, often denoted by <span class="math inline">\(n = 0,1,2,\dots\)</span>, while continuous time denotes a process monitored constantly over time, often denoted by <span class="math inline">\(t \in \mathbb R_+ = \{x \in \mathbb R : x \geq 0\}\)</span>. In the insurance example, we might count up the number of claims each day – then the discrete index set will be the days of the year, which we could denote <span class="math inline">\(\{1,2,\dots,365\}\)</span>. Alternatively, we might want to keep a constant tally that we update after every claim, requiring a continuous time index <span class="math inline">\(t\)</span> representing time across the whole year. In discrete time, we can write down the first few steps of the process as <span class="math inline">\((X_0, X_1, X_2, \dots)\)</span>.</p>
@@ -263,7 +264,7 @@ although is often more useful to reason directly about conditional probabilities
 <p>(There’s also a similar definition for continuous time processes, which we’ll come to later in the course.)</p>
 <p>Stochastic processes that have the Markov property are much easier to study than general processes, as we only have to keep track of where we are now and we can forget about the entire history that came before.</p>
 <div class="mysummary">
-<p><strong>In the next section</strong>, we’ll see our first example of a discrete time Markov chain, called the “random walk”.</p>
+<p><strong>In the next section</strong>, we’ll see the first, and most important, example of a discrete time discrete space Markov chain: the “random walk”.</p>
 </div>
 
 </div>

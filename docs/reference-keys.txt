@@ -53,7 +53,7 @@ S13-poisson-poisson
 poisson-dist
 poisson-def-poisson
 summed-marked
-S13-poisson-exponential
+S14-poisson-exponential
 exponential
 definition-2-exponential-holding-times
 cont-markov

@@ -1,4 +1,4 @@
-# Poisson process with exponential holding times  {#S13-poisson-exponential}
+# Poisson process with exponential holding times  {#S14-poisson-exponential}
 
 
 ::: {.mysummary}

@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 
 ::: {.mysummary}
-You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (???????  ??? or Tuesday ????? ???) where the answers will be discussed.
+You should attempt all these questions and write up your solutions in advance of your workshop in week 3 (Monday 8 or Tuesday 9 February) where the answers will be discussed.
 :::
 
 

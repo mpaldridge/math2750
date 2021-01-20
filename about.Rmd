@@ -71,12 +71,12 @@ In response to student feedback, some computational work will be assessed. The f
 
 ### Drop-in sessions {.unnumbered #dropin}
 
-If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session on Tuesdays or Wednesdays with Nikita Merkulov or me. This would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
+If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. You will have been assigned to one of three groups on Tuesdays or Wednesdays with Nikita Merkulov or me. This would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
 
 
 ### Microsoft Team {.unnumbered #team}
 
-?????
+I have set up [a Microsoft Team](https://teams.microsoft.com/l/channel/19%3a8cb8008c95204bbeaefa8ee7d48c1a13%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb) for the course. I propose to use the "Q and A" channel there as a discussion board. This is a good place to post questions about material from the course, and -- even better! -- to help answer you colleagues' questions.
 
 
 ### Time management {.unnumbered #time}
@@ -99,6 +99,14 @@ It is, of course, up to you how you choose to spend your time on this module. Bu
 
 There will be an exam -- or, rather, a final "online time-limited assessment" -- after the end of the module, making up the remaining 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. You will have 48 hours to complete the exam, although the exam itself should represent half a day to a day's work. Further details to follow nearer the time.
 
+
+### Who should I ask about...?  {.unnumbered #ask}
+
+* I don't understand something in the notes or on a problem sheet: Go to your weekly drop-in session, or post a question on [the Teams Q and A board](https://teams.microsoft.com/l/channel/19%3a5fcd058b7074426ca1f7d1cf2052d3b4%40thread.tacv2/Q%2520and%2520A?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb).
+* I don't understand something in on a computational worksheet: Go to your computing drop-in session in weeks 4 or 7.
+* I have an admin question about general arrangements for the module: [Email the module leader](mailto:m.aldridge@leeds.ac.uk).
+* I have an admin question about arrangements for my workshop: Email your workshop leader.
+* I need an extension on or exemption from an assessment: [Email the Maths Taught Students Office](mailto:Maths.Taught.Students@leeds.ac.uk).
 
 
 ## Content of MATH2750 {.unnumbered #about-content}
