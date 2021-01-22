@@ -57,3 +57,7 @@ S14-poisson-exponential
 exponential
 definition-2-exponential-holding-times
 cont-markov
+S15-poisson-exponential
+infinitesimal
+sum2
+forward

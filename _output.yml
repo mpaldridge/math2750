@@ -5,6 +5,8 @@ bookdown::gitbook:
       collapse: section
       before: |
         <li><a href="./">MATH2750 Notes</a></li>
+      after: |
+        <li></li>
     download: ["pdf"]
     sharing: null
   

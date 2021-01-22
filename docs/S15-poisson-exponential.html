@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Problem sheet 4 | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 15 Poisson process in infinitesimal time periods | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Problem sheet 4 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 15 Poisson process in infinitesimal time periods | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Problem sheet 4 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 15 Poisson process in infinitesimal time periods | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="S08-hitting-times.html"/>
-<link rel="next" href="S09-recurrence-transience.html"/>
+<link rel="prev" href="S14-poisson-exponential.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -196,18 +196,115 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="P04" class="section level1 unnumbered">
-<h1>Problem sheet 4</h1>
-<p>Problem Sheet 4</p>
+<div id="S15-poisson-exponential" class="section level1">
+<h1><span class="header-section-number">Section 15</span> Poisson process in infinitesimal time periods</h1>
+<div class="mysummary">
+<ul>
+<li>Poisson process in terms of increments in infinitesimal time</li>
+<li>Forwardequations for the Poisson process</li>
+</ul>
+</div>
+<div id="infinitesimal" class="section level2">
+<h2><span class="header-section-number">15.1</span> Definition 3: increments in infinitesimal time</h2>
+<p>We have seen two definitions of the Poisson process so far: one in terms of increments having a Poisson distribution, and one in therms of holding times having an exponential distribution. Here we will see another definition, by looking at what happens in a very small time period of length <span class="math inline">\(\tau\)</span>. Advantages of this approach include that does not require direct assumptions on the distributions involved, so may seem more “natural” or “inevitable” – I consider this a conclusive argument that, if there are intelligent aliens out there, they have the Poisson process too! It also shows links between Markov processes and differential equations. A disadvantage is that it’s normally easier to do calculations with the Poisson or exponential definitions.</p>
+<p>Let <span class="math inline">\((X(t))\)</span> be a stochastic processes counting some arrivals over time. Consider the number of arrivals in a very small time period <span class="math inline">\(\tau\)</span>, which is <span class="math inline">\(X(t+\tau) - X(t)\)</span>. The following (seemingly) weak assumptions seem justified:</p>
+<ul>
+<li>It’s quite likely that there will be no arrivals in the very small time period.</li>
+<li>It’s possible there will be one arrival, and that probability will be proportional to the time period <span class="math inline">\(\tau\)</span>.</li>
+<li>It’s extremely unlikely there will be two or more arrivals in such a short time period.</li>
+</ul>
+<p>To write this down formally in maths, we will consider <span class="math inline">\(\mathbb P(X(t+\tau) - X(t) = j)\)</span> as the length of the time period <span class="math inline">\(\tau\)</span> tends to zero.</p>
+<p>It will be helpful to use “little-<span class="math inline">\(o\)</span>” notation. Here <span class="math inline">\(o(\tau)\)</span> means a term that is of “lower order” compared to <span class="math inline">\(\tau\)</span>. Specifically, <span class="math inline">\(o(\tau)\)</span> stands for a function of <span class="math inline">\(\tau\)</span> that tends to <span class="math inline">\(0\)</span> as <span class="math inline">\(\tau \to 0\)</span> even when divided by <span class="math inline">\(\tau\)</span>. That is,
+<span class="math display">\[ f(\tau) = o(\tau) \qquad \iff \qquad \frac{f(\tau)}{\tau} \to 0 \quad \text{as $\tau \to 0$.}  \]</span>
+Then our suggestions above translates to
+<span class="math display" id="eq:tau">\[\begin{equation} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda \tau + o(\tau) &amp; \text{if $j = 0$,} \\
+\lambda\tau + o(\tau) &amp; \text{if $j = 1$,} \\
+o(\tau) &amp; \text{if $j \geq 2$.} \end{cases} \tag{15.1} \end{equation}\]</span>
+as <span class="math inline">\(\tau \to 0\)</span>.</p>
+<p>It will not be surprising to learn that we have once again defined the Poisson process with rate <span class="math inline">\(\lambda\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:def-inf" class="theorem"><strong>Theorem 15.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a stochastic process with the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X(0) = 0\)</span>;</li>
+<li>infinitesimal increments: <span class="math inline">\(X(t+\tau) - X(t)\)</span> has the structure in <a href="S15-poisson-exponential.html#eq:tau">(15.1)</a> above, as <span class="math inline">\(\tau \to 0\)</span>;</li>
+<li>independent increments: <span class="math inline">\(X(t_2) - X(t_1)\)</span> and <span class="math inline">\(X(t_4) - X(t_3)\)</span> are independent for all <span class="math inline">\(t_1 \leq t_2 \leq t_3 \leq t_4\)</span>.</li>
+</ol>
+<p>Then <span class="math inline">\((X(t))\)</span> is a Poisson process with rate <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+<p>We will prove this in a moment. First let’s see an example of its use.</p>
+</div>
+<div id="sum2" class="section level2">
+<h2><span class="header-section-number">15.2</span> Example: sum of two Poisson processes</h2>
+<p>We <a href="S13-poisson-poisson.html#summed-marked">mentioned before the sum of two Poisson processes</a>: that if <span class="math inline">\((X(t))\)</span> is a Poisson process with rate <span class="math inline">\(\lambda\)</span> and <span class="math inline">\((Y(t))\)</span> is an independent Poisson process with rate <span class="math inline">\(\mu\)</span>, then the sum <span class="math inline">\((Z(t))\)</span> where <span class="math inline">\(Z(t) = X(t) + Y(t)\)</span> is a Poisson process with rate <span class="math inline">\(\lambda + \mu\)</span>.</p>
+<p>On <a href="#P07">Problem Sheet 7</a>, Question 3, you proved this from the Poisson increments definition. But it’s perhaps easier using the infinitesimals.</p>
+<p>We have
+<span class="math display">\[\begin{align*}\mathbb P\big( Z(t+\tau) - Z(t) = 0 \big) &amp;= \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &amp;=\big(1 - \lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) \\
+&amp;= 1 - (\lambda + \mu)\tau + o(\tau) , \end{align*}\]</span>
+since <span class="math inline">\(Z\)</span> does not increase provided neither <span class="math inline">\(X\)</span> nor <span class="math inline">\(Y\)</span> increase. We also have
+<span class="math display">\[\begin{align*}\mathbb P\big( Z(t+{}&amp;\tau) - Z(t) = 1 \big) \\
+&amp;= \mathbb P\big( X(t+\tau) - X(t) = 1 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &amp;\qquad {}+ \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 1 \big) \\
+&amp;= \big(\lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) + \big(1 - \lambda \tau + o(\tau) \big)\big(\mu \tau + o(\tau) \big) \\
+&amp;= (\lambda + \mu)\tau + o(\tau) , \end{align*}\]</span>
+since <span class="math inline">\(Z\)</span> increases by 1 if either <span class="math inline">\(X\)</span> increases by 1 and <span class="math inline">\(Y\)</span> stays fixed or vice versa. We used here that the probability that both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> increase is of order <span class="math inline">\(\tau^2 = o(\tau)\)</span>. Finally, since probabilities must add up to 1, we must have
+<span class="math display">\[ \mathbb P\big( Z(t+\tau) - Z(t) \geq 2 \big) =  o(\tau) . \]</span></p>
+<p>But what we have written down is precisely the infinitesimals definition of a Poisson process with rate <span class="math inline">\(\lambda + \mu\)</span>.</p>
+</div>
+<div id="forward" class="section level2">
+<h2><span class="header-section-number">15.3</span> Forward equations and proof of equivalence</h2>
+<p>If we compare Theorem <a href="S15-poisson-exponential.html#thm:def-inf">15.1</a> to the <a href="#thm:#poisson-def-1">definition of the Poisson process in terms of Poisson increments</a>, we see that properties 1 and 3 are the same. We only need to check property 2, that <span class="math inline">\(X(t+s) - X(s)\)</span> is a Poisson distribution with rate <span class="math inline">\(\lambda t\)</span>.</p>
+<p>Since the increments as defined in <a href="S15-poisson-exponential.html#eq:tau">(15.1)</a> are stationary, it will suffice to consider <span class="math inline">\(s = 0\)</span>. So we need to show that <span class="math inline">\(X(t) \sim \text{Po}(\lambda t)\)</span>.</p>
+<p>Write <span class="math inline">\(p_j(t) = \mathbb P(X(t) = j)\)</span>. Then for <span class="math inline">\(j \geq 1\)</span> we have
+<span class="math display">\[ p_j(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_j(t) + \big(\lambda\tau + o(\tau)\big) p_{j-1}(t) + o(\tau) , \]</span>
+since we get to <span class="math inline">\(j\)</span> either by staying at <span class="math inline">\(j\)</span> or moving up from <span class="math inline">\(j-1\)</span>, with all other highly unlikely possibilities being absorbed into the <span class="math inline">\(o(\tau)\)</span>. In order to deal with increments, it will be convenient to take a <span class="math inline">\(p_{j}(t)\)</span> to the left-hand side and rearrange, to get the increment
+<span class="math display">\[ p_j(t + \tau) - p_j(t) = -\lambda\tau p_j(t) + \lambda\tau p_{j-1}(\tau) + o(\tau) , \]</span>
+where “constant times <span class="math inline">\(o(\tau)\)</span>” is itself <span class="math inline">\(o(\tau)\)</span>.</p>
+<p>The only way to deal with the <span class="math inline">\(o(\tau)\)</span> term, given its definition, is to divide everything by <span class="math inline">\(\tau\)</span> and send <span class="math inline">\(\tau \to 0\)</span>. Dividing by <span class="math inline">\(\tau\)</span> gives
+<span class="math display">\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(\tau) + \frac{o(\tau)}{\tau} . \]</span>
+Sending <span class="math inline">\(\tau\)</span> to 0, the term <span class="math inline">\(o(\tau)/\tau\)</span> tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative <span class="math inline">\(\mathrm d p_j(t) / \mathrm d t = p&#39;_j(t)\)</span>.</p>
+<p>This leaves us with the differential equation
+<span class="math display">\[ p&#39;_j(t) = -\lambda p_j(t) + \lambda p_{j-1}(t) . \]</span>
+We also have the initial condition <span class="math inline">\(p_j(0) = 0\)</span> for <span class="math inline">\(j \geq 1\)</span>, since we start at 0, not at any <span class="math inline">\(j \geq 1\)</span>.</p>
+<p>We have to deal with the case <span class="math inline">\(j = 0\)</span> separately. This is similar but a bit easier. We have
+<span class="math display">\[ p_0(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_0(t) , \]</span>
+since we must previously been at 0, then seen no arrivals.
+After rearranging and sending <span class="math inline">\(\tau \to 0\)</span>, we get the differential equation
+<span class="math display">\[ p&#39;_0(t) = -\lambda p_0(t) \]</span>
+with the initial condition <span class="math inline">\(p_0(0) = 1\)</span>, since we always start at 0.</p>
+<p>In summary, we have derived the following equations:
+<span class="math display">\[\begin{align*}
+   p&#39;_0(t) &amp;= -\lambda p_0(t) &amp; \hspace{-1.5cm} p_0(0) &amp; = 1 ,\\
+   p&#39;_j(t) &amp;= -\lambda p_j(t) + \lambda p_{j-1}(t) &amp; \hspace{-1.5cm} p_j(0) &amp;= 0 \quad \text{for $j \geq 1$} .
+\end{align*}\]</span>
+These are often referred to as the <strong>Kolmogorov forward equations</strong>.</p>
+<p>We claim that the solution to these equations is the Poisson distribution
+<span class="math display">\[ p_j(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} . \]</span>
+This would prove the theorem.</p>
+<p>We must check that the claim holds. For <span class="math inline">\(j = 0\)</span>, the Poisson probability is
+<span class="math display">\[ p_0(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^0}{0!} = \mathrm{e}^{-\lambda t} . \]</span>
+This has <span class="math inline">\(p_0(0) = \mathrm{e}^{0} = 1\)</span>, and we have
+<span class="math display">\[ p&#39;_0(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_0(t) , \]</span>
+as desired.</p>
+<p>For <span class="math inline">\(j \geq 1\)</span>, we have <span class="math inline">\(p_j(0) = \mathrm{e}^{0} 0^j/j! = 0\)</span>, and the left-hand side is
+<span class="math display">\[\begin{align*}
+p&#39;_j(t) &amp;= \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} \\
+&amp; = \frac{1}{j!} \left(-\lambda \mathrm{e}^{-\lambda t}(\lambda t)^j + \mathrm{e}^{-\lambda t} \lambda j(\lambda t)^{j-1} \right) \\
+&amp;= - \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} + \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^{j-1}}{(j-1)!} \\
+&amp;= -\lambda p_j(t) + \lambda p_{j-1}(t)
+\end{align*}\]</span>
+as desired. We are finally done.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we two new types of process that are similar to the Poisson process.</p>
+</div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="S08-hitting-times.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S09-recurrence-transience.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S14-poisson-exponential.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

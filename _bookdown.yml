@@ -21,6 +21,7 @@ rmd_files:
   - sections/S12-revision-i.Rmd
   - sections/S13-poisson-poisson.Rmd
   - sections/S14-poisson-exponential.Rmd
+  - sections/S15-poisson-infinitesimal.Rmd
 book_filename: "math2750"
 output_dir: "docs"
 delete_merged_file: true

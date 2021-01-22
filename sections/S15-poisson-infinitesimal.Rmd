@@ -70,7 +70,7 @@ But what we have written down is precisely the infinitesimals definition of a Po
 
 If we compare Theorem \@ref(thm:def-inf) to the [definition of the Poisson process in terms of Poisson increments](#thm:#poisson-def-1), we see that properties 1 and 3 are the same. We only need to check property 2, that $X(t+s) - X(s)$ is a Poisson distribution with rate $\lambda t$.
 
-Since the increments as defined in \@ref(eq:tau) are stationary, it will suffice to consider $s = 0$. So we need to show that $X(t) \sim \text{Po}(\lambda t)$. 
+Since the increments as defined in \@ref(eq:tau) are time homogeneous, it will suffice to consider $s = 0$. So we need to show that $X(t) \sim \text{Po}(\lambda t)$. 
 
 Write $p_j(t) = \mathbb P(X(t) = j)$. Then for $j \geq 1$ we have
  \[ p_j(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_j(t) + \big(\lambda\tau + o(\tau)\big) p_{j-1}(t) + o(\tau) , \]
@@ -79,9 +79,8 @@ since we get to $j$ either by staying at $j$ or moving up from $j-1$, with all o
 where "constant times $o(\tau)$" is itself $o(\tau)$.
 
 The only way to deal with the $o(\tau)$ term, given its definition, is to divide everything by $\tau$ and send $\tau \to 0$. Dividing by $\tau$ gives
-\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(\tau) + \frac{o(\tau)}{\tau} . \]
+\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(t) + \frac{o(\tau)}{\tau} . \]
 Sending $\tau$ to 0, the term $o(\tau)/\tau$ tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative $\mathrm d p_j(t) / \mathrm d t = p'_j(t)$.
-
 This leaves us with the differential equation
 \[ p'_j(t) = -\lambda p_j(t) + \lambda p_{j-1}(t) . \]
 We also have the initial condition $p_j(0) = 0$ for $j \geq 1$, since we start at 0, not at any $j \geq 1$.
@@ -89,7 +88,7 @@ We also have the initial condition $p_j(0) = 0$ for $j \geq 1$, since we start a
 We have to deal with the case $j = 0$ separately. This is similar but a bit easier. We have
 \[ p_0(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_0(t) , \]
 since we must previously been at 0, then seen no arrivals.
-After rearranging and sending $\tau \to 0$, we get the differential equation
+After rearranging to get an increment and sending $\tau \to 0$, as before, we get the differential equation
 \[ p'_0(t) = -\lambda p_0(t) \]
 with the initial condition $p_0(0) = 1$, since we always start at 0.
 
@@ -98,7 +97,7 @@ In summary, we have derived the following equations:
    p'_0(t) &= -\lambda p_0(t) & \hspace{-1.5cm} p_0(0) & = 1 ,\\
    p'_j(t) &= -\lambda p_j(t) + \lambda p_{j-1}(t) & \hspace{-1.5cm} p_j(0) &= 0 \quad \text{for $j \geq 1$} .
 \end{align*}
-These are often referred to as the **Kolmogorov forward equations**.
+These are called the **Kolmogorov forward equations**.
 
 We claim that the solution to these equations is the Poisson distribution
 \[ p_j(t) = \ee^{-\lambda t} \frac{(\lambda t)^j}{j!} . \]
@@ -106,18 +105,19 @@ This would prove the theorem.
 
 We must check that the claim holds. For $j = 0$, the Poisson probability is 
 \[ p_0(t) = \ee^{-\lambda t} \frac{(\lambda t)^0}{0!} = \ee^{-\lambda t} . \]
-This has $p_0(0) = \ee^{0} = 1$, and we have
+This has 
 \[ p'_0(t) = -\lambda \ee^{-\lambda t} = -\lambda p_0(t) , \]
-as desired.
+as desired, and we also have the correct initial condition $p_0(0) = \ee^{0} = 1$.
 
-For $j \geq 1$, we have $p_j(0) = \ee^{0} 0^j/j! = 0$, and the left-hand side is
+For $j \geq 1$, the left-hand side is
 \begin{align*}
 p'_j(t) &= \frac{\mathrm d}{\mathrm d t} \ee^{-\lambda t} \frac{(\lambda t)^j}{j!} \\
 & = \frac{1}{j!} \left(-\lambda \ee^{-\lambda t}(\lambda t)^j + \ee^{-\lambda t} \lambda j(\lambda t)^{j-1} \right) \\
 &= - \lambda \ee^{-\lambda t} \frac{(\lambda t)^j}{j!} + \lambda \ee^{-\lambda t} \frac{(\lambda t)^{j-1}}{(j-1)!} \\
 &= -\lambda p_j(t) + \lambda p_{j-1}(t)
 \end{align*}
-as desired. We are finally done.
+as desired. We also have the initial condition $p_j(0) = \ee^{0} 0^j/j! = 0$.
+The claim is proven, and we are (finally) done.
 
 
 ::: {.mysummary}

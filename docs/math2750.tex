@@ -3133,4 +3133,142 @@ Alternatively, by the memoryless property of the exponential distribution, we se
 
 \textbf{In the next section}, we look at the Poisson process in a third way, by looking at what happens in a very small time period.
 
+\hypertarget{S15-poisson-exponential}{%
+\section{Poisson process in infinitesimal time periods}\label{S15-poisson-exponential}}
+
+\begin{itemize}
+\tightlist
+\item
+  Poisson process in terms of increments in infinitesimal time
+\item
+  Forwardequations for the Poisson process
+\end{itemize}
+
+\hypertarget{infinitesimal}{%
+\subsection{Definition 3: increments in infinitesimal time}\label{infinitesimal}}
+
+We have seen two definitions of the Poisson process so far: one in terms of increments having a Poisson distribution, and one in therms of holding times having an exponential distribution. Here we will see another definition, by looking at what happens in a very small time period of length \(\tau\). Advantages of this approach include that does not require direct assumptions on the distributions involved, so may seem more ``natural'' or ``inevitable'' -- I consider this a conclusive argument that, if there are intelligent aliens out there, they have the Poisson process too! It also shows links between Markov processes and differential equations. A disadvantage is that it's normally easier to do calculations with the Poisson or exponential definitions.
+
+Let \((X(t))\) be a stochastic processes counting some arrivals over time. Consider the number of arrivals in a very small time period \(\tau\), which is \(X(t+\tau) - X(t)\). The following (seemingly) weak assumptions seem justified:
+
+\begin{itemize}
+\tightlist
+\item
+  It's quite likely that there will be no arrivals in the very small time period.
+\item
+  It's possible there will be one arrival, and that probability will be proportional to the time period \(\tau\).
+\item
+  It's extremely unlikely there will be two or more arrivals in such a short time period.
+\end{itemize}
+
+To write this down formally in maths, we will consider \(\mathbb P(X(t+\tau) - X(t) = j)\) as the length of the time period \(\tau\) tends to zero.
+
+It will be helpful to use ``little-\(o\)'' notation. Here \(o(\tau)\) means a term that is of ``lower order'' compared to \(\tau\). Specifically, \(o(\tau)\) stands for a function of \(\tau\) that tends to \(0\) as \(\tau \to 0\) even when divided by \(\tau\). That is,
+\[ f(\tau) = o(\tau) \qquad \iff \qquad \frac{f(\tau)}{\tau} \to 0 \quad \text{as $\tau \to 0$.}  \]
+Then our suggestions above translates to
+\begin{equation} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda \tau + o(\tau) & \text{if $j = 0$,} \\
+\lambda\tau + o(\tau) & \text{if $j = 1$,} \\
+o(\tau) & \text{if $j \geq 2$.} \end{cases} \label{eq:tau} \end{equation}
+as \(\tau \to 0\).
+
+It will not be surprising to learn that we have once again defined the Poisson process with rate \(\lambda\).
+
+\begin{theorem}
+\protect\hypertarget{thm:def-inf}{}\label{thm:def-inf}
+
+Let \((X(t))\) be a stochastic process with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(X(0) = 0\);
+\item
+  infinitesimal increments: \(X(t+\tau) - X(t)\) has the structure in \eqref{eq:tau} above, as \(\tau \to 0\);
+\item
+  independent increments: \(X(t_2) - X(t_1)\) and \(X(t_4) - X(t_3)\) are independent for all \(t_1 \leq t_2 \leq t_3 \leq t_4\).
+\end{enumerate}
+
+Then \((X(t))\) is a Poisson process with rate \(\lambda\).
+
+\end{theorem}
+
+We will prove this in a moment. First let's see an example of its use.
+
+\hypertarget{sum2}{%
+\subsection{Example: sum of two Poisson processes}\label{sum2}}
+
+We \protect\hyperlink{summed-marked}{mentioned before the sum of two Poisson processes}: that if \((X(t))\) is a Poisson process with rate \(\lambda\) and \((Y(t))\) is an independent Poisson process with rate \(\mu\), then the sum \((Z(t))\) where \(Z(t) = X(t) + Y(t)\) is a Poisson process with rate \(\lambda + \mu\).
+
+On \protect\hyperlink{P07}{Problem Sheet 7}, Question 3, you proved this from the Poisson increments definition. But it's perhaps easier using the infinitesimals.
+
+We have
+\begin{align*}\mathbb P\big( Z(t+\tau) - Z(t) = 0 \big) &= \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &=\big(1 - \lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) \\
+&= 1 - (\lambda + \mu)\tau + o(\tau) , \end{align*}
+since \(Z\) does not increase provided neither \(X\) nor \(Y\) increase. We also have
+\begin{align*}\mathbb P\big( Z(t+{}&\tau) - Z(t) = 1 \big) \\
+&= \mathbb P\big( X(t+\tau) - X(t) = 1 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &\qquad {}+ \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 1 \big) \\
+&= \big(\lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) + \big(1 - \lambda \tau + o(\tau) \big)\big(\mu \tau + o(\tau) \big) \\
+&= (\lambda + \mu)\tau + o(\tau) , \end{align*}
+since \(Z\) increases by 1 if either \(X\) increases by 1 and \(Y\) stays fixed or vice versa. We used here that the probability that both \(X\) and \(Y\) increase is of order \(\tau^2 = o(\tau)\). Finally, since probabilities must add up to 1, we must have
+\[ \mathbb P\big( Z(t+\tau) - Z(t) \geq 2 \big) =  o(\tau) . \]
+
+But what we have written down is precisely the infinitesimals definition of a Poisson process with rate \(\lambda + \mu\).
+
+\hypertarget{forward}{%
+\subsection{Forward equations and proof of equivalence}\label{forward}}
+
+If we compare Theorem \ref{thm:def-inf} to the \protect\hyperlink{thm:ux5cux23poisson-def-1}{definition of the Poisson process in terms of Poisson increments}, we see that properties 1 and 3 are the same. We only need to check property 2, that \(X(t+s) - X(s)\) is a Poisson distribution with rate \(\lambda t\).
+
+Since the increments as defined in \eqref{eq:tau} are stationary, it will suffice to consider \(s = 0\). So we need to show that \(X(t) \sim \text{Po}(\lambda t)\).
+
+Write \(p_j(t) = \mathbb P(X(t) = j)\). Then for \(j \geq 1\) we have
+\[ p_j(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_j(t) + \big(\lambda\tau + o(\tau)\big) p_{j-1}(t) + o(\tau) , \]
+since we get to \(j\) either by staying at \(j\) or moving up from \(j-1\), with all other highly unlikely possibilities being absorbed into the \(o(\tau)\). In order to deal with increments, it will be convenient to take a \(p_{j}(t)\) to the left-hand side and rearrange, to get the increment
+\[ p_j(t + \tau) - p_j(t) = -\lambda\tau p_j(t) + \lambda\tau p_{j-1}(\tau) + o(\tau) , \]
+where ``constant times \(o(\tau)\)'' is itself \(o(\tau)\).
+
+The only way to deal with the \(o(\tau)\) term, given its definition, is to divide everything by \(\tau\) and send \(\tau \to 0\). Dividing by \(\tau\) gives
+\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(\tau) + \frac{o(\tau)}{\tau} . \]
+Sending \(\tau\) to 0, the term \(o(\tau)/\tau\) tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative \(\mathrm d p_j(t) / \mathrm d t = p'_j(t)\).
+
+This leaves us with the differential equation
+\[ p'_j(t) = -\lambda p_j(t) + \lambda p_{j-1}(t) . \]
+We also have the initial condition \(p_j(0) = 0\) for \(j \geq 1\), since we start at 0, not at any \(j \geq 1\).
+
+We have to deal with the case \(j = 0\) separately. This is similar but a bit easier. We have
+\[ p_0(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_0(t) , \]
+since we must previously been at 0, then seen no arrivals.
+After rearranging and sending \(\tau \to 0\), we get the differential equation
+\[ p'_0(t) = -\lambda p_0(t) \]
+with the initial condition \(p_0(0) = 1\), since we always start at 0.
+
+In summary, we have derived the following equations:
+\begin{align*}
+   p'_0(t) &= -\lambda p_0(t) & \hspace{-1.5cm} p_0(0) & = 1 ,\\
+   p'_j(t) &= -\lambda p_j(t) + \lambda p_{j-1}(t) & \hspace{-1.5cm} p_j(0) &= 0 \quad \text{for $j \geq 1$} .
+\end{align*}
+These are often referred to as the \textbf{Kolmogorov forward equations}.
+
+We claim that the solution to these equations is the Poisson distribution
+\[ p_j(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} . \]
+This would prove the theorem.
+
+We must check that the claim holds. For \(j = 0\), the Poisson probability is
+\[ p_0(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^0}{0!} = \mathrm{e}^{-\lambda t} . \]
+This has \(p_0(0) = \mathrm{e}^{0} = 1\), and we have
+\[ p'_0(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_0(t) , \]
+as desired.
+
+For \(j \geq 1\), we have \(p_j(0) = \mathrm{e}^{0} 0^j/j! = 0\), and the left-hand side is
+\begin{align*}
+p'_j(t) &= \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} \\
+& = \frac{1}{j!} \left(-\lambda \mathrm{e}^{-\lambda t}(\lambda t)^j + \mathrm{e}^{-\lambda t} \lambda j(\lambda t)^{j-1} \right) \\
+&= - \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} + \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^{j-1}}{(j-1)!} \\
+&= -\lambda p_j(t) + \lambda p_{j-1}(t)
+\end{align*}
+as desired. We are finally done.
+
+\textbf{In the next section}, we two new types of process that are similar to the Poisson process.
+
 \end{document}

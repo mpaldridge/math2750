@@ -15,9 +15,9 @@ It is my intention, if possible, to try to make the Week 10 and 11 material avai
 
 The main way I expect you to learn the material for this course is by reading these notes and by watching the accompanying videos. I will set two sections of notes each week, for a total of 22 sections.
 
-Each section roughly corresponds to one lecture last year, so I recommend spending about an hour on each section. Reading mathematics is a slow process. If you find yourself getting through sections much quicker than an hour, you're probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as just checking the accuracy. (Or you might just be a genius.)
+Reading mathematics is a slow process. Each section roughly corresponds to one lecture last year, which would have been 50 minutes. If you find yourself regularly getting through sections in much less than an hour, you're probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as checking the accuracy.
 
-It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos.
+It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos. It is not possible to learn the material by only watching the videos and not reading the notes.
 
 Since we will all be relying heavily on these notes, I'm even more keen than usual to hear about errors mathematical, typographical or otherwise. Please, please [email me](mailto:m.aldridge@leeds.ac.uk) if think you may have found any.
 
@@ -29,16 +29,18 @@ There will be 10 problem sheets; Problem Sheet $n$ covers the material from the 
 
 ### Lectures {.unnumbered #lectures}
 
-There will be one online synchronous "lecture" session each week, on Tuesdays at 1400, with me, run through ?????.
+There will be one online synchronous "lecture" session each week, on Tuesdays at 1400, with me, run through Zoom.
 
 This will not be a "lecture" in the traditional sense of the term, but will be an opportunity to re-emphasise material you have already learned from notes and videos, to give extra examples, and to answer common student questions, with some degree of interactivity.
 
 I will assume you have completed all the work for the previous week by the time of the lecture, but I will not assume you've started the work for that week itself.
 
+I am very keen to hear about things you'd like to go through in the lectures. You can  [email me](mailto:m.aldridge@leeds.ac.uk) or post to the Teams discussion board ([see below](#team)).
+
 
 ### Workshops {.unnumbered #workshops}
 
-There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by Jason Klebes, Dr Jochen Voss, or me. Your workshop will probably be run through ?????; your workshop leader will contact you before the end of this week if there are different arrangements.
+There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by Jason Klebes, Dr Jochen Voss, or me. Your workshop will be run through Zoom or Microsoft Teams; your workshop leader will contact you before the end of this week with arrangements.
 
 My recommended approach to problem sheets and workshops is the following:
 
@@ -54,10 +56,10 @@ There will be four pieces of assessed coursework, making up a total of 15% of yo
 
 The assessments deadlines are:
 
-* Assessment 1: Thursday ??? 1400 (week 3)
-* Assessment 2: Thursday ??? 1400 (week 7)
-* Assessment 3 (Computing Worksheet 2): Thursday ??? 1400 (week 8)
-* Assessment 4: Thursday ??? 1400 (week 11)
+* Assessment 1: Thursday 11 February 1400 (week 3)
+* Assessment 2: Thursday 11 March 1400 (week 7)
+* Assessment 3 (Computing Worksheet 2): Thursday 18 March 1400 (week 8)
+* Assessment 4: Thursday 6 May 1400 (week 11)
 
 Work will be submitted via Gradescope.
 
@@ -71,7 +73,7 @@ In response to student feedback, some computational work will be assessed. The f
 
 ### Drop-in sessions {.unnumbered #dropin}
 
-If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. You will have been assigned to one of three groups on Tuesdays or Wednesdays with Nikita Merkulov or me. This would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
+If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. You will have been assigned to one of three groups on Tuesdays or Wednesdays with Nikita Merkulov or me. The drop-in sessions will be run the Microsoft Teams. Your drop-in session would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
 
 
 ### Microsoft Team {.unnumbered #team}
@@ -102,11 +104,11 @@ There will be an exam -- or, rather, a final "online time-limited assessment" --
 
 ### Who should I ask about...?  {.unnumbered #ask}
 
-* I don't understand something in the notes or on a problem sheet: Go to your weekly drop-in session, or post a question on [the Teams Q and A board](https://teams.microsoft.com/l/channel/19%3a5fcd058b7074426ca1f7d1cf2052d3b4%40thread.tacv2/Q%2520and%2520A?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb).
-* I don't understand something in on a computational worksheet: Go to your computing drop-in session in weeks 4 or 7.
-* I have an admin question about general arrangements for the module: [Email the module leader](mailto:m.aldridge@leeds.ac.uk).
-* I have an admin question about arrangements for my workshop: Email your workshop leader.
-* I need an extension on or exemption from an assessment: [Email the Maths Taught Students Office](mailto:Maths.Taught.Students@leeds.ac.uk).
+* *I don't understand something in the notes or on a problem sheet*: Go to your weekly drop-in session, or post a question on [the Teams Q and A board](https://teams.microsoft.com/l/channel/19%3a5fcd058b7074426ca1f7d1cf2052d3b4%40thread.tacv2/Q%2520and%2520A?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb). (If you email me, I am likely to respond, "That would be an excellent question for your drop-in session or the Q and A board.")
+* *I don't understand something in on a computational worksheet:* Go to your computing drop-in session in weeks 4 or 7.
+* *I have an admin question about general arrangements for the module:* [Email me](mailto:m.aldridge@leeds.ac.uk).
+* *I have an admin question about arrangements for my workshop:* Email your workshop leader.
+* *I need an extension on or exemption from an assessment:* [Email the Maths Taught Students Office](mailto:Maths.Taught.Students@leeds.ac.uk).
 
 
 ## Content of MATH2750 {.unnumbered #about-content}
