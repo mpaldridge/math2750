@@ -29,8 +29,7 @@ $(document).ready(function() {
 </style>
 -->
 
-\newcommand{\myhide}{}
-\newenvironment{myanswers}{\myhide}{}
+
 
 
 ::: {.mysummary}

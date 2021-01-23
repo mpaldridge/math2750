@@ -1,4 +1,7 @@
 \usepackage{booktabs}
 
-\usepackage{titlesec, comment}
+\usepackage{titlesec, environ}
+\newif\ifcomm\commtrue
+\NewEnviron{myanswers}{\ifcomm\BODY\fi}
+
 \newcommand{\sectionbreak}{\clearpage}

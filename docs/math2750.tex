@@ -71,7 +71,10 @@
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 
-\usepackage{titlesec, comment}
+\usepackage{titlesec, environ}
+\newif\ifcomm\commtrue
+\NewEnviron{myanswers}{\ifcomm\BODY\fi}
+
 \newcommand{\sectionbreak}{\clearpage}
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
@@ -658,9 +661,6 @@ In the special case of the simple symmetric random walk, we have
 \section*{Problem Sheet 1}\label{P01}}
 \addcontentsline{toc}{section}{Problem Sheet 1}
 
-\newcommand{\myhide}{}
-\newenvironment{myanswers}{\myhide}{}
-
 You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (Monday 1 or Tuesday 2 February) where the answers will be discussed.
 
 \textbf{1.} When designing a model for a quantity that changes over time, one has many decisions to make:
@@ -1245,6 +1245,8 @@ giving \(A = 0, B = m\). The solution is
 \hypertarget{P02}{%
 \section*{Problem sheet 2}\label{P02}}
 \addcontentsline{toc}{section}{Problem sheet 2}
+
+\commfalse
 
 You should attempt all these questions and write up your solutions in advance of your workshop in week 3 (Monday 8 or Tuesday 9 February) where the answers will be discussed.
 
