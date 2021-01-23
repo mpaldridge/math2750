@@ -159,9 +159,19 @@ ul.summary ul li {
   margin-top: 0 !important;
 }
 
-.myanswers {
-  display: none !important;
+
+
+
+.summary > li:first-child {
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
 }
+
+.book .book-summary ul.summary li.divider {
+    height: 0px;
+}
+
 
 /*
 .math.display {

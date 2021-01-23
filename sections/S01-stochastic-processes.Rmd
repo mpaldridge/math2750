@@ -19,7 +19,7 @@ A **model** is an imitation of a real-world system. For example, you might want 
 
 To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.
 
-An important distinction is between **deterministic** models and **random** models. Another word for a random model is a **stochastic** ("*sto-KASS-tik*") model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
+An important distinction is between **deterministic** models and **random** models. Another word for a random model is a **stochastic** ("*sto-<span style="font-variant:small-caps;">kass</span>-tik*") model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
 
 Consider models for:
 
@@ -65,11 +65,11 @@ This gives us four possibilities in total:
 
 Because stochastic processes consist of a large number -- even infinitely many; even uncountably infinitely many -- random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician Andrey Andreyevich Markov, published in 1906.)
 
-Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square $X_n$. Then which square $X_{n+1}$ we move to on our next turn:
+Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square $X_n$. Then what can we say about which square $X_{n+1}$ we move to on our next turn?
 
-* is random, since it depends on the roll of the dice;
-* depends on where we are now $X_n$, since the score of dice will be added onto the number our current square;
-* given the square we are now $X_n$, it doesn't depend any further on which sequence of squares $X_0, X_1, \dots, X_{n-1}$ we used to get here.
+* $X_{n+1}$$ is random, since it depends on the roll of the dice.
+* $X_{n+1}$ depends on where we are now $X_n$, since the score of dice will be added onto the number our current square,
+* Given the square $X_n$ we are now, $X_{n+1}$ doesn't depend any further on which sequence of squares $X_0, X_1, \dots, X_{n-1}$ we used to get here.
 
 It is this third point that is the crucial property of the stochastic processes we will study in this course, and it is called the **Markov property** or **memoryless property**.  We say "memoryless", because it's as if the process forgot how it got here -- we only need to remember what square we've reached, not which squares we used to get here. The stochastic process before this moment has no bearing on the future, given where we are now. A mathematical way to say this is that "the past and the future are conditionally independent given the present."
 

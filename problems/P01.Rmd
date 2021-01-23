@@ -29,6 +29,9 @@ $(document).ready(function() {
 </style>
 -->
 
+\newcommand{\myhide}{}
+\newenvironment{myanswers}{\myhide}{}
+
 
 ::: {.mysummary}
 You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (Monday 1 or Tuesday 2 February) where the answers will be discussed.
@@ -59,7 +62,7 @@ What would you decide for the following scenarios:
 :::: {.subq}
 **(d)** The number of people inside the Chemistry building.
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Suggestions.* This question is meant to inspire discussion, so there are not necessarily right and wrong answers. If I were designing the models, however, my choices might be these:
 	
 **(a)** Discrete space if percentages are given to nearest 1%, otherwise continuous; discrete time (weekly); stochastic; the Markov property might be appropriate, perhaps using some sort of random walk.
@@ -82,7 +85,7 @@ Calculate:
 :::: {.subq}
 **(a)** the probability $\mathbb P(Y = 10)$;
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* The following table illustrates the possible outcomes $Y$ of the experiment.  Each cell of the table is an equally probable outcome.
 
 ```{tikz dice, echo=FALSE, fig.align="center", fig.width=4}
@@ -108,7 +111,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(b)** the conditional probability $\mathbb P(Y=10 \mid X_1=x)$ for $x=1, 2, \ldots, 6$;
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* Conditioning on $X_1 = x$ means restricting our attention only to column $x$ of the table. Each column has $6$ equally probably cells. For $x=1,2,3$, none of the entries equal $10$, so $\mathbb P(Y=10 \mid X_1=x) = 0/6 = 0$. For each of $x=4,5,6$, one of the entries equals $10$, so $\mathbb P(Y=10 \mid X_1=x) = 1/6$.
 :::
 ::::
@@ -116,7 +119,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(c)** the conditional probability $\mathbb P(X_1=x \mid Y=10)$ for $x=1, 2, \ldots, 6$.
 
-:::{.myanswers}
+:::{.myanswers data-latex=""}
 *Solution.* Conditioning on $Y =10$ means restricting our attention only to the $3$ shaded cells, which are each equally likely. For $x=1,2,3$, none of the shaded cells are in column $x$, so $\mathbb P(X_1=x \mid Y=10) = 0/3 = 0$. For each of $x=4,5,6$, one of the shaded cells is in column $x$, so $\mathbb P(X_1=x \mid Y=10) = 1/3$.
 :::
 ::::
@@ -128,7 +131,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(a)** $\mathbb P(X_5 = 3)$,
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* To get $X_5 = 3$, we must take $4$ steps up and $1$ step down. The down step can be at any of the $5$ time steps. Therefore we have $\mathbb P(X_5 = 3) = 5p^4q$.
 :::
 ::::
@@ -136,7 +139,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(b)** $\mathbb P(X_5 = 3 \mid X_2 = 2)$,
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* Once we're at $X_2 = 2$, we must take $2$ steps up and $1$ step down over the next $3$ time steps. So $\mathbb P(X_5 = 3 \mid X_2 = 2) = 3p^2q$.
 :::
 ::::
@@ -144,7 +147,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(c)** $\mathbb P(X_n = n-2)$,
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* This requires $n-1$ steps up and $1$ step down, and the down step can be at any of the $n$ time steps. So $\mathbb P(X_n = n-2) = np^{n-1}q$.
 :::
 ::::
@@ -152,7 +155,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(d)** $\mathbb E X_4$,
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* The increments $Z_n = X_n - X_{n-1}$ have expectation $1p + (-1)q = p - q$, so $\mathbb E X_4 = 4(p-q)$.
 :::
 ::::
@@ -160,7 +163,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(e)** $\mathbb E(X_6 \mid X_4 = 2)$,
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* We are already at 2, then another two increments will take us up $2(p-q)$ on average. Therefore $\mathbb E(X_6 \mid X_4 = 2) = 2 + 2(p-q)$.
 :::
 ::::
@@ -174,7 +177,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(a)** Calculate the mean and variance of the price of the stock at the close of day $5$.
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* The mean and variance are
   \begin{gather*}
   \mathbb EX_5 = \mathbb E X_0 + n \mathbb E Z_1 = 42.3 + 5 \cdot 0.7 = 45.8 , \\
@@ -186,7 +189,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(b)** Give a 95% prediction interval for the price at the close of day 5. (You might find it useful to recall that, if $W \sim \text{N}(0,1)$ is a standard normal random variable, then $\mathbb P(W \leq 1.96) = 0.975$.)
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* Note that $X_5$ itself is normally distributed, so $X_5 \sim \text{N}(45.8,24.2)$. The 95% prediction interval for a normal distribution $\text{N}(\mu, \sigma^2)$ is $(\mu - 1.96\sigma, \mu + 1.96\sigma)$, so the prediction interval for $X_5$ is
   \[ \big(45.8 - 1.96\sqrt{24.2},  45.8 + 1.96\sqrt{24.2}\big) = (36.16, 55.44) . \]
 :::
@@ -195,7 +198,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(c)** After day 4, the prices at the end of each of the first four days have been recorded as $X_1 = 44.4, X_2 = 44.0, X_3 = 47.1, X_4 = 47.8$. Update your prediction interval for the price at the close of day 5, and comment on how it differs from the earlier prediction interval.
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* By the Markov property, $X_5$ depends on $X_4$, but given $X_4$ does not depend on the other values, which we can therefore ignore. Since $X_5 = X_4 + Z_5$, we have
   \begin{gather*}
   \mathbb E(X_5 \mid X_4) = X_4 + \mathbb E Z_5 = 47.8 + 0.7 = 48.5 \\
@@ -215,7 +218,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(a)** What would you guess for the value of $p$, given this data?
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* In $10$ time steps, the process went up $k = 8$ times and down $n - k = 2$ times. So it seems reasonable to guess that $p$ has the value $\hat p = 8/10 = 0.8$.
 :::
 ::::
@@ -223,7 +226,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(b)** More generally, how would you estimate $p$ from the data $X_0 = 0, X_1 = x_1, X_2 = x_2, \dots, X_n = x_n$?
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* We will estimate $\hat p = k/n$, where $k$ is the number of upward steps. We saw in lectures that $k = (n + x_n)/2$, so our estimate is 
     \[ \hat p = \frac{n + x_n}{2n} = \frac12\ + \frac{x_n}{2n} . \]
 :::
@@ -232,7 +235,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 :::: {.subq}
 **(c)** Show that your estimate is in fact the maximum likelihood estimate of $p$.
 
-::: {.myanswers}
+::: {.myanswers data-latex=""}
 *Solution.* You could answer this question by using what you know about maximum likelihood estimation for the binomial distribution from MATH1712, but we'll reason from first principles here.
   
 If we let $k$ be the number of upward steps, then the likelihood is

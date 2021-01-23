@@ -8,8 +8,6 @@ This module is **MATH2750 Introduction to Markov Processes**. The module manager
 
 This module lasts for 11 weeks. The first nine weeks run from 25 January to 26 March, then we break for Easter, and then the final two weeks run from 26 April to 7 May.
 
-It is my intention, if possible, to try to make the Week 10 and 11 material available at the beginning of the Easter break, so that students who want to study the material in a single 11-week block are able to do so.
-
 
 ### Notes and videos {.unnumbered #notes}
 
@@ -18,6 +16,8 @@ The main way I expect you to learn the material for this course is by reading th
 Reading mathematics is a slow process. Each section roughly corresponds to one lecture last year, which would have been 50 minutes. If you find yourself regularly getting through sections in much less than an hour, you're probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as checking the accuracy.
 
 It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos. It is not possible to learn the material by only watching the videos and not reading the notes.
+
+You are probably reading the web version of the notes. If you want a PDF copy (to read offline or to print out), then click the PDF button in the top ribbon of the page. (Warning: I have not made as much effort to make the PDF neat and tidy as I have the web version.)
 
 Since we will all be relying heavily on these notes, I'm even more keen than usual to hear about errors mathematical, typographical or otherwise. Please, please [email me](mailto:m.aldridge@leeds.ac.uk) if think you may have found any.
 
@@ -35,16 +35,16 @@ This will not be a "lecture" in the traditional sense of the term, but will be a
 
 I will assume you have completed all the work for the previous week by the time of the lecture, but I will not assume you've started the work for that week itself.
 
-I am very keen to hear about things you'd like to go through in the lectures. You can  [email me](mailto:m.aldridge@leeds.ac.uk) or post to the Teams discussion board ([see below](#team)).
+I am very keen to hear about things you'd like to go through in the lectures; please [email me](mailto:m.aldridge@leeds.ac.uk) with your suggestions.
 
 
 ### Workshops {.unnumbered #workshops}
 
-There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by Jason Klebes, Dr Jochen Voss, or me. Your workshop will be run through Zoom or Microsoft Teams; your workshop leader will contact you before the end of this week with arrangements.
+There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by [Jason Klebes](https://eps.leeds.ac.uk/maths/pgr/8790/jason-klebes), [Dr Jochen Voss](http://www1.maths.leeds.ac.uk/~voss/), or me. Your workshop will be run through Zoom or Microsoft Teams; your workshop leader will contact you before the end of this week with arrangements.
 
 My recommended approach to problem sheets and workshops is the following:
 
-* Work through the problem sheet before the workshop, spending plenty of time on it, and making multiple efforts at questions you get stuck on. I recommend that three hours per problem sheet is a good amount of time to spend, preferably in more than one block. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.
+* Work through the problem sheet before the workshop, spending plenty of time on it, and making multiple efforts at questions you get stuck on. I recommend spending *at least three hours* on each problem sheet, in more than one block. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.
 * Take advantage of the smaller group setting of the workshop to ask for help or clarification on questions you weren't able to complete.
 * After the workshop, attempt again the questions you were previously stuck on.
 * If you're still unable to complete a question after this second round of attempts, *then* consult the solutions.
@@ -52,13 +52,15 @@ My recommended approach to problem sheets and workshops is the following:
 
 ### Assessments {.unnumbered #assessments}
 
-There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 2 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 3 will be a report on some computational work ([see below](#about--computing)) and is worth 3%. While you may want to discuss an assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.
+There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 2 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 3 will be a report on some computational work ([see below](#about--computing)) and is worth 3%.
+
+While you may want to discuss an assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.
 
 The assessments deadlines are:
 
 * Assessment 1: Thursday 11 February 1400 (week 3)
-* Assessment 2: Thursday 11 March 1400 (week 7)
-* Assessment 3 (Computing Worksheet 2): Thursday 18 March 1400 (week 8)
+* Assessment 2: Thursday 18 March 1400 (week 8)
+* Assessment 3 (Computing Worksheet 2): Thursday 25 March 1400 (week 9)
 * Assessment 4: Thursday 6 May 1400 (week 11)
 
 Work will be submitted via Gradescope.
@@ -66,14 +68,14 @@ Work will be submitted via Gradescope.
 
 ### Computing worksheets {.unnumbered #about-computing}
 
-There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but there will be optional online drop-in sessions in the weeks 4 and 7 if you need help. (Your session will be listed as "Practical" on your timetable.)
+There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but if you need help, there will be optional online drop-in sessions in the weeks 4 and 7 with [Muyang Zhang](https://eps.leeds.ac.uk/maths/pgr/6422/muyang-zhang) through Microsoft Teams. (Your computing drop-in session may be listed as "Practical" on your timetable.)
 
-In response to student feedback, some computational work will be assessed. The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the third assessed piece of work.
+The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the third assessed piece of work.
 
 
 ### Drop-in sessions {.unnumbered #dropin}
 
-If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. You will have been assigned to one of three groups on Tuesdays or Wednesdays with Nikita Merkulov or me. The drop-in sessions will be run the Microsoft Teams. Your drop-in session would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're struggling on a problem sheet question.
+If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. You will have been assigned to one of three groups on Tuesdays or Wednesdays with [Nikita Merkulov](https://eps.leeds.ac.uk/maths/pgr/4992/nikita-merkulov) or me. The drop-in sessions will be run the Microsoft Teams. Your drop-in session would be an excellent place to go if you are having trouble understanding something in the written notes, or if you're still truggling on a problem sheet question after your workshop.
 
 
 ### Microsoft Team {.unnumbered #team}
@@ -85,15 +87,15 @@ I have set up [a Microsoft Team](https://teams.microsoft.com/l/channel/19%3a8cb8
 
 It is, of course, up to you how you choose to spend your time on this module. But, if you're interested, my recommendations would be something like this:
 
-* **Every week:** 7 hours per week
+* **Every week:** 7.5 hours per week
    * **Notes and videos:** 2 sections, 1 hour each
-   * **Problem sheet:** 3 hours per week
+   * **Problem sheet:** 3.5 hours per week
    * **Lecture:** 1 hour per week
    * **Workshop:** 1 hour per week
 * **When required:**
-   * **Assessments 1, 2 and 4:** 3 hours each
+   * **Assessments 1, 2 and 4:** 2 hours each
    * **Computer worksheets:** 2 hours each
-   * **Revision**: 14 hours
+   * **Revision**: 12 hours
 * **Total:** 100 hours
 
 
@@ -108,6 +110,7 @@ There will be an exam -- or, rather, a final "online time-limited assessment" --
 * *I don't understand something in on a computational worksheet:* Go to your computing drop-in session in weeks 4 or 7.
 * *I have an admin question about general arrangements for the module:* [Email me](mailto:m.aldridge@leeds.ac.uk).
 * *I have an admin question about arrangements for my workshop:* Email your workshop leader.
+* *I have suggestion for something to cover in the lectures:* [Email me](mailto:m.aldridge@leeds.ac.uk).
 * *I need an extension on or exemption from an assessment:* [Email the Maths Taught Students Office](mailto:Maths.Taught.Students@leeds.ac.uk).
 
 
