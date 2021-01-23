@@ -62,8 +62,11 @@ This gives us four possibilities in total:
 
 ## Markov property  {#markov-property}
 
-
-![](http://www.youtube.com/watch?v=gkakqCz_M5Q)
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/gkakqCz_M5Q"></iframe>
+:::
+::::
 
 
 Because stochastic processes consist of a large number -- even infinitely many; even uncountably infinitely many -- random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician Andrey Andreyevich Markov, published in 1906.)
