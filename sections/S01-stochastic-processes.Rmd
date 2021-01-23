@@ -64,7 +64,7 @@ This gives us four possibilities in total:
 
 
 ```{r}
-knitr::include_url("https://www.youtube.com/watch?v=gkakqCz_M5Q")
+knitr::include_url("http://www.youtube.com/watch?v=gkakqCz_M5Q")
 ```
 
 
