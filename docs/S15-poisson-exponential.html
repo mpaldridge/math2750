@@ -179,6 +179,9 @@
 <li class="chapter" data-level="15.2" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#sum2"><i class="fa fa-check"></i><b>15.2</b> Example: sum of two Poisson processes</a></li>
 <li class="chapter" data-level="15.3" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#forward"><i class="fa fa-check"></i><b>15.3</b> Forward equations and proof of equivalence</a></li>
 </ul></li>
+<li class="divider"></li>
+<li></li>
+
 </ul>
 
       </nav>
@@ -252,22 +255,22 @@ since <span class="math inline">\(Z\)</span> increases by 1 if either <span clas
 <div id="forward" class="section level2">
 <h2><span class="header-section-number">15.3</span> Forward equations and proof of equivalence</h2>
 <p>If we compare Theorem <a href="S15-poisson-exponential.html#thm:def-inf">15.1</a> to the <a href="#thm:#poisson-def-1">definition of the Poisson process in terms of Poisson increments</a>, we see that properties 1 and 3 are the same. We only need to check property 2, that <span class="math inline">\(X(t+s) - X(s)\)</span> is a Poisson distribution with rate <span class="math inline">\(\lambda t\)</span>.</p>
-<p>Since the increments as defined in <a href="S15-poisson-exponential.html#eq:tau">(15.1)</a> are stationary, it will suffice to consider <span class="math inline">\(s = 0\)</span>. So we need to show that <span class="math inline">\(X(t) \sim \text{Po}(\lambda t)\)</span>.</p>
+<p>Since the increments as defined in <a href="S15-poisson-exponential.html#eq:tau">(15.1)</a> are time homogeneous, it will suffice to consider <span class="math inline">\(s = 0\)</span>. So we need to show that <span class="math inline">\(X(t) \sim \text{Po}(\lambda t)\)</span>.</p>
 <p>Write <span class="math inline">\(p_j(t) = \mathbb P(X(t) = j)\)</span>. Then for <span class="math inline">\(j \geq 1\)</span> we have
 <span class="math display">\[ p_j(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_j(t) + \big(\lambda\tau + o(\tau)\big) p_{j-1}(t) + o(\tau) , \]</span>
 since we get to <span class="math inline">\(j\)</span> either by staying at <span class="math inline">\(j\)</span> or moving up from <span class="math inline">\(j-1\)</span>, with all other highly unlikely possibilities being absorbed into the <span class="math inline">\(o(\tau)\)</span>. In order to deal with increments, it will be convenient to take a <span class="math inline">\(p_{j}(t)\)</span> to the left-hand side and rearrange, to get the increment
 <span class="math display">\[ p_j(t + \tau) - p_j(t) = -\lambda\tau p_j(t) + \lambda\tau p_{j-1}(\tau) + o(\tau) , \]</span>
 where “constant times <span class="math inline">\(o(\tau)\)</span>” is itself <span class="math inline">\(o(\tau)\)</span>.</p>
 <p>The only way to deal with the <span class="math inline">\(o(\tau)\)</span> term, given its definition, is to divide everything by <span class="math inline">\(\tau\)</span> and send <span class="math inline">\(\tau \to 0\)</span>. Dividing by <span class="math inline">\(\tau\)</span> gives
-<span class="math display">\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(\tau) + \frac{o(\tau)}{\tau} . \]</span>
-Sending <span class="math inline">\(\tau\)</span> to 0, the term <span class="math inline">\(o(\tau)/\tau\)</span> tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative <span class="math inline">\(\mathrm d p_j(t) / \mathrm d t = p&#39;_j(t)\)</span>.</p>
-<p>This leaves us with the differential equation
+<span class="math display">\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(t) + \frac{o(\tau)}{\tau} . \]</span>
+Sending <span class="math inline">\(\tau\)</span> to 0, the term <span class="math inline">\(o(\tau)/\tau\)</span> tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative <span class="math inline">\(\mathrm d p_j(t) / \mathrm d t = p&#39;_j(t)\)</span>.
+This leaves us with the differential equation
 <span class="math display">\[ p&#39;_j(t) = -\lambda p_j(t) + \lambda p_{j-1}(t) . \]</span>
 We also have the initial condition <span class="math inline">\(p_j(0) = 0\)</span> for <span class="math inline">\(j \geq 1\)</span>, since we start at 0, not at any <span class="math inline">\(j \geq 1\)</span>.</p>
 <p>We have to deal with the case <span class="math inline">\(j = 0\)</span> separately. This is similar but a bit easier. We have
 <span class="math display">\[ p_0(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_0(t) , \]</span>
 since we must previously been at 0, then seen no arrivals.
-After rearranging and sending <span class="math inline">\(\tau \to 0\)</span>, we get the differential equation
+After rearranging to get an increment and sending <span class="math inline">\(\tau \to 0\)</span>, as before, we get the differential equation
 <span class="math display">\[ p&#39;_0(t) = -\lambda p_0(t) \]</span>
 with the initial condition <span class="math inline">\(p_0(0) = 1\)</span>, since we always start at 0.</p>
 <p>In summary, we have derived the following equations:
@@ -275,23 +278,24 @@ with the initial condition <span class="math inline">\(p_0(0) = 1\)</span>, sinc
    p&#39;_0(t) &amp;= -\lambda p_0(t) &amp; \hspace{-1.5cm} p_0(0) &amp; = 1 ,\\
    p&#39;_j(t) &amp;= -\lambda p_j(t) + \lambda p_{j-1}(t) &amp; \hspace{-1.5cm} p_j(0) &amp;= 0 \quad \text{for $j \geq 1$} .
 \end{align*}\]</span>
-These are often referred to as the <strong>Kolmogorov forward equations</strong>.</p>
+These are called the <strong>Kolmogorov forward equations</strong>.</p>
 <p>We claim that the solution to these equations is the Poisson distribution
 <span class="math display">\[ p_j(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} . \]</span>
 This would prove the theorem.</p>
 <p>We must check that the claim holds. For <span class="math inline">\(j = 0\)</span>, the Poisson probability is
 <span class="math display">\[ p_0(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^0}{0!} = \mathrm{e}^{-\lambda t} . \]</span>
-This has <span class="math inline">\(p_0(0) = \mathrm{e}^{0} = 1\)</span>, and we have
+This has
 <span class="math display">\[ p&#39;_0(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_0(t) , \]</span>
-as desired.</p>
-<p>For <span class="math inline">\(j \geq 1\)</span>, we have <span class="math inline">\(p_j(0) = \mathrm{e}^{0} 0^j/j! = 0\)</span>, and the left-hand side is
+as desired, and we also have the correct initial condition <span class="math inline">\(p_0(0) = \mathrm{e}^{0} = 1\)</span>.</p>
+<p>For <span class="math inline">\(j \geq 1\)</span>, the left-hand side is
 <span class="math display">\[\begin{align*}
 p&#39;_j(t) &amp;= \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} \\
 &amp; = \frac{1}{j!} \left(-\lambda \mathrm{e}^{-\lambda t}(\lambda t)^j + \mathrm{e}^{-\lambda t} \lambda j(\lambda t)^{j-1} \right) \\
 &amp;= - \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} + \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^{j-1}}{(j-1)!} \\
 &amp;= -\lambda p_j(t) + \lambda p_{j-1}(t)
 \end{align*}\]</span>
-as desired. We are finally done.</p>
+as desired. We also have the initial condition <span class="math inline">\(p_j(0) = \mathrm{e}^{0} 0^j/j! = 0\)</span>.
+The claim is proven, and we are (finally) done.</p>
 <div class="mysummary">
 <p><strong>In the next section</strong>, we two new types of process that are similar to the Poisson process.</p>
 </div>

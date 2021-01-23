@@ -179,6 +179,9 @@
 <li class="chapter" data-level="15.2" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#sum2"><i class="fa fa-check"></i><b>15.2</b> Example: sum of two Poisson processes</a></li>
 <li class="chapter" data-level="15.3" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#forward"><i class="fa fa-check"></i><b>15.3</b> Forward equations and proof of equivalence</a></li>
 </ul></li>
+<li class="divider"></li>
+<li></li>
+
 </ul>
 
       </nav>
@@ -228,6 +231,140 @@ $(document).ready(function() {
 -->
 <div class="mysummary">
 <p>You should attempt all these questions and write up your solutions in advance of your workshop in week 3 (Monday 8 or Tuesday 9 February) where the answers will be discussed.</p>
+</div>
+<div class="myq">
+<p><strong>1.</strong> Solve the following linear difference equations:</p>
+<div class="subq">
+<p><strong>(a)</strong> <span class="math inline">\(x_{n+2} - 4x_{n+1} + 3x_{n} = 0\)</span>, subject to <span class="math inline">\(x_0 = 0\)</span>, <span class="math inline">\(x_1 = 2\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The characteristic equation is <span class="math inline">\(\lambda^2 - 4\lambda + 3 = 0\)</span>, which factorises as <span class="math inline">\((\lambda - 3)(\lambda - 1) = 0\)</span>, with solutions <span class="math inline">\(\lambda = 1,3\)</span>, so the general solution is <span class="math inline">\(x_n = A1^n + B3^n = A + B3^n\)</span>. The initial conditions give <span class="math inline">\(A+B = 0\)</span> and <span class="math inline">\(A + 3B = 2\)</span>, meaning <span class="math inline">\(B = 1\)</span> and <span class="math inline">\(A = -1\)</span>. Hence the solution is <span class="math inline">\(x_n = 3^n - 1\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> <span class="math inline">\(4x_{n+1} = 4x_n - x_{n-1}\)</span>, subject to <span class="math inline">\(x_0 = 1\)</span>, <span class="math inline">\(x_1 = 0\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> First, we rearrange to <span class="math inline">\(4x_{n+1} - 4x_n + x_{n-1} = 0\)</span>. The characteristic equation is <span class="math inline">\(4\lambda^2 - 4\lambda + 1 = 0\)</span>, which factorises as <span class="math inline">\((2\lambda - 1)^2 = 0\)</span>, which has a repeated root <span class="math inline">\(\lambda = \frac12\)</span>, so the general solution is <span class="math inline">\(x_n = (A + Bn)(\frac12)^n\)</span>. The initial conditions give <span class="math inline">\(A=1\)</span> and <span class="math inline">\((A + B)/2 = 0\)</span>, meaning <span class="math inline">\(B = -1\)</span>. Hence the solution is <span class="math inline">\(x_n = (1 - n)(\frac12)^n\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> <span class="math inline">\(x_n-5x_{n-1} + 6x_{n-2} = 1\)</span>, subject to <span class="math inline">\(x_0 = 1\)</span>, <span class="math inline">\(x_1 = 2\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The characteristic equation is <span class="math inline">\(\lambda^2 - 5\lambda + 6 = 0\)</span>, which factorises as <span class="math inline">\((\lambda - 2)(\lambda - 3) = 0\)</span>, with solutions <span class="math inline">\(\lambda = 2,3\)</span>, so the general solution to the homogeneous equation is <span class="math inline">\(A2^n + B3^n\)</span>. For a particular solution, we guess a solution of the form <span class="math inline">\(x_n = C\)</span>; substituting this into the inhomogeneous equation gives <span class="math inline">\(C - 5C + 6C = 1\)</span>, so <span class="math inline">\(C = \frac12\)</span>. So the general solution to the inhomogeneous equation is <span class="math inline">\(x_n = A2^n + B3^n + \frac12\)</span>. The initial conditions give <span class="math inline">\(A+B \frac12= 1\)</span> and <span class="math inline">\(2A + 3B + \frac12= 2\)</span>, which is solved by <span class="math inline">\(B = \frac12\)</span> and <span class="math inline">\(A = 0\)</span>. Hence the solution is <span class="math inline">\(x_n = \frac12 3^n + \frac12 = (3^n + 1)/2\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> <span class="math inline">\(x_{n+2} - 2x_{n+1} + x_n = -1\)</span>, subject to <span class="math inline">\(x_0 = 0\)</span>, <span class="math inline">\(x_1 = 2\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The characteristic equation is <span class="math inline">\(\lambda^2 - 2\lambda + 1 = 0\)</span>, which factorises as <span class="math inline">\((\lambda - 1)^2 = 0\)</span>, with a repeated root <span class="math inline">\(\lambda = 1\)</span>, so the general solution to the homogeneous equation is <span class="math inline">\((A + Bn)1^n = A + Bn\)</span>. For a particular solution, since constant and linear terms will equal <span class="math inline">\(0\)</span>, not <span class="math inline">\(-1\)</span>, we guess a solution of the form <span class="math inline">\(x_n = Cn^2\)</span>; substituting this into the inhomogeneous equation gives
+<span class="math display">\[ C(n+2)^2 - 2C(n+1)^2 + Cn^2 = 2C = -1  \]</span>
+so <span class="math inline">\(C = -\frac12\)</span>. So the general solution to the inhomogeneous equation is <span class="math inline">\(x_n = A + Bn - \frac12 n^2\)</span>. The initial conditions give <span class="math inline">\(A = 0\)</span> and <span class="math inline">\(A + B - \frac12= 2\)</span>, so <span class="math inline">\(B = \frac52\)</span>. Hence the solution is <span class="math inline">\(x_n = \frac52n - \frac12n^2 = \frac n2(5-n)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>2.</strong> Consider a simple symmetric random walk on the state space <span class="math inline">\(\mathcal{S} = \{0,1,\ldots ,m\}\)</span> with an absorbing barrier at <span class="math inline">\(0\)</span> and a reflecting barrier at <span class="math inline">\(m\)</span>. In other words,
+<span class="math display">\[ \mathbb P(X_{n+1} = 0 \mid X_n = 0) = 1 \quad \text{and} \quad  \mathbb P(X_{n+1} = m-1 \mid X_n = m) = 1 . \]</span>
+Let <span class="math inline">\(\eta_i\)</span> be the expected time until the the walk hits <span class="math inline">\(0\)</span> when starting from <span class="math inline">\(i \in \mathcal S\)</span>.</p>
+<div class="subq">
+<p><strong>(a)</strong> Explain why <span class="math inline">\((\eta_i)\)</span> satisfies
+<span class="math display">\[ \eta_i = 1 + \tfrac12 \eta_{i+1} +\tfrac12 \eta_{i-1} \]</span>
+for <span class="math inline">\(i \in \{1,2,\dots,m-1\}\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> We condition on the first step. The first step itself takes time 1. After that, with probability <span class="math inline">\(\frac12\)</span> we are at state <span class="math inline">\(i+1\)</span>, with expected time remaining <span class="math inline">\(\eta_{i+1}\)</span>, while with probability <span class="math inline">\(\frac12\)</span> we are at state <span class="math inline">\(i-1\)</span>, with expected time remaining <span class="math inline">\(\eta_{i-1}\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> Give a similar equation for <span class="math inline">\(\eta_m\)</span>, and state the value of <span class="math inline">\(\eta_0\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> From <span class="math inline">\(m\)</span>, we move to <span class="math inline">\(m-1\)</span> with certainty, so conditioning on the first step gives <span class="math inline">\(\eta_m = 1 + \eta_{m-1}\)</span>.</p>
+<p>Clearly <span class="math inline">\(\eta_0 = 0\)</span>, as we stop immediately.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> Hence, find the value of <span class="math inline">\(\eta_i\)</span> for all <span class="math inline">\(i \in \mathcal S\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> We rewrite the equation as <span class="math inline">\(\eta_{i+1} - 2 \eta_i + \eta_{i-1} = -2\)</span>. This has characteristic equation <span class="math inline">\(\lambda^2 - 2\lambda + 1 = 0\)</span>, which factorises as <span class="math inline">\((\lambda-1)^2\)</span>, with a repeated root of <span class="math inline">\(1\)</span>, so the general solution to the homogeneous equation is <span class="math inline">\(A + Bi\)</span>. By the same logic as before, we attempt a particular solution of the form <span class="math inline">\(\eta_i = Ci^2\)</span>, which gives
+<span class="math display">\[ C(i+1)^2 - 2Ci^2 + C(i-1)^2 = 2C = -2 ,   \]</span>
+so <span class="math inline">\(C = -1\)</span>. The general solution to the inhomogeneous equation is therefore <span class="math inline">\(\eta_i = A + Bi - i^2\)</span>. From the boundary condition <span class="math inline">\(k_0 = 0\)</span> we have <span class="math inline">\(A = 0\)</span>. From the boundary condition <span class="math inline">\(k_m = 1 + k_{m-1}\)</span> we have
+<span class="math display">\[ Bm - m^2 = 1 + B(m-1) - (m-1)^2 = Bm - B - m^2 +2m  , \]</span>
+giving <span class="math inline">\(B = 2m\)</span>. Therefore the solution is <span class="math inline">\(\eta_i = 2mi - i^2 = i(2m - i)\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> You should notice that your answer is the same as the expected duration of the gambler’s ruin for <span class="math inline">\(p = \frac12\)</span>, except with <span class="math inline">\(m\)</span> replaced by <span class="math inline">\(2m\)</span>. Can you explain why this might be?</p>
+<div class="myanswers">
+<p><em>Solution.</em> This is an example of the <strong>reflection principle</strong>. Let <span class="math inline">\((Y_n)\)</span> be a gambler’s ruin (simple random walk with two absorbing barriers) on <span class="math inline">\(\{0,1,\dots, 2m\}\)</span>. Then consider placing a mirror at <span class="math inline">\(m\)</span>, and viewing the Markov chain so that it remains in the first half <span class="math inline">\(\{0,1,\dots,m\}\)</span>; more formally, we consider <span class="math inline">\((X_n)\)</span> where
+<span class="math display">\[ X_n = \begin{cases} Y_n &amp; \text{if $Y_n \leq m$} \\
+                      2m - Y_n &amp; \text{if $Y_n &gt; m$.} \end{cases}   \]</span>
+Then <span class="math inline">\((X_n)\)</span> is the half-reflecting random walk we consider in this question. Further, <span class="math inline">\((X_n)\)</span> is absorbed at <span class="math inline">\(0\)</span> when <span class="math inline">\((Y_n)\)</span> is absorbed at either <span class="math inline">\(0\)</span> or <span class="math inline">\(2m\)</span>, which has the given expected time <span class="math inline">\(i(2m-i)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>4.</strong> Consider the gambler’s ruin problem with draws: at each step, Alice wins £1 with probability <span class="math inline">\(p\)</span>, loses £1 with probability <span class="math inline">\(q\)</span>, and neither wins nor loses any money with probability <span class="math inline">\(s\)</span>, where <span class="math inline">\(p + q +s = 1\)</span>, and <span class="math inline">\(0 &lt; p,q,s&lt;1\)</span>. Alice starts with £<span class="math inline">\(a\)</span> and Bob with £<span class="math inline">\((m-a)\)</span>.</p>
+<div class="subq">
+<p><strong>(a)</strong> Let <span class="math inline">\(r_i\)</span> be Alice’s probability of ruin given that she has £<span class="math inline">\(i\)</span>.</p>
+<div class="subq">
+<p><strong>(i)</strong> Write down a linear difference equation for <span class="math inline">\((r_i)\)</span>, remembering to include appropriate boundary conditions.</p>
+<div class="myanswers">
+<p><em>Solution.</em> By conditioning on the first step, we have
+<span class="math display">\[ r_i = pr_{i+1} + sr_i + qr_{i-1} , \]</span>
+which can be rearranged to
+<span class="math display">\[ pr_{i+1} - (1-s)r_i + qr_{i-1} = 0 . \]</span>
+The boundary conditions are <span class="math inline">\(r_0 = 1\)</span> and <span class="math inline">\(r_m = 0\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(ii)</strong> Solve the linear difference equation, to find <span class="math inline">\(r_a\)</span>, Alice’s probability of ruin. You may assume that <span class="math inline">\(p \neq q\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The characteristic equation is <span class="math inline">\(p\lambda^2 - (1-s)\lambda + q = 0\)</span>, which factorises as <span class="math inline">\((p\lambda - q)(\lambda - 1) = 0\)</span>, since <span class="math inline">\(p + q = 1-s\)</span>. The solutions are <span class="math inline">\(\lambda = q/p = \rho\)</span> and <span class="math inline">\(\lambda = 1\)</span>. Since we assume <span class="math inline">\(p \neq q\)</span>, we have that <span class="math inline">\(\rho \neq 1\)</span>, so we have unique roots, and general solution
+<span class="math inline">\(r_i = A + B \rho^i\)</span>. The boundary conditions give <span class="math inline">\(A + B = 1\)</span> and <span class="math inline">\(A + B\rho^m = 0\)</span>, meaning that <span class="math inline">\(B = 1/(1-\rho^m)\)</span> and <span class="math inline">\(A = -\rho^m/(1-\rho^m)\)</span>, so the solution is
+<span class="math display">\[ r_i = -\frac{\rho^m}{1-\rho^m} + \frac{1}{1-\rho^m}\rho^i = \frac{\rho^i - \rho^m}{1-\rho^m}.   \]</span></p>
+</div>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> Let <span class="math inline">\(d_i\)</span> be be the expected duration of the game from the point that Alice has £<span class="math inline">\(i\)</span>.</p>
+<div class="subq">
+<p><strong>(i)</strong> Write down a linear difference equation for <span class="math inline">\((d_i)\)</span>, remembering to include appropriate boundary conditions.</p>
+<div class="myanswers">
+<p><em>Solution.</em> By conditioning on the first step, we have
+<span class="math display">\[ d_i = p(1 + d_{i+1}) + s(1 + d_i) + q(1 + d_{i-1}) ,  \]</span>
+which after rearranging gives
+<span class="math display">\[ pd_{i+1} - (1-s)d_i + qd_{i-1} = -1.  \]</span>
+The boundary conditions are <span class="math inline">\(d_0 = 0\)</span> and <span class="math inline">\(d_m = 0\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(ii)</strong> Solve the linear difference equation, to find <span class="math inline">\(d_a\)</span>, the expected duration of the game. You may assume that <span class="math inline">\(p \neq q\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> As before, the solution to the homogeneous equation is <span class="math inline">\(A + B\rho^i\)</span>. We try a particular solution of the for <span class="math inline">\(d_i = Ci\)</span>, and find that
+<span class="math display">\[ pC(i+1) -(1-s)Ci + qC(i-1) = C(p-q) = -1 ,\]</span>
+so <span class="math inline">\(C= 1/(q-p)\)</span>, and the general solution to the inhomogeneous equation is
+<span class="math display">\[ d_i = A + B\rho^i + \frac{i}{q-p} .  \]</span>
+The boundary conditions give <span class="math inline">\(A + B = 0\)</span> and <span class="math inline">\(A + B \rho^m + m/(q-p) = 0\)</span>, meaning that
+<span class="math display">\[ B = -A = \frac{m}{q-p} \frac{1}{1-\rho^m} . \]</span>
+Hence the solution is
+<span class="math display">\[ d_i = \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1-\rho^m} \right) .   \]</span></p>
+</div>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> Alice starts playing against Bob in a standard gambler’s ruin game with probabilities <span class="math inline">\(p \neq q\)</span> and <span class="math inline">\(s = 0\)</span>. A draw probability <span class="math inline">\(s &gt; 0\)</span> is then introduced in such a way that the ratio <span class="math inline">\(\rho = q/p\)</span> remains constant. How does this change Alice’s ruin probability and the expected duration of the game.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The ruin probability does not change, as we see immediately. This is not surprising, as the win and lose probabilities for a round conditional on the round not being a draw have stayed the same.</p>
+<p>The expected duration of the game increases. If <span class="math inline">\(\rho = q/p\)</span> stays the same while introducing a draw probability <span class="math inline">\(s\)</span>, then the “new” <span class="math inline">\(q\)</span> and <span class="math inline">\(p\)</span> are <span class="math inline">\((1-s)q\)</span> and <span class="math inline">\((1-s)p\)</span>, so <span class="math inline">\(q-p\)</span> becomes<span class="math inline">\((1-s)q - (1-s)p = (1-s)(q-p)\)</span>. Hence expected duration goes up by a factor of <span class="math inline">\(1/(1-s)\)</span>. This makes sense, since number of rounds until a non-draw result is a geometric distribution with expectation <span class="math inline">\(1/(1-s)\)</span>, so each step takes <span class="math inline">\(1/(1-s)\)</span> times as long on average.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>5.</strong> The Fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, 34, …, where each number in the sequence is the sum of the two previous numbers. Show that the ratio of consecutive Fibonacci numbers tends to the “golden ratio” <span class="math inline">\(\phi = (1 + \sqrt{5})/2\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The Fibonacci numbers <span class="math inline">\((F_n)\)</span> satisfy <span class="math inline">\(F_{n+1} = F_n + F_{n-1}\)</span>, which rearranges to <span class="math inline">\(F_{n+1} -F_n - F_{n-1} = 0\)</span>. The is a linear difference equation with characteristic equation <span class="math inline">\(\lambda^2 - \lambda - 1 = 0\)</span>. This has two solutions, which can be found using the quadratic formula. The solution with larger absolute value is <span class="math inline">\(\lambda_1 = (1+\sqrt{5})/2 = \phi\)</span>, the golden ratio, and the solution with smaller absolute value is <span class="math inline">\(\lambda_2 = (1-\sqrt{5})/2\)</span>. Hence, the general solution to the equation is <span class="math inline">\(F_n = A\phi^n + B\lambda_2^n\)</span>. We could use the initial conditions <span class="math inline">\(F_1 = 1\)</span> and <span class="math inline">\(F_2 = 1\)</span> to find <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but there’s no need to here.</p>
+<p>The ratio of consecutive Fibonacci numbers is
+<span class="math display">\[ \frac{F_{n+1}}{F_n} = \frac{A\phi^{n+1} + B\lambda_2^{n+1}}{A\phi^n + B\lambda_2^n} = \frac{\phi + B\lambda_2^{n+1}/A\phi^n}{1 + B\lambda_2^n/A\phi^n} \to \frac{\phi + 0}{1 + 0} = \phi \]</span>
+as <span class="math inline">\(n \to \infty\)</span>, since <span class="math inline">\(|\lambda_2/\phi| &lt; 1\)</span> means that <span class="math inline">\(\lambda_2^n / \phi^n \to 0\)</span>.</p>
+</div>
 </div>
 
 </div>

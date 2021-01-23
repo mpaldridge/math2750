@@ -159,6 +159,10 @@ ul.summary ul li {
   margin-top: 0 !important;
 }
 
+.myanswers {
+  display: none !important;
+}
+
 /*
 .math.display {
   display: block;

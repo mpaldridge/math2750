@@ -3,7 +3,7 @@
 
 ::: {.mysummary}
 * Poisson process in terms of increments in infinitesimal time
-* Forwardequations for the Poisson process
+* Forward equations for the Poisson process
 :::
 
 

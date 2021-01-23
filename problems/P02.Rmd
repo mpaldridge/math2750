@@ -35,3 +35,177 @@ You should attempt all these questions and write up your solutions in advance of
 :::
 
 
+::::: {.myq}
+**1.** Solve the following linear difference equations:
+
+:::: {.subq}
+**(a)** $x_{n+2} - 4x_{n+1} + 3x_{n} = 0$, subject to $x_0 = 0$, $x_1 = 2$.
+
+::: {.myanswers}
+*Solution.* The characteristic equation is $\lambda^2 - 4\lambda + 3 = 0$, which factorises as $(\lambda - 3)(\lambda - 1) = 0$, with solutions $\lambda = 1,3$, so the general solution is $x_n = A1^n + B3^n = A + B3^n$. The initial conditions give $A+B = 0$ and $A + 3B = 2$, meaning $B = 1$ and $A = -1$. Hence the solution is $x_n = 3^n - 1$.
+:::
+::::
+
+:::: {.subq}
+**(b)** $4x_{n+1} = 4x_n - x_{n-1}$, subject to $x_0 = 1$, $x_1 = 0$.
+
+::: {.myanswers}
+*Solution.* First, we rearrange to $4x_{n+1} - 4x_n + x_{n-1} = 0$. The characteristic equation is $4\lambda^2 - 4\lambda + 1 = 0$, which factorises as $(2\lambda - 1)^2 = 0$, which has a repeated root $\lambda = \frac12$, so the general solution is $x_n = (A + Bn)(\frac12)^n$. The initial conditions give $A=1$ and $(A + B)/2 = 0$, meaning $B = -1$. Hence the solution is $x_n = (1 - n)(\frac12)^n$.
+:::
+::::
+
+:::: {.subq}
+**(c)** $x_n-5x_{n-1} + 6x_{n-2} = 1$, subject to $x_0 = 1$, $x_1 = 2$.
+
+::: {.myanswers}
+*Solution.* The characteristic equation is $\lambda^2 - 5\lambda + 6 = 0$, which factorises as $(\lambda - 2)(\lambda - 3) = 0$, with solutions $\lambda = 2,3$, so the general solution to the homogeneous equation is $A2^n + B3^n$. For a particular solution, we guess a solution of the form $x_n = C$; substituting this into the inhomogeneous equation gives $C - 5C + 6C = 1$, so $C = \frac12$. So the general solution to the inhomogeneous equation is $x_n = A2^n + B3^n + \frac12$. The initial conditions give $A+B \frac12= 1$ and $2A + 3B + \frac12= 2$, which is solved by $B = \frac12$ and $A = 0$. Hence the solution is $x_n = \frac12 3^n + \frac12 = (3^n + 1)/2$.
+:::
+::::
+
+:::: {.subq}
+**(d)** $x_{n+2} - 2x_{n+1} + x_n = -1$, subject to $x_0 = 0$, $x_1 = 2$.
+
+::: {.myanswers}
+*Solution.* The characteristic equation is $\lambda^2 - 2\lambda + 1 = 0$, which factorises as $(\lambda - 1)^2 = 0$, with a repeated root $\lambda = 1$, so the general solution to the homogeneous equation is $(A + Bn)1^n = A + Bn$. For a particular solution, since constant and linear terms will equal $0$, not $-1$, we guess a solution of the form $x_n = Cn^2$; substituting this into the inhomogeneous equation gives
+	\[ C(n+2)^2 - 2C(n+1)^2 + Cn^2 = 2C = -1  \]
+so $C = -\frac12$. So the general solution to the inhomogeneous equation is $x_n = A + Bn - \frac12 n^2$. The initial conditions give $A = 0$ and $A + B - \frac12= 2$, so $B = \frac52$. Hence the solution is $x_n = \frac52n - \frac12n^2 = \frac n2(5-n)$.
+:::
+::::
+:::::
+
+::::: {.myq}
+**2.** Consider a simple symmetric random walk on the state space $\mathcal{S} = \{0,1,\ldots ,m\}$ with an absorbing barrier at $0$ and a reflecting barrier at $m$. In other words,
+\[ \mathbb P(X_{n+1} = 0 \mid X_n = 0) = 1 \quad \text{and} \quad  \mathbb P(X_{n+1} = m-1 \mid X_n = m) = 1 . \]
+Let $\eta_i$ be the expected time until the the walk hits $0$ when starting from $i \in \mathcal S$.
+
+:::: {.subq}
+**(a)** Explain why $(\eta_i)$ satisfies
+	\[ \eta_i = 1 + \tfrac12 \eta_{i+1} +\tfrac12 \eta_{i-1} \]
+	for $i \in \{1,2,\dots,m-1\}$.
+
+::: {.myanswers}
+*Solution.* We condition on the first step. The first step itself takes time 1. After that, with probability $\frac12$ we are at state $i+1$, with expected time remaining $\eta_{i+1}$, while with probability $\frac12$ we are at state $i-1$, with expected time remaining $\eta_{i-1}$.
+:::
+::::
+
+:::: {.subq}
+**(b)** Give a similar equation for $\eta_m$, and state the value of $\eta_0$.
+
+::: {.myanswers}
+*Solution.* From $m$, we move to $m-1$ with certainty, so conditioning on the first step gives $\eta_m = 1 + \eta_{m-1}$.
+	
+Clearly $\eta_0 = 0$, as we stop immediately.
+:::
+::::
+
+:::: {.subq}
+**(c)** Hence, find the value of $\eta_i$ for all $i \in \mathcal S$.
+
+::: {.myanswers}
+*Solution.* We rewrite the equation as $\eta_{i+1} - 2 \eta_i + \eta_{i-1} = -2$. This has characteristic equation $\lambda^2 - 2\lambda + 1 = 0$, which factorises as $(\lambda-1)^2$, with a repeated root of $1$, so the general solution to the homogeneous equation is $A + Bi$. By the same logic as before, we attempt a particular solution of the form $\eta_i = Ci^2$, which gives
+	\[ C(i+1)^2 - 2Ci^2 + C(i-1)^2 = 2C = -2 ,   \]
+so $C = -1$. The general solution to the inhomogeneous equation is therefore $\eta_i = A + Bi - i^2$. From the boundary condition $k_0 = 0$ we have $A = 0$. From the boundary condition $k_m = 1 + k_{m-1}$ we have
+	\[ Bm - m^2 = 1 + B(m-1) - (m-1)^2 = Bm - B - m^2 +2m  , \]
+giving $B = 2m$. Therefore the solution is $\eta_i = 2mi - i^2 = i(2m - i)$.
+:::
+::::
+
+:::: {.subq}
+**(d)** You should notice that your answer is the same as the expected duration of the gambler's ruin for $p = \frac12$, except with $m$ replaced by $2m$. Can you explain why this might be?
+
+::: {.myanswers}
+*Solution.* This is an example of the **reflection principle**. Let $(Y_n)$ be a gambler's ruin (simple random walk with two absorbing barriers) on $\{0,1,\dots, 2m\}$. Then consider placing a mirror at $m$, and viewing the Markov chain so that it remains in the first half $\{0,1,\dots,m\}$; more formally, we consider $(X_n)$ where
+	\[ X_n = \begin{cases} Y_n & \text{if $Y_n \leq m$} \\
+	                  2m - Y_n & \text{if $Y_n > m$.} \end{cases}   \]
+	Then $(X_n)$ is the half-reflecting random walk we consider in this question. Further, $(X_n)$ is absorbed at $0$ when $(Y_n)$ is absorbed at either $0$ or $2m$, which has the given expected time $i(2m-i)$.
+:::
+::::
+:::::
+
+
+:::::: {.myq}
+**4.** Consider the gambler's ruin problem with draws: at each step, Alice wins £1 with probability $p$, loses £1 with probability $q$, and neither wins nor loses any money with probability $s$, where $p + q +s = 1$, and $0 < p,q,s<1$. Alice starts with £$a$ and Bob with £$(m-a)$.
+
+::::: {.subq}
+**(a)** Let $r_i$ be Alice's probability of ruin given that she has £$i$.
+
+:::: {.subq}
+**(i)** Write down a linear difference equation for $(r_i)$, remembering to include appropriate boundary conditions.
+
+::: {.myanswers}
+*Solution.* By conditioning on the first step, we have
+	\[ r_i = pr_{i+1} + sr_i + qr_{i-1} , \]
+which can be rearranged to 
+	\[ pr_{i+1} - (1-s)r_i + qr_{i-1} = 0 . \]
+The boundary conditions are $r_0 = 1$ and $r_m = 0$.	
+:::
+::::
+
+:::: {.subq}
+**(ii)** Solve the linear difference equation, to find $r_a$, Alice's probability of ruin. You may assume that $p \neq q$.
+
+::: {.myanswers}
+*Solution.* The characteristic equation is $p\lambda^2 - (1-s)\lambda + q = 0$, which factorises as $(p\lambda - q)(\lambda - 1) = 0$, since $p + q = 1-s$. The solutions are $\lambda = q/p = \rho$ and $\lambda = 1$. Since we assume $p \neq q$, we have that $\rho \neq 1$, so we have unique roots, and general solution
+	$r_i = A + B \rho^i$. The boundary conditions give $A + B = 1$ and $A + B\rho^m = 0$, meaning that $B = 1/(1-\rho^m)$ and $A = -\rho^m/(1-\rho^m)$, so the solution is
+	\[ r_i = -\frac{\rho^m}{1-\rho^m} + \frac{1}{1-\rho^m}\rho^i = \frac{\rho^i - \rho^m}{1-\rho^m}.   \]
+:::
+::::
+:::::
+
+::::: {.subq}
+**(b)** Let $d_i$ be be the expected duration of the game from the point that Alice has £$i$.
+
+:::: {.subq}
+**(i)** Write down a linear difference equation for $(d_i)$, remembering to include appropriate boundary conditions.
+
+::: {.myanswers}
+*Solution.* By conditioning on the first step, we have
+	\[ d_i = p(1 + d_{i+1}) + s(1 + d_i) + q(1 + d_{i-1}) ,  \]
+which after rearranging gives
+	\[ pd_{i+1} - (1-s)d_i + qd_{i-1} = -1.  \]
+The boundary conditions are $d_0 = 0$ and $d_m = 0$.
+:::
+::::
+
+:::: {.subq}
+**(ii)** Solve the linear difference equation, to find $d_a$, the expected duration of the game. You may assume that $p \neq q$.
+
+::: {.myanswers}
+*Solution.* As before, the solution to the homogeneous equation is $A + B\rho^i$. We try a particular solution of the for $d_i = Ci$, and find that
+	\[ pC(i+1) -(1-s)Ci + qC(i-1) = C(p-q) = -1 ,\]
+so $C= 1/(q-p)$, and the general solution to the inhomogeneous equation is
+	\[ d_i = A + B\rho^i + \frac{i}{q-p} .  \]
+The boundary conditions give $A + B = 0$ and $A + B \rho^m + m/(q-p) = 0$, meaning that
+	\[ B = -A = \frac{m}{q-p} \frac{1}{1-\rho^m} . \]
+Hence the solution is
+	\[ d_i = \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1-\rho^m} \right) .   \]
+:::
+::::
+:::::
+
+:::: {.subq}
+**(c)** Alice starts playing against Bob in a standard gambler's ruin game with probabilities $p \neq q$ and $s = 0$. A draw probability $s > 0$ is then introduced in such a way that the ratio $\rho = q/p$ remains constant. How does this change Alice's ruin probability and the expected duration of the game.
+
+::: {.myanswers}
+*Solution.* The ruin probability does not change, as we see immediately. This is not surprising, as the win and lose probabilities for a round conditional on the round not being a draw have stayed the same.
+
+The expected duration of the game increases. If $\rho = q/p$ stays the same while introducing a draw probability $s$, then the "new" $q$ and $p$ are $(1-s)q$ and $(1-s)p$, so $q-p$ becomes$(1-s)q - (1-s)p = (1-s)(q-p)$. Hence expected duration goes up by a factor of $1/(1-s)$. This makes sense, since number of rounds until a non-draw result is a geometric distribution with expectation $1/(1-s)$, so each step takes $1/(1-s)$ times as long on average.
+:::
+::::
+::::::
+
+
+:::: {.myq}
+**5.** The Fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, 34, ..., where each number in the sequence is the sum of the two previous numbers. Show that the ratio of consecutive Fibonacci numbers tends to the "golden ratio" $\phi = (1 + \sqrt{5})/2$.
+
+::: {.myanswers}
+*Solution.* The Fibonacci numbers $(F_n)$ satisfy $F_{n+1} = F_n + F_{n-1}$, which rearranges to $F_{n+1} -F_n - F_{n-1} = 0$. The is a linear difference equation with characteristic equation $\lambda^2 - \lambda - 1 = 0$. This has two solutions, which can be found using the quadratic formula. The solution with larger absolute value is $\lambda_1 = (1+\sqrt{5})/2 = \phi$, the golden ratio, and the solution with smaller absolute value is $\lambda_2 = (1-\sqrt{5})/2$. Hence, the general solution to the equation is $F_n = A\phi^n + B\lambda_2^n$. We could use the initial conditions $F_1 = 1$ and $F_2 = 1$ to find $A$ and $B$, but there's no need to here.
+
+The ratio of consecutive Fibonacci numbers is
+\[ \frac{F_{n+1}}{F_n} = \frac{A\phi^{n+1} + B\lambda_2^{n+1}}{A\phi^n + B\lambda_2^n} = \frac{\phi + B\lambda_2^{n+1}/A\phi^n}{1 + B\lambda_2^n/A\phi^n} \to \frac{\phi + 0}{1 + 0} = \phi \]
+as $n \to \infty$, since $|\lambda_2/\phi| < 1$ means that $\lambda_2^n / \phi^n \to 0$.
+:::
+::::
+
+
+
