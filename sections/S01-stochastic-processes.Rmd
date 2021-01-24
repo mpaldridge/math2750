@@ -73,7 +73,7 @@ Because stochastic processes consist of a large number -- even infinitely many; 
 
 Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square $X_n$. Then what can we say about which square $X_{n+1}$ we move to on our next turn?
 
-* $X_{n+1}$$ is random, since it depends on the roll of the dice.
+* $X_{n+1}$ is random, since it depends on the roll of the dice.
 * $X_{n+1}$ depends on where we are now $X_n$, since the score of dice will be added onto the number our current square,
 * Given the square $X_n$ we are now, $X_{n+1}$ doesn't depend any further on which sequence of squares $X_0, X_1, \dots, X_{n-1}$ we used to get here.
 

@@ -41,7 +41,7 @@ The key is to *condition on the first step*. That is, we can write
 &\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
 &= p\,\mathbb P(\text{ruin} \mid \text{win first round}) + q \,\mathbb P(\text{ruin} \mid \text{lose first round}) .
 \end{align*}
-Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the *law of total probability*, which says that if the disjoint events $B_1, \dots, B_k$ cover the whole sample space, then
+Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the **law of total probability**, which says that if the disjoint events $B_1, \dots, B_k$ cover the whole sample space, then
 \[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(A \cap B_i) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]
 Here, $\{\text{Alice wins the first round}\}$ and $\{\text{Alice loses the first round}\}$ are indeed disjoint events that cover the whole sample space. This idea of "conditioning on the first step" will be the most crucial tool throughout this whole module.
 
@@ -65,7 +65,7 @@ Even with a generous casino that offered an exactly fair game with $p = q = \fra
   \[ \lim_{m \to \infty} r_a = \lim_{m \to \infty}\left( 1 - \frac{a}{m} \right) = 1-0 = 1 , \]
 so, even with this fair game, Alice would still be ruined with certainty.
 
-The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino and expect to win.
+The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino if you can't afford to lose.
 
 
 ## Expected duration of the game  {#expected-duration}
@@ -80,7 +80,7 @@ We approach this like before. Let $d_i$ be the expected duration of the game whe
 \end{align*}
 More formally, we've used another version of the law of total probability,
 \[ \mathbb E(X) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb E(X \mid B_i) , \]
-or, alternatively, the *tower law* for expectations
+or, alternatively, the **tower law** for expectations
 \[ \mathbb E(X) = \mathbb E_Y \mathbb E (X \mid Y) = \sum_{y} \mathbb P(Y= y)\, E(X \mid Y = y), \]
 where, in our case, $Y$ was the outcome of the first round.
 

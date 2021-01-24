@@ -233,7 +233,7 @@ If you there is something in the course you wish to discuss in detail, the place
 \subsubsection*{Microsoft Team}\label{team}}
 \addcontentsline{toc}{subsubsection}{Microsoft Team}
 
-I have set up \href{https://teams.microsoft.com/l/channel/19\%3a8cb8008c95204bbeaefa8ee7d48c1a13\%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a\&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb}{a Microsoft Team} for the course. I propose to use the ``Q and A'' channel there as a discussion board. This is a good place to post questions about material from the course, and -- even better! -- to help answer you colleagues' questions.
+I have set up \href{https://teams.microsoft.com/l/channel/19\%3a8cb8008c95204bbeaefa8ee7d48c1a13\%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a\&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb}{a Microsoft Team} for the course. I propose to use the ``Q and A'' channel there as a discussion board. This is a good place to post questions about material from the course, and -- even better! -- to help answer you colleagues' questions. The idea is that you all as a group should help each other out. I will visit a couple of times a week to clarify if everybody is stumped by a question, or if there is disagreement.
 
 \hypertarget{time}{%
 \subsubsection*{Time management}\label{time}}
@@ -505,7 +505,7 @@ Think of a simple board game where we roll a dice and move that many squares for
 \begin{itemize}
 \tightlist
 \item
-  \(X_{n+1}\)\$ is random, since it depends on the roll of the dice.
+  \(X_{n+1}\) is random, since it depends on the roll of the dice.
 \item
   \(X_{n+1}\) depends on where we are now \(X_n\), since the score of dice will be added onto the number our current square,
 \item
@@ -895,7 +895,7 @@ The key is to \emph{condition on the first step}. That is, we can write
 &\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
 &= p\,\mathbb P(\text{ruin} \mid \text{win first round}) + q \,\mathbb P(\text{ruin} \mid \text{lose first round}) .
 \end{align*}
-Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the \emph{law of total probability}, which says that if the disjoint events \(B_1, \dots, B_k\) cover the whole sample space, then
+Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the \textbf{law of total probability}, which says that if the disjoint events \(B_1, \dots, B_k\) cover the whole sample space, then
 \[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(A \cap B_i) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]
 Here, \(\{\text{Alice wins the first round}\}\) and \(\{\text{Alice loses the first round}\}\) are indeed disjoint events that cover the whole sample space. This idea of ``conditioning on the first step'' will be the most crucial tool throughout this whole module.
 
@@ -919,7 +919,7 @@ Even with a generous casino that offered an exactly fair game with \(p = q = \fr
 \[ \lim_{m \to \infty} r_a = \lim_{m \to \infty}\left( 1 - \frac{a}{m} \right) = 1-0 = 1 , \]
 so, even with this fair game, Alice would still be ruined with certainty.
 
-The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino and expect to win.
+The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino if you can't afford to lose.
 
 \hypertarget{expected-duration}{%
 \subsection{Expected duration of the game}\label{expected-duration}}
@@ -934,7 +934,7 @@ We approach this like before. Let \(d_i\) be the expected duration of the game w
 \end{align*}
 More formally, we've used another version of the law of total probability,
 \[ \mathbb E(X) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb E(X \mid B_i) , \]
-or, alternatively, the \emph{tower law} for expectations
+or, alternatively, the \textbf{tower law} for expectations
 \[ \mathbb E(X) = \mathbb E_Y \mathbb E (X \mid Y) = \sum_{y} \mathbb P(Y= y)\, E(X \mid Y = y), \]
 where, in our case, \(Y\) was the outcome of the first round.
 

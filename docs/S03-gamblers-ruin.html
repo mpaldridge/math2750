@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Section 3 Gambler’s ruin | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
   <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="P01.html"/>
 <link rel="next" href="S04-ldes.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -230,7 +230,7 @@ So Alice’s money goes up one with probability <span class="math inline">\(p\)<
 &amp;\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
 &amp;= p\,\mathbb P(\text{ruin} \mid \text{win first round}) + q \,\mathbb P(\text{ruin} \mid \text{lose first round}) .
 \end{align*}\]</span>
-Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the <em>law of total probability</em>, which says that if the disjoint events <span class="math inline">\(B_1, \dots, B_k\)</span> cover the whole sample space, then
+Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the <strong>law of total probability</strong>, which says that if the disjoint events <span class="math inline">\(B_1, \dots, B_k\)</span> cover the whole sample space, then
 <span class="math display">\[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(A \cap B_i) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]</span>
 Here, <span class="math inline">\(\{\text{Alice wins the first round}\}\)</span> and <span class="math inline">\(\{\text{Alice loses the first round}\}\)</span> are indeed disjoint events that cover the whole sample space. This idea of “conditioning on the first step” will be the most crucial tool throughout this whole module.</p>
 <p>If Alice wins the first round from having £<span class="math inline">\(i\)</span>, she now has £<span class="math inline">\((i+1)\)</span>. Her probability of ruin is now <span class="math inline">\(r_{i+1}\)</span>, because, by the Markov property, it’s as if the game were starting again with Alice having £<span class="math inline">\((i+1)\)</span> to start with. The Markov property tells us that it doesn’t matter <em>how</em> Alice got to having £<span class="math inline">\((i+1)\)</span>, it only matters how much she has now. Similarly, if Alice loses the first round, she now has £<span class="math inline">\((i-1)\)</span>, and the ruin probability is <span class="math inline">\(r_{i-1}\)</span>. Hence we have
@@ -248,7 +248,7 @@ so Alice will be ruined with certainty.</p>
 <p>Even with a generous casino that offered an exactly fair game with <span class="math inline">\(p = q = \frac12\)</span>, so <span class="math inline">\(\rho = 1\)</span>, we would have
 <span class="math display">\[ \lim_{m \to \infty} r_a = \lim_{m \to \infty}\left( 1 - \frac{a}{m} \right) = 1-0 = 1 , \]</span>
 so, even with this fair game, Alice would still be ruined with certainty.</p>
-<p>The official advice of the University of Leeds module MATH2750 is that you shouldn’t gamble against a casino and expect to win.</p>
+<p>The official advice of the University of Leeds module MATH2750 is that you shouldn’t gamble against a casino if you can’t afford to lose.</p>
 </div>
 <div id="expected-duration" class="section level2">
 <h2><span class="header-section-number">3.3</span> Expected duration of the game</h2>
@@ -261,7 +261,7 @@ so, even with this fair game, Alice would still be ruined with certainty.</p>
 \end{align*}\]</span>
 More formally, we’ve used another version of the law of total probability,
 <span class="math display">\[ \mathbb E(X) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb E(X \mid B_i) , \]</span>
-or, alternatively, the <em>tower law</em> for expectations
+or, alternatively, the <strong>tower law</strong> for expectations
 <span class="math display">\[ \mathbb E(X) = \mathbb E_Y \mathbb E (X \mid Y) = \sum_{y} \mathbb P(Y= y)\, E(X \mid Y = y), \]</span>
 where, in our case, <span class="math inline">\(Y\)</span> was the outcome of the first round.</p>
 <p>Now, the expected duration given we win the first round is <span class="math inline">\(1 + d_{i+1}\)</span>. This is because the round itself takes <span class="math inline">\(1\)</span> time step, and then, by the Markov property, it’s as if we are starting again from <span class="math inline">\(i+1\)</span>. Similarly, the expected duration given we lose the first round is <span class="math inline">\(1 + d_{i-1}\)</span>. Thus we have

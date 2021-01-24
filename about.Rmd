@@ -80,7 +80,7 @@ If you there is something in the course you wish to discuss in detail, the place
 
 ### Microsoft Team {.unnumbered #team}
 
-I have set up [a Microsoft Team](https://teams.microsoft.com/l/channel/19%3a8cb8008c95204bbeaefa8ee7d48c1a13%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb) for the course. I propose to use the "Q and A" channel there as a discussion board. This is a good place to post questions about material from the course, and -- even better! -- to help answer you colleagues' questions.
+I have set up [a Microsoft Team](https://teams.microsoft.com/l/channel/19%3a8cb8008c95204bbeaefa8ee7d48c1a13%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb) for the course. I propose to use the "Q and A" channel there as a discussion board. This is a good place to post questions about material from the course, and -- even better! -- to help answer you colleagues' questions. The idea is that you all as a group should help each other out. I will visit a couple of times a week to clarify if everybody is stumped by a question, or if there is disagreement.
 
 
 ### Time management {.unnumbered #time}

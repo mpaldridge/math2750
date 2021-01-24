@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Section 1 Stochastic processes and the Markov property | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
   <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S00-about.html"/>
 <link rel="next" href="S02-random-walk.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -261,7 +261,7 @@
 <p>Because stochastic processes consist of a large number – even infinitely many; even uncountably infinitely many – random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician Andrey Andreyevich Markov, published in 1906.)</p>
 <p>Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square <span class="math inline">\(X_n\)</span>. Then what can we say about which square <span class="math inline">\(X_{n+1}\)</span> we move to on our next turn?</p>
 <ul>
-<li><span class="math inline">\(X_{n+1}\)</span>$ is random, since it depends on the roll of the dice.</li>
+<li><span class="math inline">\(X_{n+1}\)</span> is random, since it depends on the roll of the dice.</li>
 <li><span class="math inline">\(X_{n+1}\)</span> depends on where we are now <span class="math inline">\(X_n\)</span>, since the score of dice will be added onto the number our current square,</li>
 <li>Given the square <span class="math inline">\(X_n\)</span> we are now, <span class="math inline">\(X_{n+1}\)</span> doesn’t depend any further on which sequence of squares <span class="math inline">\(X_0, X_1, \dots, X_{n-1}\)</span> we used to get here.</li>
 </ul>

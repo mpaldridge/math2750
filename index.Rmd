@@ -4,6 +4,8 @@ author: "[Matthew Aldridge](mailto:m.aldridge@leeds.ac.uk)"
 date:   "University of Leeds, 2020--2021"
 site:   bookdown::bookdown_site
 description: "Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020--2021"
+favicon: favicon.ico
+url:    https://mpaldridge.github.io/math2750/
 ---
 
 # Schedule {.unnumbered #home}
