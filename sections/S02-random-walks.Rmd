@@ -15,7 +15,7 @@
 
 :::: {.videowrap}
 ::: {.videowrapper}
-<iframe src="https://www.youtube.com/watch?v=GheAKHJCnuM"></iframe>
+<iframe src="http://www.youtube.com/watch?v=GheAKHJCnuM"></iframe>
 :::
 ::::
 
@@ -78,7 +78,7 @@ There are three ways to reach $-1$ after three steps: up--down--down, down--up--
 
 :::: {.videowrap}
 ::: {.videowrapper}
-<iframe src="https://www.youtube.com/watch?v=LSgBKdVbHaM"></iframe>
+<iframe src="http://www.youtube.com/watch?v=LSgBKdVbHaM"></iframe>
 :::
 ::::
 
@@ -132,7 +132,7 @@ For large $n$, we can use a normal approximation for a random walk. Suppose the 
 
 :::: {.videowrap}
 ::: {.videowrapper}
-<iframe src="https://www.youtube.com/watch?v=Ih-a29tPcpw"></iframe>
+<iframe src="http://www.youtube.com/watch?v=Ih-a29tPcpw"></iframe>
 :::
 ::::
 
