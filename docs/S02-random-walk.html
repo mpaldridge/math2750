@@ -210,6 +210,12 @@
 </div>
 <div id="simple-random-walk" class="section level2">
 <h2><span class="header-section-number">2.1</span> Simple random walk</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/watch?v=GheAKHJCnuM">
+</iframe>
+</div>
+</div>
 <p>Consider the following <strong>simple random walk</strong> on the integers <span class="math inline">\(\mathbb Z\)</span>: We start at <span class="math inline">\(0\)</span>, then at each time step, we go up by one with probability <span class="math inline">\(p\)</span> and down by one with probability <span class="math inline">\(q = 1-p\)</span>. When <span class="math inline">\(p = q = \frac12\)</span>, we’re equally as likely to go up as down, and we call this the <strong>simple symmetric random walk</strong>.</p>
 <p>The simple random walk is a simple but very useful model for lots of processes, like stock prices, sizes of populations, or positions of gas particles. (In many modern models, however, these have been replaced by more complicated continuous time and space models.) The simple random walk is sometimes called the “drunkard’s walk”, suggesting it could model a drunk person trying to stagger home.</p>
 <div class="figure"><span id="fig:rw-pics"></span>
@@ -234,6 +240,12 @@ Figure 2.1: Two simulations of random walks.
 </div>
 <div id="general-random-walks" class="section level2">
 <h2><span class="header-section-number">2.2</span> General random walks</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/watch?v=LSgBKdVbHaM">
+</iframe>
+</div>
+</div>
 <p>An alternative way to write the simple random walk is to put
 <span class="math display" id="eq:rw">\[\begin{equation}
     X_n = X_0 + \sum_{i=1}^n Z_i ,  \tag{2.1}
@@ -268,6 +280,12 @@ Here we’ve used that <span class="math inline">\(1-p = q\)</span>, <span class
 </div>
 <div id="exact-distribution" class="section level2">
 <h2><span class="header-section-number">2.3</span> Exact distribution of the simple random walk</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/watch?v=Ih-a29tPcpw">
+</iframe>
+</div>
+</div>
 <p>In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for <span class="math inline">\(\mathbb P(X_n = i)\)</span> for any time <span class="math inline">\(n\)</span> and any state <span class="math inline">\(i\)</span>.</p>
 <p>Recall that, at each of the first <span class="math inline">\(n\)</span> times, we independently take an upward step with probability <span class="math inline">\(p\)</span>, and otherwise take a downward step. So if we let <span class="math inline">\(Y_n\)</span> be the number of upward steps over the first <span class="math inline">\(n\)</span> time periods, we see that <span class="math inline">\(Y_n\)</span> has a binomial distribution <span class="math inline">\(Y_n \sim \text{Bin}(n,p)\)</span>.</p>
 <p>Recall that the binomial distribution has probability

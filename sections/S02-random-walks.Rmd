@@ -13,6 +13,14 @@
 ## Simple random walk {#simple-random-walk}
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/watch?v=GheAKHJCnuM"></iframe>
+:::
+::::
+
+
+
 Consider the following **simple random walk** on the integers $\mathbb Z$: We start at $0$, then at each time step, we go up by one with probability $p$ and down by one with probability $q = 1-p$. When $p = q = \frac12$, we're equally as likely to go up as down, and we call this the **simple symmetric random walk**.
 
 The simple random walk is a simple but very useful model for lots of processes, like stock prices, sizes of populations, or positions of gas particles. (In many modern models, however, these have been replaced by more complicated continuous time and space models.) The simple random walk is sometimes called the "drunkard's walk", suggesting it could model a drunk person trying to stagger home.
@@ -68,6 +76,13 @@ There are three ways to reach $-1$ after three steps: up--down--down, down--up--
 ## General random walks  {#general-random-walks}
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/watch?v=LSgBKdVbHaM"></iframe>
+:::
+::::
+
+
 An alternative way to write the simple random walk is to put
   \begin{equation}
     X_n = X_0 + \sum_{i=1}^n Z_i ,  (\#eq:rw)
@@ -113,6 +128,13 @@ For large $n$, we can use a normal approximation for a random walk. Suppose the 
 
 
 ## Exact distribution of the simple random walk  {#exact-distribution}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/watch?v=Ih-a29tPcpw"></iframe>
+:::
+::::
 
 
 In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for $\mathbb P(X_n = i)$ for any time $n$ and any state $i$.
