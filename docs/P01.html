@@ -174,7 +174,7 @@ display: none !important;
 </ul>
 <p>What would you decide for the following scenarios:</p>
 <div class="subq">
-<p><strong>(a)</strong> The percentage of US voters with a positive opinion of Donald Trump in the Gallup weekly tracking poll.</p>
+<p><strong>(a)</strong> The percentage of UK voters with a positive opinion of Boris Johnson in a weekly tracking poll.</p>
 </div>
 <div class="subq">
 <p><strong>(b)</strong> The number of points won by a football league club throughout the season.</p>
@@ -183,13 +183,13 @@ display: none !important;
 <p><strong>(c)</strong> The temperature of a bowl of water placed in an oven.</p>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> The number of people inside the Chemistry building.</p>
+<p><strong>(d)</strong> The number of people inside the University of Leeds library.</p>
 <div class="myanswers">
 <p><em>Suggestions.</em> This question is meant to inspire discussion, so there are not necessarily right and wrong answers. If I were designing the models, however, my choices might be these:</p>
 <p><strong>(a)</strong> Discrete space if percentages are given to nearest 1%, otherwise continuous; discrete time (weekly); stochastic; the Markov property might be appropriate, perhaps using some sort of random walk.</p>
 <p><strong>(b)</strong> Discrete space (number of points); discrete time (update after each game); stochastic; the Markov property might be appropriate, depending on if you think teams can have non-Markovian “winning streaks” (or losing streaks) that don’t reflect underlying performance.</p>
 <p><strong>(c)</strong> Continuous space (temperature); continuous time; if the oven is reliable and the experiment carried out carefully, a deterministic model might be sufficient.</p>
-<p><strong>(d)</strong> Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts’ of people leaving during fire drills or lectures finishing early.</p>
+<p><strong>(d)</strong> Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts’ of people leaving during fire drills or entering when it starts raining.</p>
 </div>
 </div>
 </div>
@@ -290,7 +290,7 @@ Compared to before, the centre of the prediction interval is slightly higher, be
 <div class="subq">
 <p><strong>(a)</strong> What would you guess for the value of <span class="math inline">\(p\)</span>, given this data?</p>
 <div class="myanswers">
-<p><em>Solution.</em> In <span class="math inline">\(10\)</span> time steps, the process went up <span class="math inline">\(k = 8\)</span> times and down <span class="math inline">\(n - k = 2\)</span> times. So it seems reasonable to guess that <span class="math inline">\(p\)</span> has the value <span class="math inline">\(\hat p = 8/10 = 0.8\)</span>.</p>
+<p><em>Solution.</em> In <span class="math inline">\(10\)</span> time steps, the process went up <span class="math inline">\(k = 8\)</span> times and down <span class="math inline">\(n - k = 2\)</span> times. So it seems reasonable to guess that <span class="math inline">\(p\)</span> has the value <span class="math inline">\(\hat p = \frac{8}{10} = 0.8\)</span>.</p>
 </div>
 </div>
 <div class="subq">

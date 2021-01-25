@@ -422,7 +422,7 @@ A \textbf{model} is an imitation of a real-world system. For example, you might 
 
 To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.
 
-An important distinction is between \textbf{deterministic} models and \textbf{random} models. Another word for a random model is a \textbf{stochastic} (``\emph{sto-\textsc{kass}-tik}'') model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
+An important distinction is between \textbf{deterministic} models and \textbf{random} models. Another word for a random model is a \textbf{stochastic} (``\emph{sto}-\textsc{\emph{kass}}-\emph{tik}'') model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
 
 Consider models for:
 
@@ -633,7 +633,7 @@ For large \(n\), we can use a normal approximation for a random walk. Suppose th
 \hypertarget{exact-distribution}{%
 \subsection{Exact distribution of the simple random walk}\label{exact-distribution}}
 
-In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for \(\mathbb P(X_n = i)\) for any time \(n\) and any state \(i\).
+We have calculated the expectation and variance of any random walk. But for the simple random walk, we can in fact give the exact distribution, by writing down an exact formula for \(\mathbb P(X_n = i)\) for any time \(n\) and any state \(i\).
 
 Recall that, at each of the first \(n\) times, we independently take an upward step with probability \(p\), and otherwise take a downward step. So if we let \(Y_n\) be the number of upward steps over the first \(n\) time periods, we see that \(Y_n\) has a binomial distribution \(Y_n \sim \text{Bin}(n,p)\).
 
@@ -681,13 +681,13 @@ You should attempt all these questions and write up your solutions in advance of
 
 What would you decide for the following scenarios:
 
-\textbf{(a)} The percentage of US voters with a positive opinion of Donald Trump in the Gallup weekly tracking poll.
+\textbf{(a)} The percentage of UK voters with a positive opinion of Boris Johnson in a weekly tracking poll.
 
 \textbf{(b)} The number of points won by a football league club throughout the season.
 
 \textbf{(c)} The temperature of a bowl of water placed in an oven.
 
-\textbf{(d)} The number of people inside the Chemistry building.
+\textbf{(d)} The number of people inside the University of Leeds library.
 
 \begin{myanswers}
 
@@ -699,7 +699,7 @@ What would you decide for the following scenarios:
 
 \textbf{(c)} Continuous space (temperature); continuous time; if the oven is reliable and the experiment carried out carefully, a deterministic model might be sufficient.
 
-\textbf{(d)} Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts' of people leaving during fire drills or lectures finishing early.
+\textbf{(d)} Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts' of people leaving during fire drills or entering when it starts raining.
 
 \end{myanswers}
 
@@ -822,7 +822,7 @@ Compared to before, the centre of the prediction interval is slightly higher, be
 
 \begin{myanswers}
 
-\emph{Solution.} In \(10\) time steps, the process went up \(k = 8\) times and down \(n - k = 2\) times. So it seems reasonable to guess that \(p\) has the value \(\hat p = 8/10 = 0.8\).
+\emph{Solution.} In \(10\) time steps, the process went up \(k = 8\) times and down \(n - k = 2\) times. So it seems reasonable to guess that \(p\) has the value \(\hat p = \frac{8}{10} = 0.8\).
 
 \end{myanswers}
 

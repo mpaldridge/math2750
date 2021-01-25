@@ -212,7 +212,7 @@ Here we’ve used that <span class="math inline">\(1-p = q\)</span>, <span class
 </iframe>
 </div>
 </div>
-<p>In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for <span class="math inline">\(\mathbb P(X_n = i)\)</span> for any time <span class="math inline">\(n\)</span> and any state <span class="math inline">\(i\)</span>.</p>
+<p>We have calculated the expectation and variance of any random walk. But for the simple random walk, we can in fact give the exact distribution, by writing down an exact formula for <span class="math inline">\(\mathbb P(X_n = i)\)</span> for any time <span class="math inline">\(n\)</span> and any state <span class="math inline">\(i\)</span>.</p>
 <p>Recall that, at each of the first <span class="math inline">\(n\)</span> times, we independently take an upward step with probability <span class="math inline">\(p\)</span>, and otherwise take a downward step. So if we let <span class="math inline">\(Y_n\)</span> be the number of upward steps over the first <span class="math inline">\(n\)</span> time periods, we see that <span class="math inline">\(Y_n\)</span> has a binomial distribution <span class="math inline">\(Y_n \sim \text{Bin}(n,p)\)</span>.</p>
 <p>Recall that the binomial distribution has probability
 <span class="math display">\[  \mathbb P(Y_n = k)  = \binom nk p^k (1-p)^{n-k} = \binom nk p^k q^{n-k} , \]</span>
