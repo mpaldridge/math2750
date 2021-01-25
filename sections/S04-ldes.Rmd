@@ -62,7 +62,8 @@ In conclusion, the process here was:
 1. Find the general solution by writing down and solving the characteristic equation.
 2. Use the extra conditions to find the values of the constants in the general solution.
 
-If you think you've got the hang of this, you should press on to [the next subsection](#S04-ruin-probability). But if you're still a bit unsure, here are two extra optional examples. (These also give an idea of how I would expect you to set out your answers to similar problems.)
+Here are two extra examples; these also give an idea of how I would expect you to set out your answers to similar problems.
+If you think you've already got the hang of this, however, you can press on to [the next subsection](#ruin-probability-solve).
 
 ::: {.example #lde1}
 *Solve the homogeneous linear difference equation*
@@ -178,7 +179,7 @@ x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
 and we can easily check this gives $A = 1, B = 2$. Thus the solution is
   \[ x_n = 1 + 1\cdot 2^n + 2 \cdot 3^n = 1 + 2^n + 2 \cdot 3^n . \]
 
-Again, if you have the hang of this, [press on](#duration-solve), but we present an extra optional example if things are still unclear.
+Here's another example (or skip ahead, if you think you know what you're doing).
   
 ::: {.example #lde3}
 *Solve the inhomogeneous linear difference equation*

@@ -19,7 +19,7 @@ A **model** is an imitation of a real-world system. For example, you might want 
 
 To design a model requires a set of assumptions about how it will work and suitable parameters need to be determined, perhaps based on past collected data.
 
-An important distinction is between **deterministic** models and **random** models. Another word for a random model is a **stochastic** ("*sto-<span style="font-variant:small-caps;">kass</span>-tik*") model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
+An important distinction is between **deterministic** models and **random** models. Another word for a random model is a **stochastic** ("*sto*-<span style="font-variant:small-caps;">*kass*</span>-*tik*") model. Deterministic models do not contain any random components, so the output is completely determined by the inputs and any parameters. Random models have variable outcomes to account for uncertainty and unpredictability, so they can be run many times to give a sense of the range of possible outcomes.
 
 Consider models for:
 

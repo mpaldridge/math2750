@@ -137,7 +137,7 @@ For large $n$, we can use a normal approximation for a random walk. Suppose the 
 ::::
 
 
-In the case of the simple random walk, we can in fact give the exact distribution by writing down an exact formula for $\mathbb P(X_n = i)$ for any time $n$ and any state $i$.
+We have calculated the expectation and variance of any random walk. But for the simple random walk, we can in fact give the exact distribution, by writing down an exact formula for $\mathbb P(X_n = i)$ for any time $n$ and any state $i$.
 
 Recall that, at each of the first $n$ times, we independently take an upward step with probability $p$, and otherwise take a downward step. So if we let $Y_n$ be the number of upward steps over the first $n$ time periods, we see that $Y_n$ has a binomial distribution $Y_n \sim \text{Bin}(n,p)$.
 

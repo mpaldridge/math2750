@@ -57,7 +57,7 @@ You should attempt all these questions and write up your solutions in advance of
 What would you decide for the following scenarios:
 
 ::: {.subq}
-**(a)** The percentage of US voters with a positive opinion of Donald Trump in the Gallup weekly tracking poll.
+**(a)** The percentage of UK voters with a positive opinion of Boris Johnson in a weekly tracking poll.
 :::
 ::: {.subq}
 **(b)** The number of points won by a football league club throughout the season.
@@ -66,7 +66,7 @@ What would you decide for the following scenarios:
 **(c)** The temperature of a bowl of water placed in an oven.
 :::
 :::: {.subq}
-**(d)** The number of people inside the Chemistry building.
+**(d)** The number of people inside the University of Leeds library.
 
 ::: {.myanswers data-latex=""}
 *Suggestions.* This question is meant to inspire discussion, so there are not necessarily right and wrong answers. If I were designing the models, however, my choices might be these:
@@ -77,7 +77,7 @@ What would you decide for the following scenarios:
 	
 **(c)** Continuous space (temperature); continuous time; if the oven is reliable and the experiment carried out carefully, a deterministic model might be sufficient.
 	
-**(d)** Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts' of people leaving during fire drills or lectures finishing early.
+**(d)** Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts' of people leaving during fire drills or entering when it starts raining.
 :::
 ::::
 :::::
@@ -225,7 +225,7 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 **(a)** What would you guess for the value of $p$, given this data?
 
 ::: {.myanswers data-latex=""}
-*Solution.* In $10$ time steps, the process went up $k = 8$ times and down $n - k = 2$ times. So it seems reasonable to guess that $p$ has the value $\hat p = 8/10 = 0.8$.
+*Solution.* In $10$ time steps, the process went up $k = 8$ times and down $n - k = 2$ times. So it seems reasonable to guess that $p$ has the value $\hat p = \frac{8}{10} = 0.8$.
 :::
 ::::
 
