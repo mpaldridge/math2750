@@ -62,8 +62,7 @@ In conclusion, the process here was:
 1. Find the general solution by writing down and solving the characteristic equation.
 2. Use the extra conditions to find the values of the constants in the general solution.
 
-Here are two extra examples; these also give an idea of how I would expect you to set out your answers to similar problems.
-If you think you've already got the hang of this, however, you can press on to [the next subsection](#ruin-probability-solve).
+Here are two more examples. These also give an idea of how I would expect you to set out your own answers to similar problems.
 
 ::: {.example #lde1}
 *Solve the homogeneous linear difference equation*
@@ -150,10 +149,10 @@ as claimed last time.
 Solving inhomogeneous linear difference equations requires three steps:
 
 1. Find the general solution to the *homogeneous* equation by writing down and solving the characteristic equation.
-2.  Find any solution (a "particular solution") to the inhomogeneous equation. The general solution to the inhomogeneous equation is a particular solution plus the general solution to the homogeneous equation.
+2. By making an "educated guess", find a solution (a "particular solution") to the inhomogeneous equation. The general solution to the inhomogeneous equation is a particular solution plus the general solution to the homogeneous equation.
 3. Use the extra conditions to find the values of the constants in the general solution.
 
-This idea works because adding a solution to the *homogeneous* equation to the left-hand side adds zero to the right-hand side, so maintains a solution to the inhomogeneous equation.
+This idea works because, once you have a particular solution, adding a solution to the *homogeneous* equation to the left-hand side adds zero to the right-hand side, so maintains a solution to the inhomogeneous equation.
 
 Let's work through the example
   \[ x_{n+2} - 5x_{n+1} + 6x_{n} = 2 \qquad \text{subject to } x_0 = 4, x_1 = 9 . \]
@@ -161,17 +160,17 @@ Let's work through the example
 We already know from earlier that the general solution to the homogeneous equation $x_{n+2} - 5x_{n+1} + 6x_{n} = 0$ (with a zero on the right-hand side) is
   \[ x_n = A2^n + B3^n . \]
  
-We now need to find a **particular solution** -- that is, any solution -- to our new inhomogeneous equation. A general hint here is to guess a solution with the same "shape" as the right-hand side. For example, if the right-hand side is a constant, try a constant for the particular solution. Here our right-hand side is the constant $2$, so we should try a constant $x_n = C$. Substituting this into the inhomogeneous equation gives us $C - 5C + 6C = 2$, thus $2C = 2$ and $C = 1$, giving a particular solution $x_n = 1$. The general solution to the inhomogeneous equation is therefore
+We now need to find a **particular solution** -- that is, any solution -- to our new inhomogeneous equation. The usual process here is to guess a solution with the same "shape" as the right-hand side. For example, if the right-hand side is a constant, try a constant for the particular solution. Here our right-hand side is the constant $2$, so we should try a constant $x_n = C$. Substituting this into the inhomogeneous equation gives us $C - 5C + 6C = 2$, thus $2C = 2$ and $C = 1$, giving a particular solution $x_n = 1$. The general solution to the inhomogeneous equation is therefore
   \[ x_n = 1 + A2^n + B3^n , \]
 the sum of the particular solution $x_n = 1$ and the general solution to the homogeneous equation.
 
-The right-hand side being a constant, so we guess a constant, is the main case we will deal with. Other cases you could come across include:
+Because the right-hand side was a constant, we guessed a constant -- this is the main case we will deal with. Other cases you could come across include:
 
 * If the right-hand side is a polynomial of degree $d$, try a polynomial of degree $d$.
 * If the right-hand side is $\alpha^n$ for some $\alpha$, try $C\alpha^n$.
-* If the right-hand side is a constant, but a constant $C$ doesn't work, try $Cn$. If that still doesn't work, try $Cn^2$, and so on. We discuss this case further in the next subsection.
+* If the right-hand side is a constant, but a constant $C$ doesn't work, try $Cn$. If that still doesn't work, try $Cn^2$, and so on. A general rule is that is 1 is a root of the characteristic equation with multiplicity $m$, you need to try $Cn^m$. We discuss this case further in the next subsection.
   
-Again, we use the initial conditions to get the constants $A$ and $B$. We have
+Continuing with the example, we use the initial conditions to get the constants $A$ and $B$. We have
 \begin{gather*}
 x_0 = 1 + A2^0 + B3^0 = 1+ A + B = 4 , \\
 x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
@@ -179,7 +178,7 @@ x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
 and we can easily check this gives $A = 1, B = 2$. Thus the solution is
   \[ x_n = 1 + 1\cdot 2^n + 2 \cdot 3^n = 1 + 2^n + 2 \cdot 3^n . \]
 
-Here's another example (or skip ahead, if you think you know what you're doing).
+Here's another example.
   
 ::: {.example #lde3}
 *Solve the inhomogeneous linear difference equation*
@@ -220,7 +219,7 @@ As before, we divide cases based on whether or not $\rho = 1$.
 First, the case $\rho \neq 1$. We already know that the general solution to the homogeneous equation is
   \[ d_i =  A \rho^i + B . \]
 
-Now we need a particular solution. It's tempting to guess a constant $C$ for a particular solution, but we know that constants solve the homogeneous equation, since $d_i = B$ is a solution -- so a constant will give right-hand side $0$, not $-1$. (You could try out $x_i = C$; you should find that the equation for $C$ doesn't have a solution.) The next best try is to go one degree up: let's guess $x_i = Ci$ instead. This gives
+Now we need a particular solution. It's tempting to guess a constant $C$ for a particular solution, but we know that constants solve the homogeneous equation, since $d_i = B$ is a solution, so a constant will give right-hand side $0$, not $-1$. (We could try out $x_i = C$ if we wanted; we would get $(p - 1 + q)C = -1$, but $p-1+q=0$, and $0 \times C = -1$ has no solution.) The next best try is to go one degree up: let's guess $x_i = Ci$ instead. This gives
   \begin{align*}
   -1 &= pC(i+1) - Ci + qC(i-1)\\
      &= C(pi + p - i + qi - q) \\
@@ -241,7 +240,7 @@ Hence, the solution is
 Second, the case $\rho = 1$, so $p = q = \frac12$. We already know that the general solution to the homogeneous equation is
 \[ d_i =  A + Bi . \]
 
-We need a particular solution. Since both constants $x_i = A$ and linear $x_i = Bi$ terms solve the homogeneous equation (or by checking that guessing $x_i = C$ or $x_i = Ci$ doesn't work), we'll have to go up another degree and try $x_i = Ci^2$. This gives
+We need a particular solution. Since 1 is a double root of the characteristic equation, both constants $x_i = A$ and linear $x_i = Bi$ terms solve the homogeneous equation. (You can check that guessing $x_i = C$ or $x_i = Ci$ doesn't work, if you like.) So we'll have to go up another degree and try $x_i = Ci^2$. This gives
 \begin{align*}
 	-1 &= \tfrac12 C(i+1)^2 - Ci^2 + \tfrac 12 C(i-1)^2 \\
 	   &= \tfrac12 C(i^2 + 2i + 1 - 2i^2 + i^2 - 2i + 1) \\

@@ -11,7 +11,7 @@
 ## Gambler's ruin Markov chain  {#ruin-chain}
 
 
-Consider the following gambling problem. Alice is gambling against Bob. Alice starts with £$a$ and Bob starts with £$b$. It will be convenient to write $m = a + b$ for the total amount of money, so Bob starts with £$(m-a)$. At each step of the game, both players bet £$1$; Alice wins £$1$ off Bob with probability $p$, or Bob wins £$1$ off Alice with probability $q$. The game continues until one player is out of money (or is "ruined").
+Consider the following gambling problem. Alice is gambling against Bob. Alice starts with £$a$ and Bob starts with £$b$. It will be convenient to write $m = a + b$ for the total amount of money, so Bob starts with £$(m-a)$. At each step of the game, both players bet £1; Alice wins £1 off Bob with probability $p$, or Bob wins £1 off Alice with probability $q$. The game continues until one player is out of money (or is "ruined").
 
 Let $X_n$ denote how much money Alice has after $n$ steps of the game. We can write this as a stochastic process with discrete time $n \in \{0,1,2,\dots\} = \mathbb Z_+$ and discrete state space $\mathcal S = \{0,1,\dots,m\}$. Then $X_0 = a$, and, for $n \geq 0$, we have
 \[ X_{n+1} = \begin{cases} X_n + 1 & \text{with probability $p$ if $1\leq X_n \leq m-1$,} \\
@@ -65,7 +65,7 @@ Even with a generous casino that offered an exactly fair game with $p = q = \fra
   \[ \lim_{m \to \infty} r_a = \lim_{m \to \infty}\left( 1 - \frac{a}{m} \right) = 1-0 = 1 , \]
 so, even with this fair game, Alice would still be ruined with certainty.
 
-The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino if you can't afford to lose.
+(The official advice of the University of Leeds module MATH2750 is that you shouldn't gamble against a casino if you can't afford to lose.)
 
 
 ## Expected duration of the game  {#expected-duration}
