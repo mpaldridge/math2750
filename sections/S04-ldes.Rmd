@@ -7,14 +7,15 @@
 :::
 
 
+In [the previous section](#S03-gamblers-ruin), we looked at the probability of ruin and expected duration of the gambler's ruin process. We set up linear difference equations to find these. In this section, we'll learn how to solve these equations.
 
-**Linear difference equations** are equations that look like
+A **linear difference equation** is an equation that looks like
 \begin{equation}
 a_k x_{n+k} + a_{k-1} x_{n+k-1} + \cdots + a_1 x_{n+1} + a_0 x_n = f(n) (\#eq:lde) 
 \end{equation}
 for $n = 0,1,\dots$, where the $a_i$ are given constants, $f(n)$ is a given function, and we want to solve for the sequence $(x_n)$. The equation normally comes with some extra conditions, such as the value of the first few $x_n$s.
 
-When the right-hand side of \@ref(eq:lde) is zero, so $f(n) = 0$, we say the equation is **homogeneous**; if the right-hand side is nonzero, it is **inhomogeneous**. The number $k$, where there are $k+1$ terms on the left-hand side, is called the **degree** of the equation; we are mostly interested in second-degree linear difference equations, which have three terms on the left-hand side.
+When the right-hand side of \@ref(eq:lde) is zero, so $f(n) = 0$, we say the equation is **homogeneous**; when the right-hand side is nonzero, it is **inhomogeneous**. The number $k$, where there are $k+1$ terms on the left-hand side, is called the **degree** of the equation; we are mostly interested in second-degree linear difference equations, which have three terms on the left-hand side.
 
 
 
@@ -62,6 +63,12 @@ In conclusion, the process here was:
 1. Find the general solution by writing down and solving the characteristic equation.
 2. Use the extra conditions to find the values of the constants in the general solution.
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/_IDS9VVb8DY"></iframe>
+:::
+::::
+
 Here are two more examples. These also give an idea of how I would expect you to set out your own answers to similar problems.
 
 ::: {.example #lde1}
@@ -79,7 +86,7 @@ to find the solutions $\lambda_1 = -2$ and $\lambda_2 = 3$. Thus the general sol
 x_0 &= A(-2)^0 + B3^0 = A + B = 3 \\
 x_1 &= A(-2)^1 + B3^1 = -2A + 3B = 4 .
 \end{align*}
-We can add twice the first equation from the second to get $5B = 10$, so $B=2$. We can substitute this into the first equation to get $A = 1$.
+We can add twice the first equation to the second to get $5B = 10$, so $B=2$. We can substitute this into the first equation to get $A = 1$.
 
 The solution is therefore
 \[ x_n = 1\cdot(-2)^n + 2 \cdot 3^n = (-2)^n + 2 \cdot 3^n . \]
@@ -108,6 +115,13 @@ The solution is therefore
 
 
 ## Probability of ruin for the gambler's ruin  {#ruin-probability-solve}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/kFOs-MKvnco"></iframe>
+:::
+::::
 
 
 In the last lecture we saw that probability of ruin for the gambler's ruin process is the solution to
@@ -173,10 +187,16 @@ Because the right-hand side was a constant, we guessed a constant -- this is the
 Continuing with the example, we use the initial conditions to get the constants $A$ and $B$. We have
 \begin{gather*}
 x_0 = 1 + A2^0 + B3^0 = 1+ A + B = 4 , \\
-x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 ,
+x_1 = 1 + A2^1 + B3^1 = 1+ 2A + 3B = 9 .
 \end{gather*}
-and we can easily check this gives $A = 1, B = 2$. Thus the solution is
+The second equation minus twice the first gives $-1 + B = 1$, so $B=2$, and substituting that back into the first gives $A = 1$. Thus the solution is
   \[ x_n = 1 + 1\cdot 2^n + 2 \cdot 3^n = 1 + 2^n + 2 \cdot 3^n . \]
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/cj-kMkTEX-I"></iframe>
+:::
+::::
 
 Here's another example.
   
@@ -201,7 +221,7 @@ with solution $C=2$. Thus a particular solution is $x_n = 2$, and the general so
 x_0 = 2 + A\left(\frac12\right)^0 + B\left(\frac15\right)^0 = 2 + A + B = 0 \quad &\Rightarrow \quad A + B = -2 \\
 x_1 = 2 + A\left(\frac12\right)^1 + B\left(\frac15\right)^1 = 2 + A\frac12 + B\frac15 = \frac{13}{10} \quad &\Rightarrow \quad 5A + 2B = -7.
 \end{align*}
-We can subtract twice the first equation from the second to get $3A = -3$, so $A = -1$. We can substitute this into the second equation to get $B = -1$.
+We can take twice the first equation abd subtract the second to get $-3A = 3$, so $A = -1$. We can substitute this into the second equation to get $B = -1$.
 
 The solution is therefore
 \[ x_n = 2 - \left(\frac12\right)^n - \left(\frac15\right)^n . \]
@@ -233,9 +253,9 @@ Then to find the constants, we have
   \begin{gather*} d_0 = \frac{0}{q-p} + A \rho^0 + B = A+B = 0, \\
                   d_m = \frac{m}{q-p} + A \rho^m + B = 0 , \end{gather*}
 which you can check gives
-  \[ A = -B = \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} . \]
+  \[ A = -B = \frac{m}{q-p} \cdot \frac{1}{1 - \rho^m} . \]
 Hence, the solution is
-  \[ d_i = \frac{i}{q-p} + \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} \rho^i - \frac{1}{q-p} \cdot \frac{m}{1 - \rho^m} =  \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1- \rho^m} \right) . \]
+  \[ d_i = \frac{i}{q-p} + \frac{m}{q-p} \frac{1}{1 - \rho^m} \rho^i - \frac{m}{q-p} \frac{1}{1 - \rho^m} =  \frac{1}{q-p} \left(i - m\frac{1-\rho^i}{1- \rho^m} \right) . \]
   
 Second, the case $\rho = 1$, so $p = q = \frac12$. We already know that the general solution to the homogeneous equation is
 \[ d_i =  A + Bi . \]
@@ -259,5 +279,5 @@ giving $A = 0, B = m$. The solution is
 
 
 ::: {.mysummary}
-**In the next section**, we move on to the general theory of discrete time Markov chains.
+**In the next section**, we move on from the specific cases we've looked at so far to the general theory of discrete time Markov chains.
 :::

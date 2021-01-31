@@ -23,6 +23,17 @@ $(document).ready(function() {
 -->
 
 
+
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
+
+\commfalse
+
+
+
 ::: {.mysummary}
 You should attempt all these questions and write up your solutions in advance of your workshop in week 3 (Monday 8 or Tuesday 9 February) where the answers will be discussed.
 :::
@@ -117,7 +128,7 @@ giving $B = 2m$. Therefore the solution is $\eta_i = 2mi - i^2 = i(2m - i)$.
 
 
 :::::: {.myq}
-**4.** Consider the gambler's ruin problem with draws: at each step, Alice wins £1 with probability $p$, loses £1 with probability $q$, and neither wins nor loses any money with probability $s$, where $p + q +s = 1$, and $0 < p,q,s<1$. Alice starts with £$a$ and Bob with £$(m-a)$.
+**3.** Consider the gambler's ruin problem with draws: at each step, Alice wins £1 with probability $p$, loses £1 with probability $q$, and neither wins nor loses any money with probability $s$, where $p + q +s = 1$, and $0 < p,q,s<1$. Alice starts with £$a$ and Bob with £$(m-a)$.
 
 ::::: {.subq}
 **(a)** Let $r_i$ be Alice's probability of ruin given that she has £$i$.
@@ -189,7 +200,7 @@ The expected duration of the game increases. If $\rho = q/p$ stays the same whil
 
 
 :::: {.myq}
-**5.** The Fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, 34, ..., where each number in the sequence is the sum of the two previous numbers. Show that the ratio of consecutive Fibonacci numbers tends to the "golden ratio" $\phi = (1 + \sqrt{5})/2$.
+**4.** The Fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, 34, ..., where each number in the sequence is the sum of the two previous numbers. Show that the ratio of consecutive Fibonacci numbers tends to the "golden ratio" $\phi = (1 + \sqrt{5})/2$.
 
 ::: {.myanswers data-latex=""}
 *Solution.* The Fibonacci numbers $(F_n)$ satisfy $F_{n+1} = F_n + F_{n-1}$, which rearranges to $F_{n+1} -F_n - F_{n-1} = 0$. The is a linear difference equation with characteristic equation $\lambda^2 - \lambda - 1 = 0$. This has two solutions, which can be found using the quadratic formula. The solution with larger absolute value is $\lambda_1 = (1+\sqrt{5})/2 = \phi$, the golden ratio, and the solution with smaller absolute value is $\lambda_2 = (1-\sqrt{5})/2$. Hence, the general solution to the equation is $F_n = A\phi^n + B\lambda_2^n$. We could use the initial conditions $F_1 = 1$ and $F_2 = 1$ to find $A$ and $B$, but there's no need to here.

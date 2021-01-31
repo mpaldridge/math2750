@@ -4,10 +4,10 @@ rmd_files:
   - sections/S01-stochastic-processes.Rmd
   - sections/S02-random-walks.Rmd
   - problems/P01.Rmd
-#  - sections/S03-gamblers-ruin.Rmd
-#  - sections/S04-ldes.Rmd
-#  - problems/P02.Rmd
-#  - assessments/A1.Rmd
+  - sections/S03-gamblers-ruin.Rmd
+  - sections/S04-ldes.Rmd
+  - problems/P02.Rmd
+  - assessments/A1.Rmd
 #  - sections/S05-markov-chains.Rmd
 #  - sections/S06-examples.Rmd
 #  - problems/P03.Rmd

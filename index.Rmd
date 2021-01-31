@@ -11,12 +11,24 @@ url:    https://mpaldridge.github.io/math2750/
 # Schedule {.unnumbered #home}
 
 ::: {.mysched}
+**Week 2** (1--5 February)
+
+* [**Section 3**: Gambler's ruin](#S03-gamblers-ruin)
+* [**Section 4**: Linear difference equations](#S04-ldes)
+* [**Problem Sheet 2**](#P01)
+* [**Assessment 1**](#A1) due Thursday 11 February (next week) at 1400
+* **Lecture**: Tuesday at 1400 (Zoom)
+* **Workshops** on Problem Sheet 1: Monday or Tuesday
+* **Drop-in sessions**: Tuesday or Wednesday (Teams)
+:::
+
+::: {.oldsched}
 **Week 1** (25--29 January)
 
 * [About the module](#S00-about)
 * [**Section 1**: Stochastic processes and the Markov property](#S01-stochastic-processes)
 * [**Section 2**: Random walks](#S02-random-walk)
 * [**Problem Sheet 1**](#P01)
-* **Lecture**: Tuesday at 1400 (link in Minerva)
+* **Lecture**: Tuesday at 1400 (Zoom)
 * **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::

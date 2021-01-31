@@ -30,7 +30,19 @@ pre code {
   padding: 1.4em 1em 0em 1em;
   margin-top: 16px;
   margin-bottom: 18px !important;
+  margin-left: 10%;
+  margin-right: 10%;
   background: #f5f5f5 5px center/3em no-repeat;
+  border: 1px solid #ccc;
+  border-radius:4px;
+}
+
+.oldsched {
+  padding: 1.4em 1em 0em 1em;
+  margin-top: 16px;
+  margin-bottom: 18px !important;
+  margin-left: 10%;
+  margin-right: 10%;
   border: 1px solid #ccc;
   border-radius:4px;
 }
@@ -45,7 +57,7 @@ pre code {
 }
 
 
-.mysummary ul, .mysched ul {
+.mysummary ul, .mysched ul, .oldsched ul {
   padding-bottom: 0.2em !important;
   margin-bottom: 0.6em !important;
 }
@@ -72,15 +84,15 @@ div.theorem, div.example, div.proof, div.definition, div.lemma, .thpart {
 
 
 
-div.theorem p:nth-child(1), div.example p:nth-child(1), div.proof p:nth-child(1), div.definition p:nth-child(1), div.lemma p:nth-child(1), .thpart p:nth-child(1), .mysummary p:nth-child(1), .mysched p:nth-child(1), .myanswers p:nth-child(1), .myq p:nth-child(1) {
+div.theorem p:nth-child(1), div.example p:nth-child(1), div.proof p:nth-child(1), div.definition p:nth-child(1), div.lemma p:nth-child(1), .thpart p:nth-child(1), .mysummary p:nth-child(1), .mysched p:nth-child(1), .myanswers p:nth-child(1), .myq p:nth-child(1), .oldsched p:nth-child(1) {
   text-indent: 0px;
 }
 
-.book.color-theme-1 div.theorem, .book.color-theme-1 div.example, .book.color-theme-1 div.proof, .book.color-theme-1 div.definition, .book.color-theme-1 div.lemma, .book.color-theme-1 .thpart,  .book.color-theme-1 .myanswers {
+.book.color-theme-1 div.theorem, .book.color-theme-1 div.example, .book.color-theme-1 div.proof, .book.color-theme-1 div.definition, .book.color-theme-1 div.lemma, .book.color-theme-1 .thpart,  .book.color-theme-1 .myanswers, .book.color-theme-1 .oldsched {
   border: 1px solid #F5D98B;
 }
 
-.book.color-theme-2 div.theorem, .book.color-theme-2 div.example, .book.color-theme-2 div.proof, .book.color-theme-2 div.definition, .book.color-theme-2 div.lemma, .book.color-theme-2 .thpart, .book.color-theme-2 .myanswers  {
+.book.color-theme-2 div.theorem, .book.color-theme-2 div.example, .book.color-theme-2 div.proof, .book.color-theme-2 div.definition, .book.color-theme-2 div.lemma, .book.color-theme-2 .thpart, .book.color-theme-2 .myanswers, .book.color-theme-2 .oldsched  {
   border: 1px solid #2d3143;
 }
 
@@ -101,7 +113,7 @@ ul ul {
   margin-bottom: 10px !important;
 }
 
-h1 + p, h2 + p, h3 + p, h4 + p, .mysummary + p, .mysched + p {
+h1 + p, h2 + p, h3 + p, h4 + p, .mysummary + p, .mysched + p, .oldsched + p {
     text-indent: 0;
 }
 
@@ -168,7 +180,7 @@ ul.summary ul li {
     border-bottom: 1px solid rgba(0,0,0,.07);
 }
 
-.book .book-summary ul.summary li.divider {
+.book .book-summary li.divider {
     height: 0px;
 }
 

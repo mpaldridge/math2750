@@ -10,6 +10,13 @@
 
 ## Gambler's ruin Markov chain  {#ruin-chain}
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/Uh7GeOL4hY8"></iframe>
+:::
+::::
+
+
 
 Consider the following gambling problem. Alice is gambling against Bob. Alice starts with £$a$ and Bob starts with £$b$. It will be convenient to write $m = a + b$ for the total amount of money, so Bob starts with £$(m-a)$. At each step of the game, both players bet £1; Alice wins £1 off Bob with probability $p$, or Bob wins £1 off Alice with probability $q$. The game continues until one player is out of money (or is "ruined").
 
@@ -24,25 +31,36 @@ We see that the gambler's ruin process $(X_n)$ clearly satisfies the Markov prop
 
 The gambler's ruin process is exactly like a simple random walk started from $X_0 = a$ except that we have **absorbing barriers** and $0$ and $m$, where the random walk stops because one of the players has ruined. (One could also consider random walks with **reflecting barriers**, that bounce the random walk back into the state space, or **mixed barriers** that are absorbing or reflecting at random.) 
 
+There are two questions about the gambler's ruin that we'll try to answer in this section:
+
+1. What is the probability that the game ends by Alie ruining?
+2. How long does the game last on average?
 
 
 ## Probability of ruin  {#ruin-probability}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/fV3_fxF1NNA"></iframe>
+:::
+::::
 
 
 The gambling game continues until either Alice is ruined ($X_n = 0$) or Bob is ruined ($X_n = m$). A natural question to ask is: What is the probability that the game ends in Alice's ruin?
 
 Let us write $r_i$ for the probability Alice ends up ruined if she currently has £$i$. Then the probability of ruin for the whole game is $r_a$, since Alice initially starts with £$a$. The probability Bob will end up ruined is $1 - r_a$, since one of the players must lose.
 
-What can we say about $r_i$? Clearly we have $r_0 = 1$ and $r_m = 0$, since this means Alice ($i=0$) or Bob ($i=m$) is already out of money and is ruined. What about for $1 \leq i \leq m-1$?
+What can we say about $r_i$? Clearly we have $r_0 = 1$, since $X_n = 0$ means that Alice has run out of money and is ruined, and $r_m = 0$, since $X_n = m$ means that Alice has won all the money and Bob is ruined. What about when $1 \leq i \leq m-1$?
 
 The key is to *condition on the first step*. That is, we can write
 \begin{align*}
 \mathbb P(\text{ruin}) &= \mathbb P(\text{win first round}) \, \mathbb P(\text{ruin} \mid \text{win first round}) \\
-&\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
+&\qquad{}\quad {}+ \mathbb P(\text{lose first round}) \, \mathbb P(\text{ruin} \mid \text{lose first round}) \\
 &= p\,\mathbb P(\text{ruin} \mid \text{win first round}) + q \,\mathbb P(\text{ruin} \mid \text{lose first round}) .
 \end{align*}
-Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the **law of total probability**, which says that if the disjoint events $B_1, \dots, B_k$ cover the whole sample space, then
-\[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(A \cap B_i) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]
+Here we have conditioned on whether Alice wins or loses the first round. More formally, we have used the **law of total probability**, which says that if the events $B_1, \dots, B_k$ are disjoint and cover the whole sample space, then
+\[ \mathbb P(A) = \sum_{i=1}^k \mathbb P(B_i) \, \mathbb P(A \mid B_i) . \]
 Here, $\{\text{Alice wins the first round}\}$ and $\{\text{Alice loses the first round}\}$ are indeed disjoint events that cover the whole sample space. This idea of "conditioning on the first step" will be the most crucial tool throughout this whole module.
 
 If Alice wins the first round from having £$i$, she now has £$(i+1)$. Her probability of ruin is now $r_{i+1}$, because, by the Markov property, it's as if the game were starting again with Alice having £$(i+1)$ to start with. The Markov property tells us that it doesn't matter *how* Alice got to having £$(i+1)$, it only matters how much she has now. Similarly, if Alice loses the first round, she now has £$(i-1)$, and the ruin probability is $r_{i-1}$. Hence we have
@@ -57,7 +75,7 @@ We will see how to solve this equation in the next lecture. We will see that, if
            1 - \displaystyle\frac{a}{m} & \text{if $\rho = 1$.} \end{cases} \]
 Note that $\rho = 1$ is the same as the symmetric condition $p = q = \frac12$.
 
-Imagine Alice is not playing against her opponent Bob, but rather is up against a large casino. In this case, the casino's capital £$(m-a)$ is typically much bigger than Alice's £$a$. We can model this by keeping $a$ fixed taking a limit $m \to \infty$. Typically, the casino has "an edge", meaning they have a better than $50:50$ chance of winning; this means that $q > p$, so $\rho > 1$. In this case, we see that the ruin probability is
+Imagine Alice is not playing against a similar opponent Bob, but rather is up against a large casino. In this case, the casino's capital £$(m-a)$ is typically much bigger than Alice's £$a$. We can model this by keeping $a$ fixed taking a limit $m \to \infty$. Typically, the casino has an "edge", meaning they have a better than $50:50$ chance of winning; this means that $q > p$, so $\rho > 1$. In this case, we see that the ruin probability is
   \[ \lim_{m \to \infty} r_a = \lim_{m \to \infty} \frac{\rho^a - \rho^m}{1 - \rho^m} = \lim_{m \to \infty} \frac{\rho^a/\rho^m - 1}{1/\rho^m - 1} = \frac{0-1}{0-1} = 1, \]
 so Alice will be ruined with certainty.
 
@@ -70,9 +88,17 @@ so, even with this fair game, Alice would still be ruined with certainty.
 
 ## Expected duration of the game  {#expected-duration}
 
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/wd7Cj_0Kdog"></iframe>
+:::
+::::
+
+
 We could also ask for how long we expect the game to last.
 
-We approach this like before. Let $d_i$ be the expected duration of the game when Alice has £$i$. Our boundary conditions are $d_0 = d_m = 0$, because $X_n = 0$ or $X_n = m$ means that the game is over with Alice or Bob ruined. Again, we proceed by conditioning on the first step, so
+We approach this like before. Let $d_i$ be the expected duration of the game from a point when Alice has £$i$. Our boundary conditions are $d_0 = d_m = 0$, because $X_n = 0$ or $X_n = m$ means that the game is over with Alice or Bob ruined. Again, we proceed by conditioning on the first step, so
 \begin{align*}
 \mathbb E(\text{duration}) &= \mathbb P(\text{win first round}) \, \mathbb E(\text{duration} \mid \text{win first round}) \\
 &\qquad{}+ \mathbb P(\text{lose first round}) \, \mathbb E(\text{duration} \mid \text{lose first round}) \\

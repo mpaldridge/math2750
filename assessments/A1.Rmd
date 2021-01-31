@@ -1,6 +1,70 @@
 # Assessment 1 {.unnumbered #A1}
 
-Assessment 1
+
+::: {.mysummary}
+This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.
+
+The deadline for submission is **Thursday 11 February at 2pm**. Submission will be to Gradescope via Minerva, from Monday 8 February. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a scanning app (I like Microsoft Office Lens or Adobe Scan) rather than submit images.
+
+Late submissions up to Wednesday 17 February at 2pm will still be marked, but	the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Wednesday 17 February.
+:::
 
 
+:::: {.myq}
+**1.** Let $(X_n)$ be a simple random walk that starts from $X_0 = 0$ and on each step goes up one with probability $p$ and down one with probability $q = 1-p$.
 
+Calculate:
+
+::: {.subq}
+**(a)** $\mathbb P(X_6 = 0)$, [[1 mark]]{style="float:right"}
+:::
+::: {.subq}
+**(b)** $\mathbb EX_6$, [[1]]{style="float:right"}
+:::
+::: {.subq}
+**(c)** $\text{Var}(X_6)$, [[1]]{style="float:right"}
+:::
+::: {.subq}
+**(d)** $\mathbb E(X_{10} \mid X_4 = 4)$, [[1]]{style="float:right"}
+:::
+::: {.subq}
+**(e)** $\mathbb P(X_{10} = 0 \mid X_6 = 2)$, [[1]]{style="float:right"}
+:::
+::: {.subq}
+**(f)**  $\mathbb P(X_4 = 2 \mid X_{10} = 6)$. [[1]]{style="float:right"}
+:::
+
+Consider the case $p = 0.6$, so $q = 0.4$.
+
+::: {.subq}
+**(g)** What are $\mathbb E X_{100}$ and $\text{Var}(X_{100})$? [[1]]{style="float:right"}
+:::
+::: {.subq}
+**(h)** Using a normal approximation, estimate $\mathbb P(16 \leq X_{100} \leq 26)$. You should use an appropriate "continuity correction", and explain why you chose it. (Bear in mind the possible values $X_{100}$ can take.) [[3]]{style="float:right"}
+:::
+::::
+
+:::: {.myq}
+**2.** Consider the gambler's ruin with draws: Alice starts with £$a$ and Bob with £$(m-a)$, and at each time step Alice wins £1 off Bob with probability $p$, loses £1 to Bob with probability $q$, and no money is exchanged with probability $s$, where $p+q+s =1$. We consider the case where Bob and Alice are equally matched, so $p = q$ and $s = 1-2p$. (We assume $0 < p < 1/2$.)
+
+Let $r_i$ be Alice's ruin probability from the point she has £$i$.
+
+::: {.subq}
+**(a)** By conditioning on the first step, explain why $pr_{i+1} - (1-s)r_i + pr_{i-1} = 0$, and give appropriate boundary conditions. [[2]]{style="float:right"}
+:::
+::: {.subq}
+**(b)** Solve this linear difference equation to find an expression for $r_i$.  [[2]]{style="float:right"}
+:::
+
+Let $d_i$ be the expected duration of the game from the point Alice has £$i$.
+
+::: {.subq}
+**(c)** Explain why $pd_{i+1} - (1-s)d_i + pd_{i-1} = -1$, and give appropriate boundary conditions. [[2]]{style="float:right"}
+:::
+::: {.subq}
+**(d)** Solve this linear difference equation to find an expression for $d_i$.  [[2]]{style="float:right"}
+:::
+::: {.subq}
+**(e)** Compare your answer to parts (b) and (d) with those for the standard gambler's ruin problem with $p = 1/2$, and give reasons for the similarities or differences.  [[2]]{style="float:right"}
+:::
+::::
