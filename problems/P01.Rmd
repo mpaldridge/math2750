@@ -242,13 +242,14 @@ There are 3 possible ways to get $Y=10$ (the grey cells in the table) out of the
 **(c)** Show that your estimate is in fact the maximum likelihood estimate of $p$.
 
 ::: {.myanswers data-latex=""}
-*Solution.* You could answer this question by using what you know about maximum likelihood estimation for the binomial distribution from MATH1712, but we'll reason from first principles here.
+*Solution.* You could answer this question by using what you know about maximum likelihood estimation for the binomial distribution from MATH1712 or MATH2715, but we'll reason from first principles here.
   
-If we let $k$ be the number of upward steps, then the likelihood is
+If we let $k = (n + x_n)/2$ be the number of upward steps. Then the "likelihood" is the probability mass function
   \[ f(\mathbf x; p) = p^{k}(1-p)^{n-k} , \]
-  making the the log-likelihood
+since we take $k$ steps up and $n-k$ steps down.
+As is often the case, it's more convenient to use the log-likelihood
   \[ \ell(\mathbf x; p) = \ln f(\mathbf x; p) = k \ln p + (n-k)\ln(1-p) .\]
-  We maximise this by differentiating and setting equal to $0$. The derivative is
+Given $\mathbf x$ (and therefore given $k$), we find the maximum likelihood estimate by finding the $p$ that maximises this likelihood (or log-likelihood). We can perform the maximisation by differentiating and setting equal to $0$. The derivative is
   \[ \frac{\text{d}}{\text{d}p} \ell(\mathbf x; p) = \frac kp - \frac{n-k}{1-p} ,\]
   so the maximum likelihood estimate $\hat p$ satisfies
   \[ 0 = \frac k{\hat p} - \frac{n-k}{1-\hat p} . \]

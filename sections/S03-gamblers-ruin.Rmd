@@ -33,7 +33,7 @@ The gambler's ruin process is exactly like a simple random walk started from $X_
 
 There are two questions about the gambler's ruin that we'll try to answer in this section:
 
-1. What is the probability that the game ends by Alie ruining?
+1. What is the probability that the game ends by Alice ruining?
 2. How long does the game last on average?
 
 

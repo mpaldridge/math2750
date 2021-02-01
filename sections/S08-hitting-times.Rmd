@@ -160,7 +160,7 @@ One could also calculate expected hitting times $\eta_{i0}$. For $p \neq \frac12
 
 For $p = \frac12$, conditioning on the first step gives the equation
  \[ \eta_{i0} = 1 + \tfrac12\eta_{i+1\,0} + \tfrac12\eta_{i-1\,0} , \]
-with initial condition $\eta_{00} = 0$. This has the solution $\eta_{i0} = -i^2 + Bi = i(B-i)$. Then non-negativity demands $B = \infty$, as any other value would make the $-i^2$ negative for big enough $i$. This gives $\eta_{i0} = \infty$, and $\mu_0 = \infty$ also.
+with initial condition $\eta_{00} = 0$. This has the solution $\eta_{i0} = -i^2 + Bi = i(B-i)$. Then non-negativity demands $B = \infty$, as any other value would get drowned out by the $-i^2$, making the term negative for big enough $i$. Thus we have $\eta_{i0} = \infty$, and $\mu_0 = \infty$ also.
 So for $p = \frac12$, while the random walk always return to $0$, it may take a very long time to do so.
 
 In conclusion, this is what we found out:
