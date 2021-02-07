@@ -6,6 +6,13 @@
 :::
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/t3M52DfVb_U"></iframe>
+:::
+::::
+
+
 In this lecture we'll set up three simple models for an insurance company that can be analysed using ideas about Markov chains. The first example has a direct Markov chain model. For the second and third examples, we will have to be clever to find a Markov chain associated to the situation.
 
 
@@ -23,14 +30,15 @@ New policy holders start with no discount (state 1).  Following a year with no i
 
 We can model this directly as a Markov chain:
 
-* the state space $\mathcal S = \{1,2,3\}$ is discrete, as is the time (each year);
+* the state space $\mathcal S = \{1,2,3\}$ is discrete;
+* the time index is discrete, as we have one discount level each year;
 * the probability of being in a certain state at a future time is completely determined by the present state (the Markov property);
 * the one-step transition probabilities are not time dependent (time homogeneous).
 
 The transition probability and transition diagram of the Markov chain are:
 \[ \mathsf P = \begin{pmatrix} \frac14 & \frac34 & 0 \\ \frac14 & 0 & \frac34 \\ 0 & \frac14 & \frac34 \end{pmatrix} . \]
 
-```{tikz example1, echo=FALSE, fig.align="center", fig.width=4}
+```{tikz example1, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition diagram for the simple no-claims discount model", cache=TRUE}
 \usetikzlibrary{automata}
 	\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
 	
@@ -59,12 +67,14 @@ We can find this by summing over all paths $1 \to k_1 \to k_2 \to 3$. There are 
 
 Alternatively, we could directly calculate all the three-step transition probabilities by the matrix method, to get
 \[ \mathsf P(3) = \mathsf P^3 = \mathsf{PPP} = \frac{1}{64} \begin{pmatrix} 7 & 21 & 36 \\ 7 & 12 & 45 \\ 4 & 15 & 45 \end{pmatrix} .\]
-(You can check this yourself.) The desired $p_{13}(3)$ is the top right entry $36/64 = 9/16$.
+(You can check this yourself, if you want.) The desired $p_{13}(3)$ is the top right entry $36/64 = 9/16$.
 :::
 
 
 
 ## An accident model with memory  {#S06-example2}
+
+Sometimes, we are presented with a situation where the "obvious" stochastic process is not a Markov chain. But sometimes we can find a related process that *is* a Markov chain, and study that instead. As an example of this, we consider at a different accident model.
 
 According to a different model, a motorist's $n$th year of driving is either accident free, or has exactly one accident. (The model does not allow for more than one accident in a year.) Let $Y_n$ be a random variable so that,
 \[
@@ -80,7 +90,7 @@ The probability of an accident in year $n+1$ is modelled as a function of the to
 \mathbb P(Y_{n+1}= 1 \mid Y_n=y_{n},\dots ,Y_2=y_{2},Y_1=y_{1} )=\frac{f(y_1+y_2+\cdots +y_n)}{g(n)},
 \]
 and $Y_{n+1} = 0$ otherwise, 
-where  $f$ and $g$ are non-negative increasing functions with $0\leq f(m)\leq g(m)$ for all $m$.
+where $f$ and $g$ are non-negative increasing functions with $0\leq f(m)\leq g(m)$ for all $m$. (We'll come back to these conditions in a moment.)
 
 Unfortunately $(Y_n)$ is *not* a Markov chain -- it's clear that $Y_{n+1}$ depends not only on $Y_n$, the number accidents this year, but the entire history $Y_1, Y_2, \dots, Y_n$.
 
@@ -91,16 +101,18 @@ However, we have a cunning work-around. Define $X_n=\sum_{i=1}^n Y_i$ to be the 
 	&=\frac{f\big((x_n-x_{n-1}) +\cdots +(x_2-x_1) + x_1\big)}{g(n)}\\
 	&=\frac{f(x_n)}{g(n)},
 \end{align*}
-and $X_{n+1} = x_n$ otherwise. This clearly depends only on $x_n$. Thus we can use Markov chain techniques on $(X_n)$ to lean about the non-Markov process $(Y_n)$
+and $X_{n+1} = x_n$ otherwise. This clearly depends only on $x_n$. Thus we can use Markov chain techniques on $(X_n)$ to lean about the non-Markov process $(Y_n)$.
 
-Let's think about the conditions we placed on this model. First, the transition probabilities should lie in the range $[0,1]$. Since $\sum_{i=1}^n y_i\leq n$, this is where we use $0\leq f(m)\leq g(m)$. Second, the condition that $f$ is increasing means that between drivers who have been driving the same number of years, we think the more accident-prone in the past is more likely to have an accident in the future. Third, the condition that $g$ is increasing means that between drivers who have had the same number of accidents, we think the one who has spread those accidents over a longer period of time is less likely to have accidents in the future.
+Note that the probability that $X_{n+1} = x_n$ or $x_n+ 1$ depends not only on $x_n$ but also on the time $n$. So this is a rare example of a time *inhomogeneous* Markov process, where the transition probabilities do depend on the time $n$.
+
+Before we move on, let's think about the conditions we placed on this model. First, the condition that $f$ is increasing means that between drivers who have been driving the same number of years, we think the more accident-prone in the past is more likely to have an accident in the future. Second, the condition that $g$ is increasing means that between drivers who have had the same number of accidents, we think the one who has spread those accidents over a longer period of time is less likely to have accidents in the future. Third, the transition probabilities should lie in the range $[0,1]$; but since $\sum_{i=1}^m y_i\leq m$, our condition $0\leq f(m)\leq g(m)$ guaranteed that this is the case. 
 
 
 
 ## A no-claims discount model with memory  {#S06-example3}
 
 
-Sometimes, we are presented with a stochastic process which is not a Markov chain, but by altering the state space $\mathcal{S}$ we can sometimes end up with a process which is a Markov chain. As such, it is important to think carefully about choice of state space. To see this we will return to the no-claims discount example.
+Sometimes, we are presented with a stochastic process which is not a Markov chain, but where by altering the state space $\mathcal{S}$ we *can* end up with a process which *is* a Markov chain. As such, when making a model, it is important to think carefully about choice of state space. To see this we will return to the no-claims discount example.
 
 Suppose now we have an model with four levels of discount:
 
@@ -109,12 +121,13 @@ Suppose now we have an model with four levels of discount:
 * 40% discount (state 3)
 * 60% discount (state 4)
 
-If a year is accident free, then the discount increases one level, to a maximum of 60%. If the year has an accident, then the discount decreases, by one level if the year previous to that was accident free, but by two levels if the previous year had an accident also, to a minimum of no discount.
+If a year is accident free, then the discount increases one level, to a maximum of 60%. This time, if the year has an accident, then the discount decreases by one level if the year previous to that was accident free, but decreases by *two* levels if the previous year had an accident as well, both to a minimum of no discount.
+
 As before, the insurance company believes that probability that a motorist has a claim-free year is $\frac34 = 0.75$.
 
-We might consider the most natural example of a state space, where the states are discount levels; say, $\mathcal{S}=\{1,2,3,4\}$. But this is not a Markov chain, since if a policy holder has an accident, we may need to know about the past in order to determine probabilities for future states, which violates the Markov property. In particular, if a motorist is in state 3 (40% discount) and has an accident, they will either move down to level 2 (if they had not crashed the previous year, so had previously been in state 2) or to level 1 (if they had crashed the previous year, so had previously been in state 4), depending on their previous level. You can check this is the only violation of the Markov property.
+We might consider the most natural choice of a state space, where the states are discount levels; say, $\mathcal{S}=\{1,2,3,4\}$. But this is not a Markov chain, since if a policy holder has an accident, we may need to know about the past in order to determine probabilities for future states, which violates the Markov property. In particular, if a motorist is in state 3 (40% discount) and has an accident, they will either move down to level 2 (if they had not crashed the previous year, so had previously been in state 2) or to level 1 (if they had crashed the previous year, so had previously been in state 4) -- but that depends on their previous level too, which the Markov property doesn't allow. (You can check this is the only violation of the Markov property.)
 
-However, we can be clever again, this time in the choice of our state space. Instead,  we can split the 40% level into two different states: state "3a" if there was an accident the previous year and state "3b" if there was no accident the previous year. Our states are now:
+However, we can be clever again, this time in the choice of our state space. Instead,  we can split the 40% level into two different states: state "3a" if there was no accident the previous year, and state "3b" if there was an accident the previous year. Our states are now:
 
 * no discount (state 1)
 * 20% discount (state 2)
@@ -122,7 +135,7 @@ However, we can be clever again, this time in the choice of our state space. Ins
 * 40% discount, claim in previous year (state 3b)
 * 60% discount (state 4)
 
-Now this *is* a Markov chain. Under the assumption of 25% of drivers having an accident each year, the transition matrix is
+Now this *is* a Markov chain, because the new states 3s carry with them the memory of the previous year, to ensure the Markov property is preserved. Under the assumption of 25% of drivers having an accident each year, the transition matrix is
 \[
 \mathsf P=\begin{pmatrix}
 0.25 & 0.75 & 0 & 0 & 0\\
@@ -133,7 +146,7 @@ Now this *is* a Markov chain. Under the assumption of 25% of drivers having an a
 \]
 The transition diagram is shown below. (Recall that we don't draw arrows with probability 0.)
 
-```{tikz example3, echo=FALSE, fig.align="center", fig.width=5}
+```{tikz example3, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram for the no-claims discount model with memory", cache=TRUE}
 \usetikzlibrary{automata}
 	\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
 	
@@ -157,6 +170,9 @@ The transition diagram is shown below. (Recall that we don't draw arrows with pr
 	\end{tikzpicture}
 ```
 
+Note that when we move up from state 2, we go to 3a (no accident in the previous year); but when we move down from state 4, we go to 3b (accident in the previous year).
+
+
 ::: {.mysummary}
-**In the next section**, we look at how to study large Markov chains by splitting them into smaller pieces called "classes".
+**In the next section**, we look at how to study big Markov chains by splitting them into smaller pieces called "classes".
 :::

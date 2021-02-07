@@ -1,0 +1,55 @@
+# Computational worksheets  {.unnumbered #computing}
+
+
+
+
+::: {.mysched}
+* **Computational worksheet 1** [[HTML format]](C1.html) [[Rmd format]](C1.Rmd)
+:::
+
+
+## About the computational worksheets {.unnumbered #C-about}
+
+These computational worksheets are an opportunity to learn more about Markov chains through simulation using R.
+
+This first worksheet is not an assessed part of the course, but it is for you to learn and practice.  The second worksheet *is* an assessed part of the course, and counts for 3% of your grade on this course. A report on Worksheet 2 will be due on **Thursday 18 March** (week 8) at 2pm. The material in these worksheets is examinable.
+
+I recommend working on Computational Worksheet 1 in weeks 3 or 4, and on Computational Worksheet 2 in weeks 6 or 7. I estimate that each worksheet may take about 2 hours to work through.
+
+You will have two computational drop-in sessions available with Muyang Zhang. These drop-in sessions are optional opportunities for you to come along to ask for help if you are stuck or want to know more. These sessions will happen on Teams. The sessions may appear in your timetable as "Practicals". It is important that you work through most of the worksheet *before* your drop-in session, as this will be your main opportunity to ask for help. (You can also use the module discussion board on Teams.) The dates of the drop-in sessions are:
+
+* Computational Worksheet 1: Monday 15 -- Wednesday 17 February (week 4)
+* Computational Worksheet 2: Monday 8 -- Wednesday 10 March (week 7)
+
+Note that the Worksheet 2 practical sessions are the week before the deadline; it's in your benefit to start working on that sheet early.
+
+The computational worksheets are available in two formats:
+
+* First, as an easy-to-read **HTML file**. You should open this in a web browser.
+* Second, as a file with the suffix **.Rmd**. This can be read as a plain text file. However, I recommend downloading this file and opening it in RStudio. This will make it easy to run the R code included in the file, by clicking the green "play" button by each chunk of R code. (These files is written in a language called "[R Markdown](https://www.stat.cmu.edu/~cshalizi/rmarkdown/)", which you could choose to use for writing your report.)
+
+
+
+
+
+## How to access R  {.unnumbered #R-access}
+
+These worksheets use the statistical programming language **R**. Use of R is mandatory. I recommend interacting with R via the program **RStudio**, although this is optional. There are various ways to access R and RStudio.
+
+* You may already have R and RStudio installed on your own computer.
+* You can install R and RStudio on your own computer now if you haven't previously. You should first [download R from the Comprehensive R Archive Network](https://cran.rstudio.com/), and then [download "RStudio Desktop" from rstudio.com](https://rstudio.com/products/rstudio/download/#download). Remember to download and install R first, and only then to download and install RStudio.
+* The [RStudio Cloud](https://rstudio.cloud/) is like "Google Docs for R". You can get 15 hours a month for free, which should be more than enough for these worksheets. Because this doesn't require installation, it's good for Chromebooks or computers where you don't have full installation rights.
+* If you are in Leeds, university computers have R and RStudio installed. However, at the time of writing (5 February 2021), all IT clusters on campus are closed. You can see [the latest news on cluster availability here](https://leeds.service-now.com/it?id=clusters).
+* You can access R and RStudio via the university's [virtual Windows desktop](https://it.leeds.ac.uk/it?id=kb_article&sysparm_article=KB0014548) or (for those who have a Windows computer) via the university's [AppsAnywhere](https://it.leeds.ac.uk/it?id=kb_article&sysparm_article=KB0014827) system.
+
+
+
+## R background  {.unnumbered #R-background}
+
+These worksheets are mostly self-explanatory. However, they do assume a little background. For example, I assume you know how to operate R (for example by opening RStudio and typing commands in the "console"), and that you know that `x <- c(1, 2, 3)` creates a vector called `x` and that `mean(x)` calculates the mean of the entries of `x`.
+
+Most students on this course will know R from MATH1710 and MATH1712 or other courses. If you are new to R, I recommend Dr Jochen Voss's "A Short Introduction to R" or Dr Arief Gusnanto's "Introduction to R", both available from [Dr Gusnanto's MATH1712 homepage](http://www1.maths.leeds.ac.uk/~arief/MATH1712/index.html).
+
+
+
+

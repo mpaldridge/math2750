@@ -8,9 +8,9 @@ rmd_files:
   - sections/S04-ldes.Rmd
   - problems/P02.Rmd
   - assessments/A1.Rmd
-#  - sections/S05-markov-chains.Rmd
-#  - sections/S06-examples.Rmd
-#  - problems/P03.Rmd
+  - sections/S05-markov-chains.Rmd
+  - sections/S06-examples.Rmd
+  - problems/P03.Rmd
 #  - sections/S07-classes.Rmd
 #  - sections/S08-hitting-times.Rmd
 #  - problems/P04.Rmd
@@ -22,6 +22,7 @@ rmd_files:
 #  - sections/S13-poisson-poisson.Rmd
 #  - sections/S14-poisson-exponential.Rmd
 #  - sections/S15-poisson-infinitesimal.Rmd
+  - computing/computing.Rmd
 book_filename: "math2750"
 output_dir: "docs"
 delete_merged_file: true

@@ -11,19 +11,32 @@ url:    https://mpaldridge.github.io/math2750/
 # Schedule {.unnumbered #home}
 
 ::: {.mysched}
-**Week 2** (1--5 February)
+**Week 3** (8--12 February):
 
-* [**Section 3**: Gambler's ruin](#S03-gamblers-ruin)
-* [**Section 4**: Linear difference equations](#S04-ldes)
-* [**Problem Sheet 2**](#P01)
-* [**Assessment 1**](#A1) due Thursday 11 February (next week) at 1400
+* [**Section 5**: Discrete time Markov chains](#S05-markov-chains)
+* [**Section 6**: Examples from actuarial science](#S06-examples)
+* [**Problem Sheet **](#P03)
+* [**Assessment 1**](#A1) due Thursday 11 February (this week) at 1400
+* [**Computational worksheet 1**](#computing): computational drop-in sessions next week
 * **Lecture**: Tuesday at 1400 (Zoom)
-* **Workshops** on Problem Sheet 1: Monday or Tuesday
+* **Workshops** on Problem Sheet 2: Monday or Tuesday (Zoom)
 * **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::
 
 ::: {.oldsched}
-**Week 1** (25--29 January)
+**Week 2** (1--5 February):
+
+* [**Section 3**: Gambler's ruin](#S03-gamblers-ruin)
+* [**Section 4**: Linear difference equations](#S04-ldes)
+* [**Problem Sheet 2**](#P02)
+* [**Assessment 1**](#A1) due Thursday 11 February (next week) at 1400
+* **Lecture**: Tuesday at 1400 (Zoom)
+* **Workshops** on Problem Sheet 1: Monday or Tuesday (Zoom)
+* **Drop-in sessions**: Tuesday or Wednesday (Teams)
+:::
+
+::: {.oldsched}
+**Week 1** (25--29 January):
 
 * [About the module](#S00-about)
 * [**Section 1**: Stochastic processes and the Markov property](#S01-stochastic-processes)

@@ -69,7 +69,7 @@ This gives us four possibilities in total:
 ::::
 
 
-Because stochastic processes consist of a large number -- even infinitely many; even uncountably infinitely many -- random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician Andrey Andreyevich Markov, published in 1906.)
+Because stochastic processes consist of a large number -- even infinitely many; even uncountably infinitely many -- random variables that could all be dependent on each other, they can get extremely complicated. The Markov property is a crucial property that restricts the type of dependencies in a process, to make the process easier to study, yet still leaves most of the useful and interesting examples intact. (Although particular examples of Markov processes go back further, the first general study was by the Russian mathematician [Andrey Andreyevich Markov](https://mathshistory.st-andrews.ac.uk/Biographies/Markov/), published in 1906.)
 
 Think of a simple board game where we roll a dice and move that many squares forward on the board. Suppose we are currently on the square $X_n$. Then what can we say about which square $X_{n+1}$ we move to on our next turn?
 

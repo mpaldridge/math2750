@@ -179,23 +179,21 @@ We can also consider the simple symmetric random walk in $d$-dimensions, on $\ma
 :::
 
 
-There was a cheat somewhere in this section -- did you notice it? The last two times I lectured this course, I just hoped no one would notice -- and no one did. Still, it's a bit naughty, so in this optional and nonexaminable section, I'll come clean.
+There was a cheat somewhere earlier in this section -- did you notice it? <!--The last two times I lectured this course, I just hoped no one would notice -- and no one did. Still, it's a bit naughty, so in this optional and nonexaminable section, I'll come clean.-->
 
-The Markov property says that, if at some fixed time $n$ we have $X_n = i$, then the Markov chain from that point on is just like starting all over again from the state $i$. When we applied this in the proof of Theorem \@ref(thm:rectran), we were using as $n$ the first return to state $i$. But that's not a fixed time -- it's a random time. Have we messed up?
+The Markov property says that, if at some fixed time $n$ we have $X_n = i$, then the Markov chain from that point on is just like starting all over again from the state $i$. When we applied this in the proof of Theorem \@ref(thm:rectran), we were using as $n$ the first return to state $i$. But that's not a fixed time -- it's a random time! Have we messed up?
 
-Actually we're fine. The reason is that the first return to $i$ isn't just any old random time, it's a "stopping time", and the Markov property applies to stopping times too.
-
-A stopping time is a random time where "you know when you get there".
+Actually we're fine. The reason is that the first return to $i$ isn't just any old random time, it's a "stopping time", and the Markov property also applies to stopping times too. Roughly speaking, a **stopping time** is a random time where "you know when you get there".
 
 ::: {.definition #stopping}
-Let $(X_n)$ be a stochastic process in discrete time, and let $T$ be a random time. Then $T$ is a **stopping time** if for all $n$ the event $\{T = n\}$ is determined by the random variables $X_0, X_1, \dots, X_n$.
+Let $(X_n)$ be a stochastic process in discrete time, and let $T$ be a random time. Then $T$ is a **stopping time** if for all $n$, whether or not the event $\{T = n\}$ occurs is completely determined by the random variables $X_0, X_1, \dots, X_n$.
 :::
 
 So, for example:
 
-* "The first visit to state $i$" is stopping time, because as soon as we return, we know the value of $T$.
+* "The first visit to state $i$" is stopping time, because as soon as we reach $i$, we know the value of $T$.
 * "Three time-steps after the second visit to $j$" is a stopping time, because after our second visit we count on three more steps and have $T$.
-* "The time-step before the first visit to $i$" is not a stopping time, because we need to go one step further on to know whether or not we had just been at time $T$.
+* "The time-step *before* the first visit to $i$" is not a stopping time, because we still need to go one step further on to know whether we had just been at time $T$ or not.
 * "The final visit to $j$" is not a stopping time, because at the time of the visit we don't yet know whether we'll come back again or not.
 
 There are lots of places in probability theory and finance when something that is true about a fixed time is also true about a random stopping time. When we use the Markov property with a stopping time, we call it the "strong Markov property".
@@ -250,5 +248,5 @@ where the last line used the Markov property to treat the chain as starting over
 :::
 
 ::: {.mysummary}
-**In the next section**, we look at how positive recurrent Markov chains can settle into a stationary distribution and experience long-term stability.
+**In the next section**, we look at how positive recurrent Markov chains can settle into a "stationary distribution" and experience long-term stability.
 :::

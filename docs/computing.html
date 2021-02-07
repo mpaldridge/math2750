@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Computational worksheets | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Computational worksheets | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
+  
+  <meta property="og:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Computational worksheets | MATH2750 Introduction to Markov Processes" />
+  
+  <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
+  
+
+<meta name="author" content="Matthew Aldridge" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="P03.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2750 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html"><i class="fa fa-check"></i>About MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#about-module"><i class="fa fa-check"></i>Organisation of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#notes"><i class="fa fa-check"></i>Notes and videos</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#problem-sheets"><i class="fa fa-check"></i>Problem sheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#lectures"><i class="fa fa-check"></i>Lectures</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#workshops"><i class="fa fa-check"></i>Workshops</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#assessments"><i class="fa fa-check"></i>Assessments</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#about-computing"><i class="fa fa-check"></i>Computing worksheets</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#dropin"><i class="fa fa-check"></i>Drop-in sessions</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#team"><i class="fa fa-check"></i>Microsoft Team</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#time"><i class="fa fa-check"></i>Time management</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#exam"><i class="fa fa-check"></i>Exam</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#ask"><i class="fa fa-check"></i>Who should I ask about…?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#about-content"><i class="fa fa-check"></i>Content of MATH2750</a><ul>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#prereqs"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#books"><i class="fa fa-check"></i>Books</a></li>
+<li class="chapter" data-level="" data-path="S00-about.html"><a href="S00-about.html#finally"><i class="fa fa-check"></i>And finally…</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Part I: Discrete time Markov chains</b></span></li>
+<li class="chapter" data-level="1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html"><i class="fa fa-check"></i><b>1</b> Stochastic processes and the Markov property</a><ul>
+<li class="chapter" data-level="1.1" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#models"><i class="fa fa-check"></i><b>1.1</b> Deterministic and random models</a></li>
+<li class="chapter" data-level="1.2" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#stochastic-processes"><i class="fa fa-check"></i><b>1.2</b> Stochastic processes</a></li>
+<li class="chapter" data-level="1.3" data-path="S01-stochastic-processes.html"><a href="S01-stochastic-processes.html#markov-property"><i class="fa fa-check"></i><b>1.3</b> Markov property</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S02-random-walk.html"><a href="S02-random-walk.html"><i class="fa fa-check"></i><b>2</b> Random walk</a><ul>
+<li class="chapter" data-level="2.1" data-path="S02-random-walk.html"><a href="S02-random-walk.html#simple-random-walk"><i class="fa fa-check"></i><b>2.1</b> Simple random walk</a></li>
+<li class="chapter" data-level="2.2" data-path="S02-random-walk.html"><a href="S02-random-walk.html#general-random-walks"><i class="fa fa-check"></i><b>2.2</b> General random walks</a></li>
+<li class="chapter" data-level="2.3" data-path="S02-random-walk.html"><a href="S02-random-walk.html#exact-distribution"><i class="fa fa-check"></i><b>2.3</b> Exact distribution of the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P01.html"><a href="P01.html"><i class="fa fa-check"></i>Problem Sheet 1</a></li>
+<li class="chapter" data-level="3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html"><i class="fa fa-check"></i><b>3</b> Gambler’s ruin</a><ul>
+<li class="chapter" data-level="3.1" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-chain"><i class="fa fa-check"></i><b>3.1</b> Gambler’s ruin Markov chain</a></li>
+<li class="chapter" data-level="3.2" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#ruin-probability"><i class="fa fa-check"></i><b>3.2</b> Probability of ruin</a></li>
+<li class="chapter" data-level="3.3" data-path="S03-gamblers-ruin.html"><a href="S03-gamblers-ruin.html#expected-duration"><i class="fa fa-check"></i><b>3.3</b> Expected duration of the game</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S04-ldes.html"><a href="S04-ldes.html"><i class="fa fa-check"></i><b>4</b> Linear difference equations</a><ul>
+<li class="chapter" data-level="4.1" data-path="S04-ldes.html"><a href="S04-ldes.html#hom-ldes"><i class="fa fa-check"></i><b>4.1</b> Homogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.2" data-path="S04-ldes.html"><a href="S04-ldes.html#ruin-probability-solve"><i class="fa fa-check"></i><b>4.2</b> Probability of ruin for the gambler’s ruin</a></li>
+<li class="chapter" data-level="4.3" data-path="S04-ldes.html"><a href="S04-ldes.html#inhom-ldes"><i class="fa fa-check"></i><b>4.3</b> Inhomogeneous linear difference equations</a></li>
+<li class="chapter" data-level="4.4" data-path="S04-ldes.html"><a href="S04-ldes.html#duration-solve"><i class="fa fa-check"></i><b>4.4</b> Expected duration for the gambler’s ruin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P02.html"><a href="P02.html"><i class="fa fa-check"></i>Problem sheet 2</a></li>
+<li class="chapter" data-level="" data-path="A1.html"><a href="A1.html"><i class="fa fa-check"></i>Assessment 1</a></li>
+<li class="chapter" data-level="5" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html"><i class="fa fa-check"></i><b>5</b> Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="5.1" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#thmc"><i class="fa fa-check"></i><b>5.1</b> Time homogeneous discrete time Markov chains</a></li>
+<li class="chapter" data-level="5.2" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#S05-example"><i class="fa fa-check"></i><b>5.2</b> A two-state example</a></li>
+<li class="chapter" data-level="5.3" data-path="S05-markov-chains.html"><a href="S05-markov-chains.html#n-step"><i class="fa fa-check"></i><b>5.3</b> <em>n</em>-step transition probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S06-examples.html"><a href="S06-examples.html"><i class="fa fa-check"></i><b>6</b> Examples from actuarial science</a><ul>
+<li class="chapter" data-level="6.1" data-path="S06-examples.html"><a href="S06-examples.html#S06-example1"><i class="fa fa-check"></i><b>6.1</b> A simple no-claims discount model</a></li>
+<li class="chapter" data-level="6.2" data-path="S06-examples.html"><a href="S06-examples.html#S06-example2"><i class="fa fa-check"></i><b>6.2</b> An accident model with memory</a></li>
+<li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-background"><i class="fa fa-check"></i>R background</a></li>
+</ul></li>
+<li class="divider"></li>
+<li></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2750 Introduction to Markov Processes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="computing" class="section level1 unnumbered">
+<h1>Computational worksheets</h1>
+<div class="mysched">
+<ul>
+<li><strong>Computational worksheet 1</strong> <a href="C1.html">[HTML format]</a> <a href="C1.Rmd">[Rmd format]</a></li>
+</ul>
+</div>
+<div id="C-about" class="section level2 unnumbered">
+<h2>About the computational worksheets</h2>
+<p>These computational worksheets are an opportunity to learn more about Markov chains through simulation using R.</p>
+<p>This first worksheet is not an assessed part of the course, but it is for you to learn and practice. The second worksheet <em>is</em> an assessed part of the course, and counts for 3% of your grade on this course. A report on Worksheet 2 will be due on <strong>Thursday 18 March</strong> (week 8) at 2pm. The material in these worksheets is examinable.</p>
+<p>I recommend working on Computational Worksheet 1 in weeks 3 or 4, and on Computational Worksheet 2 in weeks 6 or 7. I estimate that each worksheet may take about 2 hours to work through.</p>
+<p>You will have two computational drop-in sessions available with Muyang Zhang. These drop-in sessions are optional opportunities for you to come along to ask for help if you are stuck or want to know more. These sessions will happen on Teams. The sessions may appear in your timetable as “Practicals”. It is important that you work through most of the worksheet <em>before</em> your drop-in session, as this will be your main opportunity to ask for help. (You can also use the module discussion board on Teams.) The dates of the drop-in sessions are:</p>
+<ul>
+<li>Computational Worksheet 1: Monday 15 – Wednesday 17 February (week 4)</li>
+<li>Computational Worksheet 2: Monday 8 – Wednesday 10 March (week 7)</li>
+</ul>
+<p>Note that the Worksheet 2 practical sessions are the week before the deadline; it’s in your benefit to start working on that sheet early.</p>
+<p>The computational worksheets are available in two formats:</p>
+<ul>
+<li>First, as an easy-to-read <strong>HTML file</strong>. You should open this in a web browser.</li>
+<li>Second, as a file with the suffix <strong>.Rmd</strong>. This can be read as a plain text file. However, I recommend downloading this file and opening it in RStudio. This will make it easy to run the R code included in the file, by clicking the green “play” button by each chunk of R code. (These files is written in a language called “<a href="https://www.stat.cmu.edu/~cshalizi/rmarkdown/">R Markdown</a>”, which you could choose to use for writing your report.)</li>
+</ul>
+</div>
+<div id="R-access" class="section level2 unnumbered">
+<h2>How to access R</h2>
+<p>These worksheets use the statistical programming language <strong>R</strong>. Use of R is mandatory. I recommend interacting with R via the program <strong>RStudio</strong>, although this is optional. There are various ways to access R and RStudio.</p>
+<ul>
+<li>You may already have R and RStudio installed on your own computer.</li>
+<li>You can install R and RStudio on your own computer now if you haven’t previously. You should first <a href="https://cran.rstudio.com/">download R from the Comprehensive R Archive Network</a>, and then <a href="https://rstudio.com/products/rstudio/download/#download">download “RStudio Desktop” from rstudio.com</a>. Remember to download and install R first, and only then to download and install RStudio.</li>
+<li>The <a href="https://rstudio.cloud/">RStudio Cloud</a> is like “Google Docs for R”. You can get 15 hours a month for free, which should be more than enough for these worksheets. Because this doesn’t require installation, it’s good for Chromebooks or computers where you don’t have full installation rights.</li>
+<li>If you are in Leeds, university computers have R and RStudio installed. However, at the time of writing (5 February 2021), all IT clusters on campus are closed. You can see <a href="https://leeds.service-now.com/it?id=clusters">the latest news on cluster availability here</a>.</li>
+<li>You can access R and RStudio via the university’s <a href="https://it.leeds.ac.uk/it?id=kb_article&amp;sysparm_article=KB0014548">virtual Windows desktop</a> or (for those who have a Windows computer) via the university’s <a href="https://it.leeds.ac.uk/it?id=kb_article&amp;sysparm_article=KB0014827">AppsAnywhere</a> system.</li>
+</ul>
+</div>
+<div id="R-background" class="section level2 unnumbered">
+<h2>R background</h2>
+<p>These worksheets are mostly self-explanatory. However, they do assume a little background. For example, I assume you know how to operate R (for example by opening RStudio and typing commands in the “console”), and that you know that <code>x &lt;- c(1, 2, 3)</code> creates a vector called <code>x</code> and that <code>mean(x)</code> calculates the mean of the entries of <code>x</code>.</p>
+<p>Most students on this course will know R from MATH1710 and MATH1712 or other courses. If you are new to R, I recommend Dr Jochen Voss’s “A Short Introduction to R” or Dr Arief Gusnanto’s “Introduction to R”, both available from <a href="http://www1.maths.leeds.ac.uk/~arief/MATH1712/index.html">Dr Gusnanto’s MATH1712 homepage</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="P03.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["math2750.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

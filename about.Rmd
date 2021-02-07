@@ -52,18 +52,20 @@ My recommended approach to problem sheets and workshops is the following:
 
 ### Assessments {.unnumbered #assessments}
 
-There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 2 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 3 will be a report on some computational work ([see below](#about--computing)) and is worth 3%.
+There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 3 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 2 will be a report on some computational work ([see below](#about--computing)) and is worth 3%.
 
-While you may want to discuss an assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.
+Copying, plagiarism and other types of cheating are not allowed and will be dealt with in accordance with University procedures.
 
 The assessments deadlines are:
 
 * Assessment 1: Thursday 11 February 1400 (week 3)
-* Assessment 2: Thursday 18 March 1400 (week 8)
-* Assessment 3 (Computing Worksheet 2): Thursday 25 March 1400 (week 9)
+* Assessment 2 (Computational Worksheet 2): Thursday 18 March 1400 (week 8)
+* Assessment 3: Thursday 25 March 1400 (week 9)
 * Assessment 4: Thursday 6 May 1400 (week 11)
 
 Work will be submitted via Gradescope.
+
+Your markers are Jason Klebes, Macauley Locke, and Muyang Zhang -- but you should [contact the module leader](mailto:m.aldridge@leeds.ac.uk) if you have marking queries, not the markers directly.
 
 
 ### Computing worksheets {.unnumbered #about-computing}
