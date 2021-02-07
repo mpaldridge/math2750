@@ -4,7 +4,7 @@
 
 
 ::: {.mysched}
-* **Computational worksheet 1:** [[HTML format]](computing/C1.html) [[Rmd format]](computing/C1.Rmd)
+* **Computational Worksheet 1:** [[HTML format]](computing/C1.html) [[Rmd format]](computing/C1.Rmd)
 :::
 
 
@@ -21,7 +21,7 @@ You will have two computational drop-in sessions available with Muyang Zhang. Th
 * Computational Worksheet 1: Monday 15 -- Wednesday 17 February (week 4)
 * Computational Worksheet 2: Monday 8 -- Wednesday 10 March (week 7)
 
-Note that the Worksheet 2 practical sessions are the week before the deadline; it's in your benefit to start working on that sheet early.
+Note that the Worksheet 2 practical sessions are the week before the deadline, so it's in your benefit to start working on that worksheet early.
 
 The computational worksheets are available in two formats:
 
@@ -39,7 +39,7 @@ These worksheets use the statistical programming language **R**. Use of R is man
 * You may already have R and RStudio installed on your own computer.
 * You can install R and RStudio on your own computer now if you haven't previously. You should first [download R from the Comprehensive R Archive Network](https://cran.rstudio.com/), and then [download "RStudio Desktop" from rstudio.com](https://rstudio.com/products/rstudio/download/#download). Remember to download and install R first, and only then to download and install RStudio.
 * The [RStudio Cloud](https://rstudio.cloud/) is like "Google Docs for R". You can get 15 hours a month for free, which should be more than enough for these worksheets. Because this doesn't require installation, it's good for Chromebooks or computers where you don't have full installation rights.
-* If you are in Leeds, university computers have R and RStudio installed. However, at the time of writing (5 February 2021), all IT clusters on campus are closed. You can see [the latest news on cluster availability here](https://leeds.service-now.com/it?id=clusters).
+* If you are in Leeds, all the university computers have R and RStudio installed. However, at the time of writing (5 February 2021), all IT clusters on campus are closed. You can see [the latest news on cluster availability here](https://leeds.service-now.com/it?id=clusters).
 * You can access R and RStudio via the university's [virtual Windows desktop](https://it.leeds.ac.uk/it?id=kb_article&sysparm_article=KB0014548) or (for those who have a Windows computer) via the university's [AppsAnywhere](https://it.leeds.ac.uk/it?id=kb_article&sysparm_article=KB0014827) system.
 
 

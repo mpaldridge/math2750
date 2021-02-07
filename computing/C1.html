@@ -438,11 +438,12 @@ X    # Should produce something that looks like a random walk</code></pre>
 <p>You will probably want to include the starting point <span class="math inline">\(X_0 = 0\)</span> on your plot too. How can you do this?</p>
 <p>The plot function can take extra optional arguments. You can find out about these by typing <code>?plot</code>, which brings up the help for the function <code>plot</code>. For example, what does the following do?</p>
 <pre class="r"><code>plot(1:N, X,
-     type = &quot;b&quot;,
-     col  = &quot;red&quot;,
-     ylim = c(-15, 15),
-     xlab = &quot;Test&quot;,
-     main = &quot;Hello!&quot;)</code></pre>
+  type = &quot;b&quot;,
+  col  = &quot;red&quot;,
+  ylim = c(-15, 15),
+  xlab = &quot;Test&quot;,
+  main = &quot;Hello!&quot;
+)</code></pre>
 <p>Use <code>?plot</code> (or Google, or ask a friend) to find out the possible arguments to <code>type =</code>, and make sure to pick the most appropriate one. You may find that different arguments are appropriate for the <span class="math inline">\(N = 10\)</span> and <span class="math inline">\(N = 10000\)</span> cases.</p>
 <p>Remember to comment on the differences between the plots.</p>
 <p><strong>Question 3.</strong> <em>Make a function in R that produces a sample of a simple random walk for given <span class="math inline">\(p\)</span> of length <span class="math inline">\(N\)</span>. Test your function to check it works. What are the advantages of making a a function like this?</em></p>
