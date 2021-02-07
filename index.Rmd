@@ -17,7 +17,7 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Section 6**: Examples from actuarial science](#S06-examples)
 * [**Problem Sheet 3**](#P03)
 * [**Assessment 1**](#A1) due Thursday 11 February (this week) at 1400
-* [**Computational worksheet 1**](#computing): computational drop-in sessions next week
+* [**Computational Worksheet 1**](#computing): computational drop-in sessions next week
 * **Lecture**: Tuesday at 1400 (Zoom)
 * **Workshops** on Problem Sheet 2: Monday or Tuesday (Zoom)
 * **Drop-in sessions**: Tuesday or Wednesday (Teams)
