@@ -15,7 +15,7 @@ url:    https://mpaldridge.github.io/math2750/
 
 * [**Section 5**: Discrete time Markov chains](#S05-markov-chains)
 * [**Section 6**: Examples from actuarial science](#S06-examples)
-* [**Problem Sheet **](#P03)
+* [**Problem Sheet 3**](#P03)
 * [**Assessment 1**](#A1) due Thursday 11 February (this week) at 1400
 * [**Computational worksheet 1**](#computing): computational drop-in sessions next week
 * **Lecture**: Tuesday at 1400 (Zoom)
