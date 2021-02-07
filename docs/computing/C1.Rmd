@@ -1,0 +1,115 @@
+---
+title:  "Computational Worksheet 1"
+author: "Matthew Aldridge"
+date:   "MATH2750 Introduction to Markov Processes (2019--20)"
+output: html_document  
+---
+
+
+
+**Question 0:** *Answer as many of the questions on this problem sheet as you can. Write up a short report on your findings, with answers to the questions you have studied. Make sure to include relevant graphs produced and the R code you used.*
+
+
+Remember that this worksheet is just for practice, and not assessed for credit. However, Computational Worksheet 2 *is* assessed work. I am happy for that report to be submitted in any format, including: HTML or PDF produced by [R Markdown](https://www.stat.cmu.edu/~cshalizi/rmarkdown/), PDF produced by LaTeX, Microsoft Word document, or handwritten report with R printouts for plots.
+
+
+
+**Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
+
+
+We want to start by building the increments process $(Z_n)$, where each $Z_n$ is $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 0.4$. We will use the `sample` function to do this. You can find out how to use `sample` by reading the help file, which you can open by entering `?sample` in the console. What arguments do you need to give to `sample` to get $10$ values of $\pm 1$ with the correct probabilities? What, for example, do we get from the following?
+
+```{r, eval = FALSE}
+Z <- sample(c(1, 7, 4), 20, replace = TRUE, prob = c(0.5, 0.3, 0.2))
+Z
+```
+
+What is the purpose of the argument `replace = TRUE`? Can you adapt the above code to get the desired increments process?
+
+Once we have the increments process $(Z_n)$, we need to transform it into a random walk $(X_n)$. A useful function here is the *cumulative sum* function `cumsum`. The cumulative sum of a vector $(y_1, y_2, \dots, y_n)$ is the vector of partial sums
+$$ (y_1, y_1 + y_2, y_1 + y_2 + y_3, \dots, y_1 + y_2 + \cdots + y_n) . $$
+How can we use this function to form a random walk from the increments?
+
+All together, your code to produce the random walk should look something like this:
+
+```{r, eval = FALSE}
+p <- 0.6
+q <- 1 - p
+N <- 10
+Z <- # Add your code for increments
+Z    # Should produce a string of 10 plus-or-minus 1s
+X <- # Turn increments into a random walk
+X    # Should produce something that looks like a random walk
+```
+
+
+
+**Question 2.** *Plot a sample of the random walk for $N = 10$ steps and for $N = 10000$ steps. Try to make your plots look smart, for example by giving them titles and labelling the axes. Briefly comment on the differences between the plots.*
+
+
+The standard command to plot a vector $\mathbf{X}$ of length $N$ against $1, 2, \dots, N$ is `plot(1:N, X)`; or just `plot(X)` for short. Here `1:N` means the vector $(1, 2, \dots, N)$.
+
+You will probably want to include the starting point $X_0 = 0$ on your plot too. How can you do this?
+
+The plot function can take extra optional arguments. You can find out about these by typing `?plot`, which brings up the help for the function `plot`. For example, what does the following do?
+
+```{r, eval = FALSE} 
+plot(1:N, X,
+     type = "b",
+     col  = "red",
+     ylim = c(-15, 15),
+     xlab = "Test",
+     main = "Hello!")
+```
+
+Use `?plot` (or Google, or ask a friend) to find out the possible arguments to `type = `, and make sure to pick the most appropriate one. You may find that different arguments are appropriate for the $N = 10$ and $N = 10000$ cases.
+
+Remember to comment on the differences between the plots.
+
+
+
+**Question 3.** *Make a function in R that produces a sample of a simple random walk for given $p$ of length $N$. Test your function to check it works. What are the advantages of making a a function like this?*
+
+
+You'll want a syntax something like this:
+
+```{r, eval = FALSE}
+RandomWalk <- function(N, p) {
+  Z <- # Your code for N increments that are +1 with probability p
+       # and -1 otherwise
+  cumsum(Z)
+}
+```
+
+If you do this correctly, then, for example,
+
+```{r, eval = FALSE}
+X <- RandomWalk(20, 0.3)
+X
+```
+
+should produce a simple random walk of length $20$ with $p = 0.3$. It might be helpful to check by plotting a random walk of your choice.
+
+
+
+**Question 4.** *Estimate the expected value of of the simple random walk at $N = 100$ steps by simulating many random walks and taking an average. How does this compare with the true answer?*
+
+
+Given a vector `x`, we know that, for example, `x[10]` gives the 10th element of the vector. So, using your `RandomWalk` function, `RandomWalk(N, p)[N]` should give the final value of an random walk of length $N$.
+  
+We can use the `replicate` function (read `?replicate` to learn more) to get a large number of samples of the random walk.
+
+```{r, eval = FALSE}
+N <- 100
+trials <- 10000  # Or some other appropriate large number
+samples <- replicate(trials, RandomWalk(N, p)[N])
+# Now add code to output the average of samples
+```
+
+What does theory we have learned say the answer should be?
+
+
+
+**Question 5.** (Optional) *Investigate estimating other properties of the simple random walk through simulation.*
+
+
