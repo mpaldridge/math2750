@@ -189,11 +189,19 @@ We must have <span class="math inline">\(p_{ij} \geq 0\)</span>, since it is a p
     \mathbb P(X_{n+1} = j \mid X_n = i, X_{n-1} = x_{n-1}, \dots, X_0 = x_0) = \mathbb P(X_{n+1} = j \mid X_n = i) =  p_{ij}  . \end{gather*}\]</span></p>
 </div>
 <p>When the state space is finite (and even sometimes when it’s not), it’s convenient to write the transition probabilities <span class="math inline">\((p_{ij})\)</span> as a matrix <span class="math inline">\(\mathsf P\)</span>, called the <strong>transition matrix</strong>, whose <span class="math inline">\((i,j)\)</span>th entry is <span class="math inline">\(p_{ij}\)</span>. Then the condition that <span class="math inline">\(\sum_j p_{ij} = 1\)</span> is the condition that each of the rows of <span class="math inline">\(\mathsf P\)</span> add up to <span class="math inline">\(1\)</span>.</p>
-<p>From this, we can calculate, for example,
-<span class="math display">\[ \mathbb P(X_0 = i \text{ and } X_1 = j) = \lambda_i p_{ij} , \]</span>
-as we must start from <span class="math inline">\(i\)</span> and then move from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>. Another example would be
-<span class="math display">\[ \mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i) = p_{ik}p_{kj} , \]</span>
-as we must first move from <span class="math inline">\(i\)</span> to <span class="math inline">\(k\)</span> then from <span class="math inline">\(k\)</span> to <span class="math inline">\(j\)</span>.</p>
+<div class="example">
+<p><span id="exm:mcex" class="example"><strong>Example 5.1  </strong></span><em>In this notation, what is <span class="math inline">\(\mathbb P(X_0 = i \text{ and } X_1 = j)\)</span>?</em></p>
+<p>First we must start from <span class="math inline">\(i\)</span>, and then we must move from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>, so
+<span class="math display">\[ \mathbb P(X_0 = i \text{ and } X_1 = j) = \mathbb P(X_0 = i)\mathbb P(X_1 = j \mid X_0 = i) = \lambda_i p_{ij} . \]</span></p>
+<p><em>In this notation, what is <span class="math inline">\(\mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i)\)</span>?</em></p>
+<p>First we must move from <span class="math inline">\(i\)</span> to <span class="math inline">\(k\)</span>, then we must move from <span class="math inline">\(k\)</span> to <span class="math inline">\(j\)</span>, so
+<span class="math display">\[\begin{align*}
+\mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i)
+&amp;= \mathbb P(X_{n+1} = k \mid X_n = i)\mathbb P(X_{n+2} = j \mid X_{n+1} = k) \\
+&amp;= p_{ik}p_{kj} .
+\end{align*}\]</span>
+Note that the term <span class="math inline">\(\mathbb P(X_{n+2} = j \mid X_{n+1} = k)\)</span> did not have to depend on <span class="math inline">\(X_n\)</span>, thanks to the Markov property.</p>
+</div>
 </div>
 <div id="S05-example" class="section level2">
 <h2><span class="header-section-number">5.2</span> A two-state example</h2>
@@ -215,7 +223,7 @@ Figure 5.1: Transition diagram for the two-state Markov chain
 </div>
 <p>We can use this as a simple model of a broken printer, for example. If the printer is broken (state 0) on one day, then with probability <span class="math inline">\(\alpha\)</span> it will be fixed (state 1) by the next day; while if it is working (state 1), then with probability <span class="math inline">\(\beta\)</span> it will have broken down (state 0) by the next day.</p>
 <div class="example">
-<p><span id="exm:printer" class="example"><strong>Example 5.1  </strong></span><em>If the printer is working on Monday, what’s the probability that it also is working on Wednesday?</em></p>
+<p><span id="exm:printer" class="example"><strong>Example 5.2  </strong></span><em>If the printer is working on Monday, what’s the probability that it also is working on Wednesday?</em></p>
 <p>If we call Monday day <span class="math inline">\(n\)</span>, then Wednesday is day <span class="math inline">\(n+2\)</span>, and we want to find the two-step transition probability.
 <span class="math display">\[ p_{11}(2) = \mathbb P (X_{n+2} = 1 \mid X_n = 1) . \]</span>
 The key to calculating this is to <em>condition on the first step</em> again – that is, on whether the printer is working on Tuesday. We have
@@ -259,7 +267,7 @@ or, in matrix notation, <span class="math inline">\(\mathsf P(n+m) = \mathsf P(n
 <p>In other words, a trip of length <span class="math inline">\(n + m\)</span> from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is a trip of length <span class="math inline">\(n\)</span> from <span class="math inline">\(i\)</span> to some other state <span class="math inline">\(k\)</span>, then a trip of length <span class="math inline">\(m\)</span> from <span class="math inline">\(k\)</span> back to <span class="math inline">\(j\)</span>, and this intermediate stop <span class="math inline">\(k\)</span> can be any state, so we have to sum the probabilities.</p>
 <p>Of course, once we know that <span class="math inline">\(\mathsf P(n) = \mathsf P^n\)</span> is given by the matrix power, it’s clear to see that <span class="math inline">\(\mathsf P(n+m) = \mathsf P^{n+m} = \mathsf P^n \mathsf P^m = \mathsf P(n)\mathsf P(m)\)</span>.</p>
 <div class="example">
-<p><span id="exm:printer2" class="example"><strong>Example 5.2  </strong></span>In our two-state broken printer example above, the matrix of two-state transition probabilities is given by
+<p><span id="exm:printer2" class="example"><strong>Example 5.3  </strong></span>In our two-state broken printer example above, the matrix of two-state transition probabilities is given by
 <span class="math display">\[\begin{align*}
 \mathsf P(2) = \mathsf P^2 &amp;=  \begin{pmatrix} 1-\alpha &amp; \alpha \\ \beta &amp; 1-\beta \end{pmatrix}  \begin{pmatrix} 1-\alpha &amp; \alpha \\ \beta &amp; 1-\beta \end{pmatrix} \\
 &amp;=  \begin{pmatrix} (1-\alpha)^2 + \alpha\beta &amp; (1-\alpha)\alpha + \alpha(1-\beta) \\ \beta(1-\alpha) + (1-\beta)\beta &amp; \beta\alpha + (1-\beta)^2 \end{pmatrix} ,

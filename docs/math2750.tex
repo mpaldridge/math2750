@@ -1311,7 +1311,7 @@ giving \(A = 0, B = m\). The solution is
 \section*{Problem sheet 2}\label{P02}}
 \addcontentsline{toc}{section}{Problem sheet 2}
 
-\commtrue
+\commfalse
 
 You should attempt all these questions and write up your solutions in advance of your workshop in week 3 (Monday 8 or Tuesday 9 February) where the answers will be discussed.
 
@@ -1571,11 +1571,25 @@ Let \((\lambda_i)\) be a probability distribution on a sample space \(\mathcal S
 
 When the state space is finite (and even sometimes when it's not), it's convenient to write the transition probabilities \((p_{ij})\) as a matrix \(\mathsf P\), called the \textbf{transition matrix}, whose \((i,j)\)th entry is \(p_{ij}\). Then the condition that \(\sum_j p_{ij} = 1\) is the condition that each of the rows of \(\mathsf P\) add up to \(1\).
 
-From this, we can calculate, for example,
-\[ \mathbb P(X_0 = i \text{ and } X_1 = j) = \lambda_i p_{ij} , \]
-as we must start from \(i\) and then move from \(i\) to \(j\). Another example would be
-\[ \mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i) = p_{ik}p_{kj} , \]
-as we must first move from \(i\) to \(k\) then from \(k\) to \(j\).
+\begin{example}
+\protect\hypertarget{exm:mcex}{}\label{exm:mcex}
+
+\emph{In this notation, what is \(\mathbb P(X_0 = i \text{ and } X_1 = j)\)?}
+
+First we must start from \(i\), and then we must move from \(i\) to \(j\), so
+\[ \mathbb P(X_0 = i \text{ and } X_1 = j) = \mathbb P(X_0 = i)\mathbb P(X_1 = j \mid X_0 = i) = \lambda_i p_{ij} . \]
+
+\emph{In this notation, what is \(\mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i)\)?}
+
+First we must move from \(i\) to \(k\), then we must move from \(k\) to \(j\), so
+\begin{align*}
+\mathbb P(X_{n+2} = j \text{ and } X_{n+1} = k \mid X_n = i)
+&= \mathbb P(X_{n+1} = k \mid X_n = i)\mathbb P(X_{n+2} = j \mid X_{n+1} = k) \\
+&= p_{ik}p_{kj} .
+\end{align*}
+Note that the term \(\mathbb P(X_{n+2} = j \mid X_{n+1} = k)\) did not have to depend on \(X_n\), thanks to the Markov property.
+
+\end{example}
 
 \hypertarget{S05-example}{%
 \subsection{A two-state example}\label{S05-example}}
