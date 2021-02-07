@@ -1,8 +1,8 @@
 ---
 title:  "Computational Worksheet 1"
 author: "Matthew Aldridge"
-date:   "[MATH2750 Introduction to Markov Processes](https://mpaldridge.github.io/math2750/) (2020--21)"
-output: html_document  
+date:   "MATH2750 Introduction to Markov Processes (2020--21)"
+output: html_document 
 ---
 
 
@@ -55,11 +55,12 @@ The plot function can take extra optional arguments. You can find out about thes
 
 ```{r, eval = FALSE} 
 plot(1:N, X,
-     type = "b",
-     col  = "red",
-     ylim = c(-15, 15),
-     xlab = "Test",
-     main = "Hello!")
+  type = "b",
+  col  = "red",
+  ylim = c(-15, 15),
+  xlab = "Test",
+  main = "Hello!"
+)
 ```
 
 Use `?plot` (or Google, or ask a friend) to find out the possible arguments to `type = `, and make sure to pick the most appropriate one. You may find that different arguments are appropriate for the $N = 10$ and $N = 10000$ cases.
