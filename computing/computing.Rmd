@@ -4,7 +4,7 @@
 
 
 ::: {.mysched}
-* **Computational worksheet 1** [[HTML format]](computing/C1.html) [[Rmd format]](computing/C1.Rmd)
+* **Computational worksheet 1:** [[HTML format]](computing/C1.html) [[Rmd format]](computing/C1.Rmd)
 :::
 
 
