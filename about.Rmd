@@ -72,7 +72,7 @@ Your markers are Jason Klebes, Macauley Locke, and Muyang Zhang -- but you shoul
 
 There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but if you need help, there will be optional online drop-in sessions in the weeks 4 and 7 with [Muyang Zhang](https://eps.leeds.ac.uk/maths/pgr/6422/muyang-zhang) through Microsoft Teams. (Your computing drop-in session may be listed as "Practical" on your timetable.)
 
-The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the third assessed piece of work.
+The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the second assessed piece of work.
 
 
 ### Drop-in sessions {.unnumbered #dropin}

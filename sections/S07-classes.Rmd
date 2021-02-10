@@ -10,7 +10,7 @@
 
 ## Communicating classes  {#comm-classes}
 
-If we have a large complicated Markov chain, it can be useful to split the state space up into smaller pieces that can be studied separately. The idea is to split to states $i$ and $j$ into different pieces if we can't move from $i$ to $j$ and then back again after some number of steps.
+If we have a large complicated Markov chain, it can be useful to split the state space up into smaller pieces that can be studied separately. The idea is that states $i$ and $j$ should definitely be in the same piece (or "class) if we can get from $i$ to $j$ and then back to $i$ again after some number of steps.
 
 ::: {.definition #comm}
 Consider a Markov chain on a state space $\mathcal S$ with transition matrix $\mathsf P$. We say that state $j\in\mathcal{S}$ is **accessible** from state $i\in\mathcal{S}$ and write $i \to j$ if, for some $n$, $p_{ij}(n)>0$.
@@ -110,7 +110,7 @@ Going back to the previous examples:
 ## Periodicity  {#periodicity}
 
 
-When [we discussed the simple random walk, we noted](#S02-exact-distribution) that it alternates between even-numbered and odd-numbered states. This "periodic" behaviour is important to understand if we want to know what will happen to the Markov chain in the future.
+When [we discussed the simple random walk, we noted](#S02-exact-distribution) that it alternates between even-numbered and odd-numbered states. This "periodic" behaviour is important to understand if we want to know which state we will be in at some point in the future.
 
 The idea is this: List the number of steps for all possible paths starting and ending in the state.  Then the period is the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) (or "highest common factor") of the integers in this list. 
 
