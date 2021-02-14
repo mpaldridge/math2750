@@ -159,9 +159,9 @@
 <li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
 <li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="S11-revision-i.html"><a href="S11-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
-<li class="chapter" data-level="12.1" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
-<li class="chapter" data-level="12.2" data-path="S11-revision-i.html"><a href="S11-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+<li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
 </ul></li>
 <li class="part"><span><b>Part II: Continuous time Markov jump processes</b></span></li>
 <li class="chapter" data-level="13" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html"><i class="fa fa-check"></i><b>13</b> Poisson process with Poisson increments</a><ul>
@@ -178,6 +178,11 @@
 <li class="chapter" data-level="15.1" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#infinitesimal"><i class="fa fa-check"></i><b>15.1</b> Definition 3: increments in infinitesimal time</a></li>
 <li class="chapter" data-level="15.2" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#sum2"><i class="fa fa-check"></i><b>15.2</b> Example: sum of two Poisson processes</a></li>
 <li class="chapter" data-level="15.3" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#forward"><i class="fa fa-check"></i><b>15.3</b> Forward equations and proof of equivalence</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
+<li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-background"><i class="fa fa-check"></i>R background</a></li>
 </ul></li>
 <li class="divider"></li>
 <li></li>
@@ -315,18 +320,17 @@ If <span class="math inline">\(\mu_i &lt; \infty\)</span>, we say that state <sp
 <div class="mysummary">
 <p><em>This subsection is optional and nonexaminable.</em></p>
 </div>
-<p>There was a cheat somewhere in this section – did you notice it? The last two times I lectured this course, I just hoped no one would notice – and no one did. Still, it’s a bit naughty, so in this optional and nonexaminable section, I’ll come clean.</p>
-<p>The Markov property says that, if at some fixed time <span class="math inline">\(n\)</span> we have <span class="math inline">\(X_n = i\)</span>, then the Markov chain from that point on is just like starting all over again from the state <span class="math inline">\(i\)</span>. When we applied this in the proof of Theorem <a href="S09-recurrence-transience.html#thm:rectran">9.1</a>, we were using as <span class="math inline">\(n\)</span> the first return to state <span class="math inline">\(i\)</span>. But that’s not a fixed time – it’s a random time. Have we messed up?</p>
-<p>Actually we’re fine. The reason is that the first return to <span class="math inline">\(i\)</span> isn’t just any old random time, it’s a “stopping time”, and the Markov property applies to stopping times too.</p>
-<p>A stopping time is a random time where “you know when you get there”.</p>
+<p>There was a cheat somewhere earlier in this section – did you notice it? <!--The last two times I lectured this course, I just hoped no one would notice -- and no one did. Still, it's a bit naughty, so in this optional and nonexaminable section, I'll come clean.--></p>
+<p>The Markov property says that, if at some fixed time <span class="math inline">\(n\)</span> we have <span class="math inline">\(X_n = i\)</span>, then the Markov chain from that point on is just like starting all over again from the state <span class="math inline">\(i\)</span>. When we applied this in the proof of Theorem <a href="S09-recurrence-transience.html#thm:rectran">9.1</a>, we were using as <span class="math inline">\(n\)</span> the first return to state <span class="math inline">\(i\)</span>. But that’s not a fixed time – it’s a random time! Have we messed up?</p>
+<p>Actually we’re fine. The reason is that the first return to <span class="math inline">\(i\)</span> isn’t just any old random time, it’s a “stopping time”, and the Markov property also applies to stopping times too. Roughly speaking, a <strong>stopping time</strong> is a random time where “you know when you get there”.</p>
 <div class="definition">
-<p><span id="def:stopping" class="definition"><strong>Definition 9.3  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a stochastic process in discrete time, and let <span class="math inline">\(T\)</span> be a random time. Then <span class="math inline">\(T\)</span> is a <strong>stopping time</strong> if for all <span class="math inline">\(n\)</span> the event <span class="math inline">\(\{T = n\}\)</span> is determined by the random variables <span class="math inline">\(X_0, X_1, \dots, X_n\)</span>.</p>
+<p><span id="def:stopping" class="definition"><strong>Definition 9.3  </strong></span>Let <span class="math inline">\((X_n)\)</span> be a stochastic process in discrete time, and let <span class="math inline">\(T\)</span> be a random time. Then <span class="math inline">\(T\)</span> is a <strong>stopping time</strong> if for all <span class="math inline">\(n\)</span>, whether or not the event <span class="math inline">\(\{T = n\}\)</span> occurs is completely determined by the random variables <span class="math inline">\(X_0, X_1, \dots, X_n\)</span>.</p>
 </div>
 <p>So, for example:</p>
 <ul>
-<li>“The first visit to state <span class="math inline">\(i\)</span>” is stopping time, because as soon as we return, we know the value of <span class="math inline">\(T\)</span>.</li>
+<li>“The first visit to state <span class="math inline">\(i\)</span>” is stopping time, because as soon as we reach <span class="math inline">\(i\)</span>, we know the value of <span class="math inline">\(T\)</span>.</li>
 <li>“Three time-steps after the second visit to <span class="math inline">\(j\)</span>” is a stopping time, because after our second visit we count on three more steps and have <span class="math inline">\(T\)</span>.</li>
-<li>“The time-step before the first visit to <span class="math inline">\(i\)</span>” is not a stopping time, because we need to go one step further on to know whether or not we had just been at time <span class="math inline">\(T\)</span>.</li>
+<li>“The time-step <em>before</em> the first visit to <span class="math inline">\(i\)</span>” is not a stopping time, because we still need to go one step further on to know whether we had just been at time <span class="math inline">\(T\)</span> or not.</li>
 <li>“The final visit to <span class="math inline">\(j\)</span>” is not a stopping time, because at the time of the visit we don’t yet know whether we’ll come back again or not.</li>
 </ul>
 <p>There are lots of places in probability theory and finance when something that is true about a fixed time is also true about a random stopping time. When we use the Markov property with a stopping time, we call it the “strong Markov property”.</p>
@@ -370,7 +374,7 @@ as desired. The second line was by conditioning on the value of <span class="mat
 where the last line used the Markov property to treat the chain as starting over again when it reaches some state <span class="math inline">\(k\)</span> at time <span class="math inline">\(m\)</span>. Note that <span class="math inline">\(\sum_k p_{jk}(m) = 1\)</span>, since that’s the sum of the probabilities of going anywhere in <span class="math inline">\(m\)</span> steps. This means we must have <span class="math inline">\(\mathbb P(H_j &lt; \infty \mid X_0 = k)\)</span> whenever <span class="math inline">\(p_{jk}(m) &gt; 0\)</span>, to ensure the final line does indeed sum to 1. But we stated earlier that <span class="math inline">\(p_{ji}(m) &gt; 0\)</span>, so we indeed have <span class="math inline">\(\mathbb P(H_j &lt; \infty \mid X_0 = i)\)</span>, as required.</p>
 </div>
 <div class="mysummary">
-<p><strong>In the next section</strong>, we look at how positive recurrent Markov chains can settle into a stationary distribution and experience long-term stability.</p>
+<p><strong>In the next section</strong>, we look at how positive recurrent Markov chains can settle into a “stationary distribution” and experience long-term stability.</p>
 </div>
 
 </div>

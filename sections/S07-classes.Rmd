@@ -10,6 +10,12 @@
 
 ## Communicating classes  {#comm-classes}
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/9H8fW5ohpgM"></iframe>
+:::
+::::
+
 If we have a large complicated Markov chain, it can be useful to split the state space up into smaller pieces that can be studied separately. The idea is that states $i$ and $j$ should definitely be in the same piece (or "class) if we can get from $i$ to $j$ and then back to $i$ again after some number of steps.
 
 ::: {.definition #comm}
@@ -45,11 +51,11 @@ The same argument with $k$ and $i$ swapped gives $k \to i$ also, so $i \leftrigh
 A fact you may remember about equivalence relations is that an equivalence relation, like $\leftrightarrow$, partitions the space $\mathcal S$ into [**equivalence classes**](https://en.wikipedia.org/wiki/Equivalence_class). This means that each state $i$ is in exactly one equivalence class, and that class is the set of states $j$ such that $i \leftrightarrow j$. In this context, we call these **communicating classes**.
 
 ::: {.example #rw-class}
-In the simple random walk, provided $p$ is not $0$ or $1$, every state communicates with every other state, because from $i$ when can get to $j > i$ by going up $j - i$ times, and we can get to $j < i$ by going down $i - j$ times.. Therefore the whole state space $\mathcal S = \mathbb Z$ is one communicating class.
+In the simple random walk, provided $p$ is not 0 or 1, every state communicates with every other state, because from $i$ when can get to $j > i$ by going up $j - i$ times, and we can get to $j < i$ by going down $i - j$ times. Therefore the whole state space $\mathcal S = \mathbb Z$ is one communicating class.
 :::
 
 ::: {.example #gamblers-class}
-Consider the gambler's ruin Markov chain on $\{0,1,\dots,m\}$. There are three communicating classes: $\{0\}$ and $\{m\}$, which don't communicate with any other states, and $\{1,2,\dots,m-1\}$, which is like the simple random walk.
+Consider the gambler's ruin Markov chain on $\{0,1,\dots,m\}$. There are three communicating classes. The ruin states $\{0\}$ and $\{m\}$ each don't communicate with any other states, so each are a class by themselves. The remaining states $\{1,2,\dots,m-1\}$ are all in the same class, like the simple random walk.
 :::
 
 ::: {.example #hsd-class}
@@ -58,7 +64,7 @@ Consider the following simple model for an epidemic. We have three states: healt
 p_{\mathrm{SH}} & p_{\mathrm{SS}} & p_{\mathrm{SD}} \\ 0 & 0 & 1 \end{pmatrix} ,    \]
 and the transition diagram is:
 
-```{tikz HSD, echo=FALSE, fig.align="center", fig.width=4}
+```{tikz HSD, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition for the healthy--sick--dead chain.", cache = TRUE}
 \usetikzlibrary{automata}
 	\begin{tikzpicture}[scale=0.75]
 	\node[state] (H) at (0,0) {H};
@@ -97,6 +103,14 @@ We say that a communicating class is **closed** if no state outside the class is
 If a state $i$ is in a communicating class $\{i\}$ by itself and that class is closed, then we say state $i$ is **absorbing**.
 :::
 
+In non-maths language:
+
+* An irreducible Markov chain can't be broken down into smaller pieces.
+* Once you enter a closed class, you can't leave that class.
+* Once you reach an absorbing state, you can't leave that state.
+
+How do these work for our earlier examples?
+
 ::: {.example #ex-irred}
 Going back to the previous examples:
 
@@ -108,6 +122,13 @@ Going back to the previous examples:
 
 
 ## Periodicity  {#periodicity}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/HoWJEEobIcg"></iframe>
+:::
+::::
 
 
 When [we discussed the simple random walk, we noted](#S02-exact-distribution) that it alternates between even-numbered and odd-numbered states. This "periodic" behaviour is important to understand if we want to know which state we will be in at some point in the future.
@@ -133,7 +154,7 @@ For the gambler's ruin, states $0$ and $m$ are aperiodic (have period $1$), sinc
 ::: {.example #weird-period}
 Consider the Markov chain with transition diagram as shown:
 
-```{tikz periods, echo=FALSE, fig.align="center", fig.width=5}
+```{tikz periods, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition for an aperiodic irreducible Markov chain.", cache = TRUE}
 \usetikzlibrary{automata}
 		\begin{tikzpicture}[scale=1.2]
 		\node[state] (1) at (0,0) {$2$};
@@ -182,11 +203,14 @@ Since $i\leftrightarrow j$, there exist $n,m$ such that $p_{ij}(n)>0$ and $p_{ji
 \[ p_{ii}(n+m) =  \sum_{k \in \mathcal S} p_{ik}(n) p_{ki}(m) \geq p_{ij}(n) p_{ji}(m) > 0 .  \]
 So $d_i$ divides $n+m$.
 
-Let $r$ be such that $p_{jj}(r)>0$.  Then, by the Chapman-Kolmogorov equations again,
+Let $r$ be such that $p_{jj}(r)>0$.  Then, by the same Chapman-Kolmogorov argument,
 	\[
-	p_{ii}(n+m+r)\geq  p_{ij}(n) p_{jj}(r) p_{ji}(m) > 0.
+	p_{ii}(n+m+r)\geq  p_{ij}(n) p_{jj}(r) p_{ji}(m) > 0,
 	\]
-	Hence $d_i$ divides $n+m+r$. But since $d_i$ divides $n+m$, it must be that $d_i$ divides $r$ also. So whenever $p_{jj}(r)>0$, we have that $d_i$ divides $r$. Since $d_i$ is a common divisor of all the $r$s with $p_{jj}(r)>0$, it can't be any bigger that the *greatest* common divisor of all those $r$s. But that greatest common divisor is by definition $d_j$, the period of $j$. So $d_i \leq d_j$.
+because we can get from $i$ to $i$ by going $i \to j \to j \to i$.
+	Hence $d_i$ divides $n+m+r$.
+	
+	But if $d_i$ divides both $n+m$ and $n+m+r$, it must be that $d_i$ divides $r$ also. So whenever $p_{jj}(r)>0$, we have that $d_i$ divides $r$. Since $d_i$ is a common divisor of all the $r$s with $p_{jj}(r)>0$, it can't be any bigger that the *greatest* common divisor of all those $r$s. But that greatest common divisor is by definition $d_j$, the period of $j$. So $d_i \leq d_j$.
 	
 Repeating the same argument but with $i$ and $j$ swapped over, we get $d_j\leq d_i$ too, and we're done.
 :::

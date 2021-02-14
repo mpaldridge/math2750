@@ -1,4 +1,4 @@
-# Revision of Part 1: Discrete time Markov chains  {#S11-revision-i}
+# Revision of Part 1: Discrete time Markov chains  {#S12-revision-i}
 
 
 ::: {.mysummary}

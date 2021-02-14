@@ -11,6 +11,18 @@ url:    https://mpaldridge.github.io/math2750/
 # Schedule {.unnumbered #home}
 
 ::: {.mysched}
+**Week 4** (15--19 February):
+
+* [**Section 7**: Class Structure](#S07-classes)
+* [**Section 8**: Hitting times](#S08-hitting-times)
+* [**Problem Sheet 4**](#P04)
+* [**Computational Worksheet 1**](#computing), with **computational drop-in sessions**: Monday, Tuesday, or Wednesday (Teams)
+* **Lecture**: Tuesday at 1400 (Zoom)
+* **Workshops** on Problem Sheet 3: Monday or Tuesday (Zoom)
+* Non-computational **drop-in sessions**: Tuesday or Wednesday (Teams)
+:::
+
+::: {.oldsched}
 **Week 3** (8--12 February):
 
 * [**Section 5**: Discrete time Markov chains](#S05-markov-chains)
@@ -18,9 +30,6 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Problem Sheet 3**](#P03)
 * [**Assessment 1**](#A1) due Thursday 11 February (this week) at 1400
 * [**Computational Worksheet 1**](#computing): computational drop-in sessions next week
-* **Lecture**: Tuesday at 1400 (Zoom)
-* **Workshops** on Problem Sheet 2: Monday or Tuesday (Zoom)
-* **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::
 
 ::: {.oldsched}
@@ -30,9 +39,6 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Section 4**: Linear difference equations](#S04-ldes)
 * [**Problem Sheet 2**](#P02)
 * [**Assessment 1**](#A1) due Thursday 11 February (next week) at 1400
-* **Lecture**: Tuesday at 1400 (Zoom)
-* **Workshops** on Problem Sheet 1: Monday or Tuesday (Zoom)
-* **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::
 
 ::: {.oldsched}
@@ -42,6 +48,4 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Section 1**: Stochastic processes and the Markov property](#S01-stochastic-processes)
 * [**Section 2**: Random walks](#S02-random-walk)
 * [**Problem Sheet 1**](#P01)
-* **Lecture**: Tuesday at 1400 (Zoom)
-* **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::

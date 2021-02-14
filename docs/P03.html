@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S06-examples.html"/>
-<link rel="next" href="computing.html"/>
+<link rel="next" href="S07-classes.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -129,6 +129,16 @@
 <li class="chapter" data-level="6.3" data-path="S06-examples.html"><a href="S06-examples.html#S06-example3"><i class="fa fa-check"></i><b>6.3</b> A no-claims discount model with memory</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P03.html"><a href="P03.html"><i class="fa fa-check"></i>Problem sheet 3</a></li>
+<li class="chapter" data-level="7" data-path="S07-classes.html"><a href="S07-classes.html"><i class="fa fa-check"></i><b>7</b> Class structure</a><ul>
+<li class="chapter" data-level="7.1" data-path="S07-classes.html"><a href="S07-classes.html#comm-classes"><i class="fa fa-check"></i><b>7.1</b> Communicating classes</a></li>
+<li class="chapter" data-level="7.2" data-path="S07-classes.html"><a href="S07-classes.html#periodicity"><i class="fa fa-check"></i><b>7.2</b> Periodicity</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html"><i class="fa fa-check"></i><b>8</b> Hitting times</a><ul>
+<li class="chapter" data-level="8.1" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#hitting-definitions"><i class="fa fa-check"></i><b>8.1</b> Hitting probabilities and expected hitting times</a></li>
+<li class="chapter" data-level="8.2" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-times"><i class="fa fa-check"></i><b>8.2</b> Return times</a></li>
+<li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -191,15 +201,41 @@ display: none !important;
 <span class="math display">\[ \mathsf P = \begin{pmatrix} ? &amp; 0.3 &amp; 0.3 \\ 0.2 &amp; 0.4 &amp; ? \\ ? &amp; ? &amp; 1 \end{pmatrix} . \]</span></p>
 <div class="subq">
 <p><strong>(a)</strong> Replace the four question marks by the appropriate transition probabilities.</p>
+<div class="myanswers">
+<p><em>Solution.</em> Rows must add up to 1 and every entry must be non-negative, so the transition matrix is
+<span class="math display">\[ \mathsf P = \begin{pmatrix} 0.4 &amp; 0.3 &amp; 0.3 \\ 0.2 &amp; 0.4 &amp; 0.4 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} . \]</span></p>
+</div>
 </div>
 <div class="subq">
 <p><strong>(b)</strong> Draw a transition diagram for this Markov chain.</p>
+<div class="myanswers">
+<p><em>Solution.</em></p>
+<div class="figure" style="text-align: center"><span id="fig:Q31"></span>
+<img src="math2750_files/figure-html/Q31-1.png" alt="Transition diagram for Question 1." width="384" />
+<p class="caption">
+Figure 6.3: Transition diagram for Question 1.
+</p>
+</div>
+</div>
 </div>
 <div class="subq">
 <p><strong>(c)</strong> Find the matrix <span class="math inline">\(\mathsf P(2)\)</span> of two-step transition probabilities.</p>
+<div class="myanswers">
+<p><em>Solution.</em> <span class="math inline">\({\displaystyle \mathsf P(2) = \mathsf P^2 = \begin{pmatrix} 0.22 &amp; 0.24 &amp; 0.54 \\ 0.16 &amp; 0.22 &amp; 0.62 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}}\)</span></p>
+</div>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> By summing the probabilities of all relelvant paths, find the three-step transition probability <span class="math inline">\(p_{13}(3)\)</span>.</p>
+<p><strong>(d)</strong> By summing the probabilities of all relevant paths, find the three-step transition probability <span class="math inline">\(p_{13}(3)\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> There are seven relevant paths: <span class="math inline">\(1 \to 1 \to 1 \to 3\)</span>, <span class="math inline">\(1 \to 1 \to 2 \to 3\)</span>, <span class="math inline">\(1 \to 1 \to 3 \to 3\)</span>, <span class="math inline">\(1 \to 2 \to 1 \to 3\)</span>, <span class="math inline">\(1 \to 2 \to 2 \to 3\)</span>, <span class="math inline">\(1 \to 2 \to 3 \to 3\)</span>, and <span class="math inline">\(1 \to 3 \to 3 \to 3\)</span>. So
+<span class="math display">\[\begin{align*}
+p_{13}(3) &amp;= p_{11}p_{11}p_{11}p_{13} + p_{11}p_{12}p_{23} + p_{11}p_{13}p_{33}  + p_{12} p_{21} p_{13}\\
+&amp; \qquad{}+ p_{12}p_{22}p_{23} + p_{12}p_{23}p_{33} + p_{13}p_{33}p_{33}\\
+&amp; = 0.4 \cdot 0.4 \cdot 0.3 + 0.4\cdot 0.3\cdot 0.4 + 0.4\cdot 0.3 \cdot 1 + 0.3 \cdot 0.2 \cdot 0.3 \\
+&amp; \qquad{}+ 0.3\cdot 0.4 \cdot 0.4 + 0.3 \cdot 0.4 \cdot 1 + 0.3 \cdot 1 \cdot 1\\
+&amp;= 0.702
+\end{align*}\]</span></p>
+</div>
 </div>
 </div>
 <div style="display: flex;">
@@ -226,9 +262,9 @@ a tetrahedron.</p>
 The length-2 paths from 1 to 2 are <span class="math inline">\(1 \to 3 \to 2\)</span> and <span class="math inline">\(1 \to 4 \to 2\)</span>, so
 <span class="math display">\[ p_{12}(2) = p_{13}p_{32} + p_{14}p_{42} = \tfrac13 \tfrac13 + \tfrac13 \tfrac13 = \tfrac29 . \]</span></p>
 <p>By symmetry, <span class="math inline">\(p_{ii}(2) = p_{11}(2)\)</span> for all <span class="math inline">\(i\)</span>, and <span class="math inline">\(p_{ij}(2) = p_{12}(2)\)</span> for all <span class="math inline">\(i \neq j\)</span>. Therefore
-<span class="math display">\[ \mathsf P(2) = \begin{pmatrix} \frac13 &amp; \frac29 &amp; \frac29 &amp; \frac29 \\[0.8ex]
-                               \frac29 &amp; \frac13 &amp; \frac29 &amp; \frac29 \\[0.8ex]
-                               \frac29 &amp; \frac29 &amp; \frac13 &amp; \frac29 \\[0.8ex]
+<span class="math display">\[ \mathsf P(2) = \begin{pmatrix} \frac13 &amp; \frac29 &amp; \frac29 &amp; \frac29 \\
+                               \frac29 &amp; \frac13 &amp; \frac29 &amp; \frac29 \\
+                               \frac29 &amp; \frac29 &amp; \frac13 &amp; \frac29 \\
                                \frac29 &amp; \frac29 &amp; \frac29 &amp; \frac13 \end{pmatrix} . \]</span></p>
 </div>
 </div>
@@ -256,7 +292,7 @@ as above.</p>
 <div class="figure" style="text-align: center"><span id="fig:testing"></span>
 <img src="math2750_files/figure-html/testing-1.png" alt="A tetrahedron" width="850em" />
 <p class="caption">
-Figure 6.3: A tetrahedron
+Figure 6.4: A tetrahedron
 </p>
 </div>
 </div>
@@ -308,7 +344,7 @@ Since <span class="math inline">\(\mathbb P(X_n = 1) = 1- \mathbb P(X_n = 0)\)</
 <p><strong>(d)</strong> Explain what happens if the Markov chain is started in the distribution
 <span class="math display">\[ \lambda_0 = \frac{\beta}{\alpha+\beta} , \qquad \lambda_1 = \frac{\alpha}{\alpha+\beta}  . \]</span></p>
 <div class="myanswers">
-<p>We then have that <span class="math inline">\(\mathbb P(X_n = 0) = \mu_n = \beta/(\alpha+\beta)\)</span> and <span class="math inline">\(\mathbb P(X_n = 1) = \alpha/(\alpha+\beta)\)</span> for all times <span class="math inline">\(n\)</span>; that is, the Markov chain remains in the same `stationary distribution’ forever.</p>
+<p>Substituting in the value of <span class="math inline">\(\lambda_0\)</span> into the equation for <span class="math inline">\(\mu_n\)</span>, the second term cancel, and we have that <span class="math inline">\(\mathbb P(X_n = 0) = \mu_n = \beta/(\alpha+\beta)\)</span> for all times <span class="math inline">\(n\)</span>, and therefor <span class="math inline">\(\mathbb P(X_n = 1) = \alpha/(\alpha+\beta)\)</span> too. This means that the Markov chain remains in the same “stationary distribution” forever.</p>
 </div>
 </div>
 </div>
@@ -325,7 +361,7 @@ Since <span class="math inline">\(\mathbb P(X_n = 1) = 1- \mathbb P(X_n = 0)\)</
  = \sum_{x_{n+1}} \mathbb P(x_{n+1} \mid x_n, x_{n-1}, \dots, x_0 )\,\mathbb P(x_{n+m+1} \mid x_{n+1}, x_n, x_{n-1}, \dots, x_0 )     \end{multline*}\]</span>
 By the standard Markov property the first term simplifies to <span class="math inline">\(\mathbb P(x_{n+1} \mid x_n)\)</span>, and by the result for <span class="math inline">\(m\)</span> the second term simplifies to <span class="math inline">\(\mathbb P(x_{n+m+1} \mid x_{n+1})\)</span>. So we have
 <span class="math display">\[ \mathbb P(x_{n+m+1} \mid x_n, x_{n-1}, \dots, x_0 ) = \sum_{x_{n+1}} \mathbb P(x_{n+1} \mid x_n) \mathbb P(x_{n+m+1} \mid x_{n+1}) . \]</span>
-But the right-hand side here is <span class="math inline">\(\mathbb P(x_{n+m+1} \mid x_n)\)</span> written using conditioning on the first step using the result for <span class="math inline">\(m\)</span>. By induction, we are done.</p>
+But the right-hand side here is <span class="math inline">\(\mathbb P(x_{n+m+1} \mid x_n)\)</span> written using conditioning on the first step and using the result for <span class="math inline">\(m\)</span>. By induction, we are done.</p>
 </div>
 </div>
 <div class="myq">
@@ -354,20 +390,30 @@ If we currently have a discount of 0%, we know a claim was made in the year befo
 <div class="myanswers">
 <p>The transition diagram is as shown below.</p>
 <div class="figure" style="text-align: center"><span id="fig:fortyplus"></span>
-<img src="math2750_files/figure-html/fortyplus-1.png" alt="Transition diagram for the car insurance Markov chain" width="384" />
+<img src="math2750_files/figure-html/fortyplus-1.png" alt="Transition diagram for the car insurance Markov chain" width="480" />
 <p class="caption">
-Figure 6.4: Transition diagram for the car insurance Markov chain
+Figure 6.5: Transition diagram for the car insurance Markov chain
 </p>
 </div>
 <p>The transition matrix is given by,
 <span class="math display">\[ \mathsf P = 
-    \bordermatrix{ &amp; 0 &amp; 25+ &amp; 25- &amp; 40+ &amp; 40- &amp; 50 \cr
-    0   &amp; 0.25 &amp; 0.75 &amp; 0 &amp; 0 &amp;0 &amp; 0 \cr
-    25+ &amp; 0.1 &amp; 0 &amp; 0 &amp; 0.9 &amp;0 &amp; 0\cr
-    25- &amp; 0.25 &amp; 0 &amp; 0 &amp; 0.75 &amp;0 &amp; 0\cr
-    40+ &amp; 0 &amp; 0 &amp; 0.1 &amp; 0 &amp; 0 &amp;0.9 \cr
-    40- &amp; 0 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp;0.75 \cr
-    50  &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.1 &amp; 0.9 }
+    \begin{matrix}
+    &amp; \begin{matrix} 
+        0 &amp; 25+ &amp; 25- &amp; 40+ &amp; 40- &amp; 50
+      \end{matrix} \\
+    \begin{matrix}
+      0 \\ 25+ \\ 25- \\ 40+ \\ 40- \\ 50
+    \end{matrix}
+    &amp;
+    \begin{pmatrix}
+    0.25 &amp; 0.75 &amp; 0    &amp; 0    &amp; 0   &amp; 0    \\
+      0.1  &amp; 0    &amp; 0    &amp; 0.9  &amp; 0   &amp; 0    \\
+      0.25 &amp; 0    &amp; 0    &amp; 0.75 &amp; 0   &amp; 0    \\
+      0    &amp; 0    &amp; 0.1  &amp; 0    &amp; 0   &amp; 0.9  \\
+      0    &amp; 0    &amp; 0.25 &amp; 0    &amp; 0   &amp; 0.75 \\
+      0    &amp; 0    &amp; 0    &amp; 0    &amp; 0.1 &amp; 0.9 
+    \end{pmatrix}
+    \end{matrix}
     \]</span></p>
 </div>
 </div>
@@ -415,7 +461,7 @@ Thus the number of defaults from <span class="math inline">\(100\)</span> A-rate
         </div>
       </div>
 <a href="S06-examples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S07-classes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

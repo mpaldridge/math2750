@@ -1,0 +1,217 @@
+---
+title:  "Computational Worksheet 1 -- Example Report"
+author: "Matthew Aldridge"
+date:   "MATH2750 Introduction to Markov Processes (2020--21)"
+output: html_document 
+---
+
+*The following is an example report answering the questions on the Computational Practical 1 problem sheet. This is not the only way to solve these problems, but is merely the way that I chose to solve them.* 
+
+*You can view the original problem sheet [in HTML format](https://mpaldridge.github.io/math2750/computing/C1.html) or [as an Rmd file](https://mpaldridge.github.io/math2750/computing/C1.Rmd).*
+
+
+
+***
+
+
+
+**Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
+
+
+First we use the `sample` function to produce the increments process -- a vector of $N$ independent values that are $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 1 - p = 0.4$.
+
+```{r}
+p <- 0.6
+q <- 1 - p
+N <- 10
+Z <- sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
+Z
+```
+
+We use `replace = TRUE` as we are repeatedly *sampling with replacement* from the set $\{+1, -1\}$; that is, each increment is a new independent sample that can be either $+1$ or $-1$.
+
+We then form the random walk as the cumulative sums of the increments process.
+
+```{r}
+X <- cumsum(Z)
+X
+```
+
+If needed, we can add the starting point $X_0 = 0$ with
+
+```{r}
+c(0, X)
+```
+
+
+
+**Question 2.** *Plot a sample of the random walk for $N = 10$ steps and for $N = 10000$ steps. Try to make your plot look smart, for example by giving it a title and labelling the axes. Briefly comment on the plots.*
+
+
+For $N = 10$, we plot the random walk with
+```{r}
+plot(0:N, c(0, X),
+  type = "b",
+  col  = "blue",
+  xlab = "time step, n",
+  ylim = c(-N, N),
+  # The following `bquote` syntax allows fancy titling but is totally optional
+  ylab = bquote("Random walk, " ~ X[n]), 
+  main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p))
+)
+```
+
+Here, `type = "b"` means we plot **both** points and lines. By plotting `c(0, X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
+
+We see that the random walk takes steps up 1 and down 1 roughly equally, although slightly more likely to be up on average. There is (usually) quite a lot of variation, in that the walk often goes up then down rather than a regular drift upwards.
+
+We can repeat this for $N = 10000$.
+
+```{r}
+N <- 10000
+Z <- sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
+X <- cumsum(Z)
+
+plot(0:N, c(0, X),
+  type = "l",
+  col  = "blue",
+  xlab = "time step, n",
+  ylab = bquote("Random walk, " ~ X[n]), 
+  main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p))
+)
+```
+
+Here, `type = "l"` just gives **lines**, which is easier to read when there are many datapoints. By not providing `xlim` or `ylim`, we allowed R to pick the most appropriate axis limits for itself.
+
+We see that the main drift of the random walk is steadily upwards, although there are some small variations within the linear drift. This is because the standard deviation is $\sqrt{4pqn}$, which scales like $\sqrt{n}$, while the drift is $(p-q)n$, which scales like $n$ (for $p \neq 1/2$). So as the number of steps gets larger, the drift becomes much more important than the variation, and the curve looks increasingly like a straight line.
+
+
+
+**Question 3.** *Make a function in R that produces a sample of a simple random walk for given $p$ of length $N$. Test your function to check it works. What are the advantages of making a a function like this?*
+
+
+We used two functions. First, the "random plus-or-minus" function `rpm` gives $N$ random $\pm 1$s.
+
+```{r}
+rpm <- function(N, p) {
+  q <- 1 - p
+  sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
+}
+```
+
+Second, we use `rpm` in our function for the random walk itself.
+
+```{r}
+RandomWalk <- function(N, p) {
+  Z <- rpm(N, p)
+  cumsum(Z)
+}
+```
+
+We can also make a function to plot a random walk.
+
+```{r}
+PlotRandomWalk <- function(N, p, type = "l") {
+  X <- RandomWalk(N, p)
+  plot(0:N, c(0, X),
+    type = type,
+    col  = "blue",
+    xlab = "time step, n",
+    ylab = bquote("Random walk, " ~ X[n]), 
+    main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p))
+  )
+}
+```
+
+This has the advantage that we can now very quickly produce and plot random walks without writing (or copying-and-pasting) many new lines of code each time.
+
+We can test it works by producing a simple random walk of length $80$ with $p = 0.3$.
+
+```{r}
+PlotRandomWalk(80, 0.3)
+```
+
+
+
+**Question 4.** *Estimate the expected value of of the simple random walk at $N = 100$ steps by simulating many random walks and taking an average. How does this compare with the true answer?*
+
+
+We use the `replicate` function to get 10000 samples of the random walk, and print the mean value of $X_{100}$.
+
+```{r}
+N <- 100
+trials <- 10000
+samples <- replicate(trials, RandomWalk(N, p)[N])
+mean(samples)
+```
+
+We know that the true expectation is
+\[ \mathbb{E}X_{100} = 100(p-q) = 100(0.6 - 0.4) = 20 . \]
+
+This simulated value of `r mean(samples)` is very close to the true value of 20.
+
+
+
+**Question 5.** (Optional) *Investigate estimating other properties of the simple random walk through simulation.*
+
+
+Some things we could investigate include:
+
+* variance or standard deviation of the random walk;
+* $\mathbb P(a \leq X_n \leq b)$ for some appropriate $a < b$, and comparing with a normal approximation;
+* ruin probability or expected duration for the gambler's ruin.
+
+Here, we'll try investigating the ruin probability of a gambler's ruin problem. (This is the most complicated of the three suggestions above.)
+
+First we have a function that simulates a gambler's ruin process, and outputs whether or not Alice ruins. This uses our `rpm` function from Question 3.
+
+```{r}
+GamblersRuin <- function(p, a, m) {
+  alice_money <- a  # Alice starts with £a
+    
+  while (alice_money > 0 && alice_money < m) {  # until the game finishes...
+    alice_money <- alice_money + rpm(1, p)      # ...play another round
+  }
+    
+  if (alice_money == 0) {
+    return(1)  # returns 1 if Alice ruins
+  } else {
+    return(0)  # returns 0 if Bob ruins
+  }
+}
+```
+
+We can test this with a gambler's ruin problem where Alice starts with £$a$ = £2, and Bob starts with £3, so the total pot is $m = 2 + 3 = 5$. Let's say Alice wins each round with probability $p = 0.4$.
+
+```{r}
+p <- 0.4
+a <- 2
+m <- 5
+
+trials <- 10000
+GRsamples <- replicate(trials, GamblersRuin(p, a, m))
+mean(GRsamples)  # estimated ruin probability
+```
+
+We can compare this simulated answer `r round(mean(GRsamples), 3)` to the true ruin probability given by
+$$ r_a = \frac{\rho^a - \rho^m}{1 - \rho^m} ,$$
+where $\rho = q/p$. We can calculate this in R.
+
+```{r}
+TrueRuinProb <- function(p, a, m) {
+  q   <- 1 - p
+  rho <- q / p
+  (rho^a - rho^m) / (1 - rho^m)
+}
+
+TrueRuinProb(p, a, m)
+```
+
+This formula gives the answer $r_a = `r round(TrueRuinProb(p, a, m), 4)`$, which is close to the simulated answer $`r round(mean(GRsamples), 3)`$.
+
+
+
+***
+
+
+*--- Matthew Aldridge, <m.aldridge@leeds.ac.uk>*

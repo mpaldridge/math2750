@@ -9,54 +9,67 @@
 
 
 
-## Hitting probability and expected hitting time  {#hitting-definitions}
+## Hitting probabilities and expected hitting times  {#hitting-definitions}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/edTup9lQU90"></iframe>
+:::
+::::
 
 
 In [Section 3](#S03-gamblers-ruin) and [Section 4](#S04-ldes), we used conditioning on the first step to find the ruin probability and expected duration for the gambler's ruin problem. Here, we develop those ideas for general Markov chains.
 
 ::: {.definition #hitting-defs}
-Let $(X_n)$ be a Markov chain on state space $\mathcal S$. Let $H_{A}$ be a random variable representing the hitting time to hit a state in $A \subset \mathcal S$, given by
-  \[ H_{A} = \min \{n \in \mathbb Z_+ : X_n \in A  \} . \]
+Let $(X_n)$ be a Markov chain on state space $\mathcal S$. Let $H_{A}$ be a random variable representing the **hitting time** to hit the set $A \subset \mathcal S$, given by
+  \[ H_{A} = \min \big\{n \in \{0,1,2,\dots\} : X_n \in A  \big\}  . \]
 The most common case we'll be interested in will be when $A = \{j\}$ is just a single state, so
-  \[ H_{j} = \min \{n \in \mathbb Z_+ : X_n = j  \} . \]
+  \[ H_{j} = \min \big\{n \in \{0,1,2,\dots\} : X_n = j  \big\}  . \]
 (We use the convention that $H_A = \infty$ if $X_n \not\in A$ for all $n$.)
 
-The **hitting probability** $h_{iA}$ of states $A \subset \mathcal S$ starting from state $i \in \mathcal S$ is
+The **hitting probability** $h_{iA}$ of the set $A$ starting from state $i$ is
 \[ h_{iA} = \mathbb P(X_n \in A \text{ for some $n \geq 0$} \mid X_0 = i) = \mathbb P(H_A < \infty \mid X_0 = i) .  \]
 Again, the most common case of interest is $h_{ij}$ the hitting probability of state $j$ starting from state $i$.
 
-The **expected hitting time** $\eta_{iA}$ of states $A \subset \mathcal S$ starting from state $i \in \mathcal S$ is
+The **expected hitting time** $\eta_{iA}$ of the set $A$ starting from state $i$ is
 \[ \eta_{iA} = \mathbb E(H_A \mid X_0 = i) .  \]
 Clearly $\eta_{iA}$ can only be finite if $h_{iA} = 1$.
 :::
 
-For the gambler's ruin problem, we found equations for hitting probabilities and expected hitting times by conditioning on the first step and solving the resulting equations. We do the same here for other Markov chains.
+The short summary of this is:
+
+* The **hitting probability** $h_{ij}$ is the probability we hit state $j$ starting from state $i$.
+* The **expected hitting time** $\eta_{ij}$ is the expected time until we hit state $j$ starting from state $i$.
+
+The good news us that we already know how to find hitting probabilities and expected hitting times, because we already did it for the [gambler's ruin problem](#S03-gamblers-ruin)! The way we did it then is that we first found equations for hitting probabilities or expected hitting times by conditioning on the first step, and then we solved those equations. We do the same here for other Markov chains.
+
+Let's see an example of how to find a hitting probability.
 
 ::: {.example #hitting1}
 *Consider a Markov chain with transition matrix*
 \[ \begin{pmatrix}
-\frac15 & \frac15 & \frac15 & \frac25 \\[0.3ex]
-0 & 1 & 0 & 0 \\[0.3ex]
-0 & \frac12 & 0 & \frac12 \\[0.3ex]
+\frac15 & \frac15 & \frac15 & \frac25 \\
+0 & 1 & 0 & 0 \\
+0 & \frac12 & 0 & \frac12 \\
 0 & 0 & 0 & 1
 \end{pmatrix} . \]
 *Calculate the probability that the chain is absorbed at state $2$ when started from state $1$.*
 
-This is asking for the hitting probability $h_{12}$. The key is to find simultaneous equations for all hitting probabilities $h_{i2}$ to state 2. Clearly we have $h_{22} = 1$, as we are already there. Also, $h_{42} = 0$, since 4$is an absorbing state.
+This is asking for the hitting probability $h_{12}$. We use -- as ever -- a conditioning on the first step argument. Specifically, we have
+\begin{align}
+  h_{12} &= p_{11} h_{12} + p_{12} h_{22} + p_{13} h_{32} + p_{14} h_{42}  \\
+         &= \tfrac 15 h_{12} + \tfrac 15 h_{22} + \tfrac 15 h_{32} + \tfrac 25 h_{42}  (\#eq:hiteq)
+\end{align}
+This is because, starting from 1, there's a $p_{11} = \frac15$ probability of staying at 1; then by the Markov property it's like we're starting again from 1, so the hitting probability is still $h_{12}$. Similarly, there's a $p_{12} = \frac15$ probability of moving 2; then by the Markov property it's like we're starting again from 2, so the hitting probability is still $h_{22}$. And so on.
 
-For the other states, we find equations by conditioning on the first step, as we did in the gambler's ruin problem. We have
-\[ h_{12} = \tfrac15 h_{12} + \tfrac15 h_{22} + \tfrac15 h_{32} + \tfrac25h_{42} \qquad \Rightarrow \qquad . \]
-This is because, starting from 1, there's a $\frac15$ probability of staying at 1; then by the Markov property it's like we're starting again from 1, so the hitting probability is still $h_{12}$. Similarly, there's a $\frac15$ probability of moving 2; then by the Markov property it's like we're starting again from 2, so the hitting probability is still $h_{22}$. And so on.
+Since \@ref(eq:hiteq) includes not just $h_{12}$ but also $h_{22}$, $h_{32}$ and $h_{42}$, we need to find equations for those too. Clearly we have $h_{22} = 1$, as we are "already there". Also, $h_{42} = 0$, since 4 is an absorbing state. For $h_{32}$, another "condition on the first step" argument gives
+\[ h_{32} = p_{32}h_{22} + p_{34}h_{42} = \tfrac12 h_{22} + \tfrac12 h_{42} = \tfrac12 ,\]
+where we substituted in $h_{22} = 1$ and $h_{42} = 0$.
 
-We can make a similar equation for $h_{32}$:
-\[ h_{32} = \tfrac12 h_{22} + \tfrac12 h_{42} 
-\]
-We can simplify these two equations, using $h_{22} = 1$ and $h_{42} = 0$, and rearrange them, to give
-\begin{align*}
-\tfrac45 \tfrac45 h_{12} &= \tfrac15  + \tfrac15 h_{32}\\
-h_{32} &= \tfrac12
-\end{align*}
-Substituting the second equation into the first, we get $\frac45 h_{12} = \frac1{5} + \frac15\cdot\frac12 =\frac{3}{10}$, so $h_{12} = \frac{5}{4}\,\frac{3}{10} = \frac{3}{8}$.
+Substituting $h_{22} = 1$, $h_{32} = \frac12$ and $h_{42} = 0$ all into \@ref(eq:hiteq), we get
+\[ h_{12} = \tfrac15 h_{12} + \tfrac15 + \tfrac15 \tfrac12 = \tfrac15 h_{12} + \tfrac{3}{10}. \]
+Hence $\frac45 h_{12} = \frac{3}{10}$, so the answer we were after is $h_{12} = \frac38$.
 :::
 
 So the technique to find hitting probability $h_{ij}$ from $i$ to $j$ is:
@@ -64,10 +77,12 @@ So the technique to find hitting probability $h_{ij}$ from $i$ to $j$ is:
 1. Set up equations for all the hitting probabilities $h_{kj}$ to $j$ by conditioning on the first step.
 2. Solve the resulting simultaneous equations.
 
-It is recommended to derive equations for hitting probabilities from first principles by conditioning on the first step. However, we can state what the general formula is: by the same conditioning method, we get
+It is recommended to derive equations for hitting probabilities from first principles by conditioning on the first step, as we did in the example above. However, we can state what the general formula is: by the same conditioning method, we get
 \[ h_{iA} = \begin{cases} \displaystyle\sum_{j \in \mathcal S} p_{ij} h_{jA} & \text{if $i \not\in A$} \\
 1 & \text{if $i \in A$.} \end{cases} \]
-It can be shown that, if these equations have multiple solutions, that the hitting probabilities are in fact the smallest non-negative solutions.
+It can be shown that, if these equations have multiple solutions, then the hitting probabilities are in fact the smallest non-negative solutions.
+
+Now an example for expected hitting times.
 
 ::: {.example #hitting2}
 *Consider [the simple no-claims discount chain from Lecture 6](#S06-example1), which had transition matrix*
@@ -78,14 +93,15 @@ It can be shown that, if these equations have multiple solutions, that the hitti
 	\end{pmatrix} .\]
 *Given we start in state 1 (no discount), find the expected amount of time until we reach state 3 (50% discount).*
 
-This question asks us to find $\eta_{13}$. Again, we start by writing down equations for all the $\eta_{i3}$s. Clearly we have $\eta_{33} = 0$.
+This question asks us to find $\eta_{13}$. We follow the general method, and start by writing down equations for all the $\eta_{i3}$s.
 
-By conditioning on the first step, we have
+Clearly we have $\eta_{33} = 0$.
+For the others, we condition on the first step to get
 \begin{align*}
 \eta_{13} = 1 + \tfrac14 \eta_{13} + \tfrac34 \eta_{23} \qquad &\Rightarrow \qquad \phantom{-}\tfrac34 \eta_{13} - \tfrac34\eta_{23} = 1 ,\\
 \eta_{23} = 1 + \tfrac14 \eta_{13} + \tfrac34 \eta_{33} \qquad &\Rightarrow \qquad  - \tfrac14\eta_{13} + \phantom{\tfrac34}\eta_{23} = 1 .
 \end{align*}
-This is because the first step takes time $1$, then we condition on what happens next.
+This is because the first step takes time $1$, then we condition on what happens next -- just like we did for the gambler's ruin.
 
 The first equation plus three-quarters times the second gives
 \[ \big(\tfrac34 - \tfrac34\tfrac14\big) \eta_{13} = \tfrac{9}{16}\eta_{13} = 1 + \tfrac34 = \tfrac 74 = \tfrac{28}{16} ,\]
@@ -100,6 +116,13 @@ Again, if we have multiple solutions, the expected hitting times are the smalles
 
 
 ## Return times  {#return-times}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/miAa831KDLI"></iframe>
+:::
+::::
 
 
 Under the definitions above, the hitting probability and expected hitting time to a state from itself are always $h_{ii} = 1$ and $\eta_{ii} = 0$, as we're "already there".
@@ -124,10 +147,10 @@ where, if necessary, we take the minimal non-negative solution again.
 ## Hitting and return times for the simple random walk  {#return-rw}
 
 
-We now turn to hitting probabilities for the simple random walk, which goes up with probability $p$ and down with probability $q = 1-p$. This material is mandatory and is examinable, but is a bit technical; students who are struggling or have fallen behind might make a tactical decision to skip to the [summary theorem at the end of the subsection](#thm:rw-summary) and come back to the details at a later date.
+We now turn to hitting and return times for the simple random walk, which goes up with probability $p$ and down with probability $q = 1-p$. This material is mandatory and is examinable, but is a bit technical; students who are struggling or have fallen behind might make a tactical decision just to read the two summary theorems below and come back to the details at a later date.
 
-Without loss of generality, we look at $h_{i0}$, the probability the random walk hits $0$.
-We will assume that $i \geq 0$. For $i < 0$, we can get the desired result by looking at the random walk in the mirror -- that is, by swapping the role of $p$ and $q$, and treating the positive value $-i$.
+Let's start with hitting probabilities. Without loss of generality, we look at $h_{i0}$, the probability the random walk hits 0 starting from $i$.
+We will assume that $i > 0$. For $i < 0$, we can get the desired result by looking at the random walk "in the mirror" -- that is, by swapping the role of $p$ and $q$, and treating the positive value $-i$.
 
 For an initial condition, it's clear we have $h_{00} = 1$.
 
@@ -135,42 +158,50 @@ For general $i > 0$, we condition on the first step, to get
 \[ h_{i0} = ph_{i+1\, 0} + qh_{i-1\, 0} .  \]
 We recognise this equation from the gambler's ruin problem, and recall that we have to treat the cases $p \neq \frac12$ and $p = \frac12$ separately.
 
-When $p \neq \frac12$, the general solution is $h_{i0} = A + B\rho^i$, where $\rho = q/p \neq 0$, as before. The initial condition $h_{00} = 1$ gives $A = 1-B$, so we have a family of solutions
-\[ h_{i0} = 1 + B(\rho^i - 1) . \]
+When $p \neq \frac12$, the general solution is $h_{i0} = A + B\rho^i$, where $\rho = q/p \neq 1$, as before. The initial condition $h_{00} = 1$ gives $A = 1-B$, so we have a family of solutions
+\[ h_{i0} = (1 - B) + B\rho^i = 1 + B(\rho^i - 1) . \]
 
-In the gambler's ruin problem we had another boundary condition to find $B$. Here we have no other conditions, but we can use the minimality condition that the hitting probabilities are the smallest non-negative solution to the equation.
+In the gambler's ruin problem we had another boundary condition to find $B$. Here we have no other conditions, but we can use the minimality condition that the hitting probabilities are the smallest non-negative solution to the equation. This minimal non-negative solution will depend on whether $\rho > 1$ or $\rho < 1$.
 
-When $\rho > 1$, so $p < \frac12$, the term $\rho^i$ tends to infinity. Thus the minimal non-negative solution will have to take $B = 0$, since taking $B < 0$ would eventually give a negative solution, so $B = 0$ gives the smallest non-negative solution. Hence the solution is $h_{i0} = 1 + 0\rho^i = 0$, meaning we hit $0$ with certainty. This makes sense, because for $p < 1/2$ the random walk "drifts" to the left, and eventually gets back to $0$.
+When $\rho > 1$, so $p < \frac12$, the term $\rho^i$ tends to infinity. Thus the minimal non-negative solution will have to take $B = 0$, because taking $B < 0$ would eventually give a negative solution, while $B = 0$ gives the smallest of the non-negative solutions. Hence the solution is $h_{i0} = 1 + 0(\rho^i-1) = 0$, meaning we hit 0 with certainty. This makes sense, because for $p < \frac12$ the random walk "drifts" to the left, and eventually gets back to 0.
 
-When $\rho < 1$, so $p > \frac12$, we have that $\rho^i - 1$ is negative and tends to $-1$. So to get a small solution we want $B$ as large as possible, but keeping the solution non-negative limits us to $B \leq 1$; thus the minimality condition is achieved at $B = 1$. The solution is $h_{i0} = 1 + (\rho^i - 1) = \rho^i$. This is strictly less than $1$, because for $p > 1/2$, the random walk drifts to the right, so might drift further and further away from $0$ and not come back.
+When $\rho < 1$, so $p > \frac12$, we have that $\rho^i - 1$ is negative and tends to $-1$. So to get a small solution we want $B$ large and positive, but keeping the solution non-negative limits us to $B \leq 1$, so the minimality condition is achieved at $B = 1$. The solution is $h_{i0} = 1 + 1(\rho^i - 1) = \rho^i$. This is strictly less than 1 as expected, because for $p > 1/2$, the random walk drifts to the right, so might drift further and further away from 0 and not come back.
 
-For $p = \frac12$, so $\rho = 1$, we recall the general solution $h_{i0} = A + Bi$, and the condition $h_{00} = 1$ gives $A = 1$. Because $i$ is negative, to get the answer to be small we want $B$ to be big, but non-negativity limits us to $B \leq 0$. So the minimal non-negative solution takes $B = 0$, so we have $h_{i0} = 1$.
+For $p = \frac12$, so $\rho = 1$, we recall the general solution $h_{i0} = A + Bi$. The condition $h_{00} = 1$ gives $A = 1$, so $h_{i0} = 1 + Bi$. Because $i$ is positive, to get the answer to be small we want $B$ to be small, but non-negativity limits us to $B$ positive, so the minimal non-negative solution takes $B = 0$. This gives $h_{i0} = 1 + 0i = 0$, so we will always get back to 0.
 
-In conclusion, for $i > 0$, the hitting probabilities are given by
-\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{q}{p}\right)^i & \text{if $p > \frac12$} \\ \ 1 & \text{if $p \leq \frac12$.} \end{cases} \]
-(Remember that for $i < 0$, we get the desired result by swapping the role of $p$ and $q$, and treating the positive value $-i$.)
+In conclusion, we have the following. (Recall that we get the result for $i < 0$ by swapping the role of $p$ and $q$, and treating the positive value $-i$.)
 
-What about the return time to $0$ (or, by symmetry, to any state $i \in \mathbb Z$)? By conditioning on the first step, $m_0 = ph_{1\,0} + qh_{-1\,0}$. We then have
+::: {.theorem #rw-hitting}
+Consider a random walk with up probability $p \neq 0, 1$. Then the hitting probabilities to 0 are givin by, for $i > 0$,
+\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{q}{p}\right)^i & \text{if $p > \frac12$} \\ \ 1 & \text{if $p \leq \frac12$,} \end{cases} \]
+and for $i < 0$ by
+\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{p}{q}\right)^{-i} & \text{if $p < \frac12$} \\ \ 1 & \text{if $p \geq \frac12$.} \end{cases} \]
+:::
+
+Now we look at return times. What is the return probability to 0 (or, by symmetry, to any state $i \in \mathbb Z$)? By conditioning on the first step, $m_0 = ph_{1\,0} + qh_{-1\,0}$, and we've calculated those hitting times above. We have
 \[ m_0 = \begin{cases} p\times 1 \hspace{0.4em}+ q\times 1 \hspace{0.4em}= 1 & \text{if $p = \frac12$} \\
 p \times \displaystyle\frac qp + q\times 1 \hspace{0.4em}= 2q < 1 & \text{if $p > \frac12$} \\
 p\times 1 \hspace{0.4em} + q \times \displaystyle\frac pq = 2p < 1 & \text{if $p < \frac12$.}\end{cases} \]
-So for the simple symmetric random walk ($p = \frac12$) we have $m_i = 1$ and are certain to return to $0$ again and again, while for $p \neq \frac12$, we have $m_i < 1$ and we might never return.
 
-One could also calculate expected hitting times $\eta_{i0}$. For $p \neq \frac12$, we have $\eta_{i0} = \infty$, since $m_0 < 1$ and we might never come back.
+So for the simple symmetric random walk ($p = \frac12$) we have $m_i = 1$ and are certain to return to the initial state again and again, while for $p \neq \frac12$, we have $m_i < 1$ and we might never return.
 
-For $p = \frac12$, conditioning on the first step gives the equation
+What about the expected return times $\mu_{0}$? For $p \neq \frac12$, we have $\mu_{0} = \infty$, since $m_0 < 1$ and we might never come back. For $p = \frac12$, though, $m_0 = 1$, so we have work to do.
+
+To get the expected return time for $p = \frac12$, we'll need the expected hitting times for for $p = \frac12$ too. Conditioning on the first step gives the equation
  \[ \eta_{i0} = 1 + \tfrac12\eta_{i+1\,0} + \tfrac12\eta_{i-1\,0} , \]
-with initial condition $\eta_{00} = 0$. This has the solution $\eta_{i0} = -i^2 + Bi = i(B-i)$. Then non-negativity demands $B = \infty$, as any other value would get drowned out by the $-i^2$, making the term negative for big enough $i$. Thus we have $\eta_{i0} = \infty$, and $\mu_0 = \infty$ also.
-So for $p = \frac12$, while the random walk always return to $0$, it may take a very long time to do so.
+with initial condition $\eta_{00} = 0$. We again recognise from the gambler's ruin problem the general solution $\eta_{i0} = A + Bi -i^2$. The initial condition gives $A = 0$, so $\eta_{i0} = Bi - i^2 = i(B-i)$. Then non-negativity demands $B = \infty$, as any other value would get drowned out by the large negative value $-i^2$, making the whole expression  negative for big enough $i$. Thus we have $\eta_{i0} = \infty$.
+
+Then we see easily that the return time is
+\[ \mu_0 = 1 + \tfrac12 \eta_{1\,0} + \tfrac12 \eta_{-1\,0} = 1 + \tfrac12 \infty + \tfrac12 \infty = \infty. \]
+So for $p = \frac12$, while the random walk always return, it may take a very long time to do so.
 
 In conclusion, this is what we found out:
 
 ::: {.theorem #rw-summary}
 Consider the simple random walk with $p \neq 0,1$. Then for all states $i$ we have the following:
 
-* For $p \neq \frac12$, the return probability $m_i$ is strictly less than 1.
-* For the simple symmetric random walk with $p = \frac12$, the return probability $m_i$ is equal to 1.
-* For all $p$, the expected return time $\mu_i$ is infinite.
+* For $p \neq \frac12$, the return probability $m_i$ is strictly less than 1, so the expected return time $\mu_i$ is infinite.
+* For the simple symmetric random walk with $p = \frac12$, the return probability $m_i$ is equal to 1, but the expected return time $\mu_i$ is still infinite.
 :::
 
 

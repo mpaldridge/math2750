@@ -23,12 +23,12 @@ $(document).ready(function() {
 -->
 
 
-
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
+
 
 \commfalse
 
@@ -45,18 +45,59 @@ You should attempt all these questions and write up your solutions in advance of
 
 :::: {.subq}
 **(a)** Replace the four question marks by the appropriate transition probabilities.
+
+::: {.myanswers data-latex=""}
+*Solution.* Rows must add up to 1 and every entry must be non-negative, so the transition matrix is
+\[ \mathsf P = \begin{pmatrix} 0.4 & 0.3 & 0.3 \\ 0.2 & 0.4 & 0.4 \\ 0 & 0 & 1 \end{pmatrix} . \]
+:::
 ::::
 
 :::: {.subq}
 **(b)** Draw a transition diagram for this Markov chain.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+
+```{tikz Q31, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition diagram for Question 1.", cache = TRUE}
+\usetikzlibrary{automata}
+	\begin{tikzpicture}[scale=0.75]
+	\node[state] (1) at (0,0) {1};
+	\node[state] (2) at (3,0) {2};
+	\node[state] (3) at (6,0) {3};
+	
+	\path[->] (1) edge[bend left]  node [below]{0.3} (2);
+	\path[->]	(2) edge[bend left]  node [below]{0.2} (1);
+	\path[->] (1) edge[loop left]  node [left]{0.4}  ();
+	\path[->] (2) edge[loop below] node [below]{0.4} ();
+	\path[->] (3) edge[loop right] node [right]{1}   ();
+	\path[->]	(2) edge             node [below]{0.4} (3);
+	\path[->]	(1) edge[bend left]  node [above]{0.3} (3);
+	\end{tikzpicture}
+```
+:::
 ::::
 
 :::: {.subq}
 **(c)** Find the matrix $\mathsf P(2)$ of two-step transition probabilities.
+
+::: {.myanswers data-latex=""}
+*Solution.* ${\displaystyle \mathsf P(2) = \mathsf P^2 = \begin{pmatrix} 0.22 & 0.24 & 0.54 \\ 0.16 & 0.22 & 0.62 \\ 0 & 0 & 1 \end{pmatrix}}$
+:::
 ::::
 
 :::: {.subq}
-**(d)** By summing the probabilities of all relelvant paths, find the three-step transition probability $p_{13}(3)$.
+**(d)** By summing the probabilities of all relevant paths, find the three-step transition probability $p_{13}(3)$.
+
+::: {.myanswers data-latex=""}
+*Solution.* There are seven relevant paths: $1 \to 1 \to 1 \to 3$, $1 \to 1 \to 2 \to 3$, $1 \to 1 \to 3 \to 3$, $1 \to 2 \to 1 \to 3$, $1 \to 2 \to 2 \to 3$, $1 \to 2 \to 3 \to 3$, and $1 \to 3 \to 3 \to 3$. So
+\begin{align*}
+p_{13}(3) &= p_{11}p_{11}p_{11}p_{13} + p_{11}p_{12}p_{23} + p_{11}p_{13}p_{33}  + p_{12} p_{21} p_{13}\\
+& \qquad{}+ p_{12}p_{22}p_{23} + p_{12}p_{23}p_{33} + p_{13}p_{33}p_{33}\\
+& = 0.4 \cdot 0.4 \cdot 0.3 + 0.4\cdot 0.3\cdot 0.4 + 0.4\cdot 0.3 \cdot 1 + 0.3 \cdot 0.2 \cdot 0.3 \\
+& \qquad{}+ 0.3\cdot 0.4 \cdot 0.4 + 0.3 \cdot 0.4 \cdot 1 + 0.3 \cdot 1 \cdot 1\\
+&= 0.702
+\end{align*}
+:::
 ::::
 :::::
 
@@ -90,9 +131,9 @@ The length-2 paths from 1 to 2 are $1 \to 3 \to 2$ and $1 \to 4 \to 2$, so
 \[ p_{12}(2) = p_{13}p_{32} + p_{14}p_{42} = \tfrac13 \tfrac13 + \tfrac13 \tfrac13 = \tfrac29 . \]
 
 By symmetry, $p_{ii}(2) = p_{11}(2)$ for all $i$, and $p_{ij}(2) = p_{12}(2)$ for all $i \neq j$. Therefore
-\[ \mathsf P(2) = \begin{pmatrix} \frac13 & \frac29 & \frac29 & \frac29 \\[0.8ex]
-                               \frac29 & \frac13 & \frac29 & \frac29 \\[0.8ex]
-                               \frac29 & \frac29 & \frac13 & \frac29 \\[0.8ex]
+\[ \mathsf P(2) = \begin{pmatrix} \frac13 & \frac29 & \frac29 & \frac29 \\
+                               \frac29 & \frac13 & \frac29 & \frac29 \\
+                               \frac29 & \frac29 & \frac13 & \frac29 \\
                                \frac29 & \frac29 & \frac29 & \frac13 \end{pmatrix} . \]
 :::
 ::::
@@ -189,7 +230,7 @@ Since $\mathbb P(X_n = 1) = 1- \mathbb P(X_n = 0)$, we have
 \[ \lambda_0 = \frac{\beta}{\alpha+\beta} , \qquad \lambda_1 = \frac{\alpha}{\alpha+\beta}  . \]
 
 ::: {.myanswers data-latex=""}
-We then have that $\mathbb P(X_n = 0) = \mu_n = \beta/(\alpha+\beta)$ and $\mathbb P(X_n = 1) = \alpha/(\alpha+\beta)$ for all times $n$; that is, the Markov chain remains in the same `stationary distribution' forever.
+Substituting in the value of $\lambda_0$ into the equation for $\mu_n$, the second term cancel, and we have that $\mathbb P(X_n = 0) = \mu_n = \beta/(\alpha+\beta)$ for all times $n$, and therefor $\mathbb P(X_n = 1) = \alpha/(\alpha+\beta)$ too. This means that the Markov chain remains in the same "stationary distribution" forever.
 :::
 ::::
 :::::
@@ -214,7 +255,7 @@ Assume the inductive hypothesis: that result holds for $m$. We now need to prove
  = \sum_{x_{n+1}} \mathbb P(x_{n+1} \mid x_n, x_{n-1}, \dots, x_0 )\,\mathbb P(x_{n+m+1} \mid x_{n+1}, x_n, x_{n-1}, \dots, x_0 )     \end{multline*}
 By the standard Markov property the first term simplifies to $\mathbb P(x_{n+1} \mid x_n)$, and by the result for $m$ the second term simplifies to $\mathbb P(x_{n+m+1} \mid x_{n+1})$. So we have
 \[ \mathbb P(x_{n+m+1} \mid x_n, x_{n-1}, \dots, x_0 ) = \sum_{x_{n+1}} \mathbb P(x_{n+1} \mid x_n) \mathbb P(x_{n+m+1} \mid x_{n+1}) . \]
-But the right-hand side here is $\mathbb P(x_{n+m+1} \mid x_n)$ written using conditioning on the first step using the result for $m$. By induction, we are done.
+But the right-hand side here is $\mathbb P(x_{n+m+1} \mid x_n)$ written using conditioning on the first step and using the result for $m$. By induction, we are done.
 :::
 ::::
 
@@ -252,7 +293,7 @@ So we will split each of these into two states: 25+ will denote a 25% discount w
 ::: {.myanswers data-latex=""}
 The transition diagram is as shown below.
 
-```{tikz fortyplus, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition diagram for the car insurance Markov chain", cache = TRUE}
+```{tikz fortyplus, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram for the car insurance Markov chain", cache = TRUE}
 \usetikzlibrary{automata}
 		\begin{tikzpicture}
 		\node[state] (0) at (0,0) {$0$};
@@ -280,13 +321,23 @@ The transition diagram is as shown below.
 
 The transition matrix is given by,
 	\[ \mathsf P = 
-	\bordermatrix{ & 0 & 25+ & 25- & 40+ & 40- & 50 \cr
-	0   & 0.25 & 0.75 & 0 & 0 &0 & 0 \cr
-	25+ & 0.1 & 0 & 0 & 0.9 &0 & 0\cr
-	25- & 0.25 & 0 & 0 & 0.75 &0 & 0\cr
-	40+ & 0 & 0 & 0.1 & 0 & 0 &0.9 \cr
-	40- & 0 & 0 & 0.25 & 0 & 0 &0.75 \cr
-	50  & 0 & 0 & 0 & 0 & 0.1 & 0.9 }
+	\begin{matrix}
+	& \begin{matrix} 
+	    0 & 25+ & 25- & 40+ & 40- & 50
+	  \end{matrix} \\
+	\begin{matrix}
+	  0 \\ 25+ \\ 25- \\ 40+ \\ 40- \\ 50
+	\end{matrix}
+	&
+	\begin{pmatrix}
+    0.25 & 0.75 & 0    & 0    & 0   & 0    \\
+	  0.1  & 0    & 0    & 0.9  & 0   & 0    \\
+	  0.25 & 0    & 0    & 0.75 & 0   & 0    \\
+	  0    & 0    & 0.1  & 0    & 0   & 0.9  \\
+	  0    & 0    & 0.25 & 0    & 0   & 0.75 \\
+	  0    & 0    & 0    & 0    & 0.1 & 0.9 
+	\end{pmatrix}
+	\end{matrix}
 	\]
 :::
 ::::
