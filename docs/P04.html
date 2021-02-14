@@ -216,15 +216,15 @@ Figure 8.1: Transition diagram for Question 1.
 </div>
 </div>
 <div class="subq">
-<p><strong>(b)</strong> What are the communicating classes for this Markov chain? Is the chain irreducible. Which classes are closed? Which states are absorbing?</p>
+<p><strong>(b)</strong> What are the communicating classes for this Markov chain? Is the chain irreducible? Which classes are closed? Which states are absorbing?</p>
 <div class="myanswers">
 <p><em>Solution.</em> Clearly <span class="math inline">\(\{1\}\)</span> and <span class="math inline">\(\{4\}\)</span> are closed communicating classes, so <span class="math inline">\(1\)</span> and <span class="math inline">\(4\)</span> are absorbing states. The other class, <span class="math inline">\(\{2,3\}\)</span> is not closed. Because there are multiple classes, the chain is not irreducible.</p>
 </div>
 </div>
 <div class="subq">
-<p><strong>(c)</strong> Find the hitting probability <span class="math inline">\(h_{21}\)</span> that, starting from state <span class="math inline">\(2\)</span>, the chain hits state <span class="math inline">\(1\)</span>.</p>
+<p><strong>(c)</strong> Find the hitting probability <span class="math inline">\(h_{21}\)</span> that, starting from state 2, the chain hits state 1.</p>
 <div class="myanswers">
-<p><em>Solution.</em> It’s clear that <span class="math inline">\(h_{11} = 1\)</span> and <span class="math inline">\(h_{41} = 0\)</span>. Then, by condtioning on the first step, we have
+<p><em>Solution.</em> It’s clear that <span class="math inline">\(h_{11} = 1\)</span> and <span class="math inline">\(h_{41} = 0\)</span>. Then, by conditioning on the first step, we have
 <span class="math display">\[\begin{gather*}
     h_{21} = \alpha h_{31} + (1-\alpha) h_{11} = \alpha h_{31} + 1 - \alpha \\
     h_{31} = \beta h_{21} + (1-\beta) h_{41} = \beta h_{21} .
@@ -234,7 +234,7 @@ Substituting the second equation into the first, we get <span class="math inline
 </div>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> What is the expected time, starting from state <span class="math inline">\(2\)</span>, to reach an absorbing state?</p>
+<p><strong>(d)</strong> What is the expected time, starting from state 2, to reach an absorbing state?</p>
 <div class="myanswers">
 <p><em>Solution.</em> Let’s write <span class="math inline">\(A = \{1,4\}\)</span> for the absorbing states, and <span class="math inline">\(\eta_{iA}\)</span> for the time to reach an absorbing state starting from state <span class="math inline">\(i\)</span>. Clearly <span class="math inline">\(\eta_{1A} = \eta_{4A} = 0\)</span>. By conditioning on the first step, we have
 <span class="math display">\[\begin{gather*}
@@ -280,19 +280,20 @@ Figure 8.2: Transition diagram for Question 2.
 </div>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> Find the expected hitting times <span class="math inline">\(\eta_{i1}\)</span> from each state <span class="math inline">\(i\)</span> to <span class="math inline">\(1\)</span>, and the expected return time <span class="math inline">\(\mu_i\)</span> to <span class="math inline">\(1\)</span>.</p>
+<p><strong>(d)</strong> Find the expected hitting times <span class="math inline">\(\eta_{i1}\)</span> from each state <span class="math inline">\(i\)</span> to 1, and the expected return time <span class="math inline">\(\mu_i\)</span> to 1.</p>
 <div class="myanswers">
 <p><em>Solution.</em> We could do this through a traditional conditioning on the first step argument. But in fact, the cyclic structure <span class="math inline">\(1 \to \{2 \text{ or }3\} \to \{4 \text{ or }5\} \to 1\)</span> makes it immediately clear that <span class="math inline">\(\eta_11 = 0\)</span>, <span class="math inline">\(\eta_{41}=\eta_{51} = 1\)</span>, <span class="math inline">\(\eta_{21} = \eta_{31} = 2\)</span>, and <span class="math inline">\(\mu_1 = 3\)</span>.</p>
 </div>
 </div>
 </div>
-<p>::::: {.myq}
-<strong>3.</strong></p>
+<div class="myq">
+<p><strong>3.</strong></p>
 <div class="subq">
-<p>Show that every Markov chain on a finite state space <span class="math inline">\(\mathcal S\)</span> has at least one closed communicating class.</p>
+<p><strong>(a)</strong> Show that every Markov chain on a finite state space <span class="math inline">\(\mathcal S\)</span> has at least one closed communicating class.</p>
 <div class="myanswers">
 <p><em>Solution.</em> For communicating classes <span class="math inline">\(C,D\)</span>, let’s write <span class="math inline">\(C \to D\)</span> if there is an <span class="math inline">\(i \in C\)</span> and <span class="math inline">\(j \in D\)</span> with <span class="math inline">\(i \to j\)</span>. Note that we can’t have both <span class="math inline">\(C \to D\)</span> and <span class="math inline">\(D \to C\)</span> is <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are distinct classes. This is because there would be <span class="math inline">\(i_1, j_2 \in C\)</span> and <span class="math inline">\(i_2, j_1 \in D\)</span> such that <span class="math inline">\(i_1 \to i_2 \to j_1 \to j_2 \to i_1\)</span>, so they would be the same class. Let’s also note that there are a finite number of classes <span class="math inline">\(m\)</span>.</p>
 <p>Pick a class <span class="math inline">\(C_1\)</span>. If <span class="math inline">\(C_1\)</span> is closed, we are done; otherwise <span class="math inline">\(C_1 \to C_2\)</span> for some other class <span class="math inline">\(C_2\)</span>. If <span class="math inline">\(C_2\)</span> is closed, we are done; otherwise <span class="math inline">\(C_2 \to C_3\)</span> for some class <span class="math inline">\(C_3\)</span> different to <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. (It can’t be <span class="math inline">\(C_1\)</span> by the arguemnt.) We repeat: if <span class="math inline">\(C_k\)</span> is closed, we are done; otherwise there’s a new class <span class="math inline">\(C_{k+1}\)</span> with <span class="math inline">\(C_k \to C_{k+1}\)</span>. Repeating, we eventually find a closed class: we either terminate before step <span class="math inline">\(m\)</span> at a closed class, or otherwise <span class="math inline">\(C_m\)</span> must be closed, as none of the previous <span class="math inline">\(m-1\)</span> classes can be accessible from it, by our earlier example.</p>
+</div>
 </div>
 <div class="subq">
 <p><strong>(b)</strong> Give an example of a Markov chain that has no closed communicating classes.</p>
@@ -313,7 +314,7 @@ Figure 8.2: Transition diagram for Question 2.
 <div style="display: flex;">
 <div>
 <div class="figure" style="text-align: center"><span id="fig:Q45"></span>
-<img src="math2750_files/figure-html/Q45-1.png" alt="Transition diagram for Question 5." width="288" />
+<img src="math2750_files/figure-html/Q45-1.png" alt="Transition diagram for Question 5." width="240" />
 <p class="caption">
 Figure 8.3: Transition diagram for Question 5.
 </p>
@@ -326,9 +327,9 @@ Figure 8.3: Transition diagram for Question 5.
                0 &amp; \frac13 &amp; \frac23 &amp; 0 \end{pmatrix} \]</span></p>
 </div>
 </div>
-<p>The Markov chain starts from state <span class="math inline">\(1\)</span>.</p>
+<p>The Markov chain starts from state 1.</p>
 <div class="subq">
-<p><strong>(a)</strong> What is the probability that we hit state <span class="math inline">\(2\)</span> before we hit state <span class="math inline">\(3\)</span>?</p>
+<p><strong>(a)</strong> What is the probability that we hit state 2 before we hit state 3?</p>
 <div class="myanswers">
 <p><em>Solution.</em> Write <span class="math inline">\(k_i\)</span> for the probability we hit state <span class="math inline">\(2\)</span> before state <span class="math inline">\(3\)</span> starting from <span class="math inline">\(i\)</span>. Then clearly <span class="math inline">\(k_2 = 1\)</span> (since we’ve hit <span class="math inline">\(2\)</span> first) and <span class="math inline">\(k_3 = 0\)</span> (since we’ve hit <span class="math inline">\(3\)</span> first). Further, by conditioning on the first step, <span class="math inline">\(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\)</span>, and
 <span class="math display">\[ k_1 = \tfrac14 k_2 + \tfrac12k_3 + \tfrac14 k_4   = \tfrac14 + \tfrac14 k_4 = \tfrac14 + \tfrac14\tfrac13 = \tfrac13 . \]</span>
@@ -336,7 +337,7 @@ The desired solution is <span class="math inline">\(k_1 = \frac13\)</span>.</p>
 </div>
 </div>
 <div class="subq">
-<p><strong>(b)</strong> What is the expected time until we hit the first of set <span class="math inline">\(\{2,3\}\)</span>?</p>
+<p><strong>(b)</strong> What is the expected time until we hit a state in the set <span class="math inline">\(\{2,3\}\)</span>?</p>
 <div class="myanswers">
 <p>Let <span class="math inline">\(A = \{2,3\}\)</span>, and <span class="math inline">\(\eta_{iA}\)</span> be the expected time until hitting the first of states <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span> starting from <span class="math inline">\(i\)</span>. Clearly <span class="math inline">\(\eta_{2A} = \eta_{3A} = 0\)</span>. By conditioning on the first step, <span class="math inline">\(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\)</span>, and
 <span class="math display">\[ \eta_{1A} = 1 + \tfrac14 \eta_{2A} + \tfrac12\eta_{3A} + \tfrac14 \eta_{4A} = 1 + \tfrac14 = \tfrac54 .        \]</span>

@@ -2661,7 +2661,7 @@ where \(0 < \alpha, \beta < 1\).
 
 \end{myanswers}
 
-\textbf{(b)} What are the communicating classes for this Markov chain? Is the chain irreducible. Which classes are closed? Which states are absorbing?
+\textbf{(b)} What are the communicating classes for this Markov chain? Is the chain irreducible? Which classes are closed? Which states are absorbing?
 
 \begin{myanswers}
 
@@ -2669,11 +2669,11 @@ where \(0 < \alpha, \beta < 1\).
 
 \end{myanswers}
 
-\textbf{(c)} Find the hitting probability \(h_{21}\) that, starting from state \(2\), the chain hits state \(1\).
+\textbf{(c)} Find the hitting probability \(h_{21}\) that, starting from state 2, the chain hits state 1.
 
 \begin{myanswers}
 
-\emph{Solution.} It's clear that \(h_{11} = 1\) and \(h_{41} = 0\). Then, by condtioning on the first step, we have
+\emph{Solution.} It's clear that \(h_{11} = 1\) and \(h_{41} = 0\). Then, by conditioning on the first step, we have
 \begin{gather*}
     h_{21} = \alpha h_{31} + (1-\alpha) h_{11} = \alpha h_{31} + 1 - \alpha \\
     h_{31} = \beta h_{21} + (1-\beta) h_{41} = \beta h_{21} .
@@ -2683,7 +2683,7 @@ Substituting the second equation into the first, we get \(h_{21} = \alpha\beta h
 
 \end{myanswers}
 
-\textbf{(d)} What is the expected time, starting from state \(2\), to reach an absorbing state?
+\textbf{(d)} What is the expected time, starting from state 2, to reach an absorbing state?
 
 \begin{myanswers}
 
@@ -2739,7 +2739,7 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 
 \end{myanswers}
 
-\textbf{(d)} Find the expected hitting times \(\eta_{i1}\) from each state \(i\) to \(1\), and the expected return time \(\mu_i\) to \(1\).
+\textbf{(d)} Find the expected hitting times \(\eta_{i1}\) from each state \(i\) to 1, and the expected return time \(\mu_i\) to 1.
 
 \begin{myanswers}
 
@@ -2747,10 +2747,9 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 
 \end{myanswers}
 
-::::: \{.myq\}
 \textbf{3.}
 
-Show that every Markov chain on a finite state space \(\mathcal S\) has at least one closed communicating class.
+\textbf{(a)} Show that every Markov chain on a finite state space \(\mathcal S\) has at least one closed communicating class.
 
 \begin{myanswers}
 
@@ -2789,9 +2788,9 @@ Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2
                \frac12 & 0& 0& \frac12 \\
                0 & \frac13 & \frac23 & 0 \end{pmatrix} \]
 
-The Markov chain starts from state \(1\).
+The Markov chain starts from state 1.
 
-\textbf{(a)} What is the probability that we hit state \(2\) before we hit state \(3\)?
+\textbf{(a)} What is the probability that we hit state 2 before we hit state 3?
 
 \begin{myanswers}
 
@@ -2801,7 +2800,7 @@ The desired solution is \(k_1 = \frac13\).
 
 \end{myanswers}
 
-\textbf{(b)} What is the expected time until we hit the first of set \(\{2,3\}\)?
+\textbf{(b)} What is the expected time until we hit a state in the set \(\{2,3\}\)?
 
 \begin{myanswers}
 
