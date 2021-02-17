@@ -1869,7 +1869,7 @@ Note that when we move up from state 2, we go to 3a (no accident in the previous
 \section*{Problem sheet 3}\label{P03}}
 \addcontentsline{toc}{section}{Problem sheet 3}
 
-\commfalse
+\commtrue
 
 You should attempt all these questions and write up your solutions in advance of your workshop in week 4 (Monday 15 or Tuesday 16 February) where the answers will be discussed.
 
@@ -2389,16 +2389,14 @@ Since \(i\leftrightarrow j\), there exist \(n,m\) such that \(p_{ij}(n)>0\) and 
 \[ p_{ii}(n+m) =  \sum_{k \in \mathcal S} p_{ik}(n) p_{ki}(m) \geq p_{ij}(n) p_{ji}(m) > 0 .  \]
 So \(d_i\) divides \(n+m\).
 
-Let \(r\) be such that \(p_{jj}(r)>0\). Then, by the same Chapman-Kolmogorov argument,
+Let \(r\) be such that \(p_{jj}(r)>0\). Then, by the same Chapman--Kolmogorov argument,
 \[
     p_{ii}(n+m+r)\geq  p_{ij}(n) p_{jj}(r) p_{ji}(m) > 0,
     \]
 because we can get from \(i\) to \(i\) by going \(i \to j \to j \to i\).
 Hence \(d_i\) divides \(n+m+r\).
 
-\begin{verbatim}
-But if $d_i$ divides both $n+m$ and $n+m+r$, it must be that $d_i$ divides $r$ also. So whenever $p_{jj}(r)>0$, we have that $d_i$ divides $r$. Since $d_i$ is a common divisor of all the $r$s with $p_{jj}(r)>0$, it can't be any bigger that the *greatest* common divisor of all those $r$s. But that greatest common divisor is by definition $d_j$, the period of $j$. So $d_i \leq d_j$.
-\end{verbatim}
+But if \(d_i\) divides both \(n+m\) and \(n+m+r\), it must be that \(d_i\) divides \(r\) also. So whenever \(p_{jj}(r)>0\), we have that \(d_i\) divides \(r\). Since \(d_i\) is a common divisor of all the \(r\)s with \(p_{jj}(r)>0\), it can't be any bigger that the \emph{greatest} common divisor of all those \(r\)s. But that greatest common divisor is by definition \(d_j\), the period of \(j\). So \(d_i \leq d_j\).
 
 Repeating the same argument but with \(i\) and \(j\) swapped over, we get \(d_j\leq d_i\) too, and we're done.
 

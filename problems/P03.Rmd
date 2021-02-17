@@ -1,12 +1,12 @@
 # Problem sheet 3  {.unnumbered #P03}
 
-<!--
+
 <style>
 .fold-btn { 
   float: right; 
   margin: -12px 0 0 0;
 }
-</style
+</style>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -20,17 +20,18 @@ $(document).ready(function() {
   })
 });
 </script>
--->
 
 
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
+-->
 
 
-\commfalse
+\commtrue
 
 
 
@@ -371,7 +372,7 @@ which has solution $\delta = 0.03/(1-0.92) = 0.375$.
 :::
 ::::
 
-A corporate bond portfolio manager follows an investment strategy which means that bonds which fall from A-rated to B-rated are sold and replaced with an A-rated bond.  The manager believes this will improve the returns on the portfolio because it will reduce the number of defaults experienced.
+A corporate bond portfolio manager follows an investment strategy which means that bonds which fall from A-rated to B-rated are sold and replaced with an A-rated bond.  The manager believes this will improve the returns on the portfolio because it will reduce the number of defaults experienced. 
 
 :::: {.subq}
 **(c)** Calculate the expected number of defaults in the manager's portfolio over the next two years given there are initially 100 A-rated bonds.

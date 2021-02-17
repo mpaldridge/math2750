@@ -37,13 +37,13 @@ Here $\sum_{n=1}^\infty p_{ii}^{(n)}$ is the expected number of returns to $i$ s
 We'll come to the proof in a moment, but first some examples.
 
 ::: {.example #rw-rec-trans}
-Consider the simple random walk. [In the last section](#S08-return-rw) we saw that $m_i = 1$ for the simple symmetric random walk with $p = \frac12$, so the simple symmetric random walk is recurrent. But for $p \neq \frac12$, we have $m_i < 1$, so all the other simple random walks are transient.
+Consider the simple random walk. [In the last section](#S08-return-rw) we saw that for the simple symmetric random walk with $p = \frac12$ we have $m_i = 1$, so the simple symmetric random walk is recurrent, but for $p \neq \frac12$ we have $m_i < 1$, so all the other simple random walks are transient.
 :::
 
 ::: {.example #rec}
-We saw [this example in Lecture 7](#periodicity):
+We saw this chain previously as Example \@ref(ex:weird-period):
 
-```{tikz periods-recap, echo=FALSE, fig.align="center", fig.width=5}
+```{tikz periods-recap, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram from Subsection 7.2.", cache = TRUE}
 \usetikzlibrary{automata}
 		\begin{tikzpicture}[scale=1.2]
 		\node[state] (1) at (0,0) {$2$};
@@ -72,7 +72,7 @@ We saw [this example in Lecture 7](#periodicity):
 	
 For states 5, 6 and 7, it's clear that the return probability is 1, since the Markov chain cycles around the triangle, so these states are recurrent.
 
-States 1, 2, 3 and 4 are recurrent. In a moment we'll see a very quick way to show this, but in the meantime we can prove it directly by getting our hands dirty.
+States 1, 2, 3 and 4 are transient. In a moment we'll see a very quick way to show this, but in the meantime we can prove it directly by getting our hands dirty.
 
 From state 4, we might go straight to state 5, in which case we can't come back, so $m_4 \leq 1 - p_{45} = \frac23$, and state 4 is transient. Similarly, $m_1 \leq 1 - p_{14}p_{45} = \frac56$, because if we move from 1 to 4 to 5, we definitely won't come back to 1, so state 1 is transient. By the similar arguments, $m_3 \leq 1 - p_{34}p_{45} =  \frac56$, and $m_2 \leq 1 - p_{21}p_{14}p_{45} = \frac{11}{12}$, so these states are both transient too.
 :::
@@ -80,11 +80,11 @@ From state 4, we might go straight to state 5, in which case we can't come back,
 Notice that the communicating class $\{1,2,3,4\}$ is all transient, while the communicating class  $\{5,6,7\}$ is all recurrent. We shall return to this point shortly. But first, we've put off the proof for too long.
 
 ::: {.proof name="Proof of Theorem \@ref(thm:rectran)"}
-Suppose state $i$ is recurrent, so the probability we return to $i$ is $m_i = 1$. By the Markov property, we it's as if we restart the chain from $i$, so the probability we return to $i$ is again still $m_i = 1$. Repeating this, we visit infinitely often with probability $1$. In particular, the if number of visits to $i$ starting from $i$ is infinite, then its expectation is infinite too, and this expectation is $\sum_{n=1}^\infty p_{ii}(n) = \infty$.
+Suppose state $i$ is recurrent, so the probability we return to $i$ is $m_i = 1$. After that return, it's as if we restart the chain from $i$, because of the Markov property -- so the probability we return to $i$ is again still $m_i = 1$. Repeating this, we visit infinitely often with probability $1$. In particular, since the number of visits to $i$ starting from $i$ is infinite, its expectation is infinite too, and this expectation is $\sum_{n=1}^\infty p_{ii}(n) = \infty$.
 
-Suppose state $i$ is transient, so the probability we return to $i$ is $m_i < 1$. Then the probability we return to $i$ exactly $r$ times before never coming back is
+Suppose, on the other hand, that state $i$ is transient, so the probability we return to $i$ is $m_i < 1$. Then the probability we return to $i$ exactly $r$ times before never coming back is
 \[  \mathbb P \big((\text{number of returns to $i$}) = r\big) = m_i^r(1-m_i) , \]
-since we must return on the first $r$ occasions, but then fail to return any more. This is a geometric distribution $\text{Geom}(1-m_i)$ (the version with support $\{0,1,2,\dots\}$). Since the expectation of a $\text{Geom}(p)$ random variable is $(1 - p)/p$, the expected number of returns is
+since we must return on the first $r$ occasions, but then fail to return any more. This is a geometric distribution $\text{Geom}(1-m_i)$ (the version with support $\{0,1,2,\dots\}$). Since the expectation of this type $\text{Geom}(p)$ random variable is $(1 - p)/p$, the expected number of returns is
 \[ \mathbb E(\text{number of returns to $i$}) = \sum_{n=1}^\infty p_{ii}(n)  = \frac{1 - (1 - m_i)}{1 - m_i} = \frac{m_i}{1 - m_i} . \]
 This is finite, since $m_i <1$. Since the expected number of returns is finite, the probability we return infinitely many times must be $0$.
 :::
@@ -109,7 +109,7 @@ For this reason, we can refer to a communicating class as a "recurrent class" or
 \[ \sum_{r=1}^\infty p_{jj}^{(n+m+r)} \geq \sum_{r=1}^\infty p_{ji}^{(m)}p_{ii}^{(r)} p_{ij}^{(n)} = p_{ji}^{(m)} \left(\sum_{r=1}^\infty p_{ii}^{(r)} \right) p_{ij}^{(n)} .   \]
 If $i$ is recurrent, then $\sum_r p_{ii}^{(r)} = \infty$. Then from the above equation, we also have $\sum_r p_{jj}^{(n+m+r)} = \infty$, meaning $\sum_s p_{jj}^{(s)} = \infty$, and $j$ is recurrent.
 
-*Second part.* Suppose $i$ is transient. Then $j$ cannot be recurrent, because the previous argument with $i$ and $j$ swapped over would force $i$ to in fact be recurrent also. So $j$ must be transient.
+*Second part.* Suppose $i$ is transient. Then $j$ cannot be recurrent, because if it were, the previous argument with $i$ and $j$ swapped over would force $i$ to in fact be recurrent also. So $j$ must be transient.
 :::
 
 ::: {.theorem}

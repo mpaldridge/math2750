@@ -1,0 +1,172 @@
+---
+title:  "Assessment 1 (Solutions)"
+author: "MATH2750 Introduction to Markov Processes"
+date:   "University of Leeds, 2020--21"
+output: html_document 
+---
+
+*Outline solutions to Assessment 1. Please do not distribute these solutions outside the University.*
+
+---
+
+**Question 1.** Let $(X_n)$ be a simple random walk that starts from $X_0 = 0$ and on each step goes up one with probability $p$ and down one with probability $q = 1-p$.
+
+Calculate:
+
+
+**(a)** $\mathbb P(X_6 = 0)$, [[1 mark]]{style="float:right"}
+
+<span style="color: blue;">This requires 3 steps up and 3 steps down, so
+\[ \mathbb P(X_6 = 0) = \binom 63 p^3 q^3 = 20p^3q^3. \] </span>
+<span style="color: red">[1 mark for correct answer.]</span>
+
+
+**(b)** $\mathbb EX_6$, [[1]]{style="float:right"}
+
+<span style="color: blue;">$\mathbb EX_6 = 6(p-q)$</span> <span style="color: red;">[1 mark for correct answer.]</span>
+
+
+**(c)** $\text{Var}(X_6)$, [[1]]{style="float:right"}
+
+<span style="color: blue;">$\text{Var}(X_6) = 4pq\times6 = 24pq$</span> <span style="color: red;">[1 mark for correct answer.]</span>
+
+
+**(d)** $\mathbb E(X_{10} \mid X_4 = 4)$, [[1]]{style="float:right"}
+
+<span style="color: blue;">We're at 4, and must take 6 more steps, so
+\[ \mathbb E(X_{10} \mid X_4 = 4) = 4 + 6(p-q) . \]</span>
+<span style="color: red;">[1 mark for correct answer.]</span>
+
+
+**(e)** $\mathbb P(X_{10} = 0 \mid X_6 = 2)$, [[1]]{style="float:right"}
+
+<span style="color: blue;">From $X_6 = 2$, we must take 3 steps down and 1 step up to reach $X_{10} = 0$, so
+\[ \mathbb P(X_{10} = 0 \mid X_6 = 2) = \mathbb P(X_{4} = -2) = 4pq^3 . \] </span>
+<span style="color: red;">[1 mark for correct answer.]</span>
+
+
+**(f)**  $\mathbb P(X_4 = 2 \mid X_{10} = 6)$. [[1]]{style="float:right"}
+
+<span style="color: blue;">This conditioning is the awkward way round, so we need to Bayes' theorem to reverse it. We get
+\[ \mathbb P(X_4 = 2 \mid X_{10} = 6) = \frac{\mathbb P(X_4 = 2) \mathbb P(X_{10} = 6 \mid X_4 = 2)}{\mathbb P(X_{10} = 6)} = \frac{4p^3q \cdot 6p^5q}{45p^8q^2} = \frac{24}{45} = \frac{8}{15} . \]</span>
+
+<span style="color: blue;">Alternatively, and more directly: $X_{10} = 6$ means 8 steps up and 2 steps down. We get $X_4 = 2$ when precisely one of the two down steps is in the first four steps. Hence
+\[ \mathbb P(X_4 = 2 \mid X_{10} = 6) = 2 \cdot \frac{4}{10} \cdot \frac{6}{9} = \frac{48}{90} = \frac{8}{15}. \]</span>
+
+<span style="color: red;">[1 mark for correct answer accompanied by any correct method.]</span>
+
+
+Consider the case $p = 0.6$, so $q = 0.4$.
+
+**(g)** What are $\mathbb E X_{100}$ and $\text{Var}(X_{100})$? [[1]]{style="float:right"}
+
+<span style="color: blue;">$\mathbb E X_{100} = 100(0.6 - 0.4) = 20$ and $\text{Var}(X_{100}) = 4\times 0.6\times 0.4 \times 100 = 96.$</span> <span style="color: red;">[1 mark for *both* correct answers.]</span>
+
+
+**(h)** Using a normal approximation, estimate $\mathbb P(16 \leq X_{100} \leq 26)$. You should use an appropriate "continuity correction", and explain why you chose it. (Bear in mind the possible values $X_{100}$ can take.) [[3]]{style="float:right"}
+
+<span style="color: blue;">The normal approximation is that $X_{100} \approx Z \sim \text{N}(20, 96)$.</span> <span style="color: red;">[1 mark for correct normal approximation.]</span>
+
+<span style="color: blue;">Since $X_{100}$ only takes even values, the correct continuity correct is to round outwards by 1 in either direction, so
+\[ \mathbb P(16 \leq X_{100} \leq 26) \approx \mathbb P(15 \leq Z \leq 27) . \]
+</span> <span style="color: red;">[1 mark for correct continuity correction.]</span>
+
+<span style="color: blue;">To calculate the normal probability, we can use R:</blue>
+```{r}
+pnorm(27, 20, sqrt(96)) - pnorm(15, 20, sqrt(96))
+```
+<span style="color: blue;">Alternatively we can use statistical tables:
+\[ \begin{align} \mathbb P(15 \leq Z \leq 27)
+&= \mathbb P \left(\frac{15 - 20}{\sqrt{96}} \leq \text{N}(0,1) \leq \frac{27 - 20}{\sqrt{96}}\right) \\
+&= \mathbb P(-0.510 \leq \text{N}(0,1) \leq 0.714) \\
+&= \Phi(0.714) - \big(1 - \Phi(0.510)\big) \\
+&= 0.763 - (1-0.695) \\
+&= 0.458
+\end{align} \] </span>
+<span style="color: red;">[1 mark for correct normal calculation.]</span>
+
+
+---
+
+
+
+**Question 2.** Consider the gambler's ruin with draws: Alice starts with £$a$ and Bob with £$(m-a)$, and at each time step Alice wins £1 off Bob with probability $p$, loses £1 to Bob with probability $q$, and no money is exchanged with probability $s$, where $p+q+s =1$. We consider the case where Bob and Alice are equally matched, so $p = q$ and $s = 1-2p$. (We assume $0 < p < 1/2$.)
+
+Let $r_i$ be Alice's ruin probability from the point she has £$i$.
+
+**(a)** By conditioning on the first step, explain why $pr_{i+1} - (1-s)r_i + pr_{i-1} = 0$, and give appropriate boundary conditions. [[2]]{style="float:right"}
+
+<span style="color: blue;">By conditioning on the first step, we have the following expression for $r_i$:
+\begin{align} r_i &=
+\mathbb P(\text{win first round}) \,\mathbb P(\text{ruin} \mid \text{win first round}) \\
+&\qquad {}+ \mathbb P(\text{draw first round}) \,\mathbb P(\text{ruin} \mid \text{draw first round}) \\
+&\qquad {}+ \mathbb P(\text{lose first round}) \,\mathbb P(\text{ruin} \mid \text{lose first round}) \\
+&= pr_{i+1} + sr_i + pr_{i-1} . \end{align}
+For the first term, for example, the question tells us the probability Alice wins a round is $p$. Then Alice goes up to £$(i+1)$. But by the Markov property, it's like she's starting anew from $i+1$, so the ruin probability is $r_{i+1}$. The other two terms work the same way. Rearranging this gives
+\[ pr_{i+1} - (1-s)r_i + pr_{i-1} = 0 \]
+as required.</span>
+</span> <span style="color: red;">[1 mark for clear and detailed justification.]</span>
+
+<span style="color: blue;">For the boundary conditions, we have $r_0 = 1$, because that means Alice has already ruined, and $r_m = 0$, because that means Bob has already ruined.</span> <span style="color: red;">[1 mark for both boundary conditions correct.]</span>
+
+
+**(b)** Solve this linear difference equation to find an expression for $r_i$.  [[2]]{style="float:right"}
+
+<span style="color: blue;">The characteristic equation is $p\lambda^2 - (1-s)\lambda + p = 0$. Since $(1-s) = 2p$, we can take out a factor of $p$ to get $\lambda^2 -2\lambda + 1 = 0$, which factorises as $(\lambda - 1)^2$. Thus we have a repeated root at $\lambda = 1$, and the general solution is $r_i = (A + Bi)1^i = A + Bi$.</span>
+
+<span style="color: blue;">Using the boundary conditions, we get $r_0 = A = 1$ and $r_m = A + Bm = 0$,
+so $A = 1$ and $B = -1/m$. Hence the solution is
+\[ r_i = 1 - \frac{i}{m} . \]
+</span>
+
+<span style="color: red;">[1 for correct method and answer. 1 mark for a *very clear* solution.]</span>
+
+
+Let $d_i$ be the expected duration of the game from the point Alice has £$i$.
+
+**(c)** Explain why $pd_{i+1} - (1-s)d_i + pd_{i-1} = -1$, and give appropriate boundary conditions. [[2]]{style="float:right"}
+
+<span style="color: blue;">Simlar to part (a), by conditioning on the first step, we have the following expression for $r_i$:
+\begin{align} d_i &=
+\mathbb P(\text{win first round}) \,\mathbb E(\text{duration} \mid \text{win first round}) \\
+&\qquad {}+ \mathbb P(\text{draw first round}) \,\mathbb E(\text{duration} \mid \text{draw first round}) \\
+&\qquad {}+ \mathbb P(\text{lose first round}) \,\mathbb E(\text{duration} \mid \text{lose first round}) \\
+&= p(1 + d_{i+1}) + s(1 + d_i) + p(1 + r_{i-1}) \\
+&= 1 + pd_{i+1} + sd_i + pr_{i-1}. \end{align}
+For the first term, for example, the question tells us the probability Alice wins a round is $p$. Then Alice goes up to £$(i+1)$, and this takes 1 time step. But by the Markov property, it's like she's starting anew from $i+1$, so the duration after that 1 time step is then $d_{i+1}$. The other two terms work the same way. Rearranging this gives
+\[ pd_{i+1} - (1-s)d_i + pd_{i-1} = -1 \]
+as required.</span>
+</span> <span style="color: red;">[1 mark for clear and detailed justification.]</span>
+
+<span style="color: blue;">For the boundary conditions, we have $d_0 = d_m = 0$, because these mean someone has already ruined.</span> <span style="color: red;">[1 mark for both boundary conditions.]</span>
+
+
+**(d)** Solve this linear difference equation to find an expression for $d_i$.  [[2]]{style="float:right"}
+
+<span style="color: blue;">We know form part (b) that the solution to the homogeneous equation is $d_i = A + Bi$.</span>
+
+<span style="color: blue;">We now seek a particular solution. Since the right-hand side is a constant, we would normally try $d_i = C$, a constant too. But because 1 is a root of the characteristic equation, this means constants solve the homogeneous equation and give 0 on the right-hand side. In fact, 1 is a repeated root, so the same is true of $d_i = Ci$, so we will try $d_i = Ci^2$ instead. (Alternatively, we could try $d_i = C$ and $d_i = Ci$ and confirm by checking that they don't work). This gives
+\[ pC(i+1)^2 - (1-s)Ci^2 + pC(i-1)^2 = (p - 1 + s + p)Ci^2 + (2p - 2p)Ci + (p + p)C = 2pC = -1 , \]
+So $C = -1/2p = -1/(1-s)$. Thus the general solution to the inhomogeneous equation is
+\[ d_i = A + Bi - \frac{1}{1-s}i^2 . \]</span>
+
+<span style="color: blue;">From the boundary conditions, we have $d_0 = A = 0$ and
+\[ d_m = A + Bm - \frac{1}{1-s}m^2 = m\left(B - \frac{1}{1-s}m\right) = 0 .\]
+Hence $B = (1/(1-s))m$, and the solution is
+\[ d_i = \frac {1}{1-s} mi - \frac {1}{1-s} i^2 = \frac {1}{1-s} i(m-i) . \]
+</span>
+
+<span style="color: red;">[1 mark for correct method and answer. 1 mark for a *very clear* solution.]</span>
+
+
+**(e)** Compare your answer to parts (b) and (d) with those for the standard gambler's ruin problem with $p = 1/2$, and give reasons for the similarities or differences.  [[2]]{style="float:right"}
+
+<span style="color: blue;">The ruin probability is the same as for the gambler's ruin, while the expected duration has increased by a factor of $1/(1-s)$.</span> <span style="color: red;">[1 mark for both correct comments]</span>
+
+<span style="color: blue;">The ruin probability is the same because, if a round is not a draw, theres a $50:50$ chance that either Alice or Bob wins the round, so the chance or ruining is as if $p = q = 1/2$. The expected duration is longer because draws lengthen the game without changing the ruin probabilities. Specifically, there are a $\text{Geom}(1-s)$ number of rounds until someone wins the round, which has expectation $1/(1-s)$; so the whole game lasts $1/(1-s)$ times as long.</span> <span style="color: red;">[1 mark clear and accurate explanation of both.]</span>
+
+---
+
+*---Matthew Aldridge, [m.aldridge@leeds.ac.uk](mailto:m.aldridge@leeds.ac.uk)*
+
+

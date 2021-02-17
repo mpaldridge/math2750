@@ -289,13 +289,13 @@ Figure 7.2: Transition for an aperiodic irreducible Markov chain.
 <p>Since <span class="math inline">\(i\leftrightarrow j\)</span>, there exist <span class="math inline">\(n,m\)</span> such that <span class="math inline">\(p_{ij}(n)&gt;0\)</span> and <span class="math inline">\(p_{ji}(m)&gt;0\)</span>. Then, by the Chapman–Kolmogorov equations,
 <span class="math display">\[ p_{ii}(n+m) =  \sum_{k \in \mathcal S} p_{ik}(n) p_{ki}(m) \geq p_{ij}(n) p_{ji}(m) &gt; 0 .  \]</span>
 So <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(n+m\)</span>.</p>
-<p>Let <span class="math inline">\(r\)</span> be such that <span class="math inline">\(p_{jj}(r)&gt;0\)</span>. Then, by the same Chapman-Kolmogorov argument,
+<p>Let <span class="math inline">\(r\)</span> be such that <span class="math inline">\(p_{jj}(r)&gt;0\)</span>. Then, by the same Chapman–Kolmogorov argument,
 <span class="math display">\[
     p_{ii}(n+m+r)\geq  p_{ij}(n) p_{jj}(r) p_{ji}(m) &gt; 0,
     \]</span>
 because we can get from <span class="math inline">\(i\)</span> to <span class="math inline">\(i\)</span> by going <span class="math inline">\(i \to j \to j \to i\)</span>.
 Hence <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(n+m+r\)</span>.</p>
-<pre><code>But if $d_i$ divides both $n+m$ and $n+m+r$, it must be that $d_i$ divides $r$ also. So whenever $p_{jj}(r)&gt;0$, we have that $d_i$ divides $r$. Since $d_i$ is a common divisor of all the $r$s with $p_{jj}(r)&gt;0$, it can&#39;t be any bigger that the *greatest* common divisor of all those $r$s. But that greatest common divisor is by definition $d_j$, the period of $j$. So $d_i \leq d_j$.</code></pre>
+<p>But if <span class="math inline">\(d_i\)</span> divides both <span class="math inline">\(n+m\)</span> and <span class="math inline">\(n+m+r\)</span>, it must be that <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(r\)</span> also. So whenever <span class="math inline">\(p_{jj}(r)&gt;0\)</span>, we have that <span class="math inline">\(d_i\)</span> divides <span class="math inline">\(r\)</span>. Since <span class="math inline">\(d_i\)</span> is a common divisor of all the <span class="math inline">\(r\)</span>s with <span class="math inline">\(p_{jj}(r)&gt;0\)</span>, it can’t be any bigger that the <em>greatest</em> common divisor of all those <span class="math inline">\(r\)</span>s. But that greatest common divisor is by definition <span class="math inline">\(d_j\)</span>, the period of <span class="math inline">\(j\)</span>. So <span class="math inline">\(d_i \leq d_j\)</span>.</p>
 <p>Repeating the same argument but with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> swapped over, we get <span class="math inline">\(d_j\leq d_i\)</span> too, and we’re done.</p>
 </div>
 <div class="mysummary">

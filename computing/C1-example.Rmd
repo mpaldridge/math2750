@@ -5,14 +5,13 @@ date:   "MATH2750 Introduction to Markov Processes (2020--21)"
 output: html_document 
 ---
 
+
 *The following is an example report answering the questions on the Computational Practical 1 problem sheet. This is not the only way to solve these problems, but is merely the way that I chose to solve them.* 
 
 *You can view the original problem sheet [in HTML format](https://mpaldridge.github.io/math2750/computing/C1.html) or [as an Rmd file](https://mpaldridge.github.io/math2750/computing/C1.Rmd).*
 
 
-
 ***
-
 
 
 **Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
@@ -55,11 +54,12 @@ plot(0:N, c(0, X),
   col  = "blue",
   xlab = "time step, n",
   ylim = c(-N, N),
-  # The following `bquote` syntax allows fancy titling but is totally optional
   ylab = bquote("Random walk, " ~ X[n]), 
   main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p))
 )
 ```
+
+(The `bquote` does some fancy automatic titling -- that's strictly an optional extra.)
 
 Here, `type = "b"` means we plot **both** points and lines. By plotting `c(0, X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
 
@@ -161,7 +161,7 @@ Some things we could investigate include:
 * $\mathbb P(a \leq X_n \leq b)$ for some appropriate $a < b$, and comparing with a normal approximation;
 * ruin probability or expected duration for the gambler's ruin.
 
-Here, we'll try investigating the ruin probability of a gambler's ruin problem. (This is the most complicated of the three suggestions above.)
+Here, we'll try investigating the ruin probability of a gambler's ruin problem. (This is the most complicated of the three suggestions above; it's fine to try something a bit easier.)
 
 First we have a function that simulates a gambler's ruin process, and outputs whether or not Alice ruins. This uses our `rpm` function from Question 3.
 
@@ -208,7 +208,6 @@ TrueRuinProb(p, a, m)
 ```
 
 This formula gives the answer $r_a = `r round(TrueRuinProb(p, a, m), 4)`$, which is close to the simulated answer $`r round(mean(GRsamples), 3)`$.
-
 
 
 ***
