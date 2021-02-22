@@ -243,7 +243,7 @@ Here, the linear difference equation has general solution $\pi_i = A + Bi$, as w
 :::: {.myq}
 **5.** The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain $(X_n)$ starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex.
 
-```{tikz tree, echo=FALSE, fig.align="center", fig.width=3.5, fig.cap="The first two-and-a-bit levels of the rooted binary tree.", cache = TRUE}
+```{tikz tree, echo=FALSE, fig.align="center", fig.width=3.5, fig.cap="The first three-and-a-bit levels of the rooted binary tree.", cache = TRUE}
 \usetikzlibrary{automata}
 \begin{tikzpicture}[shorten >=1pt,node distance=1.5cm,auto]
 \node[state] (0) at (6,0) {{\Large 0}};
@@ -257,7 +257,7 @@ Here, the linear difference equation has general solution $\pi_i = A + Bi$, as w
 \node (H) at (2.25,-6) {};
 \node (I) at (3.75,-6) {};
 \node (J) at (5.25,-6) {};
-\node (K) at (6.75,-6) {};
+\node (K) at (6.75,-6) {}; 
 \node (L) at (8.25,-6) {};
 \node (M) at (9.75,-6) {};
 \node (N) at (11.25,-6) {};
