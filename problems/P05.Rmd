@@ -1,6 +1,297 @@
 # Problem sheet 5  {.unnumbered #P05}
 
-Problem Sheet 5
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+-->
 
 
+
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
+
+
+
+\commfalse
+
+
+
+::: {.mysummary}
+You should attempt all these questions and write up your solutions in advance of your workshop in week 6 (Monday 1 or Tuesday 2 March) where the answers will be discussed.
+:::
+
+
+:::: {.myq}
+**1.** Find a stationary distribution for the Markov chain with transition matrix
+\[ \mathsf P = \begin{pmatrix} \frac13 & \frac23 & 0 \\
+                               \frac16 & \frac13 & \frac12 \\
+                               0 & \frac13 & \frac23 \end{pmatrix} . \]
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+:::
+::::
+
+
+
+::::: {.myq}
+**2.** Consider a Markov chain with state space $\mathcal S = \{1,2,3,4\}$ and transition matrix
+\[  \mathsf P = \begin{pmatrix} \frac14 & \frac12 &\frac14 & 0 \\
+                      \frac14 & \frac14 & \frac12 & 0 \\
+                      \frac12 & \frac12 & 0 & 0 \\
+                      \frac14 & 0       &\frac14 & \frac 12
+                      \end{pmatrix} . \]
+
+:::: {.subq}
+**(a)** Draw a transition diagram for this Markov chain.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+
+<!--
+		\begin{tikzpicture}[shorten >=1pt,scale=1.2]
+		\node[state] (2) at (0,0)  {$2$};
+		\node[state] (1) at (2,1.15)  {$1$};
+		\node[state] (3) at (2,-1.15) {$3$};
+		\node[state] (4) at (4,0)  {$4$};
+		
+		\path[->] (1) edge [bend left]  node [above left]  {$\frac12$} (2);
+		\path[->] (1) edge [bend left]  node [right]       {$\frac14$} (3);
+		\path[->] (2) edge [bend left]  node [above left]  {$\frac14$} (1);
+		\path[->] (2) edge [bend left]  node [below left]  {$\frac12$} (3);
+		\path[->] (3) edge [bend left]  node [right]       {$\frac12$} (1);
+		\path[->] (3) edge [bend left]  node [below left]  {$\frac12$} (2);
+		\path[->] (4) edge              node [above right] {$\frac14$} (1);
+		\path[->] (4) edge              node [below right] {$\frac14$} (3);
+		
+		\path[->] (1) edge [loop above] node [above] {$\frac14$} ();
+		\path[->] (2) edge [loop left]  node [left]  {$\frac14$} ();
+		\path[->] (4) edge [loop right] node [right] {$\frac12$} ();
+		\end{tikzpicture}
+-->
+:::
+::::
+
+:::: {.subq}
+**(b)** Identify the communicating classes. State whether each class closed or not. State whether each class is positive recurrent, null recurrent, or transient.
+
+::: {.myanswers data-latex=""}
+*Solution.* The class $\{1,2,3\}$ is closed, so is positive recurrent. The class $\{4\}$ is not closed, so is transient.
+:::
+::::
+
+:::: {.subq}
+**(c)** Find a stationary distribution for this Markov chain.
+
+::: {.myanswers data-latex=""}
+*Solution.* First, we write out the equations $\boldsymbol\pi = \boldsymbol\pi\mathsf P$, which are
+\begin{align*}
+\pi_1 &= \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 + \tfrac14\pi_4 \\
+\pi_2 &= \tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 \\
+\pi_3 &= \tfrac14\pi_1 + \tfrac12\pi_2 \phantom{{}+\tfrac12\pi_3} + \tfrac14\pi_4 \\
+\pi_4 &= \phantom{\tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3+{}}  \tfrac12 \pi_4 .
+\end{align*}
+From the fourth equation we immediately see that $\pi_4 = 0$. Second, we rewrite the first two of the other equations with $\pi_1$ as the working variable, which gives
+\begin{align}
+3\pi_1 &= \phantom{3}\pi_2 + 2\pi_3 \tag{1} \\
+2\pi_1 &= 3\pi_2 - 2\pi_3 \tag{2} .
+\end{align}
+Adding (1) and (2) gives $5\pi_1 = 4\pi_2$, so $\pi_2 = \frac54\pi_1$. Substituting this into (1) and solving gives $\pi_3 = \frac78 \pi_1$. Third, the normalising condition is
+\[ \pi_1 + \pi_2 + \pi_3 + \pi_4 = \pi_1 + \tfrac54\pi_1 + \tfrac78\pi_1 + 0 = \tfrac{25}{8}\pi_1 = 1, \]
+so $\pi_1 = \frac{8}{25}$. Hence, we have a stationary distribution
+\[ \boldsymbol\pi = \left(\tfrac{8}{25} \quad \tfrac{10}{25} \quad \tfrac{7}{25} \quad 0 \right) .\]
+:::
+::::
+
+:::: {.subq}
+**(d)**Is this the only stationary distribution?
+
+::: {.myanswers data-latex=""}
+*Solution.* Yes. The Markov chain has one positive recurrent class, so there is a unique stationary distribution, and it is supported only on that class.
+:::
+::::
+:::::
+
+::::: {.myq}
+**3.** Consider a Markov chain with state space $\mathcal S = \{1,2,3,4,5\}$ and transition matrix
+\[  \mathsf P = \begin{pmatrix} \frac13 & \frac23 & 0 &0 & 0 \\
+                   \frac13 & \frac23 & 0 &0 & 0 \\
+                   0 &\frac35 & \frac15 & \frac15 & 0 \\
+                   0 & 0 & 0 & \frac14 &\frac34 \\
+                   0 & 0 & 0 & \frac12 & \frac12 \end{pmatrix} . \]
+
+:::: {.subq}
+**(a)** Draw a transition diagram for this Markov chain.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+<!--
+	\begin{tikzpicture}[shorten >=1pt,scale=1]
+	\node[state] (1) at (0,0) {$1$};
+	\node[state] (2) at (2,0) {$2$};
+	\node[state] (3) at (4,0) {$3$};
+	\node[state] (4) at (6,0) {$4$};
+	\node[state] (5) at (8,0) {$5$};
+	
+	\path[->] (1) edge [bend left]  node [above] {$\frac23$} (2);
+	\path[->] (2) edge [bend left]  node [below] {$\frac13$} (1);
+	\path[->] (3) edge              node [above] {$\frac35$} (2);
+	\path[->] (3) edge              node [above] {$\frac15$} (4);
+	\path[->] (4) edge [bend left]  node [above] {$\frac34$} (5);
+	\path[->] (5) edge [bend left]  node [below] {$\frac12$} (4);
+	
+	\path[->] (1) edge [loop left]  node [left]  {$\frac13$} ();
+	\path[->] (2) edge [loop above] node [above] {$\frac23$} ();
+	\path[->] (3) edge [loop above] node [above] {$\frac15$} ();
+	\path[->] (4) edge [loop above] node [above] {$\frac14$} ();
+	\path[->] (5) edge [loop right] node [right] {$\frac12$} ();
+	\end{tikzpicture}
+-->
+:::
+::::
+
+:::: {.subq}
+**(b)** Identify the communicating classes. State whether each class closed or not. State if each class is positive recurrent, null recurrent, or transient.
+
+::: {.myanswers data-latex=""}
+*Solution.* The class $\{1,2\}$ is closed, so is positive recurrent. The class $\{3\}$ is not closed, so is transient. The class $\{4,5\}$ is closed, so is positive recurrent.
+:::
+::::
+
+:::: {.subq}
+**(c)** Find all of the stationary distributions for this Markov chain.
+
+::: {.myanswers data-latex=""}
+*Solution.* We can have a stationary distribution supported on either of the positive recurrent classes, but we will always have $\pi_3 = 0$, as that state is transient. For the class $\{1,2\}$ we have
+	\[ \pi_1 = \tfrac13\pi_1 + \tfrac13\pi_2 \qquad \pi_2 = \tfrac23\pi_1 + \tfrac23\pi_2 , \]
+	giving $\pi_2 = 2\pi_1$, and a stationary distribution $(\tfrac 13, \tfrac23, 0, 0, 0)$. For the class $\{4,5\}$, we have
+	\[ \pi_4 = \tfrac14\pi_4 + \tfrac12\pi_5 \qquad \pi_5 = \tfrac34\pi_4 + \tfrac12\pi_5 , \]
+	giving $3\pi_4 = 2\pi_5$, and a stationary distribution $(0,0,0,\frac25,\frac35)$. Finally, any linear combination of those where the coefficients are positive and add to $1$ will also be a stationary distribution, so we have a family of stationary distributions
+	\[ \left( \tfrac13\alpha \quad \tfrac23\alpha \quad 0 \quad \tfrac25(1-\alpha) \quad \tfrac35(1-\alpha) \right)    \]
+	for $0 \leq \alpha \leq 1$.
+:::
+::::
+:::::
+
+
+
+
+
+::::: {.myq}
+**4.** Consider the simple random walk $(X_n)$ on $\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}$ with up probability $p$ and down probability $q = 1-p$, and a mixed barrier at $0$, where $p_{01} = p$, $p_{00} = q$, and $p_{0i} = 0$ otherwise. We seek a stationary distribution for this Markov chain.
+
+:::: {.subq}
+**(a)** Suppose $p \neq \frac12$. Show that the general solution to 
+\[ \pi_j = \sum_i \pi_i p_{ij} = p\pi_{j-1} + q\pi_{j+1} \]
+is $\pi_i = A + B\tau^i$, where $\tau = p/q$.
+
+::: {.myanswers data-latex=""}
+*Solution.* Let's rewrite this as $q\pi_{j+1} - \pi_j + p\pi_{j-1} = 0$. This is a homogeneous linear difference equation. The characteristic equation is $p\lambda^2 - \lambda + p = 0$, which factorises as $(q\lambda - p)(\lambda-1) = 0$ (using that $p + q = 1$), which has solutions $\lambda = 1$ and $\lambda = p/q = \tau$. Since $p \neq \frac12$, these roots are distinct. So the general solution is $\pi_i = A + B\tau^i$.
+:::
+::::
+
+:::: {.subq}
+**(b)** Show that the initial condition $\pi_0 = q\pi_0 + q\pi_1$ gives $A = 0$.
+
+::: {.myanswers data-latex=""}
+*Solution.* The initial condition gives
+\[ A + B = q(A + B) + q(A + B\tau)  ,\]
+which after rearranging gives $(1-2q)A = 0$, where we have used $q + q\tau = q + p = 1$. Since $1-2q\neq 0$, we must have $A = 0$. 
+:::
+::::
+
+:::: {.subq}
+**(c)** By considering the normalising condition $\sum_i \pi_i =1$, work out for what values of $p \neq \frac12$ there exists a stationary distribution for $(X_n)$. What is the stationary distribution (when it exists)?
+
+::: {.myanswers data-latex=""}
+*Solution.* We have $\pi_i = B\tau^i$, so require $B \sum_{i=1}^\infty \tau^i = 1$. When $p > \frac12$, then $\tau > 1$ and the sum does not converge, and we have no stationary distribution. When $p < \frac12$, then $\tau < 1$, so
+  \[ \sum_{i=1}^\infty \tau^i = \frac{1}{1-\tau} \qquad \Rightarrow \qquad B = \frac{1}{\frac{1}{1-\tau}} = 1 - \tau, \]
+so we have a geometric stationary distribution $\pi_i = (1-\tau)\tau^i$.
+:::
+::::
+
+:::: {.subq}
+**(d)** Does there exist a stationary distribution when $p = \frac12$?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+Here, the linear difference equation has general solution $\pi_i = A + Bi$, as we saw with the symmetric gambler's ruin problem. The initial condition gives $A = \frac12A + \frac12(A + B)$, and so $B = 0$, giving $\pi_i = A$. The normalisation condition is $\infty \times A = 1$, which cannot be fulfilled. Hence no stationary distribution exists.
+:::
+::::
+:::::
+
+:::: {.myq}
+**5.** The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain $(X_n)$ starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex.
+
+```{tikz tree, echo=FALSE, fig.align="center", fig.width=3.5, fig.cap="The first two-and-a-bit levels of the rooted binary tree.", cache = TRUE}
+\usetikzlibrary{automata}
+\begin{tikzpicture}[shorten >=1pt,node distance=1.5cm,auto]
+\node[state] (0) at (6,0) {{\Large 0}};
+\node[state] (A) at (3,-2) {};
+\node[state] (B) at (9,-2) {};
+\node[state] (C) at (1.5,-4) {};
+\node[state] (D) at (4.5,-4) {};
+\node[state] (E) at (7.5,-4) {};
+\node[state] (F) at (10.5,-4) {};
+\node (G) at (0.75,-6) {};
+\node (H) at (2.25,-6) {};
+\node (I) at (3.75,-6) {};
+\node (J) at (5.25,-6) {};
+\node (K) at (6.75,-6) {};
+\node (L) at (8.25,-6) {};
+\node (M) at (9.75,-6) {};
+\node (N) at (11.25,-6) {};
+
+\path[->] (0) edge node {} (A);
+\path[->]	(0) edge node {} (B);
+\path[->]	(A) edge node {} (C);
+\path[->]	(A) edge node {} (D);
+\path[->]	(B) edge node {} (E);
+\path[->]	(B) edge node {} (F);
+\path[->]	(C) edge node {} (G);
+\path[->]	(C) edge node {} (H);
+\path[->]	(D) edge node {} (I);
+\path[->]	(D) edge node {} (J);
+\path[->]	(E) edge node {} (K);
+\path[->]	(E) edge node {} (L);
+\path[->]	(F) edge node {} (M);
+\path[->]	(F) edge node {} (N);
+
+\end{tikzpicture}
+```
+
+By considering the distance of $(X_n)$ from the root, or otherwise, show that $(X_n)$ is transient.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+:::
+::::
+
+:::: {.myq}
+**6.** *"Every Markov chain on a finite state space has at least one stationary distribution."* Explain carefully why this is true. You may use facts from the notes or previous example sheets, provided that you state them clearly.
+
+::: {.myanswers data-latex=""}
+*Solution.* In Problem Sheet 4, Question 3, we showed that every finite-state Markov chain has a closed communicating class. In lectures, we showed the finite closed communicating classes are positive recurrent. If we look at the Markov chain restricted to just such a positive recurrent and closed class, then that restricted Markov chain is irreducible and positive recurrent, so it has a stationary distribution $\boldsymbol\pi$. Since the class is closed, we have a stationary distribution that is $\boldsymbol\pi$ on the given closed class and $0$ elsewhere.
+:::
+::::
 

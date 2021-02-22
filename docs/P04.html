@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S08-hitting-times.html"/>
-<link rel="next" href="computing.html"/>
+<link rel="next" href="S09-recurrence-transience.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -139,6 +139,20 @@
 <li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrent and transient states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrent and transient classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition of stationary distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -270,7 +284,7 @@ Figure 8.2: Transition diagram for Question 2.
 <div class="subq">
 <p><strong>(b)</strong> Show that the chain is irreducible.</p>
 <div class="myanswers">
-<p><em>Solution.</em> We have paths <span class="math inline">\(1 \to 2 \to 4 \to 1\)</span> and <span class="math inline">\(1 \to 3 \to 5 \to 1\)</span>, so every state communicates with state 1, so by transitivity every state communicates with every other state.</p>
+<p><em>Solution.</em> We have paths <span class="math inline">\(1 \to 2 \to 4 \to 1\)</span> and <span class="math inline">\(1 \to 3 \to 5 \to 1\)</span>, so every state communicates with state 1, and by transitivity every state communicates with every other state.</p>
 </div>
 </div>
 <div class="subq">
@@ -291,23 +305,45 @@ Figure 8.2: Transition diagram for Question 2.
 <div class="subq">
 <p><strong>(a)</strong> Show that every Markov chain on a finite state space <span class="math inline">\(\mathcal S\)</span> has at least one closed communicating class.</p>
 <div class="myanswers">
-<p><em>Solution.</em> For communicating classes <span class="math inline">\(C,D\)</span>, let’s write <span class="math inline">\(C \to D\)</span> if there is an <span class="math inline">\(i \in C\)</span> and <span class="math inline">\(j \in D\)</span> with <span class="math inline">\(i \to j\)</span>. Note that we can’t have both <span class="math inline">\(C \to D\)</span> and <span class="math inline">\(D \to C\)</span> is <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are distinct classes. This is because there would be <span class="math inline">\(i_1, j_2 \in C\)</span> and <span class="math inline">\(i_2, j_1 \in D\)</span> such that <span class="math inline">\(i_1 \to i_2 \to j_1 \to j_2 \to i_1\)</span>, so they would be the same class. Let’s also note that there are a finite number of classes <span class="math inline">\(m\)</span>.</p>
-<p>Pick a class <span class="math inline">\(C_1\)</span>. If <span class="math inline">\(C_1\)</span> is closed, we are done; otherwise <span class="math inline">\(C_1 \to C_2\)</span> for some other class <span class="math inline">\(C_2\)</span>. If <span class="math inline">\(C_2\)</span> is closed, we are done; otherwise <span class="math inline">\(C_2 \to C_3\)</span> for some class <span class="math inline">\(C_3\)</span> different to <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. (It can’t be <span class="math inline">\(C_1\)</span> by the arguemnt.) We repeat: if <span class="math inline">\(C_k\)</span> is closed, we are done; otherwise there’s a new class <span class="math inline">\(C_{k+1}\)</span> with <span class="math inline">\(C_k \to C_{k+1}\)</span>. Repeating, we eventually find a closed class: we either terminate before step <span class="math inline">\(m\)</span> at a closed class, or otherwise <span class="math inline">\(C_m\)</span> must be closed, as none of the previous <span class="math inline">\(m-1\)</span> classes can be accessible from it, by our earlier example.</p>
+<p><em>Solution.</em> For communicating classes <span class="math inline">\(C,D\)</span>, let’s write <span class="math inline">\(C \to D\)</span> if there is an <span class="math inline">\(i \in C\)</span> and <span class="math inline">\(j \in D\)</span> with <span class="math inline">\(i \to j\)</span>. Note that we can’t have both <span class="math inline">\(C \to D\)</span> and <span class="math inline">\(D \to C\)</span> if <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are distinct classes. This is because there would be <span class="math inline">\(i_1, j_2 \in C\)</span> and <span class="math inline">\(j_1, i_2 \in D\)</span> such that <span class="math inline">\(i_1 \to j_1 \to i_2 \to j_2 \to i_1\)</span>, so they would be the same class. Let’s also note that there are a finite number of classes <span class="math inline">\(m\)</span>.</p>
+<p>Pick a class <span class="math inline">\(C_1\)</span>. If <span class="math inline">\(C_1\)</span> is closed, we are done; otherwise <span class="math inline">\(C_1 \to C_2\)</span> for some other class <span class="math inline">\(C_2\)</span>. If <span class="math inline">\(C_2\)</span> is closed, we are done; otherwise <span class="math inline">\(C_2 \to C_3\)</span> for some class <span class="math inline">\(C_3\)</span> different to <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. (It can’t be <span class="math inline">\(C_1\)</span> by the argument above.) We repeat: if <span class="math inline">\(C_k\)</span> is closed, we are done; otherwise there’s a new class <span class="math inline">\(C_{k+1}\)</span> with <span class="math inline">\(C_k \to C_{k+1}\)</span>. We eventually find a closed class: we either terminate before step <span class="math inline">\(m\)</span> at a closed class, or otherwise <span class="math inline">\(C_m\)</span> must be closed, as none of the previous <span class="math inline">\(m-1\)</span> classes can be accessible from it, by our earlier argument.</p>
 </div>
 </div>
 <div class="subq">
 <p><strong>(b)</strong> Give an example of a Markov chain that has no closed communicating classes.</p>
 <div class="myanswers">
-<p><em>Solution.</em> By part (a), the state space must be infinite. Here’s one example: take <span class="math inline">\(\mathcal S = \mathbb Z\)</span>, and <span class="math inline">\(X_{n+1} = X_n + 1\)</span> with probability <span class="math inline">\(1\)</span>. There are no states <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> such that <span class="math inline">\(i \leftrightarrow j\)</span> except for states communicating with themselves, so each state is a separate class. But clearly there is no absorbing state.</p>
+<p><em>Solution.</em> By part (a), the state space must be infinite. Here’s one example: take <span class="math inline">\(\mathcal S = \mathbb Z\)</span>, and <span class="math inline">\(X_{n+1} = X_n + 1\)</span> with probability 1, so the Markov chain just marches up and up. There are no states <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> such that <span class="math inline">\(i \leftrightarrow j\)</span> (except for states communicating with themselves) so each state is a separate class. But clearly there is no absorbing state.</p>
 </div>
 </div>
 </div>
 <div class="myq">
 <p><strong>4.</strong> Prove or give a counterexample: The period of a state <span class="math inline">\(i\)</span> is the smallest <span class="math inline">\(d &gt; 0\)</span> such that <span class="math inline">\(p_{ii}(d) &gt; 0\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> The statement is not true. Here’s one counterexample:</p>
+<div class="figure" style="text-align: center"><span id="fig:counterexample"></span>
+<img src="math2750_files/figure-html/counterexample-1.png" alt="Transition diagram for a counterexample for Question 4." width="288" />
+<p class="caption">
+Figure 8.3: Transition diagram for a counterexample for Question 4.
+</p>
+</div>
+<p>We see that <span class="math inline">\(p_{00} = p_{00}(1) = 0\)</span>, but <span class="math inline">\(p_{00}(2) = \frac12 &gt; 0\)</span> (going via A) and <span class="math inline">\(p_{00}(3) = \frac12 &gt; 0\)</span> (going via B and C). Hence <span class="math inline">\(d_0 \leq \text{gcd}\{2,3\} = 1\)</span>, so <span class="math inline">\(d_0 = 1\)</span>, contradicting the statement in the question.</p>
+</div>
 </div>
 <div class="myq">
 <p><strong>5.</strong> Consider the simple random walk with <span class="math inline">\(p &lt; \frac12\)</span>, and let <span class="math inline">\(i &gt; 0\)</span>. Show that
 <span class="math inline">\(\eta_{i0} = i/(q-p)\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em> By conditioning on the first step, we have
+<span class="math display">\[ \eta_{i0} = 1 + p\eta_{i+1\,0} + q\eta_{i-1\,0} . \]</span>
+Either by solving this linear difference equation directly or by remembering the solution from when we did expected duration of the gambler’s ruin, the general solution is
+<span class="math display">\[ \eta_{i0} = A + B\rho^i + \frac{i}{q-p} , \]</span>
+where <span class="math inline">\(\rho = q/p &gt; 0\)</span>.</p>
+<p>We have one initial condition <span class="math inline">\(\eta_{00} = 0\)</span> (since we’re “already there”). This gives <span class="math inline">\(0 = A + B\)</span>, so we have
+<span class="math display">\[ \eta_{i0} = -B + B\rho^i + \frac{i}{q-p} = B(\rho^i - 1) + \frac{i}{q-p} . \]</span></p>
+<p>We now have to use the principle of the minimum non-negative solution. Since <span class="math inline">\(\rho &gt; 1\)</span>, we also have <span class="math inline">\(\rho^i - 1 &gt; 0\)</span>. Hence <span class="math inline">\(B\)</span> must be non-negative, to ensure the whole solution is non-negative, but we want <span class="math inline">\(B\)</span> to be as small as possible, to ensure minimality. Hence we must have <span class="math inline">\(B = 0\)</span>, finally giving the solution
+<span class="math display">\[ \eta_{i0} = \frac{i}{q-p} \]</span>
+as desired.</p>
+</div>
 </div>
 <div class="myq">
 <p><strong>6.</strong> Consider the Markov chain with the following transition matrix and transition diagram:</p>
@@ -316,7 +352,7 @@ Figure 8.2: Transition diagram for Question 2.
 <div class="figure" style="text-align: center"><span id="fig:Q45"></span>
 <img src="math2750_files/figure-html/Q45-1.png" alt="Transition diagram for Question 6." width="240" />
 <p class="caption">
-Figure 8.3: Transition diagram for Question 6.
+Figure 8.4: Transition diagram for Question 6.
 </p>
 </div>
 </div>
@@ -331,7 +367,7 @@ Figure 8.3: Transition diagram for Question 6.
 <div class="subq">
 <p><strong>(a)</strong> What is the probability that we hit state 2 before we hit state 3?</p>
 <div class="myanswers">
-<p><em>Solution.</em> Write <span class="math inline">\(k_i\)</span> for the probability we hit state <span class="math inline">\(2\)</span> before state <span class="math inline">\(3\)</span> starting from <span class="math inline">\(i\)</span>. Then clearly <span class="math inline">\(k_2 = 1\)</span> (since we’ve hit <span class="math inline">\(2\)</span> first) and <span class="math inline">\(k_3 = 0\)</span> (since we’ve hit <span class="math inline">\(3\)</span> first). Further, by conditioning on the first step, <span class="math inline">\(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\)</span>, and
+<p><em>Solution.</em> Write <span class="math inline">\(k_i\)</span> for the probability we hit state 2 before state 3 starting from <span class="math inline">\(i\)</span>. Then clearly <span class="math inline">\(k_2 = 1\)</span> (since we’ve hit 2 first) and <span class="math inline">\(k_3 = 0\)</span> (since we’ve hit 3 first). Further, by conditioning on the first step, <span class="math inline">\(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\)</span>, and
 <span class="math display">\[ k_1 = \tfrac14 k_2 + \tfrac12k_3 + \tfrac14 k_4   = \tfrac14 + \tfrac14 k_4 = \tfrac14 + \tfrac14\tfrac13 = \tfrac13 . \]</span>
 The desired solution is <span class="math inline">\(k_1 = \frac13\)</span>.</p>
 </div>
@@ -339,7 +375,7 @@ The desired solution is <span class="math inline">\(k_1 = \frac13\)</span>.</p>
 <div class="subq">
 <p><strong>(b)</strong> What is the expected time until we hit a state in the set <span class="math inline">\(\{2,3\}\)</span>?</p>
 <div class="myanswers">
-<p>Let <span class="math inline">\(A = \{2,3\}\)</span>, and <span class="math inline">\(\eta_{iA}\)</span> be the expected time until hitting the first of states <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span> starting from <span class="math inline">\(i\)</span>. Clearly <span class="math inline">\(\eta_{2A} = \eta_{3A} = 0\)</span>. By conditioning on the first step, <span class="math inline">\(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\)</span>, and
+<p><em>Solution.</em> Let <span class="math inline">\(A = \{2,3\}\)</span>, and <span class="math inline">\(\eta_{iA}\)</span> be the expected time until hitting the first of states <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span> starting from <span class="math inline">\(i\)</span>. Clearly <span class="math inline">\(\eta_{2A} = \eta_{3A} = 0\)</span>. By conditioning on the first step, <span class="math inline">\(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\)</span>, and
 <span class="math display">\[ \eta_{1A} = 1 + \tfrac14 \eta_{2A} + \tfrac12\eta_{3A} + \tfrac14 \eta_{4A} = 1 + \tfrac14 = \tfrac54 .        \]</span>
 The desired solution is <span class="math inline">\(\eta_{1A} = \tfrac54\)</span>.</p>
 </div>
@@ -353,7 +389,7 @@ The desired solution is <span class="math inline">\(\eta_{1A} = \tfrac54\)</span
         </div>
       </div>
 <a href="S08-hitting-times.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S09-recurrence-transience.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -131,8 +131,8 @@ Let $d_i$ be the expected duration of the game from the point Alice has £$i$.
 \mathbb P(\text{win first round}) \,\mathbb E(\text{duration} \mid \text{win first round}) \\
 &\qquad {}+ \mathbb P(\text{draw first round}) \,\mathbb E(\text{duration} \mid \text{draw first round}) \\
 &\qquad {}+ \mathbb P(\text{lose first round}) \,\mathbb E(\text{duration} \mid \text{lose first round}) \\
-&= p(1 + d_{i+1}) + s(1 + d_i) + p(1 + r_{i-1}) \\
-&= 1 + pd_{i+1} + sd_i + pr_{i-1}. \end{align}
+&= p(1 + d_{i+1}) + s(1 + d_i) + p(1 + rd{i-1}) \\
+&= 1 + pd_{i+1} + sd_i + pd_{i-1}. \end{align}
 For the first term, for example, the question tells us the probability Alice wins a round is $p$. Then Alice goes up to £$(i+1)$, and this takes 1 time step. But by the Markov property, it's like she's starting anew from $i+1$, so the duration after that 1 time step is then $d_{i+1}$. The other two terms work the same way. Rearranging this gives
 \[ pd_{i+1} - (1-s)d_i + pd_{i-1} = -1 \]
 as required.</span>

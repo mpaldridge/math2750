@@ -64,7 +64,7 @@ Consider the following simple model for an epidemic. We have three states: healt
 p_{\mathrm{SH}} & p_{\mathrm{SS}} & p_{\mathrm{SD}} \\ 0 & 0 & 1 \end{pmatrix} ,    \]
 and the transition diagram is:
 
-```{tikz HSD, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition for the healthy--sick--dead chain.", cache = TRUE}
+```{tikz HSD, echo=FALSE, fig.align="center", fig.width=4, fig.cap="Transition diagram for the healthy--sick--dead chain.", cache = TRUE}
 \usetikzlibrary{automata}
 	\begin{tikzpicture}[scale=0.75]
 	\node[state] (H) at (0,0) {H};
@@ -154,7 +154,7 @@ For the gambler's ruin, states $0$ and $m$ are aperiodic (have period $1$), sinc
 ::: {.example #weird-period}
 Consider the Markov chain with transition diagram as shown:
 
-```{tikz periods, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition for an aperiodic irreducible Markov chain.", cache = TRUE}
+```{tikz periods, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram for an aperiodic irreducible Markov chain.", cache = TRUE}
 \usetikzlibrary{automata}
 		\begin{tikzpicture}[scale=1.2]
 		\node[state] (1) at (0,0) {$2$};

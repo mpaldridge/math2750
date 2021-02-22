@@ -31,6 +31,7 @@ display: none !important;
 </style>
 
 
+
 \commfalse
 
 
@@ -154,7 +155,7 @@ Consider the Markov chain with state space $\mathcal S = \{1,2,3,4,5\}$ and tran
 **(b)** Show that the chain is irreducible.
 
 ::: {.myanswers data-latex=""}
-*Solution.* We have paths $1 \to 2 \to 4 \to 1$ and $1 \to 3 \to 5 \to 1$, so every state communicates with state 1, so by transitivity every state communicates with every other state.
+*Solution.* We have paths $1 \to 2 \to 4 \to 1$ and $1 \to 3 \to 5 \to 1$, so every state communicates with state 1, and by transitivity every state communicates with every other state.
 :::
 ::::
 
@@ -183,9 +184,9 @@ Consider the Markov chain with state space $\mathcal S = \{1,2,3,4,5\}$ and tran
 **(a)** Show that every Markov chain on a finite state space $\mathcal S$ has at least one closed communicating class.
 
 ::: {.myanswers data-latex=""}
-*Solution.* For communicating classes $C,D$, let's write $C \to D$ if there is an $i \in C$ and $j \in D$ with $i \to j$. Note that we can't have both $C \to D$ and $D \to C$ is $C$ and $D$ are distinct classes. This is because there would be $i_1, j_2 \in C$ and $i_2, j_1 \in D$ such that $i_1 \to i_2 \to j_1 \to j_2 \to i_1$, so they would be the same class. Let's also note that there are a finite number of classes $m$.
+*Solution.* For communicating classes $C,D$, let's write $C \to D$ if there is an $i \in C$ and $j \in D$ with $i \to j$. Note that we can't have both $C \to D$ and $D \to C$ if $C$ and $D$ are distinct classes. This is because there would be $i_1, j_2 \in C$ and $j_1, i_2 \in D$ such that $i_1 \to j_1 \to i_2 \to j_2 \to i_1$, so they would be the same class. Let's also note that there are a finite number of classes $m$.
 		
-Pick a class $C_1$. If $C_1$ is closed, we are done; otherwise $C_1 \to C_2$ for some other class $C_2$. If $C_2$ is closed, we are done; otherwise $C_2 \to C_3$ for some class $C_3$ different to $C_1$ and $C_2$. (It can't be $C_1$ by the arguemnt.) We repeat: if $C_k$ is closed, we are done; otherwise there's a new class $C_{k+1}$ with $C_k \to C_{k+1}$. Repeating, we eventually find a closed class: we either terminate before step $m$ at a closed class, or otherwise $C_m$ must be closed, as none of the previous $m-1$ classes can be accessible from it, by our earlier example.
+Pick a class $C_1$. If $C_1$ is closed, we are done; otherwise $C_1 \to C_2$ for some other class $C_2$. If $C_2$ is closed, we are done; otherwise $C_2 \to C_3$ for some class $C_3$ different to $C_1$ and $C_2$. (It can't be $C_1$ by the argument above.) We repeat: if $C_k$ is closed, we are done; otherwise there's a new class $C_{k+1}$ with $C_k \to C_{k+1}$. We eventually find a closed class: we either terminate before step $m$ at a closed class, or otherwise $C_m$ must be closed, as none of the previous $m-1$ classes can be accessible from it, by our earlier argument.
 :::
 ::::
 
@@ -193,18 +194,54 @@ Pick a class $C_1$. If $C_1$ is closed, we are done; otherwise $C_1 \to C_2$ for
 **(b)** Give an example of a Markov chain that has no closed communicating classes.
 
 ::: {.myanswers data-latex=""}
-*Solution.* By part (a), the state space must be infinite. Here's one example: take $\mathcal S = \mathbb Z$, and $X_{n+1} = X_n + 1$ with probability $1$. There are no states $i$ and $j$ such that $i \leftrightarrow j$ except for states communicating with themselves, so each state is a separate class. But clearly there is no absorbing state.
+*Solution.* By part (a), the state space must be infinite. Here's one example: take $\mathcal S = \mathbb Z$, and $X_{n+1} = X_n + 1$ with probability 1, so the Markov chain just marches up and up. There are no states $i$ and $j$ such that $i \leftrightarrow j$ (except for states communicating with themselves) so each state is a separate class. But clearly there is no absorbing state.
 :::
 ::::
 :::::
 
 :::: {.myq}
 **4.** Prove or give a counterexample: The period of a state $i$ is the smallest $d > 0$ such that $p_{ii}(d) > 0$.
+
+::: {.myanswers data-latex=""}
+*Solution.* The statement is not true. Here's one counterexample:
+
+```{tikz counterexample, echo=FALSE, fig.align="center", fig.width=3, fig.cap="Transition diagram for a counterexample for Question 4.", cache = TRUE}
+\usetikzlibrary{automata}
+		\begin{tikzpicture}[scale=1.2]
+		\node[state] (4) at (2.83,0) {A};
+		\node[state] (5) at (4.83,0) {$0$};
+		\node[state] (6) at (6.56,1) {B};
+		\node[state] (7) at (6.56,-1) {C};
+    \path[->] (4) edge[bend right] node [below]{$1$} (5);
+    \path[->] (5) edge[bend right] node [above]{$\tfrac12$} (4);
+    \path[->] (5) edge node [above left]{$\tfrac12$} (6);
+    \path[->] (6) edge node [right]{$1$} (7);
+    \path[->] (7) edge node [below left]{$1$} (5);
+		\end{tikzpicture}
+```
+
+We see that $p_{00} = p_{00}(1) = 0$, but $p_{00}(2) = \frac12 > 0$ (going via A) and $p_{00}(3) = \frac12 > 0$ (going via B and C). Hence $d_0 \leq \text{gcd}\{2,3\} = 1$, so $d_0 = 1$, contradicting the statement in the question.
+:::
 ::::
 
 :::: {.myq}
 **5.** Consider the simple random walk with $p < \frac12$, and let $i > 0$. Show that
 $\eta_{i0} = i/(q-p)$.
+
+::: {.myanswers data-latex=""}
+*Solution.* By conditioning on the first step, we have
+\[ \eta_{i0} = 1 + p\eta_{i+1\,0} + q\eta_{i-1\,0} . \]
+Either by solving this linear difference equation directly or by remembering the solution from when we did expected duration of the gambler's ruin, the general solution is
+\[ \eta_{i0} = A + B\rho^i + \frac{i}{q-p} , \]
+where $\rho = q/p > 0$.
+
+We have one initial condition $\eta_{00} = 0$ (since we're "already there"). This gives $0 = A + B$, so we have
+\[ \eta_{i0} = -B + B\rho^i + \frac{i}{q-p} = B(\rho^i - 1) + \frac{i}{q-p} . \]
+
+We now have to use the principle of the minimum non-negative solution. Since $\rho > 1$, we also have $\rho^i - 1 > 0$. Hence $B$ must be non-negative, to ensure the whole solution is  non-negative, but we want $B$ to be as small as possible, to ensure minimality. Hence we must have $B = 0$, finally giving the solution
+\[ \eta_{i0} = \frac{i}{q-p} \]
+as desired.
+:::
 ::::
 
 ::::: {.myq}
@@ -247,7 +284,7 @@ The Markov chain starts from state 1.
 **(a)** What is the probability that we hit state 2 before we hit state 3?
 
 ::: {.myanswers data-latex=""}
-*Solution.* Write $k_i$ for the probability we hit state $2$ before state $3$ starting from $i$. Then clearly $k_2 = 1$ (since we've hit $2$ first) and $k_3 = 0$ (since we've hit $3$ first). Further, by conditioning on the first step, $k_4 = \frac13 k_2 + \frac23 k_3 = \frac13$, and
+*Solution.* Write $k_i$ for the probability we hit state 2 before state 3 starting from $i$. Then clearly $k_2 = 1$ (since we've hit 2 first) and $k_3 = 0$ (since we've hit 3 first). Further, by conditioning on the first step, $k_4 = \frac13 k_2 + \frac23 k_3 = \frac13$, and
 \[ k_1 = \tfrac14 k_2 + \tfrac12k_3 + \tfrac14 k_4   = \tfrac14 + \tfrac14 k_4 = \tfrac14 + \tfrac14\tfrac13 = \tfrac13 . \]
 The desired solution is $k_1 = \frac13$.
 :::
@@ -257,7 +294,7 @@ The desired solution is $k_1 = \frac13$.
 **(b)** What is the expected time until we hit a state in the set $\{2,3\}$?
 
 ::: {.myanswers data-latex=""}
-Let $A = \{2,3\}$, and $\eta_{iA}$ be the expected time until hitting the first of states $2$ and $3$ starting from $i$. Clearly $\eta_{2A} = \eta_{3A} = 0$. By conditioning on the first step, $\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1$, and
+*Solution.* Let $A = \{2,3\}$, and $\eta_{iA}$ be the expected time until hitting the first of states $2$ and $3$ starting from $i$. Clearly $\eta_{2A} = \eta_{3A} = 0$. By conditioning on the first step, $\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1$, and
 \[ \eta_{1A} = 1 + \tfrac14 \eta_{2A} + \tfrac12\eta_{3A} + \tfrac14 \eta_{4A} = 1 + \tfrac14 = \tfrac54 .        \]
 The desired solution is $\eta_{1A} = \tfrac54$.
 :::

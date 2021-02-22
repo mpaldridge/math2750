@@ -2265,7 +2265,7 @@ and the transition diagram is:
 
 }
 
-\caption{Transition for the healthy--sick--dead chain.}\label{fig:HSD}
+\caption{Transition diagram for the healthy--sick--dead chain.}\label{fig:HSD}
 \end{figure}
 
 Clearly H and S communicate with each other (you can become infected or recover), while D only communicates with itself (the dead do not recover). Hence, the state space \(\mathcal S = \{\mathrm{H},\mathrm{S},\mathrm{D}\}\) partitions into two communicating classes: \(\{\mathrm{H},\mathrm{S}\}\) and \(\{\mathrm{D}\}\).
@@ -2359,7 +2359,7 @@ Consider the Markov chain with transition diagram as shown:
 
 }
 
-\caption{Transition for an aperiodic irreducible Markov chain.}\label{fig:periods}
+\caption{Transition diagram for an aperiodic irreducible Markov chain.}\label{fig:periods}
 \end{figure}
 
 Importantly, we can't return from the triangle side back to the circle side. We thus see there are two communicating classes: \(\{1,2,3,4\}\), which is open, and \(\{5,6,7\}\), which is closed. The Markov chain is not irreducible, and there are no absorbing states.
@@ -2725,7 +2725,7 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 
 \begin{myanswers}
 
-\emph{Solution.} We have paths \(1 \to 2 \to 4 \to 1\) and \(1 \to 3 \to 5 \to 1\), so every state communicates with state 1, so by transitivity every state communicates with every other state.
+\emph{Solution.} We have paths \(1 \to 2 \to 4 \to 1\) and \(1 \to 3 \to 5 \to 1\), so every state communicates with state 1, and by transitivity every state communicates with every other state.
 
 \end{myanswers}
 
@@ -2751,9 +2751,9 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 
 \begin{myanswers}
 
-\emph{Solution.} For communicating classes \(C,D\), let's write \(C \to D\) if there is an \(i \in C\) and \(j \in D\) with \(i \to j\). Note that we can't have both \(C \to D\) and \(D \to C\) is \(C\) and \(D\) are distinct classes. This is because there would be \(i_1, j_2 \in C\) and \(i_2, j_1 \in D\) such that \(i_1 \to i_2 \to j_1 \to j_2 \to i_1\), so they would be the same class. Let's also note that there are a finite number of classes \(m\).
+\emph{Solution.} For communicating classes \(C,D\), let's write \(C \to D\) if there is an \(i \in C\) and \(j \in D\) with \(i \to j\). Note that we can't have both \(C \to D\) and \(D \to C\) if \(C\) and \(D\) are distinct classes. This is because there would be \(i_1, j_2 \in C\) and \(j_1, i_2 \in D\) such that \(i_1 \to j_1 \to i_2 \to j_2 \to i_1\), so they would be the same class. Let's also note that there are a finite number of classes \(m\).
 
-Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2\) for some other class \(C_2\). If \(C_2\) is closed, we are done; otherwise \(C_2 \to C_3\) for some class \(C_3\) different to \(C_1\) and \(C_2\). (It can't be \(C_1\) by the arguemnt.) We repeat: if \(C_k\) is closed, we are done; otherwise there's a new class \(C_{k+1}\) with \(C_k \to C_{k+1}\). Repeating, we eventually find a closed class: we either terminate before step \(m\) at a closed class, or otherwise \(C_m\) must be closed, as none of the previous \(m-1\) classes can be accessible from it, by our earlier example.
+Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2\) for some other class \(C_2\). If \(C_2\) is closed, we are done; otherwise \(C_2 \to C_3\) for some class \(C_3\) different to \(C_1\) and \(C_2\). (It can't be \(C_1\) by the argument above.) We repeat: if \(C_k\) is closed, we are done; otherwise there's a new class \(C_{k+1}\) with \(C_k \to C_{k+1}\). We eventually find a closed class: we either terminate before step \(m\) at a closed class, or otherwise \(C_m\) must be closed, as none of the previous \(m-1\) classes can be accessible from it, by our earlier argument.
 
 \end{myanswers}
 
@@ -2761,14 +2761,48 @@ Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2
 
 \begin{myanswers}
 
-\emph{Solution.} By part (a), the state space must be infinite. Here's one example: take \(\mathcal S = \mathbb Z\), and \(X_{n+1} = X_n + 1\) with probability \(1\). There are no states \(i\) and \(j\) such that \(i \leftrightarrow j\) except for states communicating with themselves, so each state is a separate class. But clearly there is no absorbing state.
+\emph{Solution.} By part (a), the state space must be infinite. Here's one example: take \(\mathcal S = \mathbb Z\), and \(X_{n+1} = X_n + 1\) with probability 1, so the Markov chain just marches up and up. There are no states \(i\) and \(j\) such that \(i \leftrightarrow j\) (except for states communicating with themselves) so each state is a separate class. But clearly there is no absorbing state.
 
 \end{myanswers}
 
 \textbf{4.} Prove or give a counterexample: The period of a state \(i\) is the smallest \(d > 0\) such that \(p_{ii}(d) > 0\).
 
+\begin{myanswers}
+
+\emph{Solution.} The statement is not true. Here's one counterexample:
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/counterexample-1} 
+
+}
+
+\caption{Transition diagram for a counterexample for Question 4.}\label{fig:counterexample}
+\end{figure}
+
+We see that \(p_{00} = p_{00}(1) = 0\), but \(p_{00}(2) = \frac12 > 0\) (going via A) and \(p_{00}(3) = \frac12 > 0\) (going via B and C). Hence \(d_0 \leq \text{gcd}\{2,3\} = 1\), so \(d_0 = 1\), contradicting the statement in the question.
+
+\end{myanswers}
+
 \textbf{5.} Consider the simple random walk with \(p < \frac12\), and let \(i > 0\). Show that
 \(\eta_{i0} = i/(q-p)\).
+
+\begin{myanswers}
+
+\emph{Solution.} By conditioning on the first step, we have
+\[ \eta_{i0} = 1 + p\eta_{i+1\,0} + q\eta_{i-1\,0} . \]
+Either by solving this linear difference equation directly or by remembering the solution from when we did expected duration of the gambler's ruin, the general solution is
+\[ \eta_{i0} = A + B\rho^i + \frac{i}{q-p} , \]
+where \(\rho = q/p > 0\).
+
+We have one initial condition \(\eta_{00} = 0\) (since we're ``already there''). This gives \(0 = A + B\), so we have
+\[ \eta_{i0} = -B + B\rho^i + \frac{i}{q-p} = B(\rho^i - 1) + \frac{i}{q-p} . \]
+
+We now have to use the principle of the minimum non-negative solution. Since \(\rho > 1\), we also have \(\rho^i - 1 > 0\). Hence \(B\) must be non-negative, to ensure the whole solution is non-negative, but we want \(B\) to be as small as possible, to ensure minimality. Hence we must have \(B = 0\), finally giving the solution
+\[ \eta_{i0} = \frac{i}{q-p} \]
+as desired.
+
+\end{myanswers}
 
 \textbf{6.} Consider the Markov chain with the following transition matrix and transition diagram:
 
@@ -2792,7 +2826,7 @@ The Markov chain starts from state 1.
 
 \begin{myanswers}
 
-\emph{Solution.} Write \(k_i\) for the probability we hit state \(2\) before state \(3\) starting from \(i\). Then clearly \(k_2 = 1\) (since we've hit \(2\) first) and \(k_3 = 0\) (since we've hit \(3\) first). Further, by conditioning on the first step, \(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\), and
+\emph{Solution.} Write \(k_i\) for the probability we hit state 2 before state 3 starting from \(i\). Then clearly \(k_2 = 1\) (since we've hit 2 first) and \(k_3 = 0\) (since we've hit 3 first). Further, by conditioning on the first step, \(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\), and
 \[ k_1 = \tfrac14 k_2 + \tfrac12k_3 + \tfrac14 k_4   = \tfrac14 + \tfrac14 k_4 = \tfrac14 + \tfrac14\tfrac13 = \tfrac13 . \]
 The desired solution is \(k_1 = \frac13\).
 
@@ -2802,9 +2836,816 @@ The desired solution is \(k_1 = \frac13\).
 
 \begin{myanswers}
 
-Let \(A = \{2,3\}\), and \(\eta_{iA}\) be the expected time until hitting the first of states \(2\) and \(3\) starting from \(i\). Clearly \(\eta_{2A} = \eta_{3A} = 0\). By conditioning on the first step, \(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\), and
+\emph{Solution.} Let \(A = \{2,3\}\), and \(\eta_{iA}\) be the expected time until hitting the first of states \(2\) and \(3\) starting from \(i\). Clearly \(\eta_{2A} = \eta_{3A} = 0\). By conditioning on the first step, \(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\), and
 \[ \eta_{1A} = 1 + \tfrac14 \eta_{2A} + \tfrac12\eta_{3A} + \tfrac14 \eta_{4A} = 1 + \tfrac14 = \tfrac54 .        \]
 The desired solution is \(\eta_{1A} = \tfrac54\).
+
+\end{myanswers}
+
+\hypertarget{S09-recurrence-transience}{%
+\section{Recurrence and transience}\label{S09-recurrence-transience}}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition of properties of recurrence and transience
+\item
+  Recurrence and transience as class properties
+\item
+  Positive and null recurrence
+\end{itemize}
+
+\hypertarget{rec-trans-def}{%
+\subsection{Recurrent and transient states}\label{rec-trans-def}}
+
+When thinking about the long-run behaviour of Markov chains, it's useful to classify two different types of states: ``recurrent'' states and ``transient'' states.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+Recurrent states\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Transient states\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+If we ever visit \(i\), then we keep returning to \(i\) again and again\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+We might visit \(i\) a few times, but eventually we leave \(i\) and never come back\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Starting from \(i\), the expected number of visits to \(i\) is infinite\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+Starting from \(i\), the expected number of visits to \(i\) is finite\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Starting from \(i\), the number of visits to \(i\) is certain to be infinite\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+Starting from \(i\), the number of visits to \(i\) is certain to be finite\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+The return probability \(m_i\) equals 1\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+The return probability \(m_i\) is strictly less than 1\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+We'll take the last one of these, about the return probability, as the definition, then prove that the others follow.
+
+\begin{definition}
+\protect\hypertarget{def:unlabeled-div-3}{}\label{def:unlabeled-div-3}
+
+Let \((X_n)\) be a Markov chain on a state space \(\mathcal S\). For \(i \in \mathcal S\), let \(m_i\) be the return probability
+\[ m_i = \mathbb P(X_n = i \text{ for some $n \geq 1$} \mid X_0 = i) . \]
+If \(m_i = 1\), we say that state \(i\) is \textbf{recurrent}; if \(m_i < 1\), we say that state \(i\) is \textbf{transient}.
+
+\end{definition}
+
+Before stating this theorem, let us note that, from the point we're at state \(i\), the expected number of visits to \(i\) is
+\[
+\mathbb E(\#\text{ visits to $i$} \mid X_0 = i) = \sum_{n=0}^\infty \mathbb P(X_n = i \mid X_0 = i) = \sum_{n=1}^\infty p_{ii}(n) .
+\]
+
+\begin{theorem}
+\protect\hypertarget{thm:rectran}{}\label{thm:rectran}
+
+Consider a Markov chain with transition matrix \(\mathsf P\).
+
+\begin{itemize}
+\tightlist
+\item
+  If the state \(i\) is recurrent, then \(\sum_{n=1}^\infty p_{ii}(n) = \infty\), and we return to state \(i\) infinitely many times with probability 1.
+\item
+  If the state \(i\) is transient, then \(\sum_{n=1}^\infty p_{ii}(n) < \infty\), and we return to state \(i\) infinitely many times with probability 0.
+\end{itemize}
+
+\end{theorem}
+
+We'll come to the proof in a moment, but first some examples.
+
+\begin{example}
+\protect\hypertarget{exm:rw-rec-trans}{}\label{exm:rw-rec-trans}
+
+Consider the simple random walk. \protect\hyperlink{S08-return-rw}{In the last section} we saw that for the simple symmetric random walk with \(p = \frac12\) we have \(m_i = 1\), so the simple symmetric random walk is recurrent, but for \(p \neq \frac12\) we have \(m_i < 1\), so all the other simple random walks are transient.
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:rec}{}\label{exm:rec}
+
+We saw this chain previously as Example \ref{exm:weird-period}:
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/periods-recap-1} 
+
+}
+
+\caption{Transition diagram from Subsection 7.2.}\label{fig:periods-recap}
+\end{figure}
+
+For states 5, 6 and 7, it's clear that the return probability is 1, since the Markov chain cycles around the triangle, so these states are recurrent.
+
+States 1, 2, 3 and 4 are transient. In a moment we'll see a very quick way to show this, but in the meantime we can prove it directly by getting our hands dirty.
+
+From state 4, we might go straight to state 5, in which case we can't come back, so \(m_4 \leq 1 - p_{45} = \frac23\), and state 4 is transient. Similarly, if we move from 1 to 4 to 5, we definitely won't come back to 1, so \(m_1 \leq 1 - p_{14}p_{45} = \frac56\), and state 1 is transient. By the similar arguments, \(m_3 \leq 1 - p_{34}p_{45} = \frac56\), and \(m_2 \leq 1 - p_{21}p_{14}p_{45} = \frac{11}{12}\), so these states are both transient too.
+
+\end{example}
+
+Notice that all states in the communicating class \(\{1,2,3,4\}\) are transient, while all states in the communicating class \(\{5,6,7\}\) are recurrent. We shall return to this point shortly. But first, we've put off the proof for too long.
+
+\begin{proof}[Proof of Theorem \ref{thm:rectran}]
+
+Suppose state \(i\) is recurrent. So starting from \(i\), the probability we return is \(m_i = 1\). After that return, it's as if we restart the chain from \(i\), because of the Markov property -- so the probability we return to \(i\) is again still \(m_i = 1\). Repeating this, we keep on returning, definitely visit infinitely often (with probability 1). In particular, since the number of visits to \(i\) starting from \(i\) is always infinite, its expectation is infinite too, and this expectation is \(\sum_{n=1}^\infty p_{ii}(n) = \infty\).
+
+Suppose, on the other hand, that state \(i\) is transient. So starting from \(i\) the probability we return is \(m_i < 1\). Then the probability we return to \(i\) exactly \(r\) times before never coming back is
+\[  \mathbb P \big((\text{number of returns to $i$}) = r\big) = m_i^r(1-m_i) , \]
+since we must return on the first \(r\) occasions, but then fail to return on the next occasion.. This is a geometric distribution \(\text{Geom}(1-m_i)\) (the version with support \(\{0,1,2,\dots\}\)). Since the expectation of this type of \(\text{Geom}(p)\) random variable is \((1 - p)/p\), the expected number of returns is
+\[ \mathbb E(\text{number of returns to $i$}) = \sum_{n=1}^\infty p_{ii}(n)  = \frac{1 - (1 - m_i)}{1 - m_i} = \frac{m_i}{1 - m_i} . \]
+This is finite, since \(m_i <1\). Since the expected number of returns is finite, the probability we return infinitely many times must be 0.
+
+\end{proof}
+
+\hypertarget{rec-tran-classes}{%
+\subsection{Recurrent and transient classes}\label{rec-tran-classes}}
+
+We could find whether each state is transient or recurrent by calculating (or bounding) all the return probabilities \(m_i\), using the methods in \protect\hyperlink{S08-hitting-times}{the previous section}. But the following two theorems will give some highly convenient short-cuts.
+
+\begin{theorem}
+\protect\hypertarget{thm:unlabeled-div-5}{}\label{thm:unlabeled-div-5}
+
+Within a communicating class, either every state is transient or every state is recurrent.
+
+Formally: Let \(i, j \in \mathcal S\) be such that \(i \leftrightarrow j\). If \(i\) is recurrent, then \(j\) is recurrent also; while if \(i\) is transient, then \(j\) transient also.
+
+\end{theorem}
+
+For this reason, we can refer to a communicating class as a ``recurrent class'' or a ``transient class''. If a Markov chain is irreducible, we can refer to it as a ``recurrent Markov chain'' or a ``transient Markov chain''.
+
+\begin{proof}
+
+\emph{First part.} Suppose \(i \leftrightarrow j\) and \(i\) is recurrent. Then, for some \(n\), \(m\) we have \(p_{ij}(n)\), \(p_{ji}(m) > 0\). Then, by the Chapman--Kolmogorov equations,
+\begin{align*}
+\sum_{r=1}^\infty p_{jj}(n+m+r)
+&\geq \sum_{r=1}^\infty p_{ji}(m)p_{ii}(r) p_{ij}(n) \\
+&= p_{ji}^{(m)} \left(\sum_{r=1}^\infty p_{ii}(r) \right) p_{ij}(n) .
+\end{align*}
+If \(i\) is recurrent, then \(\sum_r p_{ii}(r) = \infty\). Then from the above equation, we also have \(\sum_r p_{jj}(n+m+r) = \infty\), meaning \(\sum_s p_{jj}(s) = \infty\), and \(j\) is recurrent.
+
+\emph{Second part.} Suppose \(i\) is transient. Then \(j\) cannot be recurrent, because if it were, the previous argument with \(i\) and \(j\) swapped over would force \(i\) to in fact be recurrent also. So \(j\) must be transient.
+
+\end{proof}
+
+\begin{theorem}
+\protect\hypertarget{thm:unlabeled-div-7}{}\label{thm:unlabeled-div-7}
+
+~
+
+\begin{itemize}
+\tightlist
+\item
+  Every non-closed communicating class is transient.
+\item
+  Every finite closed communicating class is recurrent.
+\end{itemize}
+
+\end{theorem}
+
+This theorem completely classifies the transience and recurrence of classes, with rare exception of infinite closed classes, which can require further examination.
+
+\begin{proof}
+
+\emph{First part.} Suppose \(i\) is in a non-closed communicating class, so for some \(j\) we have \(i \to j\), meaning \(p_{ij}(n) > 0\) for some \(n\), but \(j \not\to i\), meaning that once we reach \(j\) we cannot return to \(i\). We need to show that \(i\) is transient.
+
+Consider the probability we return to \(i\) after time \(n\). We condition on whether \(X_n = j\) or not. This gives
+\begin{align*}
+\mathbb P(\text{return} & \text{ to } i \text{ after time $n$} \mid X_0 = i) \\
+&= p_{ij}(n)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) \\
+&\qquad {}+ \big(1 - p_{ij}(n)\big)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n \neq j, X_0 = i) \\
+&\leq \mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) +  \big(1 - p_{ij}(n)\big) \\
+= 0 + \big(1 - p_{ij}(n)\big) \\
+&< 1,
+\end{align*}
+since we can't get from \(j\) to \(i\), and since \(p_{ij}(n) > 0\). If \(i\) were recurrent we would certainly return infinitely often, and in particular certainly return after time \(n\). So \(i\) must be transient instead.
+
+\emph{Second part.} Suppose the class \(C\) is finite and closed. Then there must be an \(i \in C\) such that, once we visit \(i\), the probability that we return to \(i\) infinitely many times is strictly positive; this is because we are going to stay in the finitely many states of \(C\) for infinitely many time steps. Then that state \(i\) is not transient, so it must be recurrent, which means that the whole class is recurrent.
+
+\end{proof}
+
+Going back to the \protect\hyperlink{exm:rec}{earlier example}, we see that the class \(\{5,6,7\}\) is closed and finite, and therefore recurrent, while class \(\{1,2,3,4\}\) is not closed and therefore transient. This is much less effort than the previous method!
+
+\hypertarget{S09-positive-null}{%
+\subsection{Positive and null recurrence}\label{S09-positive-null}}
+
+It will be useful later to further divide recurrent classes, where the return probability \(m_i = 1\), by whether the expected return time \(\mu_i\) is finite or not. (Note that transient states always have \(\mu_i = \infty\).)
+
+\begin{definition}
+\protect\hypertarget{def:unlabeled-div-9}{}\label{def:unlabeled-div-9}
+
+Let \((X_n)\) be a Markov chain on a state space \(\mathcal S\). Let \(i \in \mathcal S\) be a recurrent state, so \(m_i = 1\), and let \(\mu_i\) be the expected return time.
+If \(\mu_i < \infty\), we say that state \(i\) is \textbf{positive recurrent}; if \(\mu_i = \infty\), we say that state \(i\) is \textbf{null recurrent}.
+
+\end{definition}
+
+The following facts can be proven in a similar way to the previous results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  In a recurrent class, either all states are positive recurrent or all states are null recurrent.
+\item
+  All finite closed classes are positive recurrent.
+\end{enumerate}
+
+The first result means we can refer to a ``positive recurrent class'' or a ``null recurrent class'', and an irreducible Markov chain can be a ``positive recurrent Markov chain'' or a ``null recurrent Markov chain''.
+
+Putting everything so far together, we have the following classification:
+
+\begin{itemize}
+\tightlist
+\item
+  non-closed classes are transient;
+\item
+  finite closed classes are positive recurrent;
+\item
+  infinite closed classes can be positive recurrent, null recurrent, or transient.
+\end{itemize}
+
+We know that the simple symmetric random walk is recurrent. We also saw in \protect\hyperlink{S08-return-rw}{the last section} that \(\mu_i = \infty\), so it is null recurrent.
+
+We can also consider the simple symmetric random walk in \(d\)-dimensions, on \(\mathbb Z^d\). At each step we pick one of the coordinates and increase or decrease it by one; each of the \(2d\) possibilities having probability \(1/(2d)\). We have seen that for \(d=1\) this is null recurrent. A famous result by the Hungarian mathematician George Pólya from 1921 states the simple symmetric random walk is null recurrent for \(d = 1\) and \(d = 2\), but is transient for \(d \geq 3\). (Perhaps this is why cars often crash into each other, but aeroplanes very rarely do?)
+
+\hypertarget{S09-strong-markov}{%
+\subsection{Strong Markov property}\label{S09-strong-markov}}
+
+\emph{This subsection is optional and nonexaminable.}
+
+There was a cheat somewhere earlier in this section -- did you notice it?
+
+The Markov property says that, if at some fixed time \(n\) we have \(X_n = i\), then the Markov chain from that point on is just like starting all over again from the state \(i\). When we applied this in the proof of Theorem \ref{thm:rectran}, we were using as \(n\) the first return to state \(i\). But that's not a fixed time -- it's a random time! Did we cheat?
+
+Actually we're fine. The reason is that the first return to \(i\) isn't just any old random time, it's a ``stopping time'', and the Markov property also applies to stopping times too. Roughly speaking, a stopping time is a random time which has the property that ``you know when you get there''.
+
+\begin{definition}
+\protect\hypertarget{def:stopping}{}\label{def:stopping}
+
+Let \((X_n)\) be a stochastic process in discrete time, and let \(T\) be a random time. Then \(T\) is a \textbf{stopping time} if for all \(n\), whether or not the event \(\{T = n\}\) occurs is completely determined by the random variables \(X_0, X_1, \dots, X_n\).
+
+\end{definition}
+
+So, for example:
+
+\begin{itemize}
+\tightlist
+\item
+  ``The first visit to state \(i\)'' is stopping time, because as soon as we reach \(i\), we know the value of \(T\).
+\item
+  ``Three time-steps after the second visit to \(j\)'' is a stopping time, because after our second visit we count on three more steps and have \(T\).
+\item
+  ``The time-step \emph{before} the first visit to \(i\)'' is not a stopping time, because we still need to go one step further on to know whether we had just been at time \(T\) or not.
+\item
+  ``The final visit to \(j\)'' is not a stopping time, because at the time of the visit we don't yet know whether we'll come back again or not.
+\end{itemize}
+
+There are lots of places in probability theory and finance when something that is true about a fixed time is also true about a random stopping time. When we use the Markov property with a stopping time, we call it the ``strong Markov property''.
+
+\begin{theorem}[Strong Markov property]
+\protect\hypertarget{thm:strong-markov}{}\label{thm:strong-markov}
+
+Let \((X_n)\) be a Markov chain on a state space \(\mathcal S\), and let \(T\) be a stopping time that is finite with probability 1. Then all states \(x_0, \dots,x_{T-1}, i, j \in \mathcal S\) we have
+\[  \mathbb P(X_{T+1}=j \mid X_T=i, X_{T-1} = x_{T-1} \dots, X_0 = x_0) = p_{ij} . \]
+
+\end{theorem}
+
+\begin{proof}
+
+We have
+\begin{align*}
+&\mathbb P(X_{T+1}={}x_j \mid X_T=i, X_{T-1} = x_{T-1} \dots, X_0 = x_0) \\
+&\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i, X_{n-1} = x_{n-1} \dots, X_0 = x_0, T = n) \\
+&\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i, X_{n-1} = x_{n-1} \dots, X_0 = x_0) \\
+&\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) \mathbb P(X_{n+1}=j \mid X_n=i) \\
+&\qquad{}= \sum_{n=0}^\infty \mathbb P(T = n) p_{ij}\\
+&\qquad{}= p_{ij} \sum_{n=0}^\infty \mathbb P(T = n) \\
+&\qquad{}= p_{ij} ,
+\end{align*}
+as desired. The second line was by conditioning on the value of \(T\); in the third line we deleted the superfluous conditioning \(T = n\), because \(T\) is a stopping time, so the event \(T = n\) is entirely decided by \(X_n, X_{n-1}, \dots, X_0\); the fourth line used the (usual non-strong) Markov property; the fifth line is just the definition of \(p_{ij}\); the sixth line took \(p_{ij}\) out of the sum; and the seventh line is because \(T\) is finite with probability 1, so \(\mathbb P(T = n)\) sums to 1.
+
+\end{proof}
+
+\hypertarget{S09-lemma}{%
+\subsection{A useful lemma}\label{S09-lemma}}
+
+\emph{This subsection is optional and nonexaminable.}
+
+The following lemma will be used in some later optional and nonexaminable proofs.
+
+\begin{lemma}
+\protect\hypertarget{lem:lemma}{}\label{lem:lemma}
+
+Let \((X_n)\) be an irreducible and recurrent Markov chain. Then for any initial distribution and any state \(j\), we will certainly hit \(j\), so the hitting time \(H_j\) is finite with probability 1.
+
+\end{lemma}
+
+\begin{proof}
+
+It suffices to prove the lemma when the initial distribution is ``start at \(i\)''. (We can repeat for all \(i\), then build any initial distribution from a weighted sum of ``start at \(i\)''s.)
+
+Since the chain is irreducible, we have \(j \to i\), so pick \(m\) with \(p_{ji}(m) > 0\). Since the chain is recurrent, we know the return probability from \(j\) to \(j\) is 1, and we return infinitely many times with probability 1. We just need to glue these two facts together.
+
+We have
+\begin{align*}
+1 &= \mathbb P(X_n = j \text{ for infinitely many $n$} \mid X_0 = j) \\
+&= \mathbb P(X_n = j \text{ for some $n > m$} \mid X_0 = j) \\
+&= \sum_k \mathbb P(X_m = k \mid X_0 = j) \,\mathbb P(X_n = j \text{ for some $n > m$} \mid X_m = k, X_0 = j) \\
+&= \sum_k p_{jk}(m) \,\mathbb P(H_j < \infty \mid X_0 = k) ,
+\end{align*}
+where the last line used the Markov property to treat the chain as starting over again when it reaches some state \(k\) at time \(m\). Note that \(\sum_k p_{jk}(m) = 1\), since that's the sum of the probabilities of going anywhere in \(m\) steps. This means we must have \(\mathbb P(H_j < \infty \mid X_0 = k)\) whenever \(p_{jk}(m) > 0\), to ensure the final line does indeed sum to 1. But we stated earlier that \(p_{ji}(m) > 0\), so we indeed have \(\mathbb P(H_j < \infty \mid X_0 = i)\), as required.
+
+\end{proof}
+
+\textbf{In the next section}, we look at how positive recurrent Markov chains can settle into a ``stationary distribution'' and experience long-term stability.
+
+\hypertarget{S10-stationary-distributions}{%
+\section{Stationary distributions}\label{S10-stationary-distributions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Stationary distributions and how to find them
+\item
+  Conditions for existence and uniqueness of the stationary distribution
+\end{itemize}
+
+\hypertarget{def-stationary-definition}{%
+\subsection{Definition of stationary distribution}\label{def-stationary-definition}}
+
+Consider \protect\hyperlink{S05-example}{the two-state ``broken printer'' Markov chain from Lecture 5}.
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/twostate3-1} 
+
+}
+
+\caption{Transition diagram for the two-state broken printer chain.}\label{fig:twostate3}
+\end{figure}
+
+Suppose we start the chain from the initial distribution
+\[ \lambda_0 = \mathbb P(X_0 = 0) = \frac{\beta}{\alpha+\beta} \qquad \lambda_1 = \mathbb P(X_0 = 1) = \frac{\alpha}{\alpha+\beta} . \]
+(You may recognise this from \protect\hyperlink{P03}{Question 3 on Problem Sheet 3 and the associated video}.) What's the distribution after step 1? By conditioning on the initial state, we have
+\begin{align*}
+  \mathbb P(X_1 = 0) &= \lambda_0 p_{00} + \lambda_1 p_{10} = \frac{\beta}{\alpha+\beta}(1-\alpha) + \frac{\alpha}{\alpha+\beta}\beta = \frac{\beta}{\alpha+\beta} ,\\
+  \mathbb P(X_1 = 1) &= \lambda_0 p_{01} + \lambda_1 p_{11} = \frac{\beta}{\alpha+\beta}\alpha + \frac{\alpha}{\alpha+\beta}(1-\beta) = \frac{\alpha}{\alpha+\beta} .
+\end{align*}
+So we're still in the same distribution we started in. By repeating the same calculation, we're still going to be in this distribution after step 2, and step 3, and forever.
+
+More generally, if we start from a state given by a distribution \(\boldsymbol \pi = (\pi_i)\), then after step 1 the probability we're in state \(j\) is \(\sum_i \pi_i p_{ij}\). So if \(\pi_j = \sum_i \pi_i p_{ij}\), we stay in this distribution forever. We call such a distribution a stationary distribution. We again recodnise this formula as a matrix--vector multiplication, so this is \(\boldsymbol \pi = \boldsymbol \pi\mathsf P\), where \(\boldsymbol \pi\) is a \emph{row} vector.
+
+\begin{definition}
+\protect\hypertarget{def:unlabeled-div-12}{}\label{def:unlabeled-div-12}
+
+Let \((X_n)\) be a Markov chain on a state space \(\mathcal S\) with transition matrix \(\mathsf P\).
+Let \(\boldsymbol \pi = (\pi_i)\) be a distribution on \(\mathcal S\), in that \(\pi_i \geq 0\) for all \(i \in \mathcal S\) and \(\sum_{i \in \mathcal S} \pi_i = 1\). We call \(\boldsymbol \pi\) a \textbf{stationary distribution} if
+\[ \pi_j = \sum_{i\in \mathcal S} \pi_i p_{ij} \quad \text{for all $j \in \mathcal S$,} \]
+or, equivalently, if \(\boldsymbol \pi = \boldsymbol \pi\mathsf P\).
+
+\end{definition}
+
+Note that we're saying the \emph{distribution} \(\mathbb P(X_n = i)\) stays the same; the Markov chain \((X_n)\) itself will keep moving. One way to think is that if we started off a thousand Markov chains, choosing each starting position to be \(i\) with probability \(\pi_i\), then (roughly) \(1000 \pi_j\) of them would be in state \(j\) at any time in the future -- but not necessarily the same ones each time.
+
+\hypertarget{find-stationary}{%
+\subsection{Finding a stationary distribution}\label{find-stationary}}
+
+Let's try an example. Consider \protect\hyperlink{S06-example1}{the no-claims discount Markov chain from Lecture 6} with state space \(\mathcal S=\{1,2,3\}\) and transition matrix
+\[ \mathsf P =\begin{pmatrix}
+    \tfrac14 &\tfrac34 & 0\\
+    \tfrac14 &0 & \tfrac34\\
+    0 &\tfrac14 & \tfrac34\\
+    \end{pmatrix} .\]
+
+We want to find a stationary distribution \(\boldsymbol \pi\), which must solve the equation \(\boldsymbol \pi =\boldsymbol \pi\mathsf P\), which is
+\[ \begin{pmatrix} \pi_1 & \pi_2 & \pi_3 \end{pmatrix}  = \begin{pmatrix} \pi_1 & \pi_2 & \pi_3 \end{pmatrix}  \begin{pmatrix}
+    \tfrac14 &\tfrac34 & 0\\
+    \tfrac14 &0 & \tfrac34\\
+    0 &\tfrac14 & \tfrac34\\
+    \end{pmatrix} .\]
+
+Writing out the equations coordinate at a time, we have
+\begin{align*}
+    \pi_1 &= \tfrac14\pi_1+\tfrac14\pi_2 , \\
+    \pi_2 &= \tfrac34\pi_1+\tfrac14\pi_3 , \\
+    \pi_3 &= \tfrac34\pi_2+\tfrac34\pi_3 . 
+    \end{align*}
+Since \(\boldsymbol\pi\) must be a distribution, we also have the ``normalising condition''
+\[ \pi_1+\pi_2+\pi_3=1 . \]
+
+The way to solve these equations is first to solve for all the variables \(\pi_i\) in terms of a convenient \(\pi_{j}\) (called the ``working variable'') and then substitute all of these expressions into the normalising condition to find a value for \(\pi_{j}\).
+
+Let's choose \(\pi_2\) as our working variable. It turns out that \(\boldsymbol\pi = \boldsymbol\pi \mathsf{P}\) always gives one more equation than we actually need, so we can discard one of them for free. Let's get rid of the second equation, and the solve the first and third equations in terms of our working variable \(\pi_2\), to get
+\begin{equation}
+\pi_1=\tfrac13\pi_2 \qquad \pi_3=3\pi_2 . \label{eq:statt}
+\end{equation}
+
+Now let's turn to the normalising condition. That gives
+\[ \pi_1+\pi_2+\pi_3 = \tfrac13\pi_2+\pi_2+3\pi_2 = \tfrac{13}{3} \pi_2 = 1 .\]
+So the working variable is solved to be \(\pi_2 = \frac{3}{13}\). Substituting this back into \eqref{eq:statt}, we have \(\pi_1=\tfrac13\pi_2 = \frac{1}{13}\) and \(\pi_3=3\pi_2 = \frac{9}{13}\). So the full solution is
+\[ \boldsymbol \pi = (\pi_1, \pi_2, \pi_3) = \left(\tfrac{1}{13}, \tfrac{3}{13}, \tfrac{9}{13}\right). \]
+
+The method we used here can be summarised as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write out \(\boldsymbol \pi = \boldsymbol \pi\mathsf P\) coordinate by coordinate. Discard one of the equations.
+\item
+  Select one of the \(\pi_i\) as a working variable and treat it as a parameter. Solve the equations in terms of the working variable.
+\item
+  Substitute the solution into the normalising condition to find the working variable, and hence the full solution.
+\end{enumerate}
+
+It can be good practice to use the equation discarded earlier to check that the calculated solution is indeed correct.
+
+One extra example for further practice and to show how you should present your solutions to such problems:
+
+\begin{example}
+\protect\hypertarget{exm:stationary-1}{}\label{exm:stationary-1}
+
+\emph{Consider a Markov chain on state space \(\mathcal S = \{1,2,3\}\) with transition matrix}
+\[ \mathsf P = \begin{pmatrix} \tfrac12 & \tfrac14& \frac14 \\
+                   \tfrac14& \frac12& \frac14 \\
+                   0       & \frac14 & \frac34 \end{pmatrix} . \]
+\emph{Find a stationary distribution for this Markov chain.}
+
+\emph{Step 1.} Writing out \(\boldsymbol \pi = \boldsymbol \pi\mathsf P\) coordinate-wise, we have
+\begin{align*}
+\pi_1 &= \tfrac12 \pi_1 + \tfrac14\pi_2 \\
+\pi_2 &= \tfrac14\pi_1 + \tfrac12\pi_2 + \tfrac14\pi_3 \\
+\pi_3 &= \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac34\pi_3 .
+\end{align*}
+We choose to discard the third equation.
+
+\emph{Step 2.} We choose \(\pi_1\) as our working variable. From the first equation we get \(\pi_2 = 2\pi_1\). From the second equation we get \(\pi_3 = 2\pi_2 - \pi_1\), and substituting the previous \(\pi_2 = 2\pi_1\) into this, we get \(\pi_3 = 3\pi_1\).
+
+\emph{Step 3.} The normalising condition is
+\[ \pi_1 + \pi_2 + \pi_3 = \pi_1 + 2\pi_1 + 3\pi_1 = 6\pi_1 = 1 . \]
+Therefore \(\pi_1 = \frac16\). Substituting this into our previous expressions, we get \(\pi_2 = 2\pi_1 = \frac13\) and \(\pi_3 = 3\pi_1 = \frac12\).
+Thus the solution is
+\(\boldsymbol\pi = ( \tfrac16, \tfrac13, \tfrac12 )\).
+
+We can check our answer with the discarded third equation, just to make sure we didn't make any mistakes. We get
+\[ \pi_3 = \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac34\pi_3 = \tfrac14\tfrac16 + \tfrac14\tfrac13+\tfrac34\tfrac12 = \tfrac1{24} + \tfrac2{24} + \tfrac{9}{24} = \tfrac{1}{2} , \]
+which is as it should be.
+
+\end{example}
+
+\hypertarget{exist-unique}{%
+\subsection{Existence and uniqueness}\label{exist-unique}}
+
+Given a Markov chain its natural to ask:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Does a stationary distribution exist?
+\item
+  If a stationary distribution does exists, is there only one, or are there be many stationary distributions?
+\end{enumerate}
+
+The answer is given by the following very important theorem.
+
+\begin{theorem}
+\protect\hypertarget{thm:statex}{}\label{thm:statex}
+
+Consider an irreducible Markov chain.
+
+\begin{itemize}
+\tightlist
+\item
+  If the Markov chain is positive recurrent, then a stationary distribution \(\boldsymbol \pi\) exists, is unique, and is given by \(\pi_i = 1/\mu_{i}\), where \(\mu_{i}\) is the expected return time to state \(i\).
+\item
+  If the Markov chain is null recurrent or transient, then no stationary distribution exists.
+\end{itemize}
+
+\end{theorem}
+
+We give \protect\hyperlink{stat-proof}{an optional and nonexaminable proof to the first part below}.
+
+In our no-claims discount example, the chain is irreducible and, like all finite state irreducible chains, it is positive recurrent. Thus the stationary distribution \(\boldsymbol\pi = (\tfrac{1}{13}, \tfrac{3}{13}, \tfrac{9}{13})\) we found is the unique stationary distribution for that chain.
+Once we have the stationary distribution \(\boldsymbol\pi\), we get the expected return times \(\mu_i = 1/\pi_i\) for free: the expected return times are \(\mu_1 = 13\), \(\mu_2 = \frac{13}{3} = 4.33\), and \(\mu_3 = \frac{13}{9} = 1.44\).
+
+Note the condition in Theorem \ref{thm:statex} that the Markov chain is irreducible. What if the Markov chain is not irreducible, so has more than one communicating class? We can work out what must happen from the theorem:
+
+\begin{itemize}
+\tightlist
+\item
+  If none of the classes are positive recurrent, then no stationary distribution exists.
+\item
+  If exactly one of the classes is positive recurrent (and therefore closed), then there exists a unique stationary distribution, supported only on that closed class.
+\item
+  If more the one of the classes are positive recurrent, then many stationary distributions will exist.
+\end{itemize}
+
+\begin{example}
+\protect\hypertarget{exm:stat-rw}{}\label{exm:stat-rw}
+
+Consider the simple random walk with \(p \neq 0,1\). This Markov chain is irreducible, and is null recurrent for \(p = \frac12\) and transient for \(p \neq \frac12\). Either way, the theorem tells us that no stationary distribution exists.
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:stat-two}{}\label{exm:stat-two}
+
+Consider the Markov chain with transition matrix
+\[ \mathsf P = \begin{pmatrix} \frac12 & \frac12 & 0 & 0 \\
+\frac12 & \frac12 & 0 & 0 \\
+0 & 0 & \frac14 & \frac34\\
+0 & 0 & \frac12 & \frac12\end{pmatrix} . \]
+This chain has two closed positive recurrent classes, \(\{1,2\}\) and \(\{3,4\}\).
+
+Solving \(\boldsymbol\pi = \boldsymbol\pi\mathsf P\) gives
+\begin{align*}
+    \pi_1 = \tfrac12 \pi_1 + \tfrac12\pi_2 \qquad &\Rightarrow \qquad \phantom{3}\pi_1 = \pi_2 \\
+    \pi_2 = \tfrac12 \pi_1 + \tfrac12\pi_2 \qquad &\Rightarrow \qquad \phantom{3}\pi_1 = \pi_2 \\
+    \pi_3 = \tfrac14 \pi_3 + \tfrac12\pi_4 \qquad &\Rightarrow \qquad 3\pi_3 = 2\pi_4 \\
+    \pi_4 = \tfrac34 \pi_3 + \tfrac12\pi_4 \qquad &\Rightarrow \qquad 3\pi_3 = 2\pi_4 , 
+\end{align*}
+giving us the same two constraints twice each. We also have the normalising condition \(\pi_1 + \pi_2+\pi_3+\pi_4 = 1\). If we let \(\pi_1 + \pi_2 = \alpha\) and \(\pi_3 + \pi_4 = 1-\alpha\), we see that
+\[ \boldsymbol\pi = \left(\tfrac12\alpha\quad \tfrac12\alpha\quad \tfrac25(1-\alpha)\quad \tfrac35(1-\alpha)\right) \]
+is a stationary distribution for any \(0 \leq \alpha \leq 1\), so we have infinitely many stationary distributions.
+
+\end{example}
+
+\hypertarget{stat-proof}{%
+\subsection{Proof of existence and uniqueness}\label{stat-proof}}
+
+\emph{This subsection is optional and nonexaminable.}
+
+It's very important to be able to find the stationary distribution(s) of a Markov chain -- you can reasonably expect a question on this to turn up on the exam. You should also know the conditions for existence and uniqueness of the stationary distribution. Being able to \emph{prove} existence and uniqueness is less important, although for completeness we will do so here.
+
+Theorem \ref{thm:statex} had two points. The more important point was that irreducible, positive recurrent Markov chains have a stationary distribution, that it is unique, and that it is given by \(\pi_i = 1/\mu_i\). We give a proof of that below, doing the existence and uniqueness parts separately.
+The less important point was that null recurrent and transitive Markov chains do not have a stationary distribution, and this is more fiddly. You can find a proof (usually in multiple parts) in books such as Norris, \href{https://www.statslab.cam.ac.uk/~james/Markov/}{\emph{Markov Chains}}, Section 1.7.
+
+\textbf{Existence:} \emph{Every positive recurrent Markov chain has a stationary distribution.}
+
+Before we start, one last definition. Let us call a vector \(\boldsymbol\nu\) a \textbf{stationary vector} if \(\boldsymbol\nu \mathsf P = \boldsymbol\nu\). This is exactly like a stationary distribution, except without the normalisation condition that it has to sum to 1.
+
+\begin{proof}
+
+Suppose that \((X_n)\) is recurrent (either positive or null, for the moment).
+
+Our first task will be to find a stationary vector. Fix an initial state \(k\), and let \(\nu_i\) be the expected number of visits to \(i\) before we return back to \(k\). That is,
+\begin{align*}
+\nu_i &= \mathbb E (\# \text{ visits to $i$ before returning to $k$} \mid X_0 = k) \\
+      &= \mathbb E \sum_{n=1}^{M_k} \mathbb P(X_n = i \mid X_0 = k) \\
+      &= \sum_{n=1}^\infty \mathbb P(X_n = i \text{ and } n \leq M_k \mid X_0 = k)  ,
+\end{align*}
+where \(M_k\) is \protect\hyperlink{S08-return-times}{the return time, as in Section 8}.
+Let us note for later use that, under this definition, \(\nu_k = 1\), because the only visit to \(k\) is the return to \(k\) itself.
+
+Since \(\boldsymbol\nu\) is counting the number of visits to different states in a certain (random) time, it seems plausible that \(\boldsymbol\nu\) suitably normalised could be a stationary distribution, meaning that \(\boldsymbol\nu\) itself could be a stationary vector. Let's check.
+
+We want to show that \(\sum_i \nu_i p_{ij} = \nu_j\). Let's see what we have:
+\begin{align*}
+\sum_{i \in \mathcal S} \nu_i p_{ij} &= \sum_{i \in \mathcal S} \sum_{n=1}^\infty \mathbb P(X_n = i \text{ and } n \leq M_k \mid X_0 = k) \, p_{ij} \\
+&= \sum_{n=1}^\infty \sum_{i \in \mathcal S} \mathbb P(X_n = i \text{ and } X_{n+1} = j \text{ and } n \leq M_k \mid X_0 = k) \\
+&= \sum_{n=1}^\infty \mathbb P(X_{n+1} = j \text{ and } n \leq M_k \mid X_0 = k) .
+\end{align*}
+(Exchanging the order of the sums is legitimate, because recurrence of the chain means that \(M_k\) is finite with probability 1.)
+We can now do a cheeky bit of monkeying around with the index \(n\), by swapping out the visit to \(k\) at time \(M_k\) with the visit to \(k\) at time \(0\). This means instead of counting the visits from \(1\) to \(M_k\), we can count the visits from \(0\) to \(M_k - 1\). Shuffling the index about, we get
+\begin{align*}
+\sum_{i \in \mathcal S} \nu_i p_{ij} &= \sum_{n=0}^\infty \mathbb P(X_{n+1} = j \text{ and } n \leq M_k-1 \mid X_0 = k) \\
+&= \sum_{n+1=1}^\infty \mathbb P(X_{n+1} = j \text{ and } n+1 \leq M_k \mid X_0 = k) \\
+&= \sum_{n=1}^\infty \mathbb P(X_{n} = j \text{ and } n \leq M_k \mid X_0 = k) \\
+&= \nu_j .
+\end{align*}
+So \(\boldsymbol\nu\) is indeed a stationary vector.
+
+We now want normalise \(\boldsymbol\nu\) into a stationary distribution by dividing through by \(\sum_i \nu_i\). We can do this if \(\sum_i \nu_i\) is finite. But \(\sum_i \nu_i\) is the expected total number of visits to all states before return to \(k\), which is precisely the expected return time \(\mu_k\). Now we use the assumption that \((X_n)\) is \emph{positive} recurrent. This means that \(\mu_k\) is finite, so \(\boldsymbol\pi = (1/\mu_k) \boldsymbol\nu\) is a stationary distribution.
+
+\end{proof}
+
+\textbf{Uniqueness:} \emph{For an irreducible, positive recurrent Markov chain, the stationary distribution is unique and is given by \(\pi_i = 1/\mu_i\).}
+
+I read the following proof in Stirzaker, \href{https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181}{\emph{Elementary Probability}}, Section 9.5.
+
+\begin{proof}
+
+Suppose the Markov chain is irreducible and positive recurrent, and suppose \(\boldsymbol\pi\) is a stationary distribution. We want to show that \(\pi_i = 1/\mu_i\) for all \(i\).
+
+The only equation we have for \(\mu_k\) is \protect\hyperlink{S08-return-times}{this one from Section 8}:
+\begin{equation}
+\mu_k = 1 + \sum_j p_{kj} \eta_{jk} . \label{eq:pf2}
+\end{equation}
+Since that involves the expected hitting times \(\eta_{ik}\), let's write down \protect\hyperlink{S08-return-times}{the equation for them} too:
+\begin{equation}
+\eta_{ik} = 1 + \sum_j p_{ij} \eta_{jk} \qquad \text{for all $i \neq k$.} \label{eq:pf1}
+\end{equation}
+
+In order to apply the fact that \(\boldsymbol\pi\) is a stationary distribution, we'd like to get these into an equation with \(\sum_i \pi_i p_{ij}\) in it. Here's a way we can do that:
+Take \eqref{eq:pf1}, multiply it by \(\pi_i\) and sum over all \(i \neq k\), to get
+\begin{equation}
+\sum_{i} \pi_i \eta_{ik} = \sum_{i \neq k} \pi_i + \sum_j \sum_{i \neq k} \pi_i p_{ij} \eta_{jk} . \label{eq:pf3}
+\end{equation}
+(The sum on the left can be over all \(i\), since \(\eta_{kk} = 0\).)
+Also, take \eqref{eq:pf2} and multiply it by \(\pi_k\) to get
+\begin{equation}
+\pi_k \mu_k = \pi_k + \sum_j \pi_k p_{kj} \eta_{jk} \label{eq:pf4}
+\end{equation}
+Now add \eqref{eq:pf3} and \eqref{eq:pf4} together to get
+\[
+\sum_{i} \pi_i \eta_{ik} + \pi_k \mu_k = \sum_i \pi_i + \sum_j \sum_i\pi_i p_{ij} \eta_{jk} .
+\]
+
+We can now use \(\sum_i\pi_i p_{ij} = \pi_j\), along with \(\sum_i \pi_i = 1\), to get
+\[ \sum_{i} \pi_i \eta_{ik} + \pi_k \mu_k = 1 + \sum_j \pi_j \eta_{jk} . \]
+
+But the first term on the left and the last term on the right are equal, and because the Markov chain is irreducible and positive recurrent, they are finite. (That was \protect\hyperlink{S09-lemma}{our lemma in the previous section}.) Thus we're allowed to subtract them, and we get \(\pi_k \mu_k = 1\), which is indeed \(\pi_k = 1/\mu_k\). We can repeat the argument for every choice of \(k\).
+
+\end{proof}
+
+\textbf{In the next section}, we see how the stationary distribution tells us very important things about the long-term behaviour of a Markov chain.
+
+\hypertarget{P05}{%
+\section*{Problem sheet 5}\label{P05}}
+\addcontentsline{toc}{section}{Problem sheet 5}
+
+\commfalse
+
+You should attempt all these questions and write up your solutions in advance of your workshop in week 6 (Monday 1 or Tuesday 2 March) where the answers will be discussed.
+
+\textbf{1.} Find a stationary distribution for the Markov chain with transition matrix
+\[ \mathsf P = \begin{pmatrix} \frac13 & \frac23 & 0 \\
+                               \frac16 & \frac13 & \frac12 \\
+                               0 & \frac13 & \frac23 \end{pmatrix} . \]
+
+\begin{myanswers}
+
+\emph{Solution.}
+
+\end{myanswers}
+
+\textbf{2.} Consider a Markov chain with state space \(\mathcal S = \{1,2,3,4\}\) and transition matrix
+\[  \mathsf P = \begin{pmatrix} \frac14 & \frac12 &\frac14 & 0 \\
+                      \frac14 & \frac14 & \frac12 & 0 \\
+                      \frac12 & \frac12 & 0 & 0 \\
+                      \frac14 & 0       &\frac14 & \frac 12
+                      \end{pmatrix} . \]
+
+\textbf{(a)} Draw a transition diagram for this Markov chain.
+
+\begin{myanswers}
+
+\emph{Solution.}
+
+\end{myanswers}
+
+\textbf{(b)} Identify the communicating classes. State whether each class closed or not. State whether each class is positive recurrent, null recurrent, or transient.
+
+\begin{myanswers}
+
+\emph{Solution.} The class \(\{1,2,3\}\) is closed, so is positive recurrent. The class \(\{4\}\) is not closed, so is transient.
+
+\end{myanswers}
+
+\textbf{(c)} Find a stationary distribution for this Markov chain.
+
+\begin{myanswers}
+
+\emph{Solution.} First, we write out the equations \(\boldsymbol\pi = \boldsymbol\pi\mathsf P\), which are
+\begin{align*}
+\pi_1 &= \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 + \tfrac14\pi_4 \\
+\pi_2 &= \tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 \\
+\pi_3 &= \tfrac14\pi_1 + \tfrac12\pi_2 \phantom{{}+\tfrac12\pi_3} + \tfrac14\pi_4 \\
+\pi_4 &= \phantom{\tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3+{}}  \tfrac12 \pi_4 .
+\end{align*}
+From the fourth equation we immediately see that \(\pi_4 = 0\). Second, we rewrite the first two of the other equations with \(\pi_1\) as the working variable, which gives
+\begin{align}
+3\pi_1 &= \phantom{3}\pi_2 + 2\pi_3 \tag{1} \\
+2\pi_1 &= 3\pi_2 - 2\pi_3 \tag{2} .
+\end{align}
+Adding (1) and (2) gives \(5\pi_1 = 4\pi_2\), so \(\pi_2 = \frac54\pi_1\). Substituting this into (1) and solving gives \(\pi_3 = \frac78 \pi_1\). Third, the normalising condition is
+\[ \pi_1 + \pi_2 + \pi_3 + \pi_4 = \pi_1 + \tfrac54\pi_1 + \tfrac78\pi_1 + 0 = \tfrac{25}{8}\pi_1 = 1, \]
+so \(\pi_1 = \frac{8}{25}\). Hence, we have a stationary distribution
+\[ \boldsymbol\pi = \left(\tfrac{8}{25} \quad \tfrac{10}{25} \quad \tfrac{7}{25} \quad 0 \right) .\]
+
+\end{myanswers}
+
+\textbf{(d)}Is this the only stationary distribution?
+
+\begin{myanswers}
+
+\emph{Solution.} Yes. The Markov chain has one positive recurrent class, so there is a unique stationary distribution, and it is supported only on that class.
+
+\end{myanswers}
+
+\textbf{3.} Consider a Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and transition matrix
+\[  \mathsf P = \begin{pmatrix} \frac13 & \frac23 & 0 &0 & 0 \\
+                   \frac13 & \frac23 & 0 &0 & 0 \\
+                   0 &\frac35 & \frac15 & \frac15 & 0 \\
+                   0 & 0 & 0 & \frac14 &\frac34 \\
+                   0 & 0 & 0 & \frac12 & \frac12 \end{pmatrix} . \]
+
+\textbf{(a)} Draw a transition diagram for this Markov chain.
+
+\begin{myanswers}
+
+\emph{Solution.}
+
+\end{myanswers}
+
+\textbf{(b)} Identify the communicating classes. State whether each class closed or not. State if each class is positive recurrent, null recurrent, or transient.
+
+\begin{myanswers}
+
+\emph{Solution.} The class \(\{1,2\}\) is closed, so is positive recurrent. The class \(\{3\}\) is not closed, so is transient. The class \(\{4,5\}\) is closed, so is positive recurrent.
+
+\end{myanswers}
+
+\textbf{(c)} Find all of the stationary distributions for this Markov chain.
+
+\begin{myanswers}
+
+\emph{Solution.} We can have a stationary distribution supported on either of the positive recurrent classes, but we will always have \(\pi_3 = 0\), as that state is transient. For the class \(\{1,2\}\) we have
+\[ \pi_1 = \tfrac13\pi_1 + \tfrac13\pi_2 \qquad \pi_2 = \tfrac23\pi_1 + \tfrac23\pi_2 , \]
+giving \(\pi_2 = 2\pi_1\), and a stationary distribution \((\tfrac 13, \tfrac23, 0, 0, 0)\). For the class \(\{4,5\}\), we have
+\[ \pi_4 = \tfrac14\pi_4 + \tfrac12\pi_5 \qquad \pi_5 = \tfrac34\pi_4 + \tfrac12\pi_5 , \]
+giving \(3\pi_4 = 2\pi_5\), and a stationary distribution \((0,0,0,\frac25,\frac35)\). Finally, any linear combination of those where the coefficients are positive and add to \(1\) will also be a stationary distribution, so we have a family of stationary distributions
+\[ \left( \tfrac13\alpha \quad \tfrac23\alpha \quad 0 \quad \tfrac25(1-\alpha) \quad \tfrac35(1-\alpha) \right)    \]
+for \(0 \leq \alpha \leq 1\).
+
+\end{myanswers}
+
+\textbf{4.} Consider the simple random walk \((X_n)\) on \(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\) with up probability \(p\) and down probability \(q = 1-p\), and a mixed barrier at \(0\), where \(p_{01} = p\), \(p_{00} = q\), and \(p_{0i} = 0\) otherwise. We seek a stationary distribution for this Markov chain.
+
+\textbf{(a)} Suppose \(p \neq \frac12\). Show that the general solution to
+\[ \pi_j = \sum_i \pi_i p_{ij} = p\pi_{j-1} + q\pi_{j+1} \]
+is \(\pi_i = A + B\tau^i\), where \(\tau = p/q\).
+
+\begin{myanswers}
+
+\emph{Solution.} Let's rewrite this as \(q\pi_{j+1} - \pi_j + p\pi_{j-1} = 0\). This is a homogeneous linear difference equation. The characteristic equation is \(p\lambda^2 - \lambda + p = 0\), which factorises as \((q\lambda - p)(\lambda-1) = 0\) (using that \(p + q = 1\)), which has solutions \(\lambda = 1\) and \(\lambda = p/q = \tau\). Since \(p \neq \frac12\), these roots are distinct. So the general solution is \(\pi_i = A + B\tau^i\).
+
+\end{myanswers}
+
+\textbf{(b)} Show that the initial condition \(\pi_0 = q\pi_0 + q\pi_1\) gives \(A = 0\).
+
+\begin{myanswers}
+
+\emph{Solution.} The initial condition gives
+\[ A + B = q(A + B) + q(A + B\tau)  ,\]
+which after rearranging gives \((1-2q)A = 0\), where we have used \(q + q\tau = q + p = 1\). Since \(1-2q\neq 0\), we must have \(A = 0\).
+
+\end{myanswers}
+
+\textbf{(c)} By considering the normalising condition \(\sum_i \pi_i =1\), work out for what values of \(p \neq \frac12\) there exists a stationary distribution for \((X_n)\). What is the stationary distribution (when it exists)?
+
+\begin{myanswers}
+
+\emph{Solution.} We have \(\pi_i = B\tau^i\), so require \(B \sum_{i=1}^\infty \tau^i = 1\). When \(p > \frac12\), then \(\tau > 1\) and the sum does not converge, and we have no stationary distribution. When \(p < \frac12\), then \(\tau < 1\), so
+\[ \sum_{i=1}^\infty \tau^i = \frac{1}{1-\tau} \qquad \Rightarrow \qquad B = \frac{1}{\frac{1}{1-\tau}} = 1 - \tau, \]
+so we have a geometric stationary distribution \(\pi_i = (1-\tau)\tau^i\).
+
+\end{myanswers}
+
+\textbf{(d)} Does there exist a stationary distribution when \(p = \frac12\)?
+
+\begin{myanswers}
+
+\emph{Solution.}
+Here, the linear difference equation has general solution \(\pi_i = A + Bi\), as we saw with the symmetric gambler's ruin problem. The initial condition gives \(A = \frac12A + \frac12(A + B)\), and so \(B = 0\), giving \(\pi_i = A\). The normalisation condition is \(\infty \times A = 1\), which cannot be fulfilled. Hence no stationary distribution exists.
+
+\end{myanswers}
+
+\textbf{5.} The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain \((X_n)\) starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex.
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/tree-1} 
+
+}
+
+\caption{The rooted binary tree.}\label{fig:tree}
+\end{figure}
+
+By considering the distance of \((X_n)\) from the root, or otherwise, show that \((X_n)\) is transient.
+
+\begin{myanswers}
+
+\emph{Solution.}
+
+\end{myanswers}
+
+\textbf{6.} \emph{``Every Markov chain on a finite state space has at least one stationary distribution.''} Explain carefully why this is true. You may use facts from the notes or previous example sheets, provided that you state them clearly.
+
+\begin{myanswers}
+
+\emph{Solution.} In Problem Sheet 4, Question 3, we showed that every finite-state Markov chain has a closed communicating class. In lectures, we showed the finite closed communicating classes are positive recurrent. If we look at the Markov chain restricted to just such a positive recurrent and closed class, then that restricted Markov chain is irreducible and positive recurrent, so it has a stationary distribution \(\boldsymbol\pi\). Since the class is closed, we have a stationary distribution that is \(\boldsymbol\pi\) on the given closed class and \(0\) elsewhere.
 
 \end{myanswers}
 

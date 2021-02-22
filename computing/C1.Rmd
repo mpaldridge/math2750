@@ -17,7 +17,7 @@ Remember that this worksheet is just for practice, and not assessed for credit. 
 **Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
 
 
-We want to start by building the increments process $(Z_n)$, where each $Z_n$ is $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 0.4$. We will use the `sample` function to do this. You can find out how to use `sample` by reading the help file, which you can open by entering `?sample` in the console. What arguments do you need to give to `sample` to get $10$ values of $\pm 1$ with the correct probabilities? What, for example, do we get from the following?
+We want to start by building the increments process $(Z_n)$, where each $Z_n$ is $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 0.4$. We will use the `sample()` function to do this. You can find out how to use `sample()` by reading the help file, which you can open by entering `?sample` in the console. What arguments do you need to give to `sample()` to get $10$ values of $\pm 1$ with the correct probabilities? What, for example, do we get from the following?
 
 ```{r, eval = FALSE}
 Z <- sample(c(1, 7, 4), 20, replace = TRUE, prob = c(0.5, 0.3, 0.2))
@@ -51,7 +51,7 @@ The standard command to plot a vector $\mathbf{X}$ of length $N$ against $1, 2, 
 
 You will probably want to include the starting point $X_0 = 0$ on your plot too. How can you do this?
 
-The plot function can take extra optional arguments. You can find out about these by typing `?plot`, which brings up the help for the function `plot`. For example, what does the following do?
+The plot function can take extra optional arguments. You can find out about these by typing `?plot`, which brings up the help for the function `plot()`. For example, what does the following do?
 
 ```{r, eval = FALSE} 
 plot(1:N, X,
@@ -96,9 +96,9 @@ should produce a simple random walk of length $20$ with $p = 0.3$. It might be h
 **Question 4.** *Estimate the expected value of of the simple random walk at $N = 100$ steps by simulating many random walks and taking an average. How does this compare with the true answer?*
 
 
-Given a vector `x`, we know that, for example, `x[10]` gives the 10th element of the vector. So, using your `RandomWalk` function, `RandomWalk(N, p)[N]` should give the final value of an random walk of length $N$.
+Given a vector `x`, we know that, for example, `x[10]` gives the 10th element of the vector. So, using your `RandomWalk()` function, `RandomWalk(N, p)[N]` should give the final value of an random walk of length $N$.
   
-We can use the `replicate` function (read `?replicate` to learn more) to get a large number of samples of the random walk.
+We can use the `replicate()` function (read `?replicate` to learn more) to get a large number of samples of the random walk.
 
 ```{r, eval = FALSE}
 N <- 100

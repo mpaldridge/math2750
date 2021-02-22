@@ -14,9 +14,9 @@ rmd_files:
   - sections/S07-classes.Rmd
   - sections/S08-hitting-times.Rmd
   - problems/P04.Rmd
-#  - sections/S09-recurrence-transience.Rmd
-#  - sections/S10-stationary-distributions.Rmd
-#  - problems/P05.Rmd
+  - sections/S09-recurrence-transience.Rmd
+  - sections/S10-stationary-distributions.Rmd
+  - problems/P05.Rmd
 #  - sections/S11-long-term-chains.Rmd
 #  - sections/S12-revision-i.Rmd
 #  - sections/S13-poisson-poisson.Rmd

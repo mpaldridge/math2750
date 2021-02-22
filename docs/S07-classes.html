@@ -139,6 +139,20 @@
 <li class="chapter" data-level="8.3" data-path="S08-hitting-times.html"><a href="S08-hitting-times.html#return-rw"><i class="fa fa-check"></i><b>8.3</b> Hitting and return times for the simple random walk</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P04.html"><a href="P04.html"><i class="fa fa-check"></i>Problem sheet 4</a></li>
+<li class="chapter" data-level="9" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html"><i class="fa fa-check"></i><b>9</b> Recurrence and transience</a><ul>
+<li class="chapter" data-level="9.1" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-trans-def"><i class="fa fa-check"></i><b>9.1</b> Recurrent and transient states</a></li>
+<li class="chapter" data-level="9.2" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#rec-tran-classes"><i class="fa fa-check"></i><b>9.2</b> Recurrent and transient classes</a></li>
+<li class="chapter" data-level="9.3" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-positive-null"><i class="fa fa-check"></i><b>9.3</b> Positive and null recurrence</a></li>
+<li class="chapter" data-level="9.4" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-strong-markov"><i class="fa fa-check"></i><b>9.4</b> Strong Markov property</a></li>
+<li class="chapter" data-level="9.5" data-path="S09-recurrence-transience.html"><a href="S09-recurrence-transience.html#S09-lemma"><i class="fa fa-check"></i><b>9.5</b> A useful lemma</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html"><i class="fa fa-check"></i><b>10</b> Stationary distributions</a><ul>
+<li class="chapter" data-level="10.1" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#def-stationary-definition"><i class="fa fa-check"></i><b>10.1</b> Definition of stationary distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#find-stationary"><i class="fa fa-check"></i><b>10.2</b> Finding a stationary distribution</a></li>
+<li class="chapter" data-level="10.3" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#exist-unique"><i class="fa fa-check"></i><b>10.3</b> Existence and uniqueness</a></li>
+<li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -216,9 +230,9 @@ from just picking out the <span class="math inline">\(l=j\)</span> term in the s
 p_{\mathrm{SH}} &amp; p_{\mathrm{SS}} &amp; p_{\mathrm{SD}} \\ 0 &amp; 0 &amp; 1 \end{pmatrix} ,    \]</span>
 and the transition diagram is:</p>
 <div class="figure" style="text-align: center"><span id="fig:HSD"></span>
-<img src="math2750_files/figure-html/HSD-1.png" alt="Transition for the healthy--sick--dead chain." width="384" />
+<img src="math2750_files/figure-html/HSD-1.png" alt="Transition diagram for the healthy--sick--dead chain." width="384" />
 <p class="caption">
-Figure 7.1: Transition for the healthy–sick–dead chain.
+Figure 7.1: Transition diagram for the healthy–sick–dead chain.
 </p>
 </div>
 <p>Clearly H and S communicate with each other (you can become infected or recover), while D only communicates with itself (the dead do not recover). Hence, the state space <span class="math inline">\(\mathcal S = \{\mathrm{H},\mathrm{S},\mathrm{D}\}\)</span> partitions into two communicating classes: <span class="math inline">\(\{\mathrm{H},\mathrm{S}\}\)</span> and <span class="math inline">\(\{\mathrm{D}\}\)</span>.</p>
@@ -270,9 +284,9 @@ where gcd denotes the greatest common divisor.</p>
 <div class="example">
 <p><span id="exm:weird-period" class="example"><strong>Example 7.7  </strong></span>Consider the Markov chain with transition diagram as shown:</p>
 <div class="figure" style="text-align: center"><span id="fig:periods"></span>
-<img src="math2750_files/figure-html/periods-1.png" alt="Transition for an aperiodic irreducible Markov chain." width="480" />
+<img src="math2750_files/figure-html/periods-1.png" alt="Transition diagram for an aperiodic irreducible Markov chain." width="480" />
 <p class="caption">
-Figure 7.2: Transition for an aperiodic irreducible Markov chain.
+Figure 7.2: Transition diagram for an aperiodic irreducible Markov chain.
 </p>
 </div>
 <p>Importantly, we can’t return from the triangle side back to the circle side. We thus see there are two communicating classes: <span class="math inline">\(\{1,2,3,4\}\)</span>, which is open, and <span class="math inline">\(\{5,6,7\}\)</span>, which is closed. The Markov chain is not irreducible, and there are no absorbing states.</p>

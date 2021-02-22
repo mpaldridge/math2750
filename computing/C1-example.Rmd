@@ -17,7 +17,7 @@ output: html_document
 **Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
 
 
-First we use the `sample` function to produce the increments process -- a vector of $N$ independent values that are $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 1 - p = 0.4$.
+First we use the `sample()` function to produce the increments process -- a vector of $N$ independent values that are $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 1 - p = 0.4$.
 
 ```{r}
 p <- 0.6
@@ -48,6 +48,7 @@ c(0, X)
 
 
 For $N = 10$, we plot the random walk with
+
 ```{r}
 plot(0:N, c(0, X),
   type = "b",
@@ -59,7 +60,7 @@ plot(0:N, c(0, X),
 )
 ```
 
-(The `bquote` does some fancy automatic titling -- that's strictly an optional extra.)
+(The `bquote()` function does some fancy automatic titling -- that's strictly an optional extra.)
 
 Here, `type = "b"` means we plot **both** points and lines. By plotting `c(0, X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
 
@@ -83,14 +84,14 @@ plot(0:N, c(0, X),
 
 Here, `type = "l"` just gives **lines**, which is easier to read when there are many datapoints. By not providing `xlim` or `ylim`, we allowed R to pick the most appropriate axis limits for itself.
 
-We see that the main drift of the random walk is steadily upwards, although there are some small variations within the linear drift. This is because the standard deviation is $\sqrt{4pqn}$, which scales like $\sqrt{n}$, while the drift is $(p-q)n$, which scales like $n$ (for $p \neq 1/2$). So as the number of steps gets larger, the drift becomes much more important than the variation, and the curve looks increasingly like a straight line.
+We see that the main drift of the random walk is steadily upwards, although there are some small variations within the linear drift. This is because the standard deviation is $\sqrt{4pqn}$, which scales like $\sqrt{n}$, while the drift is $(p-q)n$, which scales like $n$ (for $p \neq \frac{1}{2}$). So as the number of steps gets larger, the drift becomes much more important than the variation, and the curve looks increasingly like a straight line.
 
 
 
 **Question 3.** *Make a function in R that produces a sample of a simple random walk for given $p$ of length $N$. Test your function to check it works. What are the advantages of making a a function like this?*
 
 
-We used two functions. First, the "random plus-or-minus" function `rpm` gives $N$ random $\pm 1$s.
+We used two functions. First, the "random plus-or-minus" function `rpm()` gives $N$ random $\pm 1$s.
 
 ```{r}
 rpm <- function(N, p) {
@@ -99,7 +100,7 @@ rpm <- function(N, p) {
 }
 ```
 
-Second, we use `rpm` in our function for the random walk itself.
+Second, we use `rpm()` in our function for the random walk itself.
 
 ```{r}
 RandomWalk <- function(N, p) {
@@ -136,7 +137,7 @@ PlotRandomWalk(80, 0.3)
 **Question 4.** *Estimate the expected value of of the simple random walk at $N = 100$ steps by simulating many random walks and taking an average. How does this compare with the true answer?*
 
 
-We use the `replicate` function to get 10000 samples of the random walk, and print the mean value of $X_{100}$.
+We use the `replicate()` function to get 10000 samples of the random walk, and print the mean value of $X_{100}$.
 
 ```{r}
 N <- 100
@@ -163,7 +164,7 @@ Some things we could investigate include:
 
 Here, we'll try investigating the ruin probability of a gambler's ruin problem. (This is the most complicated of the three suggestions above; it's fine to try something a bit easier.)
 
-First we have a function that simulates a gambler's ruin process, and outputs whether or not Alice ruins. This uses our `rpm` function from Question 3.
+First we have a function that simulates a gambler's ruin process, and outputs whether or not Alice ruins. This uses our `rpm()` function from Question 3.
 
 ```{r}
 GamblersRuin <- function(p, a, m) {
