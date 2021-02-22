@@ -124,7 +124,7 @@ so $\pi_1 = \frac{8}{25}$. Hence, we have a stationary distribution
 ::::
 
 :::: {.subq}
-**(d)**Is this the only stationary distribution?
+**(d)** Is this the only stationary distribution?
 
 ::: {.myanswers data-latex=""}
 *Solution.* Yes. The Markov chain has one positive recurrent class, so there is a unique stationary distribution, and it is supported only on that class.
@@ -241,7 +241,7 @@ Here, the linear difference equation has general solution $\pi_i = A + Bi$, as w
 :::::
 
 :::: {.myq}
-**5.** The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain $(X_n)$ starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex.
+**5.** The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain $(X_n)$ starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex. Note that a step can go away from the root or towards the root.
 
 ```{tikz tree, echo=FALSE, fig.align="center", fig.width=3.5, fig.cap="The first three-and-a-bit levels of the rooted binary tree.", cache = TRUE}
 \usetikzlibrary{automata}
@@ -262,20 +262,20 @@ Here, the linear difference equation has general solution $\pi_i = A + Bi$, as w
 \node (M) at (9.75,-6) {};
 \node (N) at (11.25,-6) {};
 
-\path[->] (0) edge node {} (A);
-\path[->]	(0) edge node {} (B);
-\path[->]	(A) edge node {} (C);
-\path[->]	(A) edge node {} (D);
-\path[->]	(B) edge node {} (E);
-\path[->]	(B) edge node {} (F);
-\path[->]	(C) edge node {} (G);
-\path[->]	(C) edge node {} (H);
-\path[->]	(D) edge node {} (I);
-\path[->]	(D) edge node {} (J);
-\path[->]	(E) edge node {} (K);
-\path[->]	(E) edge node {} (L);
-\path[->]	(F) edge node {} (M);
-\path[->]	(F) edge node {} (N);
+\path[<->] (0) edge node {} (A);
+\path[<->]	(0) edge node {} (B);
+\path[<->]	(A) edge node {} (C);
+\path[<->]	(A) edge node {} (D);
+\path[<->]	(B) edge node {} (E);
+\path[<->]	(B) edge node {} (F);
+\path[<->]	(C) edge node {} (G);
+\path[<->]	(C) edge node {} (H);
+\path[<->]	(D) edge node {} (I);
+\path[<->]	(D) edge node {} (J);
+\path[<->]	(E) edge node {} (K);
+\path[<->]	(E) edge node {} (L);
+\path[<->]	(F) edge node {} (M);
+\path[<->]	(F) edge node {} (N);
 
 \end{tikzpicture}
 ```
