@@ -153,6 +153,8 @@ In other words, a trip of length $n + m$ from $i$ to $j$ is a trip of length $n$
 
 Of course, once we know that $\mathsf P(n) = \mathsf P^n$ is given by the matrix power, it's clear to see that $\mathsf P(n+m) = \mathsf P^{n+m} = \mathsf P^n \mathsf P^m = \mathsf P(n)\mathsf P(m)$.
 
+Sidney Chapman (1888--1970) was a British applied mathematician and physicist, who studied applications of Markov processes. Andrey Nikolaevich Kolmogorov (1903--1987) was a Russian mathematician who did very important work in many different areas of mathematics, is considered the "father of modern probability theory", and studied the theory of Markov processes. (Kolmogorov is also [my academic great-great-grandfather](https://genealogy.math.ndsu.nodak.edu/id.php?id=53569).)
+
 ::: {.example #printer2}
 In our two-state broken printer example above, the matrix of two-state transition probabilities is given by
 \begin{align*}

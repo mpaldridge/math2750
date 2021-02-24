@@ -12,7 +12,7 @@
 
 In this section we're interested in what happens to a Markov chain $(X_n)$ in the long-run -- that is, when $n$ tends to infinity.
 
-One thing that *could* happen over time is that the distribution $\boldsymbol\lambda \mathsf P^n$ of the Markov chain could gradually settle down towards some "equilibrium distribution". Further, perhaps that long-term equilibrium might not depend on the initial distribution, but the initial behaviour might eventually almost disappear, exhibiting a "lack of memory" of the start of the process.
+One thing that *could* happen over time is that the distribution $\mathbb P(X_n = i)$ of the Markov chain could gradually settle down towards some "equilibrium" value. Further, perhaps that long-term equilibrium might not depend on the initial distribution, but the effects of the initial distribution might eventually almost disappear, exhibiting a "lack of memory" of the start of the process.
 
 Just in case that does happen, let's give it a name.
 
@@ -20,7 +20,7 @@ Just in case that does happen, let's give it a name.
 Let $(X_n)$ be a Markov chain on a state space $\mathcal S$ with transition matrix $\mathsf P$. Suppose there exists a distribution $\mathbf p^* = (p_i^*)$ on $\mathcal S$ (so $p_i^* \geq 0$ and $\sum_i p_i^* = 1$) such that, whatever the initial distribution $\boldsymbol\lambda = (\lambda_i)$, we have $\mathbb P(X_n = j) \to p^*_j$ as $n \to \infty$ for all $j \in \mathcal S$. Then we say that $\mathbf p^*$ is an **equilibrium distribution**.
 :::
 
-It's clear there can only be at most one equilibrium distribution -- but will there be one at all? The following is the most important result in this course. (Recall that an irreducible Markov chain is aperiodic if it has period $1$.)
+It's clear there can only be at most one equilibrium distribution -- but will there be one at all? The following is the most important result in this course. (Recall that an irreducible Markov chain is aperiodic if it has period $.)
 
 ::: {.theorem #limit name="Limit theorem"}
 Let $(X_n)$ be an irreducible and aperiodic Markov chain. Then for any initial distribution $\boldsymbol\lambda$, we have that $\mathbb P(X_n = j) \to 1/\mu_j$ as $n \to \infty$, where $\mu_j$ is the expected return time to state $j$.
@@ -31,7 +31,7 @@ In particular:
 * Suppose $(X_n)$ is null recurrent or transient. Then $\mathbb P(X_n = j) \to 0$ for all $j$, and there is no equilibrium distribution.
 :::
 
-I particularly like how this one theorem gathers together all the ideas from the course in one result (Markov chains, irreducibility, periodicity, recurrence/transience, positive/null recurrence, return times, stationary distributions...).
+I particularly like how this one theorem gathers together all the ideas from the course in one result (Markov chains, irreducibility, periodicity, recurrence/transience, positive/null recurrence, return times, stationary distribution...).
 
 Note the three conditions for convergence to an equilibrium distribution: irreducibility, aperiodicity, and positive recurrence.
 
@@ -65,7 +65,7 @@ as desired.
 
 
 ::: {.example #conv1}
-[The two-state "broken printer" Markov chain](#S05-example) is irreducible, aperiodic, and positive recurrent, so its stationary distribution is also the equilibrium distribution. We proved this from first principles in [Question 1 on Problem Sheet 3](#P03).
+The [two-state "broken printer" Markov chain](#S05-example) is irreducible, aperiodic, and positive recurrent, so its stationary distribution is also the equilibrium distribution. We proved this from first principles in [Question 3 on Problem Sheet 3](#P03).
 :::
 
 ::: {.example #conv2}
@@ -74,7 +74,7 @@ Recall [the simple no-claims discount Markov chain from Lecture 6](#S06-example1
  
 From the limit theorem, we see that the $n$-step transition probability tends to a limit where every row is equal to $\boldsymbol\pi$. We can check using a computer: for $n = 12$, say,
  \[ \mathsf P(12) = \mathsf P^{12} = \begin{pmatrix} 0.0770 & 0.2308 & 0.6923 \\ 0.0769 & 0.2308 & 0.6923 \\ 0.0769 & 0.2308 & 0.6923 \end{pmatrix}, \]
-where $p_{ij}(12)$ is equal to $\pi_j$ up to at least 3 decimal places for all $i,j$.
+where $p_{ij}(12)$ is equal to $\pi_j$ up to at least 3 decimal places for all $i,j$. As $n$ gets bigger, the matrix gets closer and closer to the limiting form.
 :::
 
 ::: {.example #conv-rw}
@@ -139,7 +139,7 @@ In particular:
 
 For completeness, we should note that "almost sure" convergence means that $\mathbb P(V_j(n)/n \to 1/\mu_j) = 1$, although the precise definition is not important for us in this module.
 
-Note that, because we are averaging over a long-time period, we no longer need the condition that the Markov chain is aperiodic. For converge of the long-term proportion of time to the stationary distribution we just need irreducibility and positive recurrence.
+Note that, because we are averaging over a long-time period, we no longer need the condition that the Markov chain is aperiodic; for convergence of the long-term proportion of time to the stationary distribution we just need irreducibility and positive recurrence.
 
 Again, we give an optional and nonexaminable proof [below](#S11-proofs).
 
@@ -149,7 +149,7 @@ Recall [the simple no-claims discount Markov chain](#S06-example1). Since this c
 :::
 
 ::: {.example #ergodic-ex2}
-The two-state "swapping" chain we saw earlier did have a unique stationary distribution $(\frac12, \frac12)$, but did not have an equilibrium distribution, because it was periodic. But it is true that $V_0(n)/n \to \pi_0 = \frac12$ and $V_1(n)/n \to \pi_! = \frac12$, due to the ergodic theorem. So although where we are at some specific point in the future depends on where started from, in the long run we always spend half our time in each state.
+The two-state "swapping" chain we saw earlier did have a unique stationary distribution $(\frac12, \frac12)$, but did not have an equilibrium distribution, because it was periodic. But it is true that $V_0(n)/n \to \pi_0 = \frac12$ and $V_1(n)/n \to \pi_1 = \frac12$, due to the ergodic theorem. So although where we are at some specific point in the future depends on where we started from, in the long run we always spend half our time in each state.
 :::
 
 
