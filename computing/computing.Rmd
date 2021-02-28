@@ -6,6 +6,7 @@
 ::: {.mysched}
 * **Computational Worksheet 1:** [[HTML format]](computing/C1.html) [[Rmd format]](computing/C1.Rmd)
    * Example report: [[HTML format]](computing/C1-example.html) [[Rmd format]](computing/C1-example.Rmd)
+* **Computational Worksheet 2 (Assessment 2):** [[HTML format]](computing/C2.html) [[Rmd format]](computing/C2.Rmd) This worksheet is assessed, and is due on *Thursday 18 March* at 2pm.
 :::
 
 

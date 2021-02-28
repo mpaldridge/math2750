@@ -1,6 +1,6 @@
 # Assessment 1 {.unnumbered #A1}
 
-
+<!--
 ::: {.mysummary}
 This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.
 
@@ -10,6 +10,12 @@ Late submissions up to Wednesday 17 February at 2pm will still be marked, but	th
 
 Your solutions to this assessment should be your own work. Copying, collaboration or plagiarism are not permitted. Asking others to do your work, including via the internet, is not permitted. Transgressions are considered to be a very serious matter, and will be dealt with according to the University's disciplinary procedures.
 :::
+-->
+
+::: {.mysummary}
+ A solutions sheet for this assessment is available on Minerva. Marks and feedback are available on Minerva and Gradescope respectively.
+:::
+
 
 
 :::: {.myq}

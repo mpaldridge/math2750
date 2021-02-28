@@ -9,10 +9,16 @@
 
 ## Convergence to equilibrium  {#equilibrium}
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/8ptEqJn99rU></iframe>
+:::
+::::
+
 
 In this section we're interested in what happens to a Markov chain $(X_n)$ in the long-run -- that is, when $n$ tends to infinity.
 
-One thing that *could* happen over time is that the distribution $\mathbb P(X_n = i)$ of the Markov chain could gradually settle down towards some "equilibrium" value. Further, perhaps that long-term equilibrium might not depend on the initial distribution, but the effects of the initial distribution might eventually almost disappear, exhibiting a "lack of memory" of the start of the process.
+One thing that *could* happen over time is that the distribution $\mathbb P(X_n = i)$ of the Markov chain could gradually settle down towards some "equilibrium" distribution. Further, perhaps that long-term equilibrium might not depend on the initial distribution, but the effects of the initial distribution might eventually almost disappear, exhibiting a "lack of memory" of the start of the process.
 
 Just in case that does happen, let's give it a name.
 
@@ -20,7 +26,7 @@ Just in case that does happen, let's give it a name.
 Let $(X_n)$ be a Markov chain on a state space $\mathcal S$ with transition matrix $\mathsf P$. Suppose there exists a distribution $\mathbf p^* = (p_i^*)$ on $\mathcal S$ (so $p_i^* \geq 0$ and $\sum_i p_i^* = 1$) such that, whatever the initial distribution $\boldsymbol\lambda = (\lambda_i)$, we have $\mathbb P(X_n = j) \to p^*_j$ as $n \to \infty$ for all $j \in \mathcal S$. Then we say that $\mathbf p^*$ is an **equilibrium distribution**.
 :::
 
-It's clear there can only be at most one equilibrium distribution -- but will there be one at all? The following is the most important result in this course. (Recall that an irreducible Markov chain is aperiodic if it has period $.)
+It's clear there can only be at most one equilibrium distribution -- but will there be one at all? The following is the most important result in this course. (Recall that an irreducible Markov chain is aperiodic if it has period 1.)
 
 ::: {.theorem #limit name="Limit theorem"}
 Let $(X_n)$ be an irreducible and aperiodic Markov chain. Then for any initial distribution $\boldsymbol\lambda$, we have that $\mathbb P(X_n = j) \to 1/\mu_j$ as $n \to \infty$, where $\mu_j$ is the expected return time to state $j$.
@@ -43,7 +49,7 @@ Consider a irreducible, aperiodic, positive recurrent Markov chain. Taking the i
      \pi_1 & \pi_2 & \cdots & \pi_N \end{pmatrix} , \]
 where each row is identical.
 
-We give an [full proof of the limit theorem](#S11-proofs) below (optional and nonexaminable). However, this result gets part way there and is straightforward.
+We give an [full proof of the limit theorem](#S11-proofs) below (optional and nonexaminable). However, this easier result gets part way there.
 
 ::: {.theorem}
 If an equilibrium distribution $\mathbf p^*$ does exist, then $\mathbf p^*$ is a stationary distribution.
@@ -94,7 +100,7 @@ The point is that this chain is *not* aperiodic: it has period $2$, so the limit
 ::: {.example #conv5}
 Consider a Markov chain with state space $\mathcal S = \{1,2,3\}$ and transition diagram as shown below.
 
-```{tikz stat-ex, echo=FALSE, fig.align="center", fig.width=5}
+```{tikz stat-ex, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram for a Markov chain with two positive recurrent classes.", cache = TRUE}
 \usetikzlibrary{automata}
 			\begin{tikzpicture}[scale=0.75]
 			\node[state] (1) at (0,0){1};
@@ -120,6 +126,14 @@ In particular, as $n \to \infty$, we have
 
 
 ## Ergodic theorem  {#S11-ergodic}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/Pg7sR0wJ3vo></iframe>
+:::
+::::
+
 
 
 The limit theorem looked at the limit of $\mathbb P(X_n = j)$, the probability that the Markov chain is in state $j$ at some specific point in time $n$ a long time in the future. We could also look at the *long-run amount of time* spent in state $j$; that is, averaging the behaviour over a long time period. (The word "ergodic" is used in mathematics to refer to concepts to do with the long-term proportion of time.)

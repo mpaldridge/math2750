@@ -17,8 +17,10 @@ rmd_files:
   - sections/S09-recurrence-transience.Rmd
   - sections/S10-stationary-distributions.Rmd
   - problems/P05.Rmd
-#  - sections/S11-long-term-chains.Rmd
-#  - sections/S12-revision-i.Rmd
+  - sections/S11-long-term-chains.Rmd
+  - sections/S12-revision-i.Rmd
+  - problems/P06.Rmd
+  - assessments/A3.Rmd
 #  - sections/S13-poisson-poisson.Rmd
 #  - sections/S14-poisson-exponential.Rmd
 #  - sections/S15-poisson-infinitesimal.Rmd

@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S10-stationary-distributions.html"/>
-<link rel="next" href="computing.html"/>
+<link rel="next" href="S11-long-term-chains.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -153,6 +153,18 @@
 <li class="chapter" data-level="10.4" data-path="S10-stationary-distributions.html"><a href="S10-stationary-distributions.html#stat-proof"><i class="fa fa-check"></i><b>10.4</b> Proof of existence and uniqueness</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P05.html"><a href="P05.html"><i class="fa fa-check"></i>Problem sheet 5</a></li>
+<li class="chapter" data-level="11" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html"><i class="fa fa-check"></i><b>11</b> Long-term behaviour of Markov chains</a><ul>
+<li class="chapter" data-level="11.1" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#equilibrium"><i class="fa fa-check"></i><b>11.1</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="11.2" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#convergence-examples"><i class="fa fa-check"></i><b>11.2</b> Examples of convergence and non-convergence</a></li>
+<li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
+<li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> End of of Part I: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#todo-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P06.html"><a href="P06.html"><i class="fa fa-check"></i>Problem sheet 6</a></li>
+<li class="chapter" data-level="" data-path="A3.html"><a href="A3.html"><i class="fa fa-check"></i>Assessment 3</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -186,7 +198,7 @@
   float: right; 
   margin: -12px 0 0 0;
 }
-</style
+</style>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -216,7 +228,15 @@ display: none !important;
                                \frac16 &amp; \frac13 &amp; \frac12 \\
                                0 &amp; \frac13 &amp; \frac23 \end{pmatrix} . \]</span></p>
 <div class="myanswers">
-<p><em>Solution.</em></p>
+<p><em>Solution.</em> The equations are
+<span class="math display">\[\begin{align*}
+\pi_1 &amp;= \tfrac13 \pi_1 + \tfrac16 \pi_2 \\
+\pi_2 &amp;= \tfrac23 \pi_1 + \tfrac13 \pi_2 + \tfrac23 \pi_3 \\
+\pi_3 &amp;= \phantom{\tfrac23 \pi_1} + \tfrac12 \pi_2 + \tfrac23 \pi_3
+\end{align*}\]</span>
+It’ll make out lives more pleasant if we pick <span class="math inline">\(\pi_2\)</span> as the working variable and delete the second equation. The first equation becomes <span class="math inline">\(\pi_1 = \tfrac14 \pi_2\)</span>, and the third equation become <span class="math inline">\(\pi_3 = \tfrac32 \pi_2\)</span>. The normalising condition is
+<span class="math display">\[ \pi_1 + \pi_2 + \pi_3 = \left( \tfrac14 + 1 + \tfrac32\right) \pi_2 = \tfrac{11}{4} \pi_2 .    \]</span>
+So <span class="math inline">\(\pi_2 = \frac4{11}\)</span>, so <span class="math inline">\(\pi_1 = \frac{1}{11}\)</span> and <span class="math inline">\(\pi_3 = \frac{6}{11}\)</span>. The stationary distribution is <span class="math inline">\(\boldsymbol\pi = (\frac{1}{11}, \frac{4}{11}, \frac{6}{11})\)</span>.</p>
 </div>
 </div>
 <div class="myq">
@@ -230,27 +250,12 @@ display: none !important;
 <p><strong>(a)</strong> Draw a transition diagram for this Markov chain.</p>
 <div class="myanswers">
 <p><em>Solution.</em></p>
-<!--
-        \begin{tikzpicture}[shorten >=1pt,scale=1.2]
-        \node[state] (2) at (0,0)  {$2$};
-        \node[state] (1) at (2,1.15)  {$1$};
-        \node[state] (3) at (2,-1.15) {$3$};
-        \node[state] (4) at (4,0)  {$4$};
-        
-        \path[->] (1) edge [bend left]  node [above left]  {$\frac12$} (2);
-        \path[->] (1) edge [bend left]  node [right]       {$\frac14$} (3);
-        \path[->] (2) edge [bend left]  node [above left]  {$\frac14$} (1);
-        \path[->] (2) edge [bend left]  node [below left]  {$\frac12$} (3);
-        \path[->] (3) edge [bend left]  node [right]       {$\frac12$} (1);
-        \path[->] (3) edge [bend left]  node [below left]  {$\frac12$} (2);
-        \path[->] (4) edge              node [above right] {$\frac14$} (1);
-        \path[->] (4) edge              node [below right] {$\frac14$} (3);
-        
-        \path[->] (1) edge [loop above] node [above] {$\frac14$} ();
-        \path[->] (2) edge [loop left]  node [left]  {$\frac14$} ();
-        \path[->] (4) edge [loop right] node [right] {$\frac12$} ();
-        \end{tikzpicture}
--->
+<div class="figure" style="text-align: center"><span id="fig:Q52"></span>
+<img src="math2750_files/figure-html/Q52-1.png" alt="Transition diagram for Question 2." width="384" />
+<p class="caption">
+Figure 10.2: Transition diagram for Question 2.
+</p>
+</div>
 </div>
 </div>
 <div class="subq">
@@ -297,29 +302,13 @@ so <span class="math inline">\(\pi_1 = \frac{8}{25}\)</span>. Hence, we have a s
 <div class="subq">
 <p><strong>(a)</strong> Draw a transition diagram for this Markov chain.</p>
 <div class="myanswers">
-<p><em>Solution.</em>
-<!--
-    \begin{tikzpicture}[shorten >=1pt,scale=1]
-    \node[state] (1) at (0,0) {$1$};
-    \node[state] (2) at (2,0) {$2$};
-    \node[state] (3) at (4,0) {$3$};
-    \node[state] (4) at (6,0) {$4$};
-    \node[state] (5) at (8,0) {$5$};
-    
-    \path[->] (1) edge [bend left]  node [above] {$\frac23$} (2);
-    \path[->] (2) edge [bend left]  node [below] {$\frac13$} (1);
-    \path[->] (3) edge              node [above] {$\frac35$} (2);
-    \path[->] (3) edge              node [above] {$\frac15$} (4);
-    \path[->] (4) edge [bend left]  node [above] {$\frac34$} (5);
-    \path[->] (5) edge [bend left]  node [below] {$\frac12$} (4);
-    
-    \path[->] (1) edge [loop left]  node [left]  {$\frac13$} ();
-    \path[->] (2) edge [loop above] node [above] {$\frac23$} ();
-    \path[->] (3) edge [loop above] node [above] {$\frac15$} ();
-    \path[->] (4) edge [loop above] node [above] {$\frac14$} ();
-    \path[->] (5) edge [loop right] node [right] {$\frac12$} ();
-    \end{tikzpicture}
---></p>
+<em>Solution.</em>
+<div class="figure" style="text-align: center"><span id="fig:Q53"></span>
+<img src="math2750_files/figure-html/Q53-1.png" alt="Transition diagram for Question 3." width="576" />
+<p class="caption">
+Figure 10.3: Transition diagram for Question 3.
+</p>
+</div>
 </div>
 </div>
 <div class="subq">
@@ -380,12 +369,23 @@ Here, the linear difference equation has general solution <span class="math inli
 <div class="figure" style="text-align: center"><span id="fig:tree"></span>
 <img src="math2750_files/figure-html/tree-1.png" alt="The first three-and-a-bit levels of the rooted binary tree." width="336" />
 <p class="caption">
-Figure 10.2: The first three-and-a-bit levels of the rooted binary tree.
+Figure 10.4: The first three-and-a-bit levels of the rooted binary tree.
 </p>
 </div>
 <p>By considering the distance of <span class="math inline">\((X_n)\)</span> from the root, or otherwise, show that <span class="math inline">\((X_n)\)</span> is transient.</p>
 <div class="myanswers">
-<p><em>Solution.</em></p>
+<p><em>Solution.</em> We want to show that <span class="math inline">\(m_0\)</span>, the return probability to the root, is strictly less than 1.</p>
+<p>Let <span class="math inline">\(Y_n\)</span> be the distance of <span class="math inline">\(X_n\)</span> from the root as suggested in the question. Then <span class="math inline">\(X_n\)</span> returns to to the root if and only if <span class="math inline">\(Y_n\)</span> returns to <span class="math inline">\(0\)</span>, so we can look at that instead.</p>
+<p>If <span class="math inline">\((Y_n)\)</span> is the distance from the root, than at each time step <span class="math inline">\(Y_{n+1} = Y_n + 1\)</span> with probability <span class="math inline">\(\frac23\)</span>, if we take either of the two edges away from root, or <span class="math inline">\(Y_n = Y_n - 1\)</span> with probability <span class="math inline">\(\frac13\)</span>, if we take the edge back towards the root. If <span class="math inline">\(Y_n = 0\)</span> is at the root, then <span class="math inline">\(Y_{n+1} = Y_n+1\)</span>. So <span class="math inline">\((Y_n)\)</span> is a simple random walk with positive drift <span class="math inline">\(p = \frac23 &gt; \frac12\)</span> and a reflecting barrier at <span class="math inline">\(0\)</span>, which is transient.</p>
+<p>To prove it’s transient, we can use a conditioning on the first step argument to get <span class="math inline">\(m_0 = h_{10}\)</span>, and
+<span class="math display">\[ h_{i\,0} = \tfrac23 h_{i+1\,0} + \tfrac23 h_{i-1,\,0} . \]</span>
+The general solution is
+<span class="math display">\[ h_{i0} = A + B\left(\tfrac12\right)^i , \]</span>
+since <span class="math inline">\(\rho = \frac13 / \frac23 = \frac12\)</span>. The initial condition <span class="math inline">\(h_{00} = 1\)</span> gives <span class="math inline">\(A + B = 1\)</span>, so
+<span class="math display">\[ h_{i0} = 1 - B\left(1 - \left(\tfrac12\right)^i\right) , \]</span>
+and non-negative minimlality requires <span class="math inline">\(B = 1\)</span>. Hence
+<span class="math display">\[ h_{i0} = \left(\tfrac12\right)^i , \]</span>
+and <span class="math inline">\(m_0 = h_{10} = \frac12 &lt; 1\)</span>, as required.</p>
 </div>
 </div>
 <div class="myq">
@@ -402,7 +402,7 @@ Figure 10.2: The first three-and-a-bit levels of the rooted binary tree.
         </div>
       </div>
 <a href="S10-stationary-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S11-long-term-chains.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,19 @@
+# Assessment 3 {.unnumbered #A3}
+
+<!--
+::: {.mysummary}
+This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.
+
+The deadline for submission is **Thursday 11 February at 2pm**. Submission will be to Gradescope via Minerva, from Monday 8 February. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a scanning app (I like Microsoft Office Lens or Adobe Scan) rather than submit images.
+
+Late submissions up to Wednesday 17 February at 2pm will still be marked, but	the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Wednesday 17 February.
+
+Your solutions to this assessment should be your own work. Copying, collaboration or plagiarism are not permitted. Asking others to do your work, including via the internet, is not permitted. Transgressions are considered to be a very serious matter, and will be dealt with according to the University's disciplinary procedures.
+:::
+-->
+
+::: {.mysummary}
+Assessment 3 will be available very soon. The submission deadline is Thursday 25 March (week 9).
+:::
+
+
