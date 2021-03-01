@@ -11,7 +11,7 @@
 
 :::: {.videowrap}
 ::: {.videowrapper}
-<iframe src="https://www.youtube.com/embed/8ptEqJn99rU></iframe>
+<iframe src="https://www.youtube.com/embed/8ptEqJn99rU"></iframe>
 :::
 ::::
 
@@ -130,7 +130,7 @@ In particular, as $n \to \infty$, we have
 
 :::: {.videowrap}
 ::: {.videowrapper}
-<iframe src="https://www.youtube.com/embed/Pg7sR0wJ3vo></iframe>
+<iframe src="https://www.youtube.com/embed/Pg7sR0wJ3vo"></iframe>
 :::
 ::::
 

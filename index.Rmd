@@ -11,15 +11,34 @@ url:    https://mpaldridge.github.io/math2750/
 # Schedule {.unnumbered #home}
 
 ::: {.mysched}
+**Week 6** (1--5 March):
+
+* [**Section 11**: Long-term behaviour of Markov chians](#S11-long-term-chains)
+* [**Section 12**: End of of Part I: Discrete time Markov chains](#S12-revision-i)
+* [**Problem Sheet 6**](#P06)
+* [**Computational Worksheet 2 / Assessment 2**](#computing): computational drop-in sessions next week, due 18 March
+* [**Assessment 3**](#A3) *to follow soon*: due 25 March
+* **Lecture**: Tuesday at 1400 (Zoom)
+* **Workshops** on Problem Sheet 3: Monday or Tuesday (Zoom)
+* **Drop-in sessions**: Tuesday or Wednesday (Teams)
+:::
+
+::: {.oldsched}
+**Week 5** (22--26 February):
+
+* [**Section 9**: Recurrence and transience](#S09-recurrence-transience)
+* [**Section 10**: Stationary distributions](#S10-stationary-distributions)
+* [**Problem Sheet 5**](#P05)
+* [**Computational Worksheet 1**](#computing)
+:::
+
+::: {.mysched}
 **Week 4** (15--19 February):
 
 * [**Section 7**: Class Structure](#S07-classes)
 * [**Section 8**: Hitting times](#S08-hitting-times)
 * [**Problem Sheet 4**](#P04)
-* [**Computational Worksheet 1**](#computing), with **computational drop-in sessions**: Monday, Tuesday, or Wednesday (Teams)
-* **Lecture**: Tuesday at 1400 (Zoom)
-* **Workshops** on Problem Sheet 3: Monday or Tuesday (Zoom)
-* Non-computational **drop-in sessions**: Tuesday or Wednesday (Teams)
+* [**Computational Worksheet 1**](#computing), with computational drop-in sessions
 :::
 
 ::: {.oldsched}

@@ -31,7 +31,6 @@ The following list is not exhaustive, but if you can do most of the things on th
 * Calculate the expectation and variance of general random walks.
 * Define the gambler's ruin Markov chain.
 * Find the ruin probability and expected duration for the gambler's ruin by (i) setting up equations by conditioning on the first step and (ii) solving the resulting linear difference equation.
-
 * Draw a transition diagram of a Markov chain given the transition matrix.
 * Calculate $n$-step transitions probabilities by (a) summing the probabilities over all relevant paths or (b) calculating the matrix power.
 * Find the communicating classes in a Markov chain.
