@@ -23,7 +23,7 @@ output: html_document
 **Question 0:** *Answer the questions on this problem sheet. Write up a short report on your findings, with answers to the questions. Make sure to include relevant graphs produced and the R code you used.*
 
 
-Remember that this is assessed work, and your report must be submitted by Thursday 18 March. You might like to look at [my example solution to Computational Worksheet 1](https://mpaldridge.github.io/math2750/computing/) to see what a good report looks like.
+Remember that this is assessed work, and your report must be submitted by Thursday 18 March. You might like to look at [my example report for Computational Worksheet 1](https://mpaldridge.github.io/math2750/computing/) to see what a good report looks like.
 
 
 
