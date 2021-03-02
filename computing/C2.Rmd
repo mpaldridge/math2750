@@ -1,18 +1,18 @@
 ---
-title:  "Computational Practical 2 & Assessment 2"
+title:  "Computational Worksheet 2 & Assessment 2"
 author: "Matthew Aldridge"
 date:   "MATH2750 Introduction to Markov Processes (2020--21)"
 output: html_document 
 ---
   
   
-*This computer practical is an oppotunity to learn more about Markov chains using R. This practical doubles as **Assessment 2**, and is an assessed part of the course. This assessment counts for 3% of your final module grade.*
+*This computational worksheet is an opportunity to learn more about Markov chains using R. This practical doubles as **Assessment 2**, and is an assessed part of the course. This assessment counts for 3% of your final module grade.*
 
 *You should write a report on your work (see Question 0 below), answering all the questions with explanations and figures where necessary, and showing any R code you used. Good formats for your report include PDF, Word document, or HTML. You work must be a* report: *do not just submit a list of R commands.*
 
 *The deadline for submission is **Thursday 18 March at 2pm**. Late submissions up to Thursday 25 March at 2pm will still be marked, but the total mark will be reduced by 10% for each day or part-day it is late.*
 
-*Your report will by marked out of 8, with 2 mark available for each of Questions 1--4.*
+*Your report will by marked out of 8, with 2 marks available for each of Questions 1--4.*
 
 
 
@@ -23,7 +23,7 @@ output: html_document
 **Question 0:** *Answer the questions on this problem sheet. Write up a short report on your findings, with answers to the questions. Make sure to include relevant graphs produced and the R code you used.*
 
 
-Remember that this is assessed work, and your report must be submitted by Thursday 18 March. You might like to look at [my example solution to Computational Project 1](https://mpaldridge.github.io/math2750/computing/) to see what a good report looks like.
+Remember that this is assessed work, and your report must be submitted by Thursday 18 March. You might like to look at [my example solution to Computational Worksheet 1](https://mpaldridge.github.io/math2750/computing/) to see what a good report looks like.
 
 
 
@@ -48,7 +48,7 @@ TransMat <- function(eps) {
 
 # Simulates a Markov chain with transition matrix P for N steps from X0
 MarkovChain <- function(N, X0, P) {
-  X <- numeric(N)   # empty vector of length N
+  X <- rep(0, N)    # empty vector of length N
   space <- nrow(P)  # number of points in sample space
   
   now <- X0
