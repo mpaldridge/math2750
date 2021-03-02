@@ -39,6 +39,8 @@ display: none !important;
 
 ::: {.mysummary}
 You should attempt all these questions and write up your solutions in advance of your workshop in week 7 (Monday 8 or Tuesday 9 March) where the answers will be discussed.
+
+Remember that the **[mid-semester survey](https://forms.office.com/Pages/ResponsePage.aspx?id=qO3qvR3IzkWGPlIypTW3ywARQdZlKXRHsLcXi_ngX8NUM0NLOFFaQURFVExJMklIRjdVM04wQk8xTy4u)** is still open.
 :::
 
 
