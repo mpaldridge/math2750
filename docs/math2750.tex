@@ -3051,7 +3051,7 @@ Consider the probability we return to \(i\) after time \(n\). We condition on wh
 &= p_{ij}(n)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) \\
 &\qquad {}+ \big(1 - p_{ij}(n)\big)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n \neq j, X_0 = i) \\
 &\leq \mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) +  \big(1 - p_{ij}(n)\big) \\
-= 0 + \big(1 - p_{ij}(n)\big) \\
+&= 0 + \big(1 - p_{ij}(n)\big) \\
 &< 1,
 \end{align*}
 since we can't get from \(j\) to \(i\), and since \(p_{ij}(n) > 0\). If \(i\) were recurrent we would certainly return infinitely often, and in particular certainly return after time \(n\). So \(i\) must be transient instead.

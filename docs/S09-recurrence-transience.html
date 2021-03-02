@@ -321,7 +321,7 @@ If <span class="math inline">\(i\)</span> is recurrent, then <span class="math i
 &amp;= p_{ij}(n)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) \\
 &amp;\qquad {}+ \big(1 - p_{ij}(n)\big)\,\mathbb P(\text{return to $i$ after time $n$} \mid X_n \neq j, X_0 = i) \\
 &amp;\leq \mathbb P(\text{return to $i$ after time $n$} \mid X_n = j, X_0 = i) +  \big(1 - p_{ij}(n)\big) \\
-= 0 + \big(1 - p_{ij}(n)\big) \\
+&amp;= 0 + \big(1 - p_{ij}(n)\big) \\
 &amp;&lt; 1,
 \end{align*}\]</span>
 since we can’t get from <span class="math inline">\(j\)</span> to <span class="math inline">\(i\)</span>, and since <span class="math inline">\(p_{ij}(n) &gt; 0\)</span>. If <span class="math inline">\(i\)</span> were recurrent we would certainly return infinitely often, and in particular certainly return after time <span class="math inline">\(n\)</span>. So <span class="math inline">\(i\)</span> must be transient instead.</p>
