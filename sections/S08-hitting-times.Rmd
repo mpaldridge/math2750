@@ -173,9 +173,9 @@ In conclusion, we have the following. (Recall that we get the result for $i < 0$
 
 ::: {.theorem #rw-hitting}
 Consider a random walk with up probability $p \neq 0, 1$. Then the hitting probabilities to 0 are givin by, for $i > 0$,
-\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{q}{p}\right)^i & \text{if $p > \frac12$} \\ \ 1 & \text{if $p \leq \frac12$,} \end{cases} \]
+\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{q}{p}\right)^i < 1 & \text{if $p > \frac12$} \\ \ 1 & \text{if $p \leq \frac12$,} \end{cases} \]
 and for $i < 0$ by
-\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{p}{q}\right)^{-i} & \text{if $p < \frac12$} \\ \ 1 & \text{if $p \geq \frac12$.} \end{cases} \]
+\[ h_{i0} = \begin{cases} \left(\displaystyle\frac{p}{q}\right)^{-i} < 1 & \text{if $p < \frac12$} \\ \ 1 & \text{if $p \geq \frac12$.} \end{cases} \]
 :::
 
 Now we look at return times. What is the return probability to 0 (or, by symmetry, to any state $i \in \mathbb Z$)? By conditioning on the first step, $m_0 = ph_{1\,0} + qh_{-1\,0}$, and we've calculated those hitting times above. We have
