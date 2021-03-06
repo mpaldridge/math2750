@@ -190,7 +190,7 @@ Changing membership class operates as follows:
 The airline's research has shown that in a given year 40% of members book no flights, 40% book exactly one flight and the remaining 20% book two or more flights, independent of their history. Moreover, the cost of running the scheme per member is estimated as £0 for Ordinary members, £10 for Bronze members, £20 for Silver members, and £30 for Gold members.
 
 :::: {.subq}
-Show that this system can be modelled using a Markov chain. Write down the transition probabilities and draw a transition diagram.
+**(a)** Show that this system can be modelled using a Markov chain. Write down the transition probabilities and draw a transition diagram.
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
