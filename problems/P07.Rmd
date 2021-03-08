@@ -1,0 +1,246 @@
+# Problem sheet 7  {.unnumbered #P07}
+
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+-->
+
+
+
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
+
+
+
+
+\commfalse
+
+
+
+::: {.mysummary}
+You should attempt all these questions and write up your solutions in advance of your workshop in week 8 (Monday 15 or Tuesday 16 March) where the answers will be discussed.
+:::
+
+
+::::: {.myq}
+**1.** Let $(X(t))$ be a Poisson process with rate $\lambda = 5$. Calculate:
+
+:::: {.subq}
+**(a)** $\mathbb P\big(X(0.4) \leq 2\big)$;
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have that $X(0.4) \sim \text{Po}(2)$, so
+\[ \mathbb P\big(X(0.4) \leq 2\big) = \ee^{-2} + 2\ee^{-2} + \frac{2^2}{2} \ee^{-2} = 5 \ee^{-2} = 0.677 .\]
+:::
+::::
+
+:::: {.subq}
+**(b)** $\mathbb EX(6.4)$;
+
+::: {.myanswers data-latex=""}
+*Solution.* We have that $X(6.4) \sim \text{Po}(32)$, so $\mathbb E X(6.4) = 32$.
+:::
+::::
+
+:::: {.subq}
+**(c)** $\mathbb P\big(X(0.5) = 0 \text{ and } X(1) = 1\big)$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+This happens if we have $X(0.5) - X(0) = 0$ and also the independent event $X(1) - X(0.5) = 1$. Both increments are $\text{Po}(2.5)$, so
+\[\mathbb P\big(X(0.5) = 0 \text{ and } X(1) = 1\big) = \ee^{-2.5} \times 2.5\ee^{-2.5} = 0.0168.  \]
+:::
+::::
+
+Let $T_n$ be the $n$th holding time, and let $J_n = T_1 + \cdots + T_n$ be the $n$th arrival time. Calculate:
+
+:::: {.subq}
+**(d)** $\mathbb P(0.1 \leq T_2 < 0.3)$;
+
+::: {.myanswers data-latex=""}
+*Solution.* We have $T_2 \sim \text{Exp}(5)$, so
+	\begin{multline*} \mathbb P(0.1 \leq T_2 < 0.3) = \mathbb P(T_2 > 0.1) - \mathbb P(T_2 > 0.3) \\= \ee^{-5\times0.1} - \ee^{-5\times0.3} = \ee^{-0.5} - \ee^{-1.5} = 0.383.       \end{multline*} 
+:::
+::::
+
+:::: {.subq}
+**(e)** $\mathbb E J_{100}$;
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ \mathbb E J_{100} = \mathbb E (T_1 + \dots + T_{100}) = 100 \, \mathbb ET_1 = 100 \times \tfrac15 = 20.     \]
+:::
+::::
+
+:::: {.subq}
+**(f)** $\Var(J_{100})$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+	Using independence,
+\[ \mathbb \Var( J_{100}) = \Var E (T_1 + \dots + T_{100}) = 100 \, \Var(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
+:::
+::::
+
+:::: {.subq}
+**(g)** Using a normal approximation, approximate $\mathbb P(18 \leq J_{100} \leq 22)$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The normal approximation is $J_{100} \sim \mathrm N(20,4)$. So, letting $Z \sim \text{N}(0,1)$, we have
+\begin{multline*}  \mathbb P(18 \leq J_{100} \leq 22) = \mathbb P\left(\frac{18-20}{\sqrt4} \leq Z \leq \frac{18-20}{\sqrt4}\right) \\ = \mathbb P(-1 \leq Z \leq 1) = 2\Phi(1) - 1 = 0.683.  \end{multline*} 
+:::
+::::
+:::::
+
+
+::::: {.myq}
+**2.** Suppose that telephone calls arrive at a call centre according to a Poisson process with rate $\lambda = 100$ per hour, and are answered with probability $0.6$.
+
+:::: {.subq}
+**(a)** What is the probability that there are no answered calls in the next minute?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The answered calls form a Poisson process with rate $100 \times 0.6 = 60$ per hour, or $1$ per minute. The probability there are no unanswered calls in one minute are $\ee^{-1} = 0.368$.
+:::
+::::
+
+:::: {.subq}
+**(b)** Use a suitable normal approximation, with a continuity correction, to find the probability that there will be at least $25$ answered calls in the next $30$ minutes.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The number of calls in $30$ minutes is Poisson of rate $30$, which has expectation $30$ and variance $30$. So, using a continuity correction, we have
+\begin{multline} \mathbb P \big(X(30) \geq 24.5 \big) = \mathbb P \left( Z \geq \frac{24.5 - 30}{\sqrt{30}} \right) \\= \mathbb P(Z \geq -1.00 ) = \Phi(1.00) = 0.842 . \end{multline}
+:::
+::::
+:::::
+
+::::: {.myq}
+**3.**
+
+:::: {.subq}
+**(a)** Let $X \sim \text{Po}(\lambda)$ and $Y \sim \text{Po}(\mu)$ be two independent Poisson distributions.  Show that $X + Y \sim \text{Po}(\lambda + \mu)$. One way to start would be to write
+\[ \mathbb P(X+Y = z) = \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) . \]
+
+::: {.myanswers data-latex=""}
+*Solution.* We have
+\begin{align*}
+\mathbb P(X+Y = z) &= \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) \\
+  &= \sum_{x=0}^z \ee^{-\lambda} \frac{\lambda^x}{x!} \ee^{-\mu} \frac{\mu^{z-x}}{(z-x)!} \\
+  &= \ee^{-(\lambda + \mu)} \sum_{x=0}^z \frac{1}{x!(z-x)!} \lambda^x \mu^{z-x} \\
+  &= \ee^{-(\lambda + \mu)} \frac{1}{z!} \sum_{x=0}^z \frac{z!}{x!(z-x)!} \lambda^x \mu^{z-x} \\
+  &= \ee^{-(\lambda + \mu)} \frac{1}{z!} \sum_{x=0}^z \binom{z}{x} \lambda^x \mu^{z-x} .
+\end{align*}
+But the sum here is precisely
+\[ (\lambda + \mu)^z = \sum_{x=0}^z \binom{z}{x} \lambda^x \mu^{z-x} ,  \] 
+so we have
+\[ \mathbb P(X+Y = z) = \ee^{-(\lambda + \mu)} \frac{(\lambda+\mu)^z}{z!}    , \]
+as desired.
+:::
+::::
+
+:::: {.subq}
+**(b)** Let $(X(t))$ and $(Y(t))$ be independent Poisson processes with rate $\lambda$ and $\mu$ respectively. Use part (a) to show that $(X(t) + Y(t))$ is a Poisson process with rate $\lambda + \mu$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+First, that $Z(0) = X(0) + Y(0) = 0 + 0 = 0$ is immediate. Second, the previous result shows that $(Z(t))$ has independent Poisson increments with rate $\lambda + \mu$. Third, since $(X(t))$ and $(Y(t))$ each have independent  increments and are independent of each other, it follows that $(Z(t))$ has independent increments also.
+:::
+::::
+
+:::: {.subq}
+**(c)** Number 1 buses arrive at a bus stop at a rate of $\lambda_1 = 4$ per hour, and Number 6 buses arrive at the rate $\lambda_6 = 2$ per hour. I've been waiting at the bus stop for 5 minutes for either bus to arrive; how much longer do I have to wait, on average?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+By the above, the arrivals of buses form a Poisson process of rate $\lambda_1 + \lambda_6 = 6$. By the memoryless property of the exponential distribution, the fact we have already been waiting for 5 minutes is irrelevant. The waiting time is $\text{Exp}(6)$, with mean $\frac16$ of an hour, or 10 minutes.
+:::
+::::
+:::::
+
+::::: {.myq}
+**4.**
+Let $T_1 \sim \Exp(\lambda_1), T_2 \sim \Exp(\lambda_2), \dots, T_n \sim \Exp(\lambda_n)$ be independent exponential distributions, and let $T$ be the minimum $T = \min \{T_1, T_2 \dots, T_n\}$.
+
+:::: {.subq}
+**(a)** Show that $T \sim \Exp(\lambda_1 + \lambda_2 + \cdots + \lambda_n)$. (You may use the fact that
+\[ \mathbb P(T > t) = \mathbb P(T_1 > t) \, \mathbb P(T_2 > t) \cdots \mathbb P(T_n > t) , \]
+provided you explain why it's true.)
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+For the minimum to be bigger than $t$, we need all $n$ of the times to be bigger than $t$. Hence
+\begin{multline*} \mathbb P(T > t) = \mathbb P(T_1 > t)  \, \mathbb P(T_2 > t)\cdots   \mathbb P(T_n > t)\\ = \ee^{-\lambda_1 t} \ee^{-\lambda_2 t} \cdots \ee^{-\lambda_n t} = \ee^{-(\lambda_1 + \lambda_2 + \cdots + \lambda_n) t} . \end{multline*}
+But this is precisely the tail probability of an $\Exp(\lambda_1 + \lambda_2 + \cdots + \lambda_n)$ distribution.
+:::
+::::
+
+:::: {.subq}
+**(b)** Show that the probability that the minimum is $T_j$ is given by
+\[ \mathbb P(T_j = T) = \frac{\lambda_j}{\lambda_1 + \lambda_2 + \cdots + \lambda_n} . \]
+(You could choose to begin by proving the $n = 2$ case, if you want.)
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+By conditioning on the value of $T_j$ and arguing as above, we have
+\[ \mathbb P(T_j = T) = \int_0^\infty f_{T_j}(t) \, \mathbb P(\text{all other $T_k$s} \geq t) \, \mathrm dt .  \] 
+Using the result above and substituting in the PDF of an exponential distribution, we get
+\begin{align*} \mathbb P(T_j = T) &= \int_0^\infty \lambda_j \ee^{-\lambda_j t}\, \ee^{-(\lambda_1 + \cdots + \lambda_{j-1} + \lambda_{j+1} + \cdots + \lambda_n)t} \, \mathrm dt \\         
+&= \lambda_j \int_0^\infty \ee^{-(\lambda_1 + \lambda_2 + \cdots + \lambda_n) t} \, \mathrm dt \\
+&= \lambda_j \left[ -\frac{1}{\lambda_1 + \lambda_2 + \cdots + \lambda_n} \ee^{-(\lambda_1 + \lambda_2 + \cdots + \lambda_n) t} \right]_0^\infty \\
+&= \lambda_j \left(-0 - \left(- \frac{1}{\lambda_1 + \lambda_2 + \cdots + \lambda_n}\right)\right) \\
+&= \frac{\lambda_j}{\lambda_1 + \lambda_2 + \cdots + \lambda_n} . \end{align*}
+:::
+::::
+:::::
+
+:::: {.myq}
+**5.**
+Let $(X(t))$ be a Poisson process with rate $\lambda$. Conditional on there being exactly 1 arrival before time $t$, find the distribution of the time of that arrival.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+Clearly the arrival is in the interval $[0,t]$. The conditional CDF is
+\begin{align*}
+  \mathbb P\big(T_1 \leq s \mid X(t) = 1\big)
+    &= \frac{\mathbb P\big( T_1 \leq s \text{ and } X(t) = 1 \big)}{\mathbb P\big(X(t) = 1 \big)} %\\
+%    &= \frac{\mathbb P( T_1 \leq s \text{ and } T_2 > t-s )}{\mathbb P\big(X(t) = 1 \big)} \\
+%    &= \frac{ (1 - \ee^{-\lambda s} ) \ee^{-\lambda(t-s)}{\ee^{-\lambda t}} \\
+%    &= \frac{ \ee^{-\lambda(t-s)} 
+\end{align*}
+The denominator is $\lambda t \ee^{-\lambda t}$. The numerator is
+\begin{align*}
+\mathbb P\big( T_1 \leq s \text{ and } X(t) = 1 \big)
+  &= \mathbb P\big(X(s) = 1 \text{ and } X(t) = 1 \big) \\
+  &= \mathbb P \big(X(s)-X(0) = 1\big) \, \mathbb P\big(X(t) - X(s) = 0\big) \\
+  &= \lambda s \ee^{-\lambda s} \ee^{\lambda(t-s)} \\
+  &= \lambda s \ee^{-\lambda t} .
+\end{align*}
+Putting this together, the conditional CDF is
+\[ \mathbb P\big(T_1 \leq s \mid X(t) = 1\big) = \frac{\lambda s \ee^{-\lambda t}}{\lambda t \ee^{-\lambda t}} = \frac{s}{t} .   \]
+This is precisely the CDF for the uniform distribution on $[0,t]$.
+:::
+::::

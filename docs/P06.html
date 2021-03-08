@@ -165,6 +165,18 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="P06.html"><a href="P06.html"><i class="fa fa-check"></i>Problem sheet 6</a></li>
 <li class="chapter" data-level="" data-path="A3.html"><a href="A3.html"><i class="fa fa-check"></i>Assessment 3</a></li>
+<li class="part"><span><b>Part II: Continuous time Markov jump processes</b></span></li>
+<li class="chapter" data-level="13" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html"><i class="fa fa-check"></i><b>13</b> Poisson process with Poisson increments</a><ul>
+<li class="chapter" data-level="13.1" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#poisson-dist"><i class="fa fa-check"></i><b>13.1</b> Poisson distribution</a></li>
+<li class="chapter" data-level="13.2" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#poisson-def-poisson"><i class="fa fa-check"></i><b>13.2</b> Definition 1: Poisson increments</a></li>
+<li class="chapter" data-level="13.3" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#summed-marked"><i class="fa fa-check"></i><b>13.3</b> Summed and marked Poisson processes</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html"><i class="fa fa-check"></i><b>14</b> Poisson process with exponential holding times</a><ul>
+<li class="chapter" data-level="14.1" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#exponential"><i class="fa fa-check"></i><b>14.1</b> Exponential distribution</a></li>
+<li class="chapter" data-level="14.2" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#definition-2-exponential-holding-times"><i class="fa fa-check"></i><b>14.2</b> Definition 2: exponential holding times</a></li>
+<li class="chapter" data-level="14.3" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#cont-markov"><i class="fa fa-check"></i><b>14.3</b> Markov property in continuous time</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P07.html"><a href="P07.html"><i class="fa fa-check"></i>Problem sheet 7</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -198,7 +210,7 @@
   float: right; 
   margin: -12px 0 0 0;
 }
-</style
+</style>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -229,18 +241,13 @@ display: none !important;
 <div class="subq">
 <p><strong>(a)</strong> Draw a transition diagram for this Markov chain. Is it irreducible? Is each state periodic or aperiodic?</p>
 <div class="myanswers">
-<p><em>Solution.</em>
-<!--
-    \begin{center}
-    \begin{tikzpicture}[shorten >=1pt,scale=1.1]
-    \node[state] (3) at (0,0) {3};
-    \node[state] (2) at (2,0) {2};
-    \node[state] (1) at (1,1.73) {1};
-    \path[->] (1) edge node [right]{$1$} (2);
-    \path[->] (2) edge node [below]{$1$} (3);
-    \path[->] (3) edge node [left]{$1$} (1);
-    \end{tikzpicture}
---></p>
+<em>Solution.</em>
+<div class="figure" style="text-align: center"><span id="fig:Q61"></span>
+<img src="math2750_files/figure-html/Q61-1.png" alt="Transition diagram for Question 1." width="192" />
+<p class="caption">
+Figure 12.1: Transition diagram for Question 1.
+</p>
+</div>
 <p>The Markov chain is irreducible, since we have <span class="math inline">\(1 \to 2 \to 3 \to 1\)</span>. Since we continually cycle around the triangle, it’s clear that the period is <span class="math inline">\(d = 3\)</span>.</p>
 </div>
 </div>
@@ -259,14 +266,14 @@ The equations give <span class="math inline">\(\pi_1 = \pi_3\)</span>, <span cla
 </div>
 </div>
 <div class="subq">
-<p>For what initial distributions <span class="math inline">\(\boldsymbol\lambda\)</span> do the limits <span class="math inline">\(\lim_{n \to \infty} \mathbb P(X_n = i)\)</span> exist?</p>
+<p><strong>(d)</strong> For what initial distributions <span class="math inline">\(\boldsymbol\lambda\)</span> do the limits <span class="math inline">\(\lim_{n \to \infty} \mathbb P(X_n = i)\)</span> exist?</p>
 <div class="myanswers">
 <p><em>Solution.</em>
 For a given initial condition <span class="math inline">\((\lambda_1, \lambda_2, \lambda_3)\)</span> it’s clear we cycle through the initial condition, <span class="math inline">\((\lambda_2, \lambda_3, \lambda_1)\)</span>, and <span class="math inline">\((\lambda_3, \lambda_1, \lambda_2)\)</span>. Hence the limits only exist if <span class="math inline">\(\lambda_1 = \lambda_2 = \lambda_3 = \frac13\)</span>.</p>
 </div>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> What is the long-run proportion of time spent in each state?</p>
+<p><strong>(e)</strong> What is the long-run proportion of time spent in each state?</p>
 <div class="myanswers">
 <p><em>Solution.</em>
 Since the Markov chain is irreducible and positive recurrent (like every finite irreducible chain), the ergodic theorem tells us that the long-run proportion of time spent in each state <span class="math inline">\(i\)</span> is <span class="math inline">\(\pi_i = \frac13\)</span>.</p>
@@ -283,29 +290,12 @@ Since the Markov chain is irreducible and positive recurrent (like every finite 
 <p><em>Solution.</em>
 Consider a stochastic process on the state space <span class="math inline">\(\mathcal S = \{\text{F}, \text{M}, \text{m}, \text{f}\}\)</span>, where F means the first-born child is a female carrier, M means the child is a male haemophiliac, f means the child is a female non-carrier, and m means the child is a male without the disease. (This is not the only way to set up the Markov chain.) If we let <span class="math inline">\((X_n)\)</span> be the status of the first-born child at the <span class="math inline">\(n\)</span>th generation, then it is clear that <span class="math inline">\(X_{n+1}\)</span>, the status of the <span class="math inline">\((n+1)\)</span>st individual, will depend on the status of their parent <span class="math inline">\(X_n\)</span>, but, given that, will not depend further on the history of the process. So we have the Markov property.</p>
 <p>The transition probabilities are: From a female carrier, <span class="math inline">\(p_{\mathrm{FF}} = \frac14\)</span> or <span class="math inline">\(p_{\mathrm{FM}} = \frac14\)</span> if she passes on the <span class="math inline">\(\text X^*\)</span>, or <span class="math inline">\(p_{\mathrm{Ff}} = p_{\mathrm{Fm}} = \frac14\)</span> if not. From a male haemophiliac, <span class="math inline">\(p_{\mathrm{MF}} = \frac12\)</span> if he passes on the <span class="math inline">\(\text X^*\)</span>, or <span class="math inline">\(p_{\mathrm{Mm}} = \frac12\)</span> if not. From those without the <span class="math inline">\(\text X^*\)</span>, we have <span class="math inline">\(p_{\mathrm{ff}} = p_{\mathrm{fm}} = p_{\mathrm{mf}} =p_{\mathrm{mm}} = \frac12\)</span>.</p>
-<!--
-\begin{center}
-    \begin{tikzpicture}[shorten >=1pt,scale=0.75]
-    \node[state] (1) at (0,0) {F};
-    \node[state] (2) at (4,0) {f};
-    \node[state] (3) at (0,-3) {M};
-    \node[state] (4) at (4,-3) {m};
-    
-    \path[->]   (1) edge [loop left] node [left]{$\frac14$} ();
-    \path[->]   (2) edge [loop right] node [right]{$\frac12$} ();
-    \path[->]   (4) edge [loop right] node [right]{$\frac12$} ();
-    
-    
-    \path[->]   (1) edge[bend left] node [right]{$\frac14$} (3);
-    \path[->]   (1) edge node [above]{$\frac14$} (2);
-    \path[->]   (1) edge node [above right]{$\frac14$} (4);
-    
-    \path[->]   (2) edge[bend left] node [right]{$\frac12$} (4);
-    \path[->]   (4) edge[bend left] node [left]{$\frac12$} (2);
-    \path[->]   (3) edge node [below]{$\frac12$} (4);
-    \path[->]   (3) edge[bend left] node [left]{$\frac12$} (1);
-    \end{tikzpicture}
--->
+<div class="figure" style="text-align: center"><span id="fig:Q62"></span>
+<img src="math2750_files/figure-html/Q62-1.png" alt="Transition diagram for Question 2." width="336" />
+<p class="caption">
+Figure 12.2: Transition diagram for Question 2.
+</p>
+</div>
 </div>
 </div>
 <div class="subq">
@@ -354,29 +344,12 @@ and <span class="math inline">\(p_{\mathrm{OO}} = 0.4+0.4 = 0.8\)</span>.
 With probability <span class="math inline">\(20\%\)</span>, a member books two or more flights, giving
 <span class="math display">\[ p_{\mathrm{OB}} = p_{\mathrm{BS}} = p_{\mathrm{SG}} = 0.2  \]</span>
 and <span class="math inline">\(p_{\mathrm{GG}} = 0.4+0.2 = 0.6\)</span>.</p>
-<!--
-    
-    \begin{center}
-        \begin{tikzpicture}[shorten >=1pt,scale=1.1]
-        \node[state] (O) at (0,0) {O};
-        \node[state] (B) at (2,0) {B};
-        \node[state] (S) at (4,0) {S};
-        \node[state] (G) at (6,0) {G};
-        
-        \path[->] (O) edge [loop left] node [left]{$0.8$} ();
-        \path[->] (B) edge [loop above] node [above]{$0.4$} ();
-        \path[->] (S) edge [loop above] node [above]{$0.4$} ();
-        \path[->] (G) edge [loop right] node [right]{$0.6$} ();
-        
-        \path[->] (O) edge[bend left] node [above]{$0.2$} (B);
-        \path[->] (B) edge[bend left] node [above]{$0.2$} (S);
-        \path[->] (S) edge[bend left] node [above]{$0.2$} (G);
-        
-        \path[->] (G) edge[bend left] node [below]{$0.4$} (S);
-        \path[->] (S) edge[bend left] node [below]{$0.4$} (B);
-        \path[->] (B) edge[bend left] node [below]{$0.4$} (O);
-        \end{tikzpicture}
--->
+<div class="figure" style="text-align: center"><span id="fig:Q63"></span>
+<img src="math2750_files/figure-html/Q63-1.png" alt="Transition diagram for Question 3." width="480" />
+<p class="caption">
+Figure 12.3: Transition diagram for Question 3.
+</p>
+</div>
 </div>
 </div>
 <div class="subq">
@@ -386,14 +359,21 @@ and <span class="math inline">\(p_{\mathrm{GG}} = 0.4+0.2 = 0.6\)</span>.</p>
 The Markov chain is irreducible and positive recurrent, so has a unique stationary distribution.</p>
 <p>The equations from <span class="math inline">\(\boldsymbol\pi = \boldsymbol\pi \mathsf P\)</span> are
 <span class="math display">\[\begin{align}
-    \pi_{\mathrm O} &amp;= 0.8 \pi_{\mathrm O} + 0.4 \pi_{\mathrm B } &amp; 2\pi_{\mathrm B} &amp;= \pi_{\mathrm O} \\
-    \pi_{\mathrm B} &amp;= 0.2\pi_{\mathrm O} + 0.4\pi_{\mathrm B} + 0.4\pi_{\mathrm S} &amp; 3\pi_{\mathrm B} - 2\pi_{\mathrm S} &amp;= \pi_{\mathrm O} \\
-    \pi_{\mathrm S} &amp;= \phantom{0.2 \pi_{\mathrm S} +{}} 0.2 \pi_{\mathrm B} + 0.4 \pi_{\mathrm S} + 0.4 \pi_{\mathrm G} &amp; \text{(discard)} \hspace{-0.5cm} &amp; \notag \\
-    \pi_{\mathrm G} &amp;= \phantom{0.2 \pi_{\mathrm S} + 0.2 \pi_{\mathrm B} +{}} 0.2 \pi_{\mathrm S} + 0.6 \pi_{\mathrm G} &amp;  \pi_{\mathrm S} - 2 \pi_{\mathrm G} &amp;= 0
+    \pi_{\mathrm O} &amp;= 0.8 \pi_{\mathrm O} + 0.4 \pi_{\mathrm B } \\
+    \pi_{\mathrm B} &amp;= 0.2\pi_{\mathrm O} + 0.4\pi_{\mathrm B} + 0.4\pi_{\mathrm S} \\
+    \pi_{\mathrm S} &amp;= \phantom{0.2 \pi_{\mathrm S} +} 0.2 \pi_{\mathrm B} + 0.4 \pi_{\mathrm S} + 0.4 \pi_{\mathrm G} \\
+    \pi_{\mathrm G} &amp;= \phantom{0.2 \pi_{\mathrm S} + 0.2 \pi_{\mathrm B} +} 0.2 \pi_{\mathrm S} + 0.6 \pi_{\mathrm G} .
     \end{align}\]</span>
-where we have rewritten them in terms of the working variable <span class="math inline">\(\pi_{\mathrm O}\)</span>. From (1) we get <span class="math inline">\(\pi_{\mathrm B} = \frac12\pi_{\mathrm O}\)</span>. Substituting this into (2), we get <span class="math inline">\(\pi_{\mathrm S} = \frac14\pi_{\mathrm O}\)</span>. Substituting this into (3), we get <span class="math inline">\(\pi_{\mathrm G} = \frac18\pi_{\mathrm O}\)</span>. The normalising condition is
-<span class="math display">\[ \pi_{\mathrm O} + \pi_{\mathrm B} + \pi_{\mathrm S} + \pi_{\mathrm G} = \left(1 + \tfrac12 + \tfrac14 + \tfrac18\right)\pi_{\mathrm O} = \tfrac{15}{8} \pi_{\mathrm O} = 1 . \]</span>
-Hence <span class="math inline">\(\pi_{\mathrm O} = \frac{8}{15}\)</span>. Back-solving, we get the solution
+We will choose <span class="math inline">\(\pi_{\mathrm B}\)</span> as the working variable and discard the last equation. Rearranging the other three equations gives
+<span class="math display">\[\begin{align*}
+\pi_{\mathrm O} \phantom{{}+ 2\pi_{\mathrm S} - 2\pi_{\mathrm G}} &amp;= 2\pi_{\mathrm B} \\
+\pi_{\mathrm O} + 2\pi_{\mathrm S} \phantom{{}- 2\pi_{\mathrm G}} &amp;= 3\pi_{\mathrm B} \\
+3\pi_{\mathrm S} - 2\pi_{\mathrm G} &amp;= \pi_{\mathrm B} 
+\end{align*}\]</span>
+Substituting the first of these into the second and rearranging gives <span class="math inline">\(\pi_{\mathrm S} = \frac12 \pi_{\mathrm B}\)</span>. Substituting this into the third and rearranging gives <span class="math inline">\(\pi_{\mathrm S} = \frac14 \pi_{\mathrm B}\)</span></p>
+<p>The normalising condition is
+<span class="math display">\[ \pi_{\mathrm O} + \pi_{\mathrm B} + \pi_{\mathrm S} + \pi_{\mathrm G} = \left(2 + 1 + \tfrac12 + \tfrac14 \right)\pi_{\mathrm B} = \tfrac{15}{4} \pi_{\mathrm B} = 1 . \]</span>
+Hence <span class="math inline">\(\pi_{\mathrm B} = \frac{4}{15}\)</span>. Back-solving, we get the solution
 <span class="math display">\[ \left(\pi_{\mathrm O},\pi_{\mathrm B},\pi_{\mathrm S},\pi_{\mathrm G}\right) = \left(\tfrac8{15},\tfrac{4}{15},\tfrac{2}{15},\tfrac{1}{15} \right) . \]</span></p>
 </div>
 </div>

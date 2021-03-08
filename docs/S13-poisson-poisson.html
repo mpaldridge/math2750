@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="S12-revision-i.html"/>
+<link rel="prev" href="A3.html"/>
 <link rel="next" href="S14-poisson-exponential.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -159,10 +159,12 @@
 <li class="chapter" data-level="11.3" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-ergodic"><i class="fa fa-check"></i><b>11.3</b> Ergodic theorem</a></li>
 <li class="chapter" data-level="11.4" data-path="S11-long-term-chains.html"><a href="S11-long-term-chains.html#S11-proofs"><i class="fa fa-check"></i><b>11.4</b> Proofs of the limit and ergodic theorems</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> Revision of Part 1: Discrete time Markov chains</a><ul>
-<li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#S12-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
-<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#S12-summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+<li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> End of of Part I: Discrete time Markov chains</a><ul>
+<li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#todo-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
+<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="P06.html"><a href="P06.html"><i class="fa fa-check"></i>Problem sheet 6</a></li>
+<li class="chapter" data-level="" data-path="A3.html"><a href="A3.html"><i class="fa fa-check"></i>Assessment 3</a></li>
 <li class="part"><span><b>Part II: Continuous time Markov jump processes</b></span></li>
 <li class="chapter" data-level="13" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html"><i class="fa fa-check"></i><b>13</b> Poisson process with Poisson increments</a><ul>
 <li class="chapter" data-level="13.1" data-path="S13-poisson-poisson.html"><a href="S13-poisson-poisson.html#poisson-dist"><i class="fa fa-check"></i><b>13.1</b> Poisson distribution</a></li>
@@ -174,11 +176,7 @@
 <li class="chapter" data-level="14.2" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#definition-2-exponential-holding-times"><i class="fa fa-check"></i><b>14.2</b> Definition 2: exponential holding times</a></li>
 <li class="chapter" data-level="14.3" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#cont-markov"><i class="fa fa-check"></i><b>14.3</b> Markov property in continuous time</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html"><i class="fa fa-check"></i><b>15</b> Poisson process in infinitesimal time periods</a><ul>
-<li class="chapter" data-level="15.1" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#infinitesimal"><i class="fa fa-check"></i><b>15.1</b> Definition 3: increments in infinitesimal time</a></li>
-<li class="chapter" data-level="15.2" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#sum2"><i class="fa fa-check"></i><b>15.2</b> Example: sum of two Poisson processes</a></li>
-<li class="chapter" data-level="15.3" data-path="S15-poisson-exponential.html"><a href="S15-poisson-exponential.html#forward"><i class="fa fa-check"></i><b>15.3</b> Forward equations and proof of equivalence</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="P07.html"><a href="P07.html"><i class="fa fa-check"></i>Problem sheet 7</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a><ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#R-access"><i class="fa fa-check"></i>How to access R</a></li>
@@ -227,10 +225,16 @@
 <li>If <span class="math inline">\(X \sim \operatorname{Po}(\lambda)\)</span> and <span class="math inline">\(Y \sim \operatorname{Po}(\mu)\)</span> are independent, then <span class="math inline">\(X + Y \sim \operatorname{Po}(\lambda+\mu)\)</span>.</li>
 <li>Let <span class="math inline">\(X \sim \operatorname{Po}(\lambda)\)</span> represent some arrivals, and independently “mark” each arrival with probability <span class="math inline">\(p\)</span>. Then the number of marked arrivals <span class="math inline">\(Y\)</span> has distribution <span class="math inline">\(Y = \operatorname{Po}(p\lambda)\)</span>, the number of unmarked arrivals <span class="math inline">\(Z\)</span> has distribution <span class="math inline">\(Z \sim \operatorname{Po}((1-p)\lambda)\)</span>, and <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> are independent.</li>
 </ol>
-<p>(When mathematicians say “recall” usually they mean “remember this well-known fact you’ve been taught before”, but sometimes they secretly mean “I’m going to tell you something you probably haven’t seen before, but I can’t be bothered to prove it”. Fact number 3 might be more of the latter kind…)</p>
+<p>(I say “recall”, but it’s OK if the third one is new to you.)</p>
 </div>
 <div id="poisson-def-poisson" class="section level2">
 <h2><span class="header-section-number">13.2</span> Definition 1: Poisson increments</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/PeMq_cHiCr0">
+</iframe>
+</div>
+</div>
 <p>Suppose that, instead of just modelling the number of arrivals in a <em>fixed</em> amount of time, we want to continually model the total number of arrivals as it changes over time. This will be a stochastic process with discrete state space <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span> and continuous time <span class="math inline">\(\mathbb R_+ = [0,\infty)\)</span>. In continuous time, we will normally write stochastic processes as <span class="math inline">\((X(t))\)</span>, with the time variable being a <span class="math inline">\(t\)</span> in brackets, rather than a subscript <span class="math inline">\(n\)</span> as we had in discrete time.</p>
 <p>Suppose calls arrive at a call centre at a rate of <span class="math inline">\(\lambda = 100\)</span> an hour. The following assumptions seem reasonable:</p>
 <ul>
@@ -248,7 +252,7 @@
 </ol>
 </div>
 <p>Note that the condition <span class="math inline">\(t_1 \leq t_2 \leq t_3 \leq t_4\)</span> means that the time interval from <span class="math inline">\(t_1\)</span> to <span class="math inline">\(t_2\)</span> and the time interval from <span class="math inline">\(t_3\)</span> to <span class="math inline">\(t_4\)</span> don’t overlap. (Overlapping time intervals will not have independent increments, as arrivals in the overlap will count for both.)</p>
-<p>The Poisson process was discovered in the first decade 20th century, and the process was named after the distribution. Many people were working on similar things, so it’s difficult to say who discovered it first, but important work was done by the Swedish actuary and mathematician Filip Lundberg and the Danish engineer and mathematician AK Erlang,</p>
+<p>The Poisson process was discovered in the first decade 20th century, and the process was named after the distribution. Many people were working on similar things, so it’s difficult to say who discovered it first, but important work was done by the Swedish actuary and mathematician Filip Lundberg and the Danish engineer and mathematician AK Erlang.</p>
 <div class="example">
 <p><span id="exm:poisson-ex-1" class="example"><strong>Example 13.1  </strong></span><em>Claims arrive at insurance company at a rate of <span class="math inline">\(\lambda = 8\)</span> per hour, modelled as a Poisson process. What is the probability there are no claims in a given <span class="math inline">\(15\)</span> minute period?</em></p>
 <p>By property 2, the number of claims in <span class="math inline">\(15\)</span> minutes is a Poisson distribution with mean <span class="math inline">\(\frac{15}{60}\lambda = 2\)</span>. The probability there are no claims is
@@ -264,12 +268,18 @@ By property 3, the numbers of visitors on different days are independent, so the
 </div>
 <div id="summed-marked" class="section level2">
 <h2><span class="header-section-number">13.3</span> Summed and marked Poisson processes</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/3bassWPMBVY">
+</iframe>
+</div>
+</div>
 <p>The following theorem shows that the sum of two Poisson processes is itself a Poisson process.</p>
 <div class="theorem">
 <p><span id="thm:summed" class="theorem"><strong>Theorem 13.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> and <span class="math inline">\((Y(t))\)</span> be independent Poisson processes with rates <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> respectively. Then the process <span class="math inline">\((Z(t))\)</span> given by <span class="math inline">\(Z(t) = X(t) + Y(t)\)</span> is a Poisson process with rate <span class="math inline">\(\lambda+\mu\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>Given fact number 2, that the sum of a <span class="math inline">\(\operatorname{Po}(\lambda)\)</span> and a <span class="math inline">\(\operatorname{Po}(\mu)\)</span> is a <span class="math inline">\(\operatorname{Po}(\lambda+\mu)\)</span>, its easy to check the necessary properties.</p>
+<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span>The proof of this is a question on <a href="P07.html#P07">Problem Sheet 7</a>.</p>
 </div>
 <div class="example">
 <p><span id="exm:poisson-ex-3" class="example"><strong>Example 13.3  </strong></span><em>A student receives email to her university mail address at a rate of <span class="math inline">\(\lambda = 4\)</span> emails per hour, and to her personal email address at a rate of <span class="math inline">\(\mu = 2\)</span> per hour. Using a Poisson process model, what is the probability the student receives 3 or fewer emails in a 30 minute period?</em></p>
@@ -284,9 +294,9 @@ By property 3, the numbers of visitors on different days are independent, so the
 <p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>Given the third fact that you were “reminded” of, it’s easy to check the necessary properties.</p>
 </div>
 <div class="example">
-<p><span id="exm:pois-ex-4" class="example"><strong>Example 13.4  </strong></span><em>In the 2017/18 English Premier League football season, an average of <span class="math inline">\(\lambda = 2.81\)</span> goals were scored per game, with <span class="math inline">\(p = 0.56\)</span> of them scored by the home team. If we model this as a Poisson process, what is the probability a game ends 1–1?</em></p>
-<p>The number of home goals scored is Poisson with rate <span class="math inline">\(p\lambda = 0.56\times 2.81 = 1.57\)</span>, and the number of away goals scored is Poisson with rate <span class="math inline">\((1-p)\lambda = 1.24\)</span>. Since these are independent, the probability the home and the away team both score <span class="math inline">\(1\)</span> goal is
-<span class="math display">\[ \mathrm{e}^{-1.57} \frac{1.57^1}{1!} \times  \mathrm{e}^{-1.24} \frac{1.24^1}{1!} = 1.57\mathrm{e}^{-1.57} \times 1.24 \mathrm{e}^{-1.24} =  0.12, \]</span>
+<p><span id="exm:pois-ex-4" class="example"><strong>Example 13.4  </strong></span><em>In the 2019/20 English Premier League football season, an average of <span class="math inline">\(\lambda = 2.72\)</span> goals were scored per game, with a proportion <span class="math inline">\(p = 0.56\)</span> of them scored by the home team. If we model this as a Poisson process, what is the probability a match ends in a 1–1 draw?</em></p>
+<p>The number of home goals scored is Poisson with rate <span class="math inline">\(p\lambda = 0.56\times 2.72 = 1.52\)</span>, and the number of away goals scored is Poisson with rate <span class="math inline">\((1-p)\lambda = 1.20\)</span>. Under the Poisson process assumption, these are independent, so the probability the home and the away team both score <span class="math inline">\(1\)</span> goal is
+<span class="math display">\[ \mathrm{e}^{-1.52} \frac{1.52^1}{1!} \times  \mathrm{e}^{-1.20} \frac{1.20^1}{1!} = 1.52\mathrm{e}^{-1.52} \times 1.20 \mathrm{e}^{-1.20} =  0.12, \]</span>
 or 12%.</p>
 </div>
 <div class="mysummary">
@@ -300,7 +310,7 @@ or 12%.</p>
           </div>
         </div>
       </div>
-<a href="S12-revision-i.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="S14-poisson-exponential.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

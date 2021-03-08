@@ -6,7 +6,7 @@
   float: right; 
   margin: -12px 0 0 0;
 }
-</style
+</style>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -53,8 +53,8 @@ Remember that the **[mid-semester survey](https://forms.office.com/Pages/Respons
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
-<!--
-	\begin{center}
+```{tikz Q61, echo=FALSE, fig.align="center", fig.width=2, fig.cap="Transition diagram for Question 1.", cache = TRUE}
+\usetikzlibrary{automata}
 	\begin{tikzpicture}[shorten >=1pt,scale=1.1]
 	\node[state] (3) at (0,0) {3};
 	\node[state] (2) at (2,0) {2};
@@ -63,7 +63,7 @@ Remember that the **[mid-semester survey](https://forms.office.com/Pages/Respons
 	\path[->] (2) edge node [below]{$1$} (3);
 	\path[->] (3) edge node [left]{$1$} (1);
 	\end{tikzpicture}
--->
+```
 
 The Markov chain is irreducible, since we have $1 \to 2 \to 3 \to 1$. Since we continually cycle around the triangle, it's clear that the period is $d = 3$.	
 :::
@@ -88,7 +88,7 @@ The equations give $\pi_1 = \pi_3$, $\pi_2 = \pi_1$ and $\pi_3 = \pi_2$, meaning
 ::::
 
 :::: {.subq}
-For what initial distributions $\boldsymbol\lambda$ do the limits $\lim_{n \to \infty} \mathbb P(X_n = i)$ exist?
+**(d)** For what initial distributions $\boldsymbol\lambda$ do the limits $\lim_{n \to \infty} \mathbb P(X_n = i)$ exist?
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
@@ -97,7 +97,7 @@ For a given initial condition $(\lambda_1, \lambda_2, \lambda_3)$ it's clear we 
 ::::
 
 :::: {.subq}
-**(d)** What is the long-run proportion of time spent in each state?
+**(e)** What is the long-run proportion of time spent in each state?
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
@@ -122,8 +122,9 @@ Consider a stochastic process on the state space $\mathcal S = \{\text{F}, \text
 
 The transition probabilities are: From a female carrier, $p_{\mathrm{FF}} = \frac14$ or $p_{\mathrm{FM}} = \frac14$ if she passes on the $\text X^*$, or $p_{\mathrm{Ff}} = p_{\mathrm{Fm}} = \frac14$ if not. From a male haemophiliac, $p_{\mathrm{MF}} = \frac12$ if he passes on the $\text X^*$, or $p_{\mathrm{Mm}} = \frac12$ if not. From those without the $\text X^*$, we have $p_{\mathrm{ff}} = p_{\mathrm{fm}} = p_{\mathrm{mf}} =p_{\mathrm{mm}} = \frac12$.
 
-<!--
-\begin{center}
+```{tikz Q62, echo=FALSE, fig.align="center", fig.width=3.5, fig.cap="Transition diagram for Question 2.", cache = TRUE}
+\usetikzlibrary{automata}
+
 	\begin{tikzpicture}[shorten >=1pt,scale=0.75]
 	\node[state] (1) at (0,0) {F};
 	\node[state] (2) at (4,0) {f};
@@ -144,7 +145,7 @@ The transition probabilities are: From a female carrier, $p_{\mathrm{FF}} = \fra
 	\path[->]	(3) edge node [below]{$\frac12$} (4);
 	\path[->]   (3) edge[bend left] node [left]{$\frac12$} (1);
 	\end{tikzpicture}
--->
+```
 :::
 ::::
 
@@ -205,9 +206,8 @@ With probability $40\%$, a member books no flights, giving
 	\[ p_{\mathrm{OB}} = p_{\mathrm{BS}} = p_{\mathrm{SG}} = 0.2  \]
 	and $p_{\mathrm{GG}} = 0.4+0.2 = 0.6$.
 	
-<!--
-	
-	\begin{center}
+```{tikz Q63, echo=FALSE, fig.align="center", fig.width=5, fig.cap="Transition diagram for Question 3.", cache = TRUE}
+\usetikzlibrary{automata}
 		\begin{tikzpicture}[shorten >=1pt,scale=1.1]
 		\node[state] (O) at (0,0) {O};
 		\node[state] (B) at (2,0) {B};
@@ -227,7 +227,7 @@ With probability $40\%$, a member books no flights, giving
 		\path[->] (S) edge[bend left] node [below]{$0.4$} (B);
 		\path[->] (B) edge[bend left] node [below]{$0.4$} (O);
 		\end{tikzpicture}
--->
+```
 :::
 ::::
 
@@ -240,14 +240,22 @@ The Markov chain is irreducible and positive recurrent, so has a unique stationa
 	
 The equations from $\boldsymbol\pi = \boldsymbol\pi \mathsf P$ are
 	\begin{align}
-	\pi_{\mathrm O} &= 0.8 \pi_{\mathrm O} + 0.4 \pi_{\mathrm B } & 2\pi_{\mathrm B} &= \pi_{\mathrm O} \\
-	\pi_{\mathrm B} &= 0.2\pi_{\mathrm O} + 0.4\pi_{\mathrm B} + 0.4\pi_{\mathrm S} & 3\pi_{\mathrm B} - 2\pi_{\mathrm S} &= \pi_{\mathrm O} \\
-	\pi_{\mathrm S} &= \phantom{0.2 \pi_{\mathrm S} +{}} 0.2 \pi_{\mathrm B} + 0.4 \pi_{\mathrm S} + 0.4 \pi_{\mathrm G} & \text{(discard)} \hspace{-0.5cm} & \notag \\
-	\pi_{\mathrm G} &= \phantom{0.2 \pi_{\mathrm S} + 0.2 \pi_{\mathrm B} +{}} 0.2 \pi_{\mathrm S} + 0.6 \pi_{\mathrm G} &  \pi_{\mathrm S} - 2 \pi_{\mathrm G} &= 0
+	\pi_{\mathrm O} &= 0.8 \pi_{\mathrm O} + 0.4 \pi_{\mathrm B } \\
+	\pi_{\mathrm B} &= 0.2\pi_{\mathrm O} + 0.4\pi_{\mathrm B} + 0.4\pi_{\mathrm S} \\
+	\pi_{\mathrm S} &= \phantom{0.2 \pi_{\mathrm S} +} 0.2 \pi_{\mathrm B} + 0.4 \pi_{\mathrm S} + 0.4 \pi_{\mathrm G} \\
+	\pi_{\mathrm G} &= \phantom{0.2 \pi_{\mathrm S} + 0.2 \pi_{\mathrm B} +} 0.2 \pi_{\mathrm S} + 0.6 \pi_{\mathrm G} .
 	\end{align}
-where we have rewritten them in terms of the working variable $\pi_{\mathrm O}$. From (1) we get $\pi_{\mathrm B} = \frac12\pi_{\mathrm O}$. Substituting this into (2), we get $\pi_{\mathrm S} = \frac14\pi_{\mathrm O}$. Substituting this into (3), we get $\pi_{\mathrm G} = \frac18\pi_{\mathrm O}$. The normalising condition is
-	\[ \pi_{\mathrm O} + \pi_{\mathrm B} + \pi_{\mathrm S} + \pi_{\mathrm G} = \left(1 + \tfrac12 + \tfrac14 + \tfrac18\right)\pi_{\mathrm O} = \tfrac{15}{8} \pi_{\mathrm O} = 1 . \]
-Hence $\pi_{\mathrm O} = \frac{8}{15}$. Back-solving, we get the solution
+We will choose $\pi_{\mathrm B}$ as the working variable and discard the last equation. Rearranging the other three equations gives
+\begin{align*}
+\pi_{\mathrm O} \phantom{{}+ 2\pi_{\mathrm S} - 2\pi_{\mathrm G}} &= 2\pi_{\mathrm B} \\
+\pi_{\mathrm O} + 2\pi_{\mathrm S} \phantom{{}- 2\pi_{\mathrm G}} &= 3\pi_{\mathrm B} \\
+3\pi_{\mathrm S} - 2\pi_{\mathrm G} &= \pi_{\mathrm B} 
+\end{align*}
+Substituting the first of these into the second and rearranging gives $\pi_{\mathrm S} = \frac12 \pi_{\mathrm B}$. Substituting this into the third and rearranging gives $\pi_{\mathrm S} = \frac14 \pi_{\mathrm B}$
+
+The normalising condition is
+	\[ \pi_{\mathrm O} + \pi_{\mathrm B} + \pi_{\mathrm S} + \pi_{\mathrm G} = \left(2 + 1 + \tfrac12 + \tfrac14 \right)\pi_{\mathrm B} = \tfrac{15}{4} \pi_{\mathrm B} = 1 . \]
+Hence $\pi_{\mathrm B} = \frac{4}{15}$. Back-solving, we get the solution
 	\[ \left(\pi_{\mathrm O},\pi_{\mathrm B},\pi_{\mathrm S},\pi_{\mathrm G}\right) = \left(\tfrac8{15},\tfrac{4}{15},\tfrac{2}{15},\tfrac{1}{15} \right) . \]
 :::
 ::::

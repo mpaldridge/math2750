@@ -17,10 +17,12 @@
 ## Exponential distribution  {#exponential}
 
 
-Last time, we introduced the Poisson process by looking at the random number of arrivals in fixed time period, which follows a Poisson distribution. Another way of looking at the Poisson process is to look at the random amount of of time required for a fixed number of arrivals. For this, we'll need the exponential distribution.
+Last time, we introduced the Poisson process by looking at the random number of arrivals in fixed amount of time, which follows a Poisson distribution. Another way of looking at the Poisson process is to look at the random amount of of time required for a fixed number of arrivals. For this, we'll need the exponential distribution.
 
 We start by recalling the exponential distribution.
 Recall that we say a continuous random variable $T$ has the **exponential distribution** with rate $\lambda$, and write $T \sim \Exp(\lambda)$, if it has the probability distribution function $f(t) = \lambda \ee^{-\lambda t}$ for $t \geq 0$.
+
+Exponential distributions are often used to model "waiting times" -- for example, the amount of time until a light bulb breaks, the times between buses arriving, or the time between withdrawals from a bank account.
 
 You are reminded of the following facts about the exponential distribution:
 
@@ -51,16 +53,26 @@ Further, the probability that $T_j$ is the smallest of all the $T_i$s is
  \[ \mathbb P(T = T_j) = \frac{\lambda_j}{\lambda_1 + \lambda_2 + \cdots + \lambda_n} . \]
 :::
 
-The proof of this is an exercise on [Problem Sheet 7](#P07).
+::: {.proof}
+The proof of this is an question on [Problem Sheet 7](#P07).
+:::
 
 
 
 ## Definition 2: exponential holding times
 
 
-Exponential distributions are often used to model "waiting times" -- for example, the amount of time until a light bulb breaks, or the times between buses arriving. We often use the term `holding time' to refer to the time between consecutive arrivals.
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/eqI3X4PQMi0"></iframe>
+:::
+::::
 
-When modelling a process $(X(t))$ counting many arrivals at rate $\lambda$, we might model the process like this: after waiting an $\Exp(\lambda)$ amount of time, an arrival appears. After another $\Exp(\lambda)$ amount of time, another arrival appears. And so on.
+
+We mentioned before that exponential distributions are often used to model "waiting times".
+When modelling a process $(X(t))$ counting many arrivals at rate $\lambda$, we might model the process like this: after waiting an $\Exp(\lambda)$ amount of time, an arrival appears. After another $\Exp(\lambda)$ amount of time, another arrival appears. And so on. We often use the term "holding time" to refer to the time between consecutive arrivals.
+
+This suggests a process with the following properties:
 
 * We start with $X(0) = 0$.
 * Let $T_1, T_2, \dots \sim \Exp(\lambda)$ be the holding times, all independent. Then
@@ -69,14 +81,18 @@ When modelling a process $(X(t))$ counting many arrivals at rate $\lambda$, we m
     2 & \text{for $T_1+T_2 \leq t < T_1 + T_2 + T_3$} \\
     \text{and so on.} & \end{cases} \]
 
-It turns out (as you've probably already guessed) that the process as described above is also the Poisson process!
+A process described like this is also the Poisson process!
 
-::: {.mysummary}
-**PICTURE PICTURE PICTURE**
+:::: {.videowrap}
+::: {.videowrapper}
+```{r pois-exp-pic, fig.cap="A Poisson process with exponentially distributed holding times.", echo=FALSE}
+knitr::include_graphics("sections/pois-exp-pic.png")
+```
 :::
+::::
 
 ::: {.theorem #pois-exp-equiv}
-Let $(X(t))$ be a Poisson process with rate $\lambda$, as defined by its independent Poisson increments (Definition **REF REF REF**). Then $(X(t))$ has the exponential holding times structure described above.
+Let $(X(t))$ be a Poisson process with rate $\lambda$, as defined by its independent Poisson increments (see Subsection \@ref(poisson-def-poisson)). Then $(X(t))$ has the exponential holding times structure described above.
 :::
 
 ::: {.proof}
@@ -101,14 +117,14 @@ The expected time of the tenth sale is
 \[ \mathbb E(T_1 + \dots + T_{10}) = 10\,\mathbb ET_1 = 10 \times \tfrac{1}{2} = 5 \text{ hours} .\]
 The variance is 
 \[ \Var (T_1 + \dots + T_{10}) = 10\,\Var(T_1) = 10 \times \frac{1}{2^2} = 2.5 , \]
-where we used that the holding times are independent, so the standard deviation is $\sqrt{2.5} = 1.58$ hours.
+where we used that the holding times are independent and identically distributed, so the standard deviation is $\sqrt{2.5} = 1.58$ hours.
 
 *What is the probability it takes more than an hour to sell the first book?*
 
-This is the probability the first holding time is longer than an hour, which is
+This is the probability the first holding time is longer than an hour, which is the tail of the exponentital distribution, 
 \[ \mathbb P(T_1 > 1) = \ee^{-2\times 1} = \ee^{-2} = 0.135. \]
 
-An alternative way to solve this would be to say that the first book is is sold later than $1$ hour in if $X(1) = 0$. So using the Poisson increments definition from last time, we have
+An alternative way to solve this would be to say that the first book is is sold later than 1 hour in if $X(1) = 0$. So using the Poisson increments definition from last time, we have
 \[ \mathbb P\big(X(1) = 0\big) = \ee^{-2\times 1} \frac{(2\times 1)^0}{0!}  = \ee^{-2} = 0.135. \]
 We get the same answer either way.
 :::

@@ -1,19 +1,63 @@
 # Assessment 3 {.unnumbered #A3}
 
-<!--
+
 ::: {.mysummary}
 This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.
 
-The deadline for submission is **Thursday 11 February at 2pm**. Submission will be to Gradescope via Minerva, from Monday 8 February. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a scanning app (I like Microsoft Office Lens or Adobe Scan) rather than submit images.
+The deadline for submission is **Thursday 25 March at 2pm**. Submission will be to Gradescope via Minerva, from Monday 21 March. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a scanning app (I like Microsoft Office Lens or Adobe Scan) rather than submit images.
 
-Late submissions up to Wednesday 17 February at 2pm will still be marked, but	the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Wednesday 17 February.
+Late submissions up to Wednesday 31 March at 2pm will still be marked, but	the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Wednesday 31 March.
 
 Your solutions to this assessment should be your own work. Copying, collaboration or plagiarism are not permitted. Asking others to do your work, including via the internet, is not permitted. Transgressions are considered to be a very serious matter, and will be dealt with according to the University's disciplinary procedures.
 :::
--->
 
-::: {.mysummary}
-Assessment 3 will be available very soon. The submission deadline is Thursday 25 March (week 9).
+::::: {.myq}
+**1.**
+A firm rents out cars and operates from three locations -- the Airport, the Beach and the
+City. Customers may return vehicles to any of the three locations.
+The company estimates that the probability of a car being returned to each location is
+as follows:
+
+
+```{r car-table, out.width = "50%", fig.cap="Table of car-hire data.", echo=FALSE, fig.align="center"}
+knitr::include_graphics("assessments/car-hire.png")
+```
+
+
+:::: {.subq}
+**(a)** A car is currently parked at the beach. What is the probability that, after being hired twice, it ends up at the airport? [[2 marks]]{style="float:right"}
+::::
+
+:::: {.subq}
+**(b)** A car is parked in the city. On average, how many times will it need to be hired until it is left at the beach? [[2]]{style="float:right"}
+::::
+
+:::: {.subq}
+**(c)** The firm has been running for many years with a fleet of 25 cars, of which 7 are currently on hire. How many of the other cars would you expect to be parked at each of the three locations? Explain your answer clearly. [[4]]{style="float:right"}
+::::
+:::::
+
+:::: {.myq}
+**2.** Consider a Markov chain $(X_n)$ with state space $\mathcal S = \{1,2,3,4,5\}$ and transition matrix
+\[ \mathsf P = \begin{pmatrix} 0.2 & 0.8 & 0   & 0   & 0   \\
+                               0.4 & 0.6 & 0   & 0   & 0   \\
+                               0.2 & 0.1 & 0.2 & 0.5 & 0   \\
+                               0   & 0   & 0   & 0.4 & 0.6 \\
+                               0   & 0   & 0   & 0.8 & 0.2 \end{pmatrix}. \]
+
+::: {.subq}
+**(a)** What are the communicating classes in the Markov chain? State, giving brief reasons, whether each class is positive recurrent, null recurrent, or transient.  [[3]]{style="float:right"}
 :::
 
+::: {.subq}
+**(b)** Calculate the hitting probability $h_{34}$.  [[2]]{style="float:right"}
+:::
 
+::: {.subq}
+**(c)** Find two different stationary distributions for this Markov chain. [[3]]{style="float:right"}
+:::
+
+::: {.subq}
+**(d)** What is the limit as $n \to \infty$ of the $n$-step transition matrix $\mathsf P^(n)$? Explain your answer. [[4]]{style="float:right"}
+:::
+::::
