@@ -58,6 +58,6 @@ knitr::include_graphics("assessments/car-hire.png")
 :::
 
 ::: {.subq}
-**(d)** What is the limit as $n \to \infty$ of the $n$-step transition matrix $\mathsf P^(n)$? Explain your answer. [[4]]{style="float:right"}
+**(d)** What is the limit as $n \to \infty$ of the $n$-step transition matrix $\mathsf P(n)$? Explain your answer. [[4]]{style="float:right"}
 :::
 ::::
