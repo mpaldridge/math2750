@@ -4,8 +4,8 @@ author: "Matthew Aldridge"
 date:   "MATH2750 Introduction to Markov Processes (2020--21)"
 output: html_document 
 ---
-  
-  
+
+
 *This computational worksheet is an opportunity to learn more about Markov chains using R. This practical doubles as **Assessment 2**, and is an assessed part of the course. This assessment counts for 3% of your final module grade.*
 
 *You should write a report on your work (see Question 0 below), answering all the questions with explanations and figures where necessary, and showing any R code you used. Good formats for your report include PDF, Word document, or HTML. You work must be a* report: *do not just submit a list of R commands.*
@@ -15,20 +15,15 @@ output: html_document
 *Your report will by marked out of 8, with 2 marks available for each of Questions 1--4.*
 
 
-
-***
-
+---
 
 
 **Question 0:** *Answer the questions on this problem sheet. Write up a short report on your findings, with answers to the questions. Make sure to include relevant graphs produced and the R code you used.*
 
-
 Remember that this is assessed work, and your report must be submitted by Thursday 18 March. You might like to look at [my example report for Computational Worksheet 1](https://mpaldridge.github.io/math2750/computing.html) to see what a good report looks like.
 
 
-
-***
-
+---
 
 
 We start by reading three functions into R by entering the entire text of the following code chunk. If you are using the Rmd version of this question sheet in RStudio, you can simply the green "play" button next to the following code chunk. If you are reading the HTML version, you should carefully copy and paste the following code chunk into R.
@@ -72,14 +67,14 @@ StatDist <- function(P) {
 It is not important that you understand how these functions work, but you do need to know what they do.
 
 The first function **`TransMat()`** produces a transition matrix
-\[ \begin{pmatrix} 
+$$ \begin{pmatrix} 
      0.1 & 0.9 &   0 &            0 &            0 &   0 \\
      0.4 & 0.2 & 0.4 &            0 &            0 &   0 \\
        0 & 0.5 &   0 &          0.5 &            0 &   0 \\
        0 &   0 & 0.5 & 0.5-\epsilon &     \epsilon &   0 \\
        0 &   0 &   0 &     \epsilon & 0.3-\epsilon & 0.7 \\
        0 &   0 &   0 &            0 &          0.5 & 0.5
-   \end{pmatrix} \]
+   \end{pmatrix} $$
 for some value of the parameter $\epsilon$.
 
 The second function, **`MarkovChain()`**, simulates a Markov chain. For example, `MarkovChain(10, 2, P)` simulates a Markov chain with transition matrix `P`, starting from state 2 for 10 steps.
@@ -87,13 +82,10 @@ The second function, **`MarkovChain()`**, simulates a Markov chain. For example,
 The third function, **`StatDist()`**, calculates a stationary distribution for a given transition matrix. This function works for any *irreducible* Markov chain on a finite state space -- it may behave strangely for nonirreducible Markov chains.
 
 
-
-***
-
+---
 
 
 We will be investigating the Markov chain with $\epsilon = 0.2$.
-
 
 
 **Question 1.** *Using the function `TransMat()`, produce the transition matrix for $\epsilon = 0.2$. Using the function `MarkovChain()`, simulate $N = 50$ steps of this Markov chain starting from $X_0 = 1$. Check it has worked, perhaps by plotting a graph or examining the vector produced. Comment on what you find.*
@@ -126,7 +118,7 @@ proportion_time <- # your code here
 
 Remember that you want the *proportion* of time spent in each state, not just the *number* of visits.
 
-It may also be helpful to illustrate your example with a graph. You will want to give your plot a title, label the axes, and so on. 
+It may also be helpful to illustrate your example with a graph. You will want to give your plot a title, label the axes, and so on.
 
 You can compare this with the stationary distribution produced by `StatDist()`.
 

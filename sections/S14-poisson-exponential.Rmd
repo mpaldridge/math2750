@@ -17,6 +17,13 @@
 ## Exponential distribution  {#exponential}
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/haIVJ6n49UY"></iframe>
+:::
+::::
+
+
 Last time, we introduced the Poisson process by looking at the random number of arrivals in fixed amount of time, which follows a Poisson distribution. Another way of looking at the Poisson process is to look at the random amount of of time required for a fixed number of arrivals. For this, we'll need the exponential distribution.
 
 We start by recalling the exponential distribution.
