@@ -5,8 +5,8 @@
 \documentclass[
   a4paper,
 ]{article}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -43,7 +43,8 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -52,7 +53,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -76,6 +77,9 @@
 \NewEnviron{myanswers}{\ifcomm\BODY\fi}
 
 \newcommand{\sectionbreak}{\clearpage}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 
@@ -788,7 +792,6 @@ What would you decide for the following scenarios:
 \textbf{(d)} The number of people inside the University of Leeds library.
 
 \begin{myanswers}
-
 \emph{Suggestions.} This question is meant to inspire discussion, so there are not necessarily right and wrong answers. If I were designing the models, however, my choices might be these:
 
 \textbf{(a)} Discrete space if percentages are given to nearest 1\%, otherwise continuous; discrete time (weekly); stochastic; the Markov property might be appropriate, perhaps using some sort of random walk.
@@ -808,7 +811,6 @@ Calculate:
 \textbf{(a)} the probability \(\mathbb P(Y = 10)\);
 
 \begin{myanswers}
-
 \emph{Solution.} The following table illustrates the possible outcomes \(Y\) of the experiment. Each cell of the table is an equally probable outcome.
 
 \begin{center}\includegraphics{math2750_files/figure-latex/dice-1} \end{center}
@@ -820,7 +822,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(b)} the conditional probability \(\mathbb P(Y=10 \mid X_1=x)\) for \(x=1, 2, \ldots, 6\);
 
 \begin{myanswers}
-
 \emph{Solution.} Conditioning on \(X_1 = x\) means restricting our attention only to column \(x\) of the table. Each column has \(6\) equally probably cells. For \(x=1,2,3\), none of the entries equal \(10\), so \(\mathbb P(Y=10 \mid X_1=x) = 0/6 = 0\). For each of \(x=4,5,6\), one of the entries equals \(10\), so \(\mathbb P(Y=10 \mid X_1=x) = 1/6\).
 
 \end{myanswers}
@@ -828,7 +829,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(c)} the conditional probability \(\mathbb P(X_1=x \mid Y=10)\) for \(x=1, 2, \ldots, 6\).
 
 \begin{myanswers}
-
 \emph{Solution.} Conditioning on \(Y =10\) means restricting our attention only to the \(3\) shaded cells, which are each equally likely. For \(x=1,2,3\), none of the shaded cells are in column \(x\), so \(\mathbb P(X_1=x \mid Y=10) = 0/3 = 0\). For each of \(x=4,5,6\), one of the shaded cells is in column \(x\), so \(\mathbb P(X_1=x \mid Y=10) = 1/3\).
 
 \end{myanswers}
@@ -838,7 +838,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(a)} \(\mathbb P(X_5 = 3)\),
 
 \begin{myanswers}
-
 \emph{Solution.} To get \(X_5 = 3\), we must take \(4\) steps up and \(1\) step down. The down step can be at any of the \(5\) time steps. Therefore we have \(\mathbb P(X_5 = 3) = 5p^4q\).
 
 \end{myanswers}
@@ -846,7 +845,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(b)} \(\mathbb P(X_5 = 3 \mid X_2 = 2)\),
 
 \begin{myanswers}
-
 \emph{Solution.} Once we're at \(X_2 = 2\), we must take \(2\) steps up and \(1\) step down over the next \(3\) time steps. So \(\mathbb P(X_5 = 3 \mid X_2 = 2) = 3p^2q\).
 
 \end{myanswers}
@@ -854,7 +852,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(c)} \(\mathbb P(X_n = n-2)\),
 
 \begin{myanswers}
-
 \emph{Solution.} This requires \(n-1\) steps up and \(1\) step down, and the down step can be at any of the \(n\) time steps. So \(\mathbb P(X_n = n-2) = np^{n-1}q\).
 
 \end{myanswers}
@@ -862,7 +859,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(d)} \(\mathbb E X_4\),
 
 \begin{myanswers}
-
 \emph{Solution.} The increments \(Z_n = X_n - X_{n-1}\) have expectation \(1p + (-1)q = p - q\), so \(\mathbb E X_4 = 4(p-q)\).
 
 \end{myanswers}
@@ -870,7 +866,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(e)} \(\mathbb E(X_6 \mid X_4 = 2)\),
 
 \begin{myanswers}
-
 \emph{Solution.} We are already at 2, then another two increments will take us up \(2(p-q)\) on average. Therefore \(\mathbb E(X_6 \mid X_4 = 2) = 2 + 2(p-q)\).
 
 \end{myanswers}
@@ -880,7 +875,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(a)} Calculate the mean and variance of the price of the stock at the close of day \(5\).
 
 \begin{myanswers}
-
 \emph{Solution.} The mean and variance are
 \begin{gather*}
   \mathbb EX_5 = \mathbb E X_0 + n \mathbb E Z_1 = 42.3 + 5 \cdot 0.7 = 45.8 , \\
@@ -892,7 +886,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(b)} Give a 95\% prediction interval for the price at the close of day 5. (You might find it useful to recall that, if \(W \sim \text{N}(0,1)\) is a standard normal random variable, then \(\mathbb P(W \leq 1.96) = 0.975\).)
 
 \begin{myanswers}
-
 \emph{Solution.} Note that \(X_5\) itself is normally distributed, so \(X_5 \sim \text{N}(45.8,24.2)\). The 95\% prediction interval for a normal distribution \(\text{N}(\mu, \sigma^2)\) is \((\mu - 1.96\sigma, \mu + 1.96\sigma)\), so the prediction interval for \(X_5\) is
 \[ \big(45.8 - 1.96\sqrt{24.2},  45.8 + 1.96\sqrt{24.2}\big) = (36.16, 55.44) . \]
 
@@ -901,7 +894,6 @@ There are 3 possible ways to get \(Y=10\) (the grey cells in the table) out of t
 \textbf{(c)} After day 4, the prices at the end of each of the first four days have been recorded as \(X_1 = 44.4, X_2 = 44.0, X_3 = 47.1, X_4 = 47.8\). Update your prediction interval for the price at the close of day 5, and comment on how it differs from the earlier prediction interval.
 
 \begin{myanswers}
-
 \emph{Solution.} By the Markov property, \(X_5\) depends on \(X_4\), but given \(X_4\) does not depend on the other values, which we can therefore ignore. Since \(X_5 = X_4 + Z_5\), we have
 \begin{gather*}
   \mathbb E(X_5 \mid X_4) = X_4 + \mathbb E Z_5 = 47.8 + 0.7 = 48.5 \\
@@ -919,7 +911,6 @@ Compared to before, the centre of the prediction interval is slightly higher, be
 \textbf{(a)} What would you guess for the value of \(p\), given this data?
 
 \begin{myanswers}
-
 \emph{Solution.} In \(10\) time steps, the process went up \(k = 8\) times and down \(n - k = 2\) times. So it seems reasonable to guess that \(p\) has the value \(\hat p = \frac{8}{10} = 0.8\).
 
 \end{myanswers}
@@ -927,7 +918,6 @@ Compared to before, the centre of the prediction interval is slightly higher, be
 \textbf{(b)} More generally, how would you estimate \(p\) from the data \(X_0 = 0, X_1 = x_1, X_2 = x_2, \dots, X_n = x_n\)?
 
 \begin{myanswers}
-
 \emph{Solution.} We will estimate \(\hat p = k/n\), where \(k\) is the number of upward steps. We saw in lectures that \(k = (n + x_n)/2\), so our estimate is
 \[ \hat p = \frac{n + x_n}{2n} = \frac12\ + \frac{x_n}{2n} . \]
 
@@ -936,7 +926,6 @@ Compared to before, the centre of the prediction interval is slightly higher, be
 \textbf{(c)} Show that your estimate is in fact the maximum likelihood estimate of \(p\).
 
 \begin{myanswers}
-
 \emph{Solution.} The concept of ``maximum likelihood estimation'' will be known to those who have done MATH2715; this might be new for those who didn't take that course.
 
 Let \(k = (n + x_n)/2\) be the number of upward steps. Then the ``likelihood'' is the probability mass function
@@ -1372,7 +1361,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(a)} \(x_{n+2} - 4x_{n+1} + 3x_{n} = 0\), subject to \(x_0 = 0\), \(x_1 = 2\).
 
 \begin{myanswers}
-
 \emph{Solution.} The characteristic equation is \(\lambda^2 - 4\lambda + 3 = 0\), which factorises as \((\lambda - 3)(\lambda - 1) = 0\), with solutions \(\lambda = 1,3\), so the general solution is \(x_n = A1^n + B3^n = A + B3^n\). The initial conditions give \(A+B = 0\) and \(A + 3B = 2\), meaning \(B = 1\) and \(A = -1\). Hence the solution is \(x_n = 3^n - 1\).
 
 \end{myanswers}
@@ -1380,7 +1368,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(b)} \(4x_{n+1} = 4x_n - x_{n-1}\), subject to \(x_0 = 1\), \(x_1 = 0\).
 
 \begin{myanswers}
-
 \emph{Solution.} First, we rearrange to \(4x_{n+1} - 4x_n + x_{n-1} = 0\). The characteristic equation is \(4\lambda^2 - 4\lambda + 1 = 0\), which factorises as \((2\lambda - 1)^2 = 0\), which has a repeated root \(\lambda = \frac12\), so the general solution is \(x_n = (A + Bn)(\frac12)^n\). The initial conditions give \(A=1\) and \((A + B)/2 = 0\), meaning \(B = -1\). Hence the solution is \(x_n = (1 - n)(\frac12)^n\).
 
 \end{myanswers}
@@ -1388,7 +1375,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(c)} \(x_n-5x_{n-1} + 6x_{n-2} = 1\), subject to \(x_0 = 1\), \(x_1 = 2\).
 
 \begin{myanswers}
-
 \emph{Solution.} The characteristic equation is \(\lambda^2 - 5\lambda + 6 = 0\), which factorises as \((\lambda - 2)(\lambda - 3) = 0\), with solutions \(\lambda = 2,3\), so the general solution to the homogeneous equation is \(A2^n + B3^n\). For a particular solution, we guess a solution of the form \(x_n = C\); substituting this into the inhomogeneous equation gives \(C - 5C + 6C = 1\), so \(C = \frac12\). So the general solution to the inhomogeneous equation is \(x_n = A2^n + B3^n + \frac12\). The initial conditions give \(A+B \frac12= 1\) and \(2A + 3B + \frac12= 2\), which is solved by \(B = \frac12\) and \(A = 0\). Hence the solution is \(x_n = \frac12 3^n + \frac12 = (3^n + 1)/2\).
 
 \end{myanswers}
@@ -1396,7 +1382,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(d)} \(x_{n+2} - 2x_{n+1} + x_n = -1\), subject to \(x_0 = 0\), \(x_1 = 2\).
 
 \begin{myanswers}
-
 \emph{Solution.} The characteristic equation is \(\lambda^2 - 2\lambda + 1 = 0\), which factorises as \((\lambda - 1)^2 = 0\), with a repeated root \(\lambda = 1\), so the general solution to the homogeneous equation is \((A + Bn)1^n = A + Bn\). For a particular solution, since constant and linear terms will equal \(0\), not \(-1\), we guess a solution of the form \(x_n = Cn^2\); substituting this into the inhomogeneous equation gives
 \[ C(n+2)^2 - 2C(n+1)^2 + Cn^2 = 2C = -1  \]
 so \(C = -\frac12\). So the general solution to the inhomogeneous equation is \(x_n = A + Bn - \frac12 n^2\). The initial conditions give \(A = 0\) and \(A + B - \frac12= 2\), so \(B = \frac52\). Hence the solution is \(x_n = \frac52n - \frac12n^2 = \frac n2(5-n)\).
@@ -1412,7 +1397,6 @@ Let \(\eta_i\) be the expected time until the the walk hits \(0\) when starting 
 for \(i \in \{1,2,\dots,m-1\}\).
 
 \begin{myanswers}
-
 \emph{Solution.} We condition on the first step. The first step itself takes time 1. After that, with probability \(\frac12\) we are at state \(i+1\), with expected time remaining \(\eta_{i+1}\), while with probability \(\frac12\) we are at state \(i-1\), with expected time remaining \(\eta_{i-1}\).
 
 \end{myanswers}
@@ -1420,7 +1404,6 @@ for \(i \in \{1,2,\dots,m-1\}\).
 \textbf{(b)} Give a similar equation for \(\eta_m\), and state the value of \(\eta_0\).
 
 \begin{myanswers}
-
 \emph{Solution.} From \(m\), we move to \(m-1\) with certainty, so conditioning on the first step gives \(\eta_m = 1 + \eta_{m-1}\).
 
 Clearly \(\eta_0 = 0\), as we stop immediately.
@@ -1430,7 +1413,6 @@ Clearly \(\eta_0 = 0\), as we stop immediately.
 \textbf{(c)} Hence, find the value of \(\eta_i\) for all \(i \in \mathcal S\).
 
 \begin{myanswers}
-
 \emph{Solution.} We rewrite the equation as \(\eta_{i+1} - 2 \eta_i + \eta_{i-1} = -2\). This has characteristic equation \(\lambda^2 - 2\lambda + 1 = 0\), which factorises as \((\lambda-1)^2\), with a repeated root of \(1\), so the general solution to the homogeneous equation is \(A + Bi\). By the same logic as before, we attempt a particular solution of the form \(\eta_i = Ci^2\), which gives
 \[ C(i+1)^2 - 2Ci^2 + C(i-1)^2 = 2C = -2 ,   \]
 so \(C = -1\). The general solution to the inhomogeneous equation is therefore \(\eta_i = A + Bi - i^2\). From the boundary condition \(k_0 = 0\) we have \(A = 0\). From the boundary condition \(k_m = 1 + k_{m-1}\) we have
@@ -1442,7 +1424,6 @@ giving \(B = 2m\). Therefore the solution is \(\eta_i = 2mi - i^2 = i(2m - i)\).
 \textbf{(d)} You should notice that your answer is the same as the expected duration of the gambler's ruin for \(p = \frac12\), except with \(m\) replaced by \(2m\). Can you explain why this might be?
 
 \begin{myanswers}
-
 \emph{Solution.} This is an example of the \textbf{reflection principle}. Let \((Y_n)\) be a gambler's ruin (simple random walk with two absorbing barriers) on \(\{0,1,\dots, 2m\}\). Then consider placing a mirror at \(m\), and viewing the Markov chain so that it remains in the first half \(\{0,1,\dots,m\}\); more formally, we consider \((X_n)\) where
 \[ X_n = \begin{cases} Y_n & \text{if $Y_n \leq m$} \\
                       2m - Y_n & \text{if $Y_n > m$.} \end{cases}   \]
@@ -1457,7 +1438,6 @@ Then \((X_n)\) is the half-reflecting random walk we consider in this question. 
 \textbf{(i)} Write down a linear difference equation for \((r_i)\), remembering to include appropriate boundary conditions.
 
 \begin{myanswers}
-
 \emph{Solution.} By conditioning on the first step, we have
 \[ r_i = pr_{i+1} + sr_i + qr_{i-1} , \]
 which can be rearranged to
@@ -1469,7 +1449,6 @@ The boundary conditions are \(r_0 = 1\) and \(r_m = 0\).
 \textbf{(ii)} Solve the linear difference equation, to find \(r_a\), Alice's probability of ruin. You may assume that \(p \neq q\).
 
 \begin{myanswers}
-
 \emph{Solution.} The characteristic equation is \(p\lambda^2 - (1-s)\lambda + q = 0\), which factorises as \((p\lambda - q)(\lambda - 1) = 0\), since \(p + q = 1-s\). The solutions are \(\lambda = q/p = \rho\) and \(\lambda = 1\). Since we assume \(p \neq q\), we have that \(\rho \neq 1\), so we have unique roots, and general solution
 \(r_i = A + B \rho^i\). The boundary conditions give \(A + B = 1\) and \(A + B\rho^m = 0\), meaning that \(B = 1/(1-\rho^m)\) and \(A = -\rho^m/(1-\rho^m)\), so the solution is
 \[ r_i = -\frac{\rho^m}{1-\rho^m} + \frac{1}{1-\rho^m}\rho^i = \frac{\rho^i - \rho^m}{1-\rho^m}.   \]
@@ -1481,7 +1460,6 @@ The boundary conditions are \(r_0 = 1\) and \(r_m = 0\).
 \textbf{(i)} Write down a linear difference equation for \((d_i)\), remembering to include appropriate boundary conditions.
 
 \begin{myanswers}
-
 \emph{Solution.} By conditioning on the first step, we have
 \[ d_i = p(1 + d_{i+1}) + s(1 + d_i) + q(1 + d_{i-1}) ,  \]
 which after rearranging gives
@@ -1493,7 +1471,6 @@ The boundary conditions are \(d_0 = 0\) and \(d_m = 0\).
 \textbf{(ii)} Solve the linear difference equation, to find \(d_a\), the expected duration of the game. You may assume that \(p \neq q\).
 
 \begin{myanswers}
-
 \emph{Solution.} As before, the solution to the homogeneous equation is \(A + B\rho^i\). We try a particular solution of the for \(d_i = Ci\), and find that
 \[ pC(i+1) -(1-s)Ci + qC(i-1) = C(p-q) = -1 ,\]
 so \(C= 1/(q-p)\), and the general solution to the inhomogeneous equation is
@@ -1508,7 +1485,6 @@ Hence the solution is
 \textbf{(c)} Alice starts playing against Bob in a standard gambler's ruin game with probabilities \(p \neq q\) and \(s = 0\). A draw probability \(s > 0\) is then introduced in such a way that the ratio \(\rho = q/p\) remains constant. Comment on how this changes Alice's ruin probability and the expected duration of the game.
 
 \begin{myanswers}
-
 \emph{Solution.} The ruin probability does not change, as we see immediately. This is not surprising, as the win and lose probabilities for a round conditional on the round not being a draw have stayed the same.
 
 The expected duration of the game increases. If \(\rho = q/p\) stays the same while introducing a draw probability \(s\), then the ``new'' \(q\) and \(p\) are \((1-s)q\) and \((1-s)p\), so \(q-p\) becomes\((1-s)q - (1-s)p = (1-s)(q-p)\). Hence expected duration goes up by a factor of \(1/(1-s)\). This makes sense, since number of rounds until a non-draw result is a geometric distribution with expectation \(1/(1-s)\), so each step takes \(1/(1-s)\) times as long on average.
@@ -1518,7 +1494,6 @@ The expected duration of the game increases. If \(\rho = q/p\) stays the same wh
 \textbf{4.} The Fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, 34, \ldots, where each number in the sequence is the sum of the two previous numbers. Show that the ratio of consecutive Fibonacci numbers tends to the ``golden ratio'' \(\phi = (1 + \sqrt{5})/2\).
 
 \begin{myanswers}
-
 \emph{Solution.} The Fibonacci numbers \((F_n)\) satisfy \(F_{n+1} = F_n + F_{n-1}\), which rearranges to \(F_{n+1} -F_n - F_{n-1} = 0\). The is a linear difference equation with characteristic equation \(\lambda^2 - \lambda - 1 = 0\). This has two solutions, which can be found using the quadratic formula. The solution with larger absolute value is \(\lambda_1 = (1+\sqrt{5})/2 = \phi\), the golden ratio, and the solution with smaller absolute value is \(\lambda_2 = (1-\sqrt{5})/2\). Hence, the general solution to the equation is \(F_n = A\phi^n + B\lambda_2^n\). We could use the initial conditions \(F_1 = 1\) and \(F_2 = 1\) to find \(A\) and \(B\), but there's no need to here.
 
 The ratio of consecutive Fibonacci numbers is
@@ -1923,7 +1898,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(a)} Replace the four question marks by the appropriate transition probabilities.
 
 \begin{myanswers}
-
 \emph{Solution.} Rows must add up to 1 and every entry must be non-negative, so the transition matrix is
 \[ \mathsf P = \begin{pmatrix} 0.4 & 0.3 & 0.3 \\ 0.2 & 0.4 & 0.4 \\ 0 & 0 & 1 \end{pmatrix} . \]
 
@@ -1949,7 +1923,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(c)} Find the matrix \(\mathsf P(2)\) of two-step transition probabilities.
 
 \begin{myanswers}
-
 \emph{Solution.} \({\displaystyle \mathsf P(2) = \mathsf P^2 = \begin{pmatrix} 0.22 & 0.24 & 0.54 \\ 0.16 & 0.22 & 0.62 \\ 0 & 0 & 1 \end{pmatrix}}\)
 
 \end{myanswers}
@@ -1957,7 +1930,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(d)} By summing the probabilities of all relevant paths, find the three-step transition probability \(p_{13}(3)\).
 
 \begin{myanswers}
-
 \emph{Solution.} There are seven relevant paths: \(1 \to 1 \to 1 \to 3\), \(1 \to 1 \to 2 \to 3\), \(1 \to 1 \to 3 \to 3\), \(1 \to 2 \to 1 \to 3\), \(1 \to 2 \to 2 \to 3\), \(1 \to 2 \to 3 \to 3\), and \(1 \to 3 \to 3 \to 3\). So
 \begin{align*}
 p_{13}(3) &= p_{11}p_{11}p_{11}p_{13} + p_{11}p_{12}p_{23} + p_{11}p_{13}p_{33}  + p_{12} p_{21} p_{13}\\
@@ -1977,7 +1949,6 @@ At each time step, the process randomly chooses one of the edges connected to th
 \textbf{(a)} Write down the transition matrix \(\mathsf P\) of this Markov chain.
 
 \begin{myanswers}
-
 The chain can move from a state to any of the other \(3\) states, each with probability \(1/3\). So
 \[ \mathsf P = \begin{pmatrix} 0 & \frac13 & \frac13 & \frac13 \\
                                \frac13 & 0 & \frac13 & \frac13 \\
@@ -1989,7 +1960,6 @@ The chain can move from a state to any of the other \(3\) states, each with prob
 \textbf{(b)} By summing over all relevant paths of length two, calculate the two-step transition probabilities \(p_{11}(2)\) and \(p_{12}(2)\). Hence, write down the two-step transition matrix \(\mathsf P(2)\).
 
 \begin{myanswers}
-
 The length-2 paths from 1 to 1 are \(1 \to k \to 1\) for \(k = 2,3,4\), so
 \[ p_{11}(2) = p_{12}p_{21} + p_{13}p_{31} + p_{14}p_{41} = \tfrac13 \tfrac13 +  \tfrac13 \tfrac13 + \tfrac13 \tfrac13 = \tfrac13  .   \]
 The length-2 paths from 1 to 2 are \(1 \to 3 \to 2\) and \(1 \to 4 \to 2\), so
@@ -2006,7 +1976,6 @@ By symmetry, \(p_{ii}(2) = p_{11}(2)\) for all \(i\), and \(p_{ij}(2) = p_{12}(2
 \textbf{(c)} Check your answer by calculating the matrix square \(\mathsf P^2\).
 
 \begin{myanswers}
-
 We can verify that
 \[ \mathsf P^2 = \begin{pmatrix} 0 & \frac13 & \frac13 & \frac13 \\
 \frac13 & 0 & \frac13 & \frac13 \\
@@ -2041,7 +2010,6 @@ with \(0 < \alpha, \beta < 1\), and initial distribution \(\boldsymbol\lambda = 
 \[ \mu_{n+1} - \big(1-(\alpha+\beta)\big)\mu_n = \beta . \]
 
 \begin{myanswers}
-
 Using the law of total probability, we have
 \begin{multline*}
 \mathbb P(X_{n+1} = 0) = \mathbb P(X_n = 0)\,\mathbb P(X_{n+1} = 0 \mid X_n = 0) \\
@@ -2058,7 +2026,6 @@ Rearranging this gives the answer.
 \[ \mu_n = \frac{\beta}{\alpha+\beta} + \left(\lambda_0 - \frac{\beta}{\alpha+\beta}\right)\big(1-(\alpha+\beta)\big)^n   . \]
 
 \begin{myanswers}
-
 The characteristic equation is \(\lambda - (1-(\alpha+\beta)) = 0\) with a single root at \(\lambda = 1 - (\alpha+\beta)\). The general solution to the homogeneous equation is, therefore, \(A(1-(\alpha+\beta))^n\).
 
 For a particular solution, we guess a solution \(\mu_n = C\), and \(C - (1-(\alpha+\beta))C = \beta\) gives \(C = \beta/(\alpha+\beta)\). Thus the general solution to the inhomogeneous equation is
@@ -2071,7 +2038,6 @@ From the initial condition, we get \(\lambda_0 = \beta/(\alpha+\beta) + A\), and
 \textbf{(c)} What, therefore, are \(\lim_{n\to\infty} \mathbb P(X_n = 0)\) and \(\lim_{n\to\infty} \mathbb P(X_n = 1)\)?
 
 \begin{myanswers}
-
 Note that \(-1 < 1 - (\alpha + \beta) < 1\), so \((1-(\alpha+\beta))^n \to 0\). Therefore we have
 \begin{align*}
 \lim_{n\to\infty} \mathbb P(X_n = 0) &= \lim_{n\to\infty} \mu_n \\
@@ -2087,7 +2053,6 @@ Since \(\mathbb P(X_n = 1) = 1- \mathbb P(X_n = 0)\), we have
 \[ \lambda_0 = \frac{\beta}{\alpha+\beta} , \qquad \lambda_1 = \frac{\alpha}{\alpha+\beta}  . \]
 
 \begin{myanswers}
-
 Substituting in the value of \(\lambda_0\) into the equation for \(\mu_n\), the second term cancel, and we have that \(\mathbb P(X_n = 0) = \mu_n = \beta/(\alpha+\beta)\) for all times \(n\), and therefor \(\mathbb P(X_n = 1) = \alpha/(\alpha+\beta)\) too. This means that the Markov chain remains in the same ``stationary distribution'' forever.
 
 \end{myanswers}
@@ -2096,7 +2061,6 @@ Substituting in the value of \(\lambda_0\) into the equation for \(\mu_n\), the 
 \[ \mathbb P(X_{n+m} = x_{n+m} \mid X_n = x_n, X_{n-1} = x_{n-1}, \dots, X_0 = x_0)  =  \mathbb P(X_{n+m} = x_{n+m} \mid X_n = x_n) . \]
 
 \begin{myanswers}
-
 Note that we have a sequence of statements here, for \(m = 1, 2, \dots\). Note also that the case \(m = 1\) is the standard Markov property. When we have a sequence of statements and we can easily prove the first one, this is a good sign that a proof by induction is the way to go.
 
 Before starting, for reasons of space, we adopt notation where we suppress the capital \(X\)s, so we want to show that
@@ -2120,7 +2084,6 @@ The insurer believes that the probability of of making at least one claim in a y
 \textbf{(a)} Explain why we cannot use \(\{0\%,25\%,40\%,50\%\}\) as the state space of a Markov chain to model discount levels for policyholders.
 
 \begin{myanswers}
-
 The Markov property does not hold for the time-homogeneous process described since the probability of moving to a given state at the next time step is not simply dependent on the current state if \(\mathcal S=\{0\%,25\%,40\%,50\%\}\). For example,
 \[
     \mathbb P(X_{n+1}=25\% \mid X_n= 40\% )=\begin{cases} 
@@ -2132,7 +2095,6 @@ The Markov property does not hold for the time-homogeneous process described sin
 \textbf{(b)} By considering additional states, show that a Markov chain can be used to model the discount level.
 
 \begin{myanswers}
-
 The problem is that the process has a memory of the previous year.
 If we currently have a discount of 0\%, we know a claim was made in the year before, so no changes are required. Similarly, at 50\% discount, we know that no claim was made in the previous year. The other two states, 25\% and 40\%, have different behaviour depending on whether or not there was a claim in the previous year.
 
@@ -2143,7 +2105,6 @@ So we will split each of these into two states: 25+ will denote a 25\% discount 
 \textbf{(c)} Draw the transition diagram and write down the transition matrix.
 
 \begin{myanswers}
-
 The transition diagram is as shown below.
 
 \begin{figure}
@@ -2186,7 +2147,6 @@ The transition matrix is given by,
 \textbf{(a)} Calculate the two-step transition probabilities, and hence find the expected number of defaults in the next two years from \(100\) companies all rated A at the start of the period.
 
 \begin{myanswers}
-
 The matrix of two-step transition probabilities is given by the matrix square
 \[\mathsf P(2) = \mathsf P^2= \begin{pmatrix} 0.8489&0.0885&0.0626\\
 0.0885&0.7250&0.1865\\
@@ -2198,7 +2158,6 @@ The number of defaults in two years from \(100\) A-rated companies is \(100 \tim
 \textbf{(b)} What is the probability that a company rated A will at some point default without ever having been rated B in the meantime?
 
 \begin{myanswers}
-
 Let \(\delta\) be the desired probability that an A-rated company will default without having been rated B. We condition on the first step: with probability \(0.92\) we remain in state A, and by the Markov property the probability of the given event remains at \(\delta\); with probability \(0.05\) we move to state B, and the event fails to occur; and with probability \(0.03\) we move to state D and the event occurs immediately. Therefore, we have
 \[ \delta = 0.92\delta + 0.05\times 0 + 0.03 \times 1 = 0.92\delta + 0.03 ,  \]
 which has solution \(\delta = 0.03/(1-0.92) = 0.375\).
@@ -2210,7 +2169,6 @@ A corporate bond portfolio manager follows an investment strategy which means th
 \textbf{(c)} Calculate the expected number of defaults in the manager's portfolio over the next two years given there are initially 100 A-rated bonds.
 
 \begin{myanswers}
-
 Given that B-rated bonds are replaced by A-rated bonds, we have a new Markov chain with state space \(\{\mathrm{A},\mathrm{D}\}\) and transition matrix
 \[ \mathsf P = \begin{pmatrix} 0.92+0.05 & 0.03 \\ 0 & 1 \end{pmatrix} =  \begin{pmatrix} 0.97 & 0.03 \\ 0 & 1 \end{pmatrix} .  \]
 The two-step transition probability is
@@ -2706,7 +2664,6 @@ where \(0 < \alpha, \beta < 1\).
 \textbf{(b)} What are the communicating classes for this Markov chain? Is the chain irreducible? Which classes are closed? Which states are absorbing?
 
 \begin{myanswers}
-
 \emph{Solution.} Clearly \(\{1\}\) and \(\{4\}\) are closed communicating classes, so \(1\) and \(4\) are absorbing states. The other class, \(\{2,3\}\) is not closed. Because there are multiple classes, the chain is not irreducible.
 
 \end{myanswers}
@@ -2714,7 +2671,6 @@ where \(0 < \alpha, \beta < 1\).
 \textbf{(c)} Find the hitting probability \(h_{21}\) that, starting from state 2, the chain hits state 1.
 
 \begin{myanswers}
-
 \emph{Solution.} It's clear that \(h_{11} = 1\) and \(h_{41} = 0\). Then, by conditioning on the first step, we have
 \begin{gather*}
     h_{21} = \alpha h_{31} + (1-\alpha) h_{11} = \alpha h_{31} + 1 - \alpha \\
@@ -2728,7 +2684,6 @@ Substituting the second equation into the first, we get \(h_{21} = \alpha\beta h
 \textbf{(d)} What is the expected time, starting from state 2, to reach an absorbing state?
 
 \begin{myanswers}
-
 \emph{Solution.} Let's write \(A = \{1,4\}\) for the absorbing states, and \(\eta_{iA}\) for the time to reach an absorbing state starting from state \(i\). Clearly \(\eta_{1A} = \eta_{4A} = 0\). By conditioning on the first step, we have
 \begin{gather*}
     \eta_{2A} = 1 + \alpha \eta_{3A} + (1-\alpha) \eta_{1A} = 1 + \alpha \eta_{3A}  \\
@@ -2768,7 +2723,6 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 \textbf{(b)} Show that the chain is irreducible.
 
 \begin{myanswers}
-
 \emph{Solution.} We have paths \(1 \to 2 \to 4 \to 1\) and \(1 \to 3 \to 5 \to 1\), so every state communicates with state 1, and by transitivity every state communicates with every other state.
 
 \end{myanswers}
@@ -2776,7 +2730,6 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 \textbf{(c)} What are the periods of the states?
 
 \begin{myanswers}
-
 \emph{Solution.} Any path from \(1\) to \(1\) goes \(1 \to \{2 \text{ or }3\} \to \{4 \text{ or }5\} \to 1\). So \(p_{11}^{(n)} > 0\) if and only if \(n\) is a multiple of \(3\). So state \(1\) has period \(d_1 = 3\). Because the chain is irreducible, all other states have period \(3\) too.
 
 \end{myanswers}
@@ -2784,7 +2737,6 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 \textbf{(d)} Find the expected hitting times \(\eta_{i1}\) from each state \(i\) to 1, and the expected return time \(\mu_i\) to 1.
 
 \begin{myanswers}
-
 \emph{Solution.} We could do this through a traditional conditioning on the first step argument. But in fact, the cyclic structure \(1 \to \{2 \text{ or }3\} \to \{4 \text{ or }5\} \to 1\) makes it immediately clear that \(\eta_11 = 0\), \(\eta_{41}=\eta_{51} = 1\), \(\eta_{21} = \eta_{31} = 2\), and \(\mu_1 = 3\).
 
 \end{myanswers}
@@ -2794,7 +2746,6 @@ Consider the Markov chain with state space \(\mathcal S = \{1,2,3,4,5\}\) and tr
 \textbf{(a)} Show that every Markov chain on a finite state space \(\mathcal S\) has at least one closed communicating class.
 
 \begin{myanswers}
-
 \emph{Solution.} For communicating classes \(C,D\), let's write \(C \to D\) if there is an \(i \in C\) and \(j \in D\) with \(i \to j\). Note that we can't have both \(C \to D\) and \(D \to C\) if \(C\) and \(D\) are distinct classes. This is because there would be \(i_1, j_2 \in C\) and \(j_1, i_2 \in D\) such that \(i_1 \to j_1 \to i_2 \to j_2 \to i_1\), so they would be the same class. Let's also note that there are a finite number of classes \(m\).
 
 Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2\) for some other class \(C_2\). If \(C_2\) is closed, we are done; otherwise \(C_2 \to C_3\) for some class \(C_3\) different to \(C_1\) and \(C_2\). (It can't be \(C_1\) by the argument above.) We repeat: if \(C_k\) is closed, we are done; otherwise there's a new class \(C_{k+1}\) with \(C_k \to C_{k+1}\). We eventually find a closed class: we either terminate before step \(m\) at a closed class, or otherwise \(C_m\) must be closed, as none of the previous \(m-1\) classes can be accessible from it, by our earlier argument.
@@ -2804,7 +2755,6 @@ Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2
 \textbf{(b)} Give an example of a Markov chain that has no closed communicating classes.
 
 \begin{myanswers}
-
 \emph{Solution.} By part (a), the state space must be infinite. Here's one example: take \(\mathcal S = \mathbb Z\), and \(X_{n+1} = X_n + 1\) with probability 1, so the Markov chain just marches up and up. There are no states \(i\) and \(j\) such that \(i \leftrightarrow j\) (except for states communicating with themselves) so each state is a separate class. But clearly there is no absorbing state.
 
 \end{myanswers}
@@ -2812,7 +2762,6 @@ Pick a class \(C_1\). If \(C_1\) is closed, we are done; otherwise \(C_1 \to C_2
 \textbf{4.} Prove or give a counterexample: The period of a state \(i\) is the smallest \(d > 0\) such that \(p_{ii}(d) > 0\).
 
 \begin{myanswers}
-
 \emph{Solution.} The statement is not true. Here's one counterexample:
 
 \begin{figure}
@@ -2832,7 +2781,6 @@ We see that \(p_{00} = p_{00}(1) = 0\), but \(p_{00}(2) = \frac12 > 0\) (going v
 \(\eta_{i0} = i/(q-p)\).
 
 \begin{myanswers}
-
 \emph{Solution.} By conditioning on the first step, we have
 \[ \eta_{i0} = 1 + p\eta_{i+1\,0} + q\eta_{i-1\,0} . \]
 Either by solving this linear difference equation directly or by remembering the solution from when we did expected duration of the gambler's ruin, the general solution is
@@ -2869,7 +2817,6 @@ The Markov chain starts from state 1.
 \textbf{(a)} What is the probability that we hit state 2 before we hit state 3?
 
 \begin{myanswers}
-
 \emph{Solution.} Write \(k_i\) for the probability we hit state 2 before state 3 starting from \(i\). Then clearly \(k_2 = 1\) (since we've hit 2 first) and \(k_3 = 0\) (since we've hit 3 first). Further, by conditioning on the first step, \(k_4 = \frac13 k_2 + \frac23 k_3 = \frac13\), and
 \[ k_1 = \tfrac14 k_2 + \tfrac12k_3 + \tfrac14 k_4   = \tfrac14 + \tfrac14 k_4 = \tfrac14 + \tfrac14\tfrac13 = \tfrac13 . \]
 The desired solution is \(k_1 = \frac13\).
@@ -2879,7 +2826,6 @@ The desired solution is \(k_1 = \frac13\).
 \textbf{(b)} What is the expected time until we hit a state in the set \(\{2,3\}\)?
 
 \begin{myanswers}
-
 \emph{Solution.} Let \(A = \{2,3\}\), and \(\eta_{iA}\) be the expected time until hitting the first of states \(2\) and \(3\) starting from \(i\). Clearly \(\eta_{2A} = \eta_{3A} = 0\). By conditioning on the first step, \(\eta_{4A} = 1+ \frac13 \eta_{2A} + \frac23 \eta_{3A} = 1\), and
 \[ \eta_{1A} = 1 + \tfrac14 \eta_{2A} + \tfrac12\eta_{3A} + \tfrac14 \eta_{4A} = 1 + \tfrac14 = \tfrac54 .        \]
 The desired solution is \(\eta_{1A} = \tfrac54\).
@@ -2904,35 +2850,17 @@ The desired solution is \(\eta_{1A} = \tfrac54\).
 
 When thinking about the long-run behaviour of Markov chains, it's useful to classify two different types of states: ``recurrent'' states and ``transient'' states.
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.50}}@{}}
 \toprule
-\begin{minipage}[b]{0.47\columnwidth}\raggedright
-Recurrent states\strut
-\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
-Transient states\strut
-\end{minipage}\tabularnewline
+Recurrent states & Transient states \\
 \midrule
 \endhead
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-If we ever visit \(i\), then we keep returning to \(i\) again and again\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-We might visit \(i\) a few times, but eventually we leave \(i\) and never come back\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-Starting from \(i\), the expected number of visits to \(i\) is infinite\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-Starting from \(i\), the expected number of visits to \(i\) is finite\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-Starting from \(i\), the number of visits to \(i\) is certain to be infinite\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-Starting from \(i\), the number of visits to \(i\) is certain to be finite\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-The return probability \(m_i\) equals 1\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-The return probability \(m_i\) is strictly less than 1\strut
-\end{minipage}\tabularnewline
+If we ever visit \(i\), then we keep returning to \(i\) again and again & We might visit \(i\) a few times, but eventually we leave \(i\) and never come back \\
+Starting from \(i\), the expected number of visits to \(i\) is infinite & Starting from \(i\), the expected number of visits to \(i\) is finite \\
+Starting from \(i\), the number of visits to \(i\) is certain to be infinite & Starting from \(i\), the number of visits to \(i\) is certain to be finite \\
+The return probability \(m_i\) equals 1 & The return probability \(m_i\) is strictly less than 1 \\
 \bottomrule
 \end{longtable}
 
@@ -3529,7 +3457,6 @@ You should attempt all these questions and write up your solutions in advance of
                                0 & \frac13 & \frac23 \end{pmatrix} . \]
 
 \begin{myanswers}
-
 \emph{Solution.} The equations are
 \begin{align*}
 \pi_1 &= \tfrac13 \pi_1 + \tfrac16 \pi_2 \\
@@ -3569,7 +3496,6 @@ So \(\pi_2 = \frac4{11}\), so \(\pi_1 = \frac{1}{11}\) and \(\pi_3 = \frac{6}{11
 \textbf{(b)} Identify the communicating classes. State whether each class closed or not. State whether each class is positive recurrent, null recurrent, or transient.
 
 \begin{myanswers}
-
 \emph{Solution.} The class \(\{1,2,3\}\) is closed, so is positive recurrent. The class \(\{4\}\) is not closed, so is transient.
 
 \end{myanswers}
@@ -3577,7 +3503,6 @@ So \(\pi_2 = \frac4{11}\), so \(\pi_1 = \frac{1}{11}\) and \(\pi_3 = \frac{6}{11
 \textbf{(c)} Find a stationary distribution for this Markov chain.
 
 \begin{myanswers}
-
 \emph{Solution.} First, we write out the equations \(\boldsymbol\pi = \boldsymbol\pi\mathsf P\), which are
 \begin{align*}
 \pi_1 &= \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 + \tfrac14\pi_4 \\
@@ -3600,7 +3525,6 @@ so \(\pi_1 = \frac{8}{25}\). Hence, we have a stationary distribution
 \textbf{(d)} Is this the only stationary distribution?
 
 \begin{myanswers}
-
 \emph{Solution.} Yes. The Markov chain has one positive recurrent class, so there is a unique stationary distribution, and it is supported only on that class.
 
 \end{myanswers}
@@ -3632,7 +3556,6 @@ so \(\pi_1 = \frac{8}{25}\). Hence, we have a stationary distribution
 \textbf{(b)} Identify the communicating classes. State whether each class closed or not. State if each class is positive recurrent, null recurrent, or transient.
 
 \begin{myanswers}
-
 \emph{Solution.} The class \(\{1,2\}\) is closed, so is positive recurrent. The class \(\{3\}\) is not closed, so is transient. The class \(\{4,5\}\) is closed, so is positive recurrent.
 
 \end{myanswers}
@@ -3640,7 +3563,6 @@ so \(\pi_1 = \frac{8}{25}\). Hence, we have a stationary distribution
 \textbf{(c)} Find all of the stationary distributions for this Markov chain.
 
 \begin{myanswers}
-
 \emph{Solution.} We can have a stationary distribution supported on either of the positive recurrent classes, but we will always have \(\pi_3 = 0\), as that state is transient. For the class \(\{1,2\}\) we have
 \[ \pi_1 = \tfrac13\pi_1 + \tfrac13\pi_2 \qquad \pi_2 = \tfrac23\pi_1 + \tfrac23\pi_2 , \]
 giving \(\pi_2 = 2\pi_1\), and a stationary distribution \((\tfrac 13, \tfrac23, 0, 0, 0)\). For the class \(\{4,5\}\), we have
@@ -3658,7 +3580,6 @@ for \(0 \leq \alpha \leq 1\).
 is \(\pi_i = A + B\tau^i\), where \(\tau = p/q\).
 
 \begin{myanswers}
-
 \emph{Solution.} Let's rewrite this as \(q\pi_{j+1} - \pi_j + p\pi_{j-1} = 0\). This is a homogeneous linear difference equation. The characteristic equation is \(p\lambda^2 - \lambda + p = 0\), which factorises as \((q\lambda - p)(\lambda-1) = 0\) (using that \(p + q = 1\)), which has solutions \(\lambda = 1\) and \(\lambda = p/q = \tau\). Since \(p \neq \frac12\), these roots are distinct. So the general solution is \(\pi_i = A + B\tau^i\).
 
 \end{myanswers}
@@ -3666,7 +3587,6 @@ is \(\pi_i = A + B\tau^i\), where \(\tau = p/q\).
 \textbf{(b)} Show that the initial condition \(\pi_0 = q\pi_0 + q\pi_1\) gives \(A = 0\).
 
 \begin{myanswers}
-
 \emph{Solution.} The initial condition gives
 \[ A + B = q(A + B) + q(A + B\tau)  ,\]
 which after rearranging gives \((1-2q)A = 0\), where we have used \(q + q\tau = q + p = 1\). Since \(1-2q\neq 0\), we must have \(A = 0\).
@@ -3676,7 +3596,6 @@ which after rearranging gives \((1-2q)A = 0\), where we have used \(q + q\tau = 
 \textbf{(c)} By considering the normalising condition \(\sum_i \pi_i =1\), work out for what values of \(p \neq \frac12\) there exists a stationary distribution for \((X_n)\). What is the stationary distribution (when it exists)?
 
 \begin{myanswers}
-
 \emph{Solution.} We have \(\pi_i = B\tau^i\), so require \(B \sum_{i=1}^\infty \tau^i = 1\). When \(p > \frac12\), then \(\tau > 1\) and the sum does not converge, and we have no stationary distribution. When \(p < \frac12\), then \(\tau < 1\), so
 \[ \sum_{i=1}^\infty \tau^i = \frac{1}{1-\tau} \qquad \Rightarrow \qquad B = \frac{1}{\frac{1}{1-\tau}} = 1 - \tau, \]
 so we have a geometric stationary distribution \(\pi_i = (1-\tau)\tau^i\).
@@ -3686,7 +3605,6 @@ so we have a geometric stationary distribution \(\pi_i = (1-\tau)\tau^i\).
 \textbf{(d)} Does there exist a stationary distribution when \(p = \frac12\)?
 
 \begin{myanswers}
-
 \emph{Solution.}
 Here, the linear difference equation has general solution \(\pi_i = A + Bi\), as we saw with the symmetric gambler's ruin problem. The initial condition gives \(A = \frac12A + \frac12(A + B)\), and so \(B = 0\), giving \(\pi_i = A\). The normalisation condition is \(\infty \times A = 1\), which cannot be fulfilled. Hence no stationary distribution exists.
 
@@ -3706,7 +3624,6 @@ Here, the linear difference equation has general solution \(\pi_i = A + Bi\), as
 By considering the distance of \((X_n)\) from the root, or otherwise, show that \((X_n)\) is transient.
 
 \begin{myanswers}
-
 \emph{Solution.} We want to show that \(m_0\), the return probability to the root, is strictly less than 1.
 
 Let \(Y_n\) be the distance of \(X_n\) from the root as suggested in the question. Then \(X_n\) returns to to the root if and only if \(Y_n\) returns to \(0\), so we can look at that instead.
@@ -3728,7 +3645,6 @@ and \(m_0 = h_{10} = \frac12 < 1\), as required.
 \textbf{6.} \emph{``Every Markov chain on a finite state space has at least one stationary distribution.''} Explain carefully why this is true. You may use facts from the notes or previous example sheets, provided that you state them clearly.
 
 \begin{myanswers}
-
 \emph{Solution.} In Problem Sheet 4, Question 3, we showed that every finite-state Markov chain has a closed communicating class. In lectures, we showed the finite closed communicating classes are positive recurrent. If we look at the Markov chain restricted to just such a positive recurrent and closed class, then that restricted Markov chain is irreducible and positive recurrent, so it has a stationary distribution \(\boldsymbol\pi\). Since the class is closed, we have a stationary distribution that is \(\boldsymbol\pi\) on the given closed class and \(0\) elsewhere.
 
 \end{myanswers}
@@ -4063,7 +3979,7 @@ The following list is not exhaustive, but if you can do most of the things on th
 \section*{Problem sheet 6}\label{P06}}
 \addcontentsline{toc}{section}{Problem sheet 6}
 
-\commfalse
+\commtrue
 
 You should attempt all these questions and write up your solutions in advance of your workshop in week 7 (Monday 8 or Tuesday 9 March) where the answers will be discussed.
 
@@ -4094,7 +4010,6 @@ The Markov chain is irreducible, since we have \(1 \to 2 \to 3 \to 1\). Since we
 \textbf{(b)} What is \(m_i\), the return probability, for each state? What is \(\mu_i\), the expected return time for each state.
 
 \begin{myanswers}
-
 \emph{Solution.}
 Again, since we continually cycle around the triangle, we always return in \(3\) steps, so \(m_i = 1\) and \(\mu_i =3\) for all \(i\).
 
@@ -4103,7 +4018,6 @@ Again, since we continually cycle around the triangle, we always return in \(3\)
 \textbf{(c)} By solving \(\boldsymbol \pi = \boldsymbol\pi \mathsf P\), find the stationary distribution. Use this to confirm the values of \(\mu_i\).
 
 \begin{myanswers}
-
 \emph{Solution.}
 The equations give \(\pi_1 = \pi_3\), \(\pi_2 = \pi_1\) and \(\pi_3 = \pi_2\), meaning they're all equal. The normalising condition gives \(\boldsymbol\pi = (\frac13, \frac13, \frac13)\). The expected return times are \(\mu_i = 1/\pi_i = 3\), as predicted.
 
@@ -4112,7 +4026,6 @@ The equations give \(\pi_1 = \pi_3\), \(\pi_2 = \pi_1\) and \(\pi_3 = \pi_2\), m
 \textbf{(d)} For what initial distributions \(\boldsymbol\lambda\) do the limits \(\lim_{n \to \infty} \mathbb P(X_n = i)\) exist?
 
 \begin{myanswers}
-
 \emph{Solution.}
 For a given initial condition \((\lambda_1, \lambda_2, \lambda_3)\) it's clear we cycle through the initial condition, \((\lambda_2, \lambda_3, \lambda_1)\), and \((\lambda_3, \lambda_1, \lambda_2)\). Hence the limits only exist if \(\lambda_1 = \lambda_2 = \lambda_3 = \frac13\).
 
@@ -4121,7 +4034,6 @@ For a given initial condition \((\lambda_1, \lambda_2, \lambda_3)\) it's clear w
 \textbf{(e)} What is the long-run proportion of time spent in each state?
 
 \begin{myanswers}
-
 \emph{Solution.}
 Since the Markov chain is irreducible and positive recurrent (like every finite irreducible chain), the ergodic theorem tells us that the long-run proportion of time spent in each state \(i\) is \(\pi_i = \frac13\).
 
@@ -4129,7 +4041,7 @@ Since the Markov chain is irreducible and positive recurrent (like every finite 
 
 \textbf{2.} Every person has two chromosomes; each chromosome is a copy of a chromosome from one of the person's parents. There are two types of chromosome, which are conventionally labelled X and Y. A child born with a Y chromosome is male, while a child with two X chromosomes is female.
 
-Haemophilia is a blood-clotting disorder caused by a defective X chromosome (we will label this as \(\text X^*\)). Females with the defective chromosome (\(\text X^*\text X\)) will not typically show symptoms of the disease but can pass it on to children -- they are `carriers'. Males with the defective chromosome (\(\text X^* \text Y\)) have the disease and its symptoms.
+Haemophilia is a blood-clotting disorder caused by a defective X chromosome (we will label this as \(\text X^*\)). Females with the defective chromosome (\(\text X^*\text X\)) will not typically show symptoms of the disease but can pass it on to children -- they are ``carriers''. Males with the defective chromosome (\(\text X^* \text Y\)) have the disease and its symptoms.
 
 A medical statistician is studying the progress of the disease through first-born children, starting with a female carrier. The statistician makes the following assumptions: First, each parent has an equal probability of passing either of their chromosomes to their children. Second, the partner of each person in the study does not have a defective X chromosome. Third, no new genetic disorders occur.
 
@@ -4156,7 +4068,6 @@ The transition probabilities are: From a female carrier, \(p_{\mathrm{FF}} = \fr
 \textbf{(b)} What are the communicating classes in the chain? Is each class positive recurrent, null recurrent, or transient?
 
 \begin{myanswers}
-
 \emph{Solution.}
 Note we can move from F or M to f or m but not back again. So the class \(\{\text F, \text M\}\) is non-closed and thus transient, while the class \(\{\text f, \text m\}\) is closed and thus positive recurrent.
 
@@ -4165,7 +4076,6 @@ Note we can move from F or M to f or m but not back again. So the class \(\{\tex
 \textbf{(c)} Calculate a stationary distribution. Is this the only stationary distribution?
 
 \begin{myanswers}
-
 \emph{Solution.}
 We have a stationary distribution is \(\pi_{\mathrm M} = \pi_{\mathrm{F}} = 0\), \(\pi_{\mathrm m} = \pi_{\mathrm f} = \frac12\). One way to see this is to solve \(\boldsymbol\pi = \boldsymbol\pi\mathsf P\). Another way is the following: Since F and M are transient we must have \(\pi_{\mathrm M} = \pi_{\mathrm{F}} = 0\). But, within the recurrent class, m and f are symmetrical, so we must have \(\pi_{\mathrm m} = \pi_{\mathrm f}\). The result follows.
 
@@ -4176,7 +4086,6 @@ Since there is exactly one positive recurrent class, the stationary distribution
 \textbf{(d)} Under this model, what is the limiting probability that, in many generations' time, a child has haemophilia?
 
 \begin{myanswers}
-
 \emph{Solution.}
 Since M and F are transient states, we have \(\lim \mathbb P(X_n = \mathrm F) = \lim \mathbb P(X_n = \mathrm M) = 0\), so the limiting probability is \(0\).
 
@@ -4228,7 +4137,6 @@ and \(p_{\mathrm{GG}} = 0.4+0.2 = 0.6\).
 \textbf{(b)} Explain why a unique stationary distribution exists and calculate it.
 
 \begin{myanswers}
-
 \emph{Solution.}
 The Markov chain is irreducible and positive recurrent, so has a unique stationary distribution.
 
@@ -4257,7 +4165,6 @@ Hence \(\pi_{\mathrm B} = \frac{4}{15}\). Back-solving, we get the solution
 \textbf{(c)} The airline makes a profit of £10 per passenger per flight, before the cost of the frequent flyer scheme. In the long run, does the airline expect to remain in profit after the cost of the scheme?
 
 \begin{myanswers}
-
 \emph{Solution.}
 By the ergodic theorem, the long run time spent in state \(x\) is \(\pi_x\). So the long-run cost per member is
 \[ 0\pi_{\mathrm O} + 10\pi_{\mathrm B} + 20 \pi_{\mathrm S} + 30\pi_{\mathrm G}
@@ -4275,7 +4182,6 @@ for a profit of at least \(10\times0.8 = \text{\pounds}8\). (``At least'' becaus
 \[ \frac{1}{2^N} \binom{N}{i} . \]
 
 \begin{myanswers}
-
 \emph{Solution.} One way to solve this is to let \(X_n\) be the number of balls in the first urn after having moved \(n\) balls. This has transition probabilities
 \[ p_{i,i+1} = 1 - \frac{i}{N} \qquad p_{i,i-1} = \frac{i}{N} . \]
 The equations for the stationary distribution are
@@ -4298,7 +4204,6 @@ where \(\mathcal S(i)\) is the set of \(\mathbf y \in \mathcal S\) consisting of
 \textbf{(b)} Is this an equilibrium distribution?
 
 \begin{myanswers}
-
 \emph{Solution.} No.~The number of balls in the left-hand urn switches between odd and even each turn, so the chain is periodic with period 2, and does not have an equilibrium distribution.
 
 \end{myanswers}
@@ -4307,7 +4212,6 @@ where \(\mathcal S(i)\) is the set of \(\mathbf y \in \mathcal S\) consisting of
 In the long run, for what proportion of time are all of the balls in the same urn?
 
 \begin{myanswers}
-
 \emph{Solution.} By the ergodic theorem, the long run proportion of time that all the balls are in the same urn is
 \[ \pi_0 + \pi_N = \phi_{(1,1,\dots,1)} + \phi_{(2,2,\dots,2)} = \frac{1}{2^N} + \frac{1}{2^N} = \frac{1}{2^{N-1}} . \]
 
@@ -4716,7 +4620,6 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(a)} \(\mathbb P\big(X(0.4) \leq 2\big)\);
 
 \begin{myanswers}
-
 \emph{Solution.}
 We have that \(X(0.4) \sim \text{Po}(2)\), so
 \[ \mathbb P\big(X(0.4) \leq 2\big) = \mathrm{e}^{-2} + 2\mathrm{e}^{-2} + \frac{2^2}{2} \mathrm{e}^{-2} = 5 \mathrm{e}^{-2} = 0.677 .\]
@@ -4726,7 +4629,6 @@ We have that \(X(0.4) \sim \text{Po}(2)\), so
 \textbf{(b)} \(\mathbb EX(6.4)\);
 
 \begin{myanswers}
-
 \emph{Solution.} We have that \(X(6.4) \sim \text{Po}(32)\), so \(\mathbb E X(6.4) = 32\).
 
 \end{myanswers}
@@ -4734,7 +4636,6 @@ We have that \(X(0.4) \sim \text{Po}(2)\), so
 \textbf{(c)} \(\mathbb P\big(X(0.5) = 0 \text{ and } X(1) = 1\big)\).
 
 \begin{myanswers}
-
 \emph{Solution.}
 This happens if we have \(X(0.5) - X(0) = 0\) and also the independent event \(X(1) - X(0.5) = 1\). Both increments are \(\text{Po}(2.5)\), so
 \[\mathbb P\big(X(0.5) = 0 \text{ and } X(1) = 1\big) = \mathrm{e}^{-2.5} \times 2.5\mathrm{e}^{-2.5} = 0.0168.  \]
@@ -4746,7 +4647,6 @@ Let \(T_n\) be the \(n\)th holding time, and let \(J_n = T_1 + \cdots + T_n\) be
 \textbf{(d)} \(\mathbb P(0.1 \leq T_2 < 0.3)\);
 
 \begin{myanswers}
-
 \emph{Solution.} We have \(T_2 \sim \text{Exp}(5)\), so
 \begin{multline*} \mathbb P(0.1 \leq T_2 < 0.3) = \mathbb P(T_2 > 0.1) - \mathbb P(T_2 > 0.3) \\= \mathrm{e}^{-5\times0.1} - \mathrm{e}^{-5\times0.3} = \mathrm{e}^{-0.5} - \mathrm{e}^{-1.5} = 0.383.       \end{multline*}
 
@@ -4755,7 +4655,6 @@ Let \(T_n\) be the \(n\)th holding time, and let \(J_n = T_1 + \cdots + T_n\) be
 \textbf{(e)} \(\mathbb E J_{100}\);
 
 \begin{myanswers}
-
 \emph{Solution.}
 \[ \mathbb E J_{100} = \mathbb E (T_1 + \dots + T_{100}) = 100 \, \mathbb ET_1 = 100 \times \tfrac15 = 20.     \]
 
@@ -4764,7 +4663,6 @@ Let \(T_n\) be the \(n\)th holding time, and let \(J_n = T_1 + \cdots + T_n\) be
 \textbf{(f)} \(\operatorname{Var}(J_{100})\).
 
 \begin{myanswers}
-
 \emph{Solution.}
 Using independence,
 \[ \mathbb \operatorname{Var}( J_{100}) = \operatorname{Var}E (T_1 + \dots + T_{100}) = 100 \, \operatorname{Var}(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
@@ -4774,7 +4672,6 @@ Using independence,
 \textbf{(g)} Using a normal approximation, approximate \(\mathbb P(18 \leq J_{100} \leq 22)\).
 
 \begin{myanswers}
-
 \emph{Solution.}
 The normal approximation is \(J_{100} \sim \mathrm N(20,4)\). So, letting \(Z \sim \text{N}(0,1)\), we have
 \begin{multline*}  \mathbb P(18 \leq J_{100} \leq 22) = \mathbb P\left(\frac{18-20}{\sqrt4} \leq Z \leq \frac{18-20}{\sqrt4}\right) \\ = \mathbb P(-1 \leq Z \leq 1) = 2\Phi(1) - 1 = 0.683.  \end{multline*}
@@ -4786,7 +4683,6 @@ The normal approximation is \(J_{100} \sim \mathrm N(20,4)\). So, letting \(Z \s
 \textbf{(a)} What is the probability that there are no answered calls in the next minute?
 
 \begin{myanswers}
-
 \emph{Solution.}
 The answered calls form a Poisson process with rate \(100 \times 0.6 = 60\) per hour, or \(1\) per minute. The probability there are no unanswered calls in one minute are \(\mathrm{e}^{-1} = 0.368\).
 
@@ -4795,7 +4691,6 @@ The answered calls form a Poisson process with rate \(100 \times 0.6 = 60\) per 
 \textbf{(b)} Use a suitable normal approximation, with a continuity correction, to find the probability that there will be at least \(25\) answered calls in the next \(30\) minutes.
 
 \begin{myanswers}
-
 \emph{Solution.}
 The number of calls in \(30\) minutes is Poisson of rate \(30\), which has expectation \(30\) and variance \(30\). So, using a continuity correction, we have
 \begin{multline} \mathbb P \big(X(30) \geq 24.5 \big) = \mathbb P \left( Z \geq \frac{24.5 - 30}{\sqrt{30}} \right) \\= \mathbb P(Z \geq -1.00 ) = \Phi(1.00) = 0.842 . \end{multline}
@@ -4808,7 +4703,6 @@ The number of calls in \(30\) minutes is Poisson of rate \(30\), which has expec
 \[ \mathbb P(X+Y = z) = \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) . \]
 
 \begin{myanswers}
-
 \emph{Solution.} We have
 \begin{align*}
 \mathbb P(X+Y = z) &= \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) \\
@@ -4828,7 +4722,6 @@ as desired.
 \textbf{(b)} Let \((X(t))\) and \((Y(t))\) be independent Poisson processes with rate \(\lambda\) and \(\mu\) respectively. Use part (a) to show that \((X(t) + Y(t))\) is a Poisson process with rate \(\lambda + \mu\).
 
 \begin{myanswers}
-
 \emph{Solution.}
 First, that \(Z(0) = X(0) + Y(0) = 0 + 0 = 0\) is immediate. Second, the previous result shows that \((Z(t))\) has independent Poisson increments with rate \(\lambda + \mu\). Third, since \((X(t))\) and \((Y(t))\) each have independent increments and are independent of each other, it follows that \((Z(t))\) has independent increments also.
 
@@ -4837,7 +4730,6 @@ First, that \(Z(0) = X(0) + Y(0) = 0 + 0 = 0\) is immediate. Second, the previou
 \textbf{(c)} Number 1 buses arrive at a bus stop at a rate of \(\lambda_1 = 4\) per hour, and Number 6 buses arrive at the rate \(\lambda_6 = 2\) per hour. I've been waiting at the bus stop for 5 minutes for either bus to arrive; how much longer do I have to wait, on average?
 
 \begin{myanswers}
-
 \emph{Solution.}
 By the above, the arrivals of buses form a Poisson process of rate \(\lambda_1 + \lambda_6 = 6\). By the memoryless property of the exponential distribution, the fact we have already been waiting for 5 minutes is irrelevant. The waiting time is \(\text{Exp}(6)\), with mean \(\frac16\) of an hour, or 10 minutes.
 
@@ -4851,7 +4743,6 @@ Let \(T_1 \sim \operatorname{Exp}(\lambda_1), T_2 \sim \operatorname{Exp}(\lambd
 provided you explain why it's true.)
 
 \begin{myanswers}
-
 \emph{Solution.}
 For the minimum to be bigger than \(t\), we need all \(n\) of the times to be bigger than \(t\). Hence
 \begin{multline*} \mathbb P(T > t) = \mathbb P(T_1 > t)  \, \mathbb P(T_2 > t)\cdots   \mathbb P(T_n > t)\\ = \mathrm{e}^{-\lambda_1 t} \mathrm{e}^{-\lambda_2 t} \cdots \mathrm{e}^{-\lambda_n t} = \mathrm{e}^{-(\lambda_1 + \lambda_2 + \cdots + \lambda_n) t} . \end{multline*}
@@ -4864,7 +4755,6 @@ But this is precisely the tail probability of an \(\operatorname{Exp}(\lambda_1 
 (You could choose to begin by proving the \(n = 2\) case, if you want.)
 
 \begin{myanswers}
-
 \emph{Solution.}
 By conditioning on the value of \(T_j\) and arguing as above, we have
 \[ \mathbb P(T_j = T) = \int_0^\infty f_{T_j}(t) \, \mathbb P(\text{all other $T_k$s} \geq t) \, \mathrm dt .  \]
@@ -4881,7 +4771,6 @@ Using the result above and substituting in the PDF of an exponential distributio
 Let \((X(t))\) be a Poisson process with rate \(\lambda\). Conditional on there being exactly 1 arrival before time \(t\), find the distribution of the time of that arrival.
 
 \begin{myanswers}
-
 \emph{Solution.}
 Clearly the arrival is in the interval \([0,t]\). The conditional CDF is
 \begin{align*}

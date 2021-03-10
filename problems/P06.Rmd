@@ -1,6 +1,5 @@
 # Problem sheet 6  {.unnumbered #P06}
 
-<!--
 <style>
 .fold-btn { 
   float: right; 
@@ -20,20 +19,19 @@ $(document).ready(function() {
   })
 });
 </script>
--->
 
 
-
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
+-->
 
 
 
-
-\commfalse
+\commtrue
 
 
 
@@ -109,7 +107,7 @@ Since the Markov chain is irreducible and positive recurrent (like every finite 
 ::::: {.myq}
 **2.** Every person has two chromosomes; each chromosome is a copy of a chromosome from one of the person's parents.  There are two types of chromosome, which are conventionally labelled X and Y. A child born with a Y chromosome is male, while a child with two X chromosomes is female.
 
-Haemophilia is a blood-clotting disorder caused by a defective X chromosome (we will label this as $\text X^*$).  Females with the defective chromosome ($\text X^*\text X$) will not typically show symptoms of the disease but can pass it on to children -- they are `carriers'.  Males with the defective chromosome ($\text X^* \text Y$) have the disease and its symptoms.
+Haemophilia is a blood-clotting disorder caused by a defective X chromosome (we will label this as $\text X^*$).  Females with the defective chromosome ($\text X^*\text X$) will not typically show symptoms of the disease but can pass it on to children -- they are "carriers".  Males with the defective chromosome ($\text X^* \text Y$) have the disease and its symptoms.
 
 A medical statistician is studying the progress of the disease through first-born children, starting with a female carrier.  The statistician makes the following assumptions: First, each parent has an equal probability of passing either of their chromosomes to their children. Second, the partner of each person in the study does not have a defective X chromosome. Third, no new genetic disorders occur.
 
