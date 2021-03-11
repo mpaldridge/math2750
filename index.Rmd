@@ -18,11 +18,11 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Section 14**: Poisson process with exponential holding times](#S14-poisson-exponential)
 * [**Problem Sheet 7**](#P07)
 * [**Computational Worksheet 2 / Assessment 2**](#computing): computational drop-in sessions this week, due Thursday 18 March (next week)
-* [**Assessment 3**](#A3): due Thursday 25 March
-* **Lecture**: Tuesday at 1400 (Zoom)
+* [**Assessment 3**](#A3): due Thursday 25 March (week after next)
+<!-- * **Lecture**: Tuesday at 1400 (Zoom)
 * **Workshops** on Problem Sheet 6: Monday or Tuesday (Zoom)
 * **Computational drop-in sessions**: Monday, Tuesday or Wedenesday (Teams)
-* **Drop-in sessions**: Tuesday or Wednesday (Teams)
+* **Drop-in sessions**: Tuesday or Wednesday (Teams) -->
 :::
 
 ::: {.oldsched}
@@ -31,8 +31,8 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Section 11**: Long-term behaviour of Markov chians](#S11-long-term-chains)
 * [**Section 12**: End of of Part I: Discrete time Markov chains](#S12-revision-i)
 * [**Problem Sheet 6**](#P06)
-* [**Computational Worksheet 2 / Assessment 2**](#computing): computational drop-in sessions next week, due Thursday 18 March
-* [**Assessment 3**](#A3): due 25 March
+* [**Computational Worksheet 2 / Assessment 2**](#computing): computational drop-in sessions next week, due Thursday 18 March (week after next)
+* [**Assessment 3**](#A3): due Thursday 25 March (three weeks' time)
 :::
 
 ::: {.oldsched}
