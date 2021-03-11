@@ -7,7 +7,7 @@ The notes are written using the Bookdown to RMarkdown. The website produced by t
 This is work in progress; the early parts are finished (as of 11 March 2021, up to Section 14), while the later parts are in various states of unfinishedness (from "not even started" to "ready to appear as soon as they are uncommented").
 
 * **`sections`** contains one RMarkdown file for each of the 22 sections of notes (in the Before Times, these were one lecture each)
-* **`problems`** contains one RMarkdown file for each of the 10 problem sheets. I've done some monkeying around so that the the answers are hidden until I change just a couple of lines of code, then the answers all appear. (Note that a highly enterprising student could work out to see the solutions, so I don't use this for assessed work.)
+* **`problems`** contains one RMarkdown file for each of the 10 problem sheets. I've done some monkeying around so that the the answers are hidden until I change just a couple of lines of code, then the answers all appear. (Note that a highly enterprising student could work out how to find the solutions, so I don't use this for assessed work.)
 * **`assessments`** contains the assessed problem sheets.
 * **`computing`** contains the computational worksheets.
 * **`docs`** contains the actual output; that is the code for the website itself, as produced by Bookdown.
