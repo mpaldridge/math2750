@@ -10,8 +10,10 @@ This is work in progress; the early parts are finished (as of 11 March 2021, up 
 * **`problems`** contains one RMarkdown file for each of the 10 problem sheets. I've done some monkeying around so that the the answers are hidden until I change just a couple of lines of code, then the answers all appear. (Note that a highly enterprising student could work out to see the solutions, so I don't use this for assessed work.)
 * **`assessments`** contains the assessed problem sheets.
 * **`computing`** contains the computational worksheets.
-* **`docs`** contains the actual output; that is the code for the website itself.
+* **`docs`** contains the actual output; that is the code for the website itself, as produced by Bookdown.
 
 Videos were separately [uploaded to YouTube](https://www.youtube.com/playlist?list=PLm3yxTRIYqPLWCz8k1cFYmreJvClole1V) and embedded in the notes.
+
+I've also written [A brief introduction to RMarkdown and Bookdown](https://mpaldridge.github.io/rmarkdown-bookdown/).
 
 *– [Matthew Aldridge](https://mpaldridge.github.io/)*
