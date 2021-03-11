@@ -1,0 +1,111 @@
+# Counting processes  {#S16-counting-processes}
+
+
+::: {.mysummary}
+* Birth processes, including the simple birth process
+* Time inhomogeneous Poisson processes
+:::
+
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\ee}{\mathrm{e}}
+
+
+## Birth processes  {#birth-processes}
+
+The Poisson process was made easier to understand because it was a **counting process**. That is, because it was counting arrivals, we always knew that the next change would be an increase by 1; the only question is when that increase would happen.
+
+In this section, we look at two more complicated types of counting process; the only transitions will be from $i$ to $i+1$, but the holding times will not just be IID exponential distributions any more.
+
+We start with the **simple birth process**, which can model, for example, the division of cells in a biological experiment. We suppose that each individual has an offspring (eg the cell divides) after an $\Exp(\lambda)$ period of time, and continues to have more offspring after another $\Exp(\lambda)$ period of time, and so on.
+
+We start with $X(0) = 1$ individual. After an $\Exp(\lambda)$ time, the individual has an offspring, and we have $X(t) = 2$.
+
+Now each of these two individuals will have an offspring after an $\Exp(\lambda)$ time each. So how much longer will it be until the first offspring appears and we get $X(t) = 3$? Well, the earliest offspring will appear at the minimum of these two $\Exp(\lambda)$ times, and [we saw in the Section 14](#exponential) that this has an $\Exp(2\lambda)$ distribution. (Remember that the mean of an exponential distribution is the reciprocal of the rate parameter, so the holding time for the second offspring is half that of the first, on average.)
+
+Now suppose we have $n$ individuals. By the memoryless property, they each still have an $\Exp(\lambda)$ time until producing an offspring, so the time until the next offspring is the minimum of these, which is $\Exp(n\lambda)$.
+
+In general, we have built a counting process defined entirely by its starting point $X(0) = 1$, that the $n$th holding time $T_n$ is exponential with rate $n\lambda$, and that all transitions are increases by 1.
+
+On [Problem Sheet 8](#P08), you will show that the expected size of the population of the simple birth process at time $t$ is $\mathbb EX(t) = \ee^{\lambda t}$, so the population grows exponentially quickly (on average).
+
+The simple birth process is an example of the more general class of birth processes.
+
+::: {.definition #birth-def}
+A **birth process** $(X_n)$ with rates $(\lambda_n)$ is defined by its starting population $X(0) = x_0$ and that the holding times are $T_n \sim \Exp(\lambda_n)$. So we have
+\[ X(t) = \begin{cases} x_0 & 0 \leq t < J_1 \\
+x_0 + n & J_n \leq t < J_{n+1}, \text{ for } n=1,2,\dots ,\end{cases}  \]
+where $J_n = T_1 + T_2 + \cdots + T_n$ are the **jump times**.
+:::
+
+::: {.example #birth-examples}
+We have the following examples:
+
+* Setting $x_0 = 1$ and $\lambda_n = n\lambda$ gives the simple birth process.
+* Setting $x_0 = 0$ and $\lambda_n = \lambda$ constant gives the Poisson process.
+* Setting $x_0 = 1$ and $\lambda = n\lambda + \mu$ gives a birth process with immigration from outside the system at rate $\mu$.
+:::
+
+We can also give an equivalent definition using infinitesimal time periods, as we did for the Poisson process. Suppose we start from $X(0) = 1$. We have
+\begin{align*}
+    \mathbb P \big(X(t+\tau) = j\phantom{{}+1} \mid X(t) = j\big) &= 1 - \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) = j+1 \mid X(t) = j\big) &= \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) \geq j+2 \mid X(t) = j\big) &= o(\tau) ,
+\end{align*}
+which is exactly the same as the Poisson process, except with $\lambda$ replaced by $\lambda_j$.
+
+We can continue as for the Poisson process. Write $p_j(t) = \mathbb P(X(t) = j)$. Then, for $j \geq 1$,
+\[ p_j(t + \tau) = \big(1 - \lambda_{j}\tau + o(\tau)\big)p_j(t)  + \big(\lambda_{j-1}\tau + o(\tau)\big)p_{j-1}(t) + o(\tau) , \]
+since the two ways to get to $j$ are either we're already at $j$ and the $j$th arrival doesn't occur, or we're at $j-1$ and the $(j-1)$th arrival does occur; other possibilities have $o(\tau)$ probability. As before, take $p_j(t)$ over to the left-hand side, divide by $\tau$ to get
+\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) + \frac{o(\tau)}{\tau} , \] 
+and then send $\tau \to 0$. We end up with the forward equation
+\[ p'_j(t) = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) . \]
+The initial condition is $p_j(0) = 0$, since we start at $1$, not at any $j \geq 2$.
+
+Following the similar process for $j =1$, we get
+\[ p'_1(t) = -\lambda_1 p_1(t) , \]
+with initial condition $p_1(0) = 1$,  since we start from $1$.
+
+In some cases the forward equations can be explicitly solved to give an expression for $p_j(t) = \mathbb P(X(t) = j)$. We saw the solution for the Poisson process in Lecture 14, and you will find a solution for the simple birth process on [Problem Sheet 8](#P08).
+
+
+## Time inhomogeneous Poisson processes {#TIPP}
+
+The Poisson process and the birth processes were all **time homogeneous**; that is, the transition probabilities
+$\mathbb P(X(s+t) = j \mid X(s) = i)$ depended on the state $i,j$ and on the length of time period $t$ but not on the current time $s$. Most of the processes we consider in the rest of this course will be time homogeneous, but we consider some time inhomogeneous examples here. This means the transition probabilities will change over time.
+
+A time inhomogeneous Poisson process is like the standard Poisson process, except, instead of a constant rate of arrival $\lambda$, we will have a rate of arrival $\lambda=\lambda(t)$ that varies over time.
+
+::: {.definition #TIPP-defn}
+The **time inhomogeneous Poisson process** with rate function $\lambda = \lambda(t)$ is defined as followed. It is a stochastic process $(X(t))$ with continuous time $t \in [0,\infty)$ a state space $\mathcal S = \mathbb Z_+$ with the following properties:
+
+1. $X(0) = 0$;
+2. Poisson increments: $X(t+s) - X(t) \sim \Po(\int_t^{t+s} \lambda(u) \, \mathrm d u)$ for all $s,t>0$;
+3. independent increments: $X(t_2) - X(t_1)$ and $X(t_4) - X(t_3)$ are independent for all $t_1 \leq t_2 \leq t_3 \leq t_4$.
+:::
+
+In particular, if $\lambda(t) = \lambda$ is constant, then  $\int_t^{t+s} \lambda(u) \, \mathrm d u = \lambda s$, and we get back the definition of the Poisson process in terms of Poisson increments.
+
+::: {.example #TIPP-call}
+*A call centre notes that, when it opens the phone lines open in the morning, phone calls arrive slowly at first, gradually becoming more common over the first hour. The owners of the centre model this is a time inhomogeneous Poisson process with rate function*
+\[ \lambda(t) = \begin{cases} 20t & 0 \leq t < 1 \\
+                              20  & t \geq 1 \end{cases} \]
+*What is the probability they receive no calls in the first 10 minutes?*
+
+The number of calls in the first 10 minutes, or $\frac16$ of an hour, is Poisson with rate
+\[ \int_0^{1/6} \lambda(t) \, \mathrm dt = \int_0^{1/6}20t \, \mathrm dt = \left[10t^2\right]_0^{1/6} = \frac{10}{36} = 0.278 . \]
+The probability no calls are received is
+\[ \ee^{-0.278} \frac{0.278^0}{0!} = \ee^{-0.278} = 0.757 . \]
+
+*What is the expected number of calls in the first 2 hours?*
+
+The number of calls in the first 2 hours is Poisson with rate
+\[ \int_0^2 \lambda(t) \, \mathrm dt =  \int_0^1 20t \, \mathrm dt +  \int_1^2 20 \, \mathrm dt = \left[10t^2\right]_0^1 + \left[20t\right]_1^2 = 10 + (40 - 20) = 30 .        \]
+So the expected number of calls is 30.
+\end{example}
+
+The time inhomogeneous Poisson process can also be given a definition in terms of inifinitesimal increments. We have
+\begin{equation*} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda(t) \tau + o(\tau) & \text{if $j = 0$,} \\
+\lambda(t)\tau + o(\tau) & \text{if $j = 1$,} \\
+o(\tau) & \text{if $j \geq 2$.} \end{cases}  \end{equation*}
+The only difference here is that we have replaced the rate $\lambda$ with the "current rate" $\lambda(t)$.
+
