@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S14-poisson-exponential.html"/>
-<link rel="next" href="computing.html"/>
+<link rel="next" href="S15-poisson-infinitesimal.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -192,6 +192,18 @@
 <li class="chapter" data-level="14.3" data-path="S14-poisson-exponential.html"><a href="S14-poisson-exponential.html#cont-markov"><i class="fa fa-check"></i><b>14.3</b> Markov property in continuous time</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P07.html"><a href="P07.html"><i class="fa fa-check"></i>Problem sheet 7</a></li>
+<li class="chapter" data-level="15" data-path="S15-poisson-infinitesimal.html"><a href="S15-poisson-infinitesimal.html"><i class="fa fa-check"></i><b>15</b> Poisson process in infinitesimal time periods</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="S15-poisson-infinitesimal.html"><a href="S15-poisson-infinitesimal.html#infinitesimal"><i class="fa fa-check"></i><b>15.1</b> Definition 3: increments in infinitesimal time</a></li>
+<li class="chapter" data-level="15.2" data-path="S15-poisson-infinitesimal.html"><a href="S15-poisson-infinitesimal.html#sum2"><i class="fa fa-check"></i><b>15.2</b> Example: sum of two Poisson processes</a></li>
+<li class="chapter" data-level="15.3" data-path="S15-poisson-infinitesimal.html"><a href="S15-poisson-infinitesimal.html#forward"><i class="fa fa-check"></i><b>15.3</b> Forward equations and proof of equivalence</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html"><i class="fa fa-check"></i><b>16</b> Counting processes</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html#birth-processes"><i class="fa fa-check"></i><b>16.1</b> Birth processes</a></li>
+<li class="chapter" data-level="16.2" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html#TIPP"><i class="fa fa-check"></i><b>16.2</b> Time inhomogeneous Poisson processes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P08.html"><a href="P08.html"><i class="fa fa-check"></i>Problem Sheet 8</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a>
 <ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
@@ -293,7 +305,7 @@ This happens if we have <span class="math inline">\(X(0.5) - X(0) = 0\)</span> a
 <div class="myanswers">
 <p><em>Solution.</em>
 Using independence,
-<span class="math display">\[ \mathbb \operatorname{Var}( J_{100}) = \operatorname{Var}E (T_1 + \dots + T_{100}) = 100 \, \operatorname{Var}(T_1) = 100 \times \tfrac1{5^2} = 4.     \]</span></p>
+<span class="math display">\[ \operatorname{Var}( J_{100}) = \operatorname{Var}E (T_1 + \dots + T_{100}) = 100 \, \operatorname{Var}(T_1) = 100 \times \tfrac1{5^2} = 4.     \]</span></p>
 </div>
 </div>
 <div class="subq">
@@ -329,7 +341,7 @@ The number of calls in <span class="math inline">\(30\)</span> minutes is Poisso
 <p><strong>(a)</strong> Let <span class="math inline">\(X \sim \text{Po}(\lambda)\)</span> and <span class="math inline">\(Y \sim \text{Po}(\mu)\)</span> be two independent Poisson distributions. Show that <span class="math inline">\(X + Y \sim \text{Po}(\lambda + \mu)\)</span>. One way to start would be to write
 <span class="math display">\[ \mathbb P(X+Y = z) = \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) . \]</span></p>
 <div class="myanswers">
-<p><em>Solution.</em> We have
+<p><em>Solution.</em> The most direct method is to use the hint in the question. We have
 <span class="math display">\[\begin{align*}
 \mathbb P(X+Y = z) &amp;= \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) \\
   &amp;= \sum_{x=0}^z \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} \mathrm{e}^{-\mu} \frac{\mu^{z-x}}{(z-x)!} \\
@@ -342,6 +354,14 @@ But the sum here is precisely
 so we have
 <span class="math display">\[ \mathbb P(X+Y = z) = \mathrm{e}^{-(\lambda + \mu)} \frac{(\lambda+\mu)^z}{z!}    , \]</span>
 as desired.</p>
+<p>Alternatively, if you know about probability generating functions (PGFs), it can be easier to use those. The PGF <span class="math inline">\(G_X(s)\)</span> of a <span class="math inline">\(\operatorname{Po}(\lambda)\)</span> distribution is
+<span class="math display">\[ G_X(s) =  \mathbb Es^X = \sum_{x=0}^\infty s^x \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} 
+=   \mathrm{e}^{-\lambda}\sum_{x=0}^\infty \frac{(\lambda s)^x}{x!} = \mathrm{e}^{-\lambda} \mathrm{e}^{\lambda s} = \mathrm{e}^{\lambda (s-1)} . \]</span>
+Generally, the PGF of an independent sum <span class="math inline">\(Z = X+Y\)</span> is
+<span class="math display">\[ G_Z(s) = \mathbb E s^{X+Y} = \mathbb E s^{X}s^{Y} = \big(\mathbb Es^X\big)\big( \mathbb Es^Y\big) = G_X(s) G_Y(s) .\]</span>
+Here, that is
+<span class="math display">\[ G_Z(s) = G_X(s) G_Y(s) = \mathrm{e}^{\lambda (s-1)}\mathrm{e}^{\mu(s-1)} = \mathrm{e}^{(\lambda+\mu) (s-1)} , \]</span>
+which is the PGF of a <span class="math inline">\(\operatorname{Po}(\lambda + \mu)\)</span> distribution, as desired.</p>
 </div>
 </div>
 <div class="subq">
@@ -424,7 +444,7 @@ This is precisely the CDF for the uniform distribution on <span class="math inli
         </div>
       </div>
 <a href="S14-poisson-exponential.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S15-poisson-infinitesimal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

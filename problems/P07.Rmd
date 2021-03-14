@@ -32,7 +32,6 @@ display: none !important;
 
 
 
-
 \commfalse
 
 
@@ -99,7 +98,7 @@ Let $T_n$ be the $n$th holding time, and let $J_n = T_1 + \cdots + T_n$ be the $
 ::: {.myanswers data-latex=""}
 *Solution.* 
 	Using independence,
-\[ \mathbb \Var( J_{100}) = \Var E (T_1 + \dots + T_{100}) = 100 \, \Var(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
+\[ \Var( J_{100}) = \Var E (T_1 + \dots + T_{100}) = 100 \, \Var(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
 :::
 ::::
 
@@ -146,7 +145,7 @@ The number of calls in $30$ minutes is Poisson of rate $30$, which has expectati
 \[ \mathbb P(X+Y = z) = \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) . \]
 
 ::: {.myanswers data-latex=""}
-*Solution.* We have
+*Solution.* The most direct method is to use the hint in the question. We have
 \begin{align*}
 \mathbb P(X+Y = z) &= \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) \\
   &= \sum_{x=0}^z \ee^{-\lambda} \frac{\lambda^x}{x!} \ee^{-\mu} \frac{\mu^{z-x}}{(z-x)!} \\
@@ -159,6 +158,15 @@ But the sum here is precisely
 so we have
 \[ \mathbb P(X+Y = z) = \ee^{-(\lambda + \mu)} \frac{(\lambda+\mu)^z}{z!}    , \]
 as desired.
+
+Alternatively, if you know about probability generating functions (PGFs), it can be easier to use those. The PGF $G_X(s)$ of a $\Po(\lambda)$ distribution is
+\[ G_X(s) =  \mathbb Es^X = \sum_{x=0}^\infty s^x \ee^{-\lambda} \frac{\lambda^x}{x!} 
+=   \ee^{-\lambda}\sum_{x=0}^\infty \frac{(\lambda s)^x}{x!} = \ee^{-\lambda} \ee^{\lambda s} = \ee^{\lambda (s-1)} . \]
+Generally, the PGF of an independent sum $Z = X+Y$ is
+\[ G_Z(s) = \mathbb E s^{X+Y} = \mathbb E s^{X}s^{Y} = \big(\mathbb Es^X\big)\big( \mathbb Es^Y\big) = G_X(s) G_Y(s) .\]
+Here, that is
+\[ G_Z(s) = G_X(s) G_Y(s) = \ee^{\lambda (s-1)}\ee^{\mu(s-1)} = \ee^{(\lambda+\mu) (s-1)} , \]
+which is the PGF of a $\Po(\lambda + \mu)$ distribution, as desired.
 :::
 ::::
 

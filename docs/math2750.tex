@@ -113,6 +113,28 @@
 \section*{Schedule}\label{home}}
 \addcontentsline{toc}{section}{Schedule}
 
+\textbf{Week 8} (15--19 March):
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{S15-poisson-infinitesimal}{\textbf{Section 15}: Poisson process in infinitesimal time periods}
+\item
+  \protect\hyperlink{S16-counting-processes}{\textbf{Section 16}: Counting processes}
+\item
+  \protect\hyperlink{P08}{\textbf{Problem Sheet 8}}
+\item
+  \protect\hyperlink{computing}{\textbf{Computational Worksheet 2 / Assessment 2}}: due Thursday 18 March at 1400 (this week)
+\item
+  \protect\hyperlink{A3}{\textbf{Assessment 3}}: due Thursday 25 March (next week)
+\item
+  \textbf{Lecture}: Tuesday at 1400 (Zoom)
+\item
+  \textbf{Workshops} on Problem Sheet 7: Monday or Tuesday (Zoom)
+\item
+  \textbf{Drop-in sessions}: Tuesday or Wednesday (Teams)
+\end{itemize}
+
 \textbf{Week 7} (8--12 March):
 
 \begin{itemize}
@@ -4655,7 +4677,7 @@ Let \(T_n\) be the \(n\)th holding time, and let \(J_n = T_1 + \cdots + T_n\) be
 \begin{myanswers}
 \emph{Solution.}
 Using independence,
-\[ \mathbb \operatorname{Var}( J_{100}) = \operatorname{Var}E (T_1 + \dots + T_{100}) = 100 \, \operatorname{Var}(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
+\[ \operatorname{Var}( J_{100}) = \operatorname{Var}E (T_1 + \dots + T_{100}) = 100 \, \operatorname{Var}(T_1) = 100 \times \tfrac1{5^2} = 4.     \]
 
 \end{myanswers}
 
@@ -4693,7 +4715,7 @@ The number of calls in \(30\) minutes is Poisson of rate \(30\), which has expec
 \[ \mathbb P(X+Y = z) = \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) . \]
 
 \begin{myanswers}
-\emph{Solution.} We have
+\emph{Solution.} The most direct method is to use the hint in the question. We have
 \begin{align*}
 \mathbb P(X+Y = z) &= \sum_{x=0}^z \mathbb P(X = x) \, \mathbb P(Y = z-x) \\
   &= \sum_{x=0}^z \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} \mathrm{e}^{-\mu} \frac{\mu^{z-x}}{(z-x)!} \\
@@ -4706,6 +4728,15 @@ But the sum here is precisely
 so we have
 \[ \mathbb P(X+Y = z) = \mathrm{e}^{-(\lambda + \mu)} \frac{(\lambda+\mu)^z}{z!}    , \]
 as desired.
+
+Alternatively, if you know about probability generating functions (PGFs), it can be easier to use those. The PGF \(G_X(s)\) of a \(\operatorname{Po}(\lambda)\) distribution is
+\[ G_X(s) =  \mathbb Es^X = \sum_{x=0}^\infty s^x \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} 
+=   \mathrm{e}^{-\lambda}\sum_{x=0}^\infty \frac{(\lambda s)^x}{x!} = \mathrm{e}^{-\lambda} \mathrm{e}^{\lambda s} = \mathrm{e}^{\lambda (s-1)} . \]
+Generally, the PGF of an independent sum \(Z = X+Y\) is
+\[ G_Z(s) = \mathbb E s^{X+Y} = \mathbb E s^{X}s^{Y} = \big(\mathbb Es^X\big)\big( \mathbb Es^Y\big) = G_X(s) G_Y(s) .\]
+Here, that is
+\[ G_Z(s) = G_X(s) G_Y(s) = \mathrm{e}^{\lambda (s-1)}\mathrm{e}^{\mu(s-1)} = \mathrm{e}^{(\lambda+\mu) (s-1)} , \]
+which is the PGF of a \(\operatorname{Po}(\lambda + \mu)\) distribution, as desired.
 
 \end{myanswers}
 
@@ -4781,6 +4812,435 @@ The denominator is \(\lambda t \mathrm{e}^{-\lambda t}\). The numerator is
 Putting this together, the conditional CDF is
 \[ \mathbb P\big(T_1 \leq s \mid X(t) = 1\big) = \frac{\lambda s \mathrm{e}^{-\lambda t}}{\lambda t \mathrm{e}^{-\lambda t}} = \frac{s}{t} .   \]
 This is precisely the CDF for the uniform distribution on \([0,t]\).
+
+\end{myanswers}
+
+\hypertarget{S15-poisson-infinitesimal}{%
+\section{Poisson process in infinitesimal time periods}\label{S15-poisson-infinitesimal}}
+
+\begin{itemize}
+\tightlist
+\item
+  Poisson process in terms of increments in infinitesimal time
+\item
+  Forward equations for the Poisson process
+\end{itemize}
+
+\hypertarget{infinitesimal}{%
+\subsection{Definition 3: increments in infinitesimal time}\label{infinitesimal}}
+
+We have seen two definitions of the Poisson process so far: one in terms of increments having a Poisson distribution, and one in therms of holding times having an exponential distribution. Here we will see another definition, by looking at what happens in a very small time period of length \(\tau\). Advantages of this approach include that does not require direct assumptions on the distributions involved, so may seem more ``natural'' or ``inevitable''. It also shows links between Markov processes and differential equations. A disadvantage is that it's normally easier to do calculations with the Poisson or exponential definitions.
+
+Let \((X(t))\) be a stochastic processes counting some arrivals over time. Consider the number of arrivals in a very small time period of length \(\tau\); that number of arrivals is \(X(t+\tau) - X(t)\). The following (seemingly) weak assumptions seem justified:
+
+\begin{itemize}
+\tightlist
+\item
+  It's quite likely that there will be no arrivals in the very small time period.
+\item
+  It is possible there will be one arrival, and that probability will be roughly proportional to the length \(\tau\) of the time period.
+\item
+  It's extremely unlikely there will be two or more arrivals in such a short time period.
+\end{itemize}
+
+To write this down formally in maths, we will consider \(\mathbb P(X(t+\tau) - X(t) = j)\) as the length \(\tau\) of the time period tends to zero.
+
+It will be helpful for us to use ``little-\(o\)'' notation. Here \(o(\tau)\) means a term that is of ``lower order'' compared to \(\tau\). These are terms like \(\tau^2\) or \(\tau^3\) that are so tiny that we're safe to ignore them. Formally, \(o(\tau)\) stands for a function of \(\tau\) that tends to \(0\) as \(\tau \to 0\) even when divided by \(\tau\). That is,
+\[ f(\tau) = o(\tau) \qquad \iff \qquad \frac{f(\tau)}{\tau} \to 0 \quad \text{as $\tau \to 0$.}  \]
+
+Then our suggestions above translate to
+\begin{equation} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda \tau + o(\tau) & \text{if $j = 0$,} \\
+\lambda\tau + o(\tau) & \text{if $j = 1$,} \\
+o(\tau) & \text{if $j \geq 2$.} \end{cases} \label{eq:tau} \end{equation}
+as \(\tau \to 0\).
+
+It turns out that we have once again defined the Poisson process with rate \(\lambda\).
+
+\begin{theorem}
+\protect\hypertarget{thm:def-inf}{}\label{thm:def-inf}
+
+Let \((X(t))\) be a stochastic process with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(X(0) = 0\);
+\item
+  infinitesimal increments: \(X(t+\tau) - X(t)\) has the structure in \eqref{eq:tau} above, as \(\tau \to 0\);
+\item
+  independent increments: \(X(t_2) - X(t_1)\) and \(X(t_4) - X(t_3)\) are independent for all \(t_1 \leq t_2 \leq t_3 \leq t_4\).
+\end{enumerate}
+
+Then \((X(t))\) is a Poisson process with rate \(\lambda\).
+
+\end{theorem}
+
+We will prove this in a moment. First let's see an example of its use.
+
+\hypertarget{sum2}{%
+\subsection{Example: sum of two Poisson processes}\label{sum2}}
+
+We \protect\hyperlink{summed-marked}{mentioned before the sum of two Poisson processes}: that if \((X(t))\) is a Poisson process with rate \(\lambda\) and \((Y(t))\) is an independent Poisson process with rate \(\mu\), then the sum \((Z(t))\) where \(Z(t) = X(t) + Y(t)\) is a Poisson process with rate \(\lambda + \mu\).
+
+On \protect\hyperlink{P07}{Problem Sheet 7}, Question 3, you proved this from the Poisson increments definition. But it's perhaps even easier to prove using the infinitesimals definition.
+
+We have
+\begin{align*}\mathbb P\big( Z(t+\tau) - Z(t) = 0 \big) &= \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &=\big(1 - \lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) \\
+&= 1 - (\lambda + \mu)\tau + o(\tau) , \end{align*}
+since \(Z\) does not increase provided neither \(X\) nor \(Y\) increases.
+
+We also have
+\begin{align*}\mathbb P\big( Z(t+{}&\tau) - Z(t) = 1 \big) \\
+&= \mathbb P\big( X(t+\tau) - X(t) = 1 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 0 \big) \\ &\qquad {}+ \mathbb P\big( X(t+\tau) - X(t) = 0 \big) \, \mathbb P\big( Y(t+\tau) - Y(t) = 1 \big) \\
+&= \big(\lambda \tau + o(\tau) \big)\big(1 - \mu \tau + o(\tau) \big) + \big(1 - \lambda \tau + o(\tau) \big)\big(\mu \tau + o(\tau) \big) \\
+&= (\lambda + \mu)\tau + o(\tau) , \end{align*}
+since \(Z\) increases by 1 if either \(X\) increases by 1 and \(Y\) stays fixed or vice versa. We used here that the probability that \emph{both} \(X\) and \(Y\) increase is of order \(\tau^2 = o(\tau)\).
+
+Finally, since probabilities must add up to 1, we must have
+\[ \mathbb P\big( Z(t+\tau) - Z(t) \geq 2 \big) =  o(\tau) . \]
+
+But what we have written down is precisely the infinitesimals definition of a Poisson process with rate \(\lambda + \mu\), so we are done.
+
+\hypertarget{forward}{%
+\subsection{Forward equations and proof of equivalence}\label{forward}}
+
+If we compare Theorem \ref{thm:def-inf} to the \protect\hyperlink{thm:ux5cux23poisson-def-1}{definition of the Poisson process in terms of Poisson increments}, we see that properties 1 and 3 are the same. We only need to check property 2, that \(X(t+s) - X(s)\) is a Poisson distribution with rate \(\lambda t\).
+
+Since the increments as defined in \eqref{eq:tau} are time homogeneous, it will suffice to consider \(s = 0\). So we need to show that \(X(t) \sim \text{Po}(\lambda t)\).
+
+Write \(p_j(t) = \mathbb P(X(t) = j)\). Then for \(j \geq 1\) we have
+\[ p_j(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_j(t) + \big(\lambda\tau + o(\tau)\big) p_{j-1}(t) + o(\tau) , \]
+since we get to \(j\) either by staying at \(j\) or by moving up from \(j-1\), with all other highly unlikely possibilities being absorbed into the \(o(\tau)\). In order to deal with increments, it will be convenient to take a \(p_{j}(t)\) to the left-hand side and rearrange, to get the increment
+\[ p_j(t + \tau) - p_j(t) = -\lambda\tau p_j(t) + \lambda\tau p_{j-1}(\tau) + o(\tau) , \]
+where ``constant times \(o(\tau)\)'' is itself \(o(\tau)\).
+
+The only way to deal with the \(o(\tau)\) term, given its definition, is to divide everything by \(\tau\) and send \(\tau \to 0\). Dividing by \(\tau\) gives
+\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda p_j(t) + \lambda p_{j-1}(t) + \frac{o(\tau)}{\tau} . \]
+Sending \(\tau\) to 0, the term \(o(\tau)/\tau\) tends to 0 and vanishes, while we recognise the limit of the left-hand side as being the derivative \(\mathrm d p_j(t) / \mathrm d t = p'_j(t)\).
+This leaves us with the differential equation
+\[ p'_j(t) = -\lambda p_j(t) + \lambda p_{j-1}(t) . \]
+We also have the initial condition \(p_j(0) = 0\) for \(j \geq 1\), since we start at 0, not at any \(j \geq 1\).
+
+We have to deal with the case \(j = 0\) separately. This is similar but a bit easier. We have
+\[ p_0(t + \tau) = \big(1 - \lambda\tau + o(\tau)\big)p_0(t) , \]
+since we must previously been at 0, then seen no arrivals.
+After rearranging to get an increment and sending \(\tau \to 0\), as before, we get the differential equation
+\[ p'_0(t) = -\lambda p_0(t) \]
+with the initial condition \(p_0(0) = 1\), since we always start at 0.
+
+In summary, we have derived the following equations:
+\begin{align*}
+   p'_0(t) &= -\lambda p_0(t) & p_0(0) & = 1 ,\\
+   p'_j(t) &= -\lambda p_j(t) + \lambda p_{j-1}(t) &  p_j(0) &= 0 \quad \text{for $j \geq 1$} .
+\end{align*}
+These are called the \textbf{Kolmogorov forward equations}.
+
+We claim that the solution to these equations is the Poisson distribution
+\[ p_j(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} . \]
+This would prove the theorem.
+
+We must check that the claim holds. For \(j = 0\), the Poisson probability is
+\[ p_0(t) = \mathrm{e}^{-\lambda t} \frac{(\lambda t)^0}{0!} = \mathrm{e}^{-\lambda t} . \]
+This has
+\[ p'_0(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_0(t) , \]
+as desired, and we also have the correct initial condition \(p_0(0) = \mathrm{e}^{0} = 1\).
+
+For \(j \geq 1\), the left-hand side is
+\begin{align*}
+p'_j(t) &= \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} \\
+& = \frac{1}{j!} \left(-\lambda \mathrm{e}^{-\lambda t}(\lambda t)^j + \mathrm{e}^{-\lambda t} \lambda j(\lambda t)^{j-1} \right) \\
+&= - \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^j}{j!} + \lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^{j-1}}{(j-1)!} \\
+&= -\lambda p_j(t) + \lambda p_{j-1}(t)
+\end{align*}
+as desired. We also have the initial condition \(p_j(0) = \mathrm{e}^{0} 0^j/j! = 0\).
+The claim is proven, and we are (finally) done.
+
+\textbf{In the next section}, we two new types of process that are similar to the Poisson process.
+
+\hypertarget{S16-counting-processes}{%
+\section{Counting processes}\label{S16-counting-processes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Birth processes, including the simple birth process
+\item
+  Time inhomogeneous Poisson processes
+\end{itemize}
+
+\hypertarget{birth-processes}{%
+\subsection{Birth processes}\label{birth-processes}}
+
+The Poisson process was made easier to understand because it was a \textbf{counting process}. That is, because it was counting arrivals, we always knew that the next change would be an increase by 1; the only question was when that increase would happen.
+
+In this section, we look at two other types of counting process; the only transitions will still only ever be from \(i\) to \(i+1\), but the holding times will not just be IID exponential distributions any more.
+
+We start with the \textbf{simple birth process}, which can model, for example, the division of cells in a biological experiment. We suppose that each individual has an offspring (eg the cell divides) after an \(\operatorname{Exp}(\lambda)\) period of time, and continues to have more offspring after another \(\operatorname{Exp}(\lambda)\) period of time, and so on.
+
+We start with \(X(0) = 1\) individual. After an \(\operatorname{Exp}(\lambda)\) time, the individual has an offspring, and we have \(X(t) = 2\).
+
+Now each of these two individuals will have an offspring after an \(\operatorname{Exp}(\lambda)\) time each. So how much longer will it be until the first offspring appears and we get \(X(t) = 3\)? Well, the earliest offspring will appear at the minimum of these two \(\operatorname{Exp}(\lambda)\) times, and \protect\hyperlink{exponential}{we saw in the Section 14} that this has an \(\operatorname{Exp}(2\lambda)\) distribution. (Remember that the mean of an exponential distribution is the reciprocal of the rate parameter, so the holding time for the second offspring is half that of the first, on average.)
+
+Now suppose we have \(n\) individuals. By the memoryless property of the exponential distribution, they each still have an \(\operatorname{Exp}(\lambda)\) time until producing an offspring, so the time until the next offspring is the minimum of these, which is \(\operatorname{Exp}(n\lambda)\).
+
+In general, we have built a counting process defined entirely by its starting point \(X(0) = 1\), that the \(n\)th holding time \(T_n\) is exponential with rate \(n\lambda\), and that all transitions are increases by 1.
+
+On \protect\hyperlink{P08}{Problem Sheet 8}, you will show that the expected size of the population of the simple birth process at time \(t\) is \(\mathbb EX(t) = \mathrm{e}^{\lambda t}\), so the population grows exponentially quickly (on average).
+
+The simple birth process is an example of the more general class of birth processes.
+
+\begin{definition}
+\protect\hypertarget{def:birth-def}{}\label{def:birth-def}
+
+A \textbf{birth process} \((X_n)\) with rates \((\lambda_n)\) is defined by its starting population \(X(0) = x_0\) and that the holding times are \(T_n \sim \operatorname{Exp}(\lambda_n)\). So we have
+\[ X(t) = \begin{cases} x_0 & 0 \leq t < J_1 \\
+x_0 + n & J_n \leq t < J_{n+1}, \text{ for } n=1,2,\dots ,\end{cases}  \]
+where \(J_n = T_1 + T_2 + \cdots + T_n\) are the \textbf{jump times}.
+
+\end{definition}
+
+\begin{example}
+\protect\hypertarget{exm:birth-examples}{}\label{exm:birth-examples}
+
+We have the following examples:
+
+\begin{itemize}
+\tightlist
+\item
+  Setting \(x_0 = 1\) and \(\lambda_n = n\lambda\) gives the simple birth process.
+\item
+  Setting \(x_0 = 0\) and \(\lambda_n = \lambda\) constant gives the Poisson process.
+\item
+  Setting \(x_0 = 1\) and \(\lambda = n\lambda + \mu\) gives a birth process with immigration from outside the system at rate \(\mu\).
+\end{itemize}
+
+\end{example}
+
+We can also give an equivalent definition using infinitesimal time periods, as we did for the Poisson process. Suppose we start from \(X(0) = 1\). We have
+\begin{align*}
+    \mathbb P \big(X(t+\tau) = j\phantom{{}+1} \mid X(t) = j\big) &= 1 - \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) = j+1 \mid X(t) = j\big) &= \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) \geq j+2 \mid X(t) = j\big) &= o(\tau) ,
+\end{align*}
+which is exactly the same as the Poisson process, except with \(\lambda\) replaced by \(\lambda_j\).
+
+We can continue as for the Poisson process. Write \(p_j(t) = \mathbb P(X(t) = j)\). Then, for \(j \geq 2\),
+\[ p_j(t + \tau) = \big(1 - \lambda_{j}\tau + o(\tau)\big)p_j(t)  + \big(\lambda_{j-1}\tau + o(\tau)\big)p_{j-1}(t) + o(\tau) , \]
+since the two ways to get to \(j\) are either we're already at \(j\) and the \(j\)th arrival doesn't occur, or we're at \(j-1\) and the \((j-1)\)th arrival does occur; other possibilities have \(o(\tau)\) probability. As before, take \(p_j(t)\) over to the left-hand side, divide by \(\tau\) to get
+\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) + \frac{o(\tau)}{\tau} , \]
+and then send \(\tau \to 0\). We end up with the forward equation
+\[ p'_j(t) = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) . \]
+The initial condition is \(p_j(0) = 0\), since we start at \(1\), not at any \(j \geq 2\).
+
+Following the similar process for \(j =1\), we get
+\[ p'_1(t) = -\lambda_1 p_1(t) , \]
+with initial condition \(p_1(0) = 1\), since we start from \(1\).
+
+In some cases the forward equations can be explicitly solved to give an expression for \(p_j(t) = \mathbb P(X(t) = j)\). We saw the solution for the Poisson process in Lecture 14, and you will find a solution for the simple birth process on \protect\hyperlink{P08}{Problem Sheet 8}.
+
+\hypertarget{TIPP}{%
+\subsection{Time inhomogeneous Poisson processes}\label{TIPP}}
+
+When we dealt with the Poisson process, the rate of arrivals \(\lambda\) was the same all the time -- so our call centre always received calls at the same rate, or the insurance company always received claims at the same rate. In real life, though, the rate of arrivals might be lower at some times and higher at some other times, so the rate \(\lambda = \lambda(t)\) should perhaps depend on the time \(t\).
+
+This gives a process that is \textbf{time inhomogeneous}. The normal Poisson process and the birth processes were all \textbf{time homogeneous}; that is, the transition probabilities
+\(\mathbb P(X(t+s) = j \mid X(t) = i)\) depended on the state \(i,j\) and on the length of time period \(t\) but not on the current time \(s\). Most of the processes we consider in the rest of this course will be time homogeneous, but this subsection is the exception, because here the transition probabilities will change over time.
+
+\begin{definition}
+\protect\hypertarget{def:TIPP-defn}{}\label{def:TIPP-defn}
+
+The \textbf{time inhomogeneous Poisson process} with rate function \(\lambda = \lambda(t) \geq 0\) is defined as followed. It is a stochastic process \((X(t))\) with continuous time \(t \in [0,\infty)\) a state space \(\mathcal S = \mathbb Z_+\) with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(X(0) = 0\);
+\item
+  Poisson increments: \(X(t+s) - X(t) \sim \operatorname{Po}(\int_t^{t+s} \lambda(u) \, \mathrm d u)\) for all \(s,t>0\);
+\item
+  independent increments: \(X(t_2) - X(t_1)\) and \(X(t_4) - X(t_3)\) are independent for all \(t_1 \leq t_2 \leq t_3 \leq t_4\).
+\end{enumerate}
+
+\end{definition}
+
+The difference here is in point 2, where we integrate the rate function \(\lambda(t)\) over the interval of interest. In particular, if \(\lambda(t) = \lambda\) is constant, then \(\int_t^{t+s} \lambda(u) \, \mathrm d u = \lambda s\), and we get back the definition of the Poisson process in terms of Poisson increments.
+
+\begin{example}
+\protect\hypertarget{exm:TIPP-call}{}\label{exm:TIPP-call}
+
+\emph{A call centre notes that, when it opens the phone lines in the morning, phone calls arrive slowly at first, gradually becoming more common over the first hour. The owners of the centre model this is a time inhomogeneous Poisson process with rate function}
+\[ \lambda(t) = \begin{cases} 20t & 0 \leq t < 1 \\
+                              20  & t \geq 1 \end{cases} \]
+\emph{calls per hour. What is the probability they receive no calls in the first 10 minutes?}
+
+The number of calls in the first 10 minutes, or \(\frac16\) of an hour, is Poisson with rate
+\[ \int_0^{1/6} \lambda(t) \, \mathrm dt = \int_0^{1/6}20t \, \mathrm dt = \left[10t^2\right]_0^{1/6} = \frac{10}{36} = 0.278 . \]
+The probability no calls are received is
+\[ \mathrm{e}^{-0.278} \frac{0.278^0}{0!} = \mathrm{e}^{-0.278} = 0.757 . \]
+
+\emph{What is the expected number of calls in the first 2 hours?}
+
+The number of calls in the first 2 hours is Poisson with rate
+\[ \int_0^2 \lambda(t) \, \mathrm dt =  \int_0^1 20t \, \mathrm dt +  \int_1^2 20 \, \mathrm dt = \left[10t^2\right]_0^1 + \left[20t\right]_1^2 = 10 + (40 - 20) = 30 .        \]
+So the expected number of calls is 30.
+
+\end{example}
+
+The time inhomogeneous Poisson process can also be given a definition in terms of inifinitesimal increments. We have
+\begin{equation*} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda(t) \tau + o(\tau) & \text{if $j = 0$,} \\
+\lambda(t)\tau + o(\tau) & \text{if $j = 1$,} \\
+o(\tau) & \text{if $j \geq 2$.} \end{cases}  \end{equation*}
+The only difference here is that we have replaced the rate \(\lambda\) with the ``current rate'' \(\lambda(t)\).
+
+\textbf{In the next section}, we begin to look at the general theory of continuous time Markov jump processes.
+
+\hypertarget{P08}{%
+\section*{Problem Sheet 8}\label{P08}}
+\addcontentsline{toc}{section}{Problem Sheet 8}
+
+\commfalse
+
+You should attempt all these questions and write up your solutions in advance of your workshop in week 9 (Monday 22 or Tuesday 23 March) where the answers will be discussed.
+
+\textbf{1.}Let \((X(t))\) be a Poisson process with rate \(\lambda\).
+
+\textbf{(a)} Fix \(n\). What is the expected time between the \(n\)th arrival and the \((n+1)\)th arrival?
+
+\begin{myanswers}
+\emph{Solution.} The waiting time is Exp\((\lambda)\) with mean \(1/\lambda\).
+
+\end{myanswers}
+
+\textbf{(b)} Fix \(t\). What is the expected time between the previous arrival before \(t\) and the next arrival after \(t\)?
+
+\begin{myanswers}
+\emph{Solution.} The waiting time until the next arrival is Exp\((\lambda)\) with mean \(1/\lambda\). Working backwards, time since last arrival EXPLAIN EXPLAIN is also Exp\((\lambda)\). Total is \(2/\lambda\).
+
+\end{myanswers}
+
+\textbf{(c)} Your answers to the previous two questions should be different. Explain why one should expect the second answer to be bigger than the first.
+
+\begin{myanswers}
+\emph{Solution.} Eg. the time \(t\) is more likely to have landed in a longer-than-average wait time, because there's more space to land in.
+
+\end{myanswers}
+
+\textbf{2.} Let \(X(t)\) be a Poisson process with rate \(\lambda\), and mark each arrival independently with probability \(p\). Use the infinitesimals definition to show that the marked process is a Poisson process with rate \(p\lambda\).
+
+\begin{myanswers}
+\emph{Solution.}
+Let \(Y(t)\) be the marked process Consider an infinitesimal increment \(Y(t + \tau) - Y(t)\) as \(\tau \to 0\). We have one arrival in \((Y(t))\) if there was one arrival for \((X(t))\) and it was marked -- all other possibilities rely on extra arrivals in \((X(t))\), so have lower order probability -- giving
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda t + o (\tau) .   \]
+We have no arrivals in \((Y(t))\) if there were no arrivals in \((X(t))\), there was one arrival that was unmarked, or lower order terms, giving
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda t + (1-p)\lambda t + o(\tau) = 1 - p\lambda t + o(\tau)  .   \]
+Larger increments in \((Y(t))\) require larger increments in \((X(t))\), so
+\[ \mathbb P \big( Y(t + \tau) - Y(t) \geq 2 \big) = o(\tau) . \]
+Since we have \(Y(0) = 0\) and independent increments, we have written down precisely the infinitesimal increments definition of a Poisson process with rate \(p\lambda\).
+
+\end{myanswers}
+
+\textbf{3.} Let \((X(t))\) be a simple birth process with rates \(\lambda_j = \lambda j\) starting from \(X(0)=1\). Let \(p_j(t) = \mathbb P(X(t) = j)\).
+
+\textbf{(a)} Write down the Kolmogorov forward equations for \(p_j(t)\). You should have separate equations for \(j = 1\) and \(j \geq 2\). Remember to include the initial conditions \(p_j(0)\).
+
+\begin{myanswers}
+\emph{Solution.}
+The forward equations are
+\begin{align*}
+    j &= 1\colon  &  p'_j(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
+    j &\geq 2 \colon   &  p'_j(t) &= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &  p_j(0) &= 0
+    \end{align*}
+
+\end{myanswers}
+
+\textbf{(b)} Show that \(X(t)\) follows a geometric distribution \(X(t) \sim \text{Geom} (\mathrm{e}^{-\lambda t})\). That is, show that
+\[  p_j(t) = \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t}   \]
+satisfies the forward equation.
+
+\begin{myanswers}
+\emph{Solution.}
+For \(j = 1\), we have \(p_1(t) = \mathrm{e}^{-\lambda t}\). This clearly has \(p_1(0) = \mathrm{e}^0 = 1\), and \(p'(j) = -\lambda \mathrm{e}^{-\lambda t}\), as required.
+
+Now consider \(j \geq 2\). We indeed have \(p_j(0) = 0\). By the product rule, the derivative is
+\begin{align*}
+    p'_j(t) &=  -\lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t} + \lambda \mathrm{e}^{-\lambda t} (j-1) \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} ,    \\
+    &= -\lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - \mathrm{e}^{-\lambda t} -\mathrm{e}^{-\lambda t} (j-1) \big) \\
+    &=- \lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - j \mathrm{e}^{-\lambda t}  \big),
+     \end{align*}
+and this is equal to
+\begin{align*}
+    -\lambda j p_j(t) + {}&\lambda (j-1)p_{j-1}(t) \\
+    &= - \lambda j \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t} + \lambda (j-1) \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \\
+    &= -\lambda\big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t}\big(j(1 - \mathrm{e}^{-\lambda t}) - (j-1)\big) \\
+    &= - \lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - j \mathrm{e}^{-\lambda t}  \big) .
+    \end{align*}
+
+\end{myanswers}
+
+\textbf{(c)} Hence, calculate \(\mathbb E X(t)\), the expected population size at time \(t\).
+
+\begin{myanswers}
+\emph{Solution.}
+The expectation of a \(\text{Geom}(\theta)\) random variable is \(1/\theta\), so \(\mathbb EX(t) = 1/\mathrm{e}^{-\lambda t} = \mathrm{e}^{\lambda t}\).
+
+\end{myanswers}
+
+\textbf{4.} Let \((X(t))\) be a simple birth process with rates \(\lambda_n = \lambda n\) starting from \(X(0)=1\). Let \(T_n \sim \operatorname{Exp}(\lambda n)\) be the \(n\)th holding time, and let \(J_n = T_1 + T_2 +\cdots+T_n\) be the time of the \(n\)th birth.
+
+\textbf{(a)} Write down \(\mathbb E T_n\) and \(\operatorname{Var}(T_n)\).
+
+\begin{myanswers}
+\emph{Solution.} By standard results about the exponential distribution, \(\mathbb E T_n = 1/\lambda n\) and \(\operatorname{Var}(T_n) = 1/(\lambda n)^2 = 1/\lambda^2 n^2\).
+
+\end{myanswers}
+
+\textbf{(b)} Show that, as \(n \to \infty\), the expectation \(\mathbb E J_n\) tends to infinity, but the variance \(\operatorname{Var}(T_n)\) is bounded.
+
+\begin{myanswers}
+\emph{Solution.} By linearity of expectation,
+\[ \mathbb E J_n = \sum_{j=1}^n \mathbb E T_j = \sum_{j=1}^n \frac{1}{\lambda j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}j . \]
+Since the holding times are independent,
+\[ \operatorname{Var}(J_n) = \sum_{j=1}^n \operatorname{Var}(T_j) = \sum_{j=1}^n \frac{1}{\lambda^2 j^2} = \frac{1}{\lambda^2} \sum_{j=1}^n \frac{1}{j^2} . \]
+
+\end{myanswers}
+
+\textbf{5.} The number of phonecalls my office receives in a three hour period is modelled as a time inhomogeneous Poisson process with rate function
+\[ \lambda(t) = \begin{cases} 3t & 0 \leq t < 1 \\
+3  & 1 \leq t < 2 \\
+9 - 3t & 2 \leq t \leq 3 \end{cases}. \]
+
+\textbf{(a)} Calculate the probability I receive exactly one phonecall \textbf{(i)} in the first hour; \textbf{(ii)} in the second hour; \textbf{(iii)} in the third hour.
+
+\begin{myanswers}
+
+\emph{Solution.} (i) The number of phonecalls in the first hour is Poisson with rate
+\[ \int_0^1 3t\,\mathrm dt = \left[\tfrac32 t^2 \right]_0^1 = \tfrac32 .  \]
+The probability there is exactly one phonecall in this time is \(\frac32 \mathrm{e}^{-3/2} = 0.335\).
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\item
+  The number of phonecalls in the second hour is Poisson with rate \(3\).
+  The probability there is exactly one phonecall in this time is \(3 \mathrm{e}^{-3} = 0.149\).
+\item
+  The number of phonecalls in the first hour is Poisson with rate
+  \[ \int_2^3 (9-3t)\,\mathrm dt = \left[9t - \tfrac32 t^2 \right]_2^3 = 3 - \tfrac32 = \tfrac32 .  \]
+  The probability there is exactly one phonecall in this time is \(\frac32 \mathrm{e}^{-3/2} = 0.335\).
+\end{enumerate}
+
+\end{myanswers}
+
+\textbf{(b)} Calculate the probability I receive exactly \(3\) phonecalls over the three hour period.
+
+\begin{myanswers}
+\emph{Solution.}
+The number of phonecalls over the three hour period is Poisson with rate
+\[ \int_0^3 \lambda(t)\,\mathrm dt = \tfrac32 + 3 + \tfrac32 = 6 . \]
+The probability there are exactly three calls is
+\[ \frac{6^3}{3!} \mathrm{e}^{-6} = 36 \mathrm{e}^{-6} = 0.089.     \]
 
 \end{myanswers}
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>About MATH2750 | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 16 Counting processes | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="About MATH2750 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 16 Counting processes | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="About MATH2750 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 16 Counting processes | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="index.html"/>
-<link rel="next" href="S01-stochastic-processes.html"/>
+<link rel="prev" href="S15-poisson-infinitesimal.html"/>
+<link rel="next" href="P08.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,175 +230,104 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="S00-about" class="section level1 unnumbered">
-<h1>About MATH2750</h1>
-<p>This module is <strong>MATH2750 Introduction to Markov Processes</strong>. The module manager and lecturer is Dr Matthew Aldridge, and my email address is <a href="mailto:m.aldridge@leeds.ac.uk" class="email">m.aldridge@leeds.ac.uk</a>.</p>
-<div id="about-module" class="section level2 unnumbered">
-<h2>Organisation of MATH2750</h2>
-<p>This module lasts for 11 weeks. The first nine weeks run from 25 January to 26 March, then we break for Easter, and then the final two weeks run from 26 April to 7 May.</p>
-<div id="notes" class="section level3 unnumbered">
-<h3>Notes and videos</h3>
-<p>The main way I expect you to learn the material for this course is by reading these notes and by watching the accompanying videos. I will set two sections of notes each week, for a total of 22 sections.</p>
-<p>Reading mathematics is a slow process. Each section roughly corresponds to one lecture last year, which would have been 50 minutes. If you find yourself regularly getting through sections in much less than an hour, you’re probably not reading carefully enough through each sentence of explanation and each line of mathematics, including understanding the motivation as well as checking the accuracy.</p>
-<p>It is possible (but not recommended) to learn the material by only reading the notes and not watching the videos. It is not possible to learn the material by only watching the videos and not reading the notes.</p>
-<p>You are probably reading the web version of the notes. If you want a PDF copy (to read offline or to print out), then click the PDF button in the top ribbon of the page. (Warning: I have not made as much effort to make the PDF neat and tidy as I have the web version.)</p>
-<p>Since we will all be relying heavily on these notes, I’m even more keen than usual to hear about errors mathematical, typographical or otherwise. Please, please <a href="mailto:m.aldridge@leeds.ac.uk">email me</a> if think you may have found any.</p>
-</div>
-<div id="problem-sheets" class="section level3 unnumbered">
-<h3>Problem sheets</h3>
-<p>There will be 10 problem sheets; Problem Sheet <span class="math inline">\(n\)</span> covers the material from the two sections from week <span class="math inline">\(n\)</span> (Sections <span class="math inline">\(2n -1\)</span> and <span class="math inline">\(2n\)</span>), and will be discussed in your workshop in week <span class="math inline">\(n+1\)</span>.</p>
-</div>
-<div id="lectures" class="section level3 unnumbered">
-<h3>Lectures</h3>
-<p>There will be one online synchronous “lecture” session each week, on Tuesdays at 1400, with me, run through Zoom.</p>
-<p>This will not be a “lecture” in the traditional sense of the term, but will be an opportunity to re-emphasise material you have already learned from notes and videos, to give extra examples, and to answer common student questions, with some degree of interactivity.</p>
-<p>I will assume you have completed all the work for the previous week by the time of the lecture, but I will not assume you’ve started the work for that week itself.</p>
-<p>I am very keen to hear about things you’d like to go through in the lectures; please <a href="mailto:m.aldridge@leeds.ac.uk">email me</a> with your suggestions.</p>
-</div>
-<div id="workshops" class="section level3 unnumbered">
-<h3>Workshops</h3>
-<p>There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of three workshop groups, meeting on Mondays or Tuesdays, led by <a href="https://eps.leeds.ac.uk/maths/pgr/8790/jason-klebes">Jason Klebes</a>, <a href="http://www1.maths.leeds.ac.uk/~voss/">Dr Jochen Voss</a>, or me. Your workshop will be run through Zoom or Microsoft Teams; your workshop leader will contact you before the end of this week with arrangements.</p>
-<p>My recommended approach to problem sheets and workshops is the following:</p>
+<div id="S16-counting-processes" class="section level1" number="16">
+<h1><span class="header-section-number">Section 16</span> Counting processes</h1>
+<div class="mysummary">
 <ul>
-<li>Work through the problem sheet before the workshop, spending plenty of time on it, and making multiple efforts at questions you get stuck on. I recommend spending <em>at least three hours</em> on each problem sheet, in more than one block. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.</li>
-<li>Take advantage of the smaller group setting of the workshop to ask for help or clarification on questions you weren’t able to complete.</li>
-<li>After the workshop, attempt again the questions you were previously stuck on.</li>
-<li>If you’re still unable to complete a question after this second round of attempts, <em>then</em> consult the solutions.</li>
+<li>Birth processes, including the simple birth process</li>
+<li>Time inhomogeneous Poisson processes</li>
 </ul>
 </div>
-<div id="assessments" class="section level3 unnumbered">
-<h3>Assessments</h3>
-<p>There will be four pieces of assessed coursework, making up a total of 15% of your mark for the module. Assessments 1, 3 and 4 will involve writing up answers to a few problems, in a similar style to the problem sheets, and are worth 4% each. (In response to previous student feedback, there are fewer questions per assessment.) Assessment 2 will be a report on some computational work (<a href="#about--computing">see below</a>) and is worth 3%.</p>
-<p>Copying, plagiarism and other types of cheating are not allowed and will be dealt with in accordance with University procedures.</p>
-<p>The assessments deadlines are:</p>
-<ul>
-<li>Assessment 1: Thursday 11 February 1400 (week 3)</li>
-<li>Assessment 2 (Computational Worksheet 2): Thursday 18 March 1400 (week 8)</li>
-<li>Assessment 3: Thursday 25 March 1400 (week 9)</li>
-<li>Assessment 4: Thursday 6 May 1400 (week 11)</li>
-</ul>
-<p>Work will be submitted via Gradescope.</p>
-<p>Your markers are Jason Klebes, Macauley Locke, and Muyang Zhang – but you should <a href="mailto:m.aldridge@leeds.ac.uk">contact the module leader</a> if you have marking queries, not the markers directly.</p>
+<div id="birth-processes" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Birth processes</h2>
+<p>The Poisson process was made easier to understand because it was a <strong>counting process</strong>. That is, because it was counting arrivals, we always knew that the next change would be an increase by 1; the only question was when that increase would happen.</p>
+<p>In this section, we look at two other types of counting process; the only transitions will still only ever be from <span class="math inline">\(i\)</span> to <span class="math inline">\(i+1\)</span>, but the holding times will not just be IID exponential distributions any more.</p>
+<p>We start with the <strong>simple birth process</strong>, which can model, for example, the division of cells in a biological experiment. We suppose that each individual has an offspring (eg the cell divides) after an <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> period of time, and continues to have more offspring after another <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> period of time, and so on.</p>
+<p>We start with <span class="math inline">\(X(0) = 1\)</span> individual. After an <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> time, the individual has an offspring, and we have <span class="math inline">\(X(t) = 2\)</span>.</p>
+<p>Now each of these two individuals will have an offspring after an <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> time each. So how much longer will it be until the first offspring appears and we get <span class="math inline">\(X(t) = 3\)</span>? Well, the earliest offspring will appear at the minimum of these two <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> times, and <a href="S14-poisson-exponential.html#exponential">we saw in the Section 14</a> that this has an <span class="math inline">\(\operatorname{Exp}(2\lambda)\)</span> distribution. (Remember that the mean of an exponential distribution is the reciprocal of the rate parameter, so the holding time for the second offspring is half that of the first, on average.)</p>
+<p>Now suppose we have <span class="math inline">\(n\)</span> individuals. By the memoryless property of the exponential distribution, they each still have an <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> time until producing an offspring, so the time until the next offspring is the minimum of these, which is <span class="math inline">\(\operatorname{Exp}(n\lambda)\)</span>.</p>
+<p>In general, we have built a counting process defined entirely by its starting point <span class="math inline">\(X(0) = 1\)</span>, that the <span class="math inline">\(n\)</span>th holding time <span class="math inline">\(T_n\)</span> is exponential with rate <span class="math inline">\(n\lambda\)</span>, and that all transitions are increases by 1.</p>
+<p>On <a href="P08.html#P08">Problem Sheet 8</a>, you will show that the expected size of the population of the simple birth process at time <span class="math inline">\(t\)</span> is <span class="math inline">\(\mathbb EX(t) = \mathrm{e}^{\lambda t}\)</span>, so the population grows exponentially quickly (on average).</p>
+<p>The simple birth process is an example of the more general class of birth processes.</p>
+<div class="definition">
+<p><span id="def:birth-def" class="definition"><strong>Definition 16.1  </strong></span>A <strong>birth process</strong> <span class="math inline">\((X_n)\)</span> with rates <span class="math inline">\((\lambda_n)\)</span> is defined by its starting population <span class="math inline">\(X(0) = x_0\)</span> and that the holding times are <span class="math inline">\(T_n \sim \operatorname{Exp}(\lambda_n)\)</span>. So we have
+<span class="math display">\[ X(t) = \begin{cases} x_0 &amp; 0 \leq t &lt; J_1 \\
+x_0 + n &amp; J_n \leq t &lt; J_{n+1}, \text{ for } n=1,2,\dots ,\end{cases}  \]</span>
+where <span class="math inline">\(J_n = T_1 + T_2 + \cdots + T_n\)</span> are the <strong>jump times</strong>.</p>
 </div>
-<div id="about-computing" class="section level3 unnumbered">
-<h3>Computing worksheets</h3>
-<p>There will be two computing worksheets, which will look at the material in the course through simulations in R. This material is examinable. You should be able to work through the worksheets in your own time, but if you need help, there will be optional online drop-in sessions in the weeks 4 and 7 with <a href="https://eps.leeds.ac.uk/maths/pgr/6422/muyang-zhang">Muyang Zhang</a> through Microsoft Teams. (Your computing drop-in session may be listed as “Practical” on your timetable.)</p>
-<p>The first computing worksheet will be a practice run, while a report on the second computing worksheet will be the second assessed piece of work.</p>
-</div>
-<div id="dropin" class="section level3 unnumbered">
-<h3>Drop-in sessions</h3>
-<p>If you there is something in the course you wish to discuss in detail, the place for the is the optional weekly drop-in session. The drop-in sessions are an optional opportunity for you to ask questions you have to a member of staff – nothing will happen unless you being your questions.</p>
-<p>You will have been assigned to one of three groups on Tuesdays or Wednesdays with <a href="https://eps.leeds.ac.uk/maths/pgr/4992/nikita-merkulov">Nikita Merkulov</a> or me. The drop-in sessions will be run the Microsoft Teams. Your drop-in session would be an excellent place to go if you are having trouble understanding something in the written notes, or if you’re still struggling on a problem sheet question after your workshop.</p>
-</div>
-<div id="team" class="section level3 unnumbered">
-<h3>Microsoft Team</h3>
-<p>I have set up <a href="https://teams.microsoft.com/l/channel/19%3a8cb8008c95204bbeaefa8ee7d48c1a13%40thread.tacv2/General?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&amp;tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb">a Microsoft Team</a> for the course. I propose to use the “Q and A” channel there as a discussion board. This is a good place to post questions about material from the course, and – even better! – to help answer you colleagues’ questions. The idea is that you all as a group should help each other out. I will visit a couple of times a week to clarify if everybody is stumped by a question, or if there is disagreement.</p>
-</div>
-<div id="time" class="section level3 unnumbered">
-<h3>Time management</h3>
-<p>It is, of course, up to you how you choose to spend your time on this module. But, if you’re interested, my recommendations would be something like this:</p>
+<div class="example">
+<p><span id="exm:birth-examples" class="example"><strong>Example 16.1  </strong></span>We have the following examples:</p>
 <ul>
-<li><strong>Every week:</strong> 7.5 hours per week
-<ul>
-<li><strong>Notes and videos:</strong> 2 sections, 1 hour each</li>
-<li><strong>Problem sheet:</strong> 3.5 hours per week</li>
-<li><strong>Lecture:</strong> 1 hour per week</li>
-<li><strong>Workshop:</strong> 1 hour per week</li>
-</ul></li>
-<li><strong>When required:</strong>
-<ul>
-<li><strong>Assessments 1, 2 and 4:</strong> 2 hours each</li>
-<li><strong>Computer worksheets:</strong> 2 hours each</li>
-<li><strong>Revision</strong>: 12 hours</li>
-</ul></li>
-<li><strong>Total:</strong> 100 hours</li>
+<li>Setting <span class="math inline">\(x_0 = 1\)</span> and <span class="math inline">\(\lambda_n = n\lambda\)</span> gives the simple birth process.</li>
+<li>Setting <span class="math inline">\(x_0 = 0\)</span> and <span class="math inline">\(\lambda_n = \lambda\)</span> constant gives the Poisson process.</li>
+<li>Setting <span class="math inline">\(x_0 = 1\)</span> and <span class="math inline">\(\lambda = n\lambda + \mu\)</span> gives a birth process with immigration from outside the system at rate <span class="math inline">\(\mu\)</span>.</li>
 </ul>
 </div>
-<div id="exam" class="section level3 unnumbered">
-<h3>Exam</h3>
-<p>There will be an exam – or, rather, a final “online time-limited assessment” – after the end of the module, making up the remaining 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. You will have 48 hours to complete the exam, although the exam itself should represent half a day to a day’s work. Further details to follow nearer the time.</p>
+<p>We can also give an equivalent definition using infinitesimal time periods, as we did for the Poisson process. Suppose we start from <span class="math inline">\(X(0) = 1\)</span>. We have
+<span class="math display">\[\begin{align*}
+    \mathbb P \big(X(t+\tau) = j\phantom{{}+1} \mid X(t) = j\big) &amp;= 1 - \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) = j+1 \mid X(t) = j\big) &amp;= \lambda_j\tau + o(\tau) ,\\
+    \mathbb P \big(X(t+\tau) \geq j+2 \mid X(t) = j\big) &amp;= o(\tau) ,
+\end{align*}\]</span>
+which is exactly the same as the Poisson process, except with <span class="math inline">\(\lambda\)</span> replaced by <span class="math inline">\(\lambda_j\)</span>.</p>
+<p>We can continue as for the Poisson process. Write <span class="math inline">\(p_j(t) = \mathbb P(X(t) = j)\)</span>. Then, for <span class="math inline">\(j \geq 2\)</span>,
+<span class="math display">\[ p_j(t + \tau) = \big(1 - \lambda_{j}\tau + o(\tau)\big)p_j(t)  + \big(\lambda_{j-1}\tau + o(\tau)\big)p_{j-1}(t) + o(\tau) , \]</span>
+since the two ways to get to <span class="math inline">\(j\)</span> are either we’re already at <span class="math inline">\(j\)</span> and the <span class="math inline">\(j\)</span>th arrival doesn’t occur, or we’re at <span class="math inline">\(j-1\)</span> and the <span class="math inline">\((j-1)\)</span>th arrival does occur; other possibilities have <span class="math inline">\(o(\tau)\)</span> probability. As before, take <span class="math inline">\(p_j(t)\)</span> over to the left-hand side, divide by <span class="math inline">\(\tau\)</span> to get
+<span class="math display">\[ \frac{p_j(t + \tau) - p_j(t)}{\tau} = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) + \frac{o(\tau)}{\tau} , \]</span>
+and then send <span class="math inline">\(\tau \to 0\)</span>. We end up with the forward equation
+<span class="math display">\[ p&#39;_j(t) = -\lambda_j p_j(t) + \lambda_{j-1}p_{j-1}(t) . \]</span>
+The initial condition is <span class="math inline">\(p_j(0) = 0\)</span>, since we start at <span class="math inline">\(1\)</span>, not at any <span class="math inline">\(j \geq 2\)</span>.</p>
+<p>Following the similar process for <span class="math inline">\(j =1\)</span>, we get
+<span class="math display">\[ p&#39;_1(t) = -\lambda_1 p_1(t) , \]</span>
+with initial condition <span class="math inline">\(p_1(0) = 1\)</span>, since we start from <span class="math inline">\(1\)</span>.</p>
+<p>In some cases the forward equations can be explicitly solved to give an expression for <span class="math inline">\(p_j(t) = \mathbb P(X(t) = j)\)</span>. We saw the solution for the Poisson process in Lecture 14, and you will find a solution for the simple birth process on <a href="P08.html#P08">Problem Sheet 8</a>.</p>
 </div>
-<div id="ask" class="section level3 unnumbered">
-<h3>Who should I ask about…?</h3>
-<ul>
-<li><em>I don’t understand something in the notes or on a problem sheet</em>: Go to your weekly drop-in session, or post a question on <a href="https://teams.microsoft.com/l/channel/19%3a5fcd058b7074426ca1f7d1cf2052d3b4%40thread.tacv2/Q%2520and%2520A?groupId=1c138eac-0c54-43b0-9d20-d4cf3d65c40a&amp;tenantId=bdeaeda8-c81d-45ce-863e-5232a535b7cb">the Teams Q and A board</a>. (If you email me, I am likely to respond, “That would be an excellent question for your drop-in session or the Q and A board.”)</li>
-<li><em>I don’t understand something in on a computational worksheet:</em> Go to your computing drop-in session in weeks 4 or 7.</li>
-<li><em>I have an admin question about general arrangements for the module:</em> <a href="mailto:m.aldridge@leeds.ac.uk">Email me</a>.</li>
-<li><em>I have an admin question about arrangements for my workshop:</em> Email your workshop leader.</li>
-<li><em>I have suggestion for something to cover in the lectures:</em> <a href="mailto:m.aldridge@leeds.ac.uk">Email me</a>.</li>
-<li><em>I need an extension on or exemption from an assessment:</em> <a href="mailto:Maths.Taught.Students@leeds.ac.uk">Email the Maths Taught Students Office</a>.</li>
-</ul>
+<div id="TIPP" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Time inhomogeneous Poisson processes</h2>
+<p>When we dealt with the Poisson process, the rate of arrivals <span class="math inline">\(\lambda\)</span> was the same all the time – so our call centre always received calls at the same rate, or the insurance company always received claims at the same rate. In real life, though, the rate of arrivals might be lower at some times and higher at some other times, so the rate <span class="math inline">\(\lambda = \lambda(t)\)</span> should perhaps depend on the time <span class="math inline">\(t\)</span>.</p>
+<p>This gives a process that is <strong>time inhomogeneous</strong>. The normal Poisson process and the birth processes were all <strong>time homogeneous</strong>; that is, the transition probabilities
+<span class="math inline">\(\mathbb P(X(t+s) = j \mid X(t) = i)\)</span> depended on the state <span class="math inline">\(i,j\)</span> and on the length of time period <span class="math inline">\(t\)</span> but not on the current time <span class="math inline">\(s\)</span>. Most of the processes we consider in the rest of this course will be time homogeneous, but this subsection is the exception, because here the transition probabilities will change over time.</p>
+<div class="definition">
+<p><span id="def:TIPP-defn" class="definition"><strong>Definition 16.2  </strong></span>The <strong>time inhomogeneous Poisson process</strong> with rate function <span class="math inline">\(\lambda = \lambda(t) \geq 0\)</span> is defined as followed. It is a stochastic process <span class="math inline">\((X(t))\)</span> with continuous time <span class="math inline">\(t \in [0,\infty)\)</span> a state space <span class="math inline">\(\mathcal S = \mathbb Z_+\)</span> with the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X(0) = 0\)</span>;</li>
+<li>Poisson increments: <span class="math inline">\(X(t+s) - X(t) \sim \operatorname{Po}(\int_t^{t+s} \lambda(u) \, \mathrm d u)\)</span> for all <span class="math inline">\(s,t&gt;0\)</span>;</li>
+<li>independent increments: <span class="math inline">\(X(t_2) - X(t_1)\)</span> and <span class="math inline">\(X(t_4) - X(t_3)\)</span> are independent for all <span class="math inline">\(t_1 \leq t_2 \leq t_3 \leq t_4\)</span>.</li>
+</ol>
 </div>
+<p>The difference here is in point 2, where we integrate the rate function <span class="math inline">\(\lambda(t)\)</span> over the interval of interest. In particular, if <span class="math inline">\(\lambda(t) = \lambda\)</span> is constant, then <span class="math inline">\(\int_t^{t+s} \lambda(u) \, \mathrm d u = \lambda s\)</span>, and we get back the definition of the Poisson process in terms of Poisson increments.</p>
+<div class="example">
+<p><span id="exm:TIPP-call" class="example"><strong>Example 16.2  </strong></span><em>A call centre notes that, when it opens the phone lines in the morning, phone calls arrive slowly at first, gradually becoming more common over the first hour. The owners of the centre model this is a time inhomogeneous Poisson process with rate function</em>
+<span class="math display">\[ \lambda(t) = \begin{cases} 20t &amp; 0 \leq t &lt; 1 \\
+                              20  &amp; t \geq 1 \end{cases} \]</span>
+<em>calls per hour. What is the probability they receive no calls in the first 10 minutes?</em></p>
+<p>The number of calls in the first 10 minutes, or <span class="math inline">\(\frac16\)</span> of an hour, is Poisson with rate
+<span class="math display">\[ \int_0^{1/6} \lambda(t) \, \mathrm dt = \int_0^{1/6}20t \, \mathrm dt = \left[10t^2\right]_0^{1/6} = \frac{10}{36} = 0.278 . \]</span>
+The probability no calls are received is
+<span class="math display">\[ \mathrm{e}^{-0.278} \frac{0.278^0}{0!} = \mathrm{e}^{-0.278} = 0.757 . \]</span></p>
+<p><em>What is the expected number of calls in the first 2 hours?</em></p>
+<p>The number of calls in the first 2 hours is Poisson with rate
+<span class="math display">\[ \int_0^2 \lambda(t) \, \mathrm dt =  \int_0^1 20t \, \mathrm dt +  \int_1^2 20 \, \mathrm dt = \left[10t^2\right]_0^1 + \left[20t\right]_1^2 = 10 + (40 - 20) = 30 .        \]</span>
+So the expected number of calls is 30.</p>
 </div>
-<div id="about-content" class="section level2 unnumbered">
-<h2>Content of MATH2750</h2>
-<div id="prereqs" class="section level3 unnumbered">
-<h3>Prerequisites</h3>
-<p>Some students have asked what background you’ll be expected to know for this course.</p>
-<p>It’s essential that you’re very comfortable with the basics of probability theory: events, probability, discrete and continuous random variables, expectation, variance, approximations with the normal distribution, etc. Conditional probability and independence are particularly important concepts in this course. This course will use the binomial, geometric, Poisson, normal and exponential distributions, although the notes will usually remind you about them first, in case you’ve forgotten.</p>
-<p>Many students on the module will have studied these topics in MATH1710 Probability and Statistics 1; others will have covered these in different modules.</p>
+<p>The time inhomogeneous Poisson process can also be given a definition in terms of inifinitesimal increments. We have
+<span class="math display">\[\begin{equation*} \mathbb P \big(X(t+\tau) - X(t) = j\big) = \begin{cases} 1 - \lambda(t) \tau + o(\tau) &amp; \text{if $j = 0$,} \\
+\lambda(t)\tau + o(\tau) &amp; \text{if $j = 1$,} \\
+o(\tau) &amp; \text{if $j \geq 2$.} \end{cases}  \end{equation*}\]</span>
+The only difference here is that we have replaced the rate <span class="math inline">\(\lambda\)</span> with the “current rate” <span class="math inline">\(\lambda(t)\)</span>.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we begin to look at the general theory of continuous time Markov jump processes.</p>
 </div>
-<div id="syllabus" class="section level3 unnumbered">
-<h3>Syllabus</h3>
-<p>The course has two major parts: the first part will cover processes in discrete time and the second part processes in continuous time.</p>
-<p>An outline plan of the topics covered is the following. (Remember that one week’s work is two sections of notes.)</p>
-<ul>
-<li><strong>Discrete time Markov chains</strong> [12 sections]
-<ul>
-<li>Introduction to stochastic processes [1 section]</li>
-<li>Important examples: Random walk, gambler’s ruin, linear difference equations, examples from actuarial science [4 sections]</li>
-<li>General theory: transition probabilities, <span class="math inline">\(n\)</span>-step transition probabilities, class structure, periodicity, hitting times, recurrence and transience, stationary distributions, long-term behaviour [6 sections]</li>
-<li>Revision [1 section]</li>
-</ul></li>
-<li><strong>Continuous time Markov jump processes</strong> [10 sections]
-<ul>
-<li>Important examples: Poisson process, counting processes, queues [5 sections]</li>
-<li>General theory: holding times and jump chains, forward and backward equations, class structure, hitting times, stationary distributions, long-term behaviour [4 sections]</li>
-<li>Revision [1 section]</li>
-</ul></li>
-</ul>
-</div>
-<div id="books" class="section level3 unnumbered">
-<h3>Books</h3>
-<p>You can do well on this module by reading the notes and watching the videos, attending the lectures and workshops, and working on the problem sheets, assignments and practicals, without any further reading. However, students can benefit from optional extra background reading or an alternative view on the material.</p>
-<p>My favourite book on Markov chains, which I used a lot while planning this course and writing these notes, is:</p>
-<ul>
-<li>J.R. Norris, <em>Markov Chains</em>, Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press, 1997. Chapters 1-3.</li>
-</ul>
-<p>This a whole book just on Markov processes, including some more detailed material that goes beyond this module. Its coverage of of both discrete and continuous time Markov processes is very thorough. <a href="http://www.statslab.cam.ac.uk/~james/Markov/">Chapter 1 on discrete time Markov chains is available online.</a></p>
-<p>Other good books with sections on Markov processes that I have used include:</p>
-<ul>
-<li>G.R. Grimmett and D.R. Stirzaker, <em>Probability and Random Processes</em>, 4th edition, Oxford University Press, 2020. Chapter 6.</li>
-<li>G. Grimmet and D. Walsh, <em>Probability: an introduction</em>, 2nd edition, Oxford University Press, 2014. Chapter 12.</li>
-<li>D.R. Stirzaker, <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181"><em>Elementary Probability</em></a>, 2nd edition, Cambridge University Press, 2003. Chapter 9.</li>
-</ul>
-<p>Grimmett and Stirzaker is an excellent handbook that covers most of undergraduate probability – I bought a copy when I was a second-year undergraduate and still keep it next to my desk.
-<!-- Chapter 6 of Grimmett and Stirzaker covers Markov chains is available online. -->
-<a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991013131349705181">The whole of Stirzaker is available online.</a></p>
-<p>A gentler introduction with plenty of examples is provided by:</p>
-<ul>
-<li>P.W. Jones and P. Smith, <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181"><em>Stochastic Processes: an introduction</em></a>, 3nd edition, Texts in Statistical Science, CRC Press, 2018. Chapters 2-7.</li>
-</ul>
-<p>although it doesn’t cover everything in this module. <a href="https://leeds.primo.exlibrisgroup.com/permalink/44LEE_INST/13rlbcs/alma991002938739705181">The whole book is available online.</a></p>
-<p>(I’ve listed the newest editions of these books, but older editions will usually be fine too.)</p>
-</div>
-<div id="finally" class="section level3 unnumbered">
-<h3>And finally…</h3>
-<p>These notes were mostly written by Matthew Aldridge in 2018–19, and have received updates (mostly in Sections 9–11) and reformatting this year. Some of the material (especially Section 1, Section 6, and numerous diagrams) follows closely previous notes by Dr Graham Murphy, and I also benefited from reading earlier notes by Dr Robert Aykroyd and Prof Alexander Veretennikov. Dr Murphy’s general help and advice was also very valuable. Many thanks to students in previous runnings of the module for spotting errors and suggesting improvements.</p>
 
 </div>
 </div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S01-stochastic-processes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S15-poisson-infinitesimal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="P08.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

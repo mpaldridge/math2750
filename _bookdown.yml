@@ -24,7 +24,9 @@ rmd_files:
   - sections/S13-poisson-poisson.Rmd
   - sections/S14-poisson-exponential.Rmd
   - problems/P07.Rmd
-#  - sections/S15-poisson-infinitesimal.Rmd
+  - sections/S15-poisson-infinitesimal.Rmd
+  - sections/S16-counting-processes.Rmd
+  - problems/P08.Rmd
   - computing/computing.Rmd
 book_filename: "math2750"
 output_dir: "docs"
