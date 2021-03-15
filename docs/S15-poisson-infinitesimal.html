@@ -201,7 +201,7 @@
 <li class="chapter" data-level="16" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html"><i class="fa fa-check"></i><b>16</b> Counting processes</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html#birth-processes"><i class="fa fa-check"></i><b>16.1</b> Birth processes</a></li>
-<li class="chapter" data-level="16.2" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html#TIPP"><i class="fa fa-check"></i><b>16.2</b> Time inhomogeneous Poisson processes</a></li>
+<li class="chapter" data-level="16.2" data-path="S16-counting-processes.html"><a href="S16-counting-processes.html#TIPP"><i class="fa fa-check"></i><b>16.2</b> Time inhomogeneous Poisson process</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P08.html"><a href="P08.html"><i class="fa fa-check"></i>Problem Sheet 8</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a>
@@ -240,6 +240,12 @@
 </div>
 <div id="infinitesimal" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> Definition 3: increments in infinitesimal time</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/NujUVyW0S78">
+</iframe>
+</div>
+</div>
 <p>We have seen two definitions of the Poisson process so far: one in terms of increments having a Poisson distribution, and one in therms of holding times having an exponential distribution. Here we will see another definition, by looking at what happens in a very small time period of length <span class="math inline">\(\tau\)</span>. Advantages of this approach include that does not require direct assumptions on the distributions involved, so may seem more “natural” or “inevitable”. It also shows links between Markov processes and differential equations. A disadvantage is that it’s normally easier to do calculations with the Poisson or exponential definitions.</p>
 <p>Let <span class="math inline">\((X(t))\)</span> be a stochastic processes counting some arrivals over time. Consider the number of arrivals in a very small time period of length <span class="math inline">\(\tau\)</span>; that number of arrivals is <span class="math inline">\(X(t+\tau) - X(t)\)</span>. The following (seemingly) weak assumptions seem justified:</p>
 <ul>
@@ -287,6 +293,12 @@ since <span class="math inline">\(Z\)</span> increases by 1 if either <span clas
 </div>
 <div id="forward" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> Forward equations and proof of equivalence</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/aEAFNm04P8U">
+</iframe>
+</div>
+</div>
 <p>If we compare Theorem <a href="S15-poisson-infinitesimal.html#thm:def-inf">15.1</a> to the <a href="#thm:#poisson-def-1">definition of the Poisson process in terms of Poisson increments</a>, we see that properties 1 and 3 are the same. We only need to check property 2, that <span class="math inline">\(X(t+s) - X(s)\)</span> is a Poisson distribution with rate <span class="math inline">\(\lambda t\)</span>.</p>
 <p>Since the increments as defined in <a href="S15-poisson-infinitesimal.html#eq:tau">(15.1)</a> are time homogeneous, it will suffice to consider <span class="math inline">\(s = 0\)</span>. So we need to show that <span class="math inline">\(X(t) \sim \text{Po}(\lambda t)\)</span>.</p>
 <p>Write <span class="math inline">\(p_j(t) = \mathbb P(X(t) = j)\)</span>. Then for <span class="math inline">\(j \geq 1\)</span> we have

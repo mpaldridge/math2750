@@ -11,6 +11,13 @@
 ## Definition 3: increments in infinitesimal time  {#infinitesimal}
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/NujUVyW0S78"></iframe>
+:::
+::::
+
+
 We have seen two definitions of the Poisson process so far: one in terms of increments having a Poisson distribution, and one in therms of holding times having an exponential distribution. Here we will see another definition, by looking at what happens in a very small time period of length $\tau$. Advantages of this approach include that does not require direct assumptions on the distributions involved, so may seem more "natural" or "inevitable". It also shows links between Markov processes and differential equations. A disadvantage is that it's normally easier to do calculations with the Poisson or exponential definitions.
 
 Let $(X(t))$ be a stochastic processes counting some arrivals over time. Consider the number of arrivals in a very small time period  of length $\tau$; that number of arrivals is $X(t+\tau) - X(t)$. The following (seemingly) weak assumptions seem justified:
@@ -71,6 +78,13 @@ But what we have written down is precisely the infinitesimals definition of a Po
 
 
 ## Forward equations and proof of equivalence  {#forward}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/aEAFNm04P8U"></iframe>
+:::
+::::
 
 
 If we compare Theorem \@ref(thm:def-inf) to the [definition of the Poisson process in terms of Poisson increments](#thm:#poisson-def-1), we see that properties 1 and 3 are the same. We only need to check property 2, that $X(t+s) - X(s)$ is a Poisson distribution with rate $\lambda t$.

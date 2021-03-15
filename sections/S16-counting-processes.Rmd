@@ -10,6 +10,14 @@
 
 ## Birth processes  {#birth-processes}
 
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/0hhLeDh6cvc"></iframe>
+:::
+::::
+
+
 The Poisson process was made easier to understand because it was a **counting process**. That is, because it was counting arrivals, we always knew that the next change would be an increase by 1; the only question was when that increase would happen.
 
 In this section, we look at two other types of counting process; the only transitions will still only ever be from $i$ to $i+1$, but the holding times will not just be IID exponential distributions any more.
@@ -66,7 +74,14 @@ with initial condition $p_1(0) = 1$,  since we start from $1$.
 In some cases the forward equations can be explicitly solved to give an expression for $p_j(t) = \mathbb P(X(t) = j)$. We saw the solution for the Poisson process in Lecture 14, and you will find a solution for the simple birth process on [Problem Sheet 8](#P08).
 
 
-## Time inhomogeneous Poisson processes {#TIPP}
+## Time inhomogeneous Poisson process {#TIPP}
+
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/suk-m8Lxwh0"></iframe>
+:::
+::::
 
 When we dealt with the Poisson process, the rate of arrivals $\lambda$ was the same all the time -- so our call centre always received calls at the same rate, or the insurance company always received claims at the same rate. In real life, though, the rate of arrivals might be lower at some times and higher at some other times, so the rate $\lambda = \lambda(t)$ should perhaps depend on the time $t$.
 
