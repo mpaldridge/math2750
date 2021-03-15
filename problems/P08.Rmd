@@ -149,7 +149,7 @@ Now consider $j \geq 2$. We indeed have $p_j(0) = 0$. By the product rule, the d
 ::::
 
 :::: {.subq}
-**(b)** Show that, as $n \to \infty$, the expectation $\mathbb E J_n$ tends to infinity, but the variance $\Var(T_n)$ is bounded.
+**(b)** Show that, as $n \to \infty$, the expectation $\mathbb E J_n$ tends to infinity, but the variance $\Var(J_n)$ is bounded.
 
 ::: {.myanswers data-latex=""}
 *Solution.* By linearity of expectation,
