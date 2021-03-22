@@ -99,7 +99,7 @@ Since we have $Y(0) = 0$ and independent increments, we have written down precis
 *Solution.* 
 From Section \@ref(birth-processes) of the notes, and putting $\lambda_j = \lambda j$, the forward equations are
 	\begin{align*}
-	j &= 1\colon  &  p'_j(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
+	j &= 1\colon  &  p'_1(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
 	j &\geq 2 \colon   &  p'_j(t) &= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &  p_j(0) &= 0
 	\end{align*}
 :::
@@ -112,7 +112,7 @@ From Section \@ref(birth-processes) of the notes, and putting $\lambda_j = \lamb
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
-	For $j = 1$, we have $p_1(t) = \ee^{-\lambda t}$. This clearly has $p_1(0) = \ee^0 = 1$, and $p'_1(t) = -\lambda \ee^{-\lambda t} = \lambda p_1(t)$, as required.
+	For $j = 1$, we have $p_1(t) = \ee^{-\lambda t}$. This clearly has $p_1(0) = \ee^0 = 1$, and $p'_1(t) = -\lambda \ee^{-\lambda t} = -\lambda p_1(t)$, as required.
 	
 Now consider $j \geq 2$. We indeed have $p_j(0) = 0$. By the product rule, the derivative on the left-hand side is
 	\begin{align*}

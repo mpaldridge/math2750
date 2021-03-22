@@ -5150,9 +5150,9 @@ Hence
 \begin{myanswers}
 \emph{Solution.}
 Let \(Y(t)\) be the marked process Consider an infinitesimal increment \(Y(t + \tau) - Y(t)\) as \(\tau \to 0\). We have one arrival in \((Y(t))\) if there was one arrival for \((X(t))\) and it was marked -- all other possibilities rely on extra arrivals in \((X(t))\), so have lower order probability -- giving
-\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda t + o (\tau) .   \]
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda \tau + o (\tau) .   \]
 We have no arrivals in \((Y(t))\) if there were no arrivals in \((X(t))\), there was one arrival that was unmarked, or lower order terms, giving
-\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda t + (1-p)\lambda t + o(\tau) = 1 - p\lambda t + o(\tau)  .   \]
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda \tau + (1-p)\lambda \tau + o(\tau) = 1 - p\lambda \tau + o(\tau)  .   \]
 Larger increments in \((Y(t))\) require larger increments in \((X(t))\), so
 \[ \mathbb P \big( Y(t + \tau) - Y(t) \geq 2 \big) = o(\tau) . \]
 Since we have \(Y(0) = 0\) and independent increments, we have written down precisely the infinitesimal increments definition of a Poisson process with rate \(p\lambda\).
@@ -5167,7 +5167,7 @@ Since we have \(Y(0) = 0\) and independent increments, we have written down prec
 \emph{Solution.}
 From Section \ref{birth-processes} of the notes, and putting \(\lambda_j = \lambda j\), the forward equations are
 \begin{align*}
-    j &= 1\colon  &  p'_j(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
+    j &= 1\colon  &  p'_1(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
     j &\geq 2 \colon   &  p'_j(t) &= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &  p_j(0) &= 0
     \end{align*}
 
@@ -5179,7 +5179,7 @@ satisfies the forward equation.
 
 \begin{myanswers}
 \emph{Solution.}
-For \(j = 1\), we have \(p_1(t) = \mathrm{e}^{-\lambda t}\). This clearly has \(p_1(0) = \mathrm{e}^0 = 1\), and \(p'_1(t) = -\lambda \mathrm{e}^{-\lambda t} = \lambda p_1(t)\), as required.
+For \(j = 1\), we have \(p_1(t) = \mathrm{e}^{-\lambda t}\). This clearly has \(p_1(0) = \mathrm{e}^0 = 1\), and \(p'_1(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_1(t)\), as required.
 
 Now consider \(j \geq 2\). We indeed have \(p_j(0) = 0\). By the product rule, the derivative on the left-hand side is
 \begin{align*}

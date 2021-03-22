@@ -304,9 +304,9 @@ Hence
 <div class="myanswers">
 <p><em>Solution.</em>
 Let <span class="math inline">\(Y(t)\)</span> be the marked process Consider an infinitesimal increment <span class="math inline">\(Y(t + \tau) - Y(t)\)</span> as <span class="math inline">\(\tau \to 0\)</span>. We have one arrival in <span class="math inline">\((Y(t))\)</span> if there was one arrival for <span class="math inline">\((X(t))\)</span> and it was marked – all other possibilities rely on extra arrivals in <span class="math inline">\((X(t))\)</span>, so have lower order probability – giving
-<span class="math display">\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda t + o (\tau) .   \]</span>
+<span class="math display">\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda \tau + o (\tau) .   \]</span>
 We have no arrivals in <span class="math inline">\((Y(t))\)</span> if there were no arrivals in <span class="math inline">\((X(t))\)</span>, there was one arrival that was unmarked, or lower order terms, giving
-<span class="math display">\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda t + (1-p)\lambda t + o(\tau) = 1 - p\lambda t + o(\tau)  .   \]</span>
+<span class="math display">\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda \tau + (1-p)\lambda \tau + o(\tau) = 1 - p\lambda \tau + o(\tau)  .   \]</span>
 Larger increments in <span class="math inline">\((Y(t))\)</span> require larger increments in <span class="math inline">\((X(t))\)</span>, so
 <span class="math display">\[ \mathbb P \big( Y(t + \tau) - Y(t) \geq 2 \big) = o(\tau) . \]</span>
 Since we have <span class="math inline">\(Y(0) = 0\)</span> and independent increments, we have written down precisely the infinitesimal increments definition of a Poisson process with rate <span class="math inline">\(p\lambda\)</span>.</p>
@@ -320,7 +320,7 @@ Since we have <span class="math inline">\(Y(0) = 0\)</span> and independent incr
 <p><em>Solution.</em>
 From Section <a href="S16-counting-processes.html#birth-processes">16.1</a> of the notes, and putting <span class="math inline">\(\lambda_j = \lambda j\)</span>, the forward equations are
 <span class="math display">\[\begin{align*}
-    j &amp;= 1\colon  &amp;  p&#39;_j(t) &amp;= -\lambda  p_1(t) &amp;  p_1(0) &amp;= 1 \\
+    j &amp;= 1\colon  &amp;  p&#39;_1(t) &amp;= -\lambda  p_1(t) &amp;  p_1(0) &amp;= 1 \\
     j &amp;\geq 2 \colon   &amp;  p&#39;_j(t) &amp;= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &amp;  p_j(0) &amp;= 0
     \end{align*}\]</span></p>
 </div>
@@ -331,7 +331,7 @@ From Section <a href="S16-counting-processes.html#birth-processes">16.1</a> of t
 satisfies the forward equation.</p>
 <div class="myanswers">
 <p><em>Solution.</em>
-For <span class="math inline">\(j = 1\)</span>, we have <span class="math inline">\(p_1(t) = \mathrm{e}^{-\lambda t}\)</span>. This clearly has <span class="math inline">\(p_1(0) = \mathrm{e}^0 = 1\)</span>, and <span class="math inline">\(p&#39;_1(t) = -\lambda \mathrm{e}^{-\lambda t} = \lambda p_1(t)\)</span>, as required.</p>
+For <span class="math inline">\(j = 1\)</span>, we have <span class="math inline">\(p_1(t) = \mathrm{e}^{-\lambda t}\)</span>. This clearly has <span class="math inline">\(p_1(0) = \mathrm{e}^0 = 1\)</span>, and <span class="math inline">\(p&#39;_1(t) = -\lambda \mathrm{e}^{-\lambda t} = -\lambda p_1(t)\)</span>, as required.</p>
 <p>Now consider <span class="math inline">\(j \geq 2\)</span>. We indeed have <span class="math inline">\(p_j(0) = 0\)</span>. By the product rule, the derivative on the left-hand side is
 <span class="math display">\[\begin{align*}
     p&#39;_j(t) &amp;=  -\lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t} + \lambda \mathrm{e}^{-\lambda t} (j-1) \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} ,    \\
