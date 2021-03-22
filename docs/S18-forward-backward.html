@@ -261,12 +261,12 @@
 </div>
 </div>
 <p>In the <a href="S17-continuous-time.html#S17-continuous-time">last section</a>, we defined the continuous time Markov jump process with generator matrix <span class="math inline">\(\mathsf Q\)</span> in terms of the holding times and the jump chain: from state <span class="math inline">\(i\)</span>, we wait for a holding time exponentially distributed with rate <span class="math inline">\(q_i = -q_{ii}\)</span>, then jump to state <span class="math inline">\(j\)</span> with probability <span class="math inline">\(r_{ij} = q_{ij}/q_i\)</span>.</p>
-<p>So what happens starting from state <span class="math inline">\(i\)</span> in a very small amount of time <span class="math inline">\(\tau\)</span>? The probability we don’t move in the small amount of time <span class="math inline">\(\tau\)</span> is
-<span class="math display">\[ \mathbb P(T_1 &gt; \tau) = \mathrm{e}^{-q_i \tau} = 1 - q_i\tau + o(\tau) , \]</span>
-where we have used the tail probability of the exponential distribution and the standard asymptotic
+<p>So what happens starting from state <span class="math inline">\(i\)</span> in a very small amount of time <span class="math inline">\(\tau\)</span>? The remaining time until a move is still <span class="math inline">\(T \sim \operatorname{Exp}(q_i)\)</span>, by the memoryless property. So the probability we don’t move in the small amount of time <span class="math inline">\(\tau\)</span> is
+<span class="math display">\[ \mathbb P(T &gt; \tau) = \mathrm{e}^{-q_i \tau} = 1 - q_i\tau + o(\tau) . \]</span>
+Here we have used the tail probability of the exponential distribution and the first two terms of the Taylor series.
 <span class="math display">\[ \mathrm{e}^x = 1 + x + o(x) \qquad \text{as $x \to 0$.} \]</span>
 The probability that we do move in the small amount of time <span class="math inline">\(\tau\)</span>, and that the move is to state <span class="math inline">\(j\)</span> is
-<span class="math display">\[ \mathbb P(T_1 \leq \tau)r_{ij} = \big(q_i\tau + o(\tau)\big) \frac{q_{ij}}{q_i}  = q_{ij}\tau + o(\tau) . \]</span>
+<span class="math display">\[ \mathbb P(T \leq \tau)r_{ij} = \big(q_i\tau + o(\tau)\big) \frac{q_{ij}}{q_i}  = q_{ij}\tau + o(\tau) . \]</span>
 The probability we make two or more jumps is a lower order term <span class="math inline">\(o(\tau)\)</span>. Thus we have
 <span class="math display">\[ \mathbb P\big(X(t+\tau) = j \mid X(t) = i \big) = \begin{cases}
    1 - q_i\tau + o(\tau) &amp; \text{for } i = j \\
@@ -278,14 +278,14 @@ The probability we make two or more jumps is a lower order term <span class="mat
 <div class="mysummary">
 <p><em>Video to appear here soon.</em></p>
 </div>
-<p>Let is write <span class="math inline">\(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\)</span> for the transition probability over a time <span class="math inline">\(t\)</span>. This is the continuous-time equivalent to the <span class="math inline">\(n\)</span>-step transition probability <span class="math inline">\(p_{ij}(n)\)</span> we had before in discrete time, but now <span class="math inline">\(t\)</span> can be any positive real value. It can be convenient to use the matrix form <span class="math inline">\(\mathsf P(t) = (p_{ij}(t) : i,j \in \mathcal S)\)</span>.</p>
-<p>In discrete time, we were given <span class="math inline">\(\mathsf P = \mathsf P(1)\)</span>, and it was easy to find <span class="math inline">\(\mathsf P(n) = \mathsf P^n\)</span> as a matrix power. In continuous time, we are given the generator <span class="math inline">\(\mathsf Q\)</span>, so how can we find <span class="math inline">\(\mathsf P(t)\)</span> from <span class="math inline">\(\mathsf Q\)</span>?</p>
-<p>First, we consider <span class="math inline">\(p_{ij}(s+t)\)</span>. To get from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> in time <span class="math inline">\(s + t\)</span>, we could first go from <span class="math inline">\(i\)</span> to some <span class="math inline">\(k\)</span> in time <span class="math inline">\(s\)</span>, then from that <span class="math inline">\(k\)</span> to <span class="math inline">\(j\)</span> in time <span class="math inline">\(t\)</span>, and the intermediate state <span class="math inline">\(k\)</span> can be any state. So we have
+<p>Let us write <span class="math inline">\(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\)</span> for the transition probability over a time <span class="math inline">\(t\)</span>. This is the continuous-time equivalent to the <span class="math inline">\(n\)</span>-step transition probability <span class="math inline">\(p_{ij}(n)\)</span> we had before in discrete time, but now <span class="math inline">\(t\)</span> can be any positive real value. It can be convenient to use the matrix form <span class="math inline">\(\mathsf P(t) = (p_{ij}(t) : i,j \in \mathcal S)\)</span>.</p>
+<p>In discrete time, we were given a transition matrix <span class="math inline">\(\mathsf P\)</span>, and it was easy to find <span class="math inline">\(\mathsf P(n) = \mathsf P^n\)</span> as a matrix power. In continuous time, we are given the generator matrix <span class="math inline">\(\mathsf Q\)</span>, so how can we find <span class="math inline">\(\mathsf P(t)\)</span> from <span class="math inline">\(\mathsf Q\)</span>?</p>
+<p>First, let’s consider <span class="math inline">\(p_{ij}(s+t)\)</span>. To get from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> in time <span class="math inline">\(s + t\)</span>, we could first go from <span class="math inline">\(i\)</span> to some <span class="math inline">\(k\)</span> in time <span class="math inline">\(s\)</span>, then from that <span class="math inline">\(k\)</span> to <span class="math inline">\(j\)</span> in time <span class="math inline">\(t\)</span>, and the intermediate state <span class="math inline">\(k\)</span> can be any state. So we have
 <span class="math display">\[ p_{ij}(s+t) = \sum_{k\in \mathcal S} p_{ik}(s)p_{kj}(t) . \]</span>
 You should recognise this as the <strong>Chapman–Kolmogorov equations</strong> again. In matrix form, we can write this as
 <span class="math display">\[ \mathsf P(s+t) = \mathsf P(s) \mathsf P(t) . \]</span>
 Pure mathematicians sometimes call this equation the “semigroup property”, so we sometimes call the matrices <span class="math inline">\((\mathsf P(t) : t \geq 0)\)</span> the <strong>transition semigroup</strong>.</p>
-<p>Second, as in previous examples, we seek a differential equation for <span class="math inline">\(p_{ij}(t)\)</span> by looking at an infinitesimal increment <span class="math inline">\(p_{ij}(t+\tau)\)</span>.</p>
+<p>Second, as in previous examples, we can try to get a differential equation for <span class="math inline">\(p_{ij}(t)\)</span> by looking at an infinitesimal increment <span class="math inline">\(p_{ij}(t+\tau)\)</span>.</p>
 <p>We can start with the Chapman–Kolmogorov equations. We have
 <span class="math display">\[\begin{align*}
 p_{ij}(t+\tau) &amp;= \sum_k p_{ik}(t)p_{kj}(\tau) \\
@@ -297,7 +297,7 @@ where we have treated the <span class="math inline">\(k = j\)</span> term of the
 <span class="math display">\[ \frac{p_{ij}(t + \tau) - p_{ij}(t)}{\tau} = \sum_k p_{ik}(t)q_{kj} + \frac{o(\tau)}{\tau} . \]</span>
 Sending <span class="math inline">\(\tau\)</span> to 0 gives us the (<strong>Kolmogorov</strong>) <strong>forward equation</strong>
 <span class="math display">\[ p&#39;_{ij} (t) = \sum_k p_{ik}(t)q_{kj} . \]</span>
-The initial condition is, of course, <span class="math inline">\(p_{ii}(0) = 1\)</span> and <span class="math inline">\(p_{ij}(0) = 0\)</span> otherwise.</p>
+The initial condition is, of course, <span class="math inline">\(p_{ii}(0) = 1\)</span> and <span class="math inline">\(p_{ij}(0) = 0\)</span> for <span class="math inline">\(j \neq i\)</span>.</p>
 <p>Writing <span class="math inline">\(\mathsf P(t) = (p_{ij}(t))\)</span>, and recognising the right hand side as a matrix multiplication, we get the convenient matrix form
 <span class="math display">\[ \mathsf P&#39;(t) = \mathsf{P}(t) \mathsf{Q}  \qquad \mathsf P(0) = \mathsf I ,\]</span>
 where <span class="math inline">\(\mathsf I\)</span> is the identity matrix.</p>
@@ -313,17 +313,18 @@ where the <span class="math inline">\(\mathsf Q\)</span> and <span class="math i
 <div class="mysummary">
 <p><em>Video to appear here soon.</em></p>
 </div>
-<p>When the state space <span class="math inline">\(\mathcal S\)</span> is finite, a crucial role is played for continuous time jump processes by the <strong>matrix exponential</strong> <span class="math inline">\(\mathrm{e}^{t\mathsf Q}\)</span>. In the discrete time setting, the matrix power <span class="math inline">\(\mathsf P^n\)</span> (for integers <span class="math inline">\(n\)</span>) was very important; the matrix exponential allows us to do matrix algebra with the powers being arbitrary real numbers, which is important for continuous time processes.</p>
-<p>You may remember that the exponential function is defined by
+<p>When the state space <span class="math inline">\(\mathcal S\)</span> is finite, a crucial role is played for continuous time jump processes by the <strong>matrix exponential</strong> <span class="math inline">\(\mathrm{e}^{t\mathsf Q}\)</span>. In the discrete time setting, the matrix power <span class="math inline">\(\mathsf P^n\)</span> (for integers <span class="math inline">\(n\)</span>) was very important; the matrix exponential allows us to do matrix algebra with the powers including arbitrary real numbers, which is important for continuous time processes.</p>
+<p>You may remember that the usual exponential function is defined by the Taylor series
 <span class="math display">\[ \mathrm{e}^x = \exp(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots. \]</span>
-Similarly, we can define the matrix exponential for any square matrix by
+Similarly, we can define the matrix exponential for any square matrix by the same series
 <span class="math display">\[ \mathrm{e}^{\mathsf A} = \exp({\mathsf A}) = \sum_{n=0}^\infty \frac{{\mathsf A}^n}{n!} = {\mathsf I} + {\mathsf A} + \tfrac12 \mathsf A^2+ \tfrac16 \mathsf A^3 + \cdots, \]</span>
-where we interpret <span class="math inline">\(\mathsf A^0 = \mathsf I\)</span> to be the identity matrix. In particular, since a matrix commutes with itself, we have <span class="math inline">\(\mathsf {A}^n \mathsf A = \mathsf{AA}^n\)</span>, so a matrix commutes with its own exponential, meaning that <span class="math inline">\(\mathsf A \mathrm{e}^{\mathsf A} = \mathrm{e}^{\mathsf A} \mathsf A\)</span>.</p>
+where we interpret <span class="math inline">\(\mathsf A^0 = \mathsf I\)</span> to be the identity matrix.</p>
+<p>Since a matrix commutes with itself, we have <span class="math inline">\(\mathsf {A}^n \mathsf A = \mathsf{AA}^n\)</span>, so a matrix commutes with its own exponential, meaning that <span class="math inline">\(\mathsf A \mathrm{e}^{\mathsf A} = \mathrm{e}^{\mathsf A} \mathsf A\)</span>. This will be useful later.</p>
 <p>Some properties of the standard exponential include
 <span class="math display">\[ (\mathrm{e}^x\big)^n = \mathrm{e}^{nx} \qquad \frac{\mathrm d}{\mathrm d x} \mathrm{e}^{ax} = a \mathrm{e}^{ax} . \]</span>
 Similarly, we have for the matrix exponential
 <span class="math display">\[ (\mathrm{e}^{\mathsf A}\big)^n = \mathrm{e}^{n{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]</span></p>
-<p>From this last expression, we have that
+<p>From this last expression, we get that
 <span class="math display">\[ \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf Q}} = \mathrm{e}^{t{\mathsf Q}} {\mathsf Q} = {\mathsf Q} \mathrm{e}^{t{\mathsf Q}}  . \]</span>
 Comparing this to the forward equation <span class="math inline">\(\mathsf P&#39;(t) = \mathsf{P}(t) \mathsf Q\)</span> and backward equation <span class="math inline">\(\mathsf{P}&#39;(t) = \mathsf Q \mathsf{P}(t)\)</span>, we see that we have a solution to the forward and backward equations of <span class="math inline">\(\mathsf P(t) = \mathrm{e}^{t\mathsf Q}\)</span>, which also satisfies the common initial condition <span class="math inline">\(\mathsf P(0) = \mathrm{e}^{0\mathsf Q} = \mathsf I\)</span>.</p>
 <p>We also see that we have the semigroup property

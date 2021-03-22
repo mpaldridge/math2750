@@ -23,13 +23,13 @@ $(document).ready(function() {
 -->
 
 
-<!--
+
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
--->
+
 
 
 \commfalse
@@ -80,9 +80,9 @@ Hence
 ::: {.myanswers data-latex=""}
 *Solution.* 
 Let $Y(t)$ be the marked process Consider an infinitesimal increment $Y(t + \tau) - Y(t)$ as $\tau \to 0$. We have one arrival in $(Y(t))$ if there was one arrival for $(X(t))$ and it was marked -- all other possibilities rely on extra arrivals in $(X(t))$, so have lower order probability -- giving
-\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda t + o (\tau) .   \]
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 1\big) = p\lambda \tau + o (\tau) .   \]
 We have no arrivals in $(Y(t))$ if there were no arrivals in $(X(t))$, there was one arrival that was unmarked, or lower order terms, giving
-\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda t + (1-p)\lambda t + o(\tau) = 1 - p\lambda t + o(\tau)  .   \]
+\[ \mathbb P \big( Y(t + \tau) - Y(t) = 0 \big) = 1 - \lambda \tau + (1-p)\lambda \tau + o(\tau) = 1 - p\lambda \tau + o(\tau)  .   \]
 Larger increments in $(Y(t))$ require larger increments in $(X(t))$, so
 \[ \mathbb P \big( Y(t + \tau) - Y(t) \geq 2 \big) = o(\tau) . \]
 Since we have $Y(0) = 0$ and independent increments, we have written down precisely the infinitesimal increments definition of a Poisson process with rate $p\lambda$.
