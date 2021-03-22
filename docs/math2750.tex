@@ -113,6 +113,26 @@
 \section*{Schedule}\label{home}}
 \addcontentsline{toc}{section}{Schedule}
 
+\textbf{Week 9} (22--26 March):
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{S17-continuous-time}{\textbf{Section 17}: Continuous time Markov jump processes}
+\item
+  \protect\hyperlink{S18-forward-backward}{\textbf{Section 18}: Forward and backward equations}
+\item
+  \protect\hyperlink{P09}{\textbf{Problem Sheet 9}}
+\item
+  \protect\hyperlink{A3}{\textbf{Assessment 3}}: due Thursday 25 March (this week)
+\item
+  \textbf{Lecture}: Tuesday at 1400 (Zoom)
+\item
+  \textbf{Workshops} on Problem Sheet 7: Monday or Tuesday (Zoom)
+\item
+  \textbf{Drop-in sessions}: Tuesday or Wednesday (Teams)
+\end{itemize}
+
 \textbf{Week 8} (15--19 March):
 
 \begin{itemize}
@@ -127,12 +147,6 @@
   \protect\hyperlink{computing}{\textbf{Computational Worksheet 2 / Assessment 2}}: due Thursday 18 March at 1400 (this week)
 \item
   \protect\hyperlink{A3}{\textbf{Assessment 3}}: due Thursday 25 March (next week)
-\item
-  \textbf{Lecture}: Tuesday at 1400 (Zoom)
-\item
-  \textbf{Workshops} on Problem Sheet 7: Monday or Tuesday (Zoom)
-\item
-  \textbf{Drop-in sessions}: Tuesday or Wednesday (Teams)
 \end{itemize}
 
 \textbf{Week 7} (8--12 March):
@@ -4623,7 +4637,7 @@ Alternatively, by the memoryless property of the exponential distribution, we se
 \section*{Problem sheet 7}\label{P07}}
 \addcontentsline{toc}{section}{Problem sheet 7}
 
-\commfalse
+\commtrue
 
 You should attempt all these questions and write up your solutions in advance of your workshop in week 8 (Monday 15 or Tuesday 16 March) where the answers will be discussed.
 
@@ -5109,21 +5123,25 @@ You should attempt all these questions and write up your solutions in advance of
 \textbf{(a)} Fix \(n\). What is the expected time between the \(n\)th arrival and the \((n+1)\)th arrival?
 
 \begin{myanswers}
-\emph{Solution.} The waiting time is Exp\((\lambda)\) with mean \(1/\lambda\).
+\emph{Solution.} The waiting time is \(\operatorname{Exp}(\lambda)\) with mean \(1/\lambda\).
 
 \end{myanswers}
 
 \textbf{(b)} Fix \(t\). What is the expected time between the previous arrival before \(t\) and the next arrival after \(t\)?
 
 \begin{myanswers}
-\emph{Solution.} The waiting time until the next arrival is Exp\((\lambda)\) with mean \(1/\lambda\). Working backwards, time since last arrival EXPLAIN EXPLAIN is also Exp\((\lambda)\). Total is \(2/\lambda\).
+\emph{Solution.} The time between the arrivals is \(S + T\), where \(S\) is the time backwards from \(t\) since the previous arrival, and \(T\) is the time forwards from \(t\) until thenext arrival. By the memoryless property of the exponential distribution, \(T \sim \operatorname{Exp}(\lambda)\), with mean \(1/\lambda\). What about \(S\)? We have
+\[ \mathbb P(S > s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \exp{-\lambda s} \frac{(\lambda s)^0}{0!} = \exp{-\lambda s} , \]
+which is itself is the tail probability of another \(\operatorname{Exp}(\lambda)\) distribution, so \(S \sim \operatorname{Exp}(\lambda)\) with mean \(1/\lambda\) too.
+Hence
+\[ \mathbb E(S + T) = \frac1\lambda + \frac1\lambda = \frac2\lambda .\]
 
 \end{myanswers}
 
 \textbf{(c)} Your answers to the previous two questions should be different. Explain why one should expect the second answer to be bigger than the first.
 
 \begin{myanswers}
-\emph{Solution.} Eg. the time \(t\) is more likely to have landed in a longer-than-average wait time, because there's more space to land in.
+\emph{Solution.} Imagine the arrivals being placed on the real line -- some with big gaps between them, and some with small gaps between them. If we then place the time \(t\), it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point \(t\) is ``size-biased'', and is larger than a unfirotmly randomly chosen gap.
 
 \end{myanswers}
 
@@ -5147,7 +5165,7 @@ Since we have \(Y(0) = 0\) and independent increments, we have written down prec
 
 \begin{myanswers}
 \emph{Solution.}
-The forward equations are
+From Section \ref{birth-processes} of the notes, and putting \(\lambda_j = \lambda j\), the forward equations are
 \begin{align*}
     j &= 1\colon  &  p'_j(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
     j &\geq 2 \colon   &  p'_j(t) &= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &  p_j(0) &= 0
@@ -5161,21 +5179,22 @@ satisfies the forward equation.
 
 \begin{myanswers}
 \emph{Solution.}
-For \(j = 1\), we have \(p_1(t) = \mathrm{e}^{-\lambda t}\). This clearly has \(p_1(0) = \mathrm{e}^0 = 1\), and \(p'(j) = -\lambda \mathrm{e}^{-\lambda t}\), as required.
+For \(j = 1\), we have \(p_1(t) = \mathrm{e}^{-\lambda t}\). This clearly has \(p_1(0) = \mathrm{e}^0 = 1\), and \(p'_1(t) = -\lambda \mathrm{e}^{-\lambda t} = \lambda p_1(t)\), as required.
 
-Now consider \(j \geq 2\). We indeed have \(p_j(0) = 0\). By the product rule, the derivative is
+Now consider \(j \geq 2\). We indeed have \(p_j(0) = 0\). By the product rule, the derivative on the left-hand side is
 \begin{align*}
     p'_j(t) &=  -\lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t} + \lambda \mathrm{e}^{-\lambda t} (j-1) \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} ,    \\
     &= -\lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - \mathrm{e}^{-\lambda t} -\mathrm{e}^{-\lambda t} (j-1) \big) \\
-    &=- \lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - j \mathrm{e}^{-\lambda t}  \big),
+    &=- \lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - j \mathrm{e}^{-\lambda t}  \big).
      \end{align*}
-and this is equal to
+The right-hand side is
 \begin{align*}
     -\lambda j p_j(t) + {}&\lambda (j-1)p_{j-1}(t) \\
     &= - \lambda j \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-1}\mathrm{e}^{-\lambda t} + \lambda (j-1) \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \\
     &= -\lambda\big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t}\big(j(1 - \mathrm{e}^{-\lambda t}) - (j-1)\big) \\
     &= - \lambda \big(1 - \mathrm{e}^{-\lambda t}\big)^{j-2}\mathrm{e}^{-\lambda t} \big(1 - j \mathrm{e}^{-\lambda t}  \big) .
     \end{align*}
+These are indeed equal.
 
 \end{myanswers}
 
@@ -5203,6 +5222,8 @@ The expectation of a \(\text{Geom}(\theta)\) random variable is \(1/\theta\), so
 \[ \mathbb E J_n = \sum_{j=1}^n \mathbb E T_j = \sum_{j=1}^n \frac{1}{\lambda j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}j . \]
 Since the holding times are independent,
 \[ \operatorname{Var}(J_n) = \sum_{j=1}^n \operatorname{Var}(T_j) = \sum_{j=1}^n \frac{1}{\lambda^2 j^2} = \frac{1}{\lambda^2} \sum_{j=1}^n \frac{1}{j^2} . \]
+
+The harmonic series \(\sum_j 1/j\) diverges, so \(\mathbb E J_n\) tends to infinity. The series \(\sum_j 1/j^2\), on the other hand, converges (to \(\pi^2/6\), although you don't need to know that), so \(\operatorname{Var}(J_n)\) is bounded (by \(\pi^2/6\lambda^2\)).
 
 \end{myanswers}
 
@@ -5241,6 +5262,535 @@ The number of phonecalls over the three hour period is Poisson with rate
 \[ \int_0^3 \lambda(t)\,\mathrm dt = \tfrac32 + 3 + \tfrac32 = 6 . \]
 The probability there are exactly three calls is
 \[ \frac{6^3}{3!} \mathrm{e}^{-6} = 36 \mathrm{e}^{-6} = 0.089.     \]
+
+\end{myanswers}
+
+\hypertarget{S17-continuous-time}{%
+\section{Continuous time Markov jump processes}\label{S17-continuous-time}}
+
+\begin{itemize}
+\tightlist
+\item
+  Time homogeneous continuous time Markov jump processes in terms of the jump Markov chain and the holding times
+\item
+  Explosion of Markov jump processes
+\end{itemize}
+
+\hypertarget{jump-holding}{%
+\subsection{Jump chain and holding times}\label{jump-holding}}
+
+In this section, we will start looking at general Markov processes in continuous time and discrete space. All our examples will be time homogeneous, in that the transition probabilities and transition rates will remain constant over time.
+
+We call these \textbf{Markov jump processes}, as we will wait in a state for a random holding time, and then we will suddenly ``jump'' to another state.
+
+The idea will be treat two matters separately:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{where we jump too:} This will be studied through the ``jump chain'', a discrete time Markov chain that tells us \emph{what} transitions are made (but not \emph{when} they are made).
+\item
+  \textbf{how long we wait until we jump:} we call these the ``holding times''. To preserve the Markov property, these holding times must have an exponential distribution, since this is the only random variable that has the \protect\hyperlink{memoryless-thm}{memoryless property}.
+\end{itemize}
+
+Let us consider a Markov jump process \((X(t))\) on a state space \(\mathcal S\). Suppose we are at a state \(i \in \mathcal S\). The \textbf{transition rate} at which we wish to jump to a state \(j \neq i\) will be written \(q_{ij} \geq 0\). This means that, after a time with an exponential distribution \(\operatorname{Exp}(q_{ij})\), if the process has not jumped yet, it will jump to state \(j\).
+
+(We use the convention that if \(q_{ij} = 0\) for some \(j \neq i\), this means we will never jump from \(i\) to \(j\). If for some \(i\) we have \(q_{ij} = 0\) for \emph{all} \(j \neq i\), then we stay in state \(i\) forever, and \(i\) is an abaorbing state.)
+
+So from state \(i\), there are many other states \(j\) we could jump to, each waiting for a time \(\operatorname{Exp}(q_{ij})\). Which of these times will be up first, leading the process to jump to that state? And how long will it be until that first time is up and we move?
+The answer is given by Theorem \ref{thm:exponential-thm}, which showed us the distribution of the minimum of the \(\operatorname{Exp}(q_{ij})\)s is itself exponential, with rate
+\[ q_i := \sum_{j \neq i} q_{ij} . \]
+Further, and also from Theorem \ref{thm:exponential-thm}, the probability that we move to some state \(j \neq i\) is
+\[ r_{ij} := \frac{q_{ij}}{\sum_{j \neq i} q_{ij}} = \frac{q_{ij}}{q_i} . \]
+These last two displayed equations define the quantities \(q_i\) and \(r_{ij}\). (If \(i\) is an absorbing state \(i\), then by convenetion we put \(r_{ii} = 1\) and \(r_{ij} = 0\) for \(j \neq i\).
+
+So, this is the crucial idea: from state \(i\), we wait for a holding time with distribution \(\operatorname{Exp}(q_i)\), then move to another state, choosing state \(j\) with probability \(r_{ij}\).
+
+It will be convenient to write all the transition rates \(q_{ij}\) down in a \textbf{generator matrix} \(\mathsf Q\) defined as follows: the off-diagonal entries are \(q_{ij}\), for \(i \neq j\), and the diagonal entries are
+\[ q_{ii} = - q_i = -\sum_{j \neq i} q_{ij} . \]
+In particular, the off-diagonal entries are positive (or 0), the diagonal entries are negative (or 0) and each row adds up to 0.
+
+One convenient way to keep track of the movement of a continuous time Markov jump process will be to look at which states it jumps to, leaving the holding times for later consideration. That is, we can consider the discrete time \textbf{jump Markov chain} (or just \textbf{jump chain}) \((Y_n)\) associated with \((X(t))\) given by
+\(Y_0 = X(0)\) and
+\[ Y_n = \text{state of $X(t)$ just after the $n$th jump.} \]
+This is a discrete time Markov chain that starts from the same place \(Y_0 = X(0)\) as \((X(t))\) does, and has transitions given by \(r_{ij} = q_{ij}/q_i\). (The jump chain cannot move from a state to itself.)
+
+Once we know where the jump process will move, we then know what the next holding time will be: from state \(j\), the holding time will be \(\operatorname{Exp}(q_j)\)
+
+We can some all this up in the following (rather long-winded) formal definition.
+
+\begin{definition}
+\protect\hypertarget{def:CTMC}{}\label{def:CTMC}
+
+~
+
+\begin{itemize}
+\tightlist
+\item
+  Let \(\mathcal S\) be a set, and \(\boldsymbol\lambda\) a distribution on \(\mathcal S\).
+\item
+  Let \(\mathsf Q = (q_{ij} : i,j \in \mathcal S)\) be a matrix where \(q_{ij} \geq 0\) for \(i \neq j\) and \(\sum_j q_{ij} = 0\) for all \(i\), and write \(q_i = -q_{ii} = -q_i = \sum_{j \neq i} q_{ij}\).
+\item
+  Define \(\mathsf R = (r_{ij} : i,j \in \mathcal S)\) as follows: for \(i\) such that \(q_i \neq 0\), write \(r_{ij} = q_{ij}/q_i\) for \(j \neq i\), and \(r_{ii}= 0\); and for \(i\) such that \(q_i = 0\), write \(r_{ij} = 0\) for \(j \neq i\), and \(r_{ii} = 1\).
+\end{itemize}
+
+We wish to define the \textbf{Markov jump process} on a state space \(\mathcal S\) with generator matrix \(\mathsf Q\) and initial distribution \(\boldsymbol\lambda\).
+
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{jump chain} \((Y_n)\) is the discrete time Markov chain on \(\mathcal S\) with initial distribution \(\boldsymbol\lambda\) and transition matrix \(\mathsf R\).
+\item
+  The \textbf{holding times} \(T_1, T_2, \dots\) have distribution \(T_n \sim \operatorname{Exp}(q_{Y_{n-1}})\), and are conditionally independent given \((Y_n)\).
+\item
+  The \textbf{jump times} are \(J_n = T_1 + T_2 + \cdots + T_n\).
+\end{itemize}
+
+Then (at last!) the Markov jump process \((X(t))\) is defined by
+\[
+    X(t) = \begin{cases} Y_0 & \text{for }t < J_1 \\
+                         Y_n & \text{for }J_n \leq t < J_{n+1} .\end{cases}  \]
+
+\end{definition}
+
+\hypertarget{CTMC-examples}{%
+\subsection{Examples}\label{CTMC-examples}}
+
+\begin{example}
+\protect\hypertarget{exm:three-state}{}\label{exm:three-state}
+
+Consider the Markov jump process on a state space \(\mathcal S = \{1,2,3\}\) with transition rates as illustrated in the following transition rate diagram. (Note that a transition rate diagram never has arrows from a state to itself.)
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/ctmc1-1} 
+
+}
+
+\caption{Transition diagram for a continuous Markov jump process.}\label{fig:ctmc1}
+\end{figure}
+
+The generator matrix is
+\[ \mathsf Q = \begin{pmatrix} -2 & 2 & 0 \\
+ 1 & -3 & 2 \\
+ 0 & 1 & -1 \end{pmatrix} , \]
+where the off-diagonal entries are the rates from the diagram, and the diagonal entries are chosen to make sure the rows add up to 0.
+
+The transition matrix of the jump chain is
+\[ \mathsf R = \begin{pmatrix} 0 & 1 & 0 \\
+ \frac13 & 0 & \frac23 \\
+ 0 & 1 & 0 \end{pmatrix} , \]
+where we set the diagonal elements equal to 0, then normalize each row so that it adds up to 1.
+
+So, for example, starting from state 2, we wait for a holding time \(T_1 \sim \operatorname{Exp}(q_2) = \operatorname{Exp}(-q_{22}) = \operatorname{Exp}(3)\). We then move to state 1 with probability \(r_{21} = q_{21}/q_2 = \frac13\) and to state 3 with probability \(r_{23} = q_{23}/q_2 = \frac23\).
+
+Suppose we move to state 1. Then we stay in state 1 for a time \(\operatorname{Exp}(q_1) = \operatorname{Exp}(2)\), before moving with certainty back to state 2. And so on.
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:ABC}{}\label{exm:ABC}
+
+Consider the Markov jump process with state space \(\mathcal S = \{A,B,C\}\) and this transition rate diagram.
+
+\begin{figure}
+
+{\centering \includegraphics{math2750_files/figure-latex/ctmc2-1} 
+
+}
+
+\caption{Transition diagram for a continuous Markov jump process with an absorbing state.}\label{fig:ctmc2}
+\end{figure}
+
+The generator matrix is
+\[ \mathsf Q = \begin{pmatrix} -q_A & q_{AB} & q_{AC} \\
+ q_{BA} & -q_B & q_{BC} \\
+ 0 & 0 & 0\end{pmatrix} , \]
+where \(q_A = q_{AB} + q_{AC}\) and \(q_B = q_{BA} + q_{BC}\).
+Here, state C is an absorbing state, so if we ever reach it, we stay there forever. So the jump chain has transition rates
+\[ \mathsf R = \begin{pmatrix} 0 & q_{AB}/q_A & q_{AC}/q_A \\
+ q_{BA}/q_B & 0 & q_{BC}/q_B \\
+ 0 & 0 & 1 \end{pmatrix} . \]
+
+\end{example}
+
+\begin{example}
+\protect\hypertarget{exm:PP-CTMC}{}\label{exm:PP-CTMC}
+
+The Poisson process with rate \(\lambda\) has state space \(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\). The transition rates from \(i\) to \(i+1\) are
+\(q_{i,i+1} = \lambda\), and all other transition rates are 0. So the generator matrix is
+\[ \mathsf Q = \begin{pmatrix} -\lambda & \lambda & 0 & 0 &  \\
+ 0 & -\lambda & \lambda & 0 &   \\
+0 & 0 & -\lambda & \lambda &   \\ 
+ & & & \ddots & \ddots \\ 
+ \end{pmatrix}.
+\]
+The jump chain is very boring: it starts from 0 and moves with certainty to 1, then with certainty to 2, then to 3, and so on.
+
+\end{example}
+
+\hypertarget{a-brief-note-on-explosion}{%
+\subsection{A brief note on explosion}\label{a-brief-note-on-explosion}}
+
+There is one point we have to be a little careful about with when dealing with continuous time processes with an infinite state space -- the potential of ``explosion''. \textbf{Explosion} is when the process can get arbitrarily large in finite time. Think, for example, of a birth process with birth rates \(\lambda_j = \lambda j^2\). The \(n\)th birth is expected to be occur at time
+\[ \sum_{j=1}^n \frac{1}{\lambda_j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}{n^2} . \]
+But this has a finite limit as \(n \to \infty\), meaning we expect to get infinitely many births in a finite amount of time.
+
+When explosion happens, it can then be rather difficult to define what's going on. In that birth process, for example, the state space is \(\mathcal S = \mathbb Z_+\); but after some finite time, we have \(X(t) > j\) for all \(j \in \mathcal S\) -- so what state \emph{is} the process in?
+
+Although there are often technical fixes that can get around this problem (doing things like creating an ``infinity'' state, or restarting the process from \(X(0)\) again), we will not concern ourselves with them here. We shall normally deal with finite state spaces, where explosion is not a concern. When we do use infinite state space models (such as birth processes, for example), we shall only look at examples that explode with probability 0.
+
+\textbf{In the next section}, we look at how to find the transition probilities \(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\), which are the equivalents to the \(n\)-step transition probabilities in discrete time.
+
+\hypertarget{S18-forward-backward}{%
+\section{Forward and backward equations}\label{S18-forward-backward}}
+
+\begin{itemize}
+\tightlist
+\item
+  Markov jump process in infinitesimal time periods
+\item
+  Transition semigroup, Chapman--Kolmogorov equations, and forward and backward equations
+\item
+  Matrix exponential as a solution to the forward and backward equations
+\end{itemize}
+
+\hypertarget{jump-infinitesimal}{%
+\subsection{Transitions in infinitesimal time periods}\label{jump-infinitesimal}}
+
+\emph{Video to appear here soon.}
+
+In the \protect\hyperlink{S17-continuous-time}{last section}, we defined the continuous time Markov jump process with generator matrix \(\mathsf Q\) in terms of the holding times and the jump chain: from state \(i\), we wait for a holding time exponentially distributed with rate \(q_i = -q_{ii}\), then jump to state \(j\) with probability \(r_{ij} = q_{ij}/q_i\).
+
+So what happens starting from state \(i\) in a very small amount of time \(\tau\)? The probability we don't move in the small amount of time \(\tau\) is
+\[ \mathbb P(T_1 > \tau) = \mathrm{e}^{-q_i \tau} = 1 - q_i\tau + o(\tau) , \]
+where we have used the tail probability of the exponential distribution and the standard asymptotic
+\[ \mathrm{e}^x = 1 + x + o(x) \qquad \text{as $x \to 0$.} \]
+The probability that we do move in the small amount of time \(\tau\), and that the move is to state \(j\) is
+\[ \mathbb P(T_1 \leq \tau)r_{ij} = \big(q_i\tau + o(\tau)\big) \frac{q_{ij}}{q_i}  = q_{ij}\tau + o(\tau) . \]
+The probability we make two or more jumps is a lower order term \(o(\tau)\). Thus we have
+\[ \mathbb P\big(X(t+\tau) = j \mid X(t) = i \big) = \begin{cases}
+   1 - q_i\tau + o(\tau) & \text{for } i = j \\
+   q_{ij}\tau + o(\tau) & \text{for } i \neq j. \end{cases} \]
+
+This is an equivalent definition of the Markov jump process.
+
+\hypertarget{semigroup}{%
+\subsection{Transition semigroup and the forward and backward equations}\label{semigroup}}
+
+\emph{Video to appear here soon.}
+
+Let is write \(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\) for the transition probability over a time \(t\). This is the continuous-time equivalent to the \(n\)-step transition probability \(p_{ij}(n)\) we had before in discrete time, but now \(t\) can be any positive real value. It can be convenient to use the matrix form \(\mathsf P(t) = (p_{ij}(t) : i,j \in \mathcal S)\).
+
+In discrete time, we were given \(\mathsf P = \mathsf P(1)\), and it was easy to find \(\mathsf P(n) = \mathsf P^n\) as a matrix power. In continuous time, we are given the generator \(\mathsf Q\), so how can we find \(\mathsf P(t)\) from \(\mathsf Q\)?
+
+First, we consider \(p_{ij}(s+t)\). To get from \(i\) to \(j\) in time \(s + t\), we could first go from \(i\) to some \(k\) in time \(s\), then from that \(k\) to \(j\) in time \(t\), and the intermediate state \(k\) can be any state. So we have
+\[ p_{ij}(s+t) = \sum_{k\in \mathcal S} p_{ik}(s)p_{kj}(t) . \]
+You should recognise this as the \textbf{Chapman--Kolmogorov equations} again. In matrix form, we can write this as
+\[ \mathsf P(s+t) = \mathsf P(s) \mathsf P(t) . \]
+Pure mathematicians sometimes call this equation the ``semigroup property'', so we sometimes call the matrices \((\mathsf P(t) : t \geq 0)\) the \textbf{transition semigroup}.
+
+Second, as in previous examples, we seek a differential equation for \(p_{ij}(t)\) by looking at an infinitesimal increment \(p_{ij}(t+\tau)\).
+
+We can start with the Chapman--Kolmogorov equations. We have
+\begin{align*}
+p_{ij}(t+\tau) &= \sum_k p_{ik}(t)p_{kj}(\tau) \\
+&=p_{ij}(t)(1 - q_j\tau) + \sum_{k \neq j} p_{ik}(t)q_{kj}\tau +  o(\tau) \\
+&= p_{ij}(t) + \sum_k p_{ik}(t)q_{kj}\tau + o(\tau) ,
+\end{align*}
+where we have treated the \(k = j\) term of the sum separately, and taken advantage of the fact that \(q_{jj} = - q_j\).
+
+As we have done many times before, we take a \(p_{ij}(t)\) to the left hand side and divide through by \(\tau\) to get
+\[ \frac{p_{ij}(t + \tau) - p_{ij}(t)}{\tau} = \sum_k p_{ik}(t)q_{kj} + \frac{o(\tau)}{\tau} . \]
+Sending \(\tau\) to 0 gives us the (\textbf{Kolmogorov}) \textbf{forward equation}
+\[ p'_{ij} (t) = \sum_k p_{ik}(t)q_{kj} . \]
+The initial condition is, of course, \(p_{ii}(0) = 1\) and \(p_{ij}(0) = 0\) otherwise.
+
+Writing \(\mathsf P(t) = (p_{ij}(t))\), and recognising the right hand side as a matrix multiplication, we get the convenient matrix form
+\[ \mathsf P'(t) = \mathsf{P}(t) \mathsf{Q}  \qquad \mathsf P(0) = \mathsf I ,\]
+where \(\mathsf I\) is the identity matrix.
+
+Alternatively, we could have started with the Chapman--Kolmogorov equations the other way round as
+\[ p_{ij}(t+\tau) = \sum_k p_{ik}(\tau)p_{kj}(t) , \]
+with the \(\tau\) in the first term rather than the second. Following through the same argument would have given the \textbf{Kolmogorov backward equation}
+\[ \mathsf P'(t) = \mathsf{Q} \mathsf{P}(t)   \qquad \mathsf P(0) = \mathsf I ,\]
+where the \(\mathsf Q\) and \(\mathsf P\) are also the other way round.
+
+The forward and backward equations both define the transition semigroup \((\mathsf P(t))\) in terms of the generator matrix \(\mathsf Q\).
+
+\hypertarget{matrix-exp}{%
+\subsection{Matrix exponential}\label{matrix-exp}}
+
+\emph{Video to appear here soon.}
+
+When the state space \(\mathcal S\) is finite, a crucial role is played for continuous time jump processes by the \textbf{matrix exponential} \(\mathrm{e}^{t\mathsf Q}\). In the discrete time setting, the matrix power \(\mathsf P^n\) (for integers \(n\)) was very important; the matrix exponential allows us to do matrix algebra with the powers being arbitrary real numbers, which is important for continuous time processes.
+
+You may remember that the exponential function is defined by
+\[ \mathrm{e}^x = \exp(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots. \]
+Similarly, we can define the matrix exponential for any square matrix by
+\[ \mathrm{e}^{\mathsf A} = \exp({\mathsf A}) = \sum_{n=0}^\infty \frac{{\mathsf A}^n}{n!} = {\mathsf I} + {\mathsf A} + \tfrac12 \mathsf A^2+ \tfrac16 \mathsf A^3 + \cdots, \]
+where we interpret \(\mathsf A^0 = \mathsf I\) to be the identity matrix. In particular, since a matrix commutes with itself, we have \(\mathsf {A}^n \mathsf A = \mathsf{AA}^n\), so a matrix commutes with its own exponential, meaning that \(\mathsf A \mathrm{e}^{\mathsf A} = \mathrm{e}^{\mathsf A} \mathsf A\).
+
+Some properties of the standard exponential include
+\[ (\mathrm{e}^x\big)^n = \mathrm{e}^{nx} \qquad \frac{\mathrm d}{\mathrm d x} \mathrm{e}^{ax} = a \mathrm{e}^{ax} . \]
+Similarly, we have for the matrix exponential
+\[ (\mathrm{e}^{\mathsf A}\big)^n = \mathrm{e}^{n{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]
+
+From this last expression, we have that
+\[ \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf Q}} = \mathrm{e}^{t{\mathsf Q}} {\mathsf Q} = {\mathsf Q} \mathrm{e}^{t{\mathsf Q}}  . \]
+Comparing this to the forward equation \(\mathsf P'(t) = \mathsf{P}(t) \mathsf Q\) and backward equation \(\mathsf{P}'(t) = \mathsf Q \mathsf{P}(t)\), we see that we have a solution to the forward and backward equations of \(\mathsf P(t) = \mathrm{e}^{t\mathsf Q}\), which also satisfies the common initial condition \(\mathsf P(0) = \mathrm{e}^{0\mathsf Q} = \mathsf I\).
+
+We also see that we have the semigroup property
+\[ \mathsf P(s+t) = \mathrm{e}^{(s+t)\mathsf Q} = \mathrm{e}^{s \mathsf Q + t \mathsf Q} = \mathrm{e}^{s \mathsf Q}\mathrm{e}^{t \mathsf Q} = \mathsf P(s) \mathsf P(t) . \]
+
+As a formal summary, we have the following.
+
+::: \{.theorem exp-thm\}
+Let \((X(t))\) be a time homogeneous continuous time Markov jump process with generator matrix \(\mathsf Q\). Let \((\mathsf P(t))\) be the transition semigroup, where \(\mathsf P(t) = (p_{ij}(t))\) is defined by \(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\).
+
+Then \((\mathsf P(t))\) is the minimal nonnegative solution to the forward equation
+\[ \mathsf P'(t) = \mathsf P(t) \mathsf Q \qquad \mathsf P(0) = \mathsf I , \]
+and is also the minimal nonnegative solution to the backward equation
+\[ \mathsf P'(t) = \mathsf Q \mathsf P(t) \qquad \mathsf P(0) = \mathsf I . \]
+
+When the state space \(\mathcal S\) is finite, the forward and backward equations both have a unique solution given by the matrix exponential \(\mathsf P(t) = \mathrm{e}^{t \mathsf Q}\).
+:::
+
+\hypertarget{P09}{%
+\section*{Problem Sheet 9}\label{P09}}
+\addcontentsline{toc}{section}{Problem Sheet 9}
+
+\commfalse
+
+You should attempt all these questions and write up your solutions in advance of your workshop in week 10 (Monday 26 or Tuesday 27 April) where the answers will be discussed.
+
+\textbf{1.} Consider a Markov jump process with state space \(\mathcal S = \{0,1,2,\dots,N\}\) and generator matrix
+\[ \mathsf Q = \begin{pmatrix} -q_0 & q_{01} & q_{02} & \cdots & q_{0N} \\
+0    & 0      & 0      & \cdots & 0      \\
+0    & 0      & 0      & \cdots & 0      \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0    & 0      & 0      & \cdots & 0  \end{pmatrix} . \]
+
+\textbf{(a)} Draw a transition rate diagram for this jump process.
+
+\begin{myanswers}
+\emph{Solution.}
+
+\end{myanswers}
+
+This process is a ``multiple decrement model'': there is one ``active state'' 0 and a number of ``exit states'' \(1,2,\dots,N\).
+
+\textbf{(b)} What is the probability that the process exits at state \(i\)?
+
+\begin{myanswers}
+\emph{Solution.} The probability of exit at \(i\) is \(r_{0i} = q_{0i}/q_0\).
+
+\end{myanswers}
+
+\textbf{(c)} Give a \(95\%\) prediction interval for the amount of time spent in the active state. (Your answer will be in terms of \(q_0\).)
+
+\begin{myanswers}
+\emph{Solution.}
+The amount of time in the active state is \(T_1 \sim \operatorname{Exp}(q_0)\). The \(\alpha\)-upper quantile of this distribution is the \(t\) such that \(\alpha = \mathrm{e}^{-q_0 t}\) which is \(-(\log\alpha)/q_0\). So the \(95\%\) prediction interval is
+\[ \left[ \frac{-\log0.975}{q_0} , \frac{-\log0.025}{q_0} \right] = \left[ \frac{0.025}{q_0}, \frac{3.69}{q_0} \right] .              \]
+
+\end{myanswers}
+
+\textbf{2.} Consider the Markov jump process \((X(t))\) with state space \(\mathcal S = \{1,2,3\}\) and generator matrix
+\[ \mathsf Q = \begin{pmatrix} -3 & 2 & 1 \\ 2 & -6 & 4 \\ 1 & 3 & -4 \end{pmatrix} . \]
+The process begins from the state \(X(0) = 1\).
+Let \((Y_n)\) be the associated Markov jump chain.
+
+\textbf{(a)} Write down the transition matrix \(\mathsf R\) of the jump chain.
+
+\begin{myanswers}
+\emph{Solution.}
+\[ \mathsf R = \begin{pmatrix} 0 & \frac23 & \frac13 \\[0.5ex] \frac13 & 0 & \frac23 \\[0.5ex] \frac14 & \frac34 & 0 \end{pmatrix} . \]
+
+\end{myanswers}
+
+\textbf{(b)} What is the expected time of the first jump \(J_1\)?
+
+\begin{myanswers}
+\emph{Solution.}
+The first jump time has the distribution \(J_1 = T_1 \sim \operatorname{Exp}(q_1) = \operatorname{Exp}(3)\), which has expectation \(\mathbb E J_1 = \frac13\).
+
+\end{myanswers}
+
+\textbf{(c)} What is the probability the first jump is to state 2?
+
+\begin{myanswers}
+\emph{Solution.}
+The probability the first jump from \(1\) is to \(2\) is \(r_{12} = \frac23\).
+
+\end{myanswers}
+
+\textbf{(d)} By conditioning on the first jump, calculate the expected time of the second jump time \(J_2 = T_1 + T_2\).
+
+\begin{myanswers}
+\emph{Solution.}
+We have
+\begin{align*}
+\mathbb E(T_1 + T_2) &= \mathbb ET_1 + \mathbb P(Y_1 = 2) \mathbb E(T_2 \mid Y_1 = 2) \\ &\qquad{}+ \mathbb P(Y_1 = 2) \mathbb E(T_2 \mid Y_1 = 3) \\&= \frac1{q_1} + r_{12} \frac{1}{q_2} + r_{23} \frac{1}{q_3} \\&= \tfrac13 + \tfrac23 \, \tfrac16 + \tfrac13 \, \tfrac14 \\ &= \tfrac{19}{36} = 0.528
+\end{align*}
+
+\end{myanswers}
+
+\textbf{(e)} What is the probability that the second jump is to state 2?
+
+\begin{myanswers}
+\emph{Solution.}
+In the jump chain, the only length-\(2\) path from \(1\) to \(2\) is \(1 \to 3 \to 2\), with probability \(r_{12}^{(2)}=\frac13 \times \frac34 = \frac14\).
+
+\end{myanswers}
+
+\textbf{(f)} What is the probability that the third jump is to state 2?
+
+\begin{myanswers}
+\emph{Solution.}
+In the jump chain, paths of length \(3\) from \(1\) to \(2\) are
+\begin{align*}
+    1 &\to 2 \to 1 \to 2 & \tfrac23 \times \tfrac13 \times \tfrac23 &= \tfrac{16}{108} ,    \\
+    1 &\to 2 \to 3 \to 2 & \tfrac23 \times \tfrac23 \times \tfrac34 &=  \tfrac{36}{108} ,   \\
+    1 &\to 3 \to 1 \to 2 & \tfrac13 \times \tfrac14 \times \tfrac23 &=  \tfrac{6}{108} .
+    \end{align*}
+The total probability is \(r_{12}^{(3)} = \frac{58}{108} = 0.537\).
+
+\end{myanswers}
+
+\textbf{3.} Consider the Markov jump process on \(\mathcal S = \{1,2\}\) with generator matrix
+\[ \mathsf Q = \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} , \]
+where \(\alpha, \beta > 0\).
+
+\textbf{(a)} Write down the Kolmogorov forward equation for \(p_{11}(t)\), including the initial condition.
+
+\begin{myanswers}
+\emph{Solution.}
+The forward equation is \(p_{11}'(t) = -\alpha p_{11}(t) + \beta p_{12}(t)\), with initial condition \(p_{11}(0) = 1\).
+
+\end{myanswers}
+
+\textbf{(b)} Hence, show that
+\[ p'_{11}(t) + (\alpha + \beta)p_{11}(t) = \beta .  \]
+
+\begin{myanswers}
+\emph{Solution.}
+We have \(p_{11}(t) + p_{12}(t) = 1\), since rows of \(\mathsf P\) add to \(1\). Substituting \(p_{12}(t) = 1 - p_{11}(t)\) into part (a) and rearranging gives the desired differential equation.
+
+\end{myanswers}
+
+\textbf{(c)} Solve this differential equation to find \(p_{11}(t)\). (You may wish to first find a general solution the homogeneous differential equation by guessing a solution of the form \(\mathrm{e}^{\lambda t}\), then find a particular solution to the inhomogeneous differential equation, and then use the initial condition.)
+
+\begin{myanswers}
+\emph{Solution.}
+The homogeneous differential equation has solution \(A \mathrm e^{-(\alpha + \beta)t}\) (for example, by guessing a solution \(\mathrm e^{\lambda t}\), or other methods you may know from other courses). We can guess a particular solution \(p_{11}(t) = C\) and find \(C = \beta/(\alpha + \beta)\). So the general solution of the inhomogeneous differential equation is
+\[ p_{11}(t) = \frac{\beta}{\alpha+\beta} + A \mathrm e^{-(\alpha + \beta)t} . \]
+Using the initial condition \(p_{11}(0) = 1\) gives
+\[ A = 1-\frac{\beta}{\alpha + \beta} = \frac{\alpha}{\alpha + \beta} . \]
+We end up with the solution
+\[ p_{11}(t) = \frac{\beta}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta} \mathrm e^{-(\alpha + \beta)t} . \]
+
+\end{myanswers}
+
+\textbf{4.} We continue with the setup of Question 3.
+
+\textbf{(a)} Show that \(\mathsf Q^2 = -(\alpha + \beta) \mathsf Q\).
+
+\begin{myanswers}
+\emph{Solution.}
+We have
+\begin{align*}
+\mathsf Q^2 &= \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix}\begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} \\ &= \begin{pmatrix} \alpha^2 + \alpha\beta & -\alpha^2 - \alpha\beta \\ -\alpha\beta - \beta^2 & \alpha\beta + \beta^2 \end{pmatrix} \\ &= -(\alpha + \beta) \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} , 
+\end{align*}
+as required.
+
+\end{myanswers}
+
+\textbf{(b)} Hence, write down \(\mathsf Q^n\) for \(n \geq 1\) in terms of \(\mathsf Q\).
+
+\begin{myanswers}
+\emph{Solution.}
+By repeating the above pattern (or, more formally, using induction on \(n\)), we see that \(\mathsf Q^n = (-(\alpha+\beta))^{n-1} \mathsf Q\).
+
+\end{myanswers}
+
+\textbf{(c)} Show that
+\[ \mathsf P(t) = \mathrm{e}^{t\mathsf Q} = \sum_{n=0}^\infty \frac{t^n \mathsf Q^n}{n!} = \mathsf I + \frac{\mathsf{Q}}{\alpha + \beta} \big(1 - \mathrm{e}^{-(\alpha+\beta)t} \big) . \]
+(Take care with \(n = 0\) term in the sum.)
+
+\begin{myanswers}
+\emph{Solution.}
+Treating the \(n = 0\) term separately, we have
+\[ \mathsf P(t) = \mathsf I + \sum_{n=1}^\infty \frac{t^n\big(-(\alpha+\beta)\big)^{n-1}\mathsf Q}{n!} = \mathsf I - \frac{\mathsf Q }{\alpha+\beta} \sum_{n=1}^\infty \frac{\big(-(\alpha+\beta)t\big)^{n}}{n!} .     \]
+But the summation here is almost \(\mathrm{e}^{-(\alpha + \beta)t}\), except missing the \(n=0\) term -- so it's actually \(\mathrm{e}^{-(\alpha + \beta)t} - 1\). The result follows.
+
+\end{myanswers}
+
+\textbf{(d)} What, therefore, is \(p_{11}(t)\)? Check you answer agrees with Question 3(c).
+
+\begin{myanswers}
+\emph{Solution.}
+We need the \((1,1)\) entry of \(\mathsf P(t)\), which is
+\[ p_{11}(t) = 1 + \frac{-\alpha}{\alpha + \beta} \big(1 - \mathrm{e}^{-(\alpha+\beta)t} \big) = \frac{\beta}{\alpha+\beta} + \frac{\alpha}{\alpha+\beta} \mathrm{e}^{-(\alpha+\beta)t} , \]
+and is indeed the same as 3(c).
+
+\end{myanswers}
+
+\textbf{1.} Let
+\[ \mathsf D = \begin{pmatrix} d_1 & 0 & &  \\
+                               0 & d_2 & &  \\
+                                 &  & \ddots & \\
+                                &  & & d_n \end{pmatrix}  \]
+be a diagonal matrix.
+
+\textbf{(a)} What is \(\mathsf D^2\)?
+
+\begin{myanswers}
+\emph{Solution.}
+\[ \mathsf D^2 = \begin{pmatrix} d_1 & 0 & &  \\
+0 & d_2 & &  \\
+&  & \ddots & \\
+&  & & d_n \end{pmatrix}\begin{pmatrix} d_1 & 0 & &  \\
+0 & d_2 & &  \\
+&  & \ddots & \\
+&  & & d_n \end{pmatrix} = \begin{pmatrix} d_1^2 & 0 & &  \\
+0 & d_2^2 & &  \\
+&  & \ddots & \\
+&  & & d_n^2 \end{pmatrix} .         \]
+
+\end{myanswers}
+
+\textbf{(b)} What is \(\mathsf D^n\) for \(n \geq 2\)?
+
+\begin{myanswers}
+\emph{Solution.}
+Repeating the above pattern (or, more formally, using induction) we have
+\[ \mathsf D^n = \begin{pmatrix} d_1^n & 0 & &  \\
+0 & d_2^n & &  \\
+&  & \ddots & \\
+&  & & d_n^n \end{pmatrix} .\]
+
+\end{myanswers}
+
+\textbf{(c)} What is \(\mathrm{e}^{\mathsf D}\)?
+
+\begin{myanswers}
+\emph{Solution.}
+We use the definition \(\mathrm{e}^{\mathsf D} = \sum_n \mathsf D^n / n!\). Since all the \(\mathsf D^n\)s are diagonal, \(\mathrm{e}^{\mathsf D}\) will be diagonal too. The \(i\)th diagonal entry will be \(\sum_n d_i^n / n! = \mathrm{e}^{d_i}\). Hence,
+\[ \mathrm{e}^{\mathsf D}  = \begin{pmatrix} \mathrm{e}^{d_1} & 0 & &  \\
+0 & \mathrm{e}^{d_2} & &  \\
+&  & \ddots & \\
+&  & & \mathrm{e}^{d_n} \end{pmatrix} .\]
+
+\end{myanswers}
+
+\textbf{(d)} Explain how you could use eigenvalue methods and diagonalisation to find an explicit formula for the entries of the exponential of a matrix \(\mathsf A\).
+
+\begin{myanswers}
+\emph{Solution.}
+We can (usually) diagonalise the matrix \(\mathsf A = \mathsf P^{-1}\mathsf{DP}\), where \(\mathsf D\) is the diagonal matrix of eigenvalues and \(\mathsf P\) is the matrix of eigenvectors. Then we have
+\[ \mathsf A^n = \mathsf P^{-1}\mathsf{DP}\mathsf P^{-1}\mathsf{DP}\cdots\mathsf P^{-1}\mathsf{DP} = \mathsf P^{-1}\mathsf{D}^n\mathsf{P} ,  \]
+and so \(\mathrm{e}^{\mathsf A} = \mathsf P^{-1} \mathrm{e}^{\mathsf D} \mathsf P\), and \(\mathrm{e}^{\mathsf D}\) is easily calculated as in part (c).
 
 \end{myanswers}
 

@@ -23,13 +23,13 @@ $(document).ready(function() {
 -->
 
 
-
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
-
+-->
 
 
 \commfalse
@@ -47,9 +47,8 @@ You should attempt all these questions and write up your solutions in advance of
 :::: {.subq}
 **(a)** Fix $n$. What is the expected time between the $n$th arrival and the $(n+1)$th arrival?
 
-
 ::: {.myanswers data-latex=""}
-*Solution.* The waiting time is Exp$(\lambda)$ with mean $1/\lambda$.
+*Solution.* The waiting time is $\Exp(\lambda)$ with mean $1/\lambda$.
 :::
 ::::
 
@@ -57,7 +56,11 @@ You should attempt all these questions and write up your solutions in advance of
 **(b)** Fix $t$. What is the expected time between the previous arrival before $t$ and the next arrival after $t$?
 
 ::: {.myanswers data-latex=""}
-*Solution.* The waiting time until the next arrival is Exp$(\lambda)$ with mean $1/\lambda$. Working backwards, time since last arrival EXPLAIN EXPLAIN is also Exp$(\lambda)$. Total is $2/\lambda$.
+*Solution.* The time between the arrivals is $S + T$, where $S$ is the time backwards from $t$ since the previous arrival, and $T$ is the time forwards from $t$ until thenext arrival. By the memoryless property of the exponential distribution, $T \sim \Exp(\lambda)$, with mean $1/\lambda$. What about $S$? We have
+\[ \mathbb P(S > s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \exp{-\lambda s} \frac{(\lambda s)^0}{0!} = \exp{-\lambda s} , \]
+which is itself is the tail probability of another $\Exp(\lambda)$ distribution, so $S \sim \Exp(\lambda)$ with mean $1/\lambda$ too.
+Hence
+\[ \mathbb E(S + T) = \frac1\lambda + \frac1\lambda = \frac2\lambda .\]
 :::
 ::::
 
@@ -65,7 +68,7 @@ You should attempt all these questions and write up your solutions in advance of
 **(c)** Your answers to the previous two questions should be different. Explain why one should expect the second answer to be bigger than the first.
 
 ::: {.myanswers data-latex=""}
-*Solution.* Eg. the time $t$ is more likely to have landed in a longer-than-average wait time, because there's more space to land in.
+*Solution.* Imagine the arrivals being placed on the real line -- some with big gaps between them, and some with small gaps between them. If we then place the time $t$, it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point $t$ is "size-biased", and is larger than a unfirotmly randomly chosen gap.
 :::
 ::::
 :::::
@@ -94,7 +97,7 @@ Since we have $Y(0) = 0$ and independent increments, we have written down precis
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
-	The forward equations are
+From Section \@ref(birth-processes) of the notes, and putting $\lambda_j = \lambda j$, the forward equations are
 	\begin{align*}
 	j &= 1\colon  &  p'_j(t) &= -\lambda  p_1(t) &  p_1(0) &= 1 \\
 	j &\geq 2 \colon   &  p'_j(t) &= -\lambda j p_j(t) + \lambda (j-1)p_{j-1}(t)  &  p_j(0) &= 0
@@ -109,21 +112,22 @@ Since we have $Y(0) = 0$ and independent increments, we have written down precis
 
 ::: {.myanswers data-latex=""}
 *Solution.* 
-	For $j = 1$, we have $p_1(t) = \ee^{-\lambda t}$. This clearly has $p_1(0) = \ee^0 = 1$, and $p'(j) = -\lambda \ee^{-\lambda t}$, as required.
+	For $j = 1$, we have $p_1(t) = \ee^{-\lambda t}$. This clearly has $p_1(0) = \ee^0 = 1$, and $p'_1(t) = -\lambda \ee^{-\lambda t} = \lambda p_1(t)$, as required.
 	
-Now consider $j \geq 2$. We indeed have $p_j(0) = 0$. By the product rule, the derivative is
+Now consider $j \geq 2$. We indeed have $p_j(0) = 0$. By the product rule, the derivative on the left-hand side is
 	\begin{align*}
 	p'_j(t) &=  -\lambda \big(1 - \ee^{-\lambda t}\big)^{j-1}\ee^{-\lambda t} + \lambda \ee^{-\lambda t} (j-1) \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} ,    \\
 	&= -\lambda \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} \big(1 - \ee^{-\lambda t} -\ee^{-\lambda t} (j-1) \big) \\
-	&=- \lambda \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} \big(1 - j \ee^{-\lambda t}  \big),
+	&=- \lambda \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} \big(1 - j \ee^{-\lambda t}  \big).
 	 \end{align*}
-	and this is equal to
+The right-hand side is
 	\begin{align*}
 	-\lambda j p_j(t) + {}&\lambda (j-1)p_{j-1}(t) \\
 	&= - \lambda j \big(1 - \ee^{-\lambda t}\big)^{j-1}\ee^{-\lambda t} + \lambda (j-1) \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} \\
 	&= -\lambda\big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t}\big(j(1 - \ee^{-\lambda t}) - (j-1)\big) \\
 	&= - \lambda \big(1 - \ee^{-\lambda t}\big)^{j-2}\ee^{-\lambda t} \big(1 - j \ee^{-\lambda t}  \big) .
 	\end{align*}
+These are indeed equal.
 :::
 ::::
 
@@ -156,6 +160,8 @@ Now consider $j \geq 2$. We indeed have $p_j(0) = 0$. By the product rule, the d
 	\[ \mathbb E J_n = \sum_{j=1}^n \mathbb E T_j = \sum_{j=1}^n \frac{1}{\lambda j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}j . \]
 	Since the holding times are independent,
 	\[ \Var (J_n) = \sum_{j=1}^n \Var (T_j) = \sum_{j=1}^n \frac{1}{\lambda^2 j^2} = \frac{1}{\lambda^2} \sum_{j=1}^n \frac{1}{j^2} . \]
+	
+The harmonic series $\sum_j 1/j$ diverges, so $\mathbb E J_n$ tends to infinity. The series $\sum_j 1/j^2$, on the other hand, converges (to $\pi^2/6$, although you don't need to know that), so $\Var (J_n)$ is bounded (by $\pi^2/6\lambda^2$).
 :::
 ::::
 :::::

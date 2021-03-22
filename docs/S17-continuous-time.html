@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Problem Sheet 1 | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 17 Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Problem Sheet 1 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 17 Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Problem Sheet 1 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 17 Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="S02-random-walk.html"/>
-<link rel="next" href="S03-gamblers-ruin.html"/>
+<link rel="prev" href="P08.html"/>
+<link rel="next" href="S18-forward-backward.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -243,201 +243,145 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="P01" class="section level1 unnumbered">
-<h1>Problem Sheet 1</h1>
-<style>
-.fold-btn { 
-  float: right; 
-  margin: -12px 0 0 0;
-}
-</style>
-<script type="text/javascript">
-$(document).ready(function() {
-  $folds = $(".myanswers");
-  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
-  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
-  $(".fold-blck").toggle();  // fold all blocks
-  $(".fold-btn").on("click", function() {  // add onClick event
-    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
-    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
-  })
-});
-</script>
-<!--
-<style>
-.myanswers { 
-display: none !important;
-}
-</style>
--->
+<div id="S17-continuous-time" class="section level1" number="17">
+<h1><span class="header-section-number">Section 17</span> Continuous time Markov jump processes</h1>
 <div class="mysummary">
-<p>You should attempt all these questions and write up your solutions in advance of your workshop in week 2 (Monday 1 or Tuesday 2 February) where the answers will be discussed.</p>
-</div>
-<div class="myq">
-<p><strong>1.</strong> When designing a model for a quantity that changes over time, one has many decisions to make:</p>
 <ul>
-<li>Discrete or continuous state space?</li>
-<li>Discrete or continuous index set for time?</li>
-<li>Deterministic or stochastic model?</li>
-<li>If a stochastic model is chosen, is it reasonable to assume that the Markov property holds?</li>
+<li>Time homogeneous continuous time Markov jump processes in terms of the jump Markov chain and the holding times</li>
+<li>Explosion of Markov jump processes</li>
 </ul>
-<p>What would you decide for the following scenarios:</p>
-<div class="subq">
-<p><strong>(a)</strong> The percentage of UK voters with a positive opinion of Boris Johnson in a weekly tracking poll.</p>
 </div>
-<div class="subq">
-<p><strong>(b)</strong> The number of points won by a football league club throughout the season.</p>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> The temperature of a bowl of water placed in an oven.</p>
-</div>
-<div class="subq">
-<p><strong>(d)</strong> The number of people inside the University of Leeds library.</p>
-<div class="myanswers">
-<p><em>Suggestions.</em> This question is meant to inspire discussion, so there are not necessarily right and wrong answers. If I were designing the models, however, my choices might be these:</p>
-<p><strong>(a)</strong> Discrete space if percentages are given to nearest 1%, otherwise continuous; discrete time (weekly); stochastic; the Markov property might be appropriate, perhaps using some sort of random walk.</p>
-<p><strong>(b)</strong> Discrete space (number of points); discrete time (update after each game); stochastic; the Markov property might be appropriate, depending on if you think teams can have non-Markovian “winning streaks” (or losing streaks) that don’t reflect underlying performance.</p>
-<p><strong>(c)</strong> Continuous space (temperature); continuous time; if the oven is reliable and the experiment carried out carefully, a deterministic model might be sufficient.</p>
-<p><strong>(d)</strong> Discrete space (number of people); continuous time; stochastic; Markov property might not be appropriate due to `bursts’ of people leaving during fire drills or entering when it starts raining.</p>
+<div id="jump-holding" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Jump chain and holding times</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/Kh-Yh8VMtVs">
+</iframe>
 </div>
 </div>
-</div>
-<div class="myq">
-<p><strong>2.</strong> A fair six-sided dice is rolled twice, resulting in the
-values <span class="math inline">\(X_1, X_2 \in \{1, 2, \ldots, 6\}\)</span>. Let <span class="math inline">\(Y = X_1 + X_2\)</span> be the total score.
-Calculate:</p>
-<div class="subq">
-<p><strong>(a)</strong> the probability <span class="math inline">\(\mathbb P(Y = 10)\)</span>;</p>
-<div class="myanswers">
-<p><em>Solution.</em> The following table illustrates the possible outcomes <span class="math inline">\(Y\)</span> of the experiment. Each cell of the table is an equally probable outcome.</p>
-<p><img src="math2750_files/figure-html/dice-1.png" width="384" style="display: block; margin: auto;" /></p>
-<p>There are 3 possible ways to get <span class="math inline">\(Y=10\)</span> (the grey cells in the table) out of the <span class="math inline">\(36\)</span> possible outcomes, so we have <span class="math inline">\(\mathbb P(Y = 10) = 3/36 = 1/12\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> the conditional probability <span class="math inline">\(\mathbb P(Y=10 \mid X_1=x)\)</span> for <span class="math inline">\(x=1, 2, \ldots, 6\)</span>;</p>
-<div class="myanswers">
-<p><em>Solution.</em> Conditioning on <span class="math inline">\(X_1 = x\)</span> means restricting our attention only to column <span class="math inline">\(x\)</span> of the table. Each column has <span class="math inline">\(6\)</span> equally probably cells. For <span class="math inline">\(x=1,2,3\)</span>, none of the entries equal <span class="math inline">\(10\)</span>, so <span class="math inline">\(\mathbb P(Y=10 \mid X_1=x) = 0/6 = 0\)</span>. For each of <span class="math inline">\(x=4,5,6\)</span>, one of the entries equals <span class="math inline">\(10\)</span>, so <span class="math inline">\(\mathbb P(Y=10 \mid X_1=x) = 1/6\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> the conditional probability <span class="math inline">\(\mathbb P(X_1=x \mid Y=10)\)</span> for <span class="math inline">\(x=1, 2, \ldots, 6\)</span>.</p>
-<div class="myanswers">
-<p><em>Solution.</em> Conditioning on <span class="math inline">\(Y =10\)</span> means restricting our attention only to the <span class="math inline">\(3\)</span> shaded cells, which are each equally likely. For <span class="math inline">\(x=1,2,3\)</span>, none of the shaded cells are in column <span class="math inline">\(x\)</span>, so <span class="math inline">\(\mathbb P(X_1=x \mid Y=10) = 0/3 = 0\)</span>. For each of <span class="math inline">\(x=4,5,6\)</span>, one of the shaded cells is in column <span class="math inline">\(x\)</span>, so <span class="math inline">\(\mathbb P(X_1=x \mid Y=10) = 1/3\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="myq">
-<p><strong>3.</strong> Let <span class="math inline">\((X_n)\)</span> be a simple random walk starting from <span class="math inline">\(X_0 = 0\)</span> and that at each step goes up one with probability <span class="math inline">\(p\)</span> or down one with probability <span class="math inline">\(q = 1-p\)</span>. What are:</p>
-<div class="subq">
-<p><strong>(a)</strong> <span class="math inline">\(\mathbb P(X_5 = 3)\)</span>,</p>
-<div class="myanswers">
-<p><em>Solution.</em> To get <span class="math inline">\(X_5 = 3\)</span>, we must take <span class="math inline">\(4\)</span> steps up and <span class="math inline">\(1\)</span> step down. The down step can be at any of the <span class="math inline">\(5\)</span> time steps. Therefore we have <span class="math inline">\(\mathbb P(X_5 = 3) = 5p^4q\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> <span class="math inline">\(\mathbb P(X_5 = 3 \mid X_2 = 2)\)</span>,</p>
-<div class="myanswers">
-<p><em>Solution.</em> Once we’re at <span class="math inline">\(X_2 = 2\)</span>, we must take <span class="math inline">\(2\)</span> steps up and <span class="math inline">\(1\)</span> step down over the next <span class="math inline">\(3\)</span> time steps. So <span class="math inline">\(\mathbb P(X_5 = 3 \mid X_2 = 2) = 3p^2q\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> <span class="math inline">\(\mathbb P(X_n = n-2)\)</span>,</p>
-<div class="myanswers">
-<p><em>Solution.</em> This requires <span class="math inline">\(n-1\)</span> steps up and <span class="math inline">\(1\)</span> step down, and the down step can be at any of the <span class="math inline">\(n\)</span> time steps. So <span class="math inline">\(\mathbb P(X_n = n-2) = np^{n-1}q\)</span>.</p>
+<p>In this section, we will start looking at general Markov processes in continuous time and discrete space. All our examples will be time homogeneous, in that the transition probabilities and transition rates will remain constant over time.</p>
+<p>We call these <strong>Markov jump processes</strong>, as we will wait in a state for a random holding time, and then we will suddenly “jump” to another state.</p>
+<p>The idea will be treat two matters separately:</p>
+<ul>
+<li><strong>where we jump too:</strong> This will be studied through the “jump chain”, a discrete time Markov chain that tells us <em>what</em> transitions are made (but not <em>when</em> they are made).</li>
+<li><strong>how long we wait until we jump:</strong> we call these the “holding times”. To preserve the Markov property, these holding times must have an exponential distribution, since this is the only random variable that has the <a href="#memoryless-thm">memoryless property</a>.</li>
+</ul>
+<p>Let us consider a Markov jump process <span class="math inline">\((X(t))\)</span> on a state space <span class="math inline">\(\mathcal S\)</span>. Suppose we are at a state <span class="math inline">\(i \in \mathcal S\)</span>. The <strong>transition rate</strong> at which we wish to jump to a state <span class="math inline">\(j \neq i\)</span> will be written <span class="math inline">\(q_{ij} \geq 0\)</span>. This means that, after a time with an exponential distribution <span class="math inline">\(\operatorname{Exp}(q_{ij})\)</span>, if the process has not jumped yet, it will jump to state <span class="math inline">\(j\)</span>.</p>
+<p>(We use the convention that if <span class="math inline">\(q_{ij} = 0\)</span> for some <span class="math inline">\(j \neq i\)</span>, this means we will never jump from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>. If for some <span class="math inline">\(i\)</span> we have <span class="math inline">\(q_{ij} = 0\)</span> for <em>all</em> <span class="math inline">\(j \neq i\)</span>, then we stay in state <span class="math inline">\(i\)</span> forever, and <span class="math inline">\(i\)</span> is an abaorbing state.)</p>
+<p>So from state <span class="math inline">\(i\)</span>, there are many other states <span class="math inline">\(j\)</span> we could jump to, each waiting for a time <span class="math inline">\(\operatorname{Exp}(q_{ij})\)</span>. Which of these times will be up first, leading the process to jump to that state? And how long will it be until that first time is up and we move?
+The answer is given by Theorem <a href="S14-poisson-exponential.html#thm:exponential-thm">14.2</a>, which showed us the distribution of the minimum of the <span class="math inline">\(\operatorname{Exp}(q_{ij})\)</span>s is itself exponential, with rate
+<span class="math display">\[ q_i := \sum_{j \neq i} q_{ij} . \]</span>
+Further, and also from Theorem <a href="S14-poisson-exponential.html#thm:exponential-thm">14.2</a>, the probability that we move to some state <span class="math inline">\(j \neq i\)</span> is
+<span class="math display">\[ r_{ij} := \frac{q_{ij}}{\sum_{j \neq i} q_{ij}} = \frac{q_{ij}}{q_i} . \]</span>
+These last two displayed equations define the quantities <span class="math inline">\(q_i\)</span> and <span class="math inline">\(r_{ij}\)</span>. (If <span class="math inline">\(i\)</span> is an absorbing state <span class="math inline">\(i\)</span>, then by convenetion we put <span class="math inline">\(r_{ii} = 1\)</span> and <span class="math inline">\(r_{ij} = 0\)</span> for <span class="math inline">\(j \neq i\)</span>.</p>
+<p>So, this is the crucial idea: from state <span class="math inline">\(i\)</span>, we wait for a holding time with distribution <span class="math inline">\(\operatorname{Exp}(q_i)\)</span>, then move to another state, choosing state <span class="math inline">\(j\)</span> with probability <span class="math inline">\(r_{ij}\)</span>.</p>
+<p>It will be convenient to write all the transition rates <span class="math inline">\(q_{ij}\)</span> down in a <strong>generator matrix</strong> <span class="math inline">\(\mathsf Q\)</span> defined as follows: the off-diagonal entries are <span class="math inline">\(q_{ij}\)</span>, for <span class="math inline">\(i \neq j\)</span>, and the diagonal entries are
+<span class="math display">\[ q_{ii} = - q_i = -\sum_{j \neq i} q_{ij} . \]</span>
+In particular, the off-diagonal entries are positive (or 0), the diagonal entries are negative (or 0) and each row adds up to 0.</p>
+<p>One convenient way to keep track of the movement of a continuous time Markov jump process will be to look at which states it jumps to, leaving the holding times for later consideration. That is, we can consider the discrete time <strong>jump Markov chain</strong> (or just <strong>jump chain</strong>) <span class="math inline">\((Y_n)\)</span> associated with <span class="math inline">\((X(t))\)</span> given by
+<span class="math inline">\(Y_0 = X(0)\)</span> and
+<span class="math display">\[ Y_n = \text{state of $X(t)$ just after the $n$th jump.} \]</span>
+This is a discrete time Markov chain that starts from the same place <span class="math inline">\(Y_0 = X(0)\)</span> as <span class="math inline">\((X(t))\)</span> does, and has transitions given by <span class="math inline">\(r_{ij} = q_{ij}/q_i\)</span>. (The jump chain cannot move from a state to itself.)</p>
+<p>Once we know where the jump process will move, we then know what the next holding time will be: from state <span class="math inline">\(j\)</span>, the holding time will be <span class="math inline">\(\operatorname{Exp}(q_j)\)</span></p>
+<p>We can some all this up in the following (rather long-winded) formal definition.</p>
+<div class="definition">
+<p><span id="def:CTMC" class="definition"><strong>Definition 17.1  </strong></span> </p>
+<ul>
+<li>Let <span class="math inline">\(\mathcal S\)</span> be a set, and <span class="math inline">\(\boldsymbol\lambda\)</span> a distribution on <span class="math inline">\(\mathcal S\)</span>.</li>
+<li>Let <span class="math inline">\(\mathsf Q = (q_{ij} : i,j \in \mathcal S)\)</span> be a matrix where <span class="math inline">\(q_{ij} \geq 0\)</span> for <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\sum_j q_{ij} = 0\)</span> for all <span class="math inline">\(i\)</span>, and write <span class="math inline">\(q_i = -q_{ii} = -q_i = \sum_{j \neq i} q_{ij}\)</span>.</li>
+<li>Define <span class="math inline">\(\mathsf R = (r_{ij} : i,j \in \mathcal S)\)</span> as follows: for <span class="math inline">\(i\)</span> such that <span class="math inline">\(q_i \neq 0\)</span>, write <span class="math inline">\(r_{ij} = q_{ij}/q_i\)</span> for <span class="math inline">\(j \neq i\)</span>, and <span class="math inline">\(r_{ii}= 0\)</span>; and for <span class="math inline">\(i\)</span> such that <span class="math inline">\(q_i = 0\)</span>, write <span class="math inline">\(r_{ij} = 0\)</span> for <span class="math inline">\(j \neq i\)</span>, and <span class="math inline">\(r_{ii} = 1\)</span>.</li>
+</ul>
+<p>We wish to define the <strong>Markov jump process</strong> on a state space <span class="math inline">\(\mathcal S\)</span> with generator matrix <span class="math inline">\(\mathsf Q\)</span> and initial distribution <span class="math inline">\(\boldsymbol\lambda\)</span>.</p>
+<ul>
+<li>The <strong>jump chain</strong> <span class="math inline">\((Y_n)\)</span> is the discrete time Markov chain on <span class="math inline">\(\mathcal S\)</span> with initial distribution <span class="math inline">\(\boldsymbol\lambda\)</span> and transition matrix <span class="math inline">\(\mathsf R\)</span>.</li>
+<li>The <strong>holding times</strong> <span class="math inline">\(T_1, T_2, \dots\)</span> have distribution <span class="math inline">\(T_n \sim \operatorname{Exp}(q_{Y_{n-1}})\)</span>, and are conditionally independent given <span class="math inline">\((Y_n)\)</span>.</li>
+<li>The <strong>jump times</strong> are <span class="math inline">\(J_n = T_1 + T_2 + \cdots + T_n\)</span>.</li>
+</ul>
+<p>Then (at last!) the Markov jump process <span class="math inline">\((X(t))\)</span> is defined by
+<span class="math display">\[
+    X(t) = \begin{cases} Y_0 &amp; \text{for }t &lt; J_1 \\
+                         Y_n &amp; \text{for }J_n \leq t &lt; J_{n+1} .\end{cases}  \]</span></p>
 </div>
 </div>
-<div class="subq">
-<p><strong>(d)</strong> <span class="math inline">\(\mathbb E X_4\)</span>,</p>
-<div class="myanswers">
-<p><em>Solution.</em> The increments <span class="math inline">\(Z_n = X_n - X_{n-1}\)</span> have expectation <span class="math inline">\(1p + (-1)q = p - q\)</span>, so <span class="math inline">\(\mathbb E X_4 = 4(p-q)\)</span>.</p>
+<div id="CTMC-examples" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Examples</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/uciafay3WCM">
+</iframe>
 </div>
 </div>
-<div class="subq">
-<p><strong>(e)</strong> <span class="math inline">\(\mathbb E(X_6 \mid X_4 = 2)\)</span>,</p>
-<div class="myanswers">
-<p><em>Solution.</em> We are already at 2, then another two increments will take us up <span class="math inline">\(2(p-q)\)</span> on average. Therefore <span class="math inline">\(\mathbb E(X_6 \mid X_4 = 2) = 2 + 2(p-q)\)</span>.</p>
+<div class="example">
+<p><span id="exm:three-state" class="example"><strong>Example 17.1  </strong></span>Consider the Markov jump process on a state space <span class="math inline">\(\mathcal S = \{1,2,3\}\)</span> with transition rates as illustrated in the following transition rate diagram. (Note that a transition rate diagram never has arrows from a state to itself.)</p>
+<div class="figure" style="text-align: center"><span id="fig:ctmc1"></span>
+<img src="math2750_files/figure-html/ctmc1-1.png" alt="Transition diagram for a continuous Markov jump process." width="288" />
+<p class="caption">
+Figure 17.1: Transition diagram for a continuous Markov jump process.
+</p>
+</div>
+<p>The generator matrix is
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 2 &amp; 0 \\
+ 1 &amp; -3 &amp; 2 \\
+ 0 &amp; 1 &amp; -1 \end{pmatrix} , \]</span>
+where the off-diagonal entries are the rates from the diagram, and the diagonal entries are chosen to make sure the rows add up to 0.</p>
+<p>The transition matrix of the jump chain is
+<span class="math display">\[ \mathsf R = \begin{pmatrix} 0 &amp; 1 &amp; 0 \\
+ \frac13 &amp; 0 &amp; \frac23 \\
+ 0 &amp; 1 &amp; 0 \end{pmatrix} , \]</span>
+where we set the diagonal elements equal to 0, then normalize each row so that it adds up to 1.</p>
+<p>So, for example, starting from state 2, we wait for a holding time <span class="math inline">\(T_1 \sim \operatorname{Exp}(q_2) = \operatorname{Exp}(-q_{22}) = \operatorname{Exp}(3)\)</span>. We then move to state 1 with probability <span class="math inline">\(r_{21} = q_{21}/q_2 = \frac13\)</span> and to state 3 with probability <span class="math inline">\(r_{23} = q_{23}/q_2 = \frac23\)</span>.</p>
+<p>Suppose we move to state 1. Then we stay in state 1 for a time <span class="math inline">\(\operatorname{Exp}(q_1) = \operatorname{Exp}(2)\)</span>, before moving with certainty back to state 2. And so on.</p>
+</div>
+<div class="example">
+<p><span id="exm:ABC" class="example"><strong>Example 17.2  </strong></span>Consider the Markov jump process with state space <span class="math inline">\(\mathcal S = \{A,B,C\}\)</span> and this transition rate diagram.</p>
+<div class="figure" style="text-align: center"><span id="fig:ctmc2"></span>
+<img src="math2750_files/figure-html/ctmc2-1.png" alt="Transition diagram for a continuous Markov jump process with an absorbing state." width="288" />
+<p class="caption">
+Figure 17.2: Transition diagram for a continuous Markov jump process with an absorbing state.
+</p>
+</div>
+<p>The generator matrix is
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -q_A &amp; q_{AB} &amp; q_{AC} \\
+ q_{BA} &amp; -q_B &amp; q_{BC} \\
+ 0 &amp; 0 &amp; 0\end{pmatrix} , \]</span>
+where <span class="math inline">\(q_A = q_{AB} + q_{AC}\)</span> and <span class="math inline">\(q_B = q_{BA} + q_{BC}\)</span>.
+Here, state C is an absorbing state, so if we ever reach it, we stay there forever. So the jump chain has transition rates
+<span class="math display">\[ \mathsf R = \begin{pmatrix} 0 &amp; q_{AB}/q_A &amp; q_{AC}/q_A \\
+ q_{BA}/q_B &amp; 0 &amp; q_{BC}/q_B \\
+ 0 &amp; 0 &amp; 1 \end{pmatrix} . \]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:PP-CTMC" class="example"><strong>Example 17.3  </strong></span>The Poisson process with rate <span class="math inline">\(\lambda\)</span> has state space <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span>. The transition rates from <span class="math inline">\(i\)</span> to <span class="math inline">\(i+1\)</span> are
+<span class="math inline">\(q_{i,i+1} = \lambda\)</span>, and all other transition rates are 0. So the generator matrix is
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp;  \\
+ 0 &amp; -\lambda &amp; \lambda &amp; 0 &amp;   \\
+0 &amp; 0 &amp; -\lambda &amp; \lambda &amp;   \\ 
+ &amp; &amp; &amp; \ddots &amp; \ddots \\ 
+ \end{pmatrix}.
+\]</span>
+The jump chain is very boring: it starts from 0 and moves with certainty to 1, then with certainty to 2, then to 3, and so on.</p>
 </div>
 </div>
-</div>
-<div class="myq">
-<p><strong>4.</strong> The price <span class="math inline">\(X_n\)</span> of a stock at the close of day <span class="math inline">\(n\)</span> is modelled as a Gaussian random walk, where the increments <span class="math inline">\((Z_n)\)</span> have a normal distribution <span class="math inline">\(Z_n \sim \text{N}(\mu, \sigma^2)\)</span>. The model assumes a drift of <span class="math inline">\(\mu = 0.7\)</span> and a volatility of <span class="math inline">\(\sigma = 2.2\)</span>. The initial price is <span class="math inline">\(X_0 = 42.3\)</span>.</p>
-<div class="subq">
-<p><strong>(a)</strong> Calculate the mean and variance of the price of the stock at the close of day <span class="math inline">\(5\)</span>.</p>
-<div class="myanswers">
-<p><em>Solution.</em> The mean and variance are
-<span class="math display">\[\begin{gather*}
-  \mathbb EX_5 = \mathbb E X_0 + n \mathbb E Z_1 = 42.3 + 5 \cdot 0.7 = 45.8 , \\
-  \operatorname{Var}X_5 = \operatorname{Var}X_0 + n \operatorname{Var}Z_1 = 0 + 5 (2.2)^2 = 24.2 .
-  \end{gather*}\]</span></p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> Give a 95% prediction interval for the price at the close of day 5. (You might find it useful to recall that, if <span class="math inline">\(W \sim \text{N}(0,1)\)</span> is a standard normal random variable, then <span class="math inline">\(\mathbb P(W \leq 1.96) = 0.975\)</span>.)</p>
-<div class="myanswers">
-<p><em>Solution.</em> Note that <span class="math inline">\(X_5\)</span> itself is normally distributed, so <span class="math inline">\(X_5 \sim \text{N}(45.8,24.2)\)</span>. The 95% prediction interval for a normal distribution <span class="math inline">\(\text{N}(\mu, \sigma^2)\)</span> is <span class="math inline">\((\mu - 1.96\sigma, \mu + 1.96\sigma)\)</span>, so the prediction interval for <span class="math inline">\(X_5\)</span> is
-<span class="math display">\[ \big(45.8 - 1.96\sqrt{24.2},  45.8 + 1.96\sqrt{24.2}\big) = (36.16, 55.44) . \]</span></p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> After day 4, the prices at the end of each of the first four days have been recorded as <span class="math inline">\(X_1 = 44.4, X_2 = 44.0, X_3 = 47.1, X_4 = 47.8\)</span>. Update your prediction interval for the price at the close of day 5, and comment on how it differs from the earlier prediction interval.</p>
-<div class="myanswers">
-<p><em>Solution.</em> By the Markov property, <span class="math inline">\(X_5\)</span> depends on <span class="math inline">\(X_4\)</span>, but given <span class="math inline">\(X_4\)</span> does not depend on the other values, which we can therefore ignore. Since <span class="math inline">\(X_5 = X_4 + Z_5\)</span>, we have
-<span class="math display">\[\begin{gather*}
-  \mathbb E(X_5 \mid X_4) = X_4 + \mathbb E Z_5 = 47.8 + 0.7 = 48.5 \\
-  \operatorname{Var}(X_5 \mid X_4) = 0 + \operatorname{Var}Z_5 = 0 + (2.2)^2 = 4.84.
-  \end{gather*}\]</span>
-The desired prediction interval is
-<span class="math display">\[ \big(48.5 - 1.96\sqrt{4.84},  48.5+ 1.96\sqrt{4.84}\big) = (44.19, 52.81) . \]</span>
-Compared to before, the centre of the prediction interval is slightly higher, because the stock has outperformed expectations so far, and the interval is much narrower, because as we get closer to day 5 we become less uncertain.</p>
-</div>
-</div>
-</div>
-<div class="myq">
-<p><strong>5.</strong> A gambler decides to model her total winnings as a simple random walk starting from <span class="math inline">\(X_0 = 0\)</span> that at each time goes up one with probability <span class="math inline">\(p\)</span> and down one with probability <span class="math inline">\(1-p\)</span>, but where <span class="math inline">\(p\)</span> is unknown. The first <span class="math inline">\(10\)</span> recordings, <span class="math inline">\(X_1\)</span> to <span class="math inline">\(X_{10}\)</span>, are
-<span class="math display">\[ (1, 2, 1, 2, 3, 4, 5, 6, 5, 6) . \]</span></p>
-<div class="subq">
-<p><strong>(a)</strong> What would you guess for the value of <span class="math inline">\(p\)</span>, given this data?</p>
-<div class="myanswers">
-<p><em>Solution.</em> In <span class="math inline">\(10\)</span> time steps, the process went up <span class="math inline">\(k = 8\)</span> times and down <span class="math inline">\(n - k = 2\)</span> times. So it seems reasonable to guess that <span class="math inline">\(p\)</span> has the value <span class="math inline">\(\hat p = \frac{8}{10} = 0.8\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> More generally, how would you estimate <span class="math inline">\(p\)</span> from the data <span class="math inline">\(X_0 = 0, X_1 = x_1, X_2 = x_2, \dots, X_n = x_n\)</span>?</p>
-<div class="myanswers">
-<p><em>Solution.</em> We will estimate <span class="math inline">\(\hat p = k/n\)</span>, where <span class="math inline">\(k\)</span> is the number of upward steps. We saw in lectures that <span class="math inline">\(k = (n + x_n)/2\)</span>, so our estimate is
-<span class="math display">\[ \hat p = \frac{n + x_n}{2n} = \frac12\ + \frac{x_n}{2n} . \]</span></p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> Show that your estimate is in fact the maximum likelihood estimate of <span class="math inline">\(p\)</span>.</p>
-<div class="myanswers">
-<p><em>Solution.</em> The concept of “maximum likelihood estimation” will be known to those who have done MATH2715; this might be new for those who didn’t take that course.</p>
-<p>Let <span class="math inline">\(k = (n + x_n)/2\)</span> be the number of upward steps. Then the “likelihood” is the probability mass function
-<span class="math display">\[ f(\mathbf x; p) = p^{k}(1-p)^{n-k} , \]</span>
-since we take <span class="math inline">\(k\)</span> steps up and <span class="math inline">\(n-k\)</span> steps down.
-Given <span class="math inline">\(\mathbf x\)</span> (or equivalently <span class="math inline">\(k\)</span>) the “maximum likelihood estimate” is the value of <span class="math inline">\(p\)</span> that maximises this likelihood.</p>
-<p>As is often the case, it’s equivalent but actually more convenient to maximise the log-likelihood
-<span class="math display">\[ \ell(\mathbf x; p) = \ln f(\mathbf x; p) = k \ln p + (n-k)\ln(1-p) .\]</span>
-We can perform the maximisation by differentiating and setting equal to <span class="math inline">\(0\)</span>. The derivative is
-<span class="math display">\[ \frac{\text{d}}{\text{d}p} \ell(\mathbf x; p) = \frac kp - \frac{n-k}{1-p} ,\]</span>
-so the maximum likelihood estimate <span class="math inline">\(\hat p\)</span> satisfies
-<span class="math display">\[ 0 = \frac k{\hat p} - \frac{n-k}{1-\hat p} . \]</span></p>
-<p>Solving this by clearing denominators we get
-<span class="math display">\[ 0 = (k - k\hat p) - (n\hat p - k\hat p) = k - n \hat p , \]</span>
-and rearranging gives <span class="math inline">\(\hat p = k/n\)</span> as desired.</p>
-</div>
-</div>
+<div id="a-brief-note-on-explosion" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> A brief note on explosion</h2>
+<p>There is one point we have to be a little careful about with when dealing with continuous time processes with an infinite state space – the potential of “explosion”. <strong>Explosion</strong> is when the process can get arbitrarily large in finite time. Think, for example, of a birth process with birth rates <span class="math inline">\(\lambda_j = \lambda j^2\)</span>. The <span class="math inline">\(n\)</span>th birth is expected to be occur at time
+<span class="math display">\[ \sum_{j=1}^n \frac{1}{\lambda_j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}{n^2} . \]</span>
+But this has a finite limit as <span class="math inline">\(n \to \infty\)</span>, meaning we expect to get infinitely many births in a finite amount of time.</p>
+<p>When explosion happens, it can then be rather difficult to define what’s going on. In that birth process, for example, the state space is <span class="math inline">\(\mathcal S = \mathbb Z_+\)</span>; but after some finite time, we have <span class="math inline">\(X(t) &gt; j\)</span> for all <span class="math inline">\(j \in \mathcal S\)</span> – so what state <em>is</em> the process in?</p>
+<p>Although there are often technical fixes that can get around this problem (doing things like creating an “infinity” state, or restarting the process from <span class="math inline">\(X(0)\)</span> again), we will not concern ourselves with them here. We shall normally deal with finite state spaces, where explosion is not a concern. When we do use infinite state space models (such as birth processes, for example), we shall only look at examples that explode with probability 0.</p>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at how to find the transition probilities <span class="math inline">\(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\)</span>, which are the equivalents to the <span class="math inline">\(n\)</span>-step transition probabilities in discrete time.</p>
 </div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="S02-random-walk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S03-gamblers-ruin.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="P08.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S18-forward-backward.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

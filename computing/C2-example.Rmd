@@ -1,0 +1,232 @@
+---
+title:  "Computational Practical 2 & Assessment 2: Example report"
+author: "[Matthew Aldridge](mailto:m.aldridge@leeds.ac.uk)"
+date:   "MATH2750 Introduction to Markov Processes (2020--21)"
+output: html_document
+---
+
+
+  
+*The following is an example report answering the questions on the Computational Practical 2 problem sheet, which double as Assessment 2. You can view the original problem sheet [in HTML format](https://mpaldridge.github.io/math2750/C2.html) or [as an Rmd file](https://mpaldridge.github.io/math2750/C2.Rmd).*
+
+<span style="color: blue;">[2 marks are available for each question, for a total of 8.]</span>
+
+***
+
+
+
+I started by reading in the three functions, `TransMat()`, `MarkovChain()` and `StatDist()`.
+
+```{r, echo = FALSE}
+# Produces a transition matrix for a Markov chain based on a parameter eps
+TransMat <- function(eps) {
+  matrix(c(0.1, 0.9,   0,       0,       0,   0,
+           0.4, 0.2, 0.4,       0,       0,   0,
+             0, 0.5,   0,     0.5,       0,   0,
+             0,   0, 0.5, 0.5-eps,     eps,   0,
+             0,   0,   0,     eps, 0.3-eps, 0.7,
+             0,   0,   0,       0,     0.5, 0.5),
+         nrow = 6, ncol = 6, byrow = TRUE)
+}
+
+
+# Simulates a Markov chain with transition matrix P for N steps from X0
+MarkovChain <- function(N, X0, P) {
+  X <- numeric(N)   # empty vector of length N
+  space <- nrow(P)  # number of points in sample space
+  
+  now <- X0
+  for (n in 1:N) {
+    now <- sample(space, 1, prob = P[now, ])
+    X[n] <- now
+  }
+  
+  X
+}
+
+
+# Solves pi %*% P = pi, for the stationary distribution of a Markov chain
+StatDist <- function(P) {
+  LeftEigen <- eigen(t(P))
+  statmeas <- LeftEigen$vectors[, 1]  # Unnormalised stationary measure
+  statmeas / sum(statmeas)            # Normalised stationary distribution
+}
+```
+
+***
+
+**Question 1.** *Using the function `TransMat()`, produce the transition matrix for $\epsilon = 0.2$. Using the function `MarkovChain()`, simulate $N = 50$ steps of this Markov chain starting from $X_0 = 1$. Check it has worked, perhaps by plotting a graph or examining the vector produced. Comment on what you find.*
+
+
+The desired transition matrix is the following:
+
+```{r}
+eps <- 0.2
+P   <- TransMat(eps)
+P
+```
+
+We produce the Markov chain as follows.
+
+```{r}
+N  <- 50
+X0 <- 1
+X  <- MarkovChain(N, X0, P)
+X
+```
+
+<span style="color: blue;">[1 mark for code that correctly produces a sample of the Markov chain.]</span>
+
+We can also plot the Markov chain, including the point $X_0 = 1$.
+
+```{r}
+plot(0:N, c(X0, X),
+     main = bquote("Markov Chain with" ~ epsilon == .(eps)),
+     xlab = "time, n",
+     ylab = bquote("state," ~ X[n]),
+     ylim = c(1, 6),
+     type = "b",
+     col  = "red")
+```
+
+At each step, the Markov chain moves either up one, down one, or stays the same, as the transition matrix says it should. Due to random numbers, the realisation changes each time we run the code. However, we see that it quite often stays among states $\{1,2,3,4\}$ or states $\{5,6\}$ for quite a long time before moving to the other set. This is because $p_{45} = p_{54} = \epsilon = `r eps`$, so crossing the barrier between states 4 and 5 is somewhat rare.
+
+<span style="color: blue;">[1 mark for a graph and/or a comment.]</span>
+
+***
+
+**Question 2.** *Calculate the proportion of time spent in each state. What if you choose $N$ to be very large? How does this compare with the stationary distribution? Relate what you have found to a result in the course.*
+
+
+We use the `table()` function to see the proportion of time in each state. To save time later, we make a function to do this.
+
+```{r}
+TimeSpent <- function(X, states) {
+  num_visits <- table(factor(X, 1:states))
+  num_visits / length(X)
+}
+
+proportion_time <- TimeSpent(X, 6)
+proportion_time
+```
+
+<span style="color: blue;">[1 mark for code that correctly calculates the proportion of time spent in each state.]</span>
+
+The ergodic theorem says that for a irreducible positive recurrent Markov chain, like this one, the long-term proportion of time spent in each state tends to the stationary distribution. Note that this is a *long-term* result as $N \to \infty$, so we should not expect the current value of $N = `r N`$ to work. Instead, let's try a much larger value of $N$.
+
+```{r}
+N <- 100000
+X <- MarkovChain(N, X0, P)
+proportion_time <- TimeSpent(X, 6)
+round(proportion_time, 4)
+```
+
+We can compare this with the stationary distribution produced by `StatDist`.
+
+```{r}
+stationary <- StatDist(P)
+round(rbind(proportion_time, stationary), 3)
+
+barplot(rbind(proportion_time, stationary),
+        beside = TRUE,
+        xlab = "State",
+        legend.text = c("Proportion of time", "Stationary distribution"),
+        args.legend = list(x = "top"))  # legend in the centre
+```
+
+We see that the proportion of time spent in each state for $N = `r N`$ is very close to the stationary distribution, as the ergodic theorem predicts.
+
+<span style="color: blue;">[1 mark for recognising that for large $N$ the proportion of time in each state should be similar to stationary distribution, and making a comparison. Don't award the mark if small $N$ (eg $N = 50$) is used, leading the two quantities to be very different.]</span>
+
+***
+
+**Question 3.** *For each state, estimate the expected return time $\mu_i$. What do you expect the answer to be? How does your result compare with this?*
+
+We estimate the expected return time by looking at the mean return time of our simulation. Again, writing a function saves us time in the long run.
+
+```{r}
+MeanReturn <- function(vect, value) {
+  visits <- which(vect == value)
+  return_times <- diff(visits)
+  mean(return_times)
+}
+
+# The sapply function here calculates all the MeanReturns at once
+# without having to write it out six times or use a "for" loop
+mean_return_times <- sapply(1:6, MeanReturn, vect = X)
+round(mean_return_times, 3)
+```
+
+In the function `MeanReturn()`, `visits` is a vector of time steps at which the Markov chain visited a given state $i$, `return_times` is a vector of the number of time steps in between those visits, and `mean(return_times)` is the mean of those return times.
+
+<span style="color: blue;">[1 mark for code that correctly calculates the mean return times.]</span>
+
+A result from the course tells us that the expected return times should be equal to the reciprocal of the stationary distribution; that is, $\mu_i = 1/\pi_i$, where $\boldsymbol\pi = (\pi_i)$ is the stationary distribution.
+
+```{r}
+rec_stat <- 1 / stationary
+round(rbind(mean_return_times, rec_stat), 2)
+barplot(rbind(mean_return_times, rec_stat),
+        beside = TRUE,
+        legend.text = c("Simulated return times", "Expected return times"),
+        xlab = "State",
+        names.arg = 1:6)
+```
+
+We see that these are indeed very close, as predicted by theory.
+
+<span style="color: blue;">[1 mark for recognising that for large $N$ the mean return times should be close to the reciprocals of the stationary distribution and marking a comparison. Don't award the mark if small $N$ (eg $N = 50$) is used, leading the two quantities to be very different.]</span>
+
+***
+
+**Question 4.** *What do you think would happen if you were to repeat the above exercises with $\epsilon = 0.01$? What about $\epsilon = 10^{-6}$? What about $\epsilon = 0$? Explain your answers.*
+
+
+As we noted in our answer to Question 1, there is a natural "barrier" between the sets $\{1,2,3,4\}$ and $\{5,6\}$, since $p_{45} = p_{54} = \epsilon$. When $\epsilon$ is very small (but nonzero), we can expect crossing that barrier to be very rare -- only about every $1/\epsilon$ visits to states 4 or 5, where $1/\epsilon = 100$ or $1\,000\,000$ here.
+
+<!-- Change the penultimate argument to eval = FALSE if the Tikz picture doesn't compile properly -->
+```{r, engine = "tikz", echo = FALSE, eval = TRUE}
+\usetikzlibrary{automata}
+
+\begin{tikzpicture}[auto]
+  \node[state] (1) at (0,0) {1};
+  \node[state] (2) at (2,0) {2};
+  \node[state] (3) at (4,0) {3};
+  \node[state] (4) at (6,0) {4};
+  \node[state] (5) at (9,0) {5};	
+  \node[state] (6) at (11,0) {6};
+	
+  \path[->] (1) edge[loop left] node {0.1} ();
+  \path[->] (2) edge[loop above] node {0.2} ();
+  \path[->] (4) edge[loop above] node {$0.5 - \epsilon$} ();
+  \path[->] (5) edge[loop above] node {$0.3 - \epsilon$} ();
+  \path[->] (6) edge[loop right] node {0.5} ();
+
+  \path[->] (1) edge[bend left] node {0.9} (2);
+  \path[->] (2) edge[bend left] node {0.4} (1);
+  \path[->] (2) edge[bend left] node {0.4} (3);
+  \path[->] (3) edge[bend left] node {0.5} (2);
+  \path[->] (3) edge[bend left] node {0.5} (4);
+  \path[->] (4) edge[bend left] node {0.5} (3);
+  \path[->] (5) edge[bend left] node {0.7} (6);
+  \path[->] (6) edge[bend left] node {0.5} (5);
+
+  \path[->] (4) edge[dashed, bend left] node {$\epsilon$} (5);
+  \path[->] (5) edge[dashed, bend left] node {$\epsilon$} (4);
+\end{tikzpicture}
+```
+
+This means that typically, $(X_n)$ will spend a long time in $\{1, 2, 3, 4\}$, with faster-than usual return times, until finally moving to $\{5,6\}$, with no return visits to 1, 2, 3 or 4 for a very long return time. Then eventually we pass back through the bottleneck, and see faster-than-usual returns for a long time again.
+
+Of course, the results of the module on long-run proportion of time and expected return times are still true. But convergence will be very slow, and it will typically take an extremely long time for this behaviour to average out -- perhaps $N$ equal to a million for $\epsilon = 0.01$ or more than a billion for $\epsilon = 10^{-6}$ might be necessary.
+
+<span style="color: blue;">[1 mark for recognising that small $\epsilon$ requires a large $N$. (I expect not that many students to get this mark.)]</span>
+
+For $\epsilon = 0$, the Markov chain splits into two different closed communicating classes, and the Markov chain will stay in the class $\{1,2,3,4\}$ (if it starts from $X_0 = 1$) forever. The results that required an irreducible Markov chain no longer hold true. We will need to study the two communicating classes separately.
+
+<span style="color: blue;">[1 mark for recognising that $\epsilon = 0$ splits the chain into two different parts, so the theoretical results don't apply.]</span>
+
+
+
+
+

@@ -12,6 +12,18 @@ url:    https://mpaldridge.github.io/math2750/
 
 
 ::: {.mysched}
+**Week 9** (22--26 March):
+
+* [**Section 17**: Continuous time Markov jump processes](#S17-continuous-time)
+* [**Section 18**: Forward and backward equations](#S18-forward-backward)
+* [**Problem Sheet 9**](#P09)
+* [**Assessment 3**](#A3): due Thursday 25 March (this week)
+* **Lecture**: Tuesday at 1400 (Zoom)
+* **Workshops** on Problem Sheet 7: Monday or Tuesday (Zoom)
+* **Drop-in sessions**: Tuesday or Wednesday (Teams)
+:::
+
+::: {.oldsched}
 **Week 8** (15--19 March):
 
 * [**Section 15**: Poisson process in infinitesimal time periods](#S15-poisson-infinitesimal)
@@ -19,9 +31,6 @@ url:    https://mpaldridge.github.io/math2750/
 * [**Problem Sheet 8**](#P08)
 * [**Computational Worksheet 2 / Assessment 2**](#computing): due Thursday 18 March at 1400 (this week)
 * [**Assessment 3**](#A3): due Thursday 25 March (next week)
-* **Lecture**: Tuesday at 1400 (Zoom)
-* **Workshops** on Problem Sheet 7: Monday or Tuesday (Zoom)
-* **Drop-in sessions**: Tuesday or Wednesday (Teams)
 :::
 
 ::: {.oldsched}

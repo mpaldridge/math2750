@@ -27,6 +27,9 @@ rmd_files:
   - sections/S15-poisson-infinitesimal.Rmd
   - sections/S16-counting-processes.Rmd
   - problems/P08.Rmd
+  - sections/S17-continuous-time.Rmd
+  - sections/S18-forward-backward.Rmd
+  - problems/P09.Rmd
   - computing/computing.Rmd
 book_filename: "math2750"
 output_dir: "docs"

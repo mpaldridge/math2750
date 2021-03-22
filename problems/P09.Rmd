@@ -1,0 +1,319 @@
+# Problem Sheet 9  {.unnumbered #P09}
+
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+-->
+
+
+
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
+
+
+
+\commfalse
+
+
+
+::: {.mysummary}
+You should attempt all these questions and write up your solutions in advance of your workshop in week 10 (Monday 26 or Tuesday 27 April) where the answers will be discussed.
+:::
+
+
+::::: {.myq}
+**1.** Consider a Markov jump process with state space $\mathcal S = \{0,1,2,\dots,N\}$ and generator matrix
+\[ \mathsf Q = \begin{pmatrix} -q_0 & q_{01} & q_{02} & \cdots & q_{0N} \\
+0    & 0      & 0      & \cdots & 0      \\
+0    & 0      & 0      & \cdots & 0      \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0    & 0      & 0      & \cdots & 0  \end{pmatrix} . \]
+
+:::: {.subq}
+**(a)** Draw a transition rate diagram for this jump process.
+
+::: {.myanswers data-latex=""}
+*Solution.* <!--
+		\begin{tikzpicture}[shorten >=1pt,scale=0.8]
+		\node[state] (0) at (0,0) {$0$};
+		\node[state] (1) at (5,3) {$1$};
+		\node[state] (2) at (5,1) {$2$};
+		\node[state] (d) at (5,-1) {$\vdots$};
+		\node[state] (N) at (5,-3) {$N$};
+		
+		\path[->] (0) edge node [above]{$q_{01}$} (1);
+		\path[->] (0) edge node [above]{$q_{02}$} (2);
+		\path[->] (0) edge node [below]{$q_{0N}$} (N);
+		\end{tikzpicture}
+-->
+:::
+::::
+
+This process is a "multiple decrement model": there is one "active state" 0 and a number of "exit states" $1,2,\dots,N$.
+
+:::: {.subq}
+**(b)** What is the probability that the process exits at state $i$?
+
+::: {.myanswers data-latex=""}
+*Solution.* The probability of exit at $i$ is  $r_{0i} = q_{0i}/q_0$.
+:::
+::::
+
+:::: {.subq}
+**(c)** Give a $95\%$ prediction interval for the amount of time spent in the active state. (Your answer will be in terms of $q_0$.)
+
+::: {.myanswers data-latex=""}
+*Solution.*
+	The amount of time in the active state is $T_1 \sim \Exp(q_0)$. The $\alpha$-upper quantile of this distribution is the $t$ such that $\alpha = \ee^{-q_0 t}$ which is $-(\log\alpha)/q_0$. So the $95\%$ prediction interval is
+	\[ \left[ \frac{-\log0.975}{q_0} , \frac{-\log0.025}{q_0} \right] = \left[ \frac{0.025}{q_0}, \frac{3.69}{q_0} \right] .              \]
+:::
+::::
+:::::
+
+
+::::: {.myq}
+**2.** Consider the Markov jump process $(X(t))$ with state space $\mathcal S = \{1,2,3\}$ and generator matrix
+\[ \mathsf Q = \begin{pmatrix} -3 & 2 & 1 \\ 2 & -6 & 4 \\ 1 & 3 & -4 \end{pmatrix} . \]
+The process begins from the state $X(0) = 1$.
+Let $(Y_n)$ be the associated Markov jump chain.
+
+:::: {.subq}
+**(a)** Write down the transition matrix $\mathsf R$ of the jump chain.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+	\[ \mathsf R = \begin{pmatrix} 0 & \frac23 & \frac13 \\[0.5ex] \frac13 & 0 & \frac23 \\[0.5ex] \frac14 & \frac34 & 0 \end{pmatrix} . \]	
+:::
+::::
+
+:::: {.subq}
+**(b)** What is the expected time of the first jump $J_1$?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+	The first jump time has the distribution $J_1 = T_1 \sim \Exp(q_1) = \Exp(3)$, which has expectation $\mathbb E J_1 = \frac13$.
+:::
+::::
+
+:::: {.subq}
+**(c)** What is the probability the first jump is to state 2?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+	The probability the first jump from $1$ is to $2$ is $r_{12} = \frac23$.
+:::
+::::
+
+:::: {.subq}
+**(d)** By conditioning on the first jump, calculate the expected time of the second jump time $J_2 = T_1 + T_2$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb E(T_1 + T_2) &= \mathbb ET_1 + \mathbb P(Y_1 = 2) \mathbb E(T_2 \mid Y_1 = 2) \\ &\qquad{}+ \mathbb P(Y_1 = 2) \mathbb E(T_2 \mid Y_1 = 3) \\&= \frac1{q_1} + r_{12} \frac{1}{q_2} + r_{23} \frac{1}{q_3} \\&= \tfrac13 + \tfrac23 \, \tfrac16 + \tfrac13 \, \tfrac14 \\ &= \tfrac{19}{36} = 0.528
+\end{align*}
+:::
+::::
+
+:::: {.subq}
+**(e)** What is the probability that the second jump is to state 2?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+	In the jump chain, the only length-$2$ path from $1$ to $2$ is $1 \to 3 \to 2$, with probability $r_{12}^{(2)}=\frac13 \times \frac34 = \frac14$.
+:::
+::::
+
+:::: {.subq}
+**(f)** What is the probability that the third jump is to state 2?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+	In the jump chain, paths of length $3$ from $1$ to $2$ are
+	\begin{align*}
+    1 &\to 2 \to 1 \to 2 & \tfrac23 \times \tfrac13 \times \tfrac23 &= \tfrac{16}{108} ,    \\
+    1 &\to 2 \to 3 \to 2 & \tfrac23 \times \tfrac23 \times \tfrac34 &=  \tfrac{36}{108} ,   \\
+    1 &\to 3 \to 1 \to 2 & \tfrac13 \times \tfrac14 \times \tfrac23 &=  \tfrac{6}{108} .
+	\end{align*}
+	The total probability is $r_{12}^{(3)} = \frac{58}{108} = 0.537$.
+:::
+::::
+:::::
+
+
+::::: {.myq}
+**3.** Consider the Markov jump process on $\mathcal S = \{1,2\}$ with generator matrix
+\[ \mathsf Q = \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} , \]
+where $\alpha, \beta > 0$.
+
+:::: {.subq}
+**(a)** Write down the Kolmogorov forward equation for $p_{11}(t)$, including the initial condition.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The forward equation is $p_{11}'(t) = -\alpha p_{11}(t) + \beta p_{12}(t)$, with initial condition $p_{11}(0) = 1$.
+:::
+::::
+
+:::: {.subq}
+**(b)** Hence, show that
+\[ p'_{11}(t) + (\alpha + \beta)p_{11}(t) = \beta .  \]
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have $p_{11}(t) + p_{12}(t) = 1$, since rows of $\mathsf P$ add to $1$. Substituting $p_{12}(t) = 1 - p_{11}(t)$ into part (a) and rearranging gives the desired differential equation.
+:::
+::::
+
+:::: {.subq}
+**(c)** Solve this differential equation to find $p_{11}(t)$. (You may wish to first find a general solution the homogeneous differential equation by guessing a solution of the form $\ee^{\lambda t}$, then find a particular solution to the inhomogeneous differential equation, and then use the initial condition.)
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The homogeneous differential equation has solution $A \mathrm e^{-(\alpha + \beta)t}$ (for example, by guessing a solution $\mathrm e^{\lambda t}$, or other methods you may know from other courses). We can guess a particular solution $p_{11}(t) = C$ and find $C = \beta/(\alpha + \beta)$. So the general solution of the inhomogeneous differential equation is
+\[ p_{11}(t) = \frac{\beta}{\alpha+\beta} + A \mathrm e^{-(\alpha + \beta)t} . \]
+Using the initial condition $p_{11}(0) = 1$ gives 
+\[ A = 1-\frac{\beta}{\alpha + \beta} = \frac{\alpha}{\alpha + \beta} . \]
+We end up with the solution
+\[ p_{11}(t) = \frac{\beta}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta} \mathrm e^{-(\alpha + \beta)t} . \]
+:::
+::::
+:::::
+
+
+::::: {.myq}
+**4.** We continue with the setup of Question 3.
+
+:::: {.subq}
+**(a)** Show that $\mathsf Q^2 = -(\alpha + \beta) \mathsf Q$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+	We have
+\begin{align*}
+\mathsf Q^2 &= \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix}\begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} \\ &= \begin{pmatrix} \alpha^2 + \alpha\beta & -\alpha^2 - \alpha\beta \\ -\alpha\beta - \beta^2 & \alpha\beta + \beta^2 \end{pmatrix} \\ &= -(\alpha + \beta) \begin{pmatrix} -\alpha & \alpha \\ \beta & -\beta \end{pmatrix} , 
+\end{align*}
+as required.
+:::
+::::
+
+:::: {.subq}
+**(b)** Hence, write down $\mathsf Q^n$ for $n \geq 1$ in terms of $\mathsf Q$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+By repeating the above pattern (or, more formally, using induction on $n$), we see that $\mathsf Q^n = (-(\alpha+\beta))^{n-1} \mathsf Q$.
+:::
+::::
+
+:::: {.subq}
+**(c)** Show that
+\[ \mathsf P(t) = \ee^{t\mathsf Q} = \sum_{n=0}^\infty \frac{t^n \mathsf Q^n}{n!} = \mathsf I + \frac{\mathsf{Q}}{\alpha + \beta} \big(1 - \ee^{-(\alpha+\beta)t} \big) . \]
+(Take care with $n = 0$ term in the sum.)
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+Treating the $n = 0$ term separately, we have
+\[ \mathsf P(t) = \mathsf I + \sum_{n=1}^\infty \frac{t^n\big(-(\alpha+\beta)\big)^{n-1}\mathsf Q}{n!} = \mathsf I - \frac{\mathsf Q }{\alpha+\beta} \sum_{n=1}^\infty \frac{\big(-(\alpha+\beta)t\big)^{n}}{n!} .     \]
+But the summation here is almost $\ee^{-(\alpha + \beta)t}$, except missing the $n=0$ term -- so it's actually $\ee^{-(\alpha + \beta)t} - 1$. The result follows.
+:::
+::::
+
+:::: {.subq}
+**(d)** What, therefore, is $p_{11}(t)$? Check you answer agrees with Question 3(c).
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We need the $(1,1)$ entry of $\mathsf P(t)$, which is
+\[ p_{11}(t) = 1 + \frac{-\alpha}{\alpha + \beta} \big(1 - \ee^{-(\alpha+\beta)t} \big) = \frac{\beta}{\alpha+\beta} + \frac{\alpha}{\alpha+\beta} \ee^{-(\alpha+\beta)t} , \]
+and is indeed the same as 3(c).
+:::
+::::
+:::::
+
+
+
+::::: {.myq}
+**1.** Let
+\[ \mathsf D = \begin{pmatrix} d_1 & 0 & &  \\
+                               0 & d_2 & &  \\
+                                 &  & \ddots & \\
+                                &  & & d_n \end{pmatrix}  \]
+be a diagonal matrix.
+
+:::: {.subq}
+**(a)** What is $\mathsf D^2$?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ \mathsf D^2 = \begin{pmatrix} d_1 & 0 & &  \\
+0 & d_2 & &  \\
+&  & \ddots & \\
+&  & & d_n \end{pmatrix}\begin{pmatrix} d_1 & 0 & &  \\
+0 & d_2 & &  \\
+&  & \ddots & \\
+&  & & d_n \end{pmatrix} = \begin{pmatrix} d_1^2 & 0 & &  \\
+0 & d_2^2 & &  \\
+&  & \ddots & \\
+&  & & d_n^2 \end{pmatrix} .         \]
+:::
+::::
+
+:::: {.subq}
+**(b)** What is $\mathsf D^n$ for $n \geq 2$?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+Repeating the above pattern (or, more formally, using induction) we have
+\[ \mathsf D^n = \begin{pmatrix} d_1^n & 0 & &  \\
+0 & d_2^n & &  \\
+&  & \ddots & \\
+&  & & d_n^n \end{pmatrix} .\]
+:::
+::::
+
+:::: {.subq}
+**(c)** What is $\ee^{\mathsf D}$?
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We use the definition $\ee^{\mathsf D} = \sum_n \mathsf D^n / n!$. Since all the $\mathsf D^n$s are diagonal, $\ee^{\mathsf D}$ will be diagonal too. The $i$th diagonal entry will be $\sum_n d_i^n / n! = \ee^{d_i}$. Hence,
+\[ \ee^{\mathsf D}  = \begin{pmatrix} \ee^{d_1} & 0 & &  \\
+0 & \ee^{d_2} & &  \\
+&  & \ddots & \\
+&  & & \ee^{d_n} \end{pmatrix} .\]
+:::
+::::
+
+:::: {.subq}
+**(d)** Explain how you could use eigenvalue methods and diagonalisation to find an explicit formula for the entries of the exponential of a matrix $\mathsf A$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We can (usually) diagonalise the matrix $\mathsf A = \mathsf P^{-1}\mathsf{DP}$, where $\mathsf D$ is the diagonal matrix of eigenvalues and $\mathsf P$ is the matrix of eigenvectors. Then we have
+\[ \mathsf A^n = \mathsf P^{-1}\mathsf{DP}\mathsf P^{-1}\mathsf{DP}\cdots\mathsf P^{-1}\mathsf{DP} = \mathsf P^{-1}\mathsf{D}^n\mathsf{P} ,  \]
+and so $\ee^{\mathsf A} = \mathsf P^{-1} \ee^{\mathsf D} \mathsf P$, and $\ee^{\mathsf D}$ is easily calculated as in part (c).
+:::
+::::
+:::::

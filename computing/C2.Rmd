@@ -2,7 +2,7 @@
 title:  "Computational Worksheet 2 & Assessment 2"
 author: "Matthew Aldridge"
 date:   "MATH2750 Introduction to Markov Processes (2020--21)"
-output: html_document 
+output: pdf_document 
 ---
 
 
