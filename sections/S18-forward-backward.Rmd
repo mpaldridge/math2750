@@ -10,9 +10,13 @@
 
 ## Transitions in infinitesimal time periods  {#jump-infinitesimal}
 
-::: {.mysummary}
-*Video to appear here soon.*
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/7SdnrxlX1bo"></iframe>
 :::
+::::
+
 
 In the [last section](#S17-continuous-time), we defined the continuous time Markov jump process with generator matrix $\mathsf Q$ in terms of the holding times and the jump chain: from state $i$, we wait for a holding time exponentially distributed with rate $q_i = -q_{ii}$, then jump to state $j$ with probability $r_{ij} = q_{ij}/q_i$.
 
@@ -77,9 +81,11 @@ The forward and backward equations both define the transition semigroup $(\maths
 
 ## Matrix exponential  {#matrix-exp}
 
+
 ::: {.mysummary}
 *Video to appear here soon.*
 :::
+
 
 When the state space $\mathcal S$ is finite, a crucial role is played for continuous time jump processes by the **matrix exponential** $\ee^{t\mathsf Q}$. In the discrete time setting, the matrix power $\mathsf P^n$ (for integers $n$) was very important; the matrix exponential allows us to do matrix algebra with the powers being arbitrary real numbers, which is important for continuous time processes.
 
