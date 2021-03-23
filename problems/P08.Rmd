@@ -23,13 +23,13 @@ $(document).ready(function() {
 -->
 
 
-
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
-
+-->
 
 
 \commfalse
@@ -56,8 +56,8 @@ You should attempt all these questions and write up your solutions in advance of
 **(b)** Fix $t$. What is the expected time between the previous arrival before $t$ and the next arrival after $t$?
 
 ::: {.myanswers data-latex=""}
-*Solution.* The time between the arrivals is $S + T$, where $S$ is the time backwards from $t$ since the previous arrival, and $T$ is the time forwards from $t$ until thenext arrival. By the memoryless property of the exponential distribution, $T \sim \Exp(\lambda)$, with mean $1/\lambda$. What about $S$? We have
-\[ \mathbb P(S > s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \exp{-\lambda s} \frac{(\lambda s)^0}{0!} = \exp{-\lambda s} , \]
+*Solution.* The time between the arrivals is $S + T$, where $S$ is the time backwards from $t$ since the previous arrival, and $T$ is the time forwards from $t$ until the next arrival. By the memoryless property of the exponential distribution, $T \sim \Exp(\lambda)$, with mean $1/\lambda$. What about $S$? We have
+\[ \mathbb P(S > s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \ee^{-\lambda s} \frac{(\lambda s)^0}{0!} = \ee^{-\lambda s} , \]
 which is itself is the tail probability of another $\Exp(\lambda)$ distribution, so $S \sim \Exp(\lambda)$ with mean $1/\lambda$ too.
 Hence
 \[ \mathbb E(S + T) = \frac1\lambda + \frac1\lambda = \frac2\lambda .\]
@@ -68,7 +68,7 @@ Hence
 **(c)** Your answers to the previous two questions should be different. Explain why one should expect the second answer to be bigger than the first.
 
 ::: {.myanswers data-latex=""}
-*Solution.* Imagine the arrivals being placed on the real line -- some with big gaps between them, and some with small gaps between them. If we then place the time $t$, it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point $t$ is "size-biased", and is larger than a unfirotmly randomly chosen gap.
+*Solution.* Imagine the arrivals being placed on the real line -- some with big gaps between them, and some with small gaps between them. If we then place the time $t$, it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point $t$ is "size-biased", and is larger than a uniformly randomly chosen gap.
 :::
 ::::
 :::::

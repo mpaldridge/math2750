@@ -36,9 +36,13 @@ This is an equivalent definition of the Markov jump process.
 
 ## Transition semigroup and the forward and backward equations  {#semigroup}
 
-::: {.mysummary}
-*Video to appear here soon.*
+
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/McvSHkHF64o"></iframe>
 :::
+::::
+
 
 Let us write $p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)$ for the transition probability over a time $t$. This is the continuous-time equivalent to the $n$-step transition probability $p_{ij}(n)$ we had before in discrete time, but now $t$ can be any positive real value. It can be convenient to use the matrix form $\mathsf P(t) = (p_{ij}(t) : i,j \in \mathcal S)$. 
 

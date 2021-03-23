@@ -266,11 +266,13 @@ $(document).ready(function() {
 });
 </script>
 -->
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
+-->
 <div class="mysummary">
 <p>You should attempt all these questions and write up your solutions in advance of your workshop in week 9 (Monday 22 or Tuesday 23 March) where the answers will be discussed.</p>
 </div>
@@ -285,8 +287,8 @@ display: none !important;
 <div class="subq">
 <p><strong>(b)</strong> Fix <span class="math inline">\(t\)</span>. What is the expected time between the previous arrival before <span class="math inline">\(t\)</span> and the next arrival after <span class="math inline">\(t\)</span>?</p>
 <div class="myanswers">
-<p><em>Solution.</em> The time between the arrivals is <span class="math inline">\(S + T\)</span>, where <span class="math inline">\(S\)</span> is the time backwards from <span class="math inline">\(t\)</span> since the previous arrival, and <span class="math inline">\(T\)</span> is the time forwards from <span class="math inline">\(t\)</span> until thenext arrival. By the memoryless property of the exponential distribution, <span class="math inline">\(T \sim \operatorname{Exp}(\lambda)\)</span>, with mean <span class="math inline">\(1/\lambda\)</span>. What about <span class="math inline">\(S\)</span>? We have
-<span class="math display">\[ \mathbb P(S &gt; s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \exp{-\lambda s} \frac{(\lambda s)^0}{0!} = \exp{-\lambda s} , \]</span>
+<p><em>Solution.</em> The time between the arrivals is <span class="math inline">\(S + T\)</span>, where <span class="math inline">\(S\)</span> is the time backwards from <span class="math inline">\(t\)</span> since the previous arrival, and <span class="math inline">\(T\)</span> is the time forwards from <span class="math inline">\(t\)</span> until the next arrival. By the memoryless property of the exponential distribution, <span class="math inline">\(T \sim \operatorname{Exp}(\lambda)\)</span>, with mean <span class="math inline">\(1/\lambda\)</span>. What about <span class="math inline">\(S\)</span>? We have
+<span class="math display">\[ \mathbb P(S &gt; s) = \mathbb P\big(\text{no arrivals in }[t-s,t]\big) = \mathrm{e}^{-\lambda s} \frac{(\lambda s)^0}{0!} = \mathrm{e}^{-\lambda s} , \]</span>
 which is itself is the tail probability of another <span class="math inline">\(\operatorname{Exp}(\lambda)\)</span> distribution, so <span class="math inline">\(S \sim \operatorname{Exp}(\lambda)\)</span> with mean <span class="math inline">\(1/\lambda\)</span> too.
 Hence
 <span class="math display">\[ \mathbb E(S + T) = \frac1\lambda + \frac1\lambda = \frac2\lambda .\]</span></p>
@@ -295,7 +297,7 @@ Hence
 <div class="subq">
 <p><strong>(c)</strong> Your answers to the previous two questions should be different. Explain why one should expect the second answer to be bigger than the first.</p>
 <div class="myanswers">
-<p><em>Solution.</em> Imagine the arrivals being placed on the real line – some with big gaps between them, and some with small gaps between them. If we then place the time <span class="math inline">\(t\)</span>, it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point <span class="math inline">\(t\)</span> is “size-biased”, and is larger than a unfirotmly randomly chosen gap.</p>
+<p><em>Solution.</em> Imagine the arrivals being placed on the real line – some with big gaps between them, and some with small gaps between them. If we then place the time <span class="math inline">\(t\)</span>, it is more likely to be placed in one of the large gaps than one of the small ones, because each large gap fills up more of the line than a small one. Hence the size of the gap surrounding the given point <span class="math inline">\(t\)</span> is “size-biased”, and is larger than a uniformly randomly chosen gap.</p>
 </div>
 </div>
 </div>
