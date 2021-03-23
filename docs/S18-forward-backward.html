@@ -326,7 +326,7 @@ where we interpret <span class="math inline">\(\mathsf A^0 = \mathsf I\)</span> 
 <p>Some properties of the standard exponential include
 <span class="math display">\[ (\mathrm{e}^x\big)^n = \mathrm{e}^{nx} \qquad \frac{\mathrm d}{\mathrm d x} \mathrm{e}^{ax} = a \mathrm{e}^{ax} . \]</span>
 Similarly, we have for the matrix exponential
-<span class="math display">\[ (\mathrm{e}^{\mathsf A}\big)^n = \mathrm{e}^{n{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]</span></p>
+<span class="math display">\[ (\mathrm{e}^{\mathsf A}\big)^t = \mathrm{e}^{t{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]</span></p>
 <p>From this last expression, we get that
 <span class="math display">\[ \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf Q}} = \mathrm{e}^{t{\mathsf Q}} {\mathsf Q} = {\mathsf Q} \mathrm{e}^{t{\mathsf Q}}  . \]</span>
 Comparing this to the forward equation <span class="math inline">\(\mathsf P&#39;(t) = \mathsf{P}(t) \mathsf Q\)</span> and backward equation <span class="math inline">\(\mathsf{P}&#39;(t) = \mathsf Q \mathsf{P}(t)\)</span>, we see that we have a solution to the forward and backward equations of <span class="math inline">\(\mathsf P(t) = \mathrm{e}^{t\mathsf Q}\)</span>, which also satisfies the common initial condition <span class="math inline">\(\mathsf P(0) = \mathrm{e}^{0\mathsf Q} = \mathsf I\)</span>.</p>

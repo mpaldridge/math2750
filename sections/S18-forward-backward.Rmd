@@ -104,7 +104,7 @@ Since a matrix commutes with itself, we have $\mathsf {A}^n \mathsf A = \mathsf{
 Some properties of the standard exponential include
 \[ (\ee^x\big)^n = \ee^{nx} \qquad \frac{\mathrm d}{\mathrm d x} \ee^{ax} = a \ee^{ax} . \]
 Similarly, we have for the matrix exponential
-\[ (\ee^{\mathsf A}\big)^n = \ee^{n{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \ee^{t{\mathsf A}} = {\mathsf A} \ee^{t{\mathsf A}} = \ee^{t{\mathsf A}} {\mathsf A} . \]
+\[ (\ee^{\mathsf A}\big)^t = \ee^{t{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \ee^{t{\mathsf A}} = {\mathsf A} \ee^{t{\mathsf A}} = \ee^{t{\mathsf A}} {\mathsf A} . \]
 
 From this last expression, we get that
 \[ \frac{\mathrm d}{\mathrm d t} \ee^{t{\mathsf Q}} = \ee^{t{\mathsf Q}} {\mathsf Q} = {\mathsf Q} \ee^{t{\mathsf Q}}  . \]
