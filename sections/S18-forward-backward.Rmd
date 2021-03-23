@@ -115,7 +115,7 @@ We also see that we have the semigroup property
 
 As a formal summary, we have the following.
 
-::: {.theorem exp-thm}
+::: {.theorem #exp-thm}
 Let $(X(t))$ be a time homogeneous continuous time Markov jump process with generator matrix $\mathsf Q$. Let $(\mathsf P(t))$ be the transition semigroup, where $\mathsf P(t) = (p_{ij}(t))$ is defined by $p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)$.
 
 Then $(\mathsf P(t))$ is the minimal nonnegative solution to the forward equation

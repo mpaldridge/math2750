@@ -333,14 +333,14 @@ Comparing this to the forward equation <span class="math inline">\(\mathsf P&#39
 <p>We also see that we have the semigroup property
 <span class="math display">\[ \mathsf P(s+t) = \mathrm{e}^{(s+t)\mathsf Q} = \mathrm{e}^{s \mathsf Q + t \mathsf Q} = \mathrm{e}^{s \mathsf Q}\mathrm{e}^{t \mathsf Q} = \mathsf P(s) \mathsf P(t) . \]</span></p>
 <p>As a formal summary, we have the following.</p>
-<p>::: {.theorem exp-thm}
-Let <span class="math inline">\((X(t))\)</span> be a time homogeneous continuous time Markov jump process with generator matrix <span class="math inline">\(\mathsf Q\)</span>. Let <span class="math inline">\((\mathsf P(t))\)</span> be the transition semigroup, where <span class="math inline">\(\mathsf P(t) = (p_{ij}(t))\)</span> is defined by <span class="math inline">\(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:exp-thm" class="theorem"><strong>Theorem 18.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a time homogeneous continuous time Markov jump process with generator matrix <span class="math inline">\(\mathsf Q\)</span>. Let <span class="math inline">\((\mathsf P(t))\)</span> be the transition semigroup, where <span class="math inline">\(\mathsf P(t) = (p_{ij}(t))\)</span> is defined by <span class="math inline">\(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\)</span>.</p>
 <p>Then <span class="math inline">\((\mathsf P(t))\)</span> is the minimal nonnegative solution to the forward equation
 <span class="math display">\[ \mathsf P&#39;(t) = \mathsf P(t) \mathsf Q \qquad \mathsf P(0) = \mathsf I , \]</span>
 and is also the minimal nonnegative solution to the backward equation
 <span class="math display">\[ \mathsf P&#39;(t) = \mathsf Q \mathsf P(t) \qquad \mathsf P(0) = \mathsf I . \]</span></p>
-<p>When the state space <span class="math inline">\(\mathcal S\)</span> is finite, the forward and backward equations both have a unique solution given by the matrix exponential <span class="math inline">\(\mathsf P(t) = \mathrm{e}^{t \mathsf Q}\)</span>.
-:::</p>
+<p>When the state space <span class="math inline">\(\mathcal S\)</span> is finite, the forward and backward equations both have a unique solution given by the matrix exponential <span class="math inline">\(\mathsf P(t) = \mathrm{e}^{t \mathsf Q}\)</span>.</p>
+</div>
 
 </div>
 </div>

@@ -5543,7 +5543,9 @@ We also see that we have the semigroup property
 
 As a formal summary, we have the following.
 
-::: \{.theorem exp-thm\}
+\begin{theorem}
+\protect\hypertarget{thm:exp-thm}{}\label{thm:exp-thm}
+
 Let \((X(t))\) be a time homogeneous continuous time Markov jump process with generator matrix \(\mathsf Q\). Let \((\mathsf P(t))\) be the transition semigroup, where \(\mathsf P(t) = (p_{ij}(t))\) is defined by \(p_{ij}(t) = \mathbb P(X(t) = j \mid X(0) = i)\).
 
 Then \((\mathsf P(t))\) is the minimal nonnegative solution to the forward equation
@@ -5552,7 +5554,8 @@ and is also the minimal nonnegative solution to the backward equation
 \[ \mathsf P'(t) = \mathsf Q \mathsf P(t) \qquad \mathsf P(0) = \mathsf I . \]
 
 When the state space \(\mathcal S\) is finite, the forward and backward equations both have a unique solution given by the matrix exponential \(\mathsf P(t) = \mathrm{e}^{t \mathsf Q}\).
-:::
+
+\end{theorem}
 
 \hypertarget{P09}{%
 \section*{Problem Sheet 9}\label{P09}}
