@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Problem sheet 5 | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 19 Class structure and hitting times | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Problem sheet 5 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 19 Class structure and hitting times | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Problem sheet 5 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 19 Class structure and hitting times | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="S10-stationary-distributions.html"/>
-<link rel="next" href="S11-long-term-chains.html"/>
+<link rel="prev" href="P09.html"/>
+<link rel="next" href="S20-long-term-jump.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -255,217 +255,103 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="P05" class="section level1 unnumbered">
-<h1>Problem sheet 5</h1>
-<style>
-.fold-btn { 
-  float: right; 
-  margin: -12px 0 0 0;
-}
-</style>
-<script type="text/javascript">
-$(document).ready(function() {
-  $folds = $(".myanswers");
-  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
-  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
-  $(".fold-blck").toggle();  // fold all blocks
-  $(".fold-btn").on("click", function() {  // add onClick event
-    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
-    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
-  })
-});
-</script>
-<!--
-<style>
-.myanswers { 
-display: none !important;
-}
-</style>
--->
+<div id="S19-class-hitting" class="section level1" number="19">
+<h1><span class="header-section-number">Section 19</span> Class structure and hitting times</h1>
 <div class="mysummary">
-<p>You should attempt all these questions and write up your solutions in advance of your workshop in week 6 (Monday 1 or Tuesday 2 March) where the answers will be discussed.</p>
+<ul>
+<li>Communicating classes</li>
+<li>Hitting probabilities and expected hitting times</li>
+<li>Recurrence and transience</li>
+</ul>
 </div>
-<div class="myq">
-<p><strong>1.</strong> Find a stationary distribution for the Markov chain with transition matrix
-<span class="math display">\[ \mathsf P = \begin{pmatrix} \frac13 &amp; \frac23 &amp; 0 \\
-                               \frac16 &amp; \frac13 &amp; \frac12 \\
-                               0 &amp; \frac13 &amp; \frac23 \end{pmatrix} . \]</span></p>
-<div class="myanswers">
-<p><em>Solution.</em> The equations are
-<span class="math display">\[\begin{align*}
-\pi_1 &amp;= \tfrac13 \pi_1 + \tfrac16 \pi_2 \\
-\pi_2 &amp;= \tfrac23 \pi_1 + \tfrac13 \pi_2 + \tfrac23 \pi_3 \\
-\pi_3 &amp;= \phantom{\tfrac23 \pi_1} + \tfrac12 \pi_2 + \tfrac23 \pi_3
-\end{align*}\]</span>
-It’ll make out lives more pleasant if we pick <span class="math inline">\(\pi_2\)</span> as the working variable and delete the second equation. The first equation becomes <span class="math inline">\(\pi_1 = \tfrac14 \pi_2\)</span>, and the third equation become <span class="math inline">\(\pi_3 = \tfrac32 \pi_2\)</span>. The normalising condition is
-<span class="math display">\[ \pi_1 + \pi_2 + \pi_3 = \left( \tfrac14 + 1 + \tfrac32\right) \pi_2 = \tfrac{11}{4} \pi_2 .    \]</span>
-So <span class="math inline">\(\pi_2 = \frac4{11}\)</span>, so <span class="math inline">\(\pi_1 = \frac{1}{11}\)</span> and <span class="math inline">\(\pi_3 = \frac{6}{11}\)</span>. The stationary distribution is <span class="math inline">\(\boldsymbol\pi = (\frac{1}{11}, \frac{4}{11}, \frac{6}{11})\)</span>.</p>
+<p>When we studied discrete time Markov chains, we considered matters including communicating classes, periodicity, hitting probabilities and expected hitting times, recurrence and transience, stationary distributions, convergence to equilibrium, and the ergodic theorem. In this section and the next, we develop this theory for continuous time Markov jump processes. Luckily, things will be simpler this time round, as we will often be able to use exactly the same techniques as the discrete time case, often by looking at the discrete time jump chain.</p>
+<div id="classes-cont" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> Communicating classes</h2>
+<p>In discrete time, we said that <span class="math inline">\(j\)</span> is accessible from <span class="math inline">\(i\)</span>, and wrote <span class="math inline">\(i \to j\)</span> if <span class="math inline">\(p_{ij}(n) &gt; 0\)</span> for some <span class="math inline">\(n\)</span>. This allowed us to split the state space into communicating classes. We can do exactly the same in discrete time.</p>
+<div class="definition">
+<p><span id="def:classes2" class="definition"><strong>Definition 19.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a Markov jump process on a state space <span class="math inline">\(\mathcal S\)</span> with transition semigroup <span class="math inline">\((\mathsf P(t))\)</span>. We say that a state <span class="math inline">\(j \in \mathcal S\)</span> is <strong>accessible from</strong> another state <span class="math inline">\(i \in \mathcal S\)</span>, and write <span class="math inline">\(i \to j\)</span> if <span class="math inline">\(p_{ij}(t) &gt; 0\)</span> for some <span class="math inline">\(t \geq 0\)</span>. If <span class="math inline">\(i \to j\)</span> and <span class="math inline">\(j \to i\)</span>, we say that <span class="math inline">\(i\)</span> <strong>communicates with</strong> <span class="math inline">\(j\)</span> and write <span class="math inline">\(i \leftrightarrow j\)</span>.</p>
+<p>The equivalence relation <span class="math inline">\(\leftrightarrow\)</span> partitions <span class="math inline">\(\mathcal S\)</span> into equivalence classes, which we call <strong>communicating classes</strong>.</p>
+<p>If all states are in the same class, the jump process is <strong>irreducible</strong>. A class <span class="math inline">\(C\)</span> is <strong>closed</strong> if <span class="math inline">\(i \to j\)</span> for <span class="math inline">\(i \in C\)</span> means that <span class="math inline">\(j \in C\)</span> also. If <span class="math inline">\(i\)</span> is a closed class <span class="math inline">\(\{i\}\)</span> be itself, then <span class="math inline">\(i\)</span> is an <strong>absorbing state</strong>.</p>
 </div>
+<p>Recall that each state <span class="math inline">\(i\)</span> is in exactly one communicating class, and that communicating class is the set of all <span class="math inline">\(j\)</span> such that <span class="math inline">\(i \leftrightarrow j\)</span>.</p>
+<p>If <span class="math inline">\(p_{ij}(t) &gt; 0\)</span>, then this means there is some sequence of jumps that can take us from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span>. This means that, letting <span class="math inline">\(\mathsf R = (r_{ij})\)</span> be the transition matrix for the jump chain <span class="math inline">\((Y_n)\)</span>, we have that <span class="math inline">\(p_{ij}(t) &gt; 0\)</span> for some <span class="math inline">\(t\)</span> if and only if <span class="math inline">\(r_{ij}^(n) &gt; 0\)</span> for some <span class="math inline">\(n\)</span>. So the communicating classes for a Markov jump process are exactly the same as the communicating classes in its discrete time jump chain.</p>
+<p>Further, since <span class="math inline">\(r_{ij} &gt; 0\)</span> if and only if <span class="math inline">\(q_{ij} &gt; 0\)</span>, we can tell what the communicating classes are directly from the transition rate diagram.</p>
+<div class="example">
+<p><span id="exm:jump-classes" class="example"><strong>Example 19.1  </strong></span><em>Write down the communicating classes for the Markov jump process with generator matrix</em>
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 2 &amp; 0 \\ 1 &amp; -3 &amp; 2 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}. \]</span></p>
+<p>The transition rate diagram is</p>
+<div class="mysummary">
+<p><em>Picture to follow.</em></p>
 </div>
-<div class="myq">
-<p><strong>2.</strong> Consider a Markov chain with state space <span class="math inline">\(\mathcal S = \{1,2,3,4\}\)</span> and transition matrix
-<span class="math display">\[  \mathsf P = \begin{pmatrix} \frac14 &amp; \frac12 &amp;\frac14 &amp; 0 \\
-                      \frac14 &amp; \frac14 &amp; \frac12 &amp; 0 \\
-                      \frac12 &amp; \frac12 &amp; 0 &amp; 0 \\
-                      \frac14 &amp; 0       &amp;\frac14 &amp; \frac 12
-                      \end{pmatrix} . \]</span></p>
-<div class="subq">
-<p><strong>(a)</strong> Draw a transition diagram for this Markov chain.</p>
-<div class="myanswers">
-<p><em>Solution.</em></p>
-<div class="figure" style="text-align: center"><span id="fig:Q52"></span>
-<img src="math2750_files/figure-html/Q52-1.png" alt="Transition diagram for Question 2." width="384" />
-<p class="caption">
-Figure 10.2: Transition diagram for Question 2.
-</p>
+<p>We immediately see that the communicating classes are <span class="math inline">\(\{1,2\}\)</span>, which is not closed, and <span class="math inline">\(\{3\}\)</span> which is closed, so 3 is an absorbing state. The process is not irreducible.</p>
 </div>
 </div>
+<div id="periods2" class="section level2" number="19.2">
+<h2><span class="header-section-number">19.2</span> A brief note on periodicity</h2>
+<p>In discrete time we had to worry about periodic behaviour, especially when considering long-term behaviour like the existence of an equilibrium distribution. However, for a continuous time jump process, it’s possible stay in a state for any positive real-number amount of time. Thus (with probability 1) we never see periodic behaviour, and we don’t have to worry about this.</p>
+<p>This is one way in which continuous time processes are actually more pleasant to deal with than discrete time processes.</p>
 </div>
-<div class="subq">
-<p><strong>(b)</strong> Identify the communicating classes. State whether each class closed or not. State whether each class is positive recurrent, null recurrent, or transient.</p>
-<div class="myanswers">
-<p><em>Solution.</em> The class <span class="math inline">\(\{1,2,3\}\)</span> is closed, so is positive recurrent. The class <span class="math inline">\(\{4\}\)</span> is not closed, so is transient.</p>
+<div id="hitting2" class="section level2" number="19.3">
+<h2><span class="header-section-number">19.3</span> Hitting probabilities and expected hitting times</h2>
+<p>Recall that the <strong>hitting probability</strong> <span class="math inline">\(h_{iA}\)</span> is the probability of reaching some state <span class="math inline">\(j \in A\)</span> at any point in the future starting from <span class="math inline">\(i\)</span>, and the <strong>expected hitting time</strong> <span class="math inline">\(\eta_{iA}\)</span> is the amount of time to get there. We found these in discrete time by forming simultaneous equations by conditioning on the first step.</p>
+<p>For hitting probabilities, we just care about where we jump to, and not how long we wait. Thus we are free to consider only the jump chain <span class="math inline">\((Y_n)\)</span> and its transition matrix <span class="math inline">\(\mathsf R\)</span>. Everything works exactly as in discrete time.</p>
+<div class="example">
+<p><span id="exm:hitting-prob-jump" class="example"><strong>Example 19.2  </strong></span><em>Continuing with <a href="#jump-classes">the previous example</a>, calculate <span class="math inline">\(h_{21}\)</span>, the probability of hitting state 1 starting from 2.</em></p>
+<p>The jump chain has transition matrix
+<span class="math display">\[ \mathsf R = \begin{pmatrix} 0 &amp; 1 &amp; 0 \\[0.3ex] \tfrac13 &amp; 0 &amp; \tfrac23 \\[0.3ex] 0 &amp; 0 &amp; 1 \end{pmatrix} . \]</span></p>
+<p>By conditioning on the first step, we have
+<span class="math display">\[ h_{21} = \tfrac13 h_{11} + \tfrac23 h_{31} = \tfrac13 \times 1 + \tfrac23 \times 0 = \tfrac13 , \]</span>
+where <span class="math inline">\(h_{31} = 0\)</span> since 3 is an absorbing state. Hence, <span class="math inline">\(h_{21} = \frac13\)</span>.</p>
 </div>
+<p>For expected hitting times, we have to more careful, as we will spend a random amount of time in the current state before moving on. In particular, the time we spend in state <span class="math inline">\(i\)</span> is exponential with rate <span class="math inline">\(q_i = -q_{ii}\)</span>, so has expected value <span class="math inline">\(1/q_i\)</span>.</p>
+<p>We illustrate the approach with an example.</p>
+<div class="example">
+<p><span id="exm:hitting-time-jump" class="example"><strong>Example 19.3  </strong></span><em>Continuing with <a href="#jump-classes">the same example</a>, find the expected hitting time <span class="math inline">\(\eta_{13}\)</span>.</em></p>
+<p>We condition on the first step. Starting from 1, we spend an expected time <span class="math inline">\(1/q_1 = \frac12\)</span> in state 1 before moving on with certainty to state 2, so
+<span class="math display">\[ \eta_{13} = \tfrac12 + \eta_{23} . \]</span>
+From state 2, we have a holding time with expectation <span class="math inline">\(1/q_2 = \frac13\)</span>, before moving to 1 with probability <span class="math inline">\(\frac13\)</span> and 2 with probability <span class="math inline">\(\frac23\)</span>. So
+<span class="math display">\[ \eta_{23} = \tfrac13 + \tfrac13 \eta_{12} + \tfrac23 \eta_{23} =  \tfrac13 + \tfrac13 \eta_{12} , \]</span>
+since <span class="math inline">\(\eta_{33}\)</span> is of course 0.
+Substituting the second equation into the first, we get
+<span class="math display">\[ \eta_{13} = \tfrac12 + \tfrac13 + \tfrac13 \eta_{13} , \]</span>
+which rearranges to <span class="math inline">\(\frac23 \eta_{13} = \frac56\)</span>, giving <span class="math inline">\(\eta_{13} = \frac54\)</span>.</p>
 </div>
-<div class="subq">
-<p><strong>(c)</strong> Find a stationary distribution for this Markov chain.</p>
-<div class="myanswers">
-<p><em>Solution.</em> First, we write out the equations <span class="math inline">\(\boldsymbol\pi = \boldsymbol\pi\mathsf P\)</span>, which are
-<span class="math display">\[\begin{align*}
-\pi_1 &amp;= \tfrac14\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 + \tfrac14\pi_4 \\
-\pi_2 &amp;= \tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3 \\
-\pi_3 &amp;= \tfrac14\pi_1 + \tfrac12\pi_2 \phantom{{}+\tfrac12\pi_3} + \tfrac14\pi_4 \\
-\pi_4 &amp;= \phantom{\tfrac12\pi_1 + \tfrac14\pi_2 + \tfrac12\pi_3+{}}  \tfrac12 \pi_4 .
-\end{align*}\]</span>
-From the fourth equation we immediately see that <span class="math inline">\(\pi_4 = 0\)</span>. Second, we rewrite the first two of the other equations with <span class="math inline">\(\pi_1\)</span> as the working variable, which gives
-<span class="math display">\[\begin{align}
-3\pi_1 &amp;= \phantom{3}\pi_2 + 2\pi_3 \tag{1} \\
-2\pi_1 &amp;= 3\pi_2 - 2\pi_3 \tag{2} .
-\end{align}\]</span>
-Adding (1) and (2) gives <span class="math inline">\(5\pi_1 = 4\pi_2\)</span>, so <span class="math inline">\(\pi_2 = \frac54\pi_1\)</span>. Substituting this into (1) and solving gives <span class="math inline">\(\pi_3 = \frac78 \pi_1\)</span>. Third, the normalising condition is
-<span class="math display">\[ \pi_1 + \pi_2 + \pi_3 + \pi_4 = \pi_1 + \tfrac54\pi_1 + \tfrac78\pi_1 + 0 = \tfrac{25}{8}\pi_1 = 1, \]</span>
-so <span class="math inline">\(\pi_1 = \frac{8}{25}\)</span>. Hence, we have a stationary distribution
-<span class="math display">\[ \boldsymbol\pi = \left(\tfrac{8}{25} \quad \tfrac{10}{25} \quad \tfrac{7}{25} \quad 0 \right) .\]</span></p>
+<p>We have to be a little bit careful with return times and return probabilities. The return time is the first time we come back to a state after having left it. In particular, if we begin in state <span class="math inline">\(i\)</span>, we first leave at time <span class="math inline">\(T_1 \sim \operatorname{Exp}(q_i)\)</span>, and we are looking for the first return after that.</p>
+<p>So, specifically, the definitions of <strong>return time</strong>, <strong>return probability</strong>, and <strong>expected return time</strong> are
+<span class="math display">\[\begin{gather*}
+    M_i = \min \big\{t &gt; T_1 : X(t) = i \big\} , \\
+    m_i = \mathbb P\big(X(t) = i \text{ for some $t &gt; T_1$} \mid X(0) = i \big) = \mathbb P \big( M_i &lt; \infty \mid X(0) = i \big) ,\\
+    \mu_i = \mathbb E\big( M_i \mid X(0) = i \big).
+\end{gather*}\]</span>
+In particular, if <span class="math inline">\(q_i = 0\)</span>, so <span class="math inline">\(T_1 = \infty\)</span> and we never leave state <span class="math inline">\(i\)</span>, the return time, return probability and expected return time are not defined.</p>
+<p>By conditioning on the first step, it’s clear we have
+<span class="math display">\[ m_i = \sum_j r_{ij} h_{ji} = \sum_{j \neq i} \frac{q_{ij}}{q_i} \, h_{ji}, \qquad \mu_i = \frac{1}{q_i} + \sum_j r_{ij} \eta_{ji} = \frac{1}{q_i} \bigg(1 + \sum_{j \neq i} q_{ij} \eta_{ji} \bigg). \]</span></p>
+<p>We see (except for the <span class="math inline">\(q_i = 0\)</span> case) that the return probability is the same in the jump chain as it is in the original Markov jump process, as was the case for the hitting probability.</p>
 </div>
+<div id="recurrence-transience2" class="section level2" number="19.4">
+<h2><span class="header-section-number">19.4</span> Recurrence and transience</h2>
+<p>In discrete time, we said a state was recurrent if the return probability 1 and transient if the return probability was strictly less than 1. We take almost the same definition in continuous time – the difference is that if we never leave a state, because <span class="math inline">\(q_i = 0\)</span>, we should call state <span class="math inline">\(i\)</span> recurrent.</p>
+<div class="definition">
+<p><span id="def:recurrence-jump" class="definition"><strong>Definition 19.2  </strong></span>If a state <span class="math inline">\(i \in \mathcal S\)</span> has return probability <span class="math inline">\(m_i = 1\)</span> or has <span class="math inline">\(q_i = 0\)</span>, we say that <span class="math inline">\(i\)</span> is <strong>recurrent</strong>. If <span class="math inline">\(m_i &lt; 1\)</span>, we say that <span class="math inline">\(i\)</span> is <strong>transient</strong>.</p>
+<p>Suppose <span class="math inline">\(i\)</span> is recurrent. If the expected return time <span class="math inline">\(\mu_i &lt; \infty\)</span> is finite or <span class="math inline">\(q_i = 0\)</span>, we say that <span class="math inline">\(i\)</span> is <strong>positive recurrent</strong>. If the expected return time <span class="math inline">\(\mu_i = \infty\)</span> is infinite, we say that <span class="math inline">\(i\)</span> is <strong>null recurrent</strong>.</p>
 </div>
-<div class="subq">
-<p><strong>(d)</strong> Is this the only stationary distribution?</p>
-<div class="myanswers">
-<p><em>Solution.</em> Yes. The Markov chain has one positive recurrent class, so there is a unique stationary distribution, and it is supported only on that class.</p>
+<p>We see that the return probability is totally determined the jump chain, so whether a state is recurrent or transient can be decided exactly as in the discrete case. In particular, in a communicating class either all states are transient or all states are recurrent. As before, finite closed classes are recurrent, and non-closed classes are transient.</p>
+<div class="example">
+<p><span id="exm:return-jumps" class="example"><strong>Example 19.4  </strong></span>Picking up <a href="#jump-classes">our example</a> again, <span class="math inline">\(\{1,2\}\)</span> is not closed, so is transient, while the absorbing state 3 is positive recurrent.</p>
 </div>
-</div>
-</div>
-<div class="myq">
-<p><strong>3.</strong> Consider a Markov chain with state space <span class="math inline">\(\mathcal S = \{1,2,3,4,5\}\)</span> and transition matrix
-<span class="math display">\[  \mathsf P = \begin{pmatrix} \frac13 &amp; \frac23 &amp; 0 &amp;0 &amp; 0 \\
-                   \frac13 &amp; \frac23 &amp; 0 &amp;0 &amp; 0 \\
-                   0 &amp;\frac35 &amp; \frac15 &amp; \frac15 &amp; 0 \\
-                   0 &amp; 0 &amp; 0 &amp; \frac14 &amp;\frac34 \\
-                   0 &amp; 0 &amp; 0 &amp; \frac12 &amp; \frac12 \end{pmatrix} . \]</span></p>
-<div class="subq">
-<p><strong>(a)</strong> Draw a transition diagram for this Markov chain.</p>
-<div class="myanswers">
-<em>Solution.</em>
-<div class="figure" style="text-align: center"><span id="fig:Q53"></span>
-<img src="math2750_files/figure-html/Q53-1.png" alt="Transition diagram for Question 3." width="576" />
-<p class="caption">
-Figure 10.3: Transition diagram for Question 3.
-</p>
-</div>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> Identify the communicating classes. State whether each class closed or not. State if each class is positive recurrent, null recurrent, or transient.</p>
-<div class="myanswers">
-<p><em>Solution.</em> The class <span class="math inline">\(\{1,2\}\)</span> is closed, so is positive recurrent. The class <span class="math inline">\(\{3\}\)</span> is not closed, so is transient. The class <span class="math inline">\(\{4,5\}\)</span> is closed, so is positive recurrent.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> Find all of the stationary distributions for this Markov chain.</p>
-<div class="myanswers">
-<p><em>Solution.</em> We can have a stationary distribution supported on either of the positive recurrent classes, but we will always have <span class="math inline">\(\pi_3 = 0\)</span>, as that state is transient. For the class <span class="math inline">\(\{1,2\}\)</span> we have
-<span class="math display">\[ \pi_1 = \tfrac13\pi_1 + \tfrac13\pi_2 \qquad \pi_2 = \tfrac23\pi_1 + \tfrac23\pi_2 , \]</span>
-giving <span class="math inline">\(\pi_2 = 2\pi_1\)</span>, and a stationary distribution <span class="math inline">\((\tfrac 13, \tfrac23, 0, 0, 0)\)</span>. For the class <span class="math inline">\(\{4,5\}\)</span>, we have
-<span class="math display">\[ \pi_4 = \tfrac14\pi_4 + \tfrac12\pi_5 \qquad \pi_5 = \tfrac34\pi_4 + \tfrac12\pi_5 , \]</span>
-giving <span class="math inline">\(3\pi_4 = 2\pi_5\)</span>, and a stationary distribution <span class="math inline">\((0,0,0,\frac25,\frac35)\)</span>. Finally, any linear combination of those where the coefficients are positive and add to <span class="math inline">\(1\)</span> will also be a stationary distribution, so we have a family of stationary distributions
-<span class="math display">\[ \left( \tfrac13\alpha \quad \tfrac23\alpha \quad 0 \quad \tfrac25(1-\alpha) \quad \tfrac35(1-\alpha) \right)    \]</span>
-for <span class="math inline">\(0 \leq \alpha \leq 1\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="myq">
-<p><strong>4.</strong> Consider the simple random walk <span class="math inline">\((X_n)\)</span> on <span class="math inline">\(\mathcal S = \mathbb Z_+ = \{0,1,2,\dots\}\)</span> with up probability <span class="math inline">\(p\)</span> and down probability <span class="math inline">\(q = 1-p\)</span>, and a mixed barrier at <span class="math inline">\(0\)</span>, where <span class="math inline">\(p_{01} = p\)</span>, <span class="math inline">\(p_{00} = q\)</span>, and <span class="math inline">\(p_{0i} = 0\)</span> otherwise. We seek a stationary distribution for this Markov chain.</p>
-<div class="subq">
-<p><strong>(a)</strong> Suppose <span class="math inline">\(p \neq \frac12\)</span>. Show that the general solution to
-<span class="math display">\[ \pi_j = \sum_i \pi_i p_{ij} = p\pi_{j-1} + q\pi_{j+1} \]</span>
-is <span class="math inline">\(\pi_i = A + B\tau^i\)</span>, where <span class="math inline">\(\tau = p/q\)</span>.</p>
-<div class="myanswers">
-<p><em>Solution.</em> Let’s rewrite this as <span class="math inline">\(q\pi_{j+1} - \pi_j + p\pi_{j-1} = 0\)</span>. This is a homogeneous linear difference equation. The characteristic equation is <span class="math inline">\(p\lambda^2 - \lambda + p = 0\)</span>, which factorises as <span class="math inline">\((q\lambda - p)(\lambda-1) = 0\)</span> (using that <span class="math inline">\(p + q = 1\)</span>), which has solutions <span class="math inline">\(\lambda = 1\)</span> and <span class="math inline">\(\lambda = p/q = \tau\)</span>. Since <span class="math inline">\(p \neq \frac12\)</span>, these roots are distinct. So the general solution is <span class="math inline">\(\pi_i = A + B\tau^i\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(b)</strong> Show that the initial condition <span class="math inline">\(\pi_0 = q\pi_0 + q\pi_1\)</span> gives <span class="math inline">\(A = 0\)</span>.</p>
-<div class="myanswers">
-<p><em>Solution.</em> The initial condition gives
-<span class="math display">\[ A + B = q(A + B) + q(A + B\tau)  ,\]</span>
-which after rearranging gives <span class="math inline">\((1-2q)A = 0\)</span>, where we have used <span class="math inline">\(q + q\tau = q + p = 1\)</span>. Since <span class="math inline">\(1-2q\neq 0\)</span>, we must have <span class="math inline">\(A = 0\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(c)</strong> By considering the normalising condition <span class="math inline">\(\sum_i \pi_i =1\)</span>, work out for what values of <span class="math inline">\(p \neq \frac12\)</span> there exists a stationary distribution for <span class="math inline">\((X_n)\)</span>. What is the stationary distribution (when it exists)?</p>
-<div class="myanswers">
-<p><em>Solution.</em> We have <span class="math inline">\(\pi_i = B\tau^i\)</span>, so require <span class="math inline">\(B \sum_{i=1}^\infty \tau^i = 1\)</span>. When <span class="math inline">\(p &gt; \frac12\)</span>, then <span class="math inline">\(\tau &gt; 1\)</span> and the sum does not converge, and we have no stationary distribution. When <span class="math inline">\(p &lt; \frac12\)</span>, then <span class="math inline">\(\tau &lt; 1\)</span>, so
-<span class="math display">\[ \sum_{i=1}^\infty \tau^i = \frac{1}{1-\tau} \qquad \Rightarrow \qquad B = \frac{1}{\frac{1}{1-\tau}} = 1 - \tau, \]</span>
-so we have a geometric stationary distribution <span class="math inline">\(\pi_i = (1-\tau)\tau^i\)</span>.</p>
-</div>
-</div>
-<div class="subq">
-<p><strong>(d)</strong> Does there exist a stationary distribution when <span class="math inline">\(p = \frac12\)</span>?</p>
-<div class="myanswers">
-<p><em>Solution.</em>
-Here, the linear difference equation has general solution <span class="math inline">\(\pi_i = A + Bi\)</span>, as we saw with the symmetric gambler’s ruin problem. The initial condition gives <span class="math inline">\(A = \frac12A + \frac12(A + B)\)</span>, and so <span class="math inline">\(B = 0\)</span>, giving <span class="math inline">\(\pi_i = A\)</span>. The normalisation condition is <span class="math inline">\(\infty \times A = 1\)</span>, which cannot be fulfilled. Hence no stationary distribution exists.</p>
-</div>
-</div>
-</div>
-<div class="myq">
-<p><strong>5.</strong> The infinite rooted binary tree is a graph with no cycles. There is one special vertex, the root 0, that has two edges, and every other edge has three edges. A Markov chain <span class="math inline">\((X_n)\)</span> starts from 0, then at each time step, takes one of the edges coming out of the current vertex and moves along it to the neighbouring vertex. Note that a step can go away from the root or towards the root.</p>
-<div class="figure" style="text-align: center"><span id="fig:tree"></span>
-<img src="math2750_files/figure-html/tree-1.png" alt="The first three-and-a-bit levels of the rooted binary tree." width="336" />
-<p class="caption">
-Figure 10.4: The first three-and-a-bit levels of the rooted binary tree.
-</p>
-</div>
-<p>By considering the distance of <span class="math inline">\((X_n)\)</span> from the root, or otherwise, show that <span class="math inline">\((X_n)\)</span> is transient.</p>
-<div class="myanswers">
-<p><em>Solution.</em> We want to show that <span class="math inline">\(m_0\)</span>, the return probability to the root, is strictly less than 1.</p>
-<p>Let <span class="math inline">\(Y_n\)</span> be the distance of <span class="math inline">\(X_n\)</span> from the root as suggested in the question. Then <span class="math inline">\(X_n\)</span> returns to to the root if and only if <span class="math inline">\(Y_n\)</span> returns to <span class="math inline">\(0\)</span>, so we can look at that instead.</p>
-<p>If <span class="math inline">\((Y_n)\)</span> is the distance from the root, than at each time step <span class="math inline">\(Y_{n+1} = Y_n + 1\)</span> with probability <span class="math inline">\(\frac23\)</span>, if we take either of the two edges away from root, or <span class="math inline">\(Y_n = Y_n - 1\)</span> with probability <span class="math inline">\(\frac13\)</span>, if we take the edge back towards the root. If <span class="math inline">\(Y_n = 0\)</span> is at the root, then <span class="math inline">\(Y_{n+1} = Y_n+1\)</span>. So <span class="math inline">\((Y_n)\)</span> is a simple random walk with positive drift <span class="math inline">\(p = \frac23 &gt; \frac12\)</span> and a reflecting barrier at <span class="math inline">\(0\)</span>, which is transient.</p>
-<p>To prove it’s transient, we can use a conditioning on the first step argument to get <span class="math inline">\(m_0 = h_{10}\)</span>, and
-<span class="math display">\[ h_{i\,0} = \tfrac23 h_{i+1\,0} + \tfrac23 h_{i-1,\,0} . \]</span>
-The general solution is
-<span class="math display">\[ h_{i0} = A + B\left(\tfrac12\right)^i , \]</span>
-since <span class="math inline">\(\rho = \frac13 / \frac23 = \frac12\)</span>. The initial condition <span class="math inline">\(h_{00} = 1\)</span> gives <span class="math inline">\(A + B = 1\)</span>, so
-<span class="math display">\[ h_{i0} = 1 - B\left(1 - \left(\tfrac12\right)^i\right) , \]</span>
-and non-negative minimlality requires <span class="math inline">\(B = 1\)</span>. Hence
-<span class="math display">\[ h_{i0} = \left(\tfrac12\right)^i , \]</span>
-and <span class="math inline">\(m_0 = h_{10} = \frac12 &lt; 1\)</span>, as required.</p>
-</div>
-</div>
-<div class="myq">
-<p><strong>6.</strong> <em>“Every Markov chain on a finite state space has at least one stationary distribution.”</em> Explain carefully why this is true. You may use facts from the notes or previous example sheets, provided that you state them clearly.</p>
-<div class="myanswers">
-<p><em>Solution.</em> In Problem Sheet 4, Question 3, we showed that every finite-state Markov chain has a closed communicating class. In lectures, we showed the finite closed communicating classes are positive recurrent. If we look at the Markov chain restricted to just such a positive recurrent and closed class, then that restricted Markov chain is irreducible and positive recurrent, so it has a stationary distribution <span class="math inline">\(\boldsymbol\pi\)</span>. Since the class is closed, we have a stationary distribution that is <span class="math inline">\(\boldsymbol\pi\)</span> on the given closed class and <span class="math inline">\(0\)</span> elsewhere.</p>
-</div>
+<div class="mysummary">
+<p><strong>In the next section</strong>, we look at the long-term behaviour of continuous time Markov jump processes in a similar way to discrete time Markov chains: stationary distributions, convergence to equilibrium, and an ergodic theorem.</p>
 </div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="S10-stationary-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S11-long-term-chains.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="P09.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="S20-long-term-jump.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -125,3 +125,7 @@ and is also the minimal nonnegative solution to the backward equation
 
 When the state space $\mathcal S$ is finite, the forward and backward equations both have a unique solution given by the matrix exponential $\mathsf P(t) = \ee^{t \mathsf Q}$.
 :::
+
+::: {.mysummary}
+**In the next section**, we develop the theory we already know in discrete time: communicating classes, hitting times, recurrence and transience.
+:::

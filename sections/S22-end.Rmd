@@ -1,0 +1,13 @@
+# Last things  {#S22-end}
+
+
+::: {.mysummary}
+* Summary of Part II
+* Exam preparation
+:::
+
+<!--
+::: {.mysummary}
+**In the next section**, ...
+:::
+-->

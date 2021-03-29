@@ -1,0 +1,13 @@
+# Long-term behaviour of Markov jump procceses  {#S20-long-term-jump}
+
+
+::: {.mysummary}
+* Stationary distributions, which solve $\boldsymbol\pi\mathsf Q = \mathbf 0$
+* The limit theorem and the ergodic theorem
+:::
+
+<!--
+::: {.mysummary}
+**In the next section**, ...
+:::
+-->

@@ -30,6 +30,12 @@ rmd_files:
   - sections/S17-continuous-time.Rmd
   - sections/S18-forward-backward.Rmd
   - problems/P09.Rmd
+  - sections/S19-class-hitting.Rmd
+  - sections/S20-long-term-jump.Rmd
+  - problems/P10.Rmd
+  - assessments/A4.Rmd
+  - sections/S21-queues.Rmd
+  - sections/S22-end.Rmd
   - computing/computing.Rmd
 book_filename: "math2750"
 output_dir: "docs"
