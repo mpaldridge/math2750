@@ -6,8 +6,135 @@
 * The limit theorem and the ergodic theorem
 :::
 
-<!--
-::: {.mysummary}
-**In the next section**, ...
+
+
+Our goal here is to develop the theory of the long-term behaviour of continuous time Markov jump processes in the same way as we did for discrete time Markov chains.
+
+In discrete time, we defined **stationary distributions** as solving $\boldsymbol\pi\mathsf P = \boldsymbol\pi$. We then had the **limit theorem**, which told us about equilibrium distributions and the limit of $\mathbb P(X_n = i)$, and the **ergodic theorem**, which told us about the long term proportion of time spent in each state. We develop the same results here.
+
+
+## Stationary distributions  {#stationary-jump}
+
+We start be defining a stationary distribution as before.
+
+
+::: {.definition #statdist2}
+Let $(X(t))$ be a Markov jump process on a state space $\mathcal S$ with generator matrix $\mathsf Q$ and transition semigroup $(\mathsf P(t))$.
+Let $\boldsymbol \pi = (\pi_i)$ be a distribution on $\mathcal S$, in that $\pi_i \geq 0$ for all $i \in \mathcal S$ and $\sum_{i \in \mathcal S} \pi_i = 1$. We call $\boldsymbol \pi$ a **stationary distribution** if
+	\[ \pi_j = \sum_{i\in \mathcal S} \pi_i p_{ij}(t) \quad \text{for all $j \in \mathcal S$ and $t \geq 0$,} \]
+or, equivalently, if $\boldsymbol \pi = \boldsymbol \pi\mathsf P(t)$ for all $t \geq 0$.
 :::
--->
+
+This initially looks rather awkward: we're usually given a generator matrix $\mathsf Q$, and then we might have to first find all the $\mathsf P(t)$s and then simultaneously solve infinitely many equations. Luckily it's actually much easier than that: we just have to solve $\boldsymbol\pi \mathsf Q = \mathbf 0$ (where $\mathbf 0$ is the *row* vector of all zeros).
+
+
+::: {.theorem #statQ}
+Let $(X(t))$ be a Markov jump process on a state with generator matrix $\mathsf Q$. If $\boldsymbol\pi = (\pi_i)$ is a distribution with $\sum_i \pi_i q_{ij} = 0$ for all $j$, then $\boldsymbol\pi$ is a stationary distribution. In matrix form, this condition is $\boldsymbol\pi \mathsf Q = \mathbf 0$.
+:::
+
+
+::: {.proof}
+Suppose $\boldsymbol\pi \mathsf Q = \mathbf 0$. We need to show that $\boldsymbol\pi\mathsf P(t) = \boldsymbol\pi$ for all $t$. We'll first show that $\boldsymbol\pi\mathsf P(t)$ is constant, then show that that constant is indeed $\boldsymbol\pi$.
+
+First, we can show that $\boldsymbol \pi\mathsf P(t)$ is constant by showing that its derivative is zero. Using the backward equation $\mathsf P'(t) = \mathsf Q \mathsf P(t)$, we have
+\[ \frac{\mathrm d}{\mathrm dt}\boldsymbol \pi\mathsf P(t) = \boldsymbol \pi \frac{\mathrm d}{\mathrm dt} \mathsf P(t) = \boldsymbol \pi \mathsf Q \mathsf P(t) = \boldsymbol 0 \mathsf P(t) = \boldsymbol 0, \]
+as desired.
+
+Second, we can find that constant value by setting $t$ to any value:  we pick $t = 0$. Since $\mathsf P(0) = \mathsf I$, the identity matrix, we have 
+\[ \boldsymbol \pi\mathsf P(t) = \boldsymbol \pi\mathsf P(0) = \boldsymbol \pi\mathsf I = \boldsymbol \pi \qquad \text{for all $t$.} \]
+:::
+
+(Strictly speaking, taking the $\boldsymbol\pi$ outside the derivative in the first step is only formally justified when the state space is finite, but the result is true for general processes.)
+
+::: {.example #stat-cont-ex}
+*In Section \@ref(S17-continuous-time) we considered the Markov jump process with generator matrix*
+ \[ \mathsf Q = \begin{pmatrix} -2 & 2 & 0 \\
+ 1 & -3 & 2 \\
+ 0 & 1 & -1 \end{pmatrix} . \]
+*Find the stationary distribution.*
+
+We approach this in the same way as we would in the discrete time case.
+
+First, we write out the equations of 
+\[ \begin{pmatrix} \pi_1 & \pi_2 & \pi_3 \end{pmatrix}\begin{pmatrix} -2 & 2 & 0 \\
+ 1 & -3 & 2 \\
+ 0 & 1 & -1 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}    \]
+coordinate by coordinate, to get
+\begin{align*}
+    -2\pi_1 + \phantom{2}\pi_2 \phantom{{}+\pi_3} &= 0 \\
+    2\pi_1 - 3\pi_2 + \pi_3 &= 0 \\
+    2\pi_2 - \pi_3 &= 0 .
+\end{align*}
+We discard one of the equations -- I'll discard the second one, as it's the most complicated.
+
+Second, we pick a working variable -- I'll pick $\pi_2$ since it's in both remaining equations -- and solve the equations in terms of the working variable. This gives
+\[ \pi_1 = \tfrac12 \pi_2 \qquad \pi_3 = 2 \pi_2 . \]
+
+Third, we use the normalising condition
+\[ \pi_1 + \pi_2 + \pi_3 = \left(\tfrac12 + 1 + 2\right)\pi_2 = \tfrac72 \pi_2 = 1 . \]
+This gives $\pi_2 = \frac27$. Hence $\pi_1 = \frac17$ and $\pi_3 = \frac47$. Hence, the stationary distribution is $\boldsymbol\pi = (\frac17, \frac27, \frac47)$.
+:::
+
+As before, we have a result on the existence and uniqueness of the stationary distribution.
+
+::: {.theorem #statex}
+Consider an irreducible Markov jump process with generator matrix $\mathsf Q$.
+
+* If the Markov jump process is positive recurrent, then a stationary distribution $\boldsymbol \pi$ exists, is unique, and is given by $\pi_i = 1/q_i\mu_{i}$, where $\mu_{i}$ is the expected return time to state $i$ (unless the state space is a single absorbing state $i$, in which case $\pi_i = 1$).
+* If the Markov jump process is null recurrent or transient, then no stationary distribution exists.
+:::
+
+Compared to the discrete case, there's can extra factor of $1/q_i$, the expected amount of time spent in state $i$ until jumping, in the expression $\pi_i = 1/q_i\mu_{i}$.
+
+
+
+## Convergence to equilibrium  {#convergernce-cont}
+
+The limit theorem tells us about the limit of $\mathbb P(X(t) = j)$ as $t \to \infty$. (We assume throughout that infinite-state processes are non-explosive -- see Subsection \@ref(explosion).)
+
+Recall from the discrete case that sometimes we have a distribution $\mathbf p^*$ such that $\mathbb P(X(t) = j) \to p^*_j$ for any initial distribution $\boldsymbol\lambda$, and that such a distribution is called an **equilibrium distribution**. There can be at most one equilibrium distribution.
+
+::: {.theorem #limit-cont name="Limit theorem"}
+Let $(X(t))$ be an irreducible and Markov jump process with generator martix $\mathsf Q$. Then for any initial distribution $\boldsymbol\lambda$, we have that that  $\mathbb P(X(t) = j) \to 1/q_j\mu_j$ as $t \to \infty$ for all $j$, where $\mu_j$ is the expected return time to state $j$ (unless the state space is a single absorbing state $j$, in which case $\mathbb P(X(t) = j) \to 1$).
+
+* Suppose $(X(t))$ is positive recurrent. Then there is an equilibrium distribution which is the unique stationary distribution $\boldsymbol\pi$ given by $\pi_j = 1/q_j\mu_j$ (unless the state space is a single absorbing state $j$, in which case $\pi_j = 1$), and $\mathbb P(X(t) = j) \to \pi_j$ for all $j$.
+* Suppose $(X(t))$ is null recurrent or transient. Then $\mathbb P(X(t) = j) \to 0$ for all $j$, and there is no equilibrium distribution.
+:::
+
+Note here that the conditions for convergence to an equilibrium distribution are irreducible and positive recurrent -- we do not need a periodicity condition here as we did in the discrete time case.
+
+For the positive recurrent case, if we take the initial distribution to be "starting in state $i$ with certainty", we see that
+\[ p_{ij}(t) = \mathbb P\big(X(t) = j \mid X(0) = i\big) \to \pi_j , \]
+and hence $\mathsf P(t)$ has the limiting value
+\[ \lim_{t \to \infty} \mathsf P(t) = \begin{pmatrix} \pi_1 & \pi_2 & \cdots & \pi_n \\
+\pi_1 & \pi_2 & \cdots & \pi_n \\
+\vdots & \vdots & \vdots & \vdots \\
+\pi_1 & \pi_2 & \cdots & \pi_n \end{pmatrix} , \]
+with each row the same.
+
+
+## Ergodic theorem {#ergodic-cont}
+
+As in the discrete time case, the ergodic theorem refers to the long run proportion of time spent in each state.
+
+We write
+\[ V_j(t) = \int_0^t \mathbb{I}\big[X(s) = j\big]\, \mathrm ds \]
+for the total amount of time spent in state $j$ up to time $t$.
+Here, the indicator function $\mathbb{I}\big[X(s) = j\big]$ is $1$ when $X(s) = j$ and $0$ otherwise, so the integral is measuring the time we spend at $j$. So $V_j(t)/t$ is the proportion of time up to time $t$ spent in state $j$, and we interpret its limiting value (if it exists) to be the long-run proportion of time spent in state $j$.
+
+::: {.theorem #ergodic2 name = "Ergodic theorem"}
+Let $(X(t))$ be an irreducible Markov jump process with generator matrix $\mathsf Q$. Then for any initial distribution $\boldsymbol\lambda$ we have, for that $V_j(t)/t \to 1/q_j\mu_j$ almost surely as $t \to \infty$, where $\mu_j$ is the expected return time to state $j$ (unless the state space is a single absorbing state $j$, in which case $V_j(t)/t \to 1$ almost surely).
+
+* Suppose $(X(t))$ is positive recurrent. Then there is a unique stationary distribution $\boldsymbol\pi$ given by $\pi_j = 1/q_j\mu_j$ (unless the state space is a single absorbing state $j$, in which case $\pi_j = 1$), and $V_j(t)/t \to \pi_j$ almost surely for all $j$.
+* Suppose $(X(t))$ is null recurrent or transient. Then $V_j(t)/t \to 0$ almost surely for all $j$.
+:::
+
+::: {.example #ergodic-ex-cont}
+In the [previous example](#stat-cont-ex), the chain was irreducible and positive recurrent. Hence, $\boldsymbol\pi = (\frac17, \frac27, \frac47)$ is the equilibrium distribution for the chain, and describes the long run proportion of time spent in each state.
+:::
+
+
+
+::: {.mysummary}
+**In the next section**, we apply our knowledge of continuous time Markov jump processes to two queuing models.
+:::

@@ -208,7 +208,7 @@
 <ul>
 <li class="chapter" data-level="17.1" data-path="S17-continuous-time.html"><a href="S17-continuous-time.html#jump-holding"><i class="fa fa-check"></i><b>17.1</b> Jump chain and holding times</a></li>
 <li class="chapter" data-level="17.2" data-path="S17-continuous-time.html"><a href="S17-continuous-time.html#CTMC-examples"><i class="fa fa-check"></i><b>17.2</b> Examples</a></li>
-<li class="chapter" data-level="17.3" data-path="S17-continuous-time.html"><a href="S17-continuous-time.html#a-brief-note-on-explosion"><i class="fa fa-check"></i><b>17.3</b> A brief note on explosion</a></li>
+<li class="chapter" data-level="17.3" data-path="S17-continuous-time.html"><a href="S17-continuous-time.html#explosion"><i class="fa fa-check"></i><b>17.3</b> A brief note on explosion</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="S18-forward-backward.html"><a href="S18-forward-backward.html"><i class="fa fa-check"></i><b>18</b> Forward and backward equations</a>
 <ul>
@@ -224,7 +224,12 @@
 <li class="chapter" data-level="19.3" data-path="S19-class-hitting.html"><a href="S19-class-hitting.html#hitting2"><i class="fa fa-check"></i><b>19.3</b> Hitting probabilities and expected hitting times</a></li>
 <li class="chapter" data-level="19.4" data-path="S19-class-hitting.html"><a href="S19-class-hitting.html#recurrence-transience2"><i class="fa fa-check"></i><b>19.4</b> Recurrence and transience</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html"><i class="fa fa-check"></i><b>20</b> Long-term behaviour of Markov jump procceses</a></li>
+<li class="chapter" data-level="20" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html"><i class="fa fa-check"></i><b>20</b> Long-term behaviour of Markov jump procceses</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html#stationary-jump"><i class="fa fa-check"></i><b>20.1</b> Stationary distributions</a></li>
+<li class="chapter" data-level="20.2" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html#convergernce-cont"><i class="fa fa-check"></i><b>20.2</b> Convergence to equilibrium</a></li>
+<li class="chapter" data-level="20.3" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html#ergodic-cont"><i class="fa fa-check"></i><b>20.3</b> Ergodic theorem</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="P10.html"><a href="P10.html"><i class="fa fa-check"></i>Problem Sheet 10</a></li>
 <li class="chapter" data-level="" data-path="A4.html"><a href="A4.html"><i class="fa fa-check"></i>Assessment 4</a></li>
 <li class="chapter" data-level="21" data-path="S21-queues.html"><a href="S21-queues.html"><i class="fa fa-check"></i><b>21</b> Queues</a></li>
@@ -374,7 +379,7 @@ Here, state C is an absorbing state, so if we ever reach it, we stay there forev
 The jump chain is very boring: it starts from 0 and moves with certainty to 1, then with certainty to 2, then to 3, and so on.</p>
 </div>
 </div>
-<div id="a-brief-note-on-explosion" class="section level2" number="17.3">
+<div id="explosion" class="section level2" number="17.3">
 <h2><span class="header-section-number">17.3</span> A brief note on explosion</h2>
 <p>There is one point we have to be a little careful about with when dealing with continuous time processes with an infinite state space – the potential of “explosion”. <strong>Explosion</strong> is when the process can get arbitrarily large in finite time. Think, for example, of a birth process with birth rates <span class="math inline">\(\lambda_j = \lambda j^2\)</span>. The <span class="math inline">\(n\)</span>th birth is expected to be occur at time
 <span class="math display">\[ \sum_{j=1}^n \frac{1}{\lambda_j} = \frac{1}{\lambda} \sum_{j=1}^n \frac{1}{n^2} . \]</span>

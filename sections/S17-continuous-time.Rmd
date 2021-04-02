@@ -161,7 +161,7 @@ The jump chain is very boring: it starts from 0 and moves with certainty to 1, t
 :::
  
  
-## A brief note on explosion
+## A brief note on explosion  {#explosion}
 
 
 There is one point we have to be a little careful about with when dealing with continuous time processes with an infinite state space -- the potential of "explosion". **Explosion** is when the process can get arbitrarily large in finite time. Think, for example, of a birth process with birth rates $\lambda_j = \lambda j^2$. The $n$th birth is expected to be occur at time
