@@ -77,7 +77,7 @@ This gives $\pi_2 = \frac27$. Hence $\pi_1 = \frac17$ and $\pi_3 = \frac47$. Hen
 
 As before, we have a result on the existence and uniqueness of the stationary distribution.
 
-::: {.theorem #statex}
+::: {.theorem #statex-cont}
 Consider an irreducible Markov jump process with generator matrix $\mathsf Q$.
 
 * If the Markov jump process is positive recurrent, then a stationary distribution $\boldsymbol \pi$ exists, is unique, and is given by $\pi_i = 1/q_i\mu_{i}$, where $\mu_{i}$ is the expected return time to state $i$ (unless the state space is a single absorbing state $i$, in which case $\pi_i = 1$).

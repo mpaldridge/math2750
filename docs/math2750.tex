@@ -5517,22 +5517,22 @@ The forward and backward equations both define the transition semigroup \((\math
 \hypertarget{matrix-exp}{%
 \subsection{Matrix exponential}\label{matrix-exp}}
 
-\emph{Video to appear here soon.}
+In discrete time, when we are given the transition matrix \(\mathsf P\), we could find the \(n\)-step transition probabilities \(\mathsf P(n)\) using the matrix power \(\mathsf P^n\). (At least when the state space was finite -- one has to be careful with what the matrix power means if the state space is infinite.) In continuous time (and finite state space), when we are given the generator matrix \(\mathsf Q\), it will turn out that a similar role is played by the \textbf{matrix exponential} \(\mathsf P(t) = \mathrm{e}^{t\mathsf Q}\), which solves the forward and backward equations. In this way, the generator matrix \(\mathsf Q\) is a bit like ``the logarithm of the transition matrix \(\mathsf P\)'' -- although this is only a metaphor, rather than a careful mathematical statement.
 
-When the state space \(\mathcal S\) is finite, a crucial role is played for continuous time jump processes by the \textbf{matrix exponential} \(\mathrm{e}^{t\mathsf Q}\). In the discrete time setting, the matrix power \(\mathsf P^n\) (for integers \(n\)) was very important; the matrix exponential allows us to do matrix algebra with the powers including arbitrary real numbers, which is important for continuous time processes.
-
-You may remember that the usual exponential function is defined by the Taylor series
+Let's be more formal about this. You may remember that the usual exponential function is defined by the Taylor series
 \[ \mathrm{e}^x = \exp(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots. \]
 Similarly, we can define the matrix exponential for any square matrix by the same series
 \[ \mathrm{e}^{\mathsf A} = \exp({\mathsf A}) = \sum_{n=0}^\infty \frac{{\mathsf A}^n}{n!} = {\mathsf I} + {\mathsf A} + \tfrac12 \mathsf A^2+ \tfrac16 \mathsf A^3 + \cdots, \]
 where we interpret \(\mathsf A^0 = \mathsf I\) to be the identity matrix.
 
+In the same way that a computer can easily calculate a matrix power \(\mathsf P^n\) very quickly, a computer can also calculate matrix powers very quickly and very accurately -- see \protect\hyperlink{P09}{Problem Sheet 9} Question 5 for more details about how.
+
 Since a matrix commutes with itself, we have \(\mathsf {A}^n \mathsf A = \mathsf{AA}^n\), so a matrix commutes with its own exponential, meaning that \(\mathsf A \mathrm{e}^{\mathsf A} = \mathrm{e}^{\mathsf A} \mathsf A\). This will be useful later.
 
 Some properties of the standard exponential include
-\[ (\mathrm{e}^x\big)^n = \mathrm{e}^{nx} \qquad \frac{\mathrm d}{\mathrm d x} \mathrm{e}^{ax} = a \mathrm{e}^{ax} . \]
+\[ (\mathrm{e}^x\big)^n = \mathrm{e}^{nx} \qquad \mathrm{e}^{x+y} = \mathrm{e}^x \mathrm{e}^y \qquad \frac{\mathrm d}{\mathrm d x} \mathrm{e}^{ax} = a \mathrm{e}^{ax} . \]
 Similarly, we have for the matrix exponential
-\[ (\mathrm{e}^{\mathsf A}\big)^t = \mathrm{e}^{t{\mathsf A}} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]
+\[ (\mathrm{e}^{\mathsf A}\big)^t = \mathrm{e}^{t{\mathsf A}} \qquad \mathrm{e}^{\mathsf A + \mathsf B} = \mathrm{e}^{\mathsf A} \mathrm{e}^{\mathsf B} \qquad \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf A}} = {\mathsf A} \mathrm{e}^{t{\mathsf A}} = \mathrm{e}^{t{\mathsf A}} {\mathsf A} . \]
 
 From this last expression, we get that
 \[ \frac{\mathrm d}{\mathrm d t} \mathrm{e}^{t{\mathsf Q}} = \mathrm{e}^{t{\mathsf Q}} {\mathsf Q} = {\mathsf Q} \mathrm{e}^{t{\mathsf Q}}  . \]
@@ -5739,7 +5739,7 @@ and is indeed the same as 3(c).
 
 \end{myanswers}
 
-\textbf{1.} Let
+\textbf{5.} Let
 \[ \mathsf D = \begin{pmatrix} d_1 & 0 & &  \\
                                0 & d_2 & &  \\
                                  &  & \ddots & \\
@@ -6025,7 +6025,7 @@ This gives \(\pi_2 = \frac27\). Hence \(\pi_1 = \frac17\) and \(\pi_3 = \frac47\
 As before, we have a result on the existence and uniqueness of the stationary distribution.
 
 \begin{theorem}
-\protect\hypertarget{thm:statex}{}\label{thm:statex}
+\protect\hypertarget{thm:statex-cont}{}\label{thm:statex-cont}
 
 Consider an irreducible Markov jump process with generator matrix \(\mathsf Q\).
 

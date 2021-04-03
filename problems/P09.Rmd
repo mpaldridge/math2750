@@ -255,7 +255,7 @@ and is indeed the same as 3(c).
 
 
 ::::: {.myq}
-**1.** Let
+**5.** Let
 \[ \mathsf D = \begin{pmatrix} d_1 & 0 & &  \\
                                0 & d_2 & &  \\
                                  &  & \ddots & \\
