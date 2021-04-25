@@ -5830,7 +5830,7 @@ If all states are in the same class, the jump process is \textbf{irreducible}. A
 
 Recall that each state \(i\) is in exactly one communicating class, and that communicating class is the set of all \(j\) such that \(i \leftrightarrow j\).
 
-If \(p_{ij}(t) > 0\), then this means there is some sequence of jumps that can take us from \(i\) to \(j\). This means that, letting \(\mathsf R = (r_{ij})\) be the transition matrix for the jump chain \((Y_n)\), we have that \(p_{ij}(t) > 0\) for some \(t\) if and only if \(r_{ij}^(n) > 0\) for some \(n\). So the communicating classes for a Markov jump process are exactly the same as the communicating classes in its discrete time jump chain.
+If \(p_{ij}(t) > 0\), then this means there is some sequence of jumps that can take us from \(i\) to \(j\). This means that, letting \(\mathsf R = (r_{ij})\) be the transition matrix for the jump chain \((Y_n)\), we have that \(p_{ij}(t) > 0\) for some \(t\) if and only if \(r_{ij}(n) > 0\) for some \(n\). So the communicating classes for a Markov jump process are exactly the same as the communicating classes in its discrete time jump chain.
 
 Further, since \(r_{ij} > 0\) if and only if \(q_{ij} > 0\), we can tell what the communicating classes are directly from the transition rate diagram.
 
@@ -5858,7 +5858,7 @@ This is one way in which continuous time processes are actually more pleasant to
 \hypertarget{hitting2}{%
 \subsection{Hitting probabilities and expected hitting times}\label{hitting2}}
 
-Recall that the \textbf{hitting probability} \(h_{iA}\) is the probability of reaching some state \(j \in A\) at any point in the future starting from \(i\), and the \textbf{expected hitting time} \(\eta_{iA}\) is the amount of time to get there. We found these in discrete time by forming simultaneous equations by conditioning on the first step.
+Recall that the \textbf{hitting probability} \(h_{iA}\) is the probability of reaching some state \(j \in A\) at any point in the future starting from \(i\), and the \textbf{expected hitting time} \(\eta_{iA}\) is the expected amount of time to get there. We found these in discrete time by forming simultaneous equations by conditioning on the first step.
 
 For hitting probabilities, we just care about where we jump to, and not how long we wait. Thus we are free to consider only the jump chain \((Y_n)\) and its transition matrix \(\mathsf R\). Everything works exactly as in discrete time.
 
@@ -5876,7 +5876,7 @@ where \(h_{31} = 0\) since 3 is an absorbing state. Hence, \(h_{21} = \frac13\).
 
 \end{example}
 
-For expected hitting times, we have to more careful, as we will spend a random amount of time in the current state before moving on. In particular, the time we spend in state \(i\) is exponential with rate \(q_i = -q_{ii}\), so has expected value \(1/q_i\).
+For expected hitting times, we have to more careful, as we will spend a \emph{random} amount of time in the current state before moving on. In particular, the time we spend in state \(i\) is exponential with rate \(q_i = -q_{ii}\), so has expected value \(1/q_i\).
 
 We illustrate the approach with an example.
 
@@ -5896,7 +5896,7 @@ which rearranges to \(\frac23 \eta_{13} = \frac56\), giving \(\eta_{13} = \frac5
 
 \end{example}
 
-We have to be a little bit careful with return times and return probabilities. The return time is the first time we come back to a state after having left it. In particular, if we begin in state \(i\), we first leave at time \(T_1 \sim \operatorname{Exp}(q_i)\), and we are looking for the first return after that.
+We have to be a little bit careful with return times and return probabilities. The return time is now the first time we come back to a state \emph{after having left it}. In particular, if we begin in state \(i\), we first leave at time \(T_1 \sim \operatorname{Exp}(q_i)\), and we are looking for the first return after that.
 
 So, specifically, the definitions of \textbf{return time}, \textbf{return probability}, and \textbf{expected return time} are
 \begin{gather*}
@@ -5904,17 +5904,17 @@ So, specifically, the definitions of \textbf{return time}, \textbf{return probab
     m_i = \mathbb P\big(X(t) = i \text{ for some $t > T_1$} \mid X(0) = i \big) = \mathbb P \big( M_i < \infty \mid X(0) = i \big) ,\\
     \mu_i = \mathbb E\big( M_i \mid X(0) = i \big).
 \end{gather*}
-In particular, if \(q_i = 0\), so \(T_1 = \infty\) and we never leave state \(i\), the return time, return probability and expected return time are not defined.
+In particular, if \(q_i = 0\), so \(T_1 = \infty\) and we never leave state \(i\), the return time, return probability and expected return time are not defined. (We will have no use for them.)
 
 By conditioning on the first step, it's clear we have
 \[ m_i = \sum_j r_{ij} h_{ji} = \sum_{j \neq i} \frac{q_{ij}}{q_i} \, h_{ji}, \qquad \mu_i = \frac{1}{q_i} + \sum_j r_{ij} \eta_{ji} = \frac{1}{q_i} \bigg(1 + \sum_{j \neq i} q_{ij} \eta_{ji} \bigg). \]
 
-We see (except for the \(q_i = 0\) case) that the return probability is the same in the jump chain as it is in the original Markov jump process, as was the case for the hitting probability.
+We see (except for the \(q_i = 0\) case) that the return probability is the same in the jump chain as it is in the original Markov jump process, as was the case for the hitting probability, but for the expected return time we have to remember the random amount of time spent in each state.
 
 \hypertarget{recurrence-transience2}{%
 \subsection{Recurrence and transience}\label{recurrence-transience2}}
 
-In discrete time, we said a state was recurrent if the return probability 1 and transient if the return probability was strictly less than 1. We take almost the same definition in continuous time -- the difference is that if we never leave a state, because \(q_i = 0\), we should call state \(i\) recurrent.
+In discrete time, we said a state \(i\) was recurrent if the return probability \(m_i = 1\) equalled 1 and transient if the return probability \(m_i < 1\) was strictly less than 1. We take almost the same definition in continuous time -- the difference is that if we never leave a state, because \(q_i = 0\), we should call state \(i\) recurrent.
 
 \begin{definition}
 \protect\hypertarget{def:recurrence-jump}{}\label{def:recurrence-jump}
@@ -6084,7 +6084,9 @@ We write
 for the total amount of time spent in state \(j\) up to time \(t\).
 Here, the indicator function \(\mathbb{I}\big[X(s) = j\big]\) is \(1\) when \(X(s) = j\) and \(0\) otherwise, so the integral is measuring the time we spend at \(j\). So \(V_j(t)/t\) is the proportion of time up to time \(t\) spent in state \(j\), and we interpret its limiting value (if it exists) to be the long-run proportion of time spent in state \(j\).
 
-::: \{.theorem \#ergodic2 name = ``Ergodic theorem''\}
+\begin{theorem}[Ergodic theorem]
+\protect\hypertarget{thm:ergodic2}{}\label{thm:ergodic2}
+
 Let \((X(t))\) be an irreducible Markov jump process with generator matrix \(\mathsf Q\). Then for any initial distribution \(\boldsymbol\lambda\) we have, for that \(V_j(t)/t \to 1/q_j\mu_j\) almost surely as \(t \to \infty\), where \(\mu_j\) is the expected return time to state \(j\) (unless the state space is a single absorbing state \(j\), in which case \(V_j(t)/t \to 1\) almost surely).
 
 \begin{itemize}
@@ -6093,8 +6095,9 @@ Let \((X(t))\) be an irreducible Markov jump process with generator matrix \(\ma
   Suppose \((X(t))\) is positive recurrent. Then there is a unique stationary distribution \(\boldsymbol\pi\) given by \(\pi_j = 1/q_j\mu_j\) (unless the state space is a single absorbing state \(j\), in which case \(\pi_j = 1\)), and \(V_j(t)/t \to \pi_j\) almost surely for all \(j\).
 \item
   Suppose \((X(t))\) is null recurrent or transient. Then \(V_j(t)/t \to 0\) almost surely for all \(j\).
-  :::
 \end{itemize}
+
+\end{theorem}
 
 \begin{example}
 \protect\hypertarget{exm:ergodic-ex-cont}{}\label{exm:ergodic-ex-cont}

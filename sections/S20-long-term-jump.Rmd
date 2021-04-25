@@ -122,7 +122,7 @@ We write
 for the total amount of time spent in state $j$ up to time $t$.
 Here, the indicator function $\mathbb{I}\big[X(s) = j\big]$ is $1$ when $X(s) = j$ and $0$ otherwise, so the integral is measuring the time we spend at $j$. So $V_j(t)/t$ is the proportion of time up to time $t$ spent in state $j$, and we interpret its limiting value (if it exists) to be the long-run proportion of time spent in state $j$.
 
-::: {.theorem #ergodic2 name = "Ergodic theorem"}
+::: {.theorem #ergodic2 name="Ergodic theorem"}
 Let $(X(t))$ be an irreducible Markov jump process with generator matrix $\mathsf Q$. Then for any initial distribution $\boldsymbol\lambda$ we have, for that $V_j(t)/t \to 1/q_j\mu_j$ almost surely as $t \to \infty$, where $\mu_j$ is the expected return time to state $j$ (unless the state space is a single absorbing state $j$, in which case $V_j(t)/t \to 1$ almost surely).
 
 * Suppose $(X(t))$ is positive recurrent. Then there is a unique stationary distribution $\boldsymbol\pi$ given by $\pi_j = 1/q_j\mu_j$ (unless the state space is a single absorbing state $j$, in which case $\pi_j = 1$), and $V_j(t)/t \to \pi_j$ almost surely for all $j$.
@@ -130,7 +130,7 @@ Let $(X(t))$ be an irreducible Markov jump process with generator matrix $\maths
 :::
 
 ::: {.example #ergodic-ex-cont}
-In the [previous example](#stat-cont-ex), the chain was irreducible and positive recurrent. Hence, $\boldsymbol\pi = (\frac17, \frac27, \frac47)$ is the equilibrium distribution for the chain, and describes the long run proportion of time spent in each state.
+In the [previous example](#stat-cont-ex), the chain was irreducible and positive recurrent. Hence, by the limit theorem, $\boldsymbol\pi = (\frac17, \frac27, \frac47)$ is the equilibrium distribution for the chain, and by the ergodic theorem, $\boldsymbol\pi$ also describes the long run proportion of time spent in each state.
 :::
 
 
