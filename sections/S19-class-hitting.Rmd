@@ -8,11 +8,23 @@
 :::
 
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/jIrJHi7KGFU"></iframe>
+:::
+::::
+
+
 When we studied discrete time Markov chains, we considered matters including communicating classes, periodicity, hitting probabilities and expected hitting times, recurrence and transience, stationary distributions, convergence to equilibrium, and the ergodic theorem. In this section and the next, we develop this theory for continuous time Markov jump processes. Luckily, things will be simpler this time round, as we will often be able to use exactly the same techniques as the discrete time case, often by looking at the discrete time jump chain.
 
 
 ## Communicating classes  {#classes-cont}
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/_DCmY4nINZ8"></iframe>
+:::
+::::
 
 In discrete time, we said that $j$ is accessible from $i$, and wrote $i \to j$ if $p_{ij}(n) > 0$ for some $n$. This allowed us to split the state space into communicating classes. We can do exactly the same in discrete time.
 
@@ -36,9 +48,19 @@ Further, since $r_{ij} > 0$ if and only if $q_{ij} > 0$, we can tell what the co
 
 The transition rate diagram is
 
-::: {.mysummary}
-*Picture to follow.*
-:::
+```{tikz class-cont, echo=FALSE, fig.align="center", fig.width=3, fig.cap="A Markov jump process with three states and two communicating classes.", cache = TRUE}
+\usetikzlibrary{automata}
+	\begin{tikzpicture}[scale=0.75]
+	\node[state] (H) at (0,0) {1};
+	\node[state] (S) at (3,0) {2};
+	\node[state] (D) at (6,0) {3};
+	
+	\path[->]  (H) edge[bend left] node [above]{2} (S);
+	\path[->]	(S) edge[bend left] node [below]{1} (H);
+	\path[->]	(S) edge node [above]{2} (D);
+	
+	\end{tikzpicture}
+```
 
 We immediately see that the communicating classes are $\{1,2\}$, which is not closed, and $\{3\}$ which is closed, so 3 is an absorbing state. The process is not irreducible.
 ::::
@@ -53,6 +75,11 @@ This is one way in which continuous time processes are actually more pleasant to
 
 ## Hitting probabilities and expected hitting times {#hitting2}
 
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/TeSYIorXTBM"></iframe>
+:::
+::::
 
 Recall that the **hitting probability** $h_{iA}$ is the probability of reaching some state $j \in A$ at any point in the future starting from $i$, and the **expected hitting time** $\eta_{iA}$ is the expected amount of time to get there. We found these in discrete time by forming simultaneous equations by conditioning on the first step.
 

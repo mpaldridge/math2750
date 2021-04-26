@@ -289,7 +289,211 @@ display: none !important;
 }
 </style>
 <div class="mysummary">
-<p>You should attempt all these questions and write up your solutions in advance of your workshop in week 11 (probably Tuesday 4 May?) where the answers will be discussed.</p>
+<p>You should attempt all these questions and write up your solutions in advance of your workshop in week 11 (Tuesday 4 or Thursday 6 May) where the answers will be discussed.</p>
+</div>
+<div class="myq">
+<p><strong>1.</strong> Consider the Markov jump process on <span class="math inline">\(\mathcal S = \{1,2,3,4\}\)</span> with generator matrix
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -1 &amp; \frac12 &amp; \frac12 &amp; 0 \\
+                               \frac14 &amp; -\frac12 &amp; 0 &amp; \frac14 \\  
+                               \frac16 &amp; 0 &amp; -\frac13 &amp; \frac16 \\
+                               0 &amp; 0 &amp; 0 &amp; 0  \end{pmatrix} . \]</span></p>
+<div class="subq">
+<p><strong>(a)</strong> Draw a transition rate diagram for this process.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+PICTURE</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> Write down the communicating classes for this process, and state whether they are recurrent or transient.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+The class <span class="math inline">\(\{1,2,3\}\)</span> is not closed, so is transient. The class <span class="math inline">\(\{4\}\)</span> is closed, so positive recurrent.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> Calculate the hitting probability <span class="math inline">\(h_{13}\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Conditioning on the first step, we have
+<span class="math display">\[\begin{align*}
+h_{13} &amp;= \tfrac12 h_{23} + \tfrac12 h_{33} = \tfrac12 h_{23} + \tfrac12 \\
+h_{23} &amp;= \tfrac12 h_{13} + \tfrac12 h_{43} = \tfrac12 h_{13} ,
+\end{align*}\]</span>
+since <span class="math inline">\(h_{33} = 1\)</span> and <span class="math inline">\(h_{43} = 0\)</span>.
+Substituting the second equation into the first gives
+<span class="math inline">\(h_{13} = \tfrac14 h_{13} + \tfrac12\)</span>, and so <span class="math inline">\(h_{13} = \frac23\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> Calculate the expected hitting time <span class="math inline">\(\eta_{14}\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Conditioning on the first step, we have
+<span class="math display">\[\begin{align*}
+\eta_{14} &amp;= 1 + \tfrac12 \eta_{24} + \tfrac12 \eta_{34} \\
+\eta_{24} &amp;= 2 + \tfrac12 \eta_{14} + \tfrac12 \eta_{44} = 1 + \tfrac12 \eta_{14} \\
+\eta_{34} &amp;= 3 + \tfrac12 \eta_{14} + \tfrac12 \eta_{44} = 1 + \tfrac12 \eta_{14} .
+\end{align*}\]</span>
+Substituting the second and third equations into the first give <span class="math inline">\(\eta_{14} = \frac72 + \frac12 \eta_{14}\)</span>, so <span class="math inline">\(\eta_{14} = 7\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>2.</strong> Consider a Markov jump process <span class="math inline">\((X(t))\)</span> on a triangle, with the vertices labelled 1, 2, 3 going clockwise. In a short time period <span class="math inline">\(\tau\)</span>, we move one step clockwise with probability <span class="math inline">\(\alpha\tau + o(\tau)\)</span>, one step anticlockwise with probability <span class="math inline">\(\beta\tau + o(\tau)\)</span>, or stay where we are.</p>
+<div class="subq">
+<p><strong>(a)</strong> Write down a generator matrix for this Markov jump process, and draw a transition rate diagram.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -(\alpha + \beta) &amp; \alpha &amp; \beta \\\beta &amp; -(\alpha + \beta) &amp; \alpha \\ \alpha &amp; \beta &amp; -(\alpha + \beta) \end{pmatrix} . \]</span></p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> What is the probability, starting from state 1, that we hit state 3 before state 2?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Starting from 1, we next move to 3 with probability <span class="math inline">\(\beta/(\alpha+\beta)\)</span>, and otherwise we next move to 2, so the answer is <span class="math inline">\(\beta/(\alpha+\beta)\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> What is the expected time <span class="math inline">\(\eta_{13}\)</span> to hit state 3 starting from state 1.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Conditioning on the first step, we have
+<span class="math display">\[\begin{align*}
+\eta_{13} &amp;= \frac{1}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta} \eta_{23} + \frac{\beta}{\alpha + \beta} \eta_{33} = \frac{1}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta} \eta_{23} \\
+\eta_{23} &amp;= \frac{1}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta} \eta_{33} + \frac{\beta}{\alpha + \beta} \eta_{13} = \frac{1}{\alpha + \beta} + \frac{\beta}{\alpha + \beta} \eta_{13} ,
+\end{align*}\]</span>
+since <span class="math inline">\(\eta_{33} = 0\)</span>. Substituting the second equation into the first and solving, we get
+<span class="math display">\[ \eta_{13} = \frac{2\alpha+\beta}{\alpha^2 + \alpha\beta + \beta^2} .  \]</span></p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> Write down the transition matrix <span class="math inline">\(\mathsf R\)</span> for the jump chain <span class="math inline">\((Y_n)\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+<span class="math display">\[ \mathsf R = \frac{1}{\alpha+\beta} \begin{pmatrix} 0 &amp; \alpha &amp; \beta \\\beta &amp; 0 &amp; \alpha \\ \alpha &amp; \beta &amp; 0 \end{pmatrix} . \]</span></p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(e)</strong> What is the probability in the jump chain <span class="math inline">\((Y_n)\)</span> that, starting from state 1, that we hit state 3 before state 2?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Hitting probabilities are always the same for a Markov jump process and its jump chain, so this is <span class="math inline">\(\beta/(\alpha+\beta)\)</span>, as in part (b).</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(f)</strong> What is the expected number of steps in the jump chain <span class="math inline">\((Y_n)\)</span> to hit state 3 starting from state 1.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+We have similar equations to before, with
+<span class="math display">\[\begin{align*}
+\eta_{13} &amp;= 1 + \frac{\alpha}{\alpha + \beta} \eta_{23} \\
+\eta_{23} &amp;= 1 + \frac{\beta}{\alpha + \beta} \eta_{13} .
+\end{align*}\]</span>
+We substitute the second into the first and solve to get
+<span class="math display">\[ \eta_{13} = \frac{2\alpha^2 + 3\alpha\beta + \beta^2}{\alpha^2 + \alpha\beta + \beta^2} = (\alpha + \beta) \frac{(2\alpha+\beta)}{\alpha^2 + \alpha\beta + \beta^2} .  \]</span>
+This is <span class="math inline">\((\alpha + \beta)\)</span> times the original answer, reflecting the extra average time we spend in each state in the continuous time process.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>3.</strong></p>
+<div class="subq">
+<p><strong>(a)</strong> Calculate the stationary distribution for a Markov jump process with generator matrix
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 1 &amp; 1 \\ 1 &amp; -3 &amp; 2 \\ 0 &amp; 2 &amp; -2 \end{pmatrix}.   \]</span></p>
+<div class="myanswers">
+<p><em>Solution.</em>
+First, we write out the equations for <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span>:
+<span class="math display">\[\begin{align*}
+-2 \pi_1 + \phantom{3}\pi_2 \phantom{{}+2\pi_3} &amp;= 0 \\
+\pi_1 - 3\pi_2 + 2\pi_3 &amp;= 0 \\
+\pi_1 + 2\pi_2 - 2\pi_3 &amp;= 0 .
+\end{align*}\]</span>
+Second, we discard the second equation and choose <span class="math inline">\(\pi_1\)</span> as the working variable, to get
+<span class="math display">\[\begin{align*}
+\pi_2 \phantom{{}+2\pi_3 }&amp;= 2\pi_1 \\
+-2\pi_2 + 2\pi_3 &amp;= \pi_1 ,
+\end{align*}\]</span>
+Substituting the second first into the second gives <span class="math inline">\(\pi_3 = \frac{5}{2}\pi_1\)</span>.
+Third, the normalising condition gives
+<span class="math display">\[ \pi_1 + 2\pi_1 + \tfrac52 \pi_1 = 1  , \]</span>
+meaning <span class="math inline">\(\pi_1 = \frac{2}{11}\)</span>. We get the solution <span class="math inline">\(\boldsymbol\pi = (\frac{2}{11}, \frac{4}{11}, \frac{5}{11})\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> Fill in the missing entries of the following generator matrix, and find two stationary distributions for the associated Markov jump process:
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} ? &amp; 2 &amp; 0 \\ ? &amp; -3 &amp; 0 \\ ? &amp; ? &amp; 0 \end{pmatrix}.   \]</span></p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Since rows add up to <span class="math inline">\(0\)</span>, and since off-diagonal elements cannot be negative, we have
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 2 &amp; 0 \\ 3 &amp; -3 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}.   \]</span></p>
+<p>Since state <span class="math inline">\(3\)</span> is absorbing, we have that <span class="math inline">\((0,0,1)\)</span> is a stationary distribution. For another, we seek a stationary distribution on states <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span>. The equations for <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span> are
+<span class="math display">\[ -2\pi_1 + 3 \pi_2 = 0 \qquad 2\pi_2 - 3 \pi_2 = 0 , \]</span>
+with solution <span class="math inline">\((\frac35, \frac25, 0)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>4.</strong> Consider a Markov jump process <span class="math inline">\((X(t))\)</span> with state space <span class="math inline">\(\mathcal S = \{1,2,3,4\}\)</span> and generator matrix
+<span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 2 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 &amp; 0 \\ 1 &amp; 2 &amp; -4 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}.   \]</span></p>
+<div class="subq">
+<p><strong>(a)</strong> Draw a transition rate diagram for <span class="math inline">\((X(t))\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+PICTURE</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> Write down the communicating classes for <span class="math inline">\((X(t))\)</span>, and state if each one is positive recurrent, null recurrent, or transient. Are there any absorbing states?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+<span class="math inline">\(\{1,2\}\)</span> is positive recurrent, <span class="math inline">\(\{3\}\)</span> is transient, <span class="math inline">\(\{4\}\)</span> is positive recurrent and is an absorbing state.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> Calculate the hitting probability <span class="math inline">\(h_{31}\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Conditioning on the first step, we have
+<span class="math display">\[ h_{31} = \tfrac14 h_{11} + \tfrac24 h_{21} + \tfrac14 h_{41} .   \]</span>
+Further, it’s clear that <span class="math inline">\(h_{11} = h_{21} = 1\)</span> and <span class="math inline">\(h_{41} = 0\)</span>, and thus we get <span class="math inline">\(h_{31} = \frac34\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> Does <span class="math inline">\((X(t))\)</span> have an equilibrium distribution?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+No, because the limiting distribution depends on the initial distribution. For example, starting in <span class="math inline">\(4\)</span>, we have <span class="math inline">\(\mathbb P(X_n = 4 \mid X_0 = 4) = 1\)</span>; but starting in <span class="math inline">\(1\)</span> we have <span class="math inline">\(\mathbb P(X_n = 4 \mid X_0 = 1) = 0\)</span>.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> Conditional on Markov jump process starting from <span class="math inline">\(X(0) = 3\)</span>, calculate the limiting probabilities <span class="math inline">\(\lim_{n \to \infty} \mathbb P(X(t) = j \mid X(0) = 3)\)</span> for all <span class="math inline">\(j \in \mathcal S\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+Starting from 3 we must leave 3 and not return. With probability <span class="math inline">\(\frac14\)</span> we enter the absorbing state 4, while with probability <span class="math inline">\(\frac34\)</span> we enter the closed class <span class="math inline">\(\{1,2,\}\)</span>. To know what happens in the latter case, we seek a stationary distribution on <span class="math inline">\(\{1,2\}\)</span>. The equations for <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span> are
+<span class="math display">\[ -2\pi_1 + \pi_2 = 0 \qquad 2\pi_2 - \pi_1 = 0 ,  \]</span>
+with solution <span class="math inline">\(\boldsymbol\pi = (\frac13, \frac23, 0,0)\)</span>. Hence, the limiting probability starting from <span class="math inline">\(X(0) = 3\)</span> is
+<span class="math display">\[ \left( \tfrac34 \pi_1, \tfrac34 \pi_2, 0, \tfrac14 \right) = \left( \tfrac14, \tfrac12 , 0, \tfrac14 \right) . \]</span></p>
+</div>
+</div>
+</div>
+<div class="myq">
+<p><strong>5.</strong> Suppose <span class="math inline">\((X(t))\)</span> is a continuous time Markov jump process with a stationary distribution <span class="math inline">\(\boldsymbol\phi = (\phi_i)\)</span>. Show that <span class="math inline">\(\boldsymbol\pi = (\pi_i)\)</span>, where
+<span class="math display">\[ \pi_i = \frac{q_i \phi_i}{\sum_j q_j \phi_j} ,\]</span>
+is a stationary distribution for the discrete time jump chain associated to <span class="math inline">\(\big(X(t)\big)\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+The denominator <span class="math inline">\(\sum_j q_j\phi_j\)</span> is just a normalising constant. We must show that the vector <span class="math inline">\((q_i\phi_i)\)</span> satisfies <span class="math inline">\(\boldsymbol\pi\mathsf R = \boldsymbol\pi\)</span>. Written in coordinate form, this is
+<span class="math display">\[\begin{align*}
+\sum_i (q_i\phi_i)r_{ij} &amp;= \sum_{i \neq j}q_i\phi_i \frac{q_{ij}}{q_i} \tag{writing $r_{ij}$ in terms of $q_{ij}$} \\
+&amp;= \sum_{i \neq j} \phi_i q_{ij} \\
+&amp;= \sum_i \phi_iq_{ij} + q_j\phi_j \tag{since $q_j = -q_{jj}$} \\
+&amp;= 0 + q_j\phi_j \tag{since $\boldsymbol\phi\mathsf Q = \mathbf 0$} \\
+&amp;= q_j \phi_j ,
+\end{align*}\]</span>
+as required.</p>
+</div>
 </div>
 
 </div>

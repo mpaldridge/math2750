@@ -272,7 +272,13 @@
 <p>In discrete time, we defined <strong>stationary distributions</strong> as solving <span class="math inline">\(\boldsymbol\pi\mathsf P = \boldsymbol\pi\)</span>. We then had the <strong>limit theorem</strong>, which told us about equilibrium distributions and the limit of <span class="math inline">\(\mathbb P(X_n = i)\)</span>, and the <strong>ergodic theorem</strong>, which told us about the long term proportion of time spent in each state. We develop the same results here.</p>
 <div id="stationary-jump" class="section level2" number="20.1">
 <h2><span class="header-section-number">20.1</span> Stationary distributions</h2>
-<p>We start be defining a stationary distribution as before.</p>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/F6OI3hMKWto">
+</iframe>
+</div>
+</div>
+<p>We start by defining a stationary distribution as before.</p>
 <div class="definition">
 <p><span id="def:statdist2" class="definition"><strong>Definition 20.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a Markov jump process on a state space <span class="math inline">\(\mathcal S\)</span> with generator matrix <span class="math inline">\(\mathsf Q\)</span> and transition semigroup <span class="math inline">\((\mathsf P(t))\)</span>.
 Let <span class="math inline">\(\boldsymbol \pi = (\pi_i)\)</span> be a distribution on <span class="math inline">\(\mathcal S\)</span>, in that <span class="math inline">\(\pi_i \geq 0\)</span> for all <span class="math inline">\(i \in \mathcal S\)</span> and <span class="math inline">\(\sum_{i \in \mathcal S} \pi_i = 1\)</span>. We call <span class="math inline">\(\boldsymbol \pi\)</span> a <strong>stationary distribution</strong> if
@@ -314,7 +320,7 @@ We discard one of the equations – I’ll discard the second one, as it’s the
 <span class="math display">\[ \pi_1 = \tfrac12 \pi_2 \qquad \pi_3 = 2 \pi_2 . \]</span></p>
 <p>Third, we use the normalising condition
 <span class="math display">\[ \pi_1 + \pi_2 + \pi_3 = \left(\tfrac12 + 1 + 2\right)\pi_2 = \tfrac72 \pi_2 = 1 . \]</span>
-This gives <span class="math inline">\(\pi_2 = \frac27\)</span>. Hence <span class="math inline">\(\pi_1 = \frac17\)</span> and <span class="math inline">\(\pi_3 = \frac47\)</span>. Hence, the stationary distribution is <span class="math inline">\(\boldsymbol\pi = (\frac17, \frac27, \frac47)\)</span>.</p>
+This gives <span class="math inline">\(\pi_2 = \frac27\)</span>. Hence <span class="math inline">\(\pi_1 = \frac17\)</span> and <span class="math inline">\(\pi_3 = \frac47\)</span>. Therefore, the stationary distribution is <span class="math inline">\(\boldsymbol\pi = (\frac17, \frac27, \frac47)\)</span>.</p>
 </div>
 <p>As before, we have a result on the existence and uniqueness of the stationary distribution.</p>
 <div class="theorem">
@@ -324,7 +330,7 @@ This gives <span class="math inline">\(\pi_2 = \frac27\)</span>. Hence <span cla
 <li>If the Markov jump process is null recurrent or transient, then no stationary distribution exists.</li>
 </ul>
 </div>
-<p>Compared to the discrete case, there’s can extra factor of <span class="math inline">\(1/q_i\)</span>, the expected amount of time spent in state <span class="math inline">\(i\)</span> until jumping, in the expression <span class="math inline">\(\pi_i = 1/q_i\mu_{i}\)</span>.</p>
+<p>As with the discrete time case, two conditions guarantee existence and uniqueness of the stationary distribution: irreducibility and positive recurrence. Compared to the discrete case, there’s can extra factor of <span class="math inline">\(1/q_i\)</span> in the expression <span class="math inline">\(\pi_i = 1/q_i\mu_{i}\)</span>, representing the expected amount of time spent in state <span class="math inline">\(i\)</span> until jumping.</p>
 </div>
 <div id="convergernce-cont" class="section level2" number="20.2">
 <h2><span class="header-section-number">20.2</span> Convergence to equilibrium</h2>
@@ -362,7 +368,7 @@ Here, the indicator function <span class="math inline">\(\mathbb{I}\big[X(s) = j
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:ergodic-ex-cont" class="example"><strong>Example 20.2  </strong></span>In the <a href="#stat-cont-ex">previous example</a>, the chain was irreducible and positive recurrent. Hence, <span class="math inline">\(\boldsymbol\pi = (\frac17, \frac27, \frac47)\)</span> is the equilibrium distribution for the chain, and describes the long run proportion of time spent in each state.</p>
+<p><span id="exm:ergodic-ex-cont" class="example"><strong>Example 20.2  </strong></span>In the <a href="#stat-cont-ex">previous example</a>, the chain was irreducible and positive recurrent. Hence, by the limit theorem, <span class="math inline">\(\boldsymbol\pi = (\frac17, \frac27, \frac47)\)</span> is the equilibrium distribution for the chain, and by the ergodic theorem, <span class="math inline">\(\boldsymbol\pi\)</span> also describes the long run proportion of time spent in each state.</p>
 </div>
 <div class="mysummary">
 <p><strong>In the next section</strong>, we apply our knowledge of continuous time Markov jump processes to two queuing models.</p>

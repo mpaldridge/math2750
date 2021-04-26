@@ -269,9 +269,21 @@
 <li>Recurrence and transience</li>
 </ul>
 </div>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/jIrJHi7KGFU">
+</iframe>
+</div>
+</div>
 <p>When we studied discrete time Markov chains, we considered matters including communicating classes, periodicity, hitting probabilities and expected hitting times, recurrence and transience, stationary distributions, convergence to equilibrium, and the ergodic theorem. In this section and the next, we develop this theory for continuous time Markov jump processes. Luckily, things will be simpler this time round, as we will often be able to use exactly the same techniques as the discrete time case, often by looking at the discrete time jump chain.</p>
 <div id="classes-cont" class="section level2" number="19.1">
 <h2><span class="header-section-number">19.1</span> Communicating classes</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/_DCmY4nINZ8">
+</iframe>
+</div>
+</div>
 <p>In discrete time, we said that <span class="math inline">\(j\)</span> is accessible from <span class="math inline">\(i\)</span>, and wrote <span class="math inline">\(i \to j\)</span> if <span class="math inline">\(p_{ij}(n) &gt; 0\)</span> for some <span class="math inline">\(n\)</span>. This allowed us to split the state space into communicating classes. We can do exactly the same in discrete time.</p>
 <div class="definition">
 <p><span id="def:classes2" class="definition"><strong>Definition 19.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be a Markov jump process on a state space <span class="math inline">\(\mathcal S\)</span> with transition semigroup <span class="math inline">\((\mathsf P(t))\)</span>. We say that a state <span class="math inline">\(j \in \mathcal S\)</span> is <strong>accessible from</strong> another state <span class="math inline">\(i \in \mathcal S\)</span>, and write <span class="math inline">\(i \to j\)</span> if <span class="math inline">\(p_{ij}(t) &gt; 0\)</span> for some <span class="math inline">\(t \geq 0\)</span>. If <span class="math inline">\(i \to j\)</span> and <span class="math inline">\(j \to i\)</span>, we say that <span class="math inline">\(i\)</span> <strong>communicates with</strong> <span class="math inline">\(j\)</span> and write <span class="math inline">\(i \leftrightarrow j\)</span>.</p>
@@ -285,8 +297,11 @@
 <p><span id="exm:jump-classes" class="example"><strong>Example 19.1  </strong></span><em>Write down the communicating classes for the Markov jump process with generator matrix</em>
 <span class="math display">\[ \mathsf Q = \begin{pmatrix} -2 &amp; 2 &amp; 0 \\ 1 &amp; -3 &amp; 2 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}. \]</span></p>
 <p>The transition rate diagram is</p>
-<div class="mysummary">
-<p><em>Picture to follow.</em></p>
+<div class="figure" style="text-align: center"><span id="fig:class-cont"></span>
+<img src="math2750_files/figure-html/class-cont-1.png" alt="A Markov jump process with three states and two communicating classes." width="288" />
+<p class="caption">
+Figure 19.1: A Markov jump process with three states and two communicating classes.
+</p>
 </div>
 <p>We immediately see that the communicating classes are <span class="math inline">\(\{1,2\}\)</span>, which is not closed, and <span class="math inline">\(\{3\}\)</span> which is closed, so 3 is an absorbing state. The process is not irreducible.</p>
 </div>
@@ -298,6 +313,12 @@
 </div>
 <div id="hitting2" class="section level2" number="19.3">
 <h2><span class="header-section-number">19.3</span> Hitting probabilities and expected hitting times</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/TeSYIorXTBM">
+</iframe>
+</div>
+</div>
 <p>Recall that the <strong>hitting probability</strong> <span class="math inline">\(h_{iA}\)</span> is the probability of reaching some state <span class="math inline">\(j \in A\)</span> at any point in the future starting from <span class="math inline">\(i\)</span>, and the <strong>expected hitting time</strong> <span class="math inline">\(\eta_{iA}\)</span> is the expected amount of time to get there. We found these in discrete time by forming simultaneous equations by conditioning on the first step.</p>
 <p>For hitting probabilities, we just care about where we jump to, and not how long we wait. Thus we are free to consider only the jump chain <span class="math inline">\((Y_n)\)</span> and its transition matrix <span class="math inline">\(\mathsf R\)</span>. Everything works exactly as in discrete time.</p>
 <div class="example">

@@ -15,7 +15,14 @@ In discrete time, we defined **stationary distributions** as solving $\boldsymbo
 
 ## Stationary distributions  {#stationary-jump}
 
-We start be defining a stationary distribution as before.
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/F6OI3hMKWto"></iframe>
+:::
+::::
+
+
+We start by defining a stationary distribution as before.
 
 
 ::: {.definition #statdist2}
@@ -72,7 +79,7 @@ Second, we pick a working variable -- I'll pick $\pi_2$ since it's in both remai
 
 Third, we use the normalising condition
 \[ \pi_1 + \pi_2 + \pi_3 = \left(\tfrac12 + 1 + 2\right)\pi_2 = \tfrac72 \pi_2 = 1 . \]
-This gives $\pi_2 = \frac27$. Hence $\pi_1 = \frac17$ and $\pi_3 = \frac47$. Hence, the stationary distribution is $\boldsymbol\pi = (\frac17, \frac27, \frac47)$.
+This gives $\pi_2 = \frac27$. Hence $\pi_1 = \frac17$ and $\pi_3 = \frac47$. Therefore, the stationary distribution is $\boldsymbol\pi = (\frac17, \frac27, \frac47)$.
 :::
 
 As before, we have a result on the existence and uniqueness of the stationary distribution.
@@ -84,7 +91,7 @@ Consider an irreducible Markov jump process with generator matrix $\mathsf Q$.
 * If the Markov jump process is null recurrent or transient, then no stationary distribution exists.
 :::
 
-Compared to the discrete case, there's can extra factor of $1/q_i$, the expected amount of time spent in state $i$ until jumping, in the expression $\pi_i = 1/q_i\mu_{i}$.
+As with the discrete time case, two conditions guarantee existence and uniqueness of the stationary distribution: irreducibility and positive recurrence. Compared to the discrete case, there's can extra factor of $1/q_i$ in the expression $\pi_i = 1/q_i\mu_{i}$, representing the expected amount of time spent in state $i$ until jumping.
 
 
 
