@@ -224,7 +224,7 @@
 <li class="chapter" data-level="19.3" data-path="S19-class-hitting.html"><a href="S19-class-hitting.html#hitting2"><i class="fa fa-check"></i><b>19.3</b> Hitting probabilities and expected hitting times</a></li>
 <li class="chapter" data-level="19.4" data-path="S19-class-hitting.html"><a href="S19-class-hitting.html#recurrence-transience2"><i class="fa fa-check"></i><b>19.4</b> Recurrence and transience</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html"><i class="fa fa-check"></i><b>20</b> Long-term behaviour of Markov jump procceses</a>
+<li class="chapter" data-level="20" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html"><i class="fa fa-check"></i><b>20</b> Long-term behaviour of Markov jump processes</a>
 <ul>
 <li class="chapter" data-level="20.1" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html#stationary-jump"><i class="fa fa-check"></i><b>20.1</b> Stationary distributions</a></li>
 <li class="chapter" data-level="20.2" data-path="S20-long-term-jump.html"><a href="S20-long-term-jump.html#convergernce-cont"><i class="fa fa-check"></i><b>20.2</b> Convergence to equilibrium</a></li>
@@ -264,9 +264,54 @@
 <h1>Assessment 4</h1>
 <div class="mysummary">
 <p>This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.</p>
-<p>The deadline for submission is <strong>Thursday 6 May at 2pm</strong>. Submission will be to Gradescope via Minerva, from Tuesday 4 May. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a scanning app (I like Microsoft Office Lens or Adobe Scan) rather than submit images.</p>
+<p>The deadline for submission is <strong>Thursday 6 May at 2pm</strong>. Submission will be to Gradescope via Minerva, from Tuesday 4 May. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a proper scanning app (I like Microsoft Office Lens or Adobe Scan); please don’t submit images or photographs.</p>
 <p>Late submissions up to Thursday 13 May at 2pm will still be marked, but the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Thursday 13 May.</p>
 <p>Your solutions to this assessment should be your own work. Copying, collaboration or plagiarism are not permitted. Asking others to do your work, including via the internet, is not permitted. Transgressions are considered to be a very serious matter, and will be dealt with according to the University’s disciplinary procedures.</p>
+</div>
+<div class="myq">
+<p><strong>1.</strong> The arrival of buses is modelled as a Poisson process with rate <span class="math inline">\(\lambda = 4\)</span> per hour.</p>
+<div class="subq">
+<p><strong>(a)</strong> What is the expected number of buses that arrive in a two-hour period?
+<span style="float:right">[1 mark]</span></p>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> What is the probability that at least two buses arrives in a half hour period.
+<span style="float:right">[1]</span></p>
+</div>
+<div class="subq">
+<p><strong>(c)</strong> I arrive at the bus stop and start my watch. What is the expected amount
+of time until the sixth bus arrives. What is the standard deviation of this
+time? <span style="float:right">[2]</span></p>
+</div>
+<div class="subq">
+<p><strong>(d)</strong> Given that exactly two buses arrive between 2pm and 3pm, what is the
+expected arrival time of the first bus? <span style="float:right">[2]</span></p>
+</div>
+<div class="subq">
+<p><strong>(e)</strong> I arrive at the bus stop at 4pm. What is the expected inter-arrival time
+between the previous bus that I missed and the next bus to arrive that I
+catch? <span style="float:right">[1]</span></p>
+</div>
+<div class="subq">
+<p><strong>(f)</strong> I want to get the number 6 bus. Each bus that arrives is a number 6 bus
+independently with probability 0.25. What is the expected amount of time
+to wait until a number 6 bus? <span style="float:right">[1]</span></p>
+</div>
+<div class="subq">
+<p><strong>(g)</strong> What is the probability that at least two buses arrive in a one hour period, at least one of which is a number 6 bus? <span style="float:right">[2]</span></p>
+</div>
+</div>
+<div class="myq">
+<p><strong>2.</strong> Consider the Markov jump process with generator matrix
+<span class="math display">\[ \mathsf Q = \begin{pmatrix}
+-2 &amp;  2 &amp;  0 &amp;  0 &amp;  0 \\
+ 3 &amp; -3 &amp;  0 &amp;  0 &amp;  0 \\
+ 0 &amp;  1 &amp; -2 &amp;  1 &amp;  0 \\
+ 0 &amp;  0 &amp;  3 &amp; -5 &amp;  2 \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix} , \]</span>
+and let <span class="math inline">\((\mathsf P(t))\)</span> be the associated transition semigroup. Find <span class="math inline">\(\lim_{t \to \infty} \mathsf P(t)\)</span>. <span style="float:right">[10]</span></p>
+<p><em>Note: The majority of the marks for this question are for quality of mathematical exposition, with only a few marks for getting the answer right. Make sure to clearly explain and justify the steps you take. You may use results from the notes provided that you state them clearly and explain why they apply.</em></p>
 </div>
 
 </div>

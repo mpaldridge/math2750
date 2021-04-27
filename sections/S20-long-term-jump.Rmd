@@ -1,4 +1,4 @@
-# Long-term behaviour of Markov jump procceses  {#S20-long-term-jump}
+# Long-term behaviour of Markov jump processes  {#S20-long-term-jump}
 
 
 ::: {.mysummary}
