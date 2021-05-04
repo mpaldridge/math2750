@@ -36,6 +36,7 @@ rmd_files:
   - assessments/A4.Rmd
   - sections/S21-queues.Rmd
   - sections/S22-end.Rmd
+  - problems/P11.Rmd
   - computing/computing.Rmd
 book_filename: "math2750"
 output_dir: "docs"

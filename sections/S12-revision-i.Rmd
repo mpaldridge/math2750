@@ -21,7 +21,7 @@ Some things you may want to do in lieu of reading a section of notes:
 
 
 
-## Summary of Part 1  {#summary-i}
+## Summary of Part I  {#summary-i}
 
 
 The following list is not exhaustive, but if you can do most of the things on this list, you're well placed for the exam.

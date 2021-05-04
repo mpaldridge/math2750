@@ -1,13 +1,36 @@
-# Last things  {#S22-end}
+# End of Part II: Continuous time Markov jump processes  {#S22-end}
 
 
 ::: {.mysummary}
 * Summary of Part II
-* Exam preparation
+* Exam questions answered
 :::
 
-<!--
-::: {.mysummary}
-**In the next section**, ...
-:::
--->
+## Summary of Part II  {#summary-ii}
+
+The following list is not exhaustive, but if you can do most of the things on this list, you’re well placed for the exam. Recall that there was a similar [summary of Part I previously](#summary-i).
+
+* Define the Poisson process in terms of (a) independent Poisson increments, (b) independent exponential holding times, (c) transitions in an infinitesimal time period
+* Perform basic calculations to do with a Poisson process, including with summed Poisson processes and marked Poisson processes
+* Define and perform basic calculations with birth processes, including the simple birth process
+* State the Markov property in continuous time
+* Define and perform basic calculations with time inhomogeneous Poisson processes
+* Define Markov jump processes in terms of (a) holding times and the jump chain, (b) transitions in an infinitesimal time period
+* State and derive the forward and backward equations
+* Draw a transition rate diagram
+* Partition the state space into communicating classes, and identify if they are recurrent or transient
+* Calculate hitting probabilities and expected hitting times
+* Find a stationary distribution by solving $\boldsymbol\pi \mathsf Q = \mathbf 0$
+* Apply the limit and ergodic theorems on the long term behaviour of Markov jump chains
+* Use techniques from the course to analyse simple models of queues
+
+
+## Exam FAQs
+
+Some frequently asked questions about the exam. (I'll add to this list if there are more questions at Tuesday's lecture.)
+
+* **How long is the exam?** The time between the paper being emailed to you and the deadline for submitting your work is 48 hours (plus submission time). However, you are not expected to spend all that time working on the exam. I was instructed that the paper should represent no more than one day's work. I recommend that between 4 and 6 hours might be a sensible amount of time to spend.
+* **How many questions are there in the exam?** There are four long-ish multi-part questions, of a similar length to those on the past papers, worth 20 marks each.
+* **Is there R work on the exam?** There are two parts of one question that discuss R. In the first part, a few lines of R code are given, and you are asked to explain what is wrong with it; in the second part, you are asked to supply the correct commands. It is perfectly possible to answer this question without using R or RStudio, although you may optionally decide to use R to help give hints for the first part and check your answer to the second part.
+* **Are there marks for showing my working and clearly explaining my answer?** Yes!
+* **How will the exam compare to the 2020 past paper?** The exam will be very similar to the 2020 past paper, which was also a 48-hour take-home exam written by me. I can think of two differences. First, last year, the last quarter of the course (Sections 17--21) was disrupted due to the UCU strike and the start of the pandemic, so did not appear much on the exam; these sections *will* appear on your exam. Second, marks were a bit too high last year; I intend for a greater proportion of the 2021 paper to be as hard as the harder parts of the 2020 paper.

@@ -1,0 +1,128 @@
+# Problem Sheet 11  {.unnumbered #P11}
+
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+-->
+
+
+
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
+
+
+
+\commfalse
+
+
+
+::: {.mysummary}
+There are no workshops for this problem sheet, but you might like to use these two questions to test your understanding of Section 21.
+:::
+
+
+::::: {.myq}
+**1.**
+
+:::: {.subq}
+**(a)** Consider an M/M/1 queue with arrival rate $\lambda$ and service rate $\mu < \lambda$.
+Justify the statement that the average time an individual spends waiting in the queue is
+	\[ \frac{\lambda}{\mu(\mu - \lambda)} . \]
+
+::: {.myanswers data-latex=""}
+*Solution.*
+We saw in lectures that there are on average $\lambda/(\mu-\lambda)$ individuals in the queue. Each one will take an $\Exp(\mu)$ time to be serviced, which has mean $1/\mu$. Multiplying these gives the result.
+:::
+::::
+
+:::: {.subq}
+**(b)** Consider the queue for the single cash register in a shop. Customers arrive at a rate of 28 per hour, and that the average time at the till is 2 minutes. What is the average time, in minutes, that a customer waits in the queue?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+If we work in time units of hours, we have $\lambda = 28$ and $\mu = 30$, and the average waiting time is 
+\[ \frac{28}{30(30-28)} = \frac{28}{60} = 28 \text{ minutes.}  \]
+:::
+::::
+
+:::: {.subq}
+**(c)** The shop decides to open a second cash register. Each customer chooses one of the registers to queue for $50:50$ at random. What is the average wait time now? (Remember to justify your answer carefully.)
+
+::: {.myanswers data-latex=""}
+*Solution.*
+The arrival process at each till is now a marked Poisson process, so has rate $\lambda/2 = 14$. This means the waiting time is
+\[ \frac{14}{30(30-14)} = \frac{7}{4\times 60} = \frac74 \text{ minutes} = \text{1 minute 45 seconds.}  \]
+:::
+::::
+
+:::: {.subq}
+**(d)** How might you improve the model of a shop with two cash registers to more accurately reflect true queueing behaviour? What effect would this have on the average wait time?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+We might assume that customers join the shortest queue, rather than picking one at random. We might assume a customer will move to the other till if it becomes empty. We might even assume that customers will change queues if the other queue gets shorter than the one they are currently in. In all cases, the average waiting time will go down.
+:::
+::::
+:::::
+
+::::: {.myq}
+**2.** Telephone calls to a call centre are modelled as an M/M/$s$/$s$ queue: call arrivals are a Poisson process with rate $\lambda$, call lengths are exponential with rate $\mu$, and there are $s$ workers available to answer the phone. The second $s$ denotes that there is only enough phone lines for $s$ callers at a time -- if all workers are answering calls, any new calls are immediately dropped, and there is no technology for holding in a queue or waiting for a worker to become free.
+
+:::: {.subq}
+**(a)** Let $X(t)$ be the number of calls being answered at time $t$. Write down the transition rates $q_{ij}$ for $i,j \in \{0,1,\dots,s\}$, $i\neq j$.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+The transition rate are $q_{i,i+1} = \lambda$ for $i = 0,1,\dots, s-1$, representing arrivals at rate $\lambda$ when there is at least one free server, and $q_{i,i-1} = i\mu$ for $i = 1,2,\dots, s$ representing departures.
+:::
+::::
+
+:::: {.subq}
+**(b)** *Erlang's formula* states that the long-run proportion of time that all $s$ workers are answering calls is
+\[ \frac{\rho^s/s!}{\sum_{i=0}^s \rho^i/i!} ,       \]
+where $\rho = \lambda/\mu$. Prove Erlang's formula.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+We claim that a stationary distribution	is given by $\pi_j = C \rho^j/j!$ for $j = 0,1,\dots, s$, where the normalising constant will have to be 
+\[ C = \frac{1}{\sum_{i=0}^s \rho^i/i!} . \]
+By the ergodic theorem, the long-run proportion of time all $s$ workers are answering calls is $\pi_s$.
+
+It remains to prove the claim. The equations for $\boldsymbol\pi \mathsf Q = \mathbf 0$ are
+\[     (i+1)\mu \pi_{i+1} - (\lambda + i\mu)\pi_i + \lambda \pi_{i-1} = 0.
+  \]
+for $i = 0,1,\dots, s-1$, and
+\[     - s\mu\pi_s + \lambda \pi_{s-1} = 0  . \]
+Proving this holds for $i = 0,1,\dots,s-1$ is exactly the same as for the M/M/$\infty$ process in lectures, while for $i =s$ we have
+\begin{align*}
+- s\mu\pi_s + \lambda \pi_{s-1}
+&= -s\mu C \frac{\rho^s}{s!} + \lambda C \frac{\rho^{s-1}}{(s-1)!} \\
+&= - C \mu \rho \frac{\rho^{s-1}}{(s-1)!} + C \lambda \frac{\rho^{s-1}}{(s-1)!} \\
+&= - C \lambda \frac{\rho^{s-1}}{(s-1)!} + C \lambda \frac{\rho^{s-1}}{(s-1)!} \\
+&= 0       , 
+\end{align*}
+thus proving the claim.
+:::
+::::
+:::::
+

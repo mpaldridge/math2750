@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Assessment 4 | MATH2750 Introduction to Markov Processes</title>
+  <title>Problem Sheet 11 | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Assessment 4 | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Problem Sheet 11 | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Assessment 4 | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Problem Sheet 11 | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="P10.html"/>
-<link rel="next" href="S21-queues.html"/>
+<link rel="prev" href="S22-end.html"/>
+<link rel="next" href="computing.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -269,58 +269,106 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="A4" class="section level1 unnumbered">
-<h1>Assessment 4</h1>
+<div id="P11" class="section level1 unnumbered">
+<h1>Problem Sheet 11</h1>
+<!--
+<style>
+.fold-btn { 
+  float: right; 
+  margin: -12px 0 0 0;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $folds = $(".myanswers");
+  $folds.wrapInner("<div class=\"fold-blck\">"); // wrap a div container around content
+  $folds.prepend("<button class=\"fold-btn\">Show solution</button>");  // add a button
+  $(".fold-blck").toggle();  // fold all blocks
+  $(".fold-btn").on("click", function() {  // add onClick event
+    $(this).text($(this).text() === "Hide solution" ? "Show solution" : "Hide solution");  // if the text equals "Fold", change it to "Unfold"or else to "Fold" 
+    $(this).next(".fold-blck").toggle("linear");  // "swing" is the default easing function. This can be further customized in its speed or the overall animation itself.
+  })
+});
+</script>
+-->
+<style>
+.myanswers { 
+display: none !important;
+}
+</style>
 <div class="mysummary">
-<p>This assessment counts as 4% of your final module grade. You should attempt both questions. You must show your working, and there are marks for the quality of your mathematical writing.</p>
-<p>The deadline for submission is <strong>Thursday 6 May at 2pm</strong>. Submission will be to Gradescope via Minerva, from Tuesday 4 May. It would be helpful to start your solution to Question 2 on a new page. If you hand-write your solutions and scan them using your phone, please convert to PDF using a proper scanning app (I like Microsoft Office Lens or Adobe Scan); please don’t submit images or photographs.</p>
-<p>Late submissions up to Thursday 13 May at 2pm will still be marked, but the total mark will be reduced by 10% per day or part-day for which the work is late. Submissions are not permitted after Thursday 13 May.</p>
-<p>Your solutions to this assessment should be your own work. Copying, collaboration or plagiarism are not permitted. Asking others to do your work, including via the internet, is not permitted. Transgressions are considered to be a very serious matter, and will be dealt with according to the University’s disciplinary procedures.</p>
+<p>There are no workshops for this problem sheet, but you might like to use these two questions to test your understanding of Section 21.</p>
 </div>
 <div class="myq">
-<p><strong>1.</strong> The arrival of buses is modelled as a Poisson process with rate <span class="math inline">\(\lambda = 4\)</span> per hour.</p>
+<p><strong>1.</strong></p>
 <div class="subq">
-<p><strong>(a)</strong> What is the expected number of buses that arrive in a two-hour period?
-<span style="float:right">[1 mark]</span></p>
+<p><strong>(a)</strong> Consider an M/M/1 queue with arrival rate <span class="math inline">\(\lambda\)</span> and service rate <span class="math inline">\(\mu &lt; \lambda\)</span>.
+Justify the statement that the average time an individual spends waiting in the queue is
+<span class="math display">\[ \frac{\lambda}{\mu(\mu - \lambda)} . \]</span></p>
+<div class="myanswers">
+<p><em>Solution.</em>
+We saw in lectures that there are on average <span class="math inline">\(\lambda/(\mu-\lambda)\)</span> individuals in the queue. Each one will take an <span class="math inline">\(\operatorname{Exp}(\mu)\)</span> time to be serviced, which has mean <span class="math inline">\(1/\mu\)</span>. Multiplying these gives the result.</p>
+</div>
 </div>
 <div class="subq">
-<p><strong>(b)</strong> What is the probability that at least two buses arrives in a half hour period.
-<span style="float:right">[1]</span></p>
+<p><strong>(b)</strong> Consider the queue for the single cash register in a shop. Customers arrive at a rate of 28 per hour, and that the average time at the till is 2 minutes. What is the average time, in minutes, that a customer waits in the queue?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+If we work in time units of hours, we have <span class="math inline">\(\lambda = 28\)</span> and <span class="math inline">\(\mu = 30\)</span>, and the average waiting time is
+<span class="math display">\[ \frac{28}{30(30-28)} = \frac{28}{60} = 28 \text{ minutes.}  \]</span></p>
+</div>
 </div>
 <div class="subq">
-<p><strong>(c)</strong> I arrive at the bus stop and start my watch. What is the expected amount
-of time until the sixth bus arrives. What is the standard deviation of this
-time? <span style="float:right">[2]</span></p>
+<p><strong>(c)</strong> The shop decides to open a second cash register. Each customer chooses one of the registers to queue for <span class="math inline">\(50:50\)</span> at random. What is the average wait time now? (Remember to justify your answer carefully.)</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+The arrival process at each till is now a marked Poisson process, so has rate <span class="math inline">\(\lambda/2 = 14\)</span>. This means the waiting time is
+<span class="math display">\[ \frac{14}{30(30-14)} = \frac{7}{4\times 60} = \frac74 \text{ minutes} = \text{1 minute 45 seconds.}  \]</span></p>
+</div>
 </div>
 <div class="subq">
-<p><strong>(d)</strong> Given that exactly two buses arrive between 2pm and 3pm, what is the
-expected arrival time of the first bus? <span style="float:right">[2]</span></p>
+<p><strong>(d)</strong> How might you improve the model of a shop with two cash registers to more accurately reflect true queueing behaviour? What effect would this have on the average wait time?</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+We might assume that customers join the shortest queue, rather than picking one at random. We might assume a customer will move to the other till if it becomes empty. We might even assume that customers will change queues if the other queue gets shorter than the one they are currently in. In all cases, the average waiting time will go down.</p>
 </div>
-<div class="subq">
-<p><strong>(e)</strong> I arrive at the bus stop at 4pm. What is the expected inter-arrival time
-between the previous bus that I missed and the next bus to arrive that I
-catch? <span style="float:right">[1]</span></p>
-</div>
-<div class="subq">
-<p><strong>(f)</strong> I want to get the number 6 bus. Each bus that arrives is a number 6 bus
-independently with probability 0.25. What is the expected amount of time
-to wait until a number 6 bus? <span style="float:right">[1]</span></p>
-</div>
-<div class="subq">
-<p><strong>(g)</strong> What is the probability that at least two buses arrive in a one hour period, at least one of which is a number 6 bus? <span style="float:right">[2]</span></p>
 </div>
 </div>
 <div class="myq">
-<p><strong>2.</strong> Consider the Markov jump process with generator matrix
-<span class="math display">\[ \mathsf Q = \begin{pmatrix}
--2 &amp;  2 &amp;  0 &amp;  0 &amp;  0 \\
- 3 &amp; -3 &amp;  0 &amp;  0 &amp;  0 \\
- 0 &amp;  1 &amp; -2 &amp;  1 &amp;  0 \\
- 0 &amp;  0 &amp;  3 &amp; -5 &amp;  2 \\
- 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
-\end{pmatrix} , \]</span>
-and let <span class="math inline">\((\mathsf P(t))\)</span> be the associated transition semigroup. Find <span class="math inline">\(\lim_{t \to \infty} \mathsf P(t)\)</span>. <span style="float:right">[10]</span></p>
-<p><em>Note: The majority of the marks for this question are for quality of mathematical exposition, with only a few marks for getting the answer right. Make sure to clearly explain and justify the steps you take. You may use results from the notes provided that you state them clearly and explain why they apply.</em></p>
+<p><strong>2.</strong> Telephone calls to a call centre are modelled as an M/M/<span class="math inline">\(s\)</span>/<span class="math inline">\(s\)</span> queue: call arrivals are a Poisson process with rate <span class="math inline">\(\lambda\)</span>, call lengths are exponential with rate <span class="math inline">\(\mu\)</span>, and there are <span class="math inline">\(s\)</span> workers available to answer the phone. The second <span class="math inline">\(s\)</span> denotes that there is only enough phone lines for <span class="math inline">\(s\)</span> callers at a time – if all workers are answering calls, any new calls are immediately dropped, and there is no technology for holding in a queue or waiting for a worker to become free.</p>
+<div class="subq">
+<p><strong>(a)</strong> Let <span class="math inline">\(X(t)\)</span> be the number of calls being answered at time <span class="math inline">\(t\)</span>. Write down the transition rates <span class="math inline">\(q_{ij}\)</span> for <span class="math inline">\(i,j \in \{0,1,\dots,s\}\)</span>, <span class="math inline">\(i\neq j\)</span>.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+The transition rate are <span class="math inline">\(q_{i,i+1} = \lambda\)</span> for <span class="math inline">\(i = 0,1,\dots, s-1\)</span>, representing arrivals at rate <span class="math inline">\(\lambda\)</span> when there is at least one free server, and <span class="math inline">\(q_{i,i-1} = i\mu\)</span> for <span class="math inline">\(i = 1,2,\dots, s\)</span> representing departures.</p>
+</div>
+</div>
+<div class="subq">
+<p><strong>(b)</strong> <em>Erlang’s formula</em> states that the long-run proportion of time that all <span class="math inline">\(s\)</span> workers are answering calls is
+<span class="math display">\[ \frac{\rho^s/s!}{\sum_{i=0}^s \rho^i/i!} ,       \]</span>
+where <span class="math inline">\(\rho = \lambda/\mu\)</span>. Prove Erlang’s formula.</p>
+<div class="myanswers">
+<p><em>Solution.</em>
+We claim that a stationary distribution is given by <span class="math inline">\(\pi_j = C \rho^j/j!\)</span> for <span class="math inline">\(j = 0,1,\dots, s\)</span>, where the normalising constant will have to be
+<span class="math display">\[ C = \frac{1}{\sum_{i=0}^s \rho^i/i!} . \]</span>
+By the ergodic theorem, the long-run proportion of time all <span class="math inline">\(s\)</span> workers are answering calls is <span class="math inline">\(\pi_s\)</span>.</p>
+<p>It remains to prove the claim. The equations for <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span> are
+<span class="math display">\[     (i+1)\mu \pi_{i+1} - (\lambda + i\mu)\pi_i + \lambda \pi_{i-1} = 0.
+  \]</span>
+for <span class="math inline">\(i = 0,1,\dots, s-1\)</span>, and
+<span class="math display">\[     - s\mu\pi_s + \lambda \pi_{s-1} = 0  . \]</span>
+Proving this holds for <span class="math inline">\(i = 0,1,\dots,s-1\)</span> is exactly the same as for the M/M/<span class="math inline">\(\infty\)</span> process in lectures, while for <span class="math inline">\(i =s\)</span> we have
+<span class="math display">\[\begin{align*}
+- s\mu\pi_s + \lambda \pi_{s-1}
+&amp;= -s\mu C \frac{\rho^s}{s!} + \lambda C \frac{\rho^{s-1}}{(s-1)!} \\
+&amp;= - C \mu \rho \frac{\rho^{s-1}}{(s-1)!} + C \lambda \frac{\rho^{s-1}}{(s-1)!} \\
+&amp;= - C \lambda \frac{\rho^{s-1}}{(s-1)!} + C \lambda \frac{\rho^{s-1}}{(s-1)!} \\
+&amp;= 0       , 
+\end{align*}\]</span>
+thus proving the claim.</p>
+</div>
+</div>
 </div>
 
 </div>
@@ -329,8 +377,8 @@ and let <span class="math inline">\((\mathsf P(t))\)</span> be the associated tr
           </div>
         </div>
       </div>
-<a href="P10.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="S21-queues.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="S22-end.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

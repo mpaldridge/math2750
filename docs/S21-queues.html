@@ -174,7 +174,7 @@
 <li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> End of of Part I: Discrete time Markov chains</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#todo-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
-<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part I</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P06.html"><a href="P06.html"><i class="fa fa-check"></i>Problem sheet 6</a></li>
 <li class="chapter" data-level="" data-path="A3.html"><a href="A3.html"><i class="fa fa-check"></i>Assessment 3</a></li>
@@ -232,8 +232,17 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="P10.html"><a href="P10.html"><i class="fa fa-check"></i>Problem Sheet 10</a></li>
 <li class="chapter" data-level="" data-path="A4.html"><a href="A4.html"><i class="fa fa-check"></i>Assessment 4</a></li>
-<li class="chapter" data-level="21" data-path="S21-queues.html"><a href="S21-queues.html"><i class="fa fa-check"></i><b>21</b> Queues</a></li>
-<li class="chapter" data-level="22" data-path="S22-end.html"><a href="S22-end.html"><i class="fa fa-check"></i><b>22</b> Last things</a></li>
+<li class="chapter" data-level="21" data-path="S21-queues.html"><a href="S21-queues.html"><i class="fa fa-check"></i><b>21</b> Queues</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="S21-queues.html"><a href="S21-queues.html#MMinf"><i class="fa fa-check"></i><b>21.1</b> M/M/∞ infinite server process</a></li>
+<li class="chapter" data-level="21.2" data-path="S21-queues.html"><a href="S21-queues.html#MM1"><i class="fa fa-check"></i><b>21.2</b> M/M/1 single server queue</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="S22-end.html"><a href="S22-end.html"><i class="fa fa-check"></i><b>22</b> End of Part II: Continuous time Markov jump processes</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="S22-end.html"><a href="S22-end.html#summary-ii"><i class="fa fa-check"></i><b>22.1</b> Summary of Part II</a></li>
+<li class="chapter" data-level="22.2" data-path="S22-end.html"><a href="S22-end.html#exam-faqs"><i class="fa fa-check"></i><b>22.2</b> Exam FAQs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P11.html"><a href="P11.html"><i class="fa fa-check"></i>Problem Sheet 11</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a>
 <ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
@@ -268,12 +277,115 @@
 <li>The M/M/1 single server queue</li>
 </ul>
 </div>
-<!--
-::: {.mysummary}
-**In the next section**, ...
-:::
--->
+<div id="MMinf" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> M/M/∞ infinite server process</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/bF83jJotAiw">
+</iframe>
+</div>
+</div>
+<p>In a mathematical model for a queue, individuals arrive, receive a service, and leave. In our first example, individuals receive service as soon as they arrive – so there is no actual “queueing”. In our second example, later, individuals will actually queue up and wait until the server is able to serve them.</p>
+<p>Our first process as follows. Individuals arrive like a Poisson process of rate <span class="math inline">\(\lambda\)</span>. Then they receive a service which takes time <span class="math inline">\(\operatorname{Exp}(\mu)\)</span>, independent of everything else, and then they leave.</p>
+<p>This can be a useful model for many applications: for example, visitors watching a livestream on a website could arrive at the website like a Poisson process of rate <span class="math inline">\(\lambda\)</span> and watch the livestream for a <span class="math inline">\(\operatorname{Exp}(\mu)\)</span> amount of time. Other models could include the number of students in the University library, the number of insurance contracts held by an insurance broker, or the number of files being downloaded from a server.</p>
+<p>The number of individuals <span class="math inline">\((X(t))\)</span> in the process (that is, receiving the service) at time <span class="math inline">\(t\)</span> is a Markov jump process with arrival rates <span class="math inline">\(q_{i,i+1} = \lambda\)</span>. The rate of departures when <span class="math inline">\(i\)</span> individuals are being serviced has the rate and <span class="math inline">\(q_{i,i-1} = i\mu\)</span>, because, thanks to the memoryless property of the exponential distribution, the first service time to finish is the minimum of <span class="math inline">\(i\)</span> remaining exponential service times, and this is exponential with rate <span class="math inline">\(i\mu\)</span>. Since rows of a generator matrix sum to 0, we have <span class="math inline">\(q_i = -q_{ii} = \lambda + i\mu\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:MMinf-diag"></span>
+<img src="math2750_files/figure-html/MMinf-diag-1.png" alt="An M/M/∞ queue" width="480" />
+<p class="caption">
+Figure 21.1: An M/M/∞ queue
+</p>
+</div>
+<p>This process is called the <strong>M/M/<span class="math inline">\(\infty\)</span></strong> process.</p>
+<ul>
+<li>The first M stands for <strong>memoryless arrivals</strong>, which means the arrivals process is a Poisson process, which has exponential – and therefore memoryless – interarrival times.</li>
+<li>The second M stands for <strong>memoryless service times</strong>, which means the service times are exponentially distributed, and hence have the memoryless property.</li>
+<li>The <span class="math inline">\(\infty\)</span> stands for <strong>infinite servers</strong>, which means there is no limit on how many individuals can be serviced at once.</li>
+</ul>
+<p>Two questions we might want to know the answer to are these:</p>
+<ol style="list-style-type: decimal">
+<li>In the long run, what’s the average number of individuals being serviced?</li>
+<li>In the long run, for what proportion of the time are all the servers idle?</li>
+</ol>
+<p>To find out about this long run behaviour, we need to calculate the stationary distribution. The stationary distribution solves <span class="math inline">\(\boldsymbol\pi\mathsf Q = \mathsf 0\)</span>, or in coordinate form, <span class="math inline">\(\sum_i \pi_i q_{ij} = 0\)</span>. Thus we have
+<span class="math display">\[
+    \pi_{i+1} q_{i+1\,i} + \pi_i q_{ii} + \pi_{i-1} q_{i-1\,i} = (i+1)\mu \pi_{i+1} - (\lambda + i\mu)\pi_i + \lambda \pi_{i-1} = 0 .
+\]</span></p>
+<p>If we were to check the first few values of the solution of this, we would find
+<span class="math display">\[ \pi_1 = \rho \pi_0, \qquad \pi_2 = \frac{\rho^2}{2} \pi_0, \qquad \pi_3 = \frac{\rho^3}{6} \pi_0 , \qquad \dots\]</span>
+where <span class="math inline">\(\rho = \lambda/\mu\)</span>. This looks suspiciously like the stationary distribution might be the Poisson distribution with rate <span class="math inline">\(\rho\)</span>; that is, <span class="math inline">\(\pi_i = \pi_0 \rho^i / i! = \mathrm{e}^{-\rho} \rho^i / i!\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:MMinf-thm" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be an M/M/<span class="math inline">\(\infty\)</span> process with arrivals at rate <span class="math inline">\(\lambda\)</span> and service at rate <span class="math inline">\(\mu\)</span>. The process has the stationary distribution <span class="math inline">\(\pi_i = \mathrm{e}^{-\rho} \rho^i / i!\)</span>, corresponding to <span class="math inline">\(X(t) \sim \mathrm{Po}(\rho)\)</span>, where <span class="math inline">\(\rho = \lambda/\mu\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-25" class="proof"><em>Proof</em>. </span>We substitute the supposed solution into the equation, to get
+<span class="math display">\[\begin{align*}
+  (i+1)\mu \,\mathrm{e}^{-\rho} \frac{\rho^{i+1}}{(i+1)!} -(&amp;\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda\, \mathrm{e}^{-\rho} \frac{\rho^{i-1}}{(i-1)!} \\
+  &amp;= \mu \mathrm{e}^{-\rho} \rho \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda \mathrm{e}^{-\rho}  \frac{i}{\rho} \frac{\rho^i}{i!} \\
+  &amp;= \mathrm{e}^{-\rho} \lambda \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mathrm{e}^{-\rho} i\mu \frac{\rho^i}{i!} \\
+  &amp;= \mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} \big( \lambda - (\lambda + i \mu) + i \mu   \big)  \\
+  &amp;= 0 ,
+\end{align*}\]</span>
+which is as desired.</p>
+</div>
+<p>This process is clearly irreducible, and since it has a stationary distribution it must be positive recurrent. So, by the limit theorem, we see that <span class="math inline">\(\boldsymbol\pi\)</span> is also the equilibrium distribution. By the ergodic theorem, the long-run amount of time spent in each state is governed by <span class="math inline">\(\boldsymbol\pi\)</span>.</p>
+<p>In answer to question 1, the average number of individuals being serviced is <span class="math inline">\(\mathbb E (\text{Po}(\rho)) = \rho = \lambda/\mu\)</span>. In answer to question 2, the long-run proportion of time the process is empty is <span class="math inline">\(\pi_0 = \mathrm{e}^{-\rho} = \mathrm{e}^{-\lambda/\mu}\)</span>.</p>
+</div>
+<div id="MM1" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> M/M/1 single server queue</h2>
+<div class="videowrap">
+<div class="videowrapper">
+<iframe src="https://www.youtube.com/embed/7DroMz8yrKk">
+</iframe>
+</div>
+</div>
+<p>We now consider a slightly different process with only one server. This is called an <strong>M/M/1</strong> queue, where the “1” is the number of servers.</p>
+<p>As before, individuals arrive as a Poisson process of rate <span class="math inline">\(\lambda\)</span>. If there is no one currently being serviced, the individual goes straight to the server, and begins an <span class="math inline">\(\operatorname{Exp}(\mu)\)</span> service time. Otherwise, they have to join a queue waiting for the server to become free. When the server finishes serving one individual, then, provided the queue is nonempty, they immediately begin to service the individual who has been waiting in the queue for the longest time.</p>
+<p>This is again a very useful model for many applications. For example, it could model a lecturer’s office hours: students arrive at my office at rate <span class="math inline">\(\lambda\)</span>; if I’m free, I can immediately answer their question, which will take an <span class="math inline">\(\text{Exp}(\mu)\)</span> amount of time; but if I’m already dealing with a student, they must join a queue and wait until I am free. This could also model purchases at a shop with a single till, phone calls to a receptionist, or the work of a self-employed person on different tasks.</p>
+<p>Let <span class="math inline">\((X(t))\)</span> be the number of individuals in the process at time <span class="math inline">\(t\)</span>. That could be <span class="math inline">\(X(t) = 0\)</span>, if the server is free; <span class="math inline">\(X(t) = 1\)</span> if one individual is currently being serviced but no one else is waiting; or <span class="math inline">\(X(t) = x &gt; 1\)</span> if one individual is being services and <span class="math inline">\(x - 1\)</span> individuals are waiting in the queue.. Individuals enter the queue at rate <span class="math inline">\(q_{i,i+1} = \lambda\)</span>. When <span class="math inline">\(i \geq 1\)</span>, meaning someone is being serviced, we have departures at rate <span class="math inline">\(q_{i,i-1} = \mu\)</span>. Thus <span class="math inline">\(q_i = -q_{ii} = \lambda + \mu\)</span> for <span class="math inline">\(i \geq 1\)</span>, and <span class="math inline">\(q_0 = -q_{00} = \lambda\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:MMine-diag"></span>
+<img src="math2750_files/figure-html/MMine-diag-1.png" alt="An M/M/1 queue" width="480" />
+<p class="caption">
+Figure 21.2: An M/M/1 queue
+</p>
+</div>
+<p>The first thing we would like to know is if the queue keeps getting longer and longer, or whether eventually every individual is serviced.</p>
+<p>For this continuous time jump process <span class="math inline">\((X(t))\)</span>, the discrete time jump chain <span class="math inline">\((Y_n)\)</span> is a simple random walk with up probability <span class="math inline">\(p = \lambda/(\lambda + \mu)\)</span>, down probability <span class="math inline">\(q = \mu/(\lambda + \mu)\)</span>, and a reflecting barrier at 0. Recall that this Markov chain is transient for <span class="math inline">\(p &gt; q\)</span>, null recurrent for <span class="math inline">\(p = q\)</span>, and positive recurrent for <span class="math inline">\(p &lt; q\)</span>. Thus we see that:</p>
+<ul>
+<li>For <span class="math inline">\(\lambda &gt; \mu\)</span>, the queue is transient, and eventually the length of the queue will grow longer and longer and never clear. This is clearly highly undesirable.</li>
+<li>For <span class="math inline">\(\lambda = \mu\)</span>, the queue is null recurrent, so while the queue will eventually clear, the expected time for it to do so is infinite, so the queue will get very long, and individuals will may have to wait for an extremely long time. This is also undesirable.</li>
+<li>For <span class="math inline">\(\lambda &lt; \mu\)</span>, the queue is positive recurrent, so while individuals may sometimes have to wait, the queue will clear fairly regularly. This is what we want.</li>
+</ul>
+<p>In what follows, we consider only the “good” case <span class="math inline">\(\lambda &lt; \mu\)</span>. Again we have two questions:</p>
+<ol style="list-style-type: decimal">
+<li>In the long run, what’s the average number of individuals being serviced?</li>
+<li>In the long run, for what proportion of the time is the server idle and for what proportion of time is the server busy?</li>
+</ol>
+<p>Again, we look for a stationary distribution, which will tell us about the long term behaviour of the queue. The equation <span class="math inline">\(\boldsymbol\pi\mathsf Q = \mathbf 0\)</span> this time becomes
+<span class="math display">\[ \mu \pi_{i+1} - (\lambda + \mu) \pi_i + \lambda \pi_{i-1} = 0 \qquad \text{for $i \geq 1$} , \]</span>
+together with the initial condition <span class="math inline">\(\mu \pi_1 - \lambda \pi_0 = 0\)</span> and the normalising condition <span class="math inline">\(\sum_i \pi_i = 1\)</span>.</p>
+<p>We recognise this as a linear difference equation. The characteristic equation (using <span class="math inline">\(\alpha\)</span> where we used <span class="math inline">\(\lambda\)</span> previously, since <span class="math inline">\(\lambda\)</span> is already in use) is
+<span class="math display">\[ \mu \alpha^2 - (\lambda + \mu)\alpha + \lambda = (\alpha - 1)(\mu \alpha - \lambda ) = 0 . \]</span>
+This has solutions <span class="math inline">\(\alpha = 1\)</span> and <span class="math inline">\(\alpha = \rho\)</span>, where <span class="math inline">\(\rho = \lambda/\mu &lt; 1\)</span>, so the general solution to the equation is <span class="math inline">\(\pi_i = A + B\rho^i\)</span>.</p>
+<p>The initial condition gives
+<span class="math display">\[  \mu \pi_1 - \lambda \pi_0 = \mu(A + B\rho) - \lambda(A + B) = A\mu + B\lambda - A \lambda - B\lambda = A(\mu - \lambda) = 0 . \]</span>
+Since <span class="math inline">\(\lambda &lt; \mu\)</span>, we must have <span class="math inline">\(A = 0\)</span>. The normalising condition requires
+<span class="math display">\[ \sum_{i=0}^\infty \pi_i = \sum_{i=0}^\infty B\rho^i = \frac{B}{1- \rho} = 1 , \]</span>
+where we’ve used the formula for the sum of a geometric progression with <span class="math inline">\(\rho &lt; 1\)</span>, which gives <span class="math inline">\(B = 1 - \rho.\)</span></p>
+<p>Thus we have the stationary distribution <span class="math inline">\(\pi_i = (1 - \rho)\rho^i\)</span>,
+which is a geometric distribution (the version that starts from <span class="math inline">\(i = 0\)</span>).</p>
+<div class="theorem">
+<p><span id="thm:MMone-thm" class="theorem"><strong>Theorem 21.2  </strong></span>Let <span class="math inline">\((X(t))\)</span> be an M/M/1 queue with arrivals at rate <span class="math inline">\(\lambda\)</span> and service at rate <span class="math inline">\(\mu &lt; \lambda\)</span>. The queue has the stationary distribution <span class="math inline">\(\pi_i = (1 - \rho)\rho^i\)</span>, corresponding to <span class="math inline">\(X(t) \sim \mathrm{Geom}(\rho)\)</span>, where <span class="math inline">\(\rho = \lambda/\mu &lt; 1\)</span>.</p>
+</div>
+<p>By the limit theorem, this is an equilibrium distribution, and the ergoic theorem also applied.</p>
+<p>To answer question 1, the long-run average number of individuals in the process will be
+<span class="math display">\[ \mathbb E\big(\text{Geom}(\rho)\big) = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu - \lambda} . \]</span>
+If <span class="math inline">\(\lambda\)</span> is only slightly smaller than <span class="math inline">\(\mu\)</span> then this number can be quite large; in this case the queue can get very long, even though we know it will clear in a reasonable finite-expectation time.
+To answer question 2, the server will be free a proportion <span class="math inline">\(\pi_0 = 1 - \rho = 1 - \lambda/\mu\)</span> of the time and busy a proportion <span class="math inline">\(1 - \pi_0 = \lambda/\mu\)</span> of the time, in the long run. Again, if <span class="math inline">\(\lambda\)</span> is only slightly smaller than <span class="math inline">\(\mu\)</span>, then the server will be busy most of the time.</p>
+<div class="mysummary">
+<p>This brings us to the end of the mathematical material in this module. <strong>In the next section</strong>, we summarise Part II on continuous time Markov jump processes and discuss the forthcoming exam.</p>
+</div>
 
+</div>
 </div>
             </section>
 

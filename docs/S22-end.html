@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 22 Last things | MATH2750 Introduction to Markov Processes</title>
+  <title>Section 22 End of Part II: Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes</title>
   <meta name="description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 22 Last things | MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="Section 22 End of Part II: Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mpaldridge.github.io/math2750/" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 22 Last things | MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="Section 22 End of Part II: Continuous time Markov jump processes | MATH2750 Introduction to Markov Processes" />
   
   <meta name="twitter:description" content="Lecture notes for the course MATH2750 Introduction to Markov Process at the University of Leeds, 2020–2021" />
   
@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="S21-queues.html"/>
-<link rel="next" href="computing.html"/>
+<link rel="next" href="P11.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -174,7 +174,7 @@
 <li class="chapter" data-level="12" data-path="S12-revision-i.html"><a href="S12-revision-i.html"><i class="fa fa-check"></i><b>12</b> End of of Part I: Discrete time Markov chains</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="S12-revision-i.html"><a href="S12-revision-i.html#todo-revision"><i class="fa fa-check"></i><b>12.1</b> Things to do</a></li>
-<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part 1</a></li>
+<li class="chapter" data-level="12.2" data-path="S12-revision-i.html"><a href="S12-revision-i.html#summary-i"><i class="fa fa-check"></i><b>12.2</b> Summary of Part I</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="P06.html"><a href="P06.html"><i class="fa fa-check"></i>Problem sheet 6</a></li>
 <li class="chapter" data-level="" data-path="A3.html"><a href="A3.html"><i class="fa fa-check"></i>Assessment 3</a></li>
@@ -232,8 +232,17 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="P10.html"><a href="P10.html"><i class="fa fa-check"></i>Problem Sheet 10</a></li>
 <li class="chapter" data-level="" data-path="A4.html"><a href="A4.html"><i class="fa fa-check"></i>Assessment 4</a></li>
-<li class="chapter" data-level="21" data-path="S21-queues.html"><a href="S21-queues.html"><i class="fa fa-check"></i><b>21</b> Queues</a></li>
-<li class="chapter" data-level="22" data-path="S22-end.html"><a href="S22-end.html"><i class="fa fa-check"></i><b>22</b> Last things</a></li>
+<li class="chapter" data-level="21" data-path="S21-queues.html"><a href="S21-queues.html"><i class="fa fa-check"></i><b>21</b> Queues</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="S21-queues.html"><a href="S21-queues.html#MMinf"><i class="fa fa-check"></i><b>21.1</b> M/M/∞ infinite server process</a></li>
+<li class="chapter" data-level="21.2" data-path="S21-queues.html"><a href="S21-queues.html#MM1"><i class="fa fa-check"></i><b>21.2</b> M/M/1 single server queue</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="S22-end.html"><a href="S22-end.html"><i class="fa fa-check"></i><b>22</b> End of Part II: Continuous time Markov jump processes</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="S22-end.html"><a href="S22-end.html#summary-ii"><i class="fa fa-check"></i><b>22.1</b> Summary of Part II</a></li>
+<li class="chapter" data-level="22.2" data-path="S22-end.html"><a href="S22-end.html#exam-faqs"><i class="fa fa-check"></i><b>22.2</b> Exam FAQs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="P11.html"><a href="P11.html"><i class="fa fa-check"></i>Problem Sheet 11</a></li>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html"><i class="fa fa-check"></i>Computational worksheets</a>
 <ul>
 <li class="chapter" data-level="" data-path="computing.html"><a href="computing.html#C-about"><i class="fa fa-check"></i>About the computational worksheets</a></li>
@@ -261,19 +270,44 @@
 
             <section class="normal" id="section-">
 <div id="S22-end" class="section level1" number="22">
-<h1><span class="header-section-number">Section 22</span> Last things</h1>
+<h1><span class="header-section-number">Section 22</span> End of Part II: Continuous time Markov jump processes</h1>
 <div class="mysummary">
 <ul>
 <li>Summary of Part II</li>
-<li>Exam preparation</li>
+<li>Exam questions answered</li>
 </ul>
 </div>
-<!--
-::: {.mysummary}
-**In the next section**, ...
-:::
--->
+<div id="summary-ii" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> Summary of Part II</h2>
+<p>The following list is not exhaustive, but if you can do most of the things on this list, you’re well placed for the exam. Recall that there was a similar <a href="S12-revision-i.html#summary-i">summary of Part I previously</a>.</p>
+<ul>
+<li>Define the Poisson process in terms of (a) independent Poisson increments, (b) independent exponential holding times, (c) transitions in an infinitesimal time period</li>
+<li>Perform basic calculations to do with a Poisson process, including with summed Poisson processes and marked Poisson processes</li>
+<li>Define and perform basic calculations with birth processes, including the simple birth process</li>
+<li>State the Markov property in continuous time</li>
+<li>Define and perform basic calculations with time inhomogeneous Poisson processes</li>
+<li>Define Markov jump processes in terms of (a) holding times and the jump chain, (b) transitions in an infinitesimal time period</li>
+<li>State and derive the forward and backward equations</li>
+<li>Draw a transition rate diagram</li>
+<li>Partition the state space into communicating classes, and identify if they are recurrent or transient</li>
+<li>Calculate hitting probabilities and expected hitting times</li>
+<li>Find a stationary distribution by solving <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span></li>
+<li>Apply the limit and ergodic theorems on the long term behaviour of Markov jump chains</li>
+<li>Use techniques from the course to analyse simple models of queues</li>
+</ul>
+</div>
+<div id="exam-faqs" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Exam FAQs</h2>
+<p>Some frequently asked questions about the exam. (I’ll add to this list if there are more questions at Tuesday’s lecture.)</p>
+<ul>
+<li><strong>How long is the exam?</strong> The time between the paper being emailed to you and the deadline for submitting your work is 48 hours (plus submission time). However, you are not expected to spend all that time working on the exam. I was instructed that the paper should represent no more than one day’s work. I recommend that between 4 and 6 hours might be a sensible amount of time to spend.</li>
+<li><strong>How many questions are there in the exam?</strong> There are four long-ish multi-part questions, of a similar length to those on the past papers, worth 20 marks each.</li>
+<li><strong>Is there R work on the exam?</strong> There are two parts of one question that discuss R. In the first part, a few lines of R code are given, and you are asked to explain what is wrong with it; in the second part, you are asked to supply the correct commands. It is perfectly possible to answer this question without using R or RStudio, although you may optionally decide to use R to help give hints for the first part and check your answer to the second part.</li>
+<li><strong>Are there marks for showing my working and clearly explaining my answer?</strong> Yes!</li>
+<li><strong>How will the exam compare to the 2020 past paper?</strong> The exam will be very similar to the 2020 past paper, which was also a 48-hour take-home exam written by me. I can think of two differences. First, last year, the last quarter of the course (Sections 17–21) was disrupted due to the UCU strike and the start of the pandemic, so did not appear much on the exam; these sections <em>will</em> appear on your exam. Second, marks were a bit too high last year; I intend for a greater proportion of the 2021 paper to be as hard as the harder parts of the 2020 paper.</li>
+</ul>
 
+</div>
 </div>
             </section>
 
@@ -281,7 +315,7 @@
         </div>
       </div>
 <a href="S21-queues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="P11.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

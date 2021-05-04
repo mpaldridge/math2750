@@ -1,0 +1,128 @@
+\contentsline {section}{Schedule}{6}{Doc-Start}%
+\contentsline {section}{About MATH2750}{8}{Doc-Start}%
+\contentsline {subsection}{Organisation of MATH2750}{8}{section*.1}%
+\contentsline {subsubsection}{Notes and videos}{8}{section*.1}%
+\contentsline {subsubsection}{Problem sheets}{8}{section*.1}%
+\contentsline {subsubsection}{Lectures}{8}{section*.1}%
+\contentsline {subsubsection}{Workshops}{8}{section*.1}%
+\contentsline {subsubsection}{Assessments}{9}{section*.1}%
+\contentsline {subsubsection}{Computing worksheets}{9}{section*.1}%
+\contentsline {subsubsection}{Drop-in sessions}{9}{section*.1}%
+\contentsline {subsubsection}{Microsoft Team}{10}{section*.1}%
+\contentsline {subsubsection}{Time management}{10}{section*.1}%
+\contentsline {subsubsection}{Exam}{10}{section*.1}%
+\contentsline {subsubsection}{Who should I ask about\ldots ?}{10}{section*.1}%
+\contentsline {subsection}{Content of MATH2750}{10}{section*.1}%
+\contentsline {subsubsection}{Prerequisites}{10}{section*.1}%
+\contentsline {subsubsection}{Syllabus}{11}{section*.1}%
+\contentsline {subsubsection}{Books}{11}{section*.1}%
+\contentsline {subsubsection}{And finally\ldots {}}{12}{section*.1}%
+\contentsline {part}{Part I: Discrete time Markov chains}{12}{part*.2}%
+\contentsline {section}{\numberline {1}Stochastic processes and the Markov property}{12}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Deterministic and random models}{12}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Stochastic processes}{13}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Markov property}{13}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Random walk}{15}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Simple random walk}{15}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}General random walks}{16}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Exact distribution of the simple random walk}{17}{subsection.2.3}%
+\contentsline {section}{Problem Sheet 1}{18}{equation.2.2}%
+\contentsline {section}{\numberline {3}Gambler's ruin}{21}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Gambler's ruin Markov chain}{21}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Probability of ruin}{21}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Expected duration of the game}{22}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Linear difference equations}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Homogeneous linear difference equations}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Probability of ruin for the gambler's ruin}{26}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Inhomogeneous linear difference equations}{27}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Expected duration for the gambler's ruin}{28}{subsection.4.4}%
+\contentsline {section}{Problem sheet 2}{30}{subsection.4.4}%
+\contentsline {section}{Assessment 1}{33}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Discrete time Markov chains}{34}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Time homogeneous discrete time Markov chains}{34}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}A two-state example}{35}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}\emph {n}-step transition probabilities}{35}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Examples from actuarial science}{37}{section.6}%
+\contentsline {subsection}{\numberline {6.1}A simple no-claims discount model}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}An accident model with memory}{38}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}A no-claims discount model with memory}{39}{subsection.6.3}%
+\contentsline {section}{Problem sheet 3}{41}{figure.4}%
+\contentsline {section}{\numberline {7}Class structure}{46}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Communicating classes}{46}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Periodicity}{47}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Hitting times}{50}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Hitting probabilities and expected hitting times}{50}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Return times}{52}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Hitting and return times for the simple random walk}{52}{subsection.8.3}%
+\contentsline {section}{Problem sheet 4}{54}{theorem.8.2}%
+\contentsline {section}{\numberline {9}Recurrence and transience}{58}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Recurrent and transient states}{58}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Recurrent and transient classes}{59}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Positive and null recurrence}{60}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Strong Markov property}{61}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}A useful lemma}{62}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Stationary distributions}{63}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Definition of stationary distribution}{63}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Finding a stationary distribution}{63}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Existence and uniqueness}{65}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Proof of existence and uniqueness}{66}{subsection.10.4}%
+\contentsline {section}{Problem sheet 5}{69}{equation.10.11}%
+\contentsline {section}{\numberline {11}Long-term behaviour of Markov chains}{73}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Convergence to equilibrium}{73}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Examples of convergence and non-convergence}{74}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Ergodic theorem}{75}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Proofs of the limit and ergodic theorems}{75}{subsection.11.4}%
+\contentsline {section}{\numberline {12}End of of Part I: Discrete time Markov chains}{78}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Things to do}{78}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Summary of Part I}{78}{subsection.12.2}%
+\contentsline {section}{Problem sheet 6}{79}{subsection.12.2}%
+\contentsline {section}{Assessment 3}{83}{equation.12.16}%
+\contentsline {part}{Part II: Continuous time Markov jump processes}{84}{part*.7}%
+\contentsline {section}{\numberline {13}Poisson process with Poisson increments}{84}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Poisson distribution}{84}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Definition 1: Poisson increments}{84}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Summed and marked Poisson processes}{85}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Poisson process with exponential holding times}{87}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Exponential distribution}{87}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Definition 2: exponential holding times}{88}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Markov property in continuous time}{89}{subsection.14.3}%
+\contentsline {section}{Problem sheet 7}{91}{definition.14.1}%
+\contentsline {section}{\numberline {15}Poisson process in infinitesimal time periods}{95}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Definition 3: increments in infinitesimal time}{95}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Example: sum of two Poisson processes}{96}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Forward equations and proof of equivalence}{96}{subsection.15.3}%
+\contentsline {section}{\numberline {16}Counting processes}{98}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Birth processes}{98}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Time inhomogeneous Poisson process}{99}{subsection.16.2}%
+\contentsline {section}{Problem Sheet 8}{101}{example.16.2}%
+\contentsline {section}{\numberline {17}Continuous time Markov jump processes}{104}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Jump chain and holding times}{104}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}Examples}{105}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}A brief note on explosion}{106}{subsection.17.3}%
+\contentsline {section}{\numberline {18}Forward and backward equations}{108}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Transitions in infinitesimal time periods}{108}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Transition semigroup and the forward and backward equations}{108}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}Matrix exponential}{109}{subsection.18.3}%
+\contentsline {section}{Problem Sheet 9}{111}{theorem.18.1}%
+\contentsline {section}{\numberline {19}Class structure and hitting times}{115}{section.19}%
+\contentsline {subsection}{\numberline {19.1}Communicating classes}{115}{subsection.19.1}%
+\contentsline {subsection}{\numberline {19.2}A brief note on periodicity}{116}{subsection.19.2}%
+\contentsline {subsection}{\numberline {19.3}Hitting probabilities and expected hitting times}{116}{subsection.19.3}%
+\contentsline {subsection}{\numberline {19.4}Recurrence and transience}{117}{subsection.19.4}%
+\contentsline {section}{\numberline {20}Long-term behaviour of Markov jump processes}{118}{section.20}%
+\contentsline {subsection}{\numberline {20.1}Stationary distributions}{118}{subsection.20.1}%
+\contentsline {subsection}{\numberline {20.2}Convergence to equilibrium}{119}{subsection.20.2}%
+\contentsline {subsection}{\numberline {20.3}Ergodic theorem}{120}{subsection.20.3}%
+\contentsline {section}{Problem Sheet 10}{121}{example.20.2}%
+\contentsline {section}{Assessment 4}{123}{example.20.2}%
+\contentsline {section}{\numberline {21}Queues}{124}{section.21}%
+\contentsline {subsection}{\numberline {21.1}M/M/∞ infinite server process}{124}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}M/M/1 single server queue}{125}{subsection.21.2}%
+\contentsline {section}{\numberline {22}End of Part II: Continuous time Markov jump processes}{127}{section.22}%
+\contentsline {subsection}{\numberline {22.1}Summary of Part II}{127}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Exam FAQs}{127}{subsection.22.2}%
+\contentsline {section}{Problem Sheet 11}{128}{subsection.22.2}%
+\contentsline {section}{Computational worksheets}{129}{subsection.22.2}%
+\contentsline {subsection}{About the computational worksheets}{129}{section*.8}%
+\contentsline {subsection}{How to access R}{129}{section*.8}%
+\contentsline {subsection}{R background}{130}{section*.8}%
