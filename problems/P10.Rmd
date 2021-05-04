@@ -23,7 +23,6 @@ $(document).ready(function() {
 -->
 
 
-
 <style>
 .myanswers { 
 display: none !important;

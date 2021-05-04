@@ -153,7 +153,7 @@ Thus we have the stationary distribution $\pi_i = (1 - \rho)\rho^i$,
 which is a geometric distribution (the version that starts from $i = 0$).
 
 ::: {.theorem #MMone-thm}
-Let $(X(t))$ be an M/M/1 queue with arrivals at rate $\lambda$ and service at rate $\mu < \lambda$. The queue has the stationary distribution $\pi_i = (1 - \rho)\rho^i$, corresponding to $X(t) \sim \mathrm{Geom}(\rho)$, where $\rho = \lambda/\mu < 1$.
+Let $(X(t))$ be an M/M/1 queue with arrivals at rate $\lambda$ and service at rate $\mu > \lambda$. The queue has the stationary distribution $\pi_i = (1 - \rho)\rho^i$, corresponding to $X(t) \sim \mathrm{Geom}(\rho)$, where $\rho = \lambda/\mu < 1$.
 :::
 
 By the limit theorem, this is an equilibrium distribution, and the ergoic theorem also applied.

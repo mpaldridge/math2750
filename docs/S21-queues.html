@@ -374,7 +374,7 @@ where we’ve used the formula for the sum of a geometric progression with <span
 <p>Thus we have the stationary distribution <span class="math inline">\(\pi_i = (1 - \rho)\rho^i\)</span>,
 which is a geometric distribution (the version that starts from <span class="math inline">\(i = 0\)</span>).</p>
 <div class="theorem">
-<p><span id="thm:MMone-thm" class="theorem"><strong>Theorem 21.2  </strong></span>Let <span class="math inline">\((X(t))\)</span> be an M/M/1 queue with arrivals at rate <span class="math inline">\(\lambda\)</span> and service at rate <span class="math inline">\(\mu &lt; \lambda\)</span>. The queue has the stationary distribution <span class="math inline">\(\pi_i = (1 - \rho)\rho^i\)</span>, corresponding to <span class="math inline">\(X(t) \sim \mathrm{Geom}(\rho)\)</span>, where <span class="math inline">\(\rho = \lambda/\mu &lt; 1\)</span>.</p>
+<p><span id="thm:MMone-thm" class="theorem"><strong>Theorem 21.2  </strong></span>Let <span class="math inline">\((X(t))\)</span> be an M/M/1 queue with arrivals at rate <span class="math inline">\(\lambda\)</span> and service at rate <span class="math inline">\(\mu &gt; \lambda\)</span>. The queue has the stationary distribution <span class="math inline">\(\pi_i = (1 - \rho)\rho^i\)</span>, corresponding to <span class="math inline">\(X(t) \sim \mathrm{Geom}(\rho)\)</span>, where <span class="math inline">\(\rho = \lambda/\mu &lt; 1\)</span>.</p>
 </div>
 <p>By the limit theorem, this is an equilibrium distribution, and the ergoic theorem also applied.</p>
 <p>To answer question 1, the long-run average number of individuals in the process will be
