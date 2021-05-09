@@ -1,6 +1,6 @@
 # Problem Sheet 10  {.unnumbered #P10}
 
-<!--
+
 <style>
 .fold-btn { 
   float: right; 
@@ -20,18 +20,18 @@ $(document).ready(function() {
   })
 });
 </script>
--->
 
 
+<!--
 <style>
 .myanswers { 
 display: none !important;
 }
 </style>
+-->
 
 
-
-\commfalse
+\commtrue
 
 
 
