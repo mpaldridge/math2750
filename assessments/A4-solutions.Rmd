@@ -1,0 +1,141 @@
+---
+title:  "Assessment 4 (Solutions)"
+author: "MATH2750 Introduction to Markov Processes"
+date:   "University of Leeds, 2020--21"
+output: html_document 
+---
+
+***
+
+**Question 1.** The arrival of buses is modelled as a Poisson process with rate $\lambda = 4$ per hour.
+
+**(a)** What is the expected number of buses that arrive in a two-hour period?
+[[1 mark]]{style="float:right"}
+
+
+<span style="color: blue;">The number of arrivals in two hours is $\text{Po}(2\lambda) = \text{Po}(8)$, with expectation 8.</span>
+<span style="color: red;">[1 mark for correct answer.]</span>
+
+
+**(b)** What is the probability that at least two buses arrives in a half hour period.
+[[1]]{style="float:right"}
+
+<span style="color: blue;">The number of arrivals in half an hour is $X(\frac12) \sim \text{Po}(\frac12 \lambda) = \text{Po}(2)$, so the answer is
+\[ \mathbb P\big( X(\tfrac12) \geq 2\big) = 1 - \mathbb P\big( X(\tfrac12) \geq 0\big) - \mathbb P\big( X(\tfrac12) \geq 1\big) = 1 - \mathrm{e}^{-2} - 2\mathrm{e}^{-2} = 0.594.\]
+</span>
+<span style="color: red;">[1 mark for correct answer.]</span>
+
+**(c)** I arrive at the bus stop and start my watch. What is the expected amount
+of time until the sixth bus arrives. What is the standard deviation of this
+time? [[2]]{style="float:right"}
+
+<span style="color: blue;">The time until one arrival is $\mathrm{Exp}(\lambda) = \mathrm{Exp}(4)$, with variance $1/4^2 = 1/16$. The time until the sixth arrival is the sum of 6 independent $\mathrm{Exp}(4)$s, so has variance $6 \times 1/16 = 3/8$. The standard deviation is the square-root of the variance, $\sqrt{3/8} = 0.612$.
+</span>
+
+<span style="color: red;">[1 mark for correct answer. 1 mark for very clear explanation.]</span>
+
+**(d)** Given that exactly two buses arrive between 2pm and 3pm, what is the
+expected arrival time of the first bus? [[2]]{style="float:right"}
+
+<span style="color: blue;">I would do this by first finding the distribution of the first arrival time $T_1$ conditional on $X(1) = 2$. The tail probability is, using Bayes' theorem,
+\[ \mathbb P\big(T_1 > t \mid X(1) = 2\big)
+  = \frac{\mathbb P(T_1 > t) \mathbb P(X(1) = 2 \mid T_1 > t)}{\mathbb P(X(1) = 2)} . \]
+The numerator is
+\begin{align*}
+  \mathbb P(T_1 > t) \mathbb P\big(X(1) = 2 \mid T_1 > t\big)
+  &= \mathrm{e}^{-\lambda t} \times \mathbb P\big( \text{two arrivals in }[t, 1] \big) \\
+  &= \mathrm{e}^{-\lambda t} \times \mathrm{e}^{-\lambda (1 - t)} \frac{(\lambda(1-t))^2}{2} \\
+  &= \mathrm{e}^{-\lambda} \frac{\lambda^2}{2} (1 - t)^2 ,
+\end{align*}
+for $0 \leq t \leq 1$.
+The denominator is
+\[ \mathbb P\big(X(1) = 2\big) = \mathrm{e}^{-\lambda} \frac{\lambda^2}{2} . \]
+Hence the tail probability is 
+\[ \mathbb P\big(T_1 > t \mid X(1) = 2\big) = (1 - t)^2 . \]</span>
+
+<span style="color: blue;">We now need the expectation of this. You could convert the tail probability to the PDF $f(t) = 2(1-t)$ and calculate the expectation in the usual way. But the cleanest way is to use the underappreciated formula
+\[ \mathbb E X = \int_{0}^{\infty} \mathbb P(X > x) \, \mathrm{d}x  \]
+for nonnegative $X$. This gives
+\[ \mathbb E\big(T_1 \mid X(1) = 2\big) = \int_0^1 (1 - t)^2 \, \mathrm{d}t = \bigg[ -\tfrac13(1-t)^3\bigg]_0^1 = \tfrac13 . \]</span>
+
+<span style="color: blue;">Finally, $T_1 = \frac13$ corresponds to the time 2:20pm.</span>
+
+<span style="color: red;">[2 marks for a complete answer. 1 mark for good progress in the right direction. 0 marks for unjustified "it ought to be about a third of the way in" handwaving.]</span>
+
+
+
+
+**(e)** I arrive at the bus stop at 4pm. What is the expected inter-arrival time
+between the previous bus that I missed and the next bus to arrive that I
+catch? [[1]]{style="float:right"}
+
+<span style="color: blue;">The time until the next bus is $\mathrm{Exp}(\lambda) = \mathrm{Exp}(4)$, with an expectation of $\frac14$.</span>
+
+<span style="color: blue;">The time since the previous bus is also $\mathrm{Exp}(\lambda)$. To see this, fix $t$, and let $S$ be the elapsed time since the previous arrival before $t$; then
+\[ \mathbb P(S > s) = \mathbb P(\text{no arrival in }[t-s, t]) = \mathrm{e}^{-\lambda(t - (t-s))} =  \mathrm{e}^{-\lambda s} ,\]
+which is indeed the tail probability of an $\mathrm{Exp}(\lambda)$ random variable. So the time since the previous bus has expectation $\frac14$.</span>
+
+<span style="color: blue;">Hence the total expected interarrival time is $\frac14 + \frac14 = \frac12$, corresponding to 30 minutes.</span>
+
+<span style="color: red;">[1 mark for correct answer with adequate explanation.]</span>
+
+**(f)** I want to get the number 6 bus. Each bus that arrives is a number 6 bus
+independently with probability 0.25. What is the expected amount of time
+to wait until a number 6 bus? [[1]]{style="float:right"}
+
+<span style="color: blue;">The number 6 buses arrive like a marked Poisson process with rate $0.25\lambda = 1$. So the expected waiting time is also $0.25\lambda = 1$ hour.</span> <span style="color: red;">[1 mark for correct answer with marked Poisson process clearly explained]</span>
+
+**(g)** What is the probability that at least two buses arrive in a one hour period, at least one of which is a number 6 bus? [[2]]{style="float:right"}
+
+<span style="color: blue;">Let $X \sim \text{Po}(0.25\lambda) = \text{Po}(1)$ be the number of number 6 buses that arrive in the hour, and $Y \sim \text{Po}((1-0.25)\lambda) = \text{Po}(3)$ be the number of non-number 6 buses that arrive in the hour. Note that $X$ and $Y$ are independent.  The condition is fulfilled if either $X = 1$ and $Y \geq 1$ or if $X \geq 2$. Thus the desired probability is
+\[ \mathbb P(X=1)\big(1 - \mathbb P(Y = 0)\big) + \big(1 - \mathbb P(X = 0) - \mathbb P(X = 1)\big)
+  = 1\mathrm{e}^{-1}(1 - \mathrm{e}^{-3}) + (1 - \mathrm{e}^{-1} - 1\mathrm{e}^{-1}) = 0.614 .\] </span>
+  
+<span style="color: red;">[1 mark for correct answer. 1 mark for very clear explanation.]</span>
+
+***
+
+**Question 2.** Consider the Markov jump process with generator matrix
+\[ \mathsf Q = \begin{pmatrix}
+-2 &  2 &  0 &  0 &  0 \\
+ 3 & -3 &  0 &  0 &  0 \\
+ 0 &  1 & -2 &  1 &  0 \\
+ 0 &  0 &  3 & -5 &  2 \\
+ 0 & 0 & 0 & 0 & 0
+\end{pmatrix} , \]
+and let $(\mathsf P(t))$ be the associated transition semigroup. Find $\lim_{t \to \infty} \mathsf P(t)$.  [[10]]{style="float:right"}
+
+*Note: The majority of the marks for this question are for quality of mathematical exposition, with only a few marks for getting the answer right. Make sure to clearly explain and justify the steps you take. You may use results from the notes provided that you state them clearly and explain why they apply.*
+
+<span style="color: blue;">Let's start be finding the class decomposition. By drawing a picture (which I've not done in these solutions), we see the classes are $\{1,2\}$ (positive recurrent), $\{3, 4\}$ (transient) and $\{5\}$ (positive recurrent, absorbing state).</span> <span style="color: red;">[1 mark for class decomposition]</span>
+
+<span style="color: blue;">The Markov jump process will end in one of the two positive classes. We need to know two things. First, starting from $i$, what's the probability of ending up in each of the classes? Second, once we're in the class, what is the limiting distribution?</span>
+
+<span style="color: blue;">It's obvious that from 1 or 2 we end up in $\{1,2\}$, and from 5 we end up in $\{5\}$. For 3 and 4 we have a hitting probability problem. Looking at the diagram, it suffices to find $h_{32}$ and $h_{42}$; these are the probabilities of ending up in $\{1,2\}$, and one minus that is the probability of ending up in  $\{5\}$. Using the usual conditioning on the first step argument, we have
+\begin{align*}
+h_{32} &= \tfrac12 h_{22} + \tfrac12 h_{42} & 2h_{32} - \phantom{5}h_{42} &= 1 \\
+h_{42} &= \tfrac35 h_{32} + \tfrac25 h_{52} & 3h_{32} - 5h_{42} &= 0 .
+\end{align*}
+Five times the first minus the second, gives $7h_{32} = 5$, so $h_{32} = \frac57$. Substituting this back gives $h_{42} = \frac37$.</span> <span style="color: red;">[1 mark for attempting to find hitting probabilities, plus 1 mark for doing so successfully.]</span>
+
+<span style="color: blue;">the limit theorem tell us that, once we're in a positive recurrent class, the limiting probability is given by the unique stationary distribution on that class. The limit theorem also tells us that the limiting probability for the transient class is 0.</span> <span style="color: red;">[1 mark for accurately using the limit theorem.]</span>
+
+<span style="color: blue;">On $\{5\}$ the stationary distribution is obviously a point mass on 5. We need to find the stationary distribution on $\{1,2\}$. We need to solve $\boldsymbol\pi \mathsf Q = \mathbf 0$, where we can just restrict our attention to the top-right two-by-two submatrix. Then equations are
+\[ -2\pi_1 + 3\pi_2 = 0 \qquad 2\pi_1 - 3\pi_2 = 0 , \]
+for which we get $\pi_2 = \frac23 \pi_2$. Together with the normalising condition $\pi_1 + \pi_2 = 1$, we get $\pi_1 = \frac35$, $\pi_2 = \frac25$.</span> <span style="color: red;">[1 mark for attempting to find a stationary distribution, plus 1 mark for doing so successfully.]</span>
+
+<span style="color: blue;">Let's put this all together. We have
+\[ \lim_{t \to \infty} \mathsf P(t) =
+\begin{pmatrix} \pi_1 & \pi_2 & 0 & 0 & 0 \\
+\pi_1 & \pi_2 & 0 & 0 & 0 \\
+h_{32}\pi_1 & h_{32} \pi_2 & 0 & 0 & 1-h_{32} \\
+h_{42}\pi_1 & h_{42} \pi_2 & 0 & 0 & 1-h_{42} \\
+0 & 0 & 0 & 0 & 1 \end{pmatrix} = 
+\begin{pmatrix} \frac35 & \frac25 & 0 & 0 & 0 \\
+\frac35 & \frac25 & 0 & 0 & 0 \\
+\frac37 & \frac27 & 0 & 0 & \frac27 \\
+\frac{9}{35} & \frac{6}{35} & 0 & 0 & \frac{5}{7} \\
+0 & 0 & 0 & 0 & 1 \end{pmatrix} . \]
+</span> <span style="color: red;">[1 point for correct final answer.]</span>
+
+<span style="color: red;">Finally, up to three marks for the quality of the explanation.</span>

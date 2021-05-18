@@ -6452,6 +6452,16 @@ The number of individuals \((X(t))\) in the process (that is, receiving the serv
 \caption{An M/M/∞ queue}\label{fig:MMinf-diag}
 \end{figure}
 
+Writing \(\mathsf Q = (q_{ij})\) as a matrix, it is
+\[ \mathsf Q = \begin{pmatrix}
+-\lambda & \lambda          &                   &                   &         &        \\
+\mu      & -(\lambda + \mu) & \lambda           &                   &         &        \\
+         & 2\mu             & -(\lambda + 2\mu) & \lambda           &         &        \\
+         &                  & 3\mu              & -(\lambda + 3\mu) & \lambda &        \\
+         &                  &                   & \ddots            & \ddots  & \ddots
+\end{pmatrix} , \]
+where all the blank entries are 0.
+
 This process is called the \textbf{M/M/\(\infty\)} process.
 
 \begin{itemize}
@@ -6475,14 +6485,17 @@ Two questions we might want to know the answer to are these:
   In the long run, for what proportion of the time are all the servers idle?
 \end{enumerate}
 
-To find out about this long run behaviour, we need to calculate the stationary distribution. The stationary distribution solves \(\boldsymbol\pi\mathsf Q = \mathsf 0\), or in coordinate form, \(\sum_i \pi_i q_{ij} = 0\). Thus we have
-\[
-    \pi_{i+1} q_{i+1\,i} + \pi_i q_{ii} + \pi_{i-1} q_{i-1\,i} = (i+1)\mu \pi_{i+1} - (\lambda + i\mu)\pi_i + \lambda \pi_{i-1} = 0 .
-\]
+To find out about this long run behaviour, we need to calculate the stationary distribution. The stationary distribution solves \(\boldsymbol\pi\mathsf Q = \mathsf 0\). Thus we have
+\begin{equation}
+    \lambda \pi_{i-1} - (\lambda + i\mu)\pi_i + (i+1)\mu \pi_{i+1} = 0  \label{eq:MMst}
+\end{equation}
+for \(i \geq 1\), and
+\begin{equation}
+  -\lambda \pi_0 + \mu \pi_1 = 0  \label{eq:MMsu}
+\end{equation}
+from the first column of \(\mathsf Q\).
 
-If we were to check the first few values of the solution of this, we would find
-\[ \pi_1 = \rho \pi_0, \qquad \pi_2 = \frac{\rho^2}{2} \pi_0, \qquad \pi_3 = \frac{\rho^3}{6} \pi_0 , \qquad \dots\]
-where \(\rho = \lambda/\mu\). This looks suspiciously like the stationary distribution might be the Poisson distribution with rate \(\rho\); that is, \(\pi_i = \pi_0 \rho^i / i! = \mathrm{e}^{-\rho} \rho^i / i!\).
+Rearranging \eqref{eq:MMsu} gives \(\pi_1 = \rho \pi_0\), where \(\rho = \lambda/\mu\). Putting this into \eqref{eq:MMst} for \(i = 1\) gives (after some algebra) \(\pi_2 = \pi_0 \rho^2 / 2\). Putting that into for \(i = 2\) gives \(\pi_3 = \pi_0 \rho^3 / 6\).vThis looks suspiciously like the stationary distribution might be the Poisson distribution with rate \(\rho\); that is, \(\pi_i = \pi_0 \rho^i / i! = \mathrm{e}^{-\rho} \rho^i / i!\).
 
 \begin{theorem}
 \protect\hypertarget{thm:MMinf-thm}{}\label{thm:MMinf-thm}
@@ -6493,15 +6506,16 @@ Let \((X(t))\) be an M/M/\(\infty\) process with arrivals at rate \(\lambda\) an
 
 \begin{proof}
 
-We substitute the supposed solution into the equation, to get
+We know that this \(\boldsymbol\pi\) is a distribution. We must check that \(\boldsymbol\pi\) fulfills \(\boldsymbol\pi \mathsf Q = \mathbf 0\). We've already checked \eqref{eq:MMsu}. For \(i \geq 1\), we have from \eqref{eq:MMst},
 \begin{align*}
-  (i+1)\mu \,\mathrm{e}^{-\rho} \frac{\rho^{i+1}}{(i+1)!} -(&\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda\, \mathrm{e}^{-\rho} \frac{\rho^{i-1}}{(i-1)!} \\
-  &= \mu \mathrm{e}^{-\rho} \rho \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda \mathrm{e}^{-\rho}  \frac{i}{\rho} \frac{\rho^i}{i!} \\
-  &= \mathrm{e}^{-\rho} \lambda \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mathrm{e}^{-\rho} i\mu \frac{\rho^i}{i!} \\
-  &= \mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} \big( \lambda - (\lambda + i \mu) + i \mu   \big)  \\
+\lambda \pi_{i-1}{} - {}&(\lambda + i\mu)\pi_i + (i+1)\mu \pi_{i+1} \\
+  &= \lambda\, \mathrm{e}^{-\rho} \frac{\rho^{i-1}}{(i-1)!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + (i+1)\mu \,\mathrm{e}^{-\rho} \frac{\rho^{i+1}}{(i+1)!} \\
+  &= \lambda \mathrm{e}^{-\rho}  \frac{i}{\rho} \frac{\rho^i}{i!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mu \mathrm{e}^{-\rho} \rho \,\frac{\rho^i}{i!} \\
+  &= \mathrm{e}^{-\rho} i\mu \frac{\rho^i}{i!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mathrm{e}^{-\rho} \lambda \,\frac{\rho^i}{i!}\\
+  &= \mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} \big( i \mu   - (\lambda + i \mu) +   \lambda \big)  \\
   &= 0 ,
 \end{align*}
-which is as desired.
+as desired.
 
 \end{proof}
 
@@ -6528,6 +6542,15 @@ Let \((X(t))\) be the number of individuals in the process at time \(t\). That c
 
 \caption{An M/M/1 queue}\label{fig:MMine-diag}
 \end{figure}
+
+The matrix \(\mathsf Q\) this time is
+\[ \mathsf Q = \begin{pmatrix}
+-\lambda & \lambda          &                  &                  &         &        \\
+\mu      & -(\lambda + \mu) & \lambda          &                  &         &        \\
+         & \mu              & -(\lambda + \mu) & \lambda          &         &        \\
+         &                  & \mu              & -(\lambda + \mu) & \lambda &        \\
+         &                  &                  & \ddots           & \ddots  & \ddots
+\end{pmatrix} . \]
 
 The first thing we would like to know is if the queue keeps getting longer and longer, or whether eventually every individual is serviced.
 
@@ -6556,7 +6579,7 @@ In what follows, we consider only the ``good'' case \(\lambda < \mu\). Again we 
 
 Again, we look for a stationary distribution, which will tell us about the long term behaviour of the queue. The equation \(\boldsymbol\pi\mathsf Q = \mathbf 0\) this time becomes
 \[ \mu \pi_{i+1} - (\lambda + \mu) \pi_i + \lambda \pi_{i-1} = 0 \qquad \text{for $i \geq 1$} , \]
-together with the initial condition \(\mu \pi_1 - \lambda \pi_0 = 0\) and the normalising condition \(\sum_i \pi_i = 1\).
+together with the initial condition \(\mu \pi_1 - \lambda \pi_0 = 0\) from the first column of \(\mathsf Q\), and the normalising condition \(\sum_i \pi_i = 1\).
 
 We recognise this as a linear difference equation. The characteristic equation (using \(\alpha\) where we used \(\lambda\) previously, since \(\lambda\) is already in use) is
 \[ \mu \alpha^2 - (\lambda + \mu)\alpha + \lambda = (\alpha - 1)(\mu \alpha - \lambda ) = 0 . \]

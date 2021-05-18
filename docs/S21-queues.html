@@ -295,6 +295,15 @@
 Figure 21.1: An M/M/∞ queue
 </p>
 </div>
+<p>Writing <span class="math inline">\(\mathsf Q = (q_{ij})\)</span> as a matrix, it is
+<span class="math display">\[ \mathsf Q = \begin{pmatrix}
+-\lambda &amp; \lambda          &amp;                   &amp;                   &amp;         &amp;        \\
+\mu      &amp; -(\lambda + \mu) &amp; \lambda           &amp;                   &amp;         &amp;        \\
+         &amp; 2\mu             &amp; -(\lambda + 2\mu) &amp; \lambda           &amp;         &amp;        \\
+         &amp;                  &amp; 3\mu              &amp; -(\lambda + 3\mu) &amp; \lambda &amp;        \\
+         &amp;                  &amp;                   &amp; \ddots            &amp; \ddots  &amp; \ddots
+\end{pmatrix} , \]</span>
+where all the blank entries are 0.</p>
 <p>This process is called the <strong>M/M/<span class="math inline">\(\infty\)</span></strong> process.</p>
 <ul>
 <li>The first M stands for <strong>memoryless arrivals</strong>, which means the arrivals process is a Poisson process, which has exponential – and therefore memoryless – interarrival times.</li>
@@ -306,26 +315,30 @@ Figure 21.1: An M/M/∞ queue
 <li>In the long run, what’s the average number of individuals being serviced?</li>
 <li>In the long run, for what proportion of the time are all the servers idle?</li>
 </ol>
-<p>To find out about this long run behaviour, we need to calculate the stationary distribution. The stationary distribution solves <span class="math inline">\(\boldsymbol\pi\mathsf Q = \mathsf 0\)</span>, or in coordinate form, <span class="math inline">\(\sum_i \pi_i q_{ij} = 0\)</span>. Thus we have
-<span class="math display">\[
-    \pi_{i+1} q_{i+1\,i} + \pi_i q_{ii} + \pi_{i-1} q_{i-1\,i} = (i+1)\mu \pi_{i+1} - (\lambda + i\mu)\pi_i + \lambda \pi_{i-1} = 0 .
-\]</span></p>
-<p>If we were to check the first few values of the solution of this, we would find
-<span class="math display">\[ \pi_1 = \rho \pi_0, \qquad \pi_2 = \frac{\rho^2}{2} \pi_0, \qquad \pi_3 = \frac{\rho^3}{6} \pi_0 , \qquad \dots\]</span>
-where <span class="math inline">\(\rho = \lambda/\mu\)</span>. This looks suspiciously like the stationary distribution might be the Poisson distribution with rate <span class="math inline">\(\rho\)</span>; that is, <span class="math inline">\(\pi_i = \pi_0 \rho^i / i! = \mathrm{e}^{-\rho} \rho^i / i!\)</span>.</p>
+<p>To find out about this long run behaviour, we need to calculate the stationary distribution. The stationary distribution solves <span class="math inline">\(\boldsymbol\pi\mathsf Q = \mathsf 0\)</span>. Thus we have
+<span class="math display" id="eq:MMst">\[\begin{equation}
+    \lambda \pi_{i-1} - (\lambda + i\mu)\pi_i + (i+1)\mu \pi_{i+1} = 0  \tag{21.1}
+\end{equation}\]</span>
+for <span class="math inline">\(i \geq 1\)</span>, and
+<span class="math display" id="eq:MMsu">\[\begin{equation}
+  -\lambda \pi_0 + \mu \pi_1 = 0  \tag{21.2}
+\end{equation}\]</span>
+from the first column of <span class="math inline">\(\mathsf Q\)</span>.</p>
+<p>Rearranging <a href="S21-queues.html#eq:MMsu">(21.2)</a> gives <span class="math inline">\(\pi_1 = \rho \pi_0\)</span>, where <span class="math inline">\(\rho = \lambda/\mu\)</span>. Putting this into <a href="S21-queues.html#eq:MMst">(21.1)</a> for <span class="math inline">\(i = 1\)</span> gives (after some algebra) <span class="math inline">\(\pi_2 = \pi_0 \rho^2 / 2\)</span>. Putting that into for <span class="math inline">\(i = 2\)</span> gives <span class="math inline">\(\pi_3 = \pi_0 \rho^3 / 6\)</span>.vThis looks suspiciously like the stationary distribution might be the Poisson distribution with rate <span class="math inline">\(\rho\)</span>; that is, <span class="math inline">\(\pi_i = \pi_0 \rho^i / i! = \mathrm{e}^{-\rho} \rho^i / i!\)</span>.</p>
 <div class="theorem">
 <p><span id="thm:MMinf-thm" class="theorem"><strong>Theorem 21.1  </strong></span>Let <span class="math inline">\((X(t))\)</span> be an M/M/<span class="math inline">\(\infty\)</span> process with arrivals at rate <span class="math inline">\(\lambda\)</span> and service at rate <span class="math inline">\(\mu\)</span>. The process has the stationary distribution <span class="math inline">\(\pi_i = \mathrm{e}^{-\rho} \rho^i / i!\)</span>, corresponding to <span class="math inline">\(X(t) \sim \mathrm{Po}(\rho)\)</span>, where <span class="math inline">\(\rho = \lambda/\mu\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-25" class="proof"><em>Proof</em>. </span>We substitute the supposed solution into the equation, to get
+<p><span id="unlabeled-div-25" class="proof"><em>Proof</em>. </span>We know that this <span class="math inline">\(\boldsymbol\pi\)</span> is a distribution. We must check that <span class="math inline">\(\boldsymbol\pi\)</span> fulfills <span class="math inline">\(\boldsymbol\pi \mathsf Q = \mathbf 0\)</span>. We’ve already checked <a href="S21-queues.html#eq:MMsu">(21.2)</a>. For <span class="math inline">\(i \geq 1\)</span>, we have from <a href="S21-queues.html#eq:MMst">(21.1)</a>,
 <span class="math display">\[\begin{align*}
-  (i+1)\mu \,\mathrm{e}^{-\rho} \frac{\rho^{i+1}}{(i+1)!} -(&amp;\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda\, \mathrm{e}^{-\rho} \frac{\rho^{i-1}}{(i-1)!} \\
-  &amp;= \mu \mathrm{e}^{-\rho} \rho \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \lambda \mathrm{e}^{-\rho}  \frac{i}{\rho} \frac{\rho^i}{i!} \\
-  &amp;= \mathrm{e}^{-\rho} \lambda \,\frac{\rho^i}{i!} -(\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mathrm{e}^{-\rho} i\mu \frac{\rho^i}{i!} \\
-  &amp;= \mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} \big( \lambda - (\lambda + i \mu) + i \mu   \big)  \\
+\lambda \pi_{i-1}{} - {}&amp;(\lambda + i\mu)\pi_i + (i+1)\mu \pi_{i+1} \\
+  &amp;= \lambda\, \mathrm{e}^{-\rho} \frac{\rho^{i-1}}{(i-1)!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + (i+1)\mu \,\mathrm{e}^{-\rho} \frac{\rho^{i+1}}{(i+1)!} \\
+  &amp;= \lambda \mathrm{e}^{-\rho}  \frac{i}{\rho} \frac{\rho^i}{i!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mu \mathrm{e}^{-\rho} \rho \,\frac{\rho^i}{i!} \\
+  &amp;= \mathrm{e}^{-\rho} i\mu \frac{\rho^i}{i!} - (\lambda + i\mu) \,\mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} + \mathrm{e}^{-\rho} \lambda \,\frac{\rho^i}{i!}\\
+  &amp;= \mathrm{e}^{-\rho} \,\frac{\rho^i}{i!} \big( i \mu   - (\lambda + i \mu) +   \lambda \big)  \\
   &amp;= 0 ,
 \end{align*}\]</span>
-which is as desired.</p>
+as desired.</p>
 </div>
 <p>This process is clearly irreducible, and since it has a stationary distribution it must be positive recurrent. So, by the limit theorem, we see that <span class="math inline">\(\boldsymbol\pi\)</span> is also the equilibrium distribution. By the ergodic theorem, the long-run amount of time spent in each state is governed by <span class="math inline">\(\boldsymbol\pi\)</span>.</p>
 <p>In answer to question 1, the average number of individuals being serviced is <span class="math inline">\(\mathbb E (\text{Po}(\rho)) = \rho = \lambda/\mu\)</span>. In answer to question 2, the long-run proportion of time the process is empty is <span class="math inline">\(\pi_0 = \mathrm{e}^{-\rho} = \mathrm{e}^{-\lambda/\mu}\)</span>.</p>
@@ -348,6 +361,14 @@ which is as desired.</p>
 Figure 21.2: An M/M/1 queue
 </p>
 </div>
+<p>The matrix <span class="math inline">\(\mathsf Q\)</span> this time is
+<span class="math display">\[ \mathsf Q = \begin{pmatrix}
+-\lambda &amp; \lambda          &amp;                  &amp;                  &amp;         &amp;        \\
+\mu      &amp; -(\lambda + \mu) &amp; \lambda          &amp;                  &amp;         &amp;        \\
+         &amp; \mu              &amp; -(\lambda + \mu) &amp; \lambda          &amp;         &amp;        \\
+         &amp;                  &amp; \mu              &amp; -(\lambda + \mu) &amp; \lambda &amp;        \\
+         &amp;                  &amp;                  &amp; \ddots           &amp; \ddots  &amp; \ddots
+\end{pmatrix} . \]</span></p>
 <p>The first thing we would like to know is if the queue keeps getting longer and longer, or whether eventually every individual is serviced.</p>
 <p>For this continuous time jump process <span class="math inline">\((X(t))\)</span>, the discrete time jump chain <span class="math inline">\((Y_n)\)</span> is a simple random walk with up probability <span class="math inline">\(p = \lambda/(\lambda + \mu)\)</span>, down probability <span class="math inline">\(q = \mu/(\lambda + \mu)\)</span>, and a reflecting barrier at 0. Recall that this Markov chain is transient for <span class="math inline">\(p &gt; q\)</span>, null recurrent for <span class="math inline">\(p = q\)</span>, and positive recurrent for <span class="math inline">\(p &lt; q\)</span>. Thus we see that:</p>
 <ul>
@@ -362,7 +383,7 @@ Figure 21.2: An M/M/1 queue
 </ol>
 <p>Again, we look for a stationary distribution, which will tell us about the long term behaviour of the queue. The equation <span class="math inline">\(\boldsymbol\pi\mathsf Q = \mathbf 0\)</span> this time becomes
 <span class="math display">\[ \mu \pi_{i+1} - (\lambda + \mu) \pi_i + \lambda \pi_{i-1} = 0 \qquad \text{for $i \geq 1$} , \]</span>
-together with the initial condition <span class="math inline">\(\mu \pi_1 - \lambda \pi_0 = 0\)</span> and the normalising condition <span class="math inline">\(\sum_i \pi_i = 1\)</span>.</p>
+together with the initial condition <span class="math inline">\(\mu \pi_1 - \lambda \pi_0 = 0\)</span> from the first column of <span class="math inline">\(\mathsf Q\)</span>, and the normalising condition <span class="math inline">\(\sum_i \pi_i = 1\)</span>.</p>
 <p>We recognise this as a linear difference equation. The characteristic equation (using <span class="math inline">\(\alpha\)</span> where we used <span class="math inline">\(\lambda\)</span> previously, since <span class="math inline">\(\lambda\)</span> is already in use) is
 <span class="math display">\[ \mu \alpha^2 - (\lambda + \mu)\alpha + \lambda = (\alpha - 1)(\mu \alpha - \lambda ) = 0 . \]</span>
 This has solutions <span class="math inline">\(\alpha = 1\)</span> and <span class="math inline">\(\alpha = \rho\)</span>, where <span class="math inline">\(\rho = \lambda/\mu &lt; 1\)</span>, so the general solution to the equation is <span class="math inline">\(\pi_i = A + B\rho^i\)</span>.</p>
