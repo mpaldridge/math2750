@@ -1,0 +1,124 @@
+---
+title: "MATH2750 Frequently Asked Questions"
+author: "Matthew Aldridge"
+format:
+  html:
+    embed-resources: true
+toc: true
+---
+
+_I've received a few questions by emails about things related to [MATH2750 Introduction to Markov Processes](https://mpaldridge.github.io/math2750/). I thought it might be helpful to collect my responses here, so that everyone in the workshop can benefit from them. ---MA_
+
+## Expected hitting times when hitting isn't certain
+
+> What is the expected hitting time $\eta_{ij}$ if $i$ is an absorbing state and $j \neq i$ is another state? Because we're never going to actually hit $j$ strting from $i$.
+
+The expected hitting time $\eta_{ij}$ from $i$ to $j$ only really makes sense if you are _certain_ to get from $i$ to $j$ – that is, if the hitting probability $h_{ij}$ equals $1$. 
+
+If the hitting probability $h_{ij}$ is strictly less than $1$ (like in the question, where $h_{ij} = 0$), it doesn’t really make sense to talk about the expected time “until” you hit j – because you might not hit it at all. If we did have to give a value to it, the only value that makes sense is $+\infty$. So the official definition in this case is $\eta_{ij} = \infty$. 
+
+## Limiting behaviour of nonirreducible processes
+
+> What can we say about the limiting behaviour of Markov processes that aren't irreducible? (I'm particularly thinking about **[Assessment 4](https://mpaldridge.github.io/math2750/A4.html) Question 2**.)
+
+When looking at the limiting behaviour of a discrete time Markov chain or continuous time Markov jump process that isn't irreducible, you generally need to work out:
+
+*  What are the positive recurrent classes? (For the purpose of this note, I'll assume they're all aperiodic.)
+*  What is the probability you end up in each of the positive recurrent classes?
+*  What is the stationary distribution (and therefore the equilibrium distribution) in each of those classes?
+
+Suppose we are starting from state $i$ and want to find the limiting probability of $p_{ij}(n)$ or $p_{ij}(t)$ that we end up in state $j$.
+
+1. Is $j$ in a positive recurrent class?
+   a. If no, then $p_{ij}(n) \to 0$. Stop.
+   a. If yes, go to step 2.
+1. Find the stationary distribution $\boldsymbol\pi$ on that positive recurrent class.
+1. Find the probability that, starting from $i$ we end up in that class. This is $h_{ij}$. (It's also $h_{ik}$ for any other state $k$ in the same class as $j$.)
+1. Then the limiting value of $p_{ij}(n)$ is $h_{ij} \times \pi_j$, the the probability we end up in the right class multiplied by the limiting probability within the class.
+
+Some questions that go through this sort of problem include:
+
+* [Assessment 3](https://mpaldridge.github.io/math2750/A3.html) Question 2
+* [Problem Sheet 10](https://mpaldridge.github.io/math2750/P10.html) Question 4
+* [Assessment 4](https://mpaldridge.github.io/math2750/A4.html) Question 2 (the hardest one, because it doesn't lead you through step by step)
+* 2019 past paper Question 2
+* 2020 past paper Question 3
+
+Note that, in general, we don't have an ergodic theorem result. If $j$ is in a positive recurrent class, then the long-run proportion of time we spend in state $j$ is either $\pi_j$ if we end up in that class (where $\boldsymbol\pi$ is the stationary distribution on $j$'s class) or $0$ if we don't end up in that class.
+
+## Minimal nonnegative solutions
+
+> I have two questions about **[Problem Sheet 5](https://mpaldridge.github.io/math2750/P05.html) Question 5** and its solution.
+>
+> First, why does the solution sheet give $h_{i\,0} = \tfrac23 h_{i+1\,0} + \tfrac23 h_{i-1\,0}$ for the linear difference equation for the hitting probability? I expected it to be $h_{i\,0} = \tfrac23 h_{i+1\,0} + \tfrac13 h_{i-1\,0}$.
+>
+> Second, from the partial solution $h_{i0} = 1 - B(1 - (\tfrac12)^i)$, the solutions say the the minimal nonnegative soluuion is when $B = 1$. Can you explain why?
+
+For the first part, I agree that that's a typo.
+
+For the second part, let's deal first with the nonnegative constraint, then second with the minimality optimisation. 
+
+First, to make sure $h_{i0}$ is nonnegative, we have to have $B \leq 1$. That's because if $B > 1$, then when $i$ is big, $1 – (\frac12)^i$ will be very close to $1$, so $1 – B(1 – (1/2)^i)$ will be very close to $1 – B < 0$, which will be negative and therefore not allowed. So our nonnegativity constraint is $B \leq 1$.
+
+So next we want to pick $B$ to make $h_{i0}$ as small as possible ("minimality"). It's clear that as $B$ gets bigger $h_{i0}$ gets smaller. So minimality means that we want $B$ as big as possible – but as big as possible still subject to our $B \leq 1$ nonnegativity constraint. The biggest allowed $B$ is therefore $B = 1$, so that gives us the minimal nonnegative solution.
+
+It can also be helpful to draw a graph of $h_{i0} = 1 - B(1 - (\tfrac12)^i)$ for different values of $B$. See this picture:
+
+```{r, echo = FALSE}
+hit <- function(x, B = 1) 1 - B * (1 - 0.5^x)
+
+curve(hit(x, 2), from = 0, to = 12, xlim = c(0, 10), ylim = c(-0.5, 1.5),
+      xlab = "i", ylab = "hitting probability h_i0", col = "purple", lwd = 2)
+curve(hit(x, 1.2), to = 12, add = TRUE, col = "darkblue", lwd = 2)
+curve(hit(x, 1), to = 12, add = TRUE, col = "blue", lwd = 2)
+curve(hit(x, 0.8), to = 12, add = TRUE, col = "green", lwd = 2)
+curve(hit(x, 0.5), to = 12, add = TRUE, col = "yellow", lwd = 2)
+curve(hit(x, 0), to = 12, add = TRUE, col = "orange", lwd = 2)
+curve(hit(x, -1), to = 12, add = TRUE, col = "red", lwd = 2)
+abline(h = 0, col = "black")
+
+legend("topright", c("B = -1", "B = 0", "B = 0.5", "B = 0.8", "B = 1", "B = 1.2", "B = 2"), col = c("red", "orange", "yellow", "green", "blue", "darkblue", "purple"), lwd = 2)
+```
+We see from this picture that the smallest solution that never goes below $0$ is the $B = 1$ (royal blue) line.
+
+## Minimum of random variables
+
+> **[Problem Sheet 7](https://mpaldridge.github.io/math2750/P07.html) Question 4(b)** concerns the minimum $T$ of some random variables $T_1, T_2, \dots, T_n$. In calculating the probability that a particular $T_j$ is the minimum, the solutions say that "by conditioning on value of $T_j$" we have
+$$\mathbb P(\text{$T_j$ min of the $T_k$s}) = \int_0^\infty f_{T_j}(t)\,\mathbb P(\text{all other $T_k$s $\geq t$}) \, \mathrm{d}t . $$
+> Can you explain why?
+
+Let's start by explaining what "conditioning on the value of a random variable" means.
+
+You're probably used to conditioning like this for a discrete random variable $X$ with PMF $p_X(x)$. If $A$ is an event we want to know the probability of, then conditioning on $X$ means writing
+$$ \mathbb P(A) = \sum_x \mathbb P(X = x)\,\mathbb P(A \mid X = x) = \sum_x p_X(x)\,\mathbb P(A \mid X = x) .$$
+(This is the "law of total probability", if you remember what that is, where the "partition" is all the different events $\{X = x\}$.)
+
+We can also do this if $X$ is a continuous random variable with PDF $f_X(x)$, by swapping the PMF for the PDF and the sum for an integral. This gives
+$$ \mathbb P(A) = \int_{-\infty}^\infty f_X(x)\,\mathbb P(A \mid X = x) \, \mathrm{d}x . $$
+
+In the example in your question, the event $A$ is "$T_j$ is the minimum of the $T_k$s". So we have
+$$\mathbb P(\text{$T_j$ min of the $T_k$s}) = \int_0^\infty f_{T_j}(t)\,\mathbb P(\text{$T_j$ min of the $T_k$s} \mid T_j = t) \, \mathrm{d}t . $$
+
+For $T_j = t$ to be the minimum of all the $T_k$s, all the other $T_k$s have to be bigger than $T_j = t$, as in part (a). So
+$$ \mathbb P(\text{$T_j$ min of the $T_k$s} \mid T_j = t) = \mathbb P(\text{all other $T_k$s $\geq t$}) .$$
+Substitute that in.
+
+## A time inhomogenous Markov chain
+
+> I'm working on the **2018 past paper Question 4(b)(ii)** and can't get the correct answer on the checksheet. Can you help?
+
+Question 4(b) is about a time *inhomogeneous* discrete time Markov chain. While time inhomogeneous chains were on the syllabus back in 2018, they aren't any more (with the exception of the inhomogeneous Poisson process), so I wouldn't worry about this too much.
+
+That said, if you (and, for that matter, I) can work out what the notation means, we ought to be able to answer it. The point is that the first matrix $\mathsf P^{(0,1)}$ is the transition matrix for the first step, and the second matrix $\mathsf P^{(1,2)}$ is the transition matrix for the second step, and – unlike a normal time homogeneous Markov chain, where the transition matrix is always the same – they are different here.
+
+Question 4(b)(ii) asks for a two-step transition probability from H to D. There are three possible paths:
+
+* H $\to$ H $\to$ D, with probability $p_{HH}^{(0,1)} \times p_{HD}^{(1,2)} = 0.8 \times 0.1 = 0.08$;
+* H $\to$ S $\to$ D, with probability $p_{HS}^{(0,1)} \times p_{SD}^{(1,2)} = 0.15 \times 0.15 = 0.0225$;
+* H $\to$ D $\to$ D, with probability $p_{HD}^{(0,1)} \times p_{DD}^{(1,2)} = 0.05 \times 1 = 0.05$.
+
+Adding those up gives $0.1525$.
+
+For example, in the first path there, H $\to$ H is the first step, and the $(H, H)$ entry of the first matrix is $0.8$. Then H $\to$ D is the second step, and the $(H, D)$ entry of the second matrix is $0.05$ bigger than it was in the first matrix, and is now $0.05 + 0.05 = 0.1$, as in the answer to 4(b)(i). Similarly for the second and third path.
+
+An alternative (but equivalent) way to do this would be to calculate the matrix multiplication $\mathsf P^{(0,2)} = \mathsf P^{(0,1)}\mathsf P^{(1,2)}$ and take the $(H, D)$ entry of that matrix. This is the time inhomogeneous equivalent of find two-step transition probabilities taking the matrix square $\mathsf P(2) = \mathsf P^2$.
